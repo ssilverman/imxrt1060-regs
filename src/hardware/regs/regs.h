@@ -69,12 +69,12 @@ class Reg {
 
  public:
   // Number of bits in whole register.
-  static constexpr size_t kRegBits = std::numeric_limits<R>::digits;
+  static constexpr size_t kWholeRegBits = std::numeric_limits<R>::digits;
 
   // More parameter shape checks
-  static_assert(Bits <= kRegBits, "Bit count exceeds register width");
-  static_assert(Shift < kRegBits, "Shift exceeds register width");
-  static_assert((Bits <= kRegBits) && (Shift <= kRegBits - Bits),
+  static_assert(Bits <= kWholeRegBits, "Bit count exceeds register width");
+  static_assert(Shift < kWholeRegBits, "Shift exceeds register width");
+  static_assert((Bits <= kWholeRegBits) && (Shift <= kWholeRegBits - Bits),
                 "Register extends past register bounds");
 
   // The shift.
@@ -85,11 +85,11 @@ class Reg {
 
   // The shifted mask.
   static constexpr R kMask =  // Add -1 using R-bit modular arithmetic
-      (((Bits < kRegBits) ? (R{1} << Bits) : R{0}) +
+      (((Bits < kWholeRegBits) ? (R{1} << Bits) : R{0}) +
        std::numeric_limits<R>::max())
       << Shift;
   // static constexpr R kMask =
-  //     static_cast<R>(std::make_signed_t<R>{-1}) >> (kRegBits - Bits);
+  //     static_cast<R>(std::make_signed_t<R>{-1}) >> (kWholeRegBits - Bits);
   // static constexpr R kMask = ((R{1} << Bits) - R{1});
 
   // Returns the masked and shifted version of the given field value.
@@ -116,7 +116,7 @@ class Reg {
   [[gnu::always_inline]]
   const Reg& operator=(const R val) const {
     // Clear and then set the bits
-    if constexpr (DirectAssign || ((Bits == kRegBits) && (Shift == 0))) {
+    if constexpr (DirectAssign || ((Bits == kWholeRegBits) && (Shift == 0))) {
       *r() = (*this)(val);
     } else {
       *r() = (*r() & ~kMask) | (*this)(val);
@@ -206,12 +206,12 @@ class RegValue {
 
  public:
   // Number of bits in whole register.
-  static constexpr size_t kRegBits = std::numeric_limits<R>::digits;
+  static constexpr size_t kWholeRegBits = std::numeric_limits<R>::digits;
 
   // More parameter shape checks
-  static_assert(Bits <= kRegBits, "Bit count exceeds register width");
-  static_assert(Shift < kRegBits, "Shift exceeds register width");
-  static_assert((Bits <= kRegBits) && (Shift <= kRegBits - Bits),
+  static_assert(Bits <= kWholeRegBits, "Bit count exceeds register width");
+  static_assert(Shift < kWholeRegBits, "Shift exceeds register width");
+  static_assert((Bits <= kWholeRegBits) && (Shift <= kWholeRegBits - Bits),
                 "Register extends past register bounds");
 
   // The shift.
@@ -222,7 +222,7 @@ class RegValue {
 
   // The shifted mask.
   static constexpr R kMask =  // Add -1 using R-bit modular arithmetic
-      (((Bits < kRegBits) ? (R{1} << Bits) : R{0}) +
+      (((Bits < kWholeRegBits) ? (R{1} << Bits) : R{0}) +
        std::numeric_limits<R>::max())
       << Shift;
 
