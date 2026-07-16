@@ -31,7 +31,7 @@ class RegGroup {
 
 // Reg defines an easier way to access parts of a register.
 //
-// The 'R' parameter is the unsigned type of each register, for example,
+// The 'R' parameter is the unsigned type of each whole register, for example,
 // uint32_t or uint16_t.
 //
 // The "direct assign" parameter means that assignment will not use the "read,
@@ -68,7 +68,7 @@ class Reg {
                 "Member offset out of range");
 
  public:
-  // Number of bits in one register.
+  // Number of bits in whole register.
   static constexpr size_t kRegBits = std::numeric_limits<R>::digits;
 
   // More parameter shape checks
@@ -205,7 +205,7 @@ class RegValue {
   static_assert(Bits != 0, "Bits shouldn't be zero");
 
  public:
-  // Number of bits in one register.
+  // Number of bits in whole register.
   static constexpr size_t kRegBits = std::numeric_limits<R>::digits;
 
   // More parameter shape checks
