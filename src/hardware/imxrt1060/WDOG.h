@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 // WDOG layout. Comments are from BSD-3-licensed NXP SDK.
 //
@@ -171,6 +171,6 @@ constexpr WDOG2_Reg<&WDOG_Layout::WMCR, 1, 0> PDE;
 
 }  // namespace WDOG2
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign

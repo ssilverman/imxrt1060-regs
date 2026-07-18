@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 // Structure type to access the Debug Control Block Registers (DCB).
 //
@@ -88,6 +88,6 @@ constexpr DCB_Reg<&DCB_Layout::DEMCR, 1,  0> VC_CORERESET;  // Vector Catch Core
 
 }  // namespace DCB
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign

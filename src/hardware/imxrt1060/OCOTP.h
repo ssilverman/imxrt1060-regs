@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 // OCOTP layout. Comments are from BSD-3-licensed NXP SDK.
 //
@@ -302,6 +302,6 @@ constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2,  2> BOOT_CFG;      // BOOT_CFG Write
 
 }  // namespace OCOTP
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign

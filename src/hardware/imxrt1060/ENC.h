@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 // ENC layout. Comments are from BSD-3-licensed NXP SDK.
 //
@@ -407,6 +407,6 @@ constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 0> UPDHLD;
 
 }  // namespace ENC4
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign

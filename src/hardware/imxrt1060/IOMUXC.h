@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 // IOMUXC layout. Comments are from BSD-3-licensed NXP SDK.
 //
@@ -636,7 +636,7 @@ constexpr IOMUXC_Reg<&IOMUXC_Layout::SELECT_INPUT_1, 32, 32, 0> CANFD_IPP_IND_CA
 
 }  // namespace IOMUXC
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign
 

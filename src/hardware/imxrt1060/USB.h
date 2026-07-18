@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 constexpr size_t kUSB_ENDPTCTRL_count = 8;
 
@@ -841,6 +841,6 @@ constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0> ERCE;
 
 }  // namespace USB2
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign

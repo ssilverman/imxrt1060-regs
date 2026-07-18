@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 constexpr size_t kENET_TXIC_count    = 1;
 constexpr size_t kENET_RXIC_count    = 1;
@@ -917,6 +917,6 @@ constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
 
 }  // namespace ENET2
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign

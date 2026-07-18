@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 // Structure type to access the Data Watchpoint and Trace Register (DWT).
 //
@@ -128,6 +128,6 @@ constexpr regs::RegValue32<4,  0> FUNCTION;
 
 }  // namespace DWT
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign

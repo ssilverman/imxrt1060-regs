@@ -9,16 +9,16 @@
 #include <elapsedMillis.h>
 
 #if !USE_OLD_WAY
-#include "hardware/teensy4/CCM.h"
-#include "hardware/teensy4/CCM_ANALOG.h"
-#include "hardware/teensy4/DCB.h"
-#include "hardware/teensy4/DWT.h"
-#include "hardware/teensy4/IOMUXC_GPR.h"
-#include "hardware/teensy4/SCB.h"
+#include "hardware/imxrt1060/CCM.h"
+#include "hardware/imxrt1060/CCM_ANALOG.h"
+#include "hardware/imxrt1060/DCB.h"
+#include "hardware/imxrt1060/DWT.h"
+#include "hardware/imxrt1060/IOMUXC_GPR.h"
+#include "hardware/imxrt1060/SCB.h"
 #endif  // !USE_OLD_WAY
 
 #if !USE_OLD_WAY
-using namespace qindesign::hardware::teensy4;
+using namespace qindesign::hardware::imxrt1060;
 #endif  // !USE_OLD_WAY
 
 static void reboot();

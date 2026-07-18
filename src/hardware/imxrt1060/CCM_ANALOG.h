@@ -13,7 +13,7 @@
 
 namespace qindesign {
 namespace hardware {
-namespace teensy4 {
+namespace imxrt1060 {
 
 // CCM_ANALOG layout. Comments are from BSD-3-licensed NXP SDK.
 //
@@ -945,6 +945,6 @@ constexpr uint32_t kBYPASS_CLK_SRC_CLK1  = 1;
 
 }  // namespace CCM_ANALOG
 
-}  // namespace teensy4
+}  // namespace imxrt1060
 }  // namespace hardware
 }  // namespace qindesign
