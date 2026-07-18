@@ -50,96 +50,83 @@ struct DWT_Layout {
 constexpr size_t    kDWT_size = 0x5C;
 constexpr uintptr_t kDWT_base = 0xE0001000;  /*!< DWT Base Address */
 
-constexpr regs::RegGroup<DWT_Layout, kDWT_size, kDWT_base> DWT;
+namespace DWT {
+constexpr regs::RegGroup<DWT_Layout, kDWT_size, kDWT_base> group;
+}  // namespace DWT
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using DWT_Reg =
     regs::Reg32<kDWT_base, DWT_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
-// Undefine anything defined by Teensyduino's imxrt.h
+namespace DWT {
 
 // DWT Control Register Definitions
-#undef DWT_CTRL_NUMCOMP
-constexpr DWT_Reg<&DWT_Layout::CTRL, 4, 28> DWT_CTRL_NUMCOMP;
-#undef DWT_CTRL_NOTRCPKT
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 27> DWT_CTRL_NOTRCPKT;
-#undef DWT_CTRL_NOEXTTRIG
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 26> DWT_CTRL_NOEXTTRIG;
-#undef DWT_CTRL_NOCYCCNT
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 25> DWT_CTRL_NOCYCCNT;
-#undef DWT_CTRL_NOPRFCNT
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 24> DWT_CTRL_NOPRFCNT;
-#undef DWT_CTRL_CYCEVTENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 22> DWT_CTRL_CYCEVTENA;
-#undef DWT_CTRL_FOLDEVTENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 21> DWT_CTRL_FOLDEVTENA;
-#undef DWT_CTRL_LSUEVTENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 20> DWT_CTRL_LSUEVTENA;
-#undef DWT_CTRL_SLEEPEVTENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 19> DWT_CTRL_SLEEPEVTENA;
-#undef DWT_CTRL_EXCEVTENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 18> DWT_CTRL_EXCEVTENA;
-#undef DWT_CTRL_CPIEVTENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 17> DWT_CTRL_CPIEVTENA;
-#undef DWT_CTRL_EXCTRCENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 16> DWT_CTRL_EXCTRCENA;
-#undef DWT_CTRL_PCSAMPLENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 12> DWT_CTRL_PCSAMPLENA;
-#undef DWT_CTRL_SYNCTAP
-constexpr DWT_Reg<&DWT_Layout::CTRL, 2, 10> DWT_CTRL_SYNCTAP;
-#undef DWT_CTRL_CYCTAP
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1,  9> DWT_CTRL_CYCTAP;
-#undef DWT_CTRL_POSTINIT
-constexpr DWT_Reg<&DWT_Layout::CTRL, 4,  5> DWT_CTRL_POSTINIT;
-#undef DWT_CTRL_POSTPRESET
-constexpr DWT_Reg<&DWT_Layout::CTRL, 4,  1> DWT_CTRL_POSTPRESET;
-#undef DWT_CTRL_CYCCNTENA
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1,  0> DWT_CTRL_CYCCNTENA;
+namespace CTRL {
+constexpr DWT_Reg<&DWT_Layout::CTRL, 4, 28> NUMCOMP;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 27> NOTRCPKT;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 26> NOEXTTRIG;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 25> NOCYCCNT;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 24> NOPRFCNT;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 22> CYCEVTENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 21> FOLDEVTENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 20> LSUEVTENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 19> SLEEPEVTENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 18> EXCEVTENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 17> CPIEVTENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 16> EXCTRCENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 12> PCSAMPLENA;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 2, 10> SYNCTAP;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1,  9> CYCTAP;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 4,  5> POSTINIT;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 4,  1> POSTPRESET;
+constexpr DWT_Reg<&DWT_Layout::CTRL, 1,  0> CYCCNTENA;
+}  // namespace CTRL
 
 // DWT CPI Count Register Definitions
-#undef DWT_CPICNT_CPICNT
-constexpr DWT_Reg<&DWT_Layout::CPICNT, 8, 0> DWT_CPICNT_CPICNT;
+namespace CPICNT {
+constexpr DWT_Reg<&DWT_Layout::CPICNT, 8, 0> CPICNT;
+}  // namespace CPICNT
 
 // DWT Exception Overhead Count Register Definitions
-#undef DWT_EXCCNT_EXCCNT
-constexpr DWT_Reg<&DWT_Layout::EXCCNT, 8, 0> DWT_EXCCNT_EXCCNT;
+namespace EXCCNT {
+constexpr DWT_Reg<&DWT_Layout::EXCCNT, 8, 0> EXCCNT;
+}  // namespace EXCCNT
 
 // DWT Sleep Count Register Definitions
-#undef DWT_SLEEPCNT_SLEEPCNT
-constexpr DWT_Reg<&DWT_Layout::SLEEPCNT, 8, 0> DWT_SLEEPCNT_SLEEPCNT;
+namespace SLEEPCNT {
+constexpr DWT_Reg<&DWT_Layout::SLEEPCNT, 8, 0> SLEEPCNT;
+}  // namespace SLEEPCNT
 
 // DWT LSU Count Register Definitions
-#undef DWT_LSUCNT_LSUCNT
-constexpr DWT_Reg<&DWT_Layout::LSUCNT, 8, 0> DWT_LSUCNT_LSUCNT;
+namespace LSUCNT {
+constexpr DWT_Reg<&DWT_Layout::LSUCNT, 8, 0> LSUCNT;
+}  // namespace LSUCNT
 
 // DWT Folded-instruction Count Register Definitions
-#undef DWT_FOLDCNT_FOLDCNT
-constexpr DWT_Reg<&DWT_Layout::FOLDCNT, 8, 0> DWT_FOLDCNT_FOLDCNT;
+namespace FOLDCNT {
+constexpr DWT_Reg<&DWT_Layout::FOLDCNT, 8, 0> FOLDCNT;
+}  // namespace FOLDCNT
 
 // DWT Comparator Mask Register Definitions
-#undef DWT_MASK_MASK
-constexpr regs::RegValue32<5, 0> DWT_MASK_MASK;
+namespace MASK {
+constexpr regs::RegValue32<5, 0> MASK;
+}  // namespace MASK
 
 // DWT Comparator Function Register Definitions
-#undef DWT_FUNCTION_MATCHED
-constexpr regs::RegValue32<1, 24> DWT_FUNCTION_MATCHED;
-#undef DWT_FUNCTION_DATAVADDR1
-constexpr regs::RegValue32<4, 16> DWT_FUNCTION_DATAVADDR1;
-#undef DWT_FUNCTION_DATAVADDR0
-constexpr regs::RegValue32<4, 12> DWT_FUNCTION_DATAVADDR0;
-#undef DWT_FUNCTION_DATAVSIZE
-constexpr regs::RegValue32<2, 10> DWT_FUNCTION_DATAVSIZE;
-#undef DWT_FUNCTION_LNK1ENA
-constexpr regs::RegValue32<1,  9> DWT_FUNCTION_LNK1ENA;
-#undef DWT_FUNCTION_DATAVMATCH
-constexpr regs::RegValue32<1,  8> DWT_FUNCTION_DATAVMATCH;
-#undef DWT_FUNCTION_CYCMATCH
-constexpr regs::RegValue32<1,  7> DWT_FUNCTION_CYCMATCH;
-#undef DWT_FUNCTION_EMITRANGE
-constexpr regs::RegValue32<1,  5> DWT_FUNCTION_EMITRANGE;
-#undef DWT_FUNCTION_FUNCTION
-constexpr regs::RegValue32<4,  0> DWT_FUNCTION_FUNCTION;
+namespace FUNCTION {
+constexpr regs::RegValue32<1, 24> MATCHED;
+constexpr regs::RegValue32<4, 16> DATAVADDR1;
+constexpr regs::RegValue32<4, 12> DATAVADDR0;
+constexpr regs::RegValue32<2, 10> DATAVSIZE;
+constexpr regs::RegValue32<1,  9> LNK1ENA;
+constexpr regs::RegValue32<1,  8> DATAVMATCH;
+constexpr regs::RegValue32<1,  7> CYCMATCH;
+constexpr regs::RegValue32<1,  5> EMITRANGE;
+constexpr regs::RegValue32<4,  0> FUNCTION;
+}  // namespace FUNCTION
+
+}  // namespace DWT
 
 }  // namespace teensy4
 }  // namespace hardware

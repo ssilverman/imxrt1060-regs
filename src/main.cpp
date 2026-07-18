@@ -91,7 +91,8 @@ void loop() {
 // Reboots the Teensy.
 static void reboot() {
 #if !USE_OLD_WAY
-  SCB->AIRCR = SCB_AIRCR_VECTKEY(0x05fa) | SCB_AIRCR_SYSRESETREQ(1);
+  SCB::group->AIRCR =
+      SCB::AIRCR::VECTKEY(0x05fa) | SCB::AIRCR::SYSRESETREQ(1);
 #else
   SCB_AIRCR = 0x05fa0000 | 0x0004;
 #endif  // !USE_OLD_WAY
@@ -101,32 +102,30 @@ static void reboot() {
 static void enable_enet_clocks() {
 #if !USE_OLD_WAY
   // Enable the Ethernet clock
-  CCM_CCGR1_ENET = kCCM_CCGR_ON;
+  CCM::CCGR1::ENET = CCM::CCGR::kON;
 
   // Configure PLL6 for 50 MHz (page 1112)
-  CCM_ANALOG->PLL_ENET_SET = CCM_ANALOG_PLL_ENET_BYPASS(1);
-  CCM_ANALOG->PLL_ENET_CLR = 0
-                             | CCM_ANALOG_PLL_ENET_BYPASS_CLK_SRC(3)
-                             | CCM_ANALOG_PLL_ENET_ENET2_DIV_SELECT(3)
-                             | CCM_ANALOG_PLL_ENET_DIV_SELECT(3)
-                             ;
-  CCM_ANALOG->PLL_ENET_SET = 0
-                             | CCM_ANALOG_PLL_ENET_ENET_25M_REF_EN(1)
-                             // | CCM_ANALOG_PLL_ENET_ENET2_REF_EN(1)
-                             | CCM_ANALOG_PLL_ENET_ENABLE(1)
-                             // | CCM_ANALOG_PLL_ENET_ENET2_DIV_SELECT(1)
-                             | CCM_ANALOG_PLL_ENET_DIV_SELECT(1)
-                             ;
-  CCM_ANALOG->PLL_ENET_CLR = CCM_ANALOG_PLL_ENET_POWERDOWN(1);
-  while (CCM_ANALOG_PLL_ENET_LOCK == 0) {
+  CCM_ANALOG::group->PLL_ENET_SET = CCM_ANALOG::PLL_ENET::BYPASS(1);
+  CCM_ANALOG::group->PLL_ENET_CLR = 0
+                                    | CCM_ANALOG::PLL_ENET::BYPASS_CLK_SRC(3)
+                                    | CCM_ANALOG::PLL_ENET::ENET2_DIV_SELECT(3)
+                                    | CCM_ANALOG::PLL_ENET::DIV_SELECT(3);
+  CCM_ANALOG::group->PLL_ENET_SET = 0
+                                    | CCM_ANALOG::PLL_ENET::ENET_25M_REF_EN(1)
+                                    // | CCM_ANALOG::PLL_ENET::ENET2_REF_EN(1)
+                                    | CCM_ANALOG::PLL_ENET::ENABLE(1)
+                                    // | CCM_ANALOG::PLL_ENET::ENET2_DIV_SELECT(1)
+                                    | CCM_ANALOG::PLL_ENET::DIV_SELECT(1);
+  CCM_ANALOG::group->PLL_ENET_CLR = CCM_ANALOG::PLL_ENET::POWERDOWN(1);
+  while (CCM_ANALOG::PLL_ENET::LOCK == 0) {
     // Wait for PLL lock
   }
-  CCM_ANALOG->PLL_ENET_CLR = CCM_ANALOG_PLL_ENET_BYPASS(1);
+  CCM_ANALOG::group->PLL_ENET_CLR = CCM_ANALOG::PLL_ENET::BYPASS(1);
 
   // Configure REFCLK to be driven as output by PLL6 (page 325)
-  IOMUXC_GPR_GPR1_ENET1_CLK_SEL     = 0;
-  IOMUXC_GPR_GPR1_ENET_IPG_CLK_S_EN = 1;
-  IOMUXC_GPR_GPR1_ENET1_TX_CLK_DIR  = 1;
+  IOMUXC_GPR::GPR1::ENET1_CLK_SEL     = 0;
+  IOMUXC_GPR::GPR1::ENET_IPG_CLK_S_EN = 1;
+  IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR  = 1;
 #else
   // Enable the Ethernet clock
   CCM_CCGR1 |= CCM_CCGR1_ENET(CCM_CCGR_ON);
@@ -164,18 +163,17 @@ static void enable_enet_clocks() {
 static void disable_enet_clocks() {
 #if !USE_OLD_WAY
   // Configure REFCLK
-  IOMUXC_GPR_GPR1_ENET1_TX_CLK_DIR = 0;
+  IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR = 0;
 
   // Stop the PLL (first bypassing)
-  CCM_ANALOG->PLL_ENET_SET = CCM_ANALOG_PLL_ENET_BYPASS(1);
-  CCM_ANALOG->PLL_ENET = 0
-                         | CCM_ANALOG_PLL_ENET_BYPASS(1)      // Reset to default
-                         | CCM_ANALOG_PLL_ENET_POWERDOWN(1)
-                         | CCM_ANALOG_PLL_ENET_DIV_SELECT(1)
-                         ;
+  CCM_ANALOG::group->PLL_ENET_SET = CCM_ANALOG::PLL_ENET::BYPASS(1);
+  CCM_ANALOG::group->PLL_ENET = 0
+                                | CCM_ANALOG::PLL_ENET::BYPASS(1)  // Reset to default
+                                | CCM_ANALOG::PLL_ENET::POWERDOWN(1)
+                                | CCM_ANALOG::PLL_ENET::DIV_SELECT(1);
 
   // Disable the clock for ENET
-  CCM_CCGR1_ENET = kCCM_CCGR_OFF;
+  CCM::CCGR1::ENET = CCM::CCGR::kOFF;
 #else
   // Configure REFCLK
   clearAndSet32(&IOMUXC_GPR_GPR1, IOMUXC_GPR_GPR1_ENET1_TX_CLK_DIR, 0);
@@ -212,26 +210,26 @@ static constexpr auto kDWT_CTRL_NOCYCCNT  = uint32_t{1 << 25};
 static bool arm_high_resolution_clock_init() {
 #if !USE_OLD_WAY
   // First enable DWT and check
-  if (DCB_DEMCR_TRCENA == 0) {
-    DCB_DEMCR_TRCENA = 1;
+  if (DCB::DEMCR::TRCENA == 0) {
+    DCB::DEMCR::TRCENA = 1;
 
     // Check that it was enabled
-    if (DCB_DEMCR_TRCENA == 0) {
+    if (DCB::DEMCR::TRCENA == 0) {
       return false;
     }
   }
 
   // Next, check the obvious feature presence
-  if (DWT_CTRL_NOCYCCNT != 0) {
+  if (DWT::CTRL::NOCYCCNT != 0) {
     return false;
   }
 
   // Next, check if the cycle count is enabled
-  if (DWT_CTRL_CYCCNTENA == 0) {
-    DWT_CTRL_CYCCNTENA = 1;
+  if (DWT::CTRL::CYCCNTENA == 0) {
+    DWT::CTRL::CYCCNTENA = 1;
 
     // Check that it was enabled
-    if (DWT_CTRL_CYCCNTENA == 0) {
+    if (DWT::CTRL::CYCCNTENA == 0) {
       return false;
     }
   }
@@ -267,7 +265,7 @@ static bool arm_high_resolution_clock_init() {
 
 static uint32_t arm_high_resolution_clock_count() {
 #if !USE_OLD_WAY
-  return DWT->CYCCNT;
+  return DWT::group->CYCCNT;
 #else
   return ARM_DWT_CYCCNT;
 #endif  // !USE_OLD_WAY

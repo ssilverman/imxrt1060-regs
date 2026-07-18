@@ -49,10 +49,21 @@ constexpr uintptr_t kENC2_base = 0x403CC000;
 constexpr uintptr_t kENC3_base = 0x403D0000;
 constexpr uintptr_t kENC4_base = 0x403D4000;
 
-constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC1_base> ENC1;
-constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC2_base> ENC2;
-constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC3_base> ENC3;
-constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC4_base> ENC4;
+namespace ENC1 {
+constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC1_base> group;
+}  // namespace ENC1
+
+namespace ENC2 {
+constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC2_base> group;
+}  // namespace ENC2
+
+namespace ENC3 {
+constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC3_base> group;
+}  // namespace ENC3
+
+namespace ENC4 {
+constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC4_base> group;
+}  // namespace ENC4
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
@@ -74,444 +85,327 @@ template <auto Member, size_t Bits, unsigned int Shift,
 using ENC4_Reg =
     regs::Reg16<kENC4_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
-// Undefine anything defined by Teensyduino's imxrt.h
+namespace ENC1 {
 
 // ENC1 Control Register
-#undef ENC1_CTRL_HIRQ
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 15> ENC1_CTRL_HIRQ;    // HOME Signal Transition Interrupt Request
+namespace CTRL {
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 15> HIRQ;    // HOME Signal Transition Interrupt Request
     // 0b0..No transition on the HOME signal has occurred
     // 0b1..A transition on the HOME signal has occurred
-#undef ENC1_CTRL_HIE
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 14> ENC1_CTRL_HIE;     // HOME Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 14> HIE;     // HOME Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_CTRL_HIP
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 13> ENC1_CTRL_HIP;     // Enable HOME to Initialize Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 13> HIP;     // Enable HOME to Initialize Position Counters UPOS and LPOS
     // 0b0..No action
     // 0b1..HOME signal initializes the position counter
-#undef ENC1_CTRL_HNE
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 12> ENC1_CTRL_HNE;     // Use Negative Edge of HOME Input
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 12> HNE;     // Use Negative Edge of HOME Input
     // 0b0..Use positive-going edge-to-trigger initialization of position counters UPOS and LPOS
     // 0b1..Use negative-going edge-to-trigger initialization of position counters UPOS and LPOS
-#undef ENC1_CTRL_SWIP
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 11> ENC1_CTRL_SWIP;    // Software-Triggered Initialization of Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 11> SWIP;    // Software-Triggered Initialization of Position Counters UPOS and LPOS
     // 0b0..No action
     // 0b1..Initialize position counter (using upper and lower initialization registers, UINIT and LINIT)
-#undef ENC1_CTRL_REV
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 10> ENC1_CTRL_REV;     // Enable Reverse Direction Counting
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 10> REV;     // Enable Reverse Direction Counting
     // 0b0..Count normally
     // 0b1..Count in the reverse direction
-#undef ENC1_CTRL_PH1
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9> ENC1_CTRL_PH1;     // Enable Signal Phase Count Mode
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9> PH1;     // Enable Signal Phase Count Mode
     // 0b0..Use the standard quadrature decoder, where PHASEA and PHASEB represent a two-phase quadrature signal.
     // 0b1..Bypass the quadrature decoder. A positive transition of the PHASEA input generates a count signal. The
     //      PHASEB input and the REV bit control the counter direction: If CTRL[REV] = 0, PHASEB = 0, then count up If
     //      CTRL[REV] = 1, PHASEB = 1, then count up If CTRL[REV] = 0, PHASEB = 1, then count down If CTRL[REV] = 1,
     //      PHASEB = 0, then count down
-#undef ENC1_CTRL_XIRQ
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  8> ENC1_CTRL_XIRQ;    // INDEX Pulse Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  8> XIRQ;    // INDEX Pulse Interrupt Request
     // 0b0..INDEX pulse has not occurred
     // 0b1..INDEX pulse has occurred
-#undef ENC1_CTRL_XIE
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  7> ENC1_CTRL_XIE;     // INDEX Pulse Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  7> XIE;     // INDEX Pulse Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_CTRL_XIP
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  6> ENC1_CTRL_XIP;     // INDEX Triggered Initialization of Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  6> XIP;     // INDEX Triggered Initialization of Position Counters UPOS and LPOS
     // 0b0..INDEX pulse does not initialize the position counter
     // 0b1..INDEX pulse initializes the position counter
-#undef ENC1_CTRL_XNE
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  5> ENC1_CTRL_XNE;     // Use Negative Edge of INDEX Pulse
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  5> XNE;     // Use Negative Edge of INDEX Pulse
     // 0b0..Use positive edge of INDEX pulse
     // 0b1..Use negative edge of INDEX pulse
-#undef ENC1_CTRL_DIRQ
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  4> ENC1_CTRL_DIRQ;    // Watchdog Timeout Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  4> DIRQ;    // Watchdog Timeout Interrupt Request
     // 0b0..No Watchdog timeout interrupt has occurred
     // 0b1..Watchdog timeout interrupt has occurred
-#undef ENC1_CTRL_DIE
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3> ENC1_CTRL_DIE;     // Watchdog Timeout Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3> DIE;     // Watchdog Timeout Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_CTRL_WDE
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  2> ENC1_CTRL_WDE;     // Watchdog Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  2> WDE;     // Watchdog Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_CTRL_CMPIRQ
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  1> ENC1_CTRL_CMPIRQ;  // Compare Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  1> CMPIRQ;  // Compare Interrupt Request
     // 0b0..No match has occurred (the counter does not match the COMP value)
     // 0b1..COMP match has occurred (the counter matches the COMP value)
-#undef ENC1_CTRL_CMPIE
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  0> ENC1_CTRL_CMPIE;   // Compare Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  0> CMPIE;   // Compare Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
+}  // namespace CTRL
 
 // ENC1 Input Filter Register
-#undef ENC1_FILT_FILT_PRSC
-constexpr ENC1_Reg<&ENC_Layout::FILT, 3, 13> ENC1_FILT_FILT_PRSC;  // prescaler divide IPbus clock to FILT clk
-#undef ENC1_FILT_FILT_CNT
-constexpr ENC1_Reg<&ENC_Layout::FILT, 3,  8> ENC1_FILT_FILT_CNT;   // Input Filter Sample Count
-#undef ENC1_FILT_FILT_PER
-constexpr ENC1_Reg<&ENC_Layout::FILT, 8,  0> ENC1_FILT_FILT_PER;   // Input Filter Sample Period
+namespace FILT {
+constexpr ENC1_Reg<&ENC_Layout::FILT, 3, 13> FILT_PRSC;  // prescaler divide IPbus clock to FILT clk
+constexpr ENC1_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;   // Input Filter Sample Count
+constexpr ENC1_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;   // Input Filter Sample Period
+}  // namespace FILT
 
 // ENC1 Input Monitor Register
-#undef ENC1_IMR_FPHA
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 7> ENC1_IMR_FPHA;
-#undef ENC1_IMR_FPHB
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 6> ENC1_IMR_FPHB;
-#undef ENC1_IMR_FIND
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 5> ENC1_IMR_FIND;
-#undef ENC1_IMR_FHOM
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 4> ENC1_IMR_FHOM;
-#undef ENC1_IMR_PHA
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 3> ENC1_IMR_PHA;
-#undef ENC1_IMR_PHB
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 2> ENC1_IMR_PHB;
-#undef ENC1_IMR_INDEX
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 1> ENC1_IMR_INDEX;
-#undef ENC1_IMR_HOME
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 0> ENC1_IMR_HOME;
+namespace IMR {
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 6> FPHB;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 5> FIND;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 4> FHOM;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 3> PHA;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 2> PHB;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 1> INDEX;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 0> HOME;
+}  // namespace IMR
 
 // ENC1 Test Register
-#undef ENC1_TST_TEN
-constexpr ENC1_Reg<&ENC_Layout::TST,  1, 15> ENC1_TST_TEN;  // Test Mode Enable
+namespace TST {
+constexpr ENC1_Reg<&ENC_Layout::TST, 1, 15> TEN;  // Test Mode Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_TST_TCE
-constexpr ENC1_Reg<&ENC_Layout::TST,  1, 14> ENC1_TST_TCE;  // Test Counter Enable
+constexpr ENC1_Reg<&ENC_Layout::TST, 1, 14> TCE;  // Test Counter Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_TST_QDN
-constexpr ENC1_Reg<&ENC_Layout::TST,  1, 13> ENC1_TST_QDN;  // Quadrature Decoder Negative Signal
+constexpr ENC1_Reg<&ENC_Layout::TST, 1, 13> QDN;  // Quadrature Decoder Negative Signal
     // 0b0..Generates a positive quadrature decoder signal
     // 0b1..Generates a negative quadrature decoder signal
-#undef ENC1_TST_TEST_PERIOD
-constexpr ENC1_Reg<&ENC_Layout::TST,  5,  8> ENC1_TST_TEST_PERIOD;
-#undef ENC1_TST_TEST_COUNT
-constexpr ENC1_Reg<&ENC_Layout::TST,  8,  0> ENC1_TST_TEST_COUNT;
+constexpr ENC1_Reg<&ENC_Layout::TST, 5,  8> TEST_PERIOD;
+constexpr ENC1_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
+}  // namespace TST
 
 // ENC1 Control 2 Register
-#undef ENC1_CTRL2_OUTCTL
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  9> ENC1_CTRL2_OUTCTL;  // Output Control
+namespace CTRL2 {
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 9> OUTCTL;  // Output Control
     // 0b0..POSMATCH pulses when a match occurs between the position counters (POS) and the corresponding compare value (COMP )
     // 0b1..POSMATCH pulses when the UPOS, LPOS, REV, or POSD registers are read
-#undef ENC1_CTRL2_REVMOD
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  8> ENC1_CTRL2_REVMOD;  // Revolution Counter Modulus Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 8> REVMOD;  // Revolution Counter Modulus Enable
     // 0b0..Use INDEX pulse to increment/decrement revolution counter (REV)
     // 0b1..Use modulus counting roll-over/under to increment/decrement revolution counter (REV)
-#undef ENC1_CTRL2_ROIRQ
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  7> ENC1_CTRL2_ROIRQ;   // Roll-over Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 7> ROIRQ;   // Roll-over Interrupt Request
     // 0b0..No roll-over has occurred
     // 0b1..Roll-over has occurred
-#undef ENC1_CTRL2_ROIE
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  6> ENC1_CTRL2_ROIE;    // Roll-over Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 6> ROIE;    // Roll-over Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_CTRL2_RUIRQ
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  5> ENC1_CTRL2_RUIRQ;   // Roll-under Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 5> RUIRQ;   // Roll-under Interrupt Request
     // 0b0..No roll-under has occurred
     // 0b1..Roll-under has occurred
-#undef ENC1_CTRL2_RUIE
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  4> ENC1_CTRL2_RUIE;    // Roll-under Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 4> RUIE;    // Roll-under Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-#undef ENC1_CTRL2_DIR
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  3> ENC1_CTRL2_DIR;     // Count Direction Flag
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 3> DIR;     // Count Direction Flag
     // 0b0..Last count was in the down direction
     // 0b1..Last count was in the up direction
-#undef ENC1_CTRL2_MOD
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  2> ENC1_CTRL2_MOD;     // Enable Modulo Counting
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 2> MOD;     // Enable Modulo Counting
     // 0b0..Disable modulo counting
     // 0b1..Enable modulo counting
-#undef ENC1_CTRL2_UPDPOS
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  1> ENC1_CTRL2_UPDPOS;  // Update Position Registers
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 1> UPDPOS;  // Update Position Registers
     // 0b0..No action for POSD, REV, UPOS and LPOS registers on rising edge of TRIGGER
     // 0b1..Clear POSD, REV, UPOS and LPOS registers on rising edge of TRIGGER
-#undef ENC1_CTRL2_UPDHLD
-constexpr ENC1_Reg<&ENC_Layout::CTRL2,  1,  0> ENC1_CTRL2_UPDHLD;  // Update Hold Registers
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 0> UPDHLD;  // Update Hold Registers
     // 0b0..Disable updates of hold registers on the rising edge of TRIGGER input signal
     // 0b1..Enable updates of hold registers on the rising edge of TRIGGER input signal
+}  // namespace CTRL2
+}  // namespace ENC1
+
+namespace ENC2 {
 
 // ENC2 Control Register
-#undef ENC2_CTRL_HIRQ
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 15> ENC2_CTRL_HIRQ;
-#undef ENC2_CTRL_HIE
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 14> ENC2_CTRL_HIE;
-#undef ENC2_CTRL_HIP
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 13> ENC2_CTRL_HIP;
-#undef ENC2_CTRL_HNE
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 12> ENC2_CTRL_HNE;
-#undef ENC2_CTRL_SWIP
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 11> ENC2_CTRL_SWIP;
-#undef ENC2_CTRL_REV
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 10> ENC2_CTRL_REV;
-#undef ENC2_CTRL_PH1
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  9> ENC2_CTRL_PH1;
-#undef ENC2_CTRL_XIRQ
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  8> ENC2_CTRL_XIRQ;
-#undef ENC2_CTRL_XIE
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  7> ENC2_CTRL_XIE;
-#undef ENC2_CTRL_XIP
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  6> ENC2_CTRL_XIP;
-#undef ENC2_CTRL_XNE
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  5> ENC2_CTRL_XNE;
-#undef ENC2_CTRL_DIRQ
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  4> ENC2_CTRL_DIRQ;
-#undef ENC2_CTRL_DIE
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  3> ENC2_CTRL_DIE;
-#undef ENC2_CTRL_WDE
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  2> ENC2_CTRL_WDE;
-#undef ENC2_CTRL_CMPIRQ
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  1> ENC2_CTRL_CMPIRQ;
-#undef ENC2_CTRL_CMPIE
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  0> ENC2_CTRL_CMPIE;
+namespace CTRL {
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 15> HIRQ;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 14> HIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 13> HIP;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 12> HNE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 11> SWIP;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 10> REV;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  9> PH1;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  8> XIRQ;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  7> XIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  6> XIP;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  5> XNE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  4> DIRQ;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  3> DIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  2> WDE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  1> CMPIRQ;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  0> CMPIE;
+}  // namespace CTRL
 
 // ENC2 Input Filter Register
-#undef ENC2_FILT_FILT_PRSC
-constexpr ENC2_Reg<&ENC_Layout::FILT, 3, 13> ENC2_FILT_FILT_PRSC;
-#undef ENC2_FILT_FILT_CNT
-constexpr ENC2_Reg<&ENC_Layout::FILT, 3,  8> ENC2_FILT_FILT_CNT;
-#undef ENC2_FILT_FILT_PER
-constexpr ENC2_Reg<&ENC_Layout::FILT, 8,  0> ENC2_FILT_FILT_PER;
+namespace FILT {
+constexpr ENC2_Reg<&ENC_Layout::FILT, 3, 13> FILT_PRSC;
+constexpr ENC2_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;
+constexpr ENC2_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;
+}  // namespace FILT
 
 // ENC2 Input Monitor Register
-#undef ENC2_IMR_FPHA
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 7> ENC2_IMR_FPHA;
-#undef ENC2_IMR_FPHB
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 6> ENC2_IMR_FPHB;
-#undef ENC2_IMR_FIND
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 5> ENC2_IMR_FIND;
-#undef ENC2_IMR_FHOM
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 4> ENC2_IMR_FHOM;
-#undef ENC2_IMR_PHA
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 3> ENC2_IMR_PHA;
-#undef ENC2_IMR_PHB
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 2> ENC2_IMR_PHB;
-#undef ENC2_IMR_INDEX
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 1> ENC2_IMR_INDEX;
-#undef ENC2_IMR_HOME
-constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 0> ENC2_IMR_HOME;
+namespace IMR {
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 6> FPHB;
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 5> FIND;
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 4> FHOM;
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 3> PHA;
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 2> PHB;
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 1> INDEX;
+constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 0> HOME;
+}  // namespace IMR
 
 // ENC2 Test Register
-#undef ENC2_TST_TEN
-constexpr ENC2_Reg<&ENC_Layout::TST, 1, 15> ENC2_TST_TEN;
-#undef ENC2_TST_TCE
-constexpr ENC2_Reg<&ENC_Layout::TST, 1, 14> ENC2_TST_TCE;
-#undef ENC2_TST_QDN
-constexpr ENC2_Reg<&ENC_Layout::TST, 1, 13> ENC2_TST_QDN;
-#undef ENC2_TST_TEST_PERIOD
-constexpr ENC2_Reg<&ENC_Layout::TST, 5,  8> ENC2_TST_TEST_PERIOD;
-#undef ENC2_TST_TEST_COUNT
-constexpr ENC2_Reg<&ENC_Layout::TST, 8,  0> ENC2_TST_TEST_COUNT;
+namespace TST {
+constexpr ENC2_Reg<&ENC_Layout::TST, 1, 15> TEN;
+constexpr ENC2_Reg<&ENC_Layout::TST, 1, 14> TCE;
+constexpr ENC2_Reg<&ENC_Layout::TST, 1, 13> QDN;
+constexpr ENC2_Reg<&ENC_Layout::TST, 5,  8> TEST_PERIOD;
+constexpr ENC2_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
+}  // namespace TST
 
 // ENC2 Control 2 Register
-#undef ENC2_CTRL2_OUTCTL
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 9> ENC2_CTRL2_OUTCTL;
-#undef ENC2_CTRL2_REVMOD
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 8> ENC2_CTRL2_REVMOD;
-#undef ENC2_CTRL2_ROIRQ
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 7> ENC2_CTRL2_ROIRQ;
-#undef ENC2_CTRL2_ROIE
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 6> ENC2_CTRL2_ROIE;
-#undef ENC2_CTRL2_RUIRQ
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 5> ENC2_CTRL2_RUIRQ;
-#undef ENC2_CTRL2_RUIE
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 4> ENC2_CTRL2_RUIE;
-#undef ENC2_CTRL2_DIR
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 3> ENC2_CTRL2_DIR;
-#undef ENC2_CTRL2_MOD
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 2> ENC2_CTRL2_MOD;
-#undef ENC2_CTRL2_UPDPOS
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 1> ENC2_CTRL2_UPDPOS;
-#undef ENC2_CTRL2_UPDHLD
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 0> ENC2_CTRL2_UPDHLD;
+namespace CTRL2 {
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 9> OUTCTL;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 8> REVMOD;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 7> ROIRQ;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 6> ROIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 5> RUIRQ;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 4> RUIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 3> DIR;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 2> MOD;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 1> UPDPOS;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 0> UPDHLD;
+}  // namespace CTRL2
+}  // namespace ENC2
+
+namespace ENC3 {
 
 // ENC3 Control Register
-#undef ENC3_CTRL_HIRQ
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 15> ENC3_CTRL_HIRQ;
-#undef ENC3_CTRL_HIE
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 14> ENC3_CTRL_HIE;
-#undef ENC3_CTRL_HIP
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 13> ENC3_CTRL_HIP;
-#undef ENC3_CTRL_HNE
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 12> ENC3_CTRL_HNE;
-#undef ENC3_CTRL_SWIP
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 11> ENC3_CTRL_SWIP;
-#undef ENC3_CTRL_REV
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 10> ENC3_CTRL_REV;
-#undef ENC3_CTRL_PH1
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  9> ENC3_CTRL_PH1;
-#undef ENC3_CTRL_XIRQ
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  8> ENC3_CTRL_XIRQ;
-#undef ENC3_CTRL_XIE
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  7> ENC3_CTRL_XIE;
-#undef ENC3_CTRL_XIP
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  6> ENC3_CTRL_XIP;
-#undef ENC3_CTRL_XNE
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  5> ENC3_CTRL_XNE;
-#undef ENC3_CTRL_DIRQ
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  4> ENC3_CTRL_DIRQ;
-#undef ENC3_CTRL_DIE
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  3> ENC3_CTRL_DIE;
-#undef ENC3_CTRL_WDE
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  2> ENC3_CTRL_WDE;
-#undef ENC3_CTRL_CMPIRQ
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  1> ENC3_CTRL_CMPIRQ;
-#undef ENC3_CTRL_CMPIE
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  0> ENC3_CTRL_CMPIE;
+namespace CTRL {
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 15> HIRQ;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 14> HIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 13> HIP;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 12> HNE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 11> SWIP;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 10> REV;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  9> PH1;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  8> XIRQ;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  7> XIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  6> XIP;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  5> XNE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  4> DIRQ;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  3> DIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  2> WDE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  1> CMPIRQ;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  0> CMPIE;
+}  // namespace CTRL
 
 // ENC3 Input Filter Register
-#undef ENC3_FILT_FILT_PRSC
-constexpr ENC3_Reg<&ENC_Layout::FILT, 3, 13> ENC3_FILT_FILT_PRSC;
-#undef ENC3_FILT_FILT_CNT
-constexpr ENC3_Reg<&ENC_Layout::FILT, 3,  8> ENC3_FILT_FILT_CNT;
-#undef ENC3_FILT_FILT_PER
-constexpr ENC3_Reg<&ENC_Layout::FILT, 8,  0> ENC3_FILT_FILT_PER;
+namespace FILT {
+constexpr ENC3_Reg<&ENC_Layout::FILT, 3, 13> FILT_PRSC;
+constexpr ENC3_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;
+constexpr ENC3_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;
+}  // namespace FILT
 
 // ENC3 Input Monitor Register
-#undef ENC3_IMR_FPHA
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 7> ENC3_IMR_FPHA;
-#undef ENC3_IMR_FPHB
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 6> ENC3_IMR_FPHB;
-#undef ENC3_IMR_FIND
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 5> ENC3_IMR_FIND;
-#undef ENC3_IMR_FHOM
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 4> ENC3_IMR_FHOM;
-#undef ENC3_IMR_PHA
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 3> ENC3_IMR_PHA;
-#undef ENC3_IMR_PHB
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 2> ENC3_IMR_PHB;
-#undef ENC3_IMR_INDEX
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 1> ENC3_IMR_INDEX;
-#undef ENC3_IMR_HOME
-constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 0> ENC3_IMR_HOME;
+namespace IMR {
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 6> FPHB;
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 5> FIND;
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 4> FHOM;
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 3> PHA;
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 2> PHB;
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 1> INDEX;
+constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 0> HOME;
+}  // namespace IMR
 
 // ENC3 Test Register
-#undef ENC3_TST_TEN
-constexpr ENC3_Reg<&ENC_Layout::TST, 1, 15> ENC3_TST_TEN;
-#undef ENC3_TST_TCE
-constexpr ENC3_Reg<&ENC_Layout::TST, 1, 14> ENC3_TST_TCE;
-#undef ENC3_TST_QDN
-constexpr ENC3_Reg<&ENC_Layout::TST, 1, 13> ENC3_TST_QDN;
-#undef ENC3_TST_TEST_PERIOD
-constexpr ENC3_Reg<&ENC_Layout::TST, 5,  8> ENC3_TST_TEST_PERIOD;
-#undef ENC3_TST_TEST_COUNT
-constexpr ENC3_Reg<&ENC_Layout::TST, 8,  0> ENC3_TST_TEST_COUNT;
+namespace TST {
+constexpr ENC3_Reg<&ENC_Layout::TST, 1, 15> TEN;
+constexpr ENC3_Reg<&ENC_Layout::TST, 1, 14> TCE;
+constexpr ENC3_Reg<&ENC_Layout::TST, 1, 13> QDN;
+constexpr ENC3_Reg<&ENC_Layout::TST, 5,  8> TEST_PERIOD;
+constexpr ENC3_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
+}  // namespace TST
 
 // ENC3 Control 2 Register
-#undef ENC3_CTRL2_OUTCTL
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 9> ENC3_CTRL2_OUTCTL;
-#undef ENC3_CTRL2_REVMOD
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 8> ENC3_CTRL2_REVMOD;
-#undef ENC3_CTRL2_ROIRQ
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 7> ENC3_CTRL2_ROIRQ;
-#undef ENC3_CTRL2_ROIE
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 6> ENC3_CTRL2_ROIE;
-#undef ENC3_CTRL2_RUIRQ
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 5> ENC3_CTRL2_RUIRQ;
-#undef ENC3_CTRL2_RUIE
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 4> ENC3_CTRL2_RUIE;
-#undef ENC3_CTRL2_DIR
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 3> ENC3_CTRL2_DIR;
-#undef ENC3_CTRL2_MOD
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 2> ENC3_CTRL2_MOD;
-#undef ENC3_CTRL2_UPDPOS
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 1> ENC3_CTRL2_UPDPOS;
-#undef ENC3_CTRL2_UPDHLD
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 0> ENC3_CTRL2_UPDHLD;
+namespace CTRL2 {
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 9> OUTCTL;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 8> REVMOD;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 7> ROIRQ;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 6> ROIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 5> RUIRQ;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 4> RUIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 3> DIR;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 2> MOD;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 1> UPDPOS;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 0> UPDHLD;
+}  // namespace CTRL2
+}  // namespace ENC3
+
+namespace ENC4 {
 
 // ENC4 Control Register
-#undef ENC4_CTRL_HIRQ
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 15> ENC4_CTRL_HIRQ;
-#undef ENC4_CTRL_HIE
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 14> ENC4_CTRL_HIE;
-#undef ENC4_CTRL_HIP
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 13> ENC4_CTRL_HIP;
-#undef ENC4_CTRL_HNE
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 12> ENC4_CTRL_HNE;
-#undef ENC4_CTRL_SWIP
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 11> ENC4_CTRL_SWIP;
-#undef ENC4_CTRL_REV
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 10> ENC4_CTRL_REV;
-#undef ENC4_CTRL_PH1
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  9> ENC4_CTRL_PH1;
-#undef ENC4_CTRL_XIRQ
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  8> ENC4_CTRL_XIRQ;
-#undef ENC4_CTRL_XIE
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  7> ENC4_CTRL_XIE;
-#undef ENC4_CTRL_XIP
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  6> ENC4_CTRL_XIP;
-#undef ENC4_CTRL_XNE
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  5> ENC4_CTRL_XNE;
-#undef ENC4_CTRL_DIRQ
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  4> ENC4_CTRL_DIRQ;
-#undef ENC4_CTRL_DIE
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  3> ENC4_CTRL_DIE;
-#undef ENC4_CTRL_WDE
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  2> ENC4_CTRL_WDE;
-#undef ENC4_CTRL_CMPIRQ
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  1> ENC4_CTRL_CMPIRQ;
-#undef ENC4_CTRL_CMPIE
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  0> ENC4_CTRL_CMPIE;
+namespace CTRL {
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 15> HIRQ;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 14> HIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 13> HIP;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 12> HNE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 11> SWIP;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 10> REV;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  9> PH1;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  8> XIRQ;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  7> XIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  6> XIP;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  5> XNE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  4> DIRQ;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  3> DIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  2> WDE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  1> CMPIRQ;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  0> CMPIE;
+}  // namespace CTRL
 
 // ENC4 Input Filter Register
-#undef ENC4_FILT_FILT_PRSC
-constexpr ENC4_Reg<&ENC_Layout::FILT, 3, 13> ENC4_FILT_FILT_PRSC;
-#undef ENC4_FILT_FILT_CNT
-constexpr ENC4_Reg<&ENC_Layout::FILT, 3,  8> ENC4_FILT_FILT_CNT;
-#undef ENC4_FILT_FILT_PER
-constexpr ENC4_Reg<&ENC_Layout::FILT, 8,  0> ENC4_FILT_FILT_PER;
+namespace FILT {
+constexpr ENC4_Reg<&ENC_Layout::FILT, 3, 13> FILT_PRSC;
+constexpr ENC4_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;
+constexpr ENC4_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;
+}  // namespace FILT
 
 // ENC4 Input Monitor Register
-#undef ENC4_IMR_FPHA
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 7> ENC4_IMR_FPHA;
-#undef ENC4_IMR_FPHB
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 6> ENC4_IMR_FPHB;
-#undef ENC4_IMR_FIND
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 5> ENC4_IMR_FIND;
-#undef ENC4_IMR_FHOM
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 4> ENC4_IMR_FHOM;
-#undef ENC4_IMR_PHA
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 3> ENC4_IMR_PHA;
-#undef ENC4_IMR_PHB
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 2> ENC4_IMR_PHB;
-#undef ENC4_IMR_INDEX
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 1> ENC4_IMR_INDEX;
-#undef ENC4_IMR_HOME
-constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 0> ENC4_IMR_HOME;
+namespace IMR {
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 6> FPHB;
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 5> FIND;
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 4> FHOM;
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 3> PHA;
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 2> PHB;
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 1> INDEX;
+constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 0> HOME;
+}  // namespace IMR
 
 // ENC4 Test Register
-#undef ENC4_TST_TEN
-constexpr ENC4_Reg<&ENC_Layout::TST, 1, 15> ENC4_TST_TEN;
-#undef ENC4_TST_TCE
-constexpr ENC4_Reg<&ENC_Layout::TST, 1, 14> ENC4_TST_TCE;
-#undef ENC4_TST_QDN
-constexpr ENC4_Reg<&ENC_Layout::TST, 1, 13> ENC4_TST_QDN;
-#undef ENC4_TST_TEST_PERIOD
-constexpr ENC4_Reg<&ENC_Layout::TST, 5,  8> ENC4_TST_TEST_PERIOD;
-#undef ENC4_TST_TEST_COUNT
-constexpr ENC4_Reg<&ENC_Layout::TST, 8,  0> ENC4_TST_TEST_COUNT;
+namespace TST {
+constexpr ENC4_Reg<&ENC_Layout::TST, 1, 15> TEN;
+constexpr ENC4_Reg<&ENC_Layout::TST, 1, 14> TCE;
+constexpr ENC4_Reg<&ENC_Layout::TST, 1, 13> QDN;
+constexpr ENC4_Reg<&ENC_Layout::TST, 5,  8> TEST_PERIOD;
+constexpr ENC4_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
+}  // namespace TST
 
 // ENC4 Control 2 Register
-#undef ENC4_CTRL2_OUTCTL
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 9> ENC4_CTRL2_OUTCTL;
-#undef ENC4_CTRL2_REVMOD
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 8> ENC4_CTRL2_REVMOD;
-#undef ENC4_CTRL2_ROIRQ
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 7> ENC4_CTRL2_ROIRQ;
-#undef ENC4_CTRL2_ROIE
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 6> ENC4_CTRL2_ROIE;
-#undef ENC4_CTRL2_RUIRQ
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 5> ENC4_CTRL2_RUIRQ;
-#undef ENC4_CTRL2_RUIE
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 4> ENC4_CTRL2_RUIE;
-#undef ENC4_CTRL2_DIR
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 3> ENC4_CTRL2_DIR;
-#undef ENC4_CTRL2_MOD
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 2> ENC4_CTRL2_MOD;
-#undef ENC4_CTRL2_UPDPOS
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 1> ENC4_CTRL2_UPDPOS;
-#undef ENC4_CTRL2_UPDHLD
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 0> ENC4_CTRL2_UPDHLD;
+namespace CTRL2 {
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 9> OUTCTL;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 8> REVMOD;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 7> ROIRQ;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 6> ROIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 5> RUIRQ;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 4> RUIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 3> DIR;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 2> MOD;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 1> UPDPOS;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 0> UPDHLD;
+}  // namespace CTRL2
+
+}  // namespace ENC4
 
 }  // namespace teensy4
 }  // namespace hardware

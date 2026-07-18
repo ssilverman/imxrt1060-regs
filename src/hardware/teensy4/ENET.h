@@ -153,8 +153,13 @@ constexpr uintptr_t ChannelBase(const uintptr_t base, const size_t index) {
          index*sizeof(ENET_Layout::CHANNEL_Layout);
 }
 
-constexpr regs::RegGroup<ENET_Layout, kENET_size, kENET_base> ENET;
-constexpr regs::RegGroup<ENET_Layout, kENET_size, kENET2_base> ENET2;
+namespace ENET {
+constexpr regs::RegGroup<ENET_Layout, kENET_size, kENET_base> group;
+}  // namespace ENET
+
+namespace ENET2 {
+constexpr regs::RegGroup<ENET_Layout, kENET_size, kENET2_base> group;
+}  // namespace ENET2
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
@@ -178,509 +183,447 @@ using ENET2_CHANNEL_Reg =
     regs::Reg32<ChannelBase(kENET2_base, Index), ENET_Layout::CHANNEL_Layout,
                 Member, 0, Bits, Shift, DirectAssign>;
 
-// Undefine anything defined by Teensyduino's imxrt.h
+namespace ENET {
 
 // Interrupt Event Register
-#undef ENET_EIR_BABR
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 30, true> ENET_EIR_BABR;      // Babbling Receive Error
-#undef ENET_EIR_BABT
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 29, true> ENET_EIR_BABT;      // Babbling Transmit Error
-#undef ENET_EIR_GRA
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 28, true> ENET_EIR_GRA;       // Graceful Stop Complete
-#undef ENET_EIR_TXF
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 27, true> ENET_EIR_TXF;       // Transmit Frame Interrupt
-#undef ENET_EIR_TXB
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 26, true> ENET_EIR_TXB;       // Transmit Buffer Interrupt
-#undef ENET_EIR_RXF
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 25, true> ENET_EIR_RXF;       // Receive Frame Interrupt
-#undef ENET_EIR_RXB
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 24, true> ENET_EIR_RXB;       // Receive Buffer Interrupt
-#undef ENET_EIR_MII
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 23, true> ENET_EIR_MII;       // MII Interrupt
-#undef ENET_EIR_EBERR
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 22, true> ENET_EIR_EBERR;     // Ethernet Bus Error
-#undef ENET_EIR_LC
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 21, true> ENET_EIR_LC;        // Late Collision
-#undef ENET_EIR_RL
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 20, true> ENET_EIR_RL;        // Collision Retry Limit
-#undef ENET_EIR_UN
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 19, true> ENET_EIR_UN;        // Transmit FIFO Underrun
-#undef ENET_EIR_PLR
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 18, true> ENET_EIR_PLR;       // Payload Receive Error
-#undef ENET_EIR_WAKEUP
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 17, true> ENET_EIR_WAKEUP;    // Node Wakeup Request Indication
-#undef ENET_EIR_TS_AVAIL
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 16, true> ENET_EIR_TS_AVAIL;  // Transmit Timestamp Available
-#undef ENET_EIR_TS_TIMER
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 15, true> ENET_EIR_TS_TIMER;  // Timestamp Timer
+namespace EIR {
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 30, true> BABR;      // Babbling Receive Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 29, true> BABT;      // Babbling Transmit Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 28, true> GRA;       // Graceful Stop Complete
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 27, true> TXF;       // Transmit Frame Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 26, true> TXB;       // Transmit Buffer Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 25, true> RXF;       // Receive Frame Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 24, true> RXB;       // Receive Buffer Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 23, true> MII;       // MII Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 22, true> EBERR;     // Ethernet Bus Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 21, true> LC;        // Late Collision
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 20, true> RL;        // Collision Retry Limit
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 19, true> UN;        // Transmit FIFO Underrun
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 18, true> PLR;       // Payload Receive Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 17, true> WAKEUP;    // Node Wakeup Request Indication
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 16, true> TS_AVAIL;  // Transmit Timestamp Available
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 15, true> TS_TIMER;  // Timestamp Timer
+}  // namespace EIR
 
 // Interrupt Mask Register
-#undef ENET_EIMR_BABR
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 30> ENET_EIMR_BABR;      // BABR Interrupt Mask
+namespace EIMR {
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 30> BABR;      // BABR Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_BABT
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 29> ENET_EIMR_BABT;      // BABT Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 29> BABT;      // BABT Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_GRA
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 28> ENET_EIMR_GRA;       // GRA Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 28> GRA;       // GRA Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_TXF
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 27> ENET_EIMR_TXF;       // TXF Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 27> TXF;       // TXF Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_TXB
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 26> ENET_EIMR_TXB;       // TXB Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 26> TXB;       // TXB Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_RXF
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 25> ENET_EIMR_RXF;       // RXF Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 25> RXF;       // RXF Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_RXB
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 24> ENET_EIMR_RXB;       // RXB Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 24> RXB;       // RXB Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_MII
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 23> ENET_EIMR_MII;       // MII Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 23> MII;       // MII Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_EBERR
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 22> ENET_EIMR_EBERR;     // EBERR Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 22> EBERR;     // EBERR Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_LC
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 21> ENET_EIMR_LC;        // LC Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 21> LC;        // LC Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_RL
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 20> ENET_EIMR_RL;        // RL Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 20> RL;        // RL Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_UN
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 19> ENET_EIMR_UN;        // UN Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 19> UN;        // UN Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_PLR
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 18> ENET_EIMR_PLR;       // PLR Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 18> PLR;       // PLR Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_WAKEUP
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 17> ENET_EIMR_WAKEUP;    // WAKEUP Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 17> WAKEUP;    // WAKEUP Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_TS_AVAIL
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 16> ENET_EIMR_TS_AVAIL;  // TS_AVAIL Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 16> TS_AVAIL;  // TS_AVAIL Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-#undef ENET_EIMR_TS_TIMER
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 15> ENET_EIMR_TS_TIMER;  // TS_TIMER Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 15> TS_TIMER;  // TS_TIMER Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
+}  // namespace EIMR
 
 // Receive Descriptor Active Register - Ring 0
-#undef ENET_RDAR_RDAR
-constexpr ENET_Reg<&ENET_Layout::RDAR, 1, 24> ENET_RDAR_RDAR;  // Receive Descriptor Active
+namespace RDAR {
+constexpr ENET_Reg<&ENET_Layout::RDAR, 1, 24> RDAR;  // Receive Descriptor Active
+}  // namespace RDAR
 
 // Transmit Descriptor Active Register - Ring 0
-#undef ENET_TDAR_TDAR
-constexpr ENET_Reg<&ENET_Layout::TDAR, 1, 24> ENET_TDAR_TDAR;  // Transmit Descriptor Active
+namespace TDAR {
+constexpr ENET_Reg<&ENET_Layout::TDAR, 1, 24> TDAR;  // Transmit Descriptor Active
+}  // namespace TDAR
 
 // Ethernet Control Register
-#undef ENET_ECR_DBSWP
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 8> ENET_ECR_DBSWP;    // Descriptor Byte Swapping Enable
+namespace ECR {
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 8> DBSWP;    // Descriptor Byte Swapping Enable
     // 0b0..The buffer descriptor bytes are not swapped to support big-endian devices.
     // 0b1..The buffer descriptor bytes are swapped to support little-endian devices.
-#undef ENET_ECR_DBGEN
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 6> ENET_ECR_DBGEN;    // Debug Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 6> DBGEN;    // Debug Enable
     // 0b0..MAC continues operation in debug mode.
     // 0b1..MAC enters hardware freeze mode when the processor is in debug mode.
-#undef ENET_ECR_EN1588
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 4> ENET_ECR_EN1588;   // EN1588 Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 4> EN1588;   // EN1588 Enable
     // 0b0..Legacy FEC buffer descriptors and functions enabled.
     // 0b1..Enhanced frame time-stamping functions enabled. Has no effect within the MAC besides controlling the DMA control bit ena_1588.
-#undef ENET_ECR_SLEEP
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 3> ENET_ECR_SLEEP;    // Sleep Mode Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 3> SLEEP;    // Sleep Mode Enable
     // 0b0..Normal operating mode.
     // 0b1..Sleep mode.
-#undef ENET_ECR_MAGICEN
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 2> ENET_ECR_MAGICEN;  // Magic Packet Detection Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 2> MAGICEN;  // Magic Packet Detection Enable
     // 0b0..Magic detection logic disabled.
     // 0b1..The MAC core detects magic packets and asserts EIR[WAKEUP] when a frame is detected.
-#undef ENET_ECR_ETHEREN
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 1> ENET_ECR_ETHEREN;  // Ethernet Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 1> ETHEREN;  // Ethernet Enable
     // 0b0..Reception immediately stops and transmission stops after a bad CRC is appended to any currently transmitted frame.
     // 0b1..MAC is enabled, and reception and transmission are possible.
-#undef ENET_ECR_RESET
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 0> ENET_ECR_RESET;    // Ethernet MAC Reset
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 0> RESET;    // Ethernet MAC Reset
+}  // namespace ECR
 
 // MII Management Frame Register
-#undef ENET_MMFR_ST
-constexpr ENET_Reg<&ENET_Layout::MMFR,  2, 30> ENET_MMFR_ST;    // Start Of Frame Delimiter
-#undef ENET_MMFR_OP
-constexpr ENET_Reg<&ENET_Layout::MMFR,  2, 28> ENET_MMFR_OP;    // Operation Code
-#undef ENET_MMFR_PA
-constexpr ENET_Reg<&ENET_Layout::MMFR,  5, 23> ENET_MMFR_PA;    // PHY Address
-#undef ENET_MMFR_RA
-constexpr ENET_Reg<&ENET_Layout::MMFR,  5, 18> ENET_MMFR_RA;    // Register Address
-#undef ENET_MMFR_TA
-constexpr ENET_Reg<&ENET_Layout::MMFR,  2, 16> ENET_MMFR_TA;    // Turn Around
-#undef ENET_MMFR_DATA
-constexpr ENET_Reg<&ENET_Layout::MMFR, 16,  0> ENET_MMFR_DATA;  // Management Frame Data
+namespace MMFR {
+constexpr ENET_Reg<&ENET_Layout::MMFR,  2, 30> ST;    // Start Of Frame Delimiter
+constexpr ENET_Reg<&ENET_Layout::MMFR,  2, 28> OP;    // Operation Code
+constexpr ENET_Reg<&ENET_Layout::MMFR,  5, 23> PA;    // PHY Address
+constexpr ENET_Reg<&ENET_Layout::MMFR,  5, 18> RA;    // Register Address
+constexpr ENET_Reg<&ENET_Layout::MMFR,  2, 16> TA;    // Turn Around
+constexpr ENET_Reg<&ENET_Layout::MMFR, 16,  0> DATA;  // Management Frame Data
+}  // namespace MMFR
 
 // MII Speed Control Register
-#undef ENET_MSCR_HOLDTIME
-constexpr ENET_Reg<&ENET_Layout::MSCR, 3, 8> ENET_MSCR_HOLDTIME;   // Hold time On MDIO Output
+namespace MSCR {
+constexpr ENET_Reg<&ENET_Layout::MSCR, 3, 8> HOLDTIME;   // Hold time On MDIO Output
     // 'value + 1' internal module clock cycles:
     // 0b000..1 internal module clock cycle
     // 0b001..2 internal module clock cycles
     // 0b010..3 internal module clock cycles
     // 0b111..8 internal module clock cycles
-#undef ENET_MSCR_DIS_PRE
-constexpr ENET_Reg<&ENET_Layout::MSCR, 1, 7> ENET_MSCR_DIS_PRE;    // Disable Preamble
+constexpr ENET_Reg<&ENET_Layout::MSCR, 1, 7> DIS_PRE;    // Disable Preamble
     // 0b0..Preamble enabled.
     // 0b1..Preamble (32 ones) is not prepended to the MII management frame.
-#undef ENET_MSCR_MII_SPEED
-constexpr ENET_Reg<&ENET_Layout::MSCR, 6, 1> ENET_MSCR_MII_SPEED;  // MII Speed
+constexpr ENET_Reg<&ENET_Layout::MSCR, 6, 1> MII_SPEED;  // MII Speed
+}  // namespace MSCR
 
 // MIB Control Register
-#undef ENET_MIBC_MIB_DIS
-constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 31> ENET_MIBC_MIB_DIS;    // Disable MIB Logic
+namespace MIBC {
+constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 31> MIB_DIS;    // Disable MIB Logic
     // 0b0..MIB logic is enabled.
     // 0b1..MIB logic is disabled. The MIB logic halts and does not update any MIB counters.
-#undef ENET_MIBC_MIB_IDLE
-constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 30> ENET_MIBC_MIB_IDLE;   // MIB Idle
+constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 30> MIB_IDLE;   // MIB Idle
     // 0b0..The MIB block is updating MIB counters.
     // 0b1..The MIB block is not currently updating any MIB counters.
-#undef ENET_MIBC_MIB_CLEAR
-constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> ENET_MIBC_MIB_CLEAR;  // MIB Clear
+constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;  // MIB Clear
     // 0b0..See note above.
     // 0b1..All statistics counters are reset to 0.
+}  // namespace MIBC
 
 // Receive Control Register
-#undef ENET_RCR_GRS
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 31> ENET_RCR_GRS;        // Graceful Receive Stopped
+namespace RCR {
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 31> GRS;        // Graceful Receive Stopped
     // 0b0..Receive not stopped
     // 0b1..Receive stopped
-#undef ENET_RCR_NLC
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30> ENET_RCR_NLC;        // Payload Length Check Disable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30> NLC;        // Payload Length Check Disable
     // 0b0..The payload length check is disabled.
     // 0b1..The core checks the frame's payload length with the frame length/type field. Errors are indicated in the EIR[PLR] field.
-#undef ENET_RCR_MAX_FL
-constexpr ENET_Reg<&ENET_Layout::RCR, 14, 16> ENET_RCR_MAX_FL;     // Maximum Frame Length
-#undef ENET_RCR_CFEN
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 15> ENET_RCR_CFEN;       // MAC Control Frame Enable
+constexpr ENET_Reg<&ENET_Layout::RCR, 14, 16> MAX_FL;     // Maximum Frame Length
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 15> CFEN;       // MAC Control Frame Enable
     // 0b0..MAC control frames with any opcode other than 0x0001 (pause frame) are accepted and forwarded to the client interface.
     // 0b1..MAC control frames with any opcode other than 0x0001 (pause frame) are silently discarded.
-#undef ENET_RCR_CRCFWD
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 14> ENET_RCR_CRCFWD;     // Terminate/Forward Received CRC
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 14> CRCFWD;     // Terminate/Forward Received CRC
     // 0b0..The CRC field of received frames is transmitted to the user application.
     // 0b1..The CRC field is stripped from the frame.
-#undef ENET_RCR_PAUFWD
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 13> ENET_RCR_PAUFWD;     // Terminate/Forward Pause Frames
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 13> PAUFWD;     // Terminate/Forward Pause Frames
     // 0b0..Pause frames are terminated and discarded in the MAC.
     // 0b1..Pause frames are forwarded to the user application.
-#undef ENET_RCR_PADEN
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 12> ENET_RCR_PADEN;      // Enable Frame Padding Remove On Receive
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 12> PADEN;      // Enable Frame Padding Remove On Receive
     // 0b0..No padding is removed on receive by the MAC.
     // 0b1..Padding is removed from received frames.
-#undef ENET_RCR_RMII_10T
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  9> ENET_RCR_RMII_10T;
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  9> RMII_10T;
     // 0b0..100-Mbit/s operation.
     // 0b1..10-Mbit/s operation.
-#undef ENET_RCR_RMII_MODE
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  8> ENET_RCR_RMII_MODE;  // RMII Mode Enable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  8> RMII_MODE;  // RMII Mode Enable
     // 0b0..MAC configured for MII mode.
     // 0b1..MAC configured for RMII operation.
-#undef ENET_RCR_FCE
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  5> ENET_RCR_FCE;        // Flow Control Enable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  5> FCE;        // Flow Control Enable
     // 0b0..Disable flow control
     // 0b1..Enable flow control
-#undef ENET_RCR_BC_REJ
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  4> ENET_RCR_BC_REJ;     // Broadcast Frame Reject
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  4> BC_REJ;     // Broadcast Frame Reject
     // 0b0..Will not reject frames as described above
     // 0b1..Will reject frames as described above
-#undef ENET_RCR_PROM
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  3> ENET_RCR_PROM;       // Promiscuous Mode
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  3> PROM;       // Promiscuous Mode
     // 0b0..Disabled.
     // 0b1..Enabled.
-#undef ENET_RCR_MII_MODE
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  2> ENET_RCR_MII_MODE;   // Media Independent Interface Mode
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  2> MII_MODE;   // Media Independent Interface Mode
     // 0b0..Reserved.
     // 0b1..MII or RMII mode, as indicated by the RMII_MODE field.
-#undef ENET_RCR_DRT
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  1> ENET_RCR_DRT;        // Disable Receive On Transmit
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  1> DRT;        // Disable Receive On Transmit
     // 0b0..Receive path operates independently of transmit (i.e., full-duplex mode). Can also be used to monitor transmit activity in half-duplex mode.
     // 0b1..Disable reception of frames while transmitting. (Normally used for half-duplex mode.)
-#undef ENET_RCR_LOOP
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  0> ENET_RCR_LOOP;       // Internal Loopback
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  0> LOOP;       // Internal Loopback
     // 0b0..Loopback disabled.
     // 0b1..Transmitted frames are looped back internal to the device and transmit MII output signals are not asserted. DRT must be cleared.
+}  // namespace RCR
 
 // Transmit Control Register
-#undef ENET_TCR_CRCFWD
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 9> ENET_TCR_CRCFWD;     // Forward Frame From Application With CRC
+namespace TCR {
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 9> CRCFWD;     // Forward Frame From Application With CRC
     // 0b0..TxBD[TC] controls whether the frame has a CRC from the application.
     // 0b1..The transmitter does not append any CRC to transmitted frames, as it is expecting a frame with CRC from the application.
-#undef ENET_TCR_ADDINS
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 8> ENET_TCR_ADDINS;     // Set MAC Address On Transmit
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 8> ADDINS;     // Set MAC Address On Transmit
     // 0b0..The source MAC address is not modified by the MAC.
     // 0b1..The MAC overwrites the source MAC address with the programmed MAC address according to ADDSEL.
-#undef ENET_TCR_ADDSEL
-constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5> ENET_TCR_ADDSEL;     // Source MAC Address Select On Transmit
+constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;     // Source MAC Address Select On Transmit
     // 0b000..Node MAC address programmed on PADDR1/2 registers.
     // 0b100..Reserved.
     // 0b101..Reserved.
     // 0b110..Reserved.
-#undef ENET_TCR_RFC_PAUSE
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 4> ENET_TCR_RFC_PAUSE;  // Receive Frame Control Pause
-#undef ENET_TCR_TFC_PAUSE
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3> ENET_TCR_TFC_PAUSE;  // Transmit Frame Control Pause
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 4> RFC_PAUSE;  // Receive Frame Control Pause
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;  // Transmit Frame Control Pause
     // 0b0..No PAUSE frame transmitted.
     // 0b1..The MAC stops transmission of data frames after the current transmission is complete.
-#undef ENET_TCR_FDEN
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 2> ENET_TCR_FDEN;       // Full-Duplex Enable
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 2> FDEN;       // Full-Duplex Enable
     // 0b0..Disable full-duplex
     // 0b1..Enable full-duplex
-#undef ENET_TCR_GTS
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0> ENET_TCR_GTS;        // Graceful Transmit Stop
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0> GTS;        // Graceful Transmit Stop
     // 0b0..Disable graceful transmit stop
     // 0b1..Enable graceful transmit stop
+}  // namespace TCR
 
 // Physical Address Upper Register
-#undef ENET_PAUR_PADDR2
-constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16> ENET_PAUR_PADDR2;
-#undef ENET_PAUR_TYPE
-constexpr ENET_Reg<&ENET_Layout::PAUR, 16,  0> ENET_PAUR_TYPE;  // Type Field In PAUSE Frames
+namespace PAUR {
+constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;
+constexpr ENET_Reg<&ENET_Layout::PAUR, 16,  0> TYPE;  // Type Field In PAUSE Frames
+}  // namespace PAUR
 
 // Opcode/Pause Duration Register
-#undef ENET_OPD_OPCODE
-constexpr ENET_Reg<&ENET_Layout::OPD,   16, 16> ENET_OPD_OPCODE;     // Opcode Field In PAUSE Frames
-#undef ENET_OPD_PAUSE_DUR
-constexpr ENET_Reg<&ENET_Layout::OPD,   16,  0> ENET_OPD_PAUSE_DUR;  // Pause Duration
+namespace OPD {
+constexpr ENET_Reg<&ENET_Layout::OPD, 16, 16> OPCODE;     // Opcode Field In PAUSE Frames
+constexpr ENET_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;  // Pause Duration
+}  // namespace OPD
 
 // Transmit Interrupt Coalescing Register
-#undef ENET_TXIC_ICEN
-constexpr ENET_Reg<&ENET_Layout::TXIC,   1, 31> ENET_TXIC_ICEN;  // Interrupt Coalescing Enable
+namespace TXIC {
+constexpr ENET_Reg<&ENET_Layout::TXIC,  1, 31> ICEN;  // Interrupt Coalescing Enable
     // 0b0..Disable Interrupt coalescing.
     // 0b1..Enable Interrupt coalescing.
-#undef ENET_TXIC_ICCS
-constexpr ENET_Reg<&ENET_Layout::TXIC,   1, 30> ENET_TXIC_ICCS;  // Interrupt Coalescing Timer Clock Source Select
+constexpr ENET_Reg<&ENET_Layout::TXIC,  1, 30> ICCS;  // Interrupt Coalescing Timer Clock Source Select
     // 0b0..Use MII/GMII TX clocks.
     // 0b1..Use ENET system clock.
-#undef ENET_TXIC_ICFT
-constexpr ENET_Reg<&ENET_Layout::TXIC,   8, 20> ENET_TXIC_ICFT;  // Interrupt coalescing frame count threshold
-#undef ENET_TXIC_ICTT
-constexpr ENET_Reg<&ENET_Layout::TXIC,  16,  0> ENET_TXIC_ICTT;  // Interrupt coalescing timer threshold
+constexpr ENET_Reg<&ENET_Layout::TXIC,  8, 20> ICFT;  // Interrupt coalescing frame count threshold
+constexpr ENET_Reg<&ENET_Layout::TXIC, 16,  0> ICTT;  // Interrupt coalescing timer threshold
+}  // namespace TXIC
 
 // Receive Interrupt Coalescing Register
-#undef ENET_RXIC_ICEN
-constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 31> ENET_RXIC_ICEN;  // Interrupt Coalescing Enable
+namespace RXIC {
+constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 31> ICEN;  // Interrupt Coalescing Enable
     // 0b0..Disable Interrupt coalescing.
     // 0b1..Enable Interrupt coalescing.
-#undef ENET_RXIC_ICCS
-constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 30> ENET_RXIC_ICCS;  // Interrupt Coalescing Timer Clock Source Select
+constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 30> ICCS;  // Interrupt Coalescing Timer Clock Source Select
     // 0b0..Use MII/GMII TX clocks.
     // 0b1..Use ENET system clock.
-#undef ENET_RXIC_ICFT
-constexpr ENET_Reg<&ENET_Layout::RXIC,   8, 20> ENET_RXIC_ICFT;  // Interrupt coalescing frame count threshold
-#undef ENET_RXIC_ICTT
-constexpr ENET_Reg<&ENET_Layout::RXIC,  16,  0> ENET_RXIC_ICTT;  // Interrupt coalescing timer threshold
+constexpr ENET_Reg<&ENET_Layout::RXIC,   8, 20> ICFT;  // Interrupt coalescing frame count threshold
+constexpr ENET_Reg<&ENET_Layout::RXIC,  16,  0> ICTT;  // Interrupt coalescing timer threshold
+}  // namespace RXIC
 
 // Transmit FIFO Watermark Register
-#undef ENET_TFWR_STRFWD
-constexpr ENET_Reg<&ENET_Layout::TFWR,   1,  8> ENET_TFWR_STRFWD;  // Store And Forward Enable
+namespace TFWR {
+constexpr ENET_Reg<&ENET_Layout::TFWR, 1, 8> STRFWD;  // Store And Forward Enable
     // 0b0..Reset. The transmission start threshold is programmed in TFWR[TFWR].
     // 0b1..Enabled.
-#undef ENET_TFWR_TFWR
-constexpr ENET_Reg<&ENET_Layout::TFWR,   6,  0> ENET_TFWR_TFWR;  // Transmit FIFO Write
+constexpr ENET_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;  // Transmit FIFO Write
     // 0b000000..64 bytes written.
     // 0b000001..64 bytes written.
     // 0b000010..128 bytes written.
     // 0b000011..192 bytes written.
     // 0b011111..1984 bytes written.
+}  // namespace TFWR
 
 // Receive Descriptor Ring 0 Start Register
-#undef ENET_RDSR_R_DES_START
-constexpr ENET_Reg<&ENET_Layout::RDSR,  29,  3> ENET_RDSR_R_DES_START;
+namespace RDSR {
+constexpr ENET_Reg<&ENET_Layout::RDSR, 29, 3> R_DES_START;
+}  // namespace RDSR
 
 // Transmit Buffer Descriptor Ring 0 Start Register
-#undef ENET_TDSR_X_DES_START
-constexpr ENET_Reg<&ENET_Layout::TDSR,  29,  3> ENET_TDSR_X_DES_START;
+namespace TDSR {
+constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;
+}  // namespace TDSR
 
 // Maximum Receive Buffer Size Register - Ring 0
-#undef ENET_MRBR_R_BUF_SIZE
-constexpr ENET_Reg<&ENET_Layout::MRBR,  10,  4> ENET_MRBR_R_BUF_SIZE;
+namespace MRBR {
+constexpr ENET_Reg<&ENET_Layout::MRBR, 10, 4> R_BUF_SIZE;
+}  // namespace MRBR
 
 // Receive FIFO Section Full Threshold
-#undef ENET_RSFL_RX_SECTION_FULL
-constexpr ENET_Reg<&ENET_Layout::RSFL,   8,  0> ENET_RSFL_RX_SECTION_FULL;  // Value Of Receive FIFO Section Full Threshold
+namespace RSFL {
+constexpr ENET_Reg<&ENET_Layout::RSFL, 8, 0> RX_SECTION_FULL;  // Value Of Receive FIFO Section Full Threshold
+}  // namespace RSFL
 
 // Receive FIFO Section Empty Threshold
-#undef ENET_RSEM_STAT_SECTION_EMPTY
-constexpr ENET_Reg<&ENET_Layout::RSEM,   5, 16> ENET_RSEM_STAT_SECTION_EMPTY;  // RX Status FIFO Section Empty Threshold
-#undef ENET_RSEM_RX_SECTION_EMPTY
-constexpr ENET_Reg<&ENET_Layout::RSEM,   8,  0> ENET_RSEM_RX_SECTION_EMPTY;    // Value Of The Receive FIFO Section Empty Threshold
+namespace RSEM {
+constexpr ENET_Reg<&ENET_Layout::RSEM, 5, 16> STAT_SECTION_EMPTY;  // RX Status FIFO Section Empty Threshold
+constexpr ENET_Reg<&ENET_Layout::RSEM, 8,  0> RX_SECTION_EMPTY;    // Value Of The Receive FIFO Section Empty Threshold
+}  // namespace RSEM
 
 // Receive FIFO Almost Empty Threshold
-#undef ENET_RAEM_RX_ALMOST_EMPTY
-constexpr ENET_Reg<&ENET_Layout::RAEM,   8,  0> ENET_RAEM_RX_ALMOST_EMPTY;  // Value Of The Receive FIFO Almost Empty Threshold
+namespace RAEM {
+constexpr ENET_Reg<&ENET_Layout::RAEM, 8, 0> RX_ALMOST_EMPTY;  // Value Of The Receive FIFO Almost Empty Threshold
+}  // namespace RAEM
 
 // Receive FIFO Almost Full Threshold
-#undef ENET_RAFL_RX_ALMOST_FULL
-constexpr ENET_Reg<&ENET_Layout::RAFL,   8,  0> ENET_RAFL_RX_ALMOST_FULL;  // Value Of The Receive FIFO Almost Full Threshold
+namespace RAFL {
+constexpr ENET_Reg<&ENET_Layout::RAFL, 8, 0> RX_ALMOST_FULL;  // Value Of The Receive FIFO Almost Full Threshold
+}  // namespace RAFL
 
 // Transmit FIFO Section Empty Threshold
-#undef ENET_TSEM_TX_SECTION_EMPTY
-constexpr ENET_Reg<&ENET_Layout::TSEM,   8,  0> ENET_TSEM_TX_SECTION_EMPTY;  // Value Of The Transmit FIFO Section Empty Threshold
+namespace TSEM {
+constexpr ENET_Reg<&ENET_Layout::TSEM, 8, 0> TX_SECTION_EMPTY;  // Value Of The Transmit FIFO Section Empty Threshold
+}  // namespace TSEM
 
 // Transmit FIFO Almost Empty Threshold
-#undef ENET_TAEM_TX_ALMOST_EMPTY
-constexpr ENET_Reg<&ENET_Layout::TAEM,   8,  0> ENET_TAEM_TX_ALMOST_EMPTY;  // Value of Transmit FIFO Almost Empty Threshold
+namespace TAEM {
+constexpr ENET_Reg<&ENET_Layout::TAEM, 8, 0> TX_ALMOST_EMPTY;  // Value of Transmit FIFO Almost Empty Threshold
+}  // namespace TAEM
 
 // Transmit FIFO Almost Full Threshold
-#undef ENET_TAFL_TX_ALMOST_FULL
-constexpr ENET_Reg<&ENET_Layout::TAFL,   8,  0> ENET_TAFL_TX_ALMOST_FULL;  // Value Of The Transmit FIFO Almost Full Threshold
+namespace TAFL {
+constexpr ENET_Reg<&ENET_Layout::TAFL, 8, 0> TX_ALMOST_FULL;  // Value Of The Transmit FIFO Almost Full Threshold
+}  // namespace TAFL
 
 // Transmit Inter-Packet Gap
-#undef ENET_TIPG_IPG
-constexpr ENET_Reg<&ENET_Layout::TIPG,   5,  0> ENET_TIPG_IPG;  // Transmit Inter-Packet Gap
+namespace TIPG {
+constexpr ENET_Reg<&ENET_Layout::TIPG, 5, 0> IPG;  // Transmit Inter-Packet Gap
+}  // namespace TIPG
 
 // Frame Truncation Length
-#undef ENET_FTRL_TRUNC_FL
-constexpr ENET_Reg<&ENET_Layout::FTRL,  14,  0> ENET_FTRL_TRUNC_FL;  // Frame Truncation Length
+namespace FTRL {
+constexpr ENET_Reg<&ENET_Layout::FTRL, 14, 0> TRUNC_FL;  // Frame Truncation Length
+}  // namespace FTRL
 
 // Transmit Accelerator Function Configuration
-#undef ENET_TACC_PROCHK
-constexpr ENET_Reg<&ENET_Layout::TACC,   1,  4> ENET_TACC_PROCHK;
+namespace TACC {
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 4> PROCHK;
     // 0b0..Checksum not inserted.
     // 0b1..If an IP frame with a known protocol is transmitted, the checksum is inserted automatically into the
     //      frame. The checksum field must be cleared. The other frames are not modified.
-#undef ENET_TACC_IPCHK
-constexpr ENET_Reg<&ENET_Layout::TACC,   1,  3> ENET_TACC_IPCHK;
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 3> IPCHK;
     // 0b0..Checksum is not inserted.
     // 0b1..If an IP frame is transmitted, the checksum is inserted automatically. The IP header checksum field must
     //      be cleared. If a non-IP frame is transmitted the frame is not modified.
-#undef ENET_TACC_SHIFT16
-constexpr ENET_Reg<&ENET_Layout::TACC,   1,  0> ENET_TACC_SHIFT16;  // TX FIFO Shift-16
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 0> SHIFT16;  // TX FIFO Shift-16
     // 0b0..Disabled.
     // 0b1..Indicates to the transmit data FIFO that the written frames contain two additional octets before the
     //      frame data. This means the actual frame begins at bit 16 of the first word written into the FIFO. This
     //      function allows putting the frame payload on a 32-bit boundary in memory, as the 14-byte Ethernet header is
     //      extended to a 16-byte header.
+}  // namespace TACC
 
 // Receive Accelerator Function Configuration
-#undef ENET_RACC_SHIFT16
-constexpr ENET_Reg<&ENET_Layout::RACC,   1,  7> ENET_RACC_SHIFT16;  // RX FIFO Shift-16
+namespace RACC {
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 7> SHIFT16;  // RX FIFO Shift-16
     // 0b0..Disabled.
     // 0b1..Instructs the MAC to write two additional bytes in front of each frame received into the RX FIFO.
-#undef ENET_RACC_LINEDIS
-constexpr ENET_Reg<&ENET_Layout::RACC,   1,  6> ENET_RACC_LINEDIS;  // Enable Discard Of Frames With MAC Layer Errors
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 6> LINEDIS;  // Enable Discard Of Frames With MAC Layer Errors
     // 0b0..Frames with errors are not discarded.
     // 0b1..Any frame received with a CRC, length, or PHY error is automatically discarded and not forwarded to the user application interface.
-#undef ENET_RACC_PRODIS
-constexpr ENET_Reg<&ENET_Layout::RACC,   1,  2> ENET_RACC_PRODIS;   // Enable Discard Of Frames With Wrong Protocol Checksum
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 2> PRODIS;   // Enable Discard Of Frames With Wrong Protocol Checksum
     // 0b0..Frames with wrong checksum are not discarded.
     // 0b1..If a TCP/IP, UDP/IP, or ICMP/IP frame is received that has a wrong TCP, UDP, or ICMP checksum, the frame
     //      is discarded. Discarding is only available when the RX FIFO operates in store and forward mode (RSFL
     //      cleared).
-#undef ENET_RACC_IPDIS
-constexpr ENET_Reg<&ENET_Layout::RACC,   1,  1> ENET_RACC_IPDIS;    // Enable Discard Of Frames With Wrong IPv4 Header Checksum
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 1> IPDIS;    // Enable Discard Of Frames With Wrong IPv4 Header Checksum
     // 0b0..Frames with wrong IPv4 header checksum are not discarded.
     // 0b1..If an IPv4 frame is received with a mismatching header checksum, the frame is discarded. IPv6 has no
     //      header checksum and is not affected by this setting. Discarding is only available when the RX FIFO operates in
     //      store and forward mode (RSFL cleared).
-#undef ENET_RACC_PADREM
-constexpr ENET_Reg<&ENET_Layout::RACC,   1,  0> ENET_RACC_PADREM;  // Enable Padding Removal For Short IP Frames
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 0> PADREM;  // Enable Padding Removal For Short IP Frames
     // 0b0..Padding not removed.
     // 0b1..Any bytes following the IP payload section of the frame are removed from the frame.
+}  // namespace RACC
 
 // Adjustable Timer Control Register
-#undef ENET_ATCR_SLAVE
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1, 13> ENET_ATCR_SLAVE;    // Enable Timer Slave Mode
+namespace ATCR {
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1, 13> SLAVE;    // Enable Timer Slave Mode
     // 0b0..The timer is active and all configuration fields in this register are relevant.
     // 0b1..The internal timer is disabled and the externally provided timer value is used. All other fields, except
     //      CAPTURE, in this register have no effect. CAPTURE can still be used to capture the current timer value.
-#undef ENET_ATCR_CAPTURE
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1, 11> ENET_ATCR_CAPTURE;  // Capture Timer Value
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1, 11> CAPTURE;  // Capture Timer Value
     // 0b0..No effect.
     // 0b1..The current time is captured and can be read from the ATVR register.
-#undef ENET_ATCR_RESTART
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1,  9> ENET_ATCR_RESTART;  // Reset Timer
-#undef ENET_ATCR_PINPER
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1,  7> ENET_ATCR_PINPER;   // Enables event signal output external pin frc_evt_period assertion on period event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  9> RESTART;  // Reset Timer
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  7> PINPER;   // Enables event signal output external pin frc_evt_period assertion on period event
     // 0b0..Disable.
     // 0b1..Enable.
-#undef ENET_ATCR_PEREN
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1,  4> ENET_ATCR_PEREN;    // Enable Periodical Event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  4> PEREN;    // Enable Periodical Event
     // 0b0..Disable.
     // 0b1..A period event interrupt can be generated (EIR[TS_TIMER]) and the event signal output is asserted when
     //      the timer wraps around according to the periodic setting ATPER. The timer period value must be set before
     //      setting this bit. Not all devices contain the event signal output. See the chip configuration details.
-#undef ENET_ATCR_OFFRST
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1,  3> ENET_ATCR_OFFRST;   // Reset Timer On Offset Event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  3> OFFRST;   // Reset Timer On Offset Event
     // 0b0..The timer is not affected and no action occurs, besides clearing OFFEN, when the offset is reached.
     // 0b1..If OFFEN is set, the timer resets to zero when the offset setting is reached. The offset event does not cause a timer interrupt.
-#undef ENET_ATCR_OFFEN
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1,  2> ENET_ATCR_OFFEN;    // Enable One-Shot Offset Event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  2> OFFEN;    // Enable One-Shot Offset Event
     // 0b0..Disable.
     // 0b1..The timer can be reset to zero when the given offset time is reached (offset event). The field is cleared
     //      when the offset event is reached, so no further event occurs until the field is set again. The timer
     //      offset value must be set before setting this field.
-#undef ENET_ATCR_EN
-constexpr ENET_Reg<&ENET_Layout::ATCR,   1,  0> ENET_ATCR_EN;       // Enable Timer
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  0> EN;       // Enable Timer
     // 0b0..The timer stops at the current value.
     // 0b1..The timer starts incrementing.
+}  // namespace ATCR
 
 // Timer Correction Register
-#undef ENET_ATCOR_COR
-constexpr ENET_Reg<&ENET_Layout::ATCOR, 31,  0> ENET_ATCOR_COR;  // Correction Counter Wrap-Around Value
+namespace ATCOR {
+constexpr ENET_Reg<&ENET_Layout::ATCOR, 31, 0> COR;  // Correction Counter Wrap-Around Value
+}  // namespace ATCOR
 
 // Time-Stamping Clock Period Register
-#undef ENET_ATINC_INC_CORR
-constexpr ENET_Reg<&ENET_Layout::ATINC,  7,  8> ENET_ATINC_INC_CORR;  // Correction Increment Value
-#undef ENET_ATINC_INC
-constexpr ENET_Reg<&ENET_Layout::ATINC,  7,  0> ENET_ATINC_INC;       // Clock Period Of The Timestamping Clock (ts_clk) In Nanoseconds
+namespace ATINC {
+constexpr ENET_Reg<&ENET_Layout::ATINC, 7, 8> INC_CORR;  // Correction Increment Value
+constexpr ENET_Reg<&ENET_Layout::ATINC, 7, 0> INC;       // Clock Period Of The Timestamping Clock (ts_clk) In Nanoseconds
+}  // namespace ATINC
 
 // Timer Global Status Register
-#undef ENET_TGSR_TF3
-constexpr ENET_Reg<&ENET_Layout::TGSR,   1,  3, true> ENET_TGSR_TF3;  // Copy Of Timer Flag For Channel 3
+namespace TGSR {
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 3, true> TF3;  // Copy Of Timer Flag For Channel 3
     // 0b0..Timer Flag for Channel 3 is clear
     // 0b1..Timer Flag for Channel 3 is set
-#undef ENET_TGSR_TF2
-constexpr ENET_Reg<&ENET_Layout::TGSR,   1,  2, true> ENET_TGSR_TF2;  // Copy Of Timer Flag For Channel 2
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 2, true> TF2;  // Copy Of Timer Flag For Channel 2
     // 0b0..Timer Flag for Channel 2 is clear
     // 0b1..Timer Flag for Channel 2 is set
-#undef ENET_TGSR_TF1
-constexpr ENET_Reg<&ENET_Layout::TGSR,   1,  1, true> ENET_TGSR_TF1;  // Copy Of Timer Flag For Channel 1
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 1, true> TF1;  // Copy Of Timer Flag For Channel 1
     // 0b0..Timer Flag for Channel 1 is clear
     // 0b1..Timer Flag for Channel 1 is set
-#undef ENET_TGSR_TF0
-constexpr ENET_Reg<&ENET_Layout::TGSR,   1,  0, true> ENET_TGSR_TF0;  // Copy Of Timer Flag For Channel 0
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 0, true> TF0;  // Copy Of Timer Flag For Channel 0
     // 0b0..Timer Flag for Channel 0 is clear
     // 0b1..Timer Flag for Channel 0 is set
+}  // namespace TGSR
 
 // Timer Control Status Register
-#undef ENET_TCSR0_TPWC
-constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET_TCSR0_TPWC;   // Timer PulseWidth Control
+namespace TCSR0 {
+constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;   // Timer PulseWidth Control
     // 'value' + 1 1588-clock cycles:
     // 0b00000..Pulse width is one 1588-clock cycle.
     // 0b00001..Pulse width is two 1588-clock cycles.
     // 0b00010..Pulse width is three 1588-clock cycles.
     // 0b00011..Pulse width is four 1588-clock cycles.
     // 0b11111..Pulse width is 32 1588-clock cycles.
-#undef ENET_TCSR0_TF
-constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET_TCSR0_TF;     // Timer Flag
+constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;     // Timer Flag
     // 0b0..Input Capture or Output Compare has not occurred.
     // 0b1..Input Capture or Output Compare has occurred.
-#undef ENET_TCSR0_TIE
-constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET_TCSR0_TIE;    // Timer Interrupt Enable
+constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;    // Timer Interrupt Enable
     // 0b0..Interrupt is disabled
     // 0b1..Interrupt is enabled
-#undef ENET_TCSR0_TMODE
-constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET_TCSR0_TMODE;  // Timer Mode
+constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;  // Timer Mode
     // 0b0000..Timer Channel is disabled.
     // 0b0001..Timer Channel is configured for Input Capture on rising edge.
     // 0b0010..Timer Channel is configured for Input Capture on falling edge.
@@ -695,324 +638,284 @@ constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET_TC
     // 0b110x..Reserved
     // 0b1110..Timer Channel is configured for Output Compare - pulse output low on compare for 1 to 32 1588-clock cycles as specified by TPWC.
     // 0b1111..Timer Channel is configured for Output Compare - pulse output high on compare for 1 to 32 1588-clock cycles as specified by TPWC.
-#undef ENET_TCSR0_TDRE
-constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET_TCSR0_TDRE;   // Timer DMA Request Enable
+constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;   // Timer DMA Request Enable
     // 0b0..DMA request is disabled
     // 0b1..DMA request is enabled
-#undef ENET_TCSR1_TPWC
-constexpr ENET_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET_TCSR1_TPWC;
-#undef ENET_TCSR1_TF
-constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET_TCSR1_TF;
-#undef ENET_TCSR1_TIE
-constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET_TCSR1_TIE;
-#undef ENET_TCSR1_TMODE
-constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET_TCSR1_TMODE;
-#undef ENET_TCSR1_TDRE
-constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET_TCSR1_TDRE;
-#undef ENET_TCSR2_TPWC
-constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET_TCSR2_TPWC;
-#undef ENET_TCSR2_TF
-constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET_TCSR2_TF;
-#undef ENET_TCSR2_TIE
-constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET_TCSR2_TIE;
-#undef ENET_TCSR2_TMODE
-constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET_TCSR2_TMODE;
-#undef ENET_TCSR2_TDRE
-constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET_TCSR2_TDRE;
-#undef ENET_TCSR3_TPWC
-constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET_TCSR3_TPWC;
-#undef ENET_TCSR3_TF
-constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET_TCSR3_TF;
-#undef ENET_TCSR3_TIE
-constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET_TCSR3_TIE;
-#undef ENET_TCSR3_TMODE
-constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET_TCSR3_TMODE;
-#undef ENET_TCSR3_TDRE
-constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET_TCSR3_TDRE;
+}  // namespace TCSR0
 
-#undef ENET2_EIR_BABR
-constexpr ENET_Reg<&ENET_Layout::EIR,    1, 30, true> ENET2_EIR_BABR;
-#undef ENET2_EIR_BABT
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 29, true> ENET2_EIR_BABT;
-#undef ENET2_EIR_GRA
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 28, true> ENET2_EIR_GRA;
-#undef ENET2_EIR_TXF
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 27, true> ENET2_EIR_TXF;
-#undef ENET2_EIR_TXB
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 26, true> ENET2_EIR_TXB;
-#undef ENET2_EIR_RXF
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 25, true> ENET2_EIR_RXF;
-#undef ENET2_EIR_RXB
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 24, true> ENET2_EIR_RXB;
-#undef ENET2_EIR_MII
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 23, true> ENET2_EIR_MII;
-#undef ENET2_EIR_EBERR
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 22, true> ENET2_EIR_EBERR;
-#undef ENET2_EIR_LC
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 21, true> ENET2_EIR_LC;
-#undef ENET2_EIR_RL
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 20, true> ENET2_EIR_RL;
-#undef ENET2_EIR_UN
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 19, true> ENET2_EIR_UN;
-#undef ENET2_EIR_PLR
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 18, true> ENET2_EIR_PLR;
-#undef ENET2_EIR_WAKEUP
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 17, true> ENET2_EIR_WAKEUP;
-#undef ENET2_EIR_TS_AVAIL
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 16, true> ENET2_EIR_TS_AVAIL;
-#undef ENET2_EIR_TS_TIMER
-constexpr ENET2_Reg<&ENET_Layout::EIR,    1, 15, true> ENET2_EIR_TS_TIMER;
-#undef ENET2_EIMR_BABR
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 30> ENET2_EIMR_BABR;
-#undef ENET2_EIMR_BABT
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 29> ENET2_EIMR_BABT;
-#undef ENET2_EIMR_GRA
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 28> ENET2_EIMR_GRA;
-#undef ENET2_EIMR_TXF
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 27> ENET2_EIMR_TXF;
-#undef ENET2_EIMR_TXB
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 26> ENET2_EIMR_TXB;
-#undef ENET2_EIMR_RXF
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 25> ENET2_EIMR_RXF;
-#undef ENET2_EIMR_RXB
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 24> ENET2_EIMR_RXB;
-#undef ENET2_EIMR_MII
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 23> ENET2_EIMR_MII;
-#undef ENET2_EIMR_EBERR
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 22> ENET2_EIMR_EBERR;
-#undef ENET2_EIMR_LC
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 21> ENET2_EIMR_LC;
-#undef ENET2_EIMR_RL
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 20> ENET2_EIMR_RL;
-#undef ENET2_EIMR_UN
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 19> ENET2_EIMR_UN;
-#undef ENET2_EIMR_PLR
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 18> ENET2_EIMR_PLR;
-#undef ENET2_EIMR_WAKEUP
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 17> ENET2_EIMR_WAKEUP;
-#undef ENET2_EIMR_TS_AVAIL
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 16> ENET2_EIMR_TS_AVAIL;
-#undef ENET2_EIMR_TS_TIMER
-constexpr ENET2_Reg<&ENET_Layout::EIMR,   1, 15> ENET2_EIMR_TS_TIMER;
-#undef ENET2_RDAR_RDAR
-constexpr ENET2_Reg<&ENET_Layout::RDAR,   1, 24> ENET2_RDAR_RDAR;
-#undef ENET2_TDAR_TDAR
-constexpr ENET2_Reg<&ENET_Layout::TDAR,   1, 24> ENET2_TDAR_TDAR;
-#undef ENET2_ECR_DBSWP
-constexpr ENET2_Reg<&ENET_Layout::ECR,    1,  8> ENET2_ECR_DBSWP;
-#undef ENET2_ECR_DBGEN
-constexpr ENET2_Reg<&ENET_Layout::ECR,    1,  6> ENET2_ECR_DBGEN;
-#undef ENET2_ECR_EN1588
-constexpr ENET2_Reg<&ENET_Layout::ECR,    1,  4> ENET2_ECR_EN1588;
-#undef ENET2_ECR_SLEEP
-constexpr ENET2_Reg<&ENET_Layout::ECR,    1,  3> ENET2_ECR_SLEEP;
-#undef ENET2_ECR_MAGICEN
-constexpr ENET2_Reg<&ENET_Layout::ECR,    1,  2> ENET2_ECR_MAGICEN;
-#undef ENET2_ECR_ETHEREN
-constexpr ENET2_Reg<&ENET_Layout::ECR,    1,  1> ENET2_ECR_ETHEREN;
-#undef ENET2_ECR_RESET
-constexpr ENET2_Reg<&ENET_Layout::ECR,    1,  0> ENET2_ECR_RESET;
-#undef ENET2_MMFR_ST
-constexpr ENET2_Reg<&ENET_Layout::MMFR,   2, 30> ENET2_MMFR_ST;
-#undef ENET2_MMFR_OP
-constexpr ENET2_Reg<&ENET_Layout::MMFR,   2, 28> ENET2_MMFR_OP;
-#undef ENET2_MMFR_PA
-constexpr ENET2_Reg<&ENET_Layout::MMFR,   5, 23> ENET2_MMFR_PA;
-#undef ENET2_MMFR_RA
-constexpr ENET2_Reg<&ENET_Layout::MMFR,   5, 18> ENET2_MMFR_RA;
-#undef ENET2_MMFR_TA
-constexpr ENET2_Reg<&ENET_Layout::MMFR,   2, 16> ENET2_MMFR_TA;
-#undef ENET2_MMFR_DATA
-constexpr ENET2_Reg<&ENET_Layout::MMFR,  16,  0> ENET2_MMFR_DATA;
-#undef ENET2_MSCR_HOLDTIME
-constexpr ENET2_Reg<&ENET_Layout::MSCR,   3,  8> ENET2_MSCR_HOLDTIME;
-#undef ENET2_MSCR_DIS_PRE
-constexpr ENET2_Reg<&ENET_Layout::MSCR,   1,  7> ENET2_MSCR_DIS_PRE;
-#undef ENET2_MSCR_MII_SPEED
-constexpr ENET2_Reg<&ENET_Layout::MSCR,   6,  1> ENET2_MSCR_MII_SPEED;
-#undef ENET2_RCR_GRS
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1, 31> ENET2_RCR_GRS;
-#undef ENET2_RCR_NLC
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1, 30> ENET2_RCR_NLC;
-#undef ENET2_RCR_MAX_FL
-constexpr ENET2_Reg<&ENET_Layout::RCR,   14, 16> ENET2_RCR_MAX_FL;
-#undef ENET2_RCR_CFEN
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1, 15> ENET2_RCR_CFEN;
-#undef ENET2_RCR_CRCFWD
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1, 14> ENET2_RCR_CRCFWD;
-#undef ENET2_RCR_PAUFWD
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1, 13> ENET2_RCR_PAUFWD;
-#undef ENET2_RCR_PADEN
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1, 12> ENET2_RCR_PADEN;
-#undef ENET2_RCR_RMII_10T
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  9> ENET2_RCR_RMII_10T;
-#undef ENET2_RCR_RMII_MODE
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  8> ENET2_RCR_RMII_MODE;
-#undef ENET2_RCR_FCE
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  5> ENET2_RCR_FCE;
-#undef ENET2_RCR_BC_REG
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  4> ENET2_RCR_BC_REG;
-#undef ENET2_RCR_PROM
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  3> ENET2_RCR_PROM;
-#undef ENET2_RCR_MII_MODE
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  2> ENET2_RCR_MII_MODE;
-#undef ENET2_RCR_DRT
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  1> ENET2_RCR_DRT;
-#undef ENET2_RCR_LOOP
-constexpr ENET2_Reg<&ENET_Layout::RCR,    1,  0> ENET2_RCR_LOOP;
-#undef ENET2_TCR_CRCFWD
-constexpr ENET2_Reg<&ENET_Layout::TCR,    1,  9> ENET2_TCR_CRCFWD;
-#undef ENET2_TCR_ADDINS
-constexpr ENET2_Reg<&ENET_Layout::TCR,    1,  8> ENET2_TCR_ADDINS;
-#undef ENET2_TCR_ADDSEL
-constexpr ENET2_Reg<&ENET_Layout::TCR,    3,  5> ENET2_TCR_ADDSEL;
-#undef ENET2_TCR_RFC_PAUSE
-constexpr ENET2_Reg<&ENET_Layout::TCR,    1,  4> ENET2_TCR_RFC_PAUSE;
-#undef ENET2_TCR_TFC_PAUSE
-constexpr ENET2_Reg<&ENET_Layout::TCR,    1,  3> ENET2_TCR_TFC_PAUSE;
-#undef ENET2_TCR_FDEN
-constexpr ENET2_Reg<&ENET_Layout::TCR,    1,  2> ENET2_TCR_FDEN;
-#undef ENET2_TCR_GTS
-constexpr ENET2_Reg<&ENET_Layout::TCR,    1,  0> ENET2_TCR_GTS;
-#undef ENET2_OPD_OPCODE
-constexpr ENET2_Reg<&ENET_Layout::OPD,   16, 16> ENET2_OPD_OPCODE;
-#undef ENET2_OPD_PAUSE_DUR
-constexpr ENET2_Reg<&ENET_Layout::OPD,   16,  0> ENET2_OPD_PAUSE_DUR;
-#undef ENET2_TXIC0_ICEN
-constexpr ENET2_Reg<&ENET_Layout::TXIC,   1, 31> ENET2_TXIC0_ICEN;
-#undef ENET2_TXIC0_ICCS
-constexpr ENET2_Reg<&ENET_Layout::TXIC,   1, 30> ENET2_TXIC0_ICCS;
-#undef ENET2_TXIC0_ICFT
-constexpr ENET2_Reg<&ENET_Layout::TXIC,   8, 20> ENET2_TXIC0_ICFT;
-#undef ENET2_TXIC0_ICTT
-constexpr ENET2_Reg<&ENET_Layout::TXIC,  16,  0> ENET2_TXIC0_ICTT;
-#undef ENET2_RXIC0_ICEN
-constexpr ENET2_Reg<&ENET_Layout::RXIC,   1, 31> ENET2_RXIC0_ICEN;
-#undef ENET2_RXIC0_ICCS
-constexpr ENET2_Reg<&ENET_Layout::RXIC,   1, 30> ENET2_RXIC0_ICCS;
-#undef ENET2_RXIC0_ICFT
-constexpr ENET2_Reg<&ENET_Layout::RXIC,   8, 20> ENET2_RXIC0_ICFT;
-#undef ENET2_RXIC0_ICTT
-constexpr ENET2_Reg<&ENET_Layout::RXIC,  16,  0> ENET2_RXIC0_ICTT;
-#undef ENET2_TFWR_STRFWD
-constexpr ENET2_Reg<&ENET_Layout::TFWR,   1,  8> ENET2_TFWR_STRFWD;
-#undef ENET2_TFWR_TFWR
-constexpr ENET2_Reg<&ENET_Layout::TFWR,   6,  0> ENET2_TFWR_TFWR;
-#undef ENET2_RDSR_R_DES_START
-constexpr ENET2_Reg<&ENET_Layout::RDSR,  29,  3> ENET2_RDSR_R_DES_START;
-#undef ENET2_TDSR_X_DES_START
-constexpr ENET2_Reg<&ENET_Layout::TDSR,  29,  3> ENET2_TDSR_X_DES_START;
-#undef ENET2_MRBR_R_BUF_SIZE
-constexpr ENET2_Reg<&ENET_Layout::MRBR,  10,  4> ENET2_MRBR_R_BUF_SIZE;
-#undef ENET2_RSFL_RX_SECTION_FULL
-constexpr ENET2_Reg<&ENET_Layout::RSFL,   8,  0> ENET2_RSFL_RX_SECTION_FULL;
-#undef ENET2_RSEM_STAT_SECTION_EMPTY
-constexpr ENET2_Reg<&ENET_Layout::RSEM,   5, 16> ENET2_RSEM_STAT_SECTION_EMPTY;
-#undef ENET2_RSEM_RX_SECTION_EMPTY
-constexpr ENET2_Reg<&ENET_Layout::RSEM,   8,  0> ENET2_RSEM_RX_SECTION_EMPTY;
-#undef ENET2_RAEM_RX_ALMOST_EMPTY
-constexpr ENET2_Reg<&ENET_Layout::RAEM,   8,  0> ENET2_RAEM_RX_ALMOST_EMPTY;
-#undef ENET2_RAFL_RX_ALMOST_FULL
-constexpr ENET2_Reg<&ENET_Layout::RAFL,   8,  0> ENET2_RAFL_RX_ALMOST_FULL;
-#undef ENET2_TSEM_TX_SECTION_EMPTY
-constexpr ENET2_Reg<&ENET_Layout::TSEM,   8,  0> ENET2_TSEM_TX_SECTION_EMPTY;
-#undef ENET2_TAEM_TX_ALMOST_EMPTY
-constexpr ENET2_Reg<&ENET_Layout::TAEM,   8,  0> ENET2_TAEM_TX_ALMOST_EMPTY;
-#undef ENET2_TAFL_TX_ALMOST_FULL
-constexpr ENET2_Reg<&ENET_Layout::TAFL,   8,  0> ENET2_TAFL_TX_ALMOST_FULL;
-#undef ENET2_TIPG_IPG
-constexpr ENET2_Reg<&ENET_Layout::TIPG,   5,  0> ENET2_TIPG_IPG;
-#undef ENET2_FTRL_TRUNC_FL
-constexpr ENET2_Reg<&ENET_Layout::FTRL,  14,  0> ENET2_FTRL_TRUNC_FL;
-#undef ENET2_TACC_PROCHK
-constexpr ENET2_Reg<&ENET_Layout::TACC,   1,  4> ENET2_TACC_PROCHK;
-#undef ENET2_TACC_IPCHK
-constexpr ENET2_Reg<&ENET_Layout::TACC,   1,  3> ENET2_TACC_IPCHK;
-#undef ENET2_TACC_SHIFT16
-constexpr ENET2_Reg<&ENET_Layout::TACC,   1,  0> ENET2_TACC_SHIFT16;
-#undef ENET2_RACC_SHIFT16
-constexpr ENET2_Reg<&ENET_Layout::RACC,   1,  7> ENET2_RACC_SHIFT16;
-#undef ENET2_RACC_LINEDIS
-constexpr ENET2_Reg<&ENET_Layout::RACC,   1,  6> ENET2_RACC_LINEDIS;
-#undef ENET2_RACC_PRODIS
-constexpr ENET2_Reg<&ENET_Layout::RACC,   1,  2> ENET2_RACC_PRODIS;
-#undef ENET2_RACC_IPDIS
-constexpr ENET2_Reg<&ENET_Layout::RACC,   1,  1> ENET2_RACC_IPDIS;
-#undef ENET2_RACC_PADREM
-constexpr ENET2_Reg<&ENET_Layout::RACC,   1,  0> ENET2_RACC_PADREM;
+namespace TCSR1 {
+constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;
+constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;
+constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;
+constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;
+constexpr ENET_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
+}  // namespace TCSR1
 
-#undef ENET2_ATCR_SLAVE
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1, 13> ENET2_ATCR_SLAVE;
-#undef ENET2_ATCR_CAPTURE
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1, 11> ENET2_ATCR_CAPTURE;
-#undef ENET2_ATCR_RESTART
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1,  9> ENET2_ATCR_RESTART;
-#undef ENET2_ATCR_PINPER
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1,  7> ENET2_ATCR_PINPER;
-#undef ENET2_ATCR_PEREN
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1,  4> ENET2_ATCR_PEREN;
-#undef ENET2_ATCR_OFFRST
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1,  3> ENET2_ATCR_OFFRST;
-#undef ENET2_ATCR_OFFEN
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1,  2> ENET2_ATCR_OFFEN;
-#undef ENET2_ATCR_EN
-constexpr ENET2_Reg<&ENET_Layout::ATCR,   1,  0> ENET2_ATCR_EN;
-#undef ENET2_ATCOR_COR
-constexpr ENET2_Reg<&ENET_Layout::ATCOR, 31,  0> ENET2_ATCOR_COR;
-#undef ENET2_ATINC_INC_CORR
-constexpr ENET2_Reg<&ENET_Layout::ATINC,  7,  8> ENET2_ATINC_INC_CORR;
-#undef ENET2_ATINC_INC
-constexpr ENET2_Reg<&ENET_Layout::ATINC,  7,  0> ENET2_ATINC_INC;
+namespace TCSR2 {
+constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;
+constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;
+constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;
+constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;
+constexpr ENET_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
+}  // namespace TCSR2
 
-#undef ENET2_TGSR_TF3
-constexpr ENET2_Reg<&ENET_Layout::TGSR,   1,  3, true> ENET2_TGSR_TF3;
-#undef ENET2_TGSR_TF2
-constexpr ENET2_Reg<&ENET_Layout::TGSR,   1,  2, true> ENET2_TGSR_TF2;
-#undef ENET2_TGSR_TF1
-constexpr ENET2_Reg<&ENET_Layout::TGSR,   1,  1, true> ENET2_TGSR_TF1;
-#undef ENET2_TGSR_TF0
-constexpr ENET2_Reg<&ENET_Layout::TGSR,   1,  0, true> ENET2_TGSR_TF0;
+namespace TCSR3 {
+constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;
+constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;
+constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;
+constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;
+constexpr ENET_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
+}  // namespace TCSR3
+}  // namespace ENET
 
-#undef ENET2_TCSR0_TPWC
-constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET2_TCSR0_TPWC;
-#undef ENET2_TCSR0_TF
-constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET2_TCSR0_TF;
-#undef ENET2_TCSR0_TIE
-constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET2_TCSR0_TIE;
-#undef ENET2_TCSR0_TMODE
-constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET2_TCSR0_TMODE;
-#undef ENET2_TCSR0_TDRE
-constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET2_TCSR0_TDRE;
-#undef ENET2_TCSR1_TPWC
-constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET2_TCSR1_TPWC;
-#undef ENET2_TCSR1_TF
-constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET2_TCSR1_TF;
-#undef ENET2_TCSR1_TIE
-constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET2_TCSR1_TIE;
-#undef ENET2_TCSR1_TMODE
-constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET2_TCSR1_TMODE;
-#undef ENET2_TCSR1_TDRE
-constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET2_TCSR1_TDRE;
-#undef ENET2_TCSR2_TPWC
-constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET2_TCSR2_TPWC;
-#undef ENET2_TCSR2_TF
-constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET2_TCSR2_TF;
-#undef ENET2_TCSR2_TIE
-constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET2_TCSR2_TIE;
-#undef ENET2_TCSR2_TMODE
-constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET2_TCSR2_TMODE;
-#undef ENET2_TCSR2_TDRE
-constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET2_TCSR2_TDRE;
-#undef ENET2_TCSR3_TPWC
-constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> ENET2_TCSR3_TPWC;
-#undef ENET2_TCSR3_TF
-constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> ENET2_TCSR3_TF;
-#undef ENET2_TCSR3_TIE
-constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> ENET2_TCSR3_TIE;
-#undef ENET2_TCSR3_TMODE
-constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> ENET2_TCSR3_TMODE;
-#undef ENET2_TCSR3_TDRE
-constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> ENET2_TCSR3_TDRE;
+namespace ENET2 {
+
+namespace EIR {
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 30, true> BABR;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 29, true> BABT;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 28, true> GRA;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 27, true> TXF;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 26, true> TXB;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 25, true> RXF;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 24, true> RXB;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 23, true> MII;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 22, true> EBERR;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 21, true> LC;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 20, true> RL;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 19, true> UN;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 18, true> PLR;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 17, true> WAKEUP;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 16, true> TS_AVAIL;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 15, true> TS_TIMER;
+}  // namespace EIR
+
+namespace EIMR {
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 30> BABR;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 29> BABT;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 28> GRA;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 27> TXF;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 26> TXB;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 25> RXF;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 24> RXB;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 23> MII;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 22> EBERR;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 21> LC;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 20> RL;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 19> UN;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 18> PLR;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 17> WAKEUP;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 16> TS_AVAIL;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 15> TS_TIMER;
+}  // namespace EIMR
+
+namespace RDAR {
+constexpr ENET2_Reg<&ENET_Layout::RDAR, 1, 24> RDAR;
+}  // namespace RDAR
+
+namespace TDAR {
+constexpr ENET2_Reg<&ENET_Layout::TDAR, 1, 24> TDAR;
+}  // namespace TDAR
+
+namespace ECR {
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 8> DBSWP;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 6> DBGEN;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 4> EN1588;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 3> SLEEP;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 2> MAGICEN;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 1> ETHEREN;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 0> RESET;
+}  // namespace ECR
+
+namespace MMFR {
+constexpr ENET2_Reg<&ENET_Layout::MMFR,  2, 30> ST;
+constexpr ENET2_Reg<&ENET_Layout::MMFR,  2, 28> OP;
+constexpr ENET2_Reg<&ENET_Layout::MMFR,  5, 23> PA;
+constexpr ENET2_Reg<&ENET_Layout::MMFR,  5, 18> RA;
+constexpr ENET2_Reg<&ENET_Layout::MMFR,  2, 16> TA;
+constexpr ENET2_Reg<&ENET_Layout::MMFR, 16,  0> DATA;
+}  // namespace MMFR
+
+namespace MSCR {
+constexpr ENET2_Reg<&ENET_Layout::MSCR, 3, 8> HOLDTIME;
+constexpr ENET2_Reg<&ENET_Layout::MSCR, 1, 7> DIS_PRE;
+constexpr ENET2_Reg<&ENET_Layout::MSCR, 6, 1> MII_SPEED;
+}  // namespace MSCR
+
+namespace RCR {
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 31> GRS;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 30> NLC;
+constexpr ENET2_Reg<&ENET_Layout::RCR, 14, 16> MAX_FL;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 15> CFEN;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 14> CRCFWD;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 13> PAUFWD;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 12> PADEN;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  9> RMII_10T;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  8> RMII_MODE;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  5> FCE;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  4> BC_REJ;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  3> PROM;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  2> MII_MODE;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  1> DRT;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  0> LOOP;
+}  // namespace RCR
+
+namespace TCR {
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 9> CRCFWD;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 8> ADDINS;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 4> RFC_PAUSE;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 2> FDEN;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 0> GTS;
+}  // namespace TCR
+
+namespace OPD {
+constexpr ENET2_Reg<&ENET_Layout::OPD, 16, 16> OPCODE;
+constexpr ENET2_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;
+}  // namespace OPD
+
+namespace TXIC {
+constexpr ENET2_Reg<&ENET_Layout::TXIC,  1, 31> ICEN;
+constexpr ENET2_Reg<&ENET_Layout::TXIC,  1, 30> ICCS;
+constexpr ENET2_Reg<&ENET_Layout::TXIC,  8, 20> ICFT;
+constexpr ENET2_Reg<&ENET_Layout::TXIC, 16,  0> ICTT;
+}  // namespace TXIC
+
+namespace RXIC {
+constexpr ENET2_Reg<&ENET_Layout::RXIC,  1, 31> ICEN;
+constexpr ENET2_Reg<&ENET_Layout::RXIC,  1, 30> ICCS;
+constexpr ENET2_Reg<&ENET_Layout::RXIC,  8, 20> ICFT;
+constexpr ENET2_Reg<&ENET_Layout::RXIC, 16,  0> ICTT;
+}  // namespace RXIC
+
+namespace TFWR {
+constexpr ENET2_Reg<&ENET_Layout::TFWR, 1, 8> STRFWD;
+constexpr ENET2_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;
+}  // namespace TFWR
+
+namespace RDSR {
+constexpr ENET2_Reg<&ENET_Layout::RDSR, 29, 3> R_DES_START;
+}  // namespace RDSR
+
+namespace TDSR {
+constexpr ENET2_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;
+}  // namespace TDSR
+
+namespace MRBR {
+constexpr ENET2_Reg<&ENET_Layout::MRBR, 10, 4> R_BUF_SIZE;
+}  // namespace MRBR
+
+namespace RSFL {
+constexpr ENET2_Reg<&ENET_Layout::RSFL, 8, 0> RX_SECTION_FULL;
+}  // namespace RSFL
+
+namespace RSEM {
+constexpr ENET2_Reg<&ENET_Layout::RSEM, 5, 16> STAT_SECTION_EMPTY;
+constexpr ENET2_Reg<&ENET_Layout::RSEM, 8,  0> RX_SECTION_EMPTY;
+}  // namespace RSEM
+
+namespace RAEM {
+constexpr ENET2_Reg<&ENET_Layout::RAEM, 8, 0> RX_ALMOST_EMPTY;
+}  // namespace RAEM
+
+namespace RAFL {
+constexpr ENET2_Reg<&ENET_Layout::RAFL, 8, 0> RX_ALMOST_FULL;
+}  // namespace RAFL
+
+namespace TSEM {
+constexpr ENET2_Reg<&ENET_Layout::TSEM, 8, 0> TX_SECTION_EMPTY;
+}  // namespace TSEM
+
+namespace TAEM {
+constexpr ENET2_Reg<&ENET_Layout::TAEM, 8, 0> TX_ALMOST_EMPTY;
+}  // namespace TAEM
+
+namespace TAFL {
+constexpr ENET2_Reg<&ENET_Layout::TAFL, 8, 0> TX_ALMOST_FULL;
+}  // namespace TAFL
+
+namespace TIPG {
+constexpr ENET2_Reg<&ENET_Layout::TIPG, 5, 0> IPG;
+}  // namespace TIPG
+
+namespace FTRL {
+constexpr ENET2_Reg<&ENET_Layout::FTRL, 14, 0> TRUNC_FL;
+}  // namespace FTRL
+
+namespace TACC {
+constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 4> PROCHK;
+constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 3> IPCHK;
+constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 0> SHIFT16;
+}  // namespace TACC
+
+namespace RACC {
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 7> SHIFT16;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 6> LINEDIS;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 2> PRODIS;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 1> IPDIS;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 0> PADREM;
+}  // namespace RACC
+
+namespace ATCR {
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 13> SLAVE;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 11> CAPTURE;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  9> RESTART;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  7> PINPER;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  4> PEREN;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  3> OFFRST;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  2> OFFEN;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  0> EN;
+}  // namespace ATCR
+
+namespace ATCOR {
+constexpr ENET2_Reg<&ENET_Layout::ATCOR, 31, 0> COR;
+}  // namespace ATCOR
+
+namespace ATINC {
+constexpr ENET2_Reg<&ENET_Layout::ATINC, 7, 8> INC_CORR;
+constexpr ENET2_Reg<&ENET_Layout::ATINC, 7, 0> INC;
+}  // namespace ATINC
+
+namespace TGSR {
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 3, true> TF3;
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 2, true> TF2;
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 1, true> TF1;
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 0, true> TF0;
+}  // namespace TGSR
+
+namespace TCSR0 {
+constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;
+constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;
+constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;
+constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;
+constexpr ENET2_CHANNEL_Reg<0, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
+}  // namespace TCSR0
+
+namespace TCSR1 {
+constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;
+constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;
+constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;
+constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;
+constexpr ENET2_CHANNEL_Reg<1, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
+}  // namespace TCSR1
+
+namespace TCSR2 {
+constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;
+constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;
+constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;
+constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;
+constexpr ENET2_CHANNEL_Reg<2, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
+}  // namespace TCSR2
+
+namespace TCSR3 {
+constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11> TPWC;
+constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7> TF;
+constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6> TIE;
+constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2> TMODE;
+constexpr ENET2_CHANNEL_Reg<3, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0> TDRE;
+}  // namespace TCSR3
+
+}  // namespace ENET2
 
 }  // namespace teensy4
 }  // namespace hardware

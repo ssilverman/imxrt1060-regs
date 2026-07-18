@@ -47,161 +47,133 @@ constexpr uintptr_t kGPIO7_base = 0x42004000;
 constexpr uintptr_t kGPIO8_base = 0x42008000;
 constexpr uintptr_t kGPIO9_base = 0x4200C000;
 
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO1_base> GPIO1;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO2_base> GPIO2;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO3_base> GPIO3;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO4_base> GPIO4;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO5_base> GPIO5;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO6_base> GPIO6;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO7_base> GPIO7;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO8_base> GPIO8;
-constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO9_base> GPIO9;
+namespace GPIO1 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO1_base> group;
+}  // namespace GPIO1
 
-// Undefine anything defined by Teensyduino's imxrt.h
+namespace GPIO2 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO2_base> group;
+}  // namespace GPIO2
+
+namespace GPIO3 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO3_base> group;
+}  // namespace GPIO3
+
+namespace GPIO4 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO4_base> group;
+}  // namespace GPIO4
+
+namespace GPIO5 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO5_base> group;
+}  // namespace GPIO5
+
+namespace GPIO6 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO6_base> group;
+}  // namespace GPIO6
+
+namespace GPIO7 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO7_base> group;
+}  // namespace GPIO7
+
+namespace GPIO8 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO8_base> group;
+}  // namespace GPIO8
+
+namespace GPIO9 {
+constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO9_base> group;
+}  // namespace GPIO9
+
+namespace GPIO {
 
 // ICR1 values
-#undef GPIO_ICR15
-constexpr regs::RegValue32<2, 30> GPIO_ICR15;
-#undef GPIO_ICR14
-constexpr regs::RegValue32<2, 28> GPIO_ICR14;
-#undef GPIO_ICR13
-constexpr regs::RegValue32<2, 26> GPIO_ICR13;
-#undef GPIO_ICR12
-constexpr regs::RegValue32<2, 24> GPIO_ICR12;
-#undef GPIO_ICR11
-constexpr regs::RegValue32<2, 22> GPIO_ICR11;
-#undef GPIO_ICR10
-constexpr regs::RegValue32<2, 20> GPIO_ICR10;
-#undef GPIO_ICR9
-constexpr regs::RegValue32<2, 18> GPIO_ICR9;
-#undef GPIO_ICR8
-constexpr regs::RegValue32<2, 16> GPIO_ICR8;
-#undef GPIO_ICR7
-constexpr regs::RegValue32<2, 14> GPIO_ICR7;
-#undef GPIO_ICR6
-constexpr regs::RegValue32<2, 12> GPIO_ICR6;
-#undef GPIO_ICR5
-constexpr regs::RegValue32<2, 10> GPIO_ICR5;
-#undef GPIO_ICR4
-constexpr regs::RegValue32<2,  8> GPIO_ICR4;
-#undef GPIO_ICR3
-constexpr regs::RegValue32<2,  6> GPIO_ICR3;
-#undef GPIO_ICR2
-constexpr regs::RegValue32<2,  4> GPIO_ICR2;
-#undef GPIO_ICR1
-constexpr regs::RegValue32<2,  2> GPIO_ICR1;
-#undef GPIO_ICR0
-constexpr regs::RegValue32<2,  0> GPIO_ICR0;
+namespace ICR1 {
+constexpr regs::RegValue32<2, 30> ICR15;
+constexpr regs::RegValue32<2, 28> ICR14;
+constexpr regs::RegValue32<2, 26> ICR13;
+constexpr regs::RegValue32<2, 24> ICR12;
+constexpr regs::RegValue32<2, 22> ICR11;
+constexpr regs::RegValue32<2, 20> ICR10;
+constexpr regs::RegValue32<2, 18> ICR9;
+constexpr regs::RegValue32<2, 16> ICR8;
+constexpr regs::RegValue32<2, 14> ICR7;
+constexpr regs::RegValue32<2, 12> ICR6;
+constexpr regs::RegValue32<2, 10> ICR5;
+constexpr regs::RegValue32<2,  8> ICR4;
+constexpr regs::RegValue32<2,  6> ICR3;
+constexpr regs::RegValue32<2,  4> ICR2;
+constexpr regs::RegValue32<2,  2> ICR1;
+constexpr regs::RegValue32<2,  0> ICR0;
+}  // namespace ICR1
 
 // ICR2 values
-#undef GPIO_ICR31
-constexpr regs::RegValue32<2, 30> GPIO_ICR31;
-#undef GPIO_ICR30
-constexpr regs::RegValue32<2, 28> GPIO_ICR30;
-#undef GPIO_ICR29
-constexpr regs::RegValue32<2, 26> GPIO_ICR29;
-#undef GPIO_ICR28
-constexpr regs::RegValue32<2, 24> GPIO_ICR28;
-#undef GPIO_ICR27
-constexpr regs::RegValue32<2, 22> GPIO_ICR27;
-#undef GPIO_ICR26
-constexpr regs::RegValue32<2, 20> GPIO_ICR26;
-#undef GPIO_ICR25
-constexpr regs::RegValue32<2, 18> GPIO_ICR25;
-#undef GPIO_ICR24
-constexpr regs::RegValue32<2, 16> GPIO_ICR24;
-#undef GPIO_ICR23
-constexpr regs::RegValue32<2, 14> GPIO_ICR23;
-#undef GPIO_ICR22
-constexpr regs::RegValue32<2, 12> GPIO_ICR22;
-#undef GPIO_ICR21
-constexpr regs::RegValue32<2, 10> GPIO_ICR21;
-#undef GPIO_ICR20
-constexpr regs::RegValue32<2,  8> GPIO_ICR20;
-#undef GPIO_ICR19
-constexpr regs::RegValue32<2,  6> GPIO_ICR19;
-#undef GPIO_ICR18
-constexpr regs::RegValue32<2,  4> GPIO_ICR18;
-#undef GPIO_ICR17
-constexpr regs::RegValue32<2,  2> GPIO_ICR17;
-#undef GPIO_ICR16
-constexpr regs::RegValue32<2,  0> GPIO_ICR16;
+namespace ICR2 {
+constexpr regs::RegValue32<2, 30> ICR31;
+constexpr regs::RegValue32<2, 28> ICR30;
+constexpr regs::RegValue32<2, 26> ICR29;
+constexpr regs::RegValue32<2, 24> ICR28;
+constexpr regs::RegValue32<2, 22> ICR27;
+constexpr regs::RegValue32<2, 20> ICR26;
+constexpr regs::RegValue32<2, 18> ICR25;
+constexpr regs::RegValue32<2, 16> ICR24;
+constexpr regs::RegValue32<2, 14> ICR23;
+constexpr regs::RegValue32<2, 12> ICR22;
+constexpr regs::RegValue32<2, 10> ICR21;
+constexpr regs::RegValue32<2,  8> ICR20;
+constexpr regs::RegValue32<2,  6> ICR19;
+constexpr regs::RegValue32<2,  4> ICR18;
+constexpr regs::RegValue32<2,  2> ICR17;
+constexpr regs::RegValue32<2,  0> ICR16;
+}  // namespace ICR2
 
 // Individual bits
-#undef GPIO_BIT_31
-constexpr regs::RegValue32<1, 31> GPIO_BIT_31;
-#undef GPIO_BIT_30
-constexpr regs::RegValue32<1, 30> GPIO_BIT_30;
-#undef GPIO_BIT_29
-constexpr regs::RegValue32<1, 29> GPIO_BIT_29;
-#undef GPIO_BIT_28
-constexpr regs::RegValue32<1, 28> GPIO_BIT_28;
-#undef GPIO_BIT_27
-constexpr regs::RegValue32<1, 27> GPIO_BIT_27;
-#undef GPIO_BIT_26
-constexpr regs::RegValue32<1, 26> GPIO_BIT_26;
-#undef GPIO_BIT_25
-constexpr regs::RegValue32<1, 25> GPIO_BIT_25;
-#undef GPIO_BIT_24
-constexpr regs::RegValue32<1, 24> GPIO_BIT_24;
-#undef GPIO_BIT_23
-constexpr regs::RegValue32<1, 23> GPIO_BIT_23;
-#undef GPIO_BIT_22
-constexpr regs::RegValue32<1, 22> GPIO_BIT_22;
-#undef GPIO_BIT_21
-constexpr regs::RegValue32<1, 21> GPIO_BIT_21;
-#undef GPIO_BIT_20
-constexpr regs::RegValue32<1, 20> GPIO_BIT_20;
-#undef GPIO_BIT_19
-constexpr regs::RegValue32<1, 19> GPIO_BIT_19;
-#undef GPIO_BIT_18
-constexpr regs::RegValue32<1, 18> GPIO_BIT_18;
-#undef GPIO_BIT_17
-constexpr regs::RegValue32<1, 17> GPIO_BIT_17;
-#undef GPIO_BIT_16
-constexpr regs::RegValue32<1, 16> GPIO_BIT_16;
-#undef GPIO_BIT_15
-constexpr regs::RegValue32<1, 15> GPIO_BIT_15;
-#undef GPIO_BIT_14
-constexpr regs::RegValue32<1, 14> GPIO_BIT_14;
-#undef GPIO_BIT_13
-constexpr regs::RegValue32<1, 13> GPIO_BIT_13;
-#undef GPIO_BIT_12
-constexpr regs::RegValue32<1, 12> GPIO_BIT_12;
-#undef GPIO_BIT_11
-constexpr regs::RegValue32<1, 11> GPIO_BIT_11;
-#undef GPIO_BIT_10
-constexpr regs::RegValue32<1, 10> GPIO_BIT_10;
-#undef GPIO_BIT_9
-constexpr regs::RegValue32<1,  9> GPIO_BIT_9;
-#undef GPIO_BIT_8
-constexpr regs::RegValue32<1,  8> GPIO_BIT_8;
-#undef GPIO_BIT_7
-constexpr regs::RegValue32<1,  7> GPIO_BIT_7;
-#undef GPIO_BIT_6
-constexpr regs::RegValue32<1,  6> GPIO_BIT_6;
-#undef GPIO_BIT_5
-constexpr regs::RegValue32<1,  5> GPIO_BIT_5;
-#undef GPIO_BIT_4
-constexpr regs::RegValue32<1,  4> GPIO_BIT_4;
-#undef GPIO_BIT_3
-constexpr regs::RegValue32<1,  3> GPIO_BIT_3;
-#undef GPIO_BIT_2
-constexpr regs::RegValue32<1,  2> GPIO_BIT_2;
-#undef GPIO_BIT_1
-constexpr regs::RegValue32<1,  1> GPIO_BIT_1;
-#undef GPIO_BIT_0
-constexpr regs::RegValue32<1,  0> GPIO_BIT_0;
+constexpr regs::RegValue32<1, 31> BIT_31;
+constexpr regs::RegValue32<1, 30> BIT_30;
+constexpr regs::RegValue32<1, 29> BIT_29;
+constexpr regs::RegValue32<1, 28> BIT_28;
+constexpr regs::RegValue32<1, 27> BIT_27;
+constexpr regs::RegValue32<1, 26> BIT_26;
+constexpr regs::RegValue32<1, 25> BIT_25;
+constexpr regs::RegValue32<1, 24> BIT_24;
+constexpr regs::RegValue32<1, 23> BIT_23;
+constexpr regs::RegValue32<1, 22> BIT_22;
+constexpr regs::RegValue32<1, 21> BIT_21;
+constexpr regs::RegValue32<1, 20> BIT_20;
+constexpr regs::RegValue32<1, 19> BIT_19;
+constexpr regs::RegValue32<1, 18> BIT_18;
+constexpr regs::RegValue32<1, 17> BIT_17;
+constexpr regs::RegValue32<1, 16> BIT_16;
+constexpr regs::RegValue32<1, 15> BIT_15;
+constexpr regs::RegValue32<1, 14> BIT_14;
+constexpr regs::RegValue32<1, 13> BIT_13;
+constexpr regs::RegValue32<1, 12> BIT_12;
+constexpr regs::RegValue32<1, 11> BIT_11;
+constexpr regs::RegValue32<1, 10> BIT_10;
+constexpr regs::RegValue32<1,  9> BIT_9;
+constexpr regs::RegValue32<1,  8> BIT_8;
+constexpr regs::RegValue32<1,  7> BIT_7;
+constexpr regs::RegValue32<1,  6> BIT_6;
+constexpr regs::RegValue32<1,  5> BIT_5;
+constexpr regs::RegValue32<1,  4> BIT_4;
+constexpr regs::RegValue32<1,  3> BIT_3;
+constexpr regs::RegValue32<1,  2> BIT_2;
+constexpr regs::RegValue32<1,  1> BIT_1;
+constexpr regs::RegValue32<1,  0> BIT_0;
 
 // Directions
-constexpr uint32_t kGPIO_GDIR_INPUT  = 0;
-constexpr uint32_t kGPIO_GDIR_OUTPUT = 1;
+namespace GDIR {
+constexpr uint32_t kINPUT  = 0;
+constexpr uint32_t kOUTPUT = 1;
+}  // namespace GDIR
 
 // ICR active condition values
-constexpr uint32_t kGPIO_ICR_LOW     = 0;
-constexpr uint32_t kGPIO_ICR_HIGH    = 1;
-constexpr uint32_t kGPIO_ICR_RISING  = 2;
-constexpr uint32_t kGPIO_ICR_FALLING = 3;
+namespace ICR {
+constexpr uint32_t kLOW     = 0;
+constexpr uint32_t kHIGH    = 1;
+constexpr uint32_t kRISING  = 2;
+constexpr uint32_t kFALLING = 3;
+}  // namespace ICR
+
+}  // namespace GPIO
 
 }  // namespace teensy4
 }  // namespace hardware
