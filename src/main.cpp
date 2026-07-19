@@ -65,6 +65,9 @@ void setup() {
   printf("Waiting for %gs...\r\n", kStartupDelay);
   delay(static_cast<uint32_t>(kStartupDelay * 1'000));
 
+  init_watchdog();
+  printf("Watchdog initialized\r\n");
+
   enable_enet_clocks();
   printf("ENET enabled\r\n");
   delay(500);
