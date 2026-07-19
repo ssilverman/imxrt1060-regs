@@ -4,6 +4,7 @@
 #include <cinttypes>
 #include <cstdint>
 #include <cstdio>
+#include <utility>
 
 #include <Arduino.h>
 #include <elapsedMillis.h>
@@ -50,6 +51,7 @@ static inline void clearAndSet32(volatile uint32_t* const reg,
 #endif  // USE_OLD_WAY
 
 // Main program setup.
+[[gnu::weak]]
 void setup() {
   Serial.begin(115200);
   while (!Serial && millis() < 4'000) {
@@ -75,6 +77,7 @@ void setup() {
   counterTimer = 0;
 }
 
+[[gnu::weak]]
 // Main program loop.
 void loop() {
   // Print the cycle count every second
@@ -93,6 +96,7 @@ void loop() {
 }
 
 // Reboots the Teensy.
+[[noreturn]]
 static void reboot() {
 #if !USE_OLD_WAY
   USB1::group->USBCMD = 0;  // Disconnect USB
@@ -118,6 +122,12 @@ static void reboot() {
   while (true) {
     asm volatile ("nop");
   }
+
+#if (__cplusplus < 202302L)
+  __builtin_unreachable();
+#else
+  std::unreachable();
+#endif  // C++ < 23
 }
 
 // Enables the Ethernet-related clocks. See also disable_enet_clocks().
