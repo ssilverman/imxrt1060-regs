@@ -34,12 +34,11 @@ class RegGroup {
 // The 'R' parameter is the unsigned type of each whole register, for example,
 // uint32_t or uint16_t.
 //
-// The "direct assign" parameter means that assignment will not use the "read,
+// The 'DirectAssign' parameter means that assignment will not use the "read,
 // clear, set, assign" approach. Instead, the given value is directly assigned
-// to the register after shifting. This is appropriate for things like "CLR" and
-// "SET" registers, where only the 1-assigned bits are set to something. Or, it
-// could be used for write-1-to-clear bits, if all the bits in the register are
-// write-1-to-clear (w1c).
+// to the register after masking and shifting. This is appropriate for things
+// like "CLR" and "SET" registers, where only the 1-assigned bits are set to
+// something. Or, it could be used for write-1-to-clear bits.
 template <typename R, uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
