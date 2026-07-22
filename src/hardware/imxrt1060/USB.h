@@ -769,7 +769,7 @@ constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  3> PEC;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  2> PE;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  1> CSC;
-constexpr USB2_Reg<cregs::onstify(&USB_Layout::PORTSC1), 1,  0> CCS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;
 }  // namespace PORTSC1
 
 // USB2 On-The-Go Status & control

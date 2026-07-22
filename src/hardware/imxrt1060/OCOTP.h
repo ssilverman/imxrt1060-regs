@@ -165,7 +165,7 @@ constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1, 10> RELOAD_SHADOWS;  // Reload Shad
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1,  9> ERROR;           // Locked Region Access Error
     // 0b0..No error.
     // 0b1..Error - access to a locked region requested.
-constexpr OCOTP_Reg<constify(&OCOTP_Layout::CTRL),  1,  8> BUSY;            // OTP controller status bit
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL),  1,  8> BUSY;            // OTP controller status bit
     // 0b0..No write or read access to OTP started.
     // 0b1..Write or read access to OTP started.
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  6,  0> ADDR;            // OTP write and read access address register
