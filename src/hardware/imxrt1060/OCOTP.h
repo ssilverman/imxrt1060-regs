@@ -45,7 +45,7 @@ struct OCOTP_Layout {
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[27];
   volatile uint32_t TIMING2;                           /**< OTP Controller Timing Register 2, offset: 0x100 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[191];
-  volatile uint32_t LOCK;                              /**< Value of OTP Bank0 Word0 (Lock controls), offset: 0x400 */
+  const volatile uint32_t LOCK;                        /**< Value of OTP Bank0 Word0 (Lock controls), offset: 0x400 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[3];
   volatile uint32_t CFG0;                              /**< Value of OTP Bank0 Word1 (Configuration and Manufacturing Info.), offset: 0x410 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[3];
@@ -165,7 +165,7 @@ constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1, 10> RELOAD_SHADOWS;  // Reload Shad
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1,  9> ERROR;           // Locked Region Access Error
     // 0b0..No error.
     // 0b1..Error - access to a locked region requested.
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1,  8> BUSY;            // OTP controller status bit
+constexpr OCOTP_Reg<constify(&OCOTP_Layout::CTRL),  1,  8> BUSY;            // OTP controller status bit
     // 0b0..No write or read access to OTP started.
     // 0b1..Write or read access to OTP started.
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  6,  0> ADDR;            // OTP write and read access address register

@@ -105,21 +105,21 @@ namespace TRNG {
 
 // Miscellaneous Control Register
 namespace MCTL {
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 16> PRGM;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 14> LRUN_CONT;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 13> TSTOP_OK;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 12> ERR;  // w1c
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 11> TST_OUT;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 10> ENT_VAL;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  9> FCT_VAL;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  8> FCT_FAIL;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  7> FOR_SCLK;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6> RST_DEF;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  5> UNUSED5;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  4> UNUSED4;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  2> OSC_DIV;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 16>       PRGM;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 14>       LRUN_CONT;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 13>       TSTOP_OK;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 12, true> ERR;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 11>       TST_OUT;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 10>       ENT_VAL;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  9>       FCT_VAL;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  8>       FCT_FAIL;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  7>       FOR_SCLK;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6>       RST_DEF;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  5>       UNUSED5;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  4>       UNUSED4;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  2>       OSC_DIV;
     // 1/2^value
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  0> SAMP_MODE;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  0>       SAMP_MODE;
     // 0b00..use Von Neumann data into both Entropy shifter and Statistical Checker
     // 0b01..use raw data into both Entropy shifter and Statistical Checker
     // 0b10..use Von Neumann data into Entropy shifter. Use raw data into Statistical Checker

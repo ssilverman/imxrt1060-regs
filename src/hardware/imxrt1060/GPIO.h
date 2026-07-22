@@ -28,7 +28,7 @@ struct GPIO_Layout {
   volatile uint32_t ICR1;                              /**< GPIO interrupt configuration register1, offset: 0xC */
   volatile uint32_t ICR2;                              /**< GPIO interrupt configuration register2, offset: 0x10 */
   volatile uint32_t IMR;                               /**< GPIO interrupt mask register, offset: 0x14 */
-  volatile uint32_t ISR;                               /**< GPIO interrupt status register, offset: 0x18 */
+  volatile uint32_t ISR;                               /**< w1c, GPIO interrupt status register, offset: 0x18 */
   volatile uint32_t EDGE_SEL;                          /**< GPIO edge select register, offset: 0x1C */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[25];
   volatile uint32_t DR_SET;                            /**< GPIO data register SET, offset: 0x84 */

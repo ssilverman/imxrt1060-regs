@@ -276,7 +276,7 @@ constexpr USB1_Reg<&USB_Layout::USBCMD, 1,  0> RS;
 namespace USBSTS {
 constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 25> TI1;
 constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 24> TI0;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 16> NAKI;
+constexpr USB1_Reg<regs::constify(&USB_Layout::USBSTS), 1, 16> NAKI;
 constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 15> AS;
 constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 14> PS;
 constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 13> RCL;
@@ -422,18 +422,18 @@ constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 10> LS;
     // 0b01..K-state
     // 0b10..J-state
     // 0b11..Undefined
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 9> HSP;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1, 9> HSP;
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 8> PR;
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 7> SUSP;
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 6> FPR;
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 5> OCC;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 4> OCA;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1, 4> OCA;
     // 0b0..This port does not have an over-current condition.
     // 0b1..This port currently has an over-current condition
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 3> PEC;
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 2> PE;
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 1> CSC;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 0> CCS;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1, 0> CCS;
 }  // namespace PORTSC1
 
 // USB1 On-The-Go Status & control
@@ -452,13 +452,13 @@ constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 19> BSVIS;
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 18> ASVIS;
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 17> AVVIS;
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 16> IDIS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 14> DPS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 13> TOG_1MS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 12> BSE;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 11> BSV;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 10> ASV;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  9> AVV;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  8> ID;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14> DPS;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13> TOG_1MS;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12> BSE;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11> BSV;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  5> IDPU;
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  4> DP;
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  3> OT;
@@ -651,7 +651,7 @@ constexpr USB2_Reg<&USB_Layout::USBCMD, 1,  0> RS;
 namespace USBSTS {
 constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 25> TI1;
 constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 24> TI0;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 16> NAKI;
+constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 16> NAKI;
 constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 15> AS;
 constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 14> PS;
 constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 13> RCL;
@@ -760,16 +760,16 @@ constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 14> PIC;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 13> PO;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 12> PP;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 10> LS;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  9> HSP;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9> HSP;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  8> PR;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  7> SUSP;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  6> FPR;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  5> OCC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  4> OCA;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  3> PEC;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  2> PE;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  1> CSC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  0> CCS;
+constexpr USB2_Reg<cregs::onstify(&USB_Layout::PORTSC1), 1,  0> CCS;
 }  // namespace PORTSC1
 
 // USB2 On-The-Go Status & control
@@ -788,13 +788,13 @@ constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 19> BSVIS;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 18> ASVIS;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 17> AVVIS;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 16> IDIS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 14> DPS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 13> TOG_1MS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 12> BSE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 11> BSV;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 10> ASV;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  9> AVV;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  8> ID;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14> DPS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13> TOG_1MS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12> BSE;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11> BSV;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  5> IDPU;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  4> DP;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  3> OT;

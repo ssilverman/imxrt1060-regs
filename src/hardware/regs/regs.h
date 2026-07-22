@@ -16,6 +16,13 @@ namespace qindesign {
 namespace hardware {
 namespace regs {
 
+// Adds const to a member.
+template <typename Layout, typename Member>
+constexpr std::add_const_t<Member> Layout::* constify(
+    Member Layout::* const m) {
+  return m;
+}
+
 // Defines a register group having the given layout, expected size, and base
 // address. While it's possible to just utilize sizeof(Layout) instead of also
 // passing a size, having the size provides an extra check.

@@ -207,8 +207,8 @@ namespace GPR3 {
 constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR3, 1, 31> AXBS_L_HALTED;
     // 0b0..axbs_l is not halted
     // 0b1..axbs_l is in halted status
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR3, 4, 24> OCRAM2_STATUS;
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR3, 4, 16> OCRAM_STATUS;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR3), 4, 24> OCRAM2_STATUS;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR3), 4, 16> OCRAM_STATUS;
 constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR3, 1, 15> AXBS_L_HALT_REQ;
     // 0b0..axbs_l normal run
     // 0b1..request to halt axbs_l
@@ -221,52 +221,52 @@ constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR3, 4,  0> OCRAM_CTL;
 
 // GPR4 General Purpose Register
 namespace GPR4 {
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 31> FLEXSPI2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 31> FLEXSPI2_STOP_ACK;
     // 0b0..FLEXSPI2 stop acknowledge is not asserted
     // 0b1..FLEXSPI2 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 30> FLEXIO3_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 30> FLEXIO3_STOP_ACK;
     // 0b0..FLEXIO3 stop acknowledge is not asserted
     // 0b1..FLEXIO3 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 29> FLEXIO2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 29> FLEXIO2_STOP_ACK;
     // 0b0..FLEXIO2 stop acknowledge is not asserted
     // 0b1..FLEXIO2 stop acknowledge is asserted (FLEXIO2 is in STOP mode)
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 28> FLEXIO1_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 28> FLEXIO1_STOP_ACK;
     // 0b0..FLEXIO1 stop acknowledge is not asserted
     // 0b1..FLEXIO1 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 27> FLEXSPI_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 27> FLEXSPI_STOP_ACK;
     // 0b0..FLEXSPI stop acknowledge is not asserted
     // 0b1..FLEXSPI stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 26> PIT_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 26> PIT_STOP_ACK;
     // 0b0..PIT stop acknowledge is not asserted
     // 0b1..PIT stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 25> SEMC_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 25> SEMC_STOP_ACK;
     // 0b0..SEMC stop acknowledge is not asserted
     // 0b1..SEMC stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 24> ENET2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 24> ENET2_STOP_ACK;
     // 0b0..ENET2 stop acknowledge is not asserted
     // 0b1..ENET2 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 23> SAI3_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 23> SAI3_STOP_ACK;
     // 0b0..SAI3 stop acknowledge is not asserted
     // 0b1..SAI3 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 22> SAI2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 22> SAI2_STOP_ACK;
     // 0b0..SAI2 stop acknowledge is not asserted
     // 0b1..SAI2 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 21> SAI1_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 21> SAI1_STOP_ACK;
     // 0b0..SAI1 stop acknowledge is not asserted
     // 0b1..SAI1 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 20> ENET_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 20> ENET_STOP_ACK;
     // 0b0..ENET1 stop acknowledge is not asserted
     // 0b1..ENET1 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 19> TRNG_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 19> TRNG_STOP_ACK;
     // 0b0..TRNG stop acknowledge is not asserted
     // 0b1..TRNG stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 18> CAN2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 18> CAN2_STOP_ACK;
     // 0b0..CAN2 stop acknowledge is not asserted
     // 0b1..CAN2 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 17> CAN1_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 17> CAN1_STOP_ACK;
     // 0b0..CAN1 stop acknowledge is not asserted
     // 0b1..CAN1 stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 16> EDMA_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR4), 1, 16> EDMA_STOP_ACK;
     // 0b0..EDMA stop acknowledge is not asserted
     // 0b1..EDMA stop acknowledge is asserted (EDMA is in STOP mode).
 constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR4, 1, 15> FLEXSPI2_STOP_REQ;
@@ -449,52 +449,52 @@ constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR6, 1,  0> QTIMER1_TRM0_INPUT_SEL
 
 // GPR7 General Purpose Register
 namespace GPR7 {
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 31> LPUART8_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 31> LPUART8_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted (the module is in Stop mode)
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 30> LPUART7_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 30> LPUART7_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 29> LPUART6_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 29> LPUART6_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 28> LPUART5_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 28> LPUART5_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 27> LPUART4_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 27> LPUART4_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 26> LPUART3_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 26> LPUART3_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 25> LPUART2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 25> LPUART2_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 24> LPUART1_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 24> LPUART1_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 23> LPSPI4_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 23> LPSPI4_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 22> LPSPI3_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 22> LPSPI3_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 21> LPSPI2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 21> LPSPI2_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 20> LPSPI1_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 20> LPSPI1_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 19> LPI2C4_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 19> LPI2C4_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 18> LPI2C3_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 18> LPI2C3_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 17> LPI2C2_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 17> LPI2C2_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 16> LPI2C1_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR7), 1, 16> LPI2C1_STOP_ACK;
     // 0b0..stop acknowledge is not asserted
     // 0b1..stop acknowledge is asserted (the module is in Stop mode)
 constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR7, 1, 15> LPUART8_STOP_REQ;
@@ -738,7 +738,7 @@ constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR12, 1, 0> FLEXIO1_IPG_STOP_MODE;
 
 // GPR13 General Purpose Register
 namespace GPR13 {
-constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR13, 1, 20> CANFD_STOP_ACK;
+constexpr IOMUXC_GPR_Reg<regs::constify(&IOMUXC_GPR_Layout::GPR13), 1, 20> CANFD_STOP_ACK;
     // 0b0..CANFD stop acknowledge is not asserted
     // 0b1..CANFD stop acknowledge is asserted
 constexpr IOMUXC_GPR_Reg<&IOMUXC_GPR_Layout::GPR13, 1, 13> CACHE_USB;

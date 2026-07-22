@@ -108,13 +108,13 @@ constexpr WDOG1_Reg<&WDOG_Layout::WRSR, 1, 0> SFTW;
 
 // Watchdog Interrupt Control Register
 namespace WICR {
-constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 15> WIE;
+constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 15>       WIE;
     // 0b0..Disable Interrupt (Default).
     // 0b1..Enable Interrupt.
-constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 14> WTIS;
+constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 14, true> WTIS;
     // 0b0..No interrupt has occurred (Default).
     // 0b1..Interrupt has occurred
-constexpr WDOG1_Reg<&WDOG_Layout::WICR, 8,  0> WICT;
+constexpr WDOG1_Reg<&WDOG_Layout::WICR, 8,  0>       WICT;
     // 0b00000000..WICT[7:0] = Time duration between interrupt and time-out is 0 seconds.
     // 0b00000001..WICT[7:0] = Time duration between interrupt and time-out is 0.5 seconds.
     // 0b00000100..WICT[7:0] = Time duration between interrupt and time-out is 2 seconds (Default).
@@ -159,9 +159,9 @@ constexpr WDOG2_Reg<&WDOG_Layout::WRSR, 1, 0> SFTW;
 
 // WDOG2 Watchdog Interrupt Control Register
 namespace WICR {
-constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 15> WIE;
-constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 14> WTIS;
-constexpr WDOG2_Reg<&WDOG_Layout::WICR, 8,  0> WICT;
+constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 15>       WIE;
+constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 14, true> WTIS;
+constexpr WDOG2_Reg<&WDOG_Layout::WICR, 8,  0>       WICT;
 }  // namespace WICR
 
 // WDOG2 Watchdog Miscellaneous Control Register

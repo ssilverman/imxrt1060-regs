@@ -310,7 +310,7 @@ namespace MIBC {
 constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 31> MIB_DIS;    // Disable MIB Logic
     // 0b0..MIB logic is enabled.
     // 0b1..MIB logic is disabled. The MIB logic halts and does not update any MIB counters.
-constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 30> MIB_IDLE;   // MIB Idle
+constexpr ENET_Reg<regs::constify(&ENET_Layout::MIBC), 1, 30> MIB_IDLE;   // MIB Idle
     // 0b0..The MIB block is updating MIB counters.
     // 0b1..The MIB block is not currently updating any MIB counters.
 constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;  // MIB Clear
@@ -320,7 +320,7 @@ constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;  // MIB Clear
 
 // Receive Control Register
 namespace RCR {
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 31> GRS;        // Graceful Receive Stopped
+constexpr ENET_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;        // Graceful Receive Stopped
     // 0b0..Receive not stopped
     // 0b1..Receive stopped
 constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30> NLC;        // Payload Length Check Disable
@@ -378,7 +378,7 @@ constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;     // Source MAC Address Se
     // 0b100..Reserved.
     // 0b101..Reserved.
     // 0b110..Reserved.
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 4> RFC_PAUSE;  // Receive Frame Control Pause
+constexpr ENET_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;  // Receive Frame Control Pause
 constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;  // Transmit Frame Control Pause
     // 0b0..No PAUSE frame transmitted.
     // 0b1..The MAC stops transmission of data frames after the current transmission is complete.
@@ -393,12 +393,12 @@ constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0> GTS;        // Graceful Transmit Sto
 // Physical Address Upper Register
 namespace PAUR {
 constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;
-constexpr ENET_Reg<&ENET_Layout::PAUR, 16,  0> TYPE;  // Type Field In PAUSE Frames
+constexpr ENET_Reg<regs::constify(&ENET_Layout::PAUR), 16,  0> TYPE;  // Type Field In PAUSE Frames
 }  // namespace PAUR
 
 // Opcode/Pause Duration Register
 namespace OPD {
-constexpr ENET_Reg<&ENET_Layout::OPD, 16, 16> OPCODE;     // Opcode Field In PAUSE Frames
+constexpr ENET_Reg<regs::constify(&ENET_Layout::OPD), 16, 16> OPCODE;     // Opcode Field In PAUSE Frames
 constexpr ENET_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;  // Pause Duration
 }  // namespace OPD
 
@@ -609,7 +609,7 @@ constexpr ENET_CHANNEL_RegValue<5, 11> TPWC;   // Timer PulseWidth Control
     // 0b00010..Pulse width is three 1588-clock cycles.
     // 0b00011..Pulse width is four 1588-clock cycles.
     // 0b11111..Pulse width is 32 1588-clock cycles.
-constexpr ENET_CHANNEL_RegValue<1,  7> TF;     // Timer Flag
+constexpr ENET_CHANNEL_RegValue<1,  7> TF;     // w1c, Timer Flag
     // 0b0..Input Capture or Output Compare has not occurred.
     // 0b1..Input Capture or Output Compare has occurred.
 constexpr ENET_CHANNEL_RegValue<1,  6> TIE;    // Timer Interrupt Enable
@@ -711,8 +711,15 @@ constexpr ENET2_Reg<&ENET_Layout::MSCR, 1, 7> DIS_PRE;
 constexpr ENET2_Reg<&ENET_Layout::MSCR, 6, 1> MII_SPEED;
 }  // namespace MSCR
 
+// MIB Control Register
+namespace MIBC {
+constexpr ENET2_Reg<&ENET_Layout::MIBC, 1, 31> MIB_DIS;
+constexpr ENET2_Reg<regs::constify(&ENET_Layout::MIBC), 1, 30> MIB_IDLE;
+constexpr ENET2_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;
+}  // namespace MIBC
+
 namespace RCR {
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 31> GRS;
+constexpr ENET2_Reg<regs::constify(&ENET_Layout::RCR),  1, 31> GRS;
 constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 30> NLC;
 constexpr ENET2_Reg<&ENET_Layout::RCR, 14, 16> MAX_FL;
 constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 15> CFEN;
@@ -733,14 +740,19 @@ namespace TCR {
 constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 9> CRCFWD;
 constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 8> ADDINS;
 constexpr ENET2_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;
-constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 4> RFC_PAUSE;
+constexpr ENET2_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;
 constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;
 constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 2> FDEN;
 constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 0> GTS;
 }  // namespace TCR
 
+namespace PAUR {
+constexpr ENET2_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;
+constexpr ENET2_Reg<regs::constify(&ENET_Layout::PAUR), 16,  0> TYPE;
+}  // namespace PAUR
+
 namespace OPD {
-constexpr ENET2_Reg<&ENET_Layout::OPD, 16, 16> OPCODE;
+constexpr ENET2_Reg<regs::constify(&ENET_Layout::OPD), 16, 16> OPCODE;
 constexpr ENET2_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;
 }  // namespace OPD
 
