@@ -28,14 +28,14 @@ struct CSI_Layout {
   const volatile uint32_t RFIFO;                       /**< CSI RX FIFO Register, offset: 0x10 */
   volatile uint32_t RXCNT;                             /**< CSI RX Count Register, offset: 0x14 */
   volatile uint32_t SR;                                /**< CSI Status Register, offset: 0x18 */
-  uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[4];
+  uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[1];
   volatile uint32_t DMASA_STATFIFO;                    /**< CSI DMA Start Address Register - for STATFIFO, offset: 0x20 */
   volatile uint32_t DMATS_STATFIFO;                    /**< CSI DMA Transfer Size Register - for STATFIFO, offset: 0x24 */
   volatile uint32_t DMASA_FB1;                         /**< CSI DMA Start Address Register - for Frame Buffer1, offset: 0x28 */
   volatile uint32_t DMASA_FB2;                         /**< CSI DMA Transfer Size Register - for Frame Buffer2, offset: 0x2C */
   volatile uint32_t FBUF_PARA;                         /**< CSI Frame Buffer Parameter Register, offset: 0x30 */
   volatile uint32_t IMAG_PARA;                         /**< CSI Image Parameter Register, offset: 0x34 */
-  uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[16];
+  uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[4];
   volatile uint32_t CR18;                              /**< CSI Control Register 18, offset: 0x48 */
   volatile uint32_t CR19;                              /**< CSI Control Register 19, offset: 0x4C */
 };
