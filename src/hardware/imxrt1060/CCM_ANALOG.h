@@ -254,7 +254,7 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 2, 14> BYPASS_CLK_SRC;
     // 0b01..Select the CLK1_N / CLK1_P as source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1, 13> ENABLE;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1, 12> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1,  0> DIV_SELECT_MASK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1,  0> DIV_SELECT;
 }  // namespace PLL_SYS
 
 // Analog System PLL Control Register
@@ -264,7 +264,7 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 16, true> BYPASS;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 2, 14, true> BYPASS_CLK_SRC;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 13, true> ENABLE;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1,  0, true> DIV_SELECT_MASK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1,  0, true> DIV_SELECT;
 }  // namespace PLL_SYS_SET
 
 // Analog System PLL Control Register
@@ -274,7 +274,7 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 16, true> BYPASS;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 2, 14, true> BYPASS_CLK_SRC;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 13, true> ENABLE;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1,  0, true> DIV_SELECT_MASK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1,  0, true> DIV_SELECT;
 }  // namespace PLL_SYS_CLR
 
 // Analog System PLL Control Register
@@ -284,7 +284,7 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 16, true> BYPASS;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 2, 14, true> BYPASS_CLK_SRC;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 13, true> ENABLE;
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1,  0, true> DIV_SELECT_MASK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1,  0, true> DIV_SELECT;
 }  // namespace PLL_SYS_TOG
 
 // 528MHz System PLL Spread Spectrum Register

@@ -161,89 +161,89 @@ namespace CAN1 {
 
 // Module Configuration Register
 namespace MCR {
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 31> MDIS;  // Module Disable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 31> MDIS;     // Module Disable
     // 0b0..Enable the FlexCAN module.
     // 0b1..Disable the FlexCAN module.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 30> FRZ;  // Freeze Enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 30> FRZ;      // Freeze Enable
     // 0b0..Not enabled to enter Freeze mode.
     // 0b1..Enabled to enter Freeze mode.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 29> RFEN;  // Rx FIFO Enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 29> RFEN;     // Rx FIFO Enable
     // 0b0..Rx FIFO not enabled.
     // 0b1..Rx FIFO enabled.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 28> HALT;  // Halt FlexCAN
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 28> HALT;     // Halt FlexCAN
     // 0b0..No Freeze Mode request.
     // 0b1..Enters Freeze Mode if the FRZ bit is asserted.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::MCR), 1, 27> NOTRDY;  // FlexCAN Not Ready
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::MCR), 1, 27> NOTRDY;   // FlexCAN Not Ready
     // 0b0..FlexCAN module is either in Normal mode, Listen-Only mode, or Loop-Back mode.
     // 0b1..FlexCAN module is either in Disable mode, Doze mode, Stop mode, or Freeze mode.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 26> WAKMSK;  // Wake Up Interrupt Mask
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 26> WAKMSK;   // Wake Up Interrupt Mask
     // 0b0..Wake Up interrupt is disabled.
     // 0b1..Wake Up interrupt is enabled.
 constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 25> SOFTRST;  // Soft Reset
     // 0b0..No reset request.
     // 0b1..Resets the registers affected by soft reset.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::MCR), 1, 24> FRZACK;  // Freeze Mode Acknowledge
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::MCR), 1, 24> FRZACK;   // Freeze Mode Acknowledge
     // 0b0..FlexCAN not in Freeze mode, prescaler running.
     // 0b1..FlexCAN in Freeze mode, prescaler stopped.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 23> SUPV;  // Supervisor Mode
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 23> SUPV;     // Supervisor Mode
     // 0b0..FlexCAN is in User mode. Affected registers allow both Supervisor and Unrestricted accesses.
     // 0b1..FlexCAN is in Supervisor mode. Affected registers allow only Supervisor access. Unrestricted access
     //      behaves as though the access was done to an unimplemented register location.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 22> SLFWAK;  // Self Wake Up
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 22> SLFWAK;   // Self Wake Up
     // 0b0..FlexCAN Self Wake Up feature is disabled.
     // 0b1..FlexCAN Self Wake Up feature is enabled.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 21> WRNEN;  // Warning Interrupt Enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 21> WRNEN;    // Warning Interrupt Enable
     // 0b0..TWRNINT and RWRNINT bits are zero, independent of the values in the error counters.
     // 0b1..TWRNINT and RWRNINT bits are set when the respective error counter transitions from less than 96 to greater than or equal to 96.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::MCR), 1, 20> LPMACK;  // Low-Power Mode Acknowledge
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::MCR), 1, 20> LPMACK;   // Low-Power Mode Acknowledge
     // 0b0..FLEXCAN not in any of the low power modes
     // 0b1..FLEXCAN is either in Disable Mode, or Stop mode
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 19> WAKSRC;  // Wake Up Source
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 19> WAKSRC;   // Wake Up Source
     // 0b0..FLEXCAN uses the unfiltered FLEXCAN_RX input to detect recessive to dominant edges on the CAN bus.
     // 0b1..FLEXCAN uses the filtered FLEXCAN_RX input to detect recessive to dominant edges on the CAN bus
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 18> DOZE;  // Doze Mode Enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 18> DOZE;     // Doze Mode Enable
     // 0b0..FlexCAN is not enabled to enter low-power mode when Doze mode is requested.
     // 0b1..FlexCAN is enabled to enter low-power mode when Doze mode is requested.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 17> SRXDIS;  // Self Reception Disable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 17> SRXDIS;   // Self Reception Disable
     // 0b0..Self-reception enabled.
     // 0b1..Self-reception disabled.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 16> IRMQ;  // Individual Rx Masking And Queue Enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 16> IRMQ;     // Individual Rx Masking And Queue Enable
     // 0b0..Individual Rx masking and queue feature are disabled. For backward compatibility with legacy
     //      applications, the reading of C/S word locks the MB even if it is EMPTY.
     // 0b1..Individual Rx masking and queue feature are enabled.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 15> DMA;  // DMA Enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 15> DMA;      // DMA Enable
     // 0b0..DMA feature for RX FIFO disabled.
     // 0b1..DMA feature for RX FIFO enabled.
 constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 13> LPRIOEN;  // Local Priority Enable
     // 0b0..Local Priority disabled.
     // 0b1..Local Priority enabled.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 12> AEN;  // Abort Enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 12> AEN;      // Abort Enable
     // 0b0..Abort disabled.
     // 0b1..Abort enabled.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 11> FDEN;  // CAN FD operation enable
+constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 11> FDEN;     // CAN FD operation enable
     // 0b0..CAN FD is disabled. FlexCAN is able to receive and transmit messages in CAN 2.0 format.
     // 0b1..CAN FD is enabled. FlexCAN is able to receive and transmit messages in both CAN FD and CAN 2.0 formats.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 2,  8> IDAM;  // ID Acceptance Mode
+constexpr CAN1_Reg<&CAN_Layout::MCR, 2,  8> IDAM;     // ID Acceptance Mode
     // 0b00..Format A: One full ID (standard and extended) per ID filter table element.
     // 0b01..Format B: Two full standard IDs or two partial 14-bit (standard and extended) IDs per ID filter table element.
     // 0b10..Format C: Four partial 8-bit standard IDs per ID filter table element.
     // 0b11..Format D: All frames rejected.
-constexpr CAN1_Reg<&CAN_Layout::MCR, 7,  0> MAXMB;  // Number Of The Last Message Buffer
+constexpr CAN1_Reg<&CAN_Layout::MCR, 7,  0> MAXMB;    // Number Of The Last Message Buffer
 }  // namespace MCR
 
 // Control 1 Register
 namespace CTRL1 {
 constexpr CAN1_Reg<&CAN_Layout::CTRL1, 8, 24> PRESDIV;  // Prescaler Division Factor
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 2, 22> RJW;  // Resync Jump Width
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 3, 19> PSEG1;  // Phase Segment 1
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 3, 16> PSEG2;  // Phase Segment 2
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 2, 22> RJW;      // Resync Jump Width
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 3, 19> PSEG1;    // Phase Segment 1
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 3, 16> PSEG2;    // Phase Segment 2
 constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 15> BOFFMSK;  // Bus Off Interrupt Mask
     // 0b0..Bus Off interrupt disabled.
     // 0b1..Bus Off interrupt enabled.
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 14> ERRMSK;  // Error Interrupt Mask
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 14> ERRMSK;   // Error Interrupt Mask
     // 0b0..Error interrupt disabled.
     // 0b1..Error interrupt enabled.
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 12> LPB;  // Loop Back Mode
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 12> LPB;      // Loop Back Mode
     // 0b0..Loop Back disabled.
     // 0b1..Loop Back enabled.
 constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 11> TWRNMSK;  // Tx Warning Interrupt Mask
@@ -252,20 +252,20 @@ constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 11> TWRNMSK;  // Tx Warning Interrupt 
 constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1, 10> RWRNMSK;  // Rx Warning Interrupt Mask
     // 0b0..Rx Warning interrupt disabled.
     // 0b1..Rx Warning interrupt enabled.
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  7> SMP;  // CAN Bit Sampling
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  7> SMP;      // CAN Bit Sampling
     // 0b0..Just one sample is used to determine the bit value.
     // 0b1..Three samples are used to determine the value of the received bit: the regular one (sample point) and two
     //      preceding samples; a majority rule is used.
 constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  6> BOFFREC;  // Bus Off Recovery
     // 0b0..Automatic recovering from Bus Off state enabled, according to CAN Spec 2.0 part B
     // 0b1..Automatic recovering from Bus Off state disabled
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  5> TSYN;  // Timer Sync
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  5> TSYN;     // Timer Sync
     // 0b0..Timer Sync feature disabled
     // 0b1..Timer Sync feature enabled
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  4> LBUF;  // Lowest Buffer Transmitted First
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  4> LBUF;     // Lowest Buffer Transmitted First
     // 0b0..Buffer with highest priority is transmitted first.
     // 0b1..Lowest number buffer is transmitted first.
-constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  3> LOM;  // Listen-Only Mode
+constexpr CAN1_Reg<&CAN_Layout::CTRL1, 1,  3> LOM;      // Listen-Only Mode
     // 0b0..Listen-Only mode is deactivated.
     // 0b1..FlexCAN module operates in Listen-Only mode.
 constexpr CAN1_Reg<&CAN_Layout::CTRL1, 3,  0> PROPSEG;  // Propagation Segment
@@ -278,91 +278,91 @@ constexpr CAN1_Reg<&CAN_Layout::TIMER, 16, 0> TIMER;  // Timer Value
 
 // Error Counter
 namespace ECR {
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ECR), 8, 24> RXERRCNT_FAST;  // Receive Error Counter for fast bits
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ECR), 8, 16> TXERRCNT_FAST;  // Transmit Error Counter for fast bits
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ECR), 8, 24> RXERRCNT_FAST;   // Receive Error Counter for fast bits
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ECR), 8, 16> TXERRCNT_FAST;   // Transmit Error Counter for fast bits
 constexpr CAN1_Reg<&CAN_Layout::ECR, 8,  8> RX_ERR_COUNTER;  // Receive Error Counter
 constexpr CAN1_Reg<&CAN_Layout::ECR, 8,  0> TX_ERR_COUNTER;  // Transmit Error Counter
 }  // namespace ECR
 
 // Error and Status 1 Register
 namespace ESR1 {
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 31> BIT1ERR_FAST;  // Bit1 Error in the Data Phase of CAN FD frames with the BRS bit set
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 31>       BIT1ERR_FAST;  // Bit1 Error in the Data Phase of CAN FD frames with the BRS bit set
     // 0b0..No such occurrence.
     // 0b1..At least one bit sent as recessive is received as dominant.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 30> BIT0ERR_FAST;  // Bit0 Error in the Data Phase of CAN FD frames with the BRS bit set
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 30>       BIT0ERR_FAST;  // Bit0 Error in the Data Phase of CAN FD frames with the BRS bit set
     // 0b0..No such occurrence.
     // 0b1..At least one bit sent as dominant is received as recessive.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 28> CRCERR_FAST;  // Cyclic Redundancy Check Error in the CRC field of CAN FD frames with the BRS bit set
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 28>       CRCERR_FAST;   // Cyclic Redundancy Check Error in the CRC field of CAN FD frames with the BRS bit set
     // 0b0..No such occurrence.
     // 0b1..A CRC error occurred since last read of this register.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 27> FRMERR_FAST;  // Form Error in the Data Phase of CAN FD frames with the BRS bit set
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 27>       FRMERR_FAST;   // Form Error in the Data Phase of CAN FD frames with the BRS bit set
     // 0b0..No such occurrence.
     // 0b1..A form error occurred since last read of this register.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 26> STFERR_FAST;  // Stuffing Error in the Data Phase of CAN FD frames with the BRS bit set
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 26>       STFERR_FAST;   // Stuffing Error in the Data Phase of CAN FD frames with the BRS bit set
     // 0b0..No such occurrence.
     // 0b1..A stuffing error occurred since last read of this register.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 21, true> ERROVR;  // Error Overrun
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 21, true> ERROVR;        // Error Overrun
     // 0b0..Overrun has not occurred.
     // 0b1..Overrun has occurred.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 20, true> ERRINT_FAST;  // Error interrupt for errors detected in Data Phase of CAN FD frames with BRS bit set
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 20, true> ERRINT_FAST;   // Error interrupt for errors detected in Data Phase of CAN FD frames with BRS bit set
     // 0b0..No such occurrence.
     // 0b1..Indicates setting of any error bit detected in the data phase of CAN FD frames with the BRS bit set.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 19, true> BOFFDONEINT;  // Bus Off Done Interrupt
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 19, true> BOFFDONEINT;   // Bus Off Done Interrupt
     // 0b0..No such occurrence.
     // 0b1..FlexCAN module has completed Bus Off process.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 18> SYNCH;  // CAN Synchronization Status
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 18>       SYNCH;         // CAN Synchronization Status
     // 0b0..FlexCAN is not synchronized to the CAN bus.
     // 0b1..FlexCAN is synchronized to the CAN bus.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 17, true> TWRNINT;  // Tx Warning Interrupt Flag
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 17, true> TWRNINT;       // Tx Warning Interrupt Flag
     // 0b0..No such occurrence.
     // 0b1..The Tx error counter transitioned from less than 96 to greater than or equal to 96.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 16, true> RWRNINT;  // Rx Warning Interrupt Flag
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1, 16, true> RWRNINT;       // Rx Warning Interrupt Flag
     // 0b0..No such occurrence.
     // 0b1..The Rx error counter transitioned from less than 96 to greater than or equal to 96.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 15> BIT1ERR;  // Bit1 Error
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 15>       BIT1ERR;       // Bit1 Error
     // 0b0..No such occurrence.
     // 0b1..At least one bit sent as recessive is received as dominant.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 14> BIT0ERR;  // Bit0 Error
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 14>       BIT0ERR;       // Bit0 Error
     // 0b0..No such occurrence.
     // 0b1..At least one bit sent as dominant is received as recessive.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 13> ACKERR;  // Acknowledge Error
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 13>       ACKERR;        // Acknowledge Error
     // 0b0..No such occurrence.
     // 0b1..An ACK error occurred since last read of this register.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 12> CRCERR;  // Cyclic Redundancy Check Error
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 12>       CRCERR;        // Cyclic Redundancy Check Error
     // 0b0..No such occurrence.
     // 0b1..A CRC error occurred since last read of this register.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 11> FRMERR;  // Form Error
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 11>       FRMERR;        // Form Error
     // 0b0..No such occurrence.
     // 0b1..A Form Error occurred since last read of this register.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 10> STFERR;  // Stuffing Error
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1, 10>       STFERR;        // Stuffing Error
     // 0b0..No such occurrence.
     // 0b1..A Stuffing Error occurred since last read of this register.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  9> TXWRN;  // TX Error Warning
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  9>       TXWRN;         // TX Error Warning
     // 0b0..No such occurrence.
     // 0b1..TXERRCNT is greater than or equal to 96.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  8> RXWRN;  // Rx Error Warning
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  8>       RXWRN;         // Rx Error Warning
     // 0b0..No such occurrence.
     // 0b1..RXERRCNT is greater than or equal to 96.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  7> IDLE;  // IDLE
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  7>       IDLE;          // IDLE
     // 0b0..No such occurrence.
     // 0b1..CAN bus is now IDLE.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  6> TX;  // FlexCAN In Transmission
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  6>       TX;            // FlexCAN In Transmission
     // 0b0..FlexCAN is not transmitting a message.
     // 0b1..FlexCAN is transmitting a message.
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 2,  4> FLTCONF;  // Fault Confinement State
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 2,  4>       FLTCONF;       // Fault Confinement State
     // 0b00..Error Active
     // 0b01..Error Passive
     // 0b1x..Bus Off
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  3> RX;  // FlexCAN In Reception
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::ESR1), 1,  3>       RX;            // FlexCAN In Reception
     // 0b0..FlexCAN is not receiving a message.
     // 0b1..FlexCAN is receiving a message.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1,  2, true> BOFFINT;  // Bus Off Interrupt
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1,  2, true> BOFFINT;       // Bus Off Interrupt
     // 0b0..No such occurrence.
     // 0b1..FlexCAN module entered Bus Off state.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1,  1, true> ERRINT;  // Error Interrupt
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1,  1, true> ERRINT;        // Error Interrupt
     // 0b0..No such occurrence.
     // 0b1..Indicates setting of any error bit in the Error and Status register.
-constexpr CAN1_Reg<&CAN_Layout::ESR1, 1,  0, true> WAKINT;  // Wake-Up Interrupt
+constexpr CAN1_Reg<&CAN_Layout::ESR1, 1,  0, true> WAKINT;        // Wake-Up Interrupt
     // 0b0..No such occurrence
     // 0b1..Indicates a recessive to dominant transition received on the CAN bus when the FLEXCAN module is in Stop Mode
 }  // namespace ESR1
@@ -372,18 +372,18 @@ namespace IFLAG1 {
 constexpr CAN1_Reg<&CAN_Layout::IFLAG1, 24, 8, true> BUF31TO8I;  // Buffer MBi Interrupt
     // 0b000000000000000000000000..No such occurrence
     // 0b000000000000000000000001..The corresponding MB has successfully completed transmission or reception
-constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 7, true> BUF7I;  // Buffer MB7 Interrupt Or Rx FIFO Overflow
+constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 7, true> BUF7I;      // Buffer MB7 Interrupt Or Rx FIFO Overflow
     // 0b0..No occurrence of MB7 completing transmission/reception when MCR[RFEN]=0, or of Rx FIFO overflow when MCR[RFEN]=1
     // 0b1..MB7 completed transmission/reception when MCR[RFEN]=0, or Rx FIFO overflow when MCR[RFEN]=1
-constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 6, true> BUF6I;  // Buffer MB6 Interrupt Or Rx FIFO Warning
+constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 6, true> BUF6I;      // Buffer MB6 Interrupt Or Rx FIFO Warning
     // 0b0..No occurrence of MB6 completing transmission/reception when MCR[RFEN]=0, or of Rx FIFO almost full when MCR[RFEN]=1
     // 0b1..MB6 completed transmission/reception when MCR[RFEN]=0, or Rx FIFO almost full when MCR[RFEN]=1
-constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 5, true> BUF5I;  // Buffer MB5 Interrupt Or Frames available in Rx FIFO
+constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 5, true> BUF5I;      // Buffer MB5 Interrupt Or Frames available in Rx FIFO
     // 0b0..No occurrence of MB5 completing transmission/reception when MCR[RFEN]=0, or of frame(s) available in the FIFO, when MCR[RFEN]=1
     // 0b1..MB5 completed transmission/reception when MCR[RFEN]=0, or frame(s) available in the Rx FIFO when
     //      MCR[RFEN]=1. It generates a DMA request in case of MCR[RFEN] and MCR[DMA] are enabled.
-constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  4, 1, true> BUF4TO1I;  // Buffer MBi Interrupt Or Reserved
-constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 0, true> BUF0I;  // Buffer MB0 Interrupt Or Clear FIFO bit
+constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  4, 1, true> BUF4TO1I;   // Buffer MBi Interrupt Or Reserved
+constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  1, 0, true> BUF0I;      // Buffer MB0 Interrupt Or Clear FIFO bit
     // 0b0..The corresponding buffer has no occurrence of successfully completed transmission or reception when MCR[RFEN]=0.
     // 0b1..The corresponding buffer has successfully completed transmission or reception when MCR[RFEN]=0.
 constexpr CAN1_Reg<&CAN_Layout::IFLAG1,  5, 0, true> BUF4TO0I;
@@ -402,30 +402,30 @@ constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 30> BOFFDONEMSK;  // Bus Off Done Inte
 constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 28> WRMFRZ;
     // 0b0..Keep the write access restricted in some regions of FlexCAN memory
     // 0b1..Enable unrestricted write access to FlexCAN memory
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 4, 24> RFFN;  // Number Of Rx FIFO Filters
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 5, 19> TASD;  // Tx Arbitration Start Delay
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 18> MRP;  // Mailboxes Reception Priority
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 4, 24> RFFN;         // Number Of Rx FIFO Filters
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 5, 19> TASD;         // Tx Arbitration Start Delay
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 18> MRP;          // Mailboxes Reception Priority
     // 0b0..Matching starts from Rx FIFO and continues on mailboxes.
     // 0b1..Matching starts from mailboxes and continues on Rx FIFO.
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 17> RRS;  // Remote Request Storing
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 17> RRS;          // Remote Request Storing
     // 0b0..Remote response frame is generated.
     // 0b1..Remote request frame is stored.
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 16> EACEN;  // Entire Frame Arbitration Field Comparison Enable For Rx Mailboxes
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 16> EACEN;        // Entire Frame Arbitration Field Comparison Enable For Rx Mailboxes
     // 0b0..Rx Mailbox filter's IDE bit is always compared and RTR is never compared despite mask bits.
     // 0b1..Enables the comparison of both Rx Mailbox filter's IDE and RTR bit with their corresponding bits within
     //      the incoming frame. Mask bits do apply.
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 15> TIMER_SRC;  // Timer Source
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 15> TIMER_SRC;    // Timer Source
     // 0b0..The free running timer is clocked by the CAN bit clock, which defines the baud rate on the CAN bus.
     // 0b1..The free running timer is clocked by an external time tick. The period can be either adjusted to be equal
     //      to the baud rate on the CAN bus, or a different value as required. See the device-specific section for
     //      details about the external time tick.
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 14> PREXCEN;  // Protocol Exception Enable
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 14> PREXCEN;      // Protocol Exception Enable
     // 0b0..Protocol exception is disabled.
     // 0b1..Protocol exception is enabled.
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 12> ISOCANFDEN;  // ISO CAN FD Enable
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 12> ISOCANFDEN;   // ISO CAN FD Enable
     // 0b0..FlexCAN operates using the non-ISO CAN FD protocol.
     // 0b1..FlexCAN operates using the ISO CAN FD protocol (ISO 11898-1).
-constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 11> EDFLTDIS;  // Edge Filter Disable
+constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 11> EDFLTDIS;     // Edge Filter Disable
     // 0b0..Edge filter is enabled
     // 0b1..Edge filter is disabled
 }  // namespace CTRL2
@@ -433,10 +433,10 @@ constexpr CAN1_Reg<&CAN_Layout::CTRL2, 1, 11> EDFLTDIS;  // Edge Filter Disable
 // Error and Status 2 Register
 namespace ESR2 {
 constexpr CAN1_Reg<&CAN_Layout::ESR2, 7, 16> LPTM;  // Lowest Priority Tx Mailbox
-constexpr CAN1_Reg<&CAN_Layout::ESR2, 1, 14> VPS;  // Valid Priority Status
+constexpr CAN1_Reg<&CAN_Layout::ESR2, 1, 14> VPS;   // Valid Priority Status
     // 0b0..Contents of IMB and LPTM are invalid.
     // 0b1..Contents of IMB and LPTM are valid.
-constexpr CAN1_Reg<&CAN_Layout::ESR2, 1, 13> IMB;  // Inactive Mailbox
+constexpr CAN1_Reg<&CAN_Layout::ESR2, 1, 13> IMB;   // Inactive Mailbox
     // 0b0..If ESR2[VPS] is asserted, the ESR2[LPTM] is not an inactive Mailbox.
     // 0b1..If ESR2[VPS] is asserted, there is at least one inactive Mailbox. LPTM content is the number of the first one.
 }  // namespace ESR2
@@ -454,19 +454,19 @@ constexpr CAN1_Reg<&CAN_Layout::RXFIR, 9, 0> IDHIT;  // Identifier Acceptance Fi
 
 // CAN Bit Timing Register
 namespace CBT {
-constexpr CAN1_Reg<&CAN_Layout::CBT,  1, 31> BTF;  // Bit Timing Format Enable
+constexpr CAN1_Reg<&CAN_Layout::CBT,  1, 31> BTF;       // Bit Timing Format Enable
     // 0b0..Extended bit time definitions disabled.
     // 0b1..Extended bit time definitions enabled.
 constexpr CAN1_Reg<&CAN_Layout::CBT, 10, 21> EPRESDIV;  // Extended Prescaler Division Factor
-constexpr CAN1_Reg<&CAN_Layout::CBT,  5, 16> ERJW;  // Extended Resync Jump Width
+constexpr CAN1_Reg<&CAN_Layout::CBT,  5, 16> ERJW;      // Extended Resync Jump Width
 constexpr CAN1_Reg<&CAN_Layout::CBT,  6, 10> EPROPSEG;  // Extended Propagation Segment
-constexpr CAN1_Reg<&CAN_Layout::CBT,  5,  5> EPSEG1;  // Extended Phase Segment 1
-constexpr CAN1_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;  // Extended Phase Segment 2
+constexpr CAN1_Reg<&CAN_Layout::CBT,  5,  5> EPSEG1;    // Extended Phase Segment 1
+constexpr CAN1_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;    // Extended Phase Segment 2
 }  // namespace CBT
 
 // Debug 1 register
 namespace DBG1 {
-constexpr CAN1_Reg<&CAN_Layout::DBG1, 5, 24> CBN;  // CAN Bit Number
+constexpr CAN1_Reg<&CAN_Layout::DBG1, 5, 24> CBN;   // CAN Bit Number
 constexpr CAN1_Reg<&CAN_Layout::DBG1, 6,  0> CFSM;  // CAN Finite State Machine
 }  // namespace DBG1
 
@@ -489,36 +489,36 @@ constexpr CAN1_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 
 // CAN FD Control Register
 namespace FDCTRL {
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;  // Bit Rate Switch Enable
+constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;   // Bit Rate Switch Enable
     // 0b0..Transmit a frame in nominal rate. The BRS bit in the Tx MB has no effect.
     // 0b1..Transmit a frame with bit rate switching if the BRS bit in the Tx MB is recessive.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;  // Message Buffer Data Size for Region 1
+constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;   // Message Buffer Data Size for Region 1
     // 0b00..Selects 8 bytes per message buffer.
     // 0b01..Selects 16 bytes per message buffer.
     // 0b10..Selects 32 bytes per message buffer.
     // 0b11..Selects 64 bytes per message buffer.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;  // Message Buffer Data Size for Region 0
+constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;   // Message Buffer Data Size for Region 0
     // 0b00..Selects 8 bytes per message buffer.
     // 0b01..Selects 16 bytes per message buffer.
     // 0b10..Selects 32 bytes per message buffer.
     // 0b11..Selects 64 bytes per message buffer.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;  // Transceiver Delay Compensation Enable
+constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;    // Transceiver Delay Compensation Enable
     // 0b0..TDC is disabled
     // 0b1..TDC is enabled
 constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 14, true> TDCFAIL;  // Transceiver Delay Compensation Fail
     // 0b0..Measured loop delay is in range.
     // 0b1..Measured loop delay is out of range.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;  // Transceiver Delay Compensation Offset
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;  // Transceiver Delay Compensation Value
+constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;   // Transceiver Delay Compensation Offset
+constexpr CAN1_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;   // Transceiver Delay Compensation Value
 }  // namespace FDCTRL
 
 // CAN FD Bit Timing Register
 namespace FDCBT {
 constexpr CAN1_Reg<&CAN_Layout::FDCBT, 10, 20> FPRESDIV;  // Fast Prescaler Division Factor
-constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3, 16> FRJW;  // Fast Resync Jump Width
+constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3, 16> FRJW;      // Fast Resync Jump Width
 constexpr CAN1_Reg<&CAN_Layout::FDCBT,  5, 10> FPROPSEG;  // Fast Propagation Segment
-constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3,  5> FPSEG1;  // Fast Phase Segment 1
-constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3,  0> FPSEG2;  // Fast Phase Segment 2
+constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3,  5> FPSEG1;    // Fast Phase Segment 1
+constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3,  0> FPSEG2;    // Fast Phase Segment 2
 }  // namespace FDCBT
 
 // CAN FD CRC Register
@@ -695,13 +695,13 @@ constexpr CAN2_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 
 // CAN2 CAN FD Control Register
 namespace FDCTRL {
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 31> FDRATE;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 2, 19> MBDSR1;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 2, 16> MBDSR0;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 15> TDCEN;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 14> TDCFAIL;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 5,  8> TDCOFF;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 6,  0> TDCVAL;
+constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;
+constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;
+constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;
+constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;
+constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 14, true> TDCFAIL;
+constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;
+constexpr CAN2_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;
 }  // namespace FDCTRL
 
 // CAN2 CAN FD Bit Timing Register
@@ -794,18 +794,18 @@ constexpr CAN3_Reg<&CAN_Layout::ESR1, 1, 19, true> BOFFDONEINT;
 constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 18> SYNCH;
 constexpr CAN3_Reg<&CAN_Layout::ESR1, 1, 17, true> TWRNINT;
 constexpr CAN3_Reg<&CAN_Layout::ESR1, 1, 16, true> RWRNINT;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 15, true> BIT1ERR;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 14, true> BIT0ERR;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 13, true> ACKERR;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 12, true> CRCERR;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 11, true> FRMERR;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 10, true> STFERR;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  9, true> TXWRN;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  8, true> RXWRN;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  7, true> IDLE;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  6, true> TX;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 2,  4, true> FLTCONF;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  3, true> RX;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 15>       BIT1ERR;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 14>       BIT0ERR;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 13>       ACKERR;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 12>       CRCERR;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 11>       FRMERR;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1, 10>       STFERR;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  9>       TXWRN;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  8>       RXWRN;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  7>       IDLE;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  6>       TX;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 2,  4>       FLTCONF;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::ESR1), 1,  3>       RX;
 constexpr CAN3_Reg<&CAN_Layout::ESR1, 1,  2, true> BOFFINT;
 constexpr CAN3_Reg<&CAN_Layout::ESR1, 1,  1, true> ERRINT;
 constexpr CAN3_Reg<&CAN_Layout::ESR1, 1,  0, true> WAKINT;
@@ -887,13 +887,13 @@ constexpr CAN3_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 
 // CAN3 CAN FD Control Register
 namespace FDCTRL {
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 31> FDRATE;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 19> MBDSR1;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 16> MBDSR0;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 15> TDCEN;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 14> TDCFAIL;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 5,  8> TDCOFF;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 6,  0> TDCVAL;
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 14, true> TDCFAIL;
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;
 }  // namespace FDCTRL
 
 // CAN3 CAN FD Bit Timing Register
@@ -948,6 +948,7 @@ constexpr regs::RegValue32< 3, 29> PRIO;  // R/O, Local priority.
     //   ID to define the transmission priority.
 constexpr regs::RegValue32<11, 18> STD;  // Contains standard/extended (HIGH word) identifier of message buffer.
 constexpr regs::RegValue32<29,  0> EXT;  // Contains extended (LOW word) identifier of message buffer.
+    // Note: EXT overlaps STD intentionally
 }  // namespace ID
 
 }  // namespace CAN

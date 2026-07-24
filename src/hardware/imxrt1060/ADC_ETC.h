@@ -6,8 +6,10 @@
 
 #pragma once
 
+#include <array>
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 
 #include "hardware/regs/regs.h"
 
@@ -45,24 +47,28 @@ struct ADC_ETC_Layout {
 constexpr size_t    kADC_ETC_size = 0x150;
 constexpr uintptr_t kADC_ETC_base = 0x403B0000;
 
-constexpr uintptr_t TrigBase(const uintptr_t base, const size_t index) {
-  return base + offsetof(ADC_ETC_Layout, TRIG) +
-         index*sizeof(ADC_ETC_Layout::TRIG_Layout);
-}
-
 namespace ADC_ETC {
 constexpr regs::RegGroup<ADC_ETC_Layout, kADC_ETC_size, kADC_ETC_base> group;
 }  // namespace ADC_ETC
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
-using ADC_ETC_Reg =
-    regs::Reg32<kADC_ETC_base, ADC_ETC_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <size_t Bits, unsigned int Shift>
-using ADC_ETC_TRIG_RegValue = regs::RegValue32<Bits, Shift>;
+using ADC_ETC_Reg = regs::Reg32<kADC_ETC_base, ADC_ETC_Layout, Member, 0, Bits,
+                                Shift, DirectAssign>;
 
 namespace ADC_ETC {
+
+template <size_t Index,
+          typename = std::enable_if_t<(Index < kADC_ETC_TRIG_count)>>
+constexpr uintptr_t TrigBase() {
+  return kADC_ETC_base + offsetof(ADC_ETC_Layout, TRIG) +
+         Index * sizeof(ADC_ETC_Layout::TRIG_Layout);
+}
+
+template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using TRIG_Reg = regs::Reg32<TrigBase<Index>(), ADC_ETC_Layout::TRIG_Layout,
+                             Member, 0, Bits, Shift, DirectAssign>;
 
 // ADC_ETC Global Control Register
 namespace CTRL {
@@ -146,28 +152,28 @@ constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  0, true> TRIG0_DONE0;
 
 // ETC DONE_2 and DONE_ERR IRQ State Register
 namespace DONE2_3_ERR_IRQ {
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 23> TRIG7_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 23>       TRIG7_ERR;
     // 0b0..No TRIG7_ERR interrupt detected
     // 0b1..TRIG7_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 22> TRIG6_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 22>       TRIG6_ERR;
     // 0b0..No TRIG6_ERR interrupt detected
     // 0b1..TRIG6_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 21> TRIG5_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 21>       TRIG5_ERR;
     // 0b0..No TRIG5_ERR interrupt detected
     // 0b1..TRIG5_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 20> TRIG4_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 20>       TRIG4_ERR;
     // 0b0..No TRIG4_ERR interrupt detected
     // 0b1..TRIG4_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 19> TRIG3_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 19>       TRIG3_ERR;
     // 0b0..No TRIG3_ERR interrupt detected
     // 0b1..TRIG3_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 18> TRIG2_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 18>       TRIG2_ERR;
     // 0b0..No TRIG2_ERR interrupt detected
     // 0b1..TRIG2_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 17> TRIG1_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 17>       TRIG1_ERR;
     // 0b0..No TRIG1_ERR interrupt detected
     // 0b1..TRIG1_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 16> TRIG0_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 16>       TRIG0_ERR;
     // 0b0..No TRIG0_ERR interrupt detected
     // 0b1..TRIG0_ERR interrupt detected
 constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  7, true> TRIG7_DONE2;
@@ -222,28 +228,28 @@ constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 17, true> TRIG1_REQ;
 constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 16, true> TRIG0_REQ;
     // 0b0..TRIG0_REQ not detected.
     // 0b1..TRIG0_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  7> TRIG7_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  7>       TRIG7_ENABLE;
     // 0b0..TRIG7 DMA request disabled.
     // 0b1..TRIG7 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  6> TRIG6_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  6>       TRIG6_ENABLE;
     // 0b0..TRIG6 DMA request disabled.
     // 0b1..TRIG6 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  5> TRIG5_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  5>       TRIG5_ENABLE;
     // 0b0..TRIG5 DMA request disabled.
     // 0b1..TRIG5 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  4> TRIG4_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  4>       TRIG4_ENABLE;
     // 0b0..TRIG4 DMA request disabled.
     // 0b1..TRIG4 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  3> TRIG3_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  3>       TRIG3_ENABLE;
     // 0b0..TRIG3 DMA request disabled.
     // 0b1..TRIG3 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  2> TRIG2_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  2>       TRIG2_ENABLE;
     // 0b0..TRIG2 DMA request disabled.
     // 0b1..TRIG2 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  1> TRIG1_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  1>       TRIG1_ENABLE;
     // 0b0..TRIG1 DMA request disabled.
     // 0b1..TRIG1 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  0> TRIG0_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  0>       TRIG0_ENABLE;
     // 0b0..TRIG0 DMA request disabled.
     // 0b1..TRIG0 DMA request enabled.
 }  // namespace DMA_CTRL
@@ -256,11 +262,14 @@ namespace TRIG {
 
 // ETC_TRIG Control Register
 namespace CTRL {
-constexpr ADC_ETC_TRIG_RegValue<1, 16> SYNC_MODE;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 1, 16> SYNC_MODE;
     // 0b0..Synchronization mode disabled, TRIGa and TRIG(a+4) are triggered independently.
     // 0b1..Synchronization mode enabled, TRIGa and TRIG(a+4) are triggered by TRIGa source synchronously.
-constexpr ADC_ETC_TRIG_RegValue<3, 12> TRIG_PRIORITY;
-constexpr ADC_ETC_TRIG_RegValue<3,  8> TRIG_CHAIN;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 3, 12> TRIG_PRIORITY;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 3,  8> TRIG_CHAIN;
     // 0b000..Trigger chain length is 1
     // 0b001..Trigger chain length is 2
     // 0b010..Trigger chain length is 3
@@ -269,31 +278,38 @@ constexpr ADC_ETC_TRIG_RegValue<3,  8> TRIG_CHAIN;
     // 0b101..Trigger chain length is 6
     // 0b110..Trigger chain length is 7
     // 0b111..Trigger chain length is 8
-constexpr ADC_ETC_TRIG_RegValue<1,  4> TRIG_MODE;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 1,  4> TRIG_MODE;
     // 0b0..Hardware trigger. The softerware trigger will be ignored.
     // 0b1..Software trigger. The hardware trigger will be ignored.
-constexpr ADC_ETC_TRIG_RegValue<1,  0> SW_TRIG;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 1,  0> SW_TRIG;
     // 0b0..No software trigger event generated.
     // 0b1..Software trigger event generated.
 }  // namespace CTRL
 
 // ETC_TRIG Counter Register
 namespace COUNTER {
-constexpr ADC_ETC_TRIG_RegValue<16, 16> SAMPLE_INTERVAL;
-constexpr ADC_ETC_TRIG_RegValue<16,  0> INIT_DELAY;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::COUNTER, 16, 16> SAMPLE_INTERVAL;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::COUNTER, 16,  0> INIT_DELAY;
 }  // namespace COUNTER
 
 // ETC_TRIG Chain 0/1 Register
 namespace CHAIN_1_0 {
-constexpr ADC_ETC_TRIG_RegValue<2, 29> IE1;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 2, 29> IE1;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when Segment 1 finish.
     // 0b10..Generate interrupt on Done1 when Segment 1 finish.
     // 0b11..Generate interrupt on Done2 when Segment 1 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 28> B2B1;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 1, 28> B2B1;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG1_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS1;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 8, 20> HWTS1;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -303,7 +319,8 @@ constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS1;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL1;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 4, 16> CSEL1;
     // 0b0000..ADC Channel 0 selected
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -320,15 +337,18 @@ constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL1;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
-constexpr ADC_ETC_TRIG_RegValue<2, 13> IE0;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 2, 13> IE0;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when segment 0 finish.
     // 0b10..Generate interrupt on Done1 when segment 0 finish.
     // 0b11..Generate interrupt on Done2 when segment 0 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 12> B2B0;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 1, 12> B2B0;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG0_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS0;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 8,  4> HWTS0;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -338,7 +358,8 @@ constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS0;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL0;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 4,  0> CSEL0;
     // 0b0000..ADC Channel 0 selected
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -359,15 +380,18 @@ constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL0;
 
 // ETC_TRIG Chain 2/3 Register
 namespace CHAIN_3_2 {
-constexpr ADC_ETC_TRIG_RegValue<2, 29> IE3;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 2, 29> IE3;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when segment 3 finish.
     // 0b10..Generate interrupt on Done1 when segment 3 finish.
     // 0b11..Generate interrupt on Done2 when segment 3 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 28> B2B3;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 1, 28> B2B3;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG3_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS3;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 8, 20> HWTS3;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -377,7 +401,8 @@ constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS3;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL3;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 4, 16> CSEL3;
     // 0b0000..ADC Channel 0 selected
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -394,15 +419,18 @@ constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL3;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
-constexpr ADC_ETC_TRIG_RegValue<2, 13> IE2;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 2, 13> IE2;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when segment 2 finish.
     // 0b10..Generate interrupt on Done1 when segment 2 finish.
     // 0b11..Generate interrupt on Done2 when segment 2 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 12> B2B2;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 1, 12> B2B2;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG2_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS2;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 8,  4> HWTS2;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -412,7 +440,8 @@ constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS2;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL2;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 4,  0> CSEL2;
     // 0b0000..ADC Channel 0 selected
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -433,15 +462,18 @@ constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL2;
 
 // ETC_TRIG Chain 4/5 Register
 namespace CHAIN_5_4 {
-constexpr ADC_ETC_TRIG_RegValue<2, 29> IE5;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 2, 29> IE5;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when segment 5 finish.
     // 0b10..Generate interrupt on Done1 when segment 5 finish.
     // 0b11..Generate interrupt on Done2 when segment 5 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 28> B2B5;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 1, 28> B2B5;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG5_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS5;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 8, 20> HWTS5;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -451,7 +483,8 @@ constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS5;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL5;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 4, 16> CSEL5;
     // 0b0000..ADC Channel 0 selected
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -468,15 +501,18 @@ constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL5;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
-constexpr ADC_ETC_TRIG_RegValue<2, 13> IE4;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 2, 13> IE4;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when segment 4 finish.
     // 0b10..Generate interrupt on Done1 when segment 4 finish.
     // 0b11..Generate interrupt on Done2 when segment 4 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 12> B2B4;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 1, 12> B2B4;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG4_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS4;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 8,  4> HWTS4;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -486,7 +522,8 @@ constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS4;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL4;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 4,  0> CSEL4;
     // 0b0000..ADC Channel 0 selected
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -507,15 +544,18 @@ constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL4;
 
 // ETC_TRIG Chain 6/7 Register
 namespace CHAIN_7_6 {
-constexpr ADC_ETC_TRIG_RegValue<2, 29> IE7;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 2, 29> IE7;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when segment 7 finish.
     // 0b10..Generate interrupt on Done1 when segment 7 finish.
     // 0b11..Generate interrupt on Done2 when segment 7 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 28> B2B7;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 1, 28> B2B7;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG7_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS7;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 8, 20> HWTS7;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -525,7 +565,8 @@ constexpr ADC_ETC_TRIG_RegValue<8, 20> HWTS7;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL7;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 4, 16> CSEL7;
     // 0b0000..ADC Channel 0 selected.
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -542,15 +583,18 @@ constexpr ADC_ETC_TRIG_RegValue<4, 16> CSEL7;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
-constexpr ADC_ETC_TRIG_RegValue<2, 13> IE6;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 2, 13> IE6;
     // 0b00..No interrupt when finished
     // 0b01..Generate interrupt on Done0 when segment 6 finish.
     // 0b10..Generate interrupt on Done1 when segment 6 finish.
     // 0b11..Generate interrupt on Done2 when segment 6 finish.
-constexpr ADC_ETC_TRIG_RegValue<1, 12> B2B6;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 1, 12> B2B6;
     // 0b0..Disable B2B. Wait until delay value defined by TRIG6_COUNTER[SAMPLE_INTERVAL] is reached
     // 0b1..Enable B2B. When Segment 0 finished (ADC COCO) then automatically trigger next ADC conversion, no need to wait until interval delay reached.
-constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS6;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 8,  4> HWTS6;
     // 0b00000000..no trigger selected
     // 0b00000001..ADC TRIG0 selected
     // 0b00000010..ADC TRIG1 selected
@@ -560,7 +604,8 @@ constexpr ADC_ETC_TRIG_RegValue<8,  4> HWTS6;
     // 0b00100000..ADC TRIG5 selected
     // 0b01000000..ADC TRIG6 selected
     // 0b10000000..ADC TRIG7 selected
-constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL6;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 4,  0> CSEL6;
     // 0b0000..ADC Channel 0 selected
     // 0b0001..ADC Channel 1 selected.
     // 0b0010..ADC Channel 2 selected.
@@ -581,26 +626,34 @@ constexpr ADC_ETC_TRIG_RegValue<4,  0> CSEL6;
 
 // ETC_TRIG Result Data 1/0 Register
 namespace RESULT_1_0 {
-constexpr ADC_ETC_TRIG_RegValue<12, 16> DATA1;
-constexpr ADC_ETC_TRIG_RegValue<12,  0> DATA0;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_1_0, 12, 16> DATA1;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_1_0, 12,  0> DATA0;
 }  // namespace RESULT_1_0
 
 // ETC_TRIG Result Data 3/2 Register
 namespace RESULT_3_2 {
-constexpr ADC_ETC_TRIG_RegValue<12, 16> DATA3;
-constexpr ADC_ETC_TRIG_RegValue<12,  0> DATA2;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_3_2, 12, 16> DATA3;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_3_2, 12,  0> DATA2;
 }  // namespace RESULT_3_2
 
 // ETC_TRIG Result Data 5/4 Register
 namespace RESULT_5_4 {
-constexpr ADC_ETC_TRIG_RegValue<12, 16> DATA5;
-constexpr ADC_ETC_TRIG_RegValue<12,  0> DATA4;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_5_4, 12, 16> DATA5;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_5_4, 12,  0> DATA4;
 }  // namespace RESULT_5_4
 
 // ETC_TRIG Result Data 7/6 Register
 namespace RESULT_7_6 {
-constexpr ADC_ETC_TRIG_RegValue<12, 16> DATA7;
-constexpr ADC_ETC_TRIG_RegValue<12,  0> DATA6;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_7_6, 12, 16> DATA7;
+template <size_t Index>
+constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_7_6, 12,  0> DATA6;
 }  // namespace RESULT_7_6
 
 }  // namespace TRIG

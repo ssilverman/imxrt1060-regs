@@ -8,6 +8,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 
 #include "hardware/regs/regs.h"
 
@@ -60,6 +61,37 @@ using ADC2_Reg =
 
 namespace ADC1 {
 
+template <size_t Index, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false,
+          typename = std::enable_if_t<(Index < kADC_HC_count)>>
+using HC_Reg = regs::Reg32<kADC1_base, ADC_Layout, &ADC_Layout::HC, Index, Bits,
+                           Shift, DirectAssign>;
+
+template <size_t Index, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false,
+          typename = std::enable_if_t<(Index < kADC_R_count)>>
+using R_Reg = regs::Reg32<kADC1_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
+                          Shift, DirectAssign>;
+
+// Control register for hardware triggers values
+namespace HC {
+template <size_t Index>
+constexpr HC_Reg<Index, 1, 7> AIEN;  // Conversion Complete Interrupt Enable/Disable Control
+    // 0b0..Conversion complete interrupt disabled
+    // 0b1..Conversion complete interrupt enabled
+template <size_t Index>
+constexpr HC_Reg<Index, 5, 0> ADCH;  // Input Channel Select
+    // 0b00000-0b01111..External channels 0 to 15 See External Signals for more information
+    // 0b10000..External channel selection from ADC_ETC
+    // 0b10001-0b10111..Reserved
+    // 0b11000..Reserved.
+    // 0b11001..VREFSH = internal channel, for ADC self-test, hard connected to VRH internally
+    // 0b11010..Reserved.
+    // 0b11011..Reserved.
+    // 0b11100-0b11110..Reserved.
+    // 0b11111..Conversion Disabled. Hardware Triggers will not initiate any conversion.
+}  // namespace HC
+
 // Status register for HW triggers
 namespace HS {
 constexpr ADC1_Reg<&ADC_Layout::HS, 1, 7> COCO7;
@@ -71,6 +103,12 @@ constexpr ADC1_Reg<&ADC_Layout::HS, 1, 2> COCO2;
 constexpr ADC1_Reg<&ADC_Layout::HS, 1, 1> COCO1;  // Conversion Complete Flag
 constexpr ADC1_Reg<&ADC_Layout::HS, 1, 0> COCO0;  // Conversion Complete Flag
 }  // namespace HS
+
+// Data result register for HW triggers values
+namespace R {
+template <size_t Index>
+constexpr R_Reg<Index, 12, 0> CDATA;  // Data (result of an ADC conversion)
+}  // namespace R
 
 // Configuration register
 namespace CFG {
@@ -157,7 +195,7 @@ constexpr ADC1_Reg<&ADC_Layout::GS, 1, 2, true> AWKST;  // Asynchronous wakeup i
 constexpr ADC1_Reg<&ADC_Layout::GS, 1, 1, true> CALF;   // Calibration Failed Flag
     // 0b0..Calibration completed normally.
     // 0b1..Calibration failed. ADC accuracy specifications are not guaranteed.
-constexpr ADC1_Reg<regs::constify(&ADC_Layout::GS), 1, 0> ADACT;  // Conversion Active
+constexpr ADC1_Reg<regs::constify(&ADC_Layout::GS), 1, 0>       ADACT;  // Conversion Active
     // 0b0..Conversion not in progress.
     // 0b1..Conversion in progress.
 }  // namespace GS
@@ -183,33 +221,27 @@ constexpr ADC1_Reg<&ADC_Layout::CAL, 4, 0> CAL_CODE;  // Calibration Result Valu
 
 }  // namespace ADC1
 
-namespace ADC {
+namespace ADC2 {
+
+template <size_t Index, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false,
+          typename = std::enable_if_t<(Index < kADC_HC_count)>>
+using HC_Reg = regs::Reg32<kADC2_base, ADC_Layout, &ADC_Layout::HC, Index, Bits,
+                           Shift, DirectAssign>;
+
+template <size_t Index, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false,
+          typename = std::enable_if_t<(Index < kADC_R_count)>>
+using R_Reg = regs::Reg32<kADC2_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
+                          Shift, DirectAssign>;
 
 // Control register for hardware triggers values
 namespace HC {
-constexpr regs::RegValue32<1, 7> AIEN;  // Conversion Complete Interrupt Enable/Disable Control
-    // 0b0..Conversion complete interrupt disabled
-    // 0b1..Conversion complete interrupt enabled
-constexpr regs::RegValue32<5, 0> ADCH;  // Input Channel Select
-    // 0b00000-0b01111..External channels 0 to 15 See External Signals for more information
-    // 0b10000..External channel selection from ADC_ETC
-    // 0b10001-0b10111..Reserved
-    // 0b11000..Reserved.
-    // 0b11001..VREFSH = internal channel, for ADC self-test, hard connected to VRH internally
-    // 0b11010..Reserved.
-    // 0b11011..Reserved.
-    // 0b11100-0b11110..Reserved.
-    // 0b11111..Conversion Disabled. Hardware Triggers will not initiate any conversion.
+template <size_t Index>
+constexpr HC_Reg<Index, 1, 7> AIEN;
+template <size_t Index>
+constexpr HC_Reg<Index, 5, 0> ADCH;
 }  // namespace HC
-
-// Data result register for HW triggers values
-namespace R {
-constexpr regs::RegValue32<12, 0> CDATA;  // R/O, Data (result of an ADC conversion)
-}  // namespace R
-
-}  // namespace ADC
-
-namespace ADC2 {
 
 // ADC2 Status register for HW triggers
 namespace HS {
@@ -222,6 +254,12 @@ constexpr ADC2_Reg<&ADC_Layout::HS, 1, 2> COCO2;
 constexpr ADC2_Reg<&ADC_Layout::HS, 1, 1> COCO1;
 constexpr ADC2_Reg<&ADC_Layout::HS, 1, 0> COCO0;
 }  // namespace HS
+
+// Data result register for HW triggers values
+namespace R {
+template <size_t Index>
+constexpr R_Reg<Index, 12, 0> CDATA;
+}  // namespace R
 
 // ADC2 Configuration register
 namespace CFG {
@@ -252,9 +290,9 @@ constexpr ADC2_Reg<&ADC_Layout::GC, 1, 0> ADACKEN;
 
 // ADC2 General status register
 namespace GS {
-constexpr ADC2_Reg<&ADC_Layout::GS, 1, 2> AWKST;
-constexpr ADC2_Reg<&ADC_Layout::GS, 1, 1> CALF;
-constexpr ADC2_Reg<&ADC_Layout::GS, 1, 0> ADACT;
+constexpr ADC2_Reg<&ADC_Layout::GS, 1, 2, true> AWKST;
+constexpr ADC2_Reg<&ADC_Layout::GS, 1, 1, true> CALF;
+constexpr ADC2_Reg<regs::constify(&ADC_Layout::GS), 1, 0>       ADACT;
 }  // namespace GS
 
 // ADC2 Compare value register

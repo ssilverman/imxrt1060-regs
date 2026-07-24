@@ -131,7 +131,7 @@ namespace DCP {
 
 // DCP control register 0
 namespace CTRL {
-constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 31> SFTRESET;
+constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 31> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 30> CLKGATE;
 constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 29> PRESENT_CRYPTO;
     // 0b0..Absent
@@ -153,7 +153,7 @@ constexpr DCP_Reg<&DCP_Layout::CTRL, 8,  0> CHANNEL_INTERRUPT_ENABLE;
 
 // DCP control register 0
 namespace CTRL_SET {
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 31, true> SFTRESET;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 31, true> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 30, true> CLKGATE;
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 29, true> PRESENT_CRYPTO;
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 28, true> PRESENT_SHA;
@@ -166,7 +166,7 @@ constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
 
 // DCP control register 0
 namespace CTRL_CLR {
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 31, true> SFTRESET;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 31, true> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 30, true> CLKGATE;
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 29, true> PRESENT_CRYPTO;
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 28, true> PRESENT_SHA;
@@ -179,7 +179,7 @@ constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
 
 // DCP control register 0
 namespace CTRL_TOG {
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 31, true> SFTRESET;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 31, true> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 30, true> CLKGATE;
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 29, true> PRESENT_CRYPTO;
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 28, true> PRESENT_SHA;

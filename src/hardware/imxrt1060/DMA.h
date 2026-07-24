@@ -8,6 +8,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 
 #include "hardware/regs/regs.h"
 
@@ -80,11 +81,11 @@ struct DMA_Layout {
   volatile uint8_t DCHPRI29;                           /**< Channel Priority, offset: 0x11E */
   volatile uint8_t DCHPRI28;                           /**< Channel Priority, offset: 0x11F */
   uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[3808];
-  struct {                                         /* offset: 0x1000, array step: 0x20 */
+  struct TCD_Layout {                                  /* offset: 0x1000, array step: 0x20 */
     volatile uint32_t SADDR;                             /**< TCD Source Address, array offset: 0x1000, array step: 0x20 */
     volatile uint16_t SOFF;                              /**< TCD Signed Source Address Offset, array offset: 0x1004, array step: 0x20 */
     volatile uint16_t ATTR;                              /**< TCD Transfer Attributes, array offset: 0x1006, array step: 0x20 */
-    union {                                          /* offset: 0x1008, array step: 0x20 */
+    union {                                              /* offset: 0x1008, array step: 0x20 */
       volatile uint32_t NBYTES_MLNO;                       /**< TCD Minor Byte Count (Minor Loop Mapping Disabled), array offset: 0x1008, array step: 0x20 */
       volatile uint32_t NBYTES_MLOFFNO;                    /**< TCD Signed Minor Loop Offset (Minor Loop Mapping Enabled and Offset Disabled), array offset: 0x1008, array step: 0x20 */
       volatile uint32_t NBYTES_MLOFFYES;                   /**< TCD Signed Minor Loop Offset (Minor Loop Mapping and Offset Enabled), array offset: 0x1008, array step: 0x20 */
@@ -92,13 +93,13 @@ struct DMA_Layout {
     volatile int32_t SLAST;                              /**< TCD Last Source Address Adjustment, array offset: 0x100C, array step: 0x20 */
     volatile uint32_t DADDR;                             /**< TCD Destination Address, array offset: 0x1010, array step: 0x20 */
     volatile uint16_t DOFF;                              /**< TCD Signed Destination Address Offset, array offset: 0x1014, array step: 0x20 */
-    union {                                          /* offset: 0x1016, array step: 0x20 */
+    union {                                              /* offset: 0x1016, array step: 0x20 */
       volatile uint16_t CITER_ELINKNO;                     /**< TCD Current Minor Loop Link, Major Loop Count (Channel Linking Disabled), array offset: 0x1016, array step: 0x20 */
       volatile uint16_t CITER_ELINKYES;                    /**< TCD Current Minor Loop Link, Major Loop Count (Channel Linking Enabled), array offset: 0x1016, array step: 0x20 */
     };
     volatile int32_t DLAST_SGA;                          /**< TCD Last Destination Address Adjustment/Scatter Gather Address, array offset: 0x1018, array step: 0x20 */
     volatile uint16_t CSR;                               /**< TCD Control and Status, array offset: 0x101C, array step: 0x20 */
-    union {                                          /* offset: 0x101E, array step: 0x20 */
+    union {                                              /* offset: 0x101E, array step: 0x20 */
       volatile uint16_t BITER_ELINKNO;                     /**< TCD Beginning Minor Loop Link, Major Loop Count (Channel Linking Disabled), array offset: 0x101E, array step: 0x20 */
       volatile uint16_t BITER_ELINKYES;                    /**< TCD Beginning Minor Loop Link, Major Loop Count (Channel Linking Enabled), array offset: 0x101E, array step: 0x20 */
     };
@@ -115,7 +116,7 @@ constexpr regs::RegGroup<DMA_Layout, kDMA_size, kDMA_base> group;
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using DMA_Reg8 =
-    regs::Reg<uint8_t, kDMA_base, DMA_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kDMA_base, DMA_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
@@ -123,6 +124,23 @@ using DMA_Reg32 =
     regs::Reg32<kDMA_base, DMA_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 namespace DMA {
+
+template <size_t Index,
+          typename = std::enable_if_t<(Index < kDMA_TCD_count)>>
+constexpr uintptr_t TcdBase() {
+  return kDMA_base + offsetof(DMA_Layout, TCD) +
+         Index*sizeof(DMA_Layout::TCD_Layout);
+}
+
+template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using TCD_Reg32 = regs::Reg32<TcdBase<Index>(), DMA_Layout::TCD_Layout, Member,
+                              0, Bits, Shift, DirectAssign>;
+
+template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using TCD_Reg16 = regs::Reg16<TcdBase<Index>(), DMA_Layout::TCD_Layout, Member,
+                              0, Bits, Shift, DirectAssign>;
 
 // Control
 namespace CR {
@@ -1280,10 +1298,12 @@ constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 4, 0> CHPRI;   // Channel n Arbitratio
 
 // TCD Transfer Attributes values
 namespace ATTR {
-constexpr regs::RegValue16<5, 11> SMOD;    // Source Address Modulo
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 5, 11> SMOD;    // Source Address Modulo
     // 0b00000..Source address modulo feature is disabled
     // 0b00001-0b11111..Value defines address range used to set up circular data queue
-constexpr regs::RegValue16<3,  8> SSIZE;   // Source data transfer size
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  8> SSIZE;   // Source data transfer size
     // 0b000..8-bit
     // 0b001..16-bit
     // 0b010..32-bit
@@ -1292,97 +1312,126 @@ constexpr regs::RegValue16<3,  8> SSIZE;   // Source data transfer size
     // 0b101..32-byte burst (4 beats of 64 bits)
     // 0b110..Reserved
     // 0b111..Reserved
-constexpr regs::RegValue16<5,  3> DMOD;    // Destination Address Modulo
-constexpr regs::RegValue16<3,  0> DSIZE;   // Destination data transfer size
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 5,  3> DMOD;    // Destination Address Modulo
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  0> DSIZE;   // Destination data transfer size
 }  // namespace ATTR
 
 // TCD Signed Minor Loop Offset (Minor Loop Mapping Enabled and Offset Disabled) values
 namespace NBYTES_MLOFFNO {
-constexpr regs::RegValue32<1,  31> SMLOE;   // Source Minor Loop Offset Enable
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFNO, 1,  31> SMLOE;   // Source Minor Loop Offset Enable
     // 0b0..The minor loop offset is not applied to the SADDR
     // 0b1..The minor loop offset is applied to the SADDR
-constexpr regs::RegValue32<1,  30> DMLOE;   // Destination Minor Loop Offset Enable
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFNO, 1,  30> DMLOE;   // Destination Minor Loop Offset Enable
     // 0b0..The minor loop offset is not applied to the DADDR
     // 0b1..The minor loop offset is applied to the DADDR
-constexpr regs::RegValue32<30,  0> NBYTES;  // Minor Byte Transfer Count
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFNO, 30,  0> NBYTES;  // Minor Byte Transfer Count
 }  // namespace NBYTES_MLOFFNO
 
 // TCD Signed Minor Loop Offset (Minor Loop Mapping and Offset Enabled) values
 namespace NBYTES_MLOFFYES {
-constexpr regs::RegValue32< 1, 31> SMLOE;   // Source Minor Loop Offset Enable
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES,  1, 31> SMLOE;   // Source Minor Loop Offset Enable
     // 0b0..The minor loop offset is not applied to the SADDR
     // 0b1..The minor loop offset is applied to the SADDR
-constexpr regs::RegValue32< 1, 30> DMLOE;   // Destination Minor Loop Offset Enable
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES,  1, 30> DMLOE;   // Destination Minor Loop Offset Enable
     // 0b0..The minor loop offset is not applied to the DADDR
     // 0b1..The minor loop offset is applied to the DADDR
-constexpr regs::RegValue32<20, 10> MLOFF;
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES, 20, 10> MLOFF;
     // If SMLOE = 1 or DMLOE = 1, this field represents a sign-extended offset applied to the
     //   source or destination address to form the next-state value after the minor loop completes.
-constexpr regs::RegValue32<10,  0> NBYTES;  // Minor Byte Transfer Count
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES, 10,  0> NBYTES;  // Minor Byte Transfer Count
 }  // namespace NBYTES_MLOFFYES
 
 // TCD Current Minor Loop Link, Major Loop Count (Channel Linking Disabled) values
 namespace CITER_ELINKNO {
-constexpr regs::RegValue16< 1, 15> ELINK;  // Enable channel-to-channel linking on minor-loop complete
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CITER_ELINKNO,  1, 15> ELINK;  // Enable channel-to-channel linking on minor-loop complete
     // 0b0..Channel-to-channel linking is disabled
     // 0b1..Channel-to-channel linking is enabled
-constexpr regs::RegValue16<15,  0> CITER;  // Current Major Iteration Count
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CITER_ELINKNO, 15,  0> CITER;  // Current Major Iteration Count
 }  // namespace CITER_ELINKNO
 
 // TCD Current Minor Loop Link, Major Loop Count (Channel Linking Enabled) values
 namespace CITER_ELINKYES {
-constexpr regs::RegValue16<1, 15> ELINK;   // Enable channel-to-channel linking on minor-loop complete
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CITER_ELINKYES, 1, 15> ELINK;   // Enable channel-to-channel linking on minor-loop complete
     // 0b0..Channel-to-channel linking is disabled
     // 0b1..Channel-to-channel linking is enabled
-constexpr regs::RegValue16<5,  9> LINKCH;  // Minor Loop Link Channel Number
-constexpr regs::RegValue16<9,  0> CITER;   // Current Major Iteration Count
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CITER_ELINKYES, 5,  9> LINKCH;  // Minor Loop Link Channel Number
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CITER_ELINKYES, 9,  0> CITER;   // Current Major Iteration Count
 }  // namespace CITER_ELINKYES
 
 // TCD Control and Status values
 namespace CSR {
-constexpr regs::RegValue16<2, 14> BWC;          // Bandwidth Control
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 2, 14> BWC;          // Bandwidth Control
     // 0b00..No eDMA engine stalls
     // 0b01..Reserved
     // 0b10..eDMA engine stalls for 4 cycles after each R/W
     // 0b11..eDMA engine stalls for 8 cycles after each R/W
-constexpr regs::RegValue16<5,  8> MAJORLINKCH;  // Major Loop Link Channel Number
-constexpr regs::RegValue16<1,  7> DONE;         // Channel Done
-constexpr regs::RegValue16<1,  6> ACTIVE;       // R/O, Channel Active
-constexpr regs::RegValue16<1,  5> MAJORELINK;   // Enable channel-to-channel linking on major loop complete
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 5,  8> MAJORLINKCH;  // Major Loop Link Channel Number
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  7> DONE;         // Channel Done
+template <size_t Index>
+constexpr TCD_Reg16<Index, regs::constify(&DMA_Layout::TCD_Layout::CSR), 1,  6> ACTIVE;       // Channel Active
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  5> MAJORELINK;   // Enable channel-to-channel linking on major loop complete
     // 0b0..Channel-to-channel linking is disabled
     // 0b1..Channel-to-channel linking is enabled
-constexpr regs::RegValue16<1,  4> ESG;          // Enable Scatter/Gather Processing
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  4> ESG;          // Enable Scatter/Gather Processing
     // 0b0..The current channel's TCD is normal format
     // 0b1..The current channel's TCD specifies a scatter gather format
-constexpr regs::RegValue16<1,  3> DREQ;         // Disable Request
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  3> DREQ;         // Disable Request
     // 0b0..The channel's ERQ field is not affected
     // 0b1..The channel's ERQ field value changes to 0 when the major loop is complete
-constexpr regs::RegValue16<1,  2> INTHALF;      // Enable an interrupt when major counter is half complete.
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  2> INTHALF;      // Enable an interrupt when major counter is half complete.
     // 0b0..Half-point interrupt is disabled
     // 0b1..Half-point interrupt is enabled
-constexpr regs::RegValue16<1,  1> INTMAJOR;     // Enable an interrupt when major iteration count completes.
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  1> INTMAJOR;     // Enable an interrupt when major iteration count completes.
     // 0b0..End of major loop interrupt is disabled
     // 0b1..End of major loop interrupt is enabled
-constexpr regs::RegValue16<1,  0> START;        // Channel Start
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  0> START;        // Channel Start
     // 0b0..Channel is not explicitly started
     // 0b1..Channel is explicitly started via a software initiated service request
 }  // namespace CSR
 
 // TCD Beginning Minor Loop Link, Major Loop Count (Channel Linking Disabled) values
 namespace BITER_ELINKNO {
-constexpr regs::RegValue16< 1, 15> ELINK;  // Enables channel-to-channel linking on minor loop complete
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::BITER_ELINKNO,  1, 15> ELINK;  // Enables channel-to-channel linking on minor loop complete
     // 0b0..Channel-to-channel linking is disabled
     // 0b1..Channel-to-channel linking is enabled
-constexpr regs::RegValue16<15,  0> BITER;  // Starting Major Iteration Count
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::BITER_ELINKNO, 15,  0> BITER;  // Starting Major Iteration Count
 }  // namespace BITER_ELINKNO
 
 // TCD Beginning Minor Loop Link, Major Loop Count (Channel Linking Enabled) values
 namespace BITER_ELINKYES {
-constexpr regs::RegValue16<1, 15> ELINK;   // Enables channel-to-channel linking on minor loop complete
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::BITER_ELINKYES, 1, 15> ELINK;   // Enables channel-to-channel linking on minor loop complete
     // 0b0..Channel-to-channel linking is disabled
     // 0b1..Channel-to-channel linking is enabled
-constexpr regs::RegValue16<5,  9> LINKCH;  // Link Channel Number
-constexpr regs::RegValue16<9,  0> BITER;   // Starting major iteration count
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::BITER_ELINKYES, 5,  9> LINKCH;  // Link Channel Number
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::BITER_ELINKYES, 9,  0> BITER;   // Starting major iteration count
 }  // namespace BITER_ELINKYES
 
 }  // namespace DMA

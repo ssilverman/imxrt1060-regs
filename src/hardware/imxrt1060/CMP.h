@@ -54,22 +54,22 @@ constexpr regs::RegGroup<CMP_Layout, kCMP_size, kCMP4_base> group;
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using CMP1_Reg =
-    regs::Reg<uint8_t, kCMP1_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP1_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using CMP2_Reg =
-    regs::Reg<uint8_t, kCMP2_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP2_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using CMP3_Reg =
-    regs::Reg<uint8_t, kCMP3_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP3_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using CMP4_Reg =
-    regs::Reg<uint8_t, kCMP4_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP4_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 namespace CMP1 {
 

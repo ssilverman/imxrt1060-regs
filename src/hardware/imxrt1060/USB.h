@@ -8,6 +8,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 
 #include "hardware/regs/regs.h"
 
@@ -103,6 +104,13 @@ using USB2_Reg =
     regs::Reg32<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 namespace USB1 {
+
+template <size_t Index, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false,
+          typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
+using ENDPTCTRL_Reg =
+    regs::Reg32<kUSB1_base, USB_Layout, &USB_Layout::ENDPTCTRL, Index, Bits,
+                Shift, DirectAssign>;
 
 // USB1 Identification register
 namespace ID {
@@ -511,29 +519,44 @@ constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16> ETCE;
 constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0> ERCE;
 }  // namespace ENDPTCOMPLETE
 
-}  // namespace USB1
-
-namespace USB {
-
 // Endpoint Control values
 namespace ENDPTCTRL {
-constexpr regs::RegValue32<1, 23> TXE;
-constexpr regs::RegValue32<1, 22> TXR;
-constexpr regs::RegValue32<1, 21> TXI;
-constexpr regs::RegValue32<2, 18> TXT;
-constexpr regs::RegValue32<1, 17> TXD;
-constexpr regs::RegValue32<1, 16> TXS;
-constexpr regs::RegValue32<1,  7> RXE;
-constexpr regs::RegValue32<1,  6> RXR;
-constexpr regs::RegValue32<1,  5> RXI;
-constexpr regs::RegValue32<2,  2> RXT;
-constexpr regs::RegValue32<1,  1> RXD;
-constexpr regs::RegValue32<1,  0> RXS;
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1, 23> TXE;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 22> TXR;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 21> TXI;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 2, 18> TXT;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 17> TXD;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1, 16> TXS;
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1,  7> RXE;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1,  6> RXR;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1,  5> RXI;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 2,  2> RXT;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 1> RXD;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1,  0> RXS;
 }  // namespace ENDPTCTRL
 
-}  // namespace USB
+}  // namespace USB1
 
 namespace USB2 {
+
+template <size_t Index, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false,
+          typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
+using ENDPTCTRL_Reg =
+    regs::Reg32<kUSB2_base, USB_Layout, &USB_Layout::ENDPTCTRL, Index, Bits,
+                Shift, DirectAssign>;
 
 // USB2 Identification register
 namespace ID {
@@ -838,6 +861,34 @@ namespace ENDPTCOMPLETE {
 constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16> ETCE;
 constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0> ERCE;
 }  // namespace ENDPTCOMPLETE
+
+// Endpoint Control values
+namespace ENDPTCTRL {
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1, 23> TXE;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 22> TXR;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 21> TXI;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 2, 18> TXT;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 17> TXD;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1, 16> TXS;
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1,  7> RXE;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1,  6> RXR;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1,  5> RXI;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 2,  2> RXT;
+template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
+constexpr ENDPTCTRL_Reg<Index, 1, 1> RXD;  // Doesn't exist in ENDPCTRL<0>
+template <size_t Index>
+constexpr ENDPTCTRL_Reg<Index, 1,  0> RXS;
+}  // namespace ENDPTCTRL
 
 }  // namespace USB2
 

@@ -276,6 +276,16 @@ using Reg16 = Reg<uint16_t, Base, Layout, Member, MemberOffset, Bits, Shift,
 template <size_t Bits, unsigned int Shift>
 using RegValue16 = RegValue<uint16_t, Bits, Shift>;
 
+template <uintptr_t Base, typename Layout,
+          auto Member,          // Can be const or non-const
+          size_t MemberOffset,  // If the member is an array, otherwise zero
+          size_t Bits, unsigned int Shift, bool DirectAssign = false>
+using Reg8 = Reg<uint8_t, Base, Layout, Member, MemberOffset, Bits, Shift,
+                 DirectAssign>;
+
+template <size_t Bits, unsigned int Shift>
+using RegValue8 = RegValue<uint8_t, Bits, Shift>;
+
 // Generate unique "_reserved" field names
 #define HARDWARE_REGS_CAT2(a, b) a##b
 #define HARDWARE_REGS_CAT(a, b) HARDWARE_REGS_CAT2(a, b)

@@ -453,7 +453,7 @@ namespace CIMR {
 constexpr CCM_Reg<&CCM_Layout::CIMR, 1, 26> ARM_PODF_LOADED;
     // 0b0..don't mask interrupt due to frequency change of arm_podf - interrupt will be created
     // 0b1..mask interrupt due to frequency change of arm_podf
-constexpr CCM_Reg<&CCM_Layout::CIMR, 1, 22> MASK_PERIPH_CLOCK_SEL_LOADED;
+constexpr CCM_Reg<&CCM_Layout::CIMR, 1, 22> MASK_PERIPH_CLK_SEL_LOADED;
     // 0b0..don't mask interrupt due to update of periph_clk_sel - interrupt will be created
     // 0b1..mask interrupt due to update of periph_clk_sel
 constexpr CCM_Reg<&CCM_Layout::CIMR, 1, 20> MASK_AHB_PODF_LOADED;

@@ -244,7 +244,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPSVCR, 1,  0> SV0_CFG;
 
 // SNVS_HP Status Register
 namespace HPSR {
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 31, true> ZMK_ZERO_MASK;
+constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 31, true> ZMK_ZERO;
     // 0b0..The ZMK is not zero.
     // 0b1..The ZMK is zero.
 constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 27, true> OTPMK_ZERO;

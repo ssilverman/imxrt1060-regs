@@ -76,8 +76,10 @@ struct SCB_Layout {
 };
 
 constexpr size_t    kSCB_size = 0x2AC;
+namespace SCB {
 constexpr uintptr_t kSCS_base = 0xE000E000;          /*!< System Control Space Base Address */
-constexpr uintptr_t kSCB_base = kSCS_base + 0x0D00;  /*!< System Control Block Base Address */
+}  // namespace SCB
+constexpr uintptr_t kSCB_base = SCB::kSCS_base + 0x0D00;  /*!< System Control Block Base Address */
 
 namespace SCB {
 constexpr regs::RegGroup<SCB_Layout, kSCB_size, kSCB_base> group;
