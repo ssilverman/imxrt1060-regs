@@ -651,6 +651,243 @@ constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0>       TD
 }  // namespace TCSR
 }  // namespace CHANNEL
 
+// Low-width read-only statistic counter fields
+
+// Tx Packet Count Statistic Register
+namespace RMON_T_PACKETS {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_PACKETS, 16, 0> TXPKTS;  // Packet count
+}  // namespace RMON_T_PACKETS
+
+// Tx Broadcast Packets Statistic Register
+namespace RMON_T_BC_PKT {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_BC_PKT, 16, 0> TXPKTS;  // Number of broadcast packets
+}  // namespace RMON_T_BC_PKT
+
+// Tx Multicast Packets Statistic Register
+namespace RMON_T_MC_PKT {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_MC_PKT, 16, 0> TXPKTS;  // Number of multicast packets
+}  // namespace RMON_T_MC_PKT
+
+// Tx Packets with CRC/Align Error Statistic Register
+namespace RMON_T_CRC_ALIGN {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_CRC_ALIGN, 16, 0> TXPKTS;  // Number of packets with CRC/align error
+}  // namespace RMON_T_CRC_ALIGN
+
+// Tx Packets Less Than Bytes and Good CRC Statistic Register
+namespace RMON_T_UNDERSIZE {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_UNDERSIZE, 16, 0> TXPKTS;  // Number of transmit packets less than 64 bytes with good CRC
+}  // namespace RMON_T_UNDERSIZE
+
+// Tx Packets GT MAX_FL bytes and Good CRC Statistic Register
+namespace RMON_T_OVERSIZE {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_OVERSIZE, 16, 0> TXPKTS;  // Number of transmit packets greater than MAX_FL bytes with good CRC
+}  // namespace RMON_T_OVERSIZE
+
+// Tx Packets Less Than 64 Bytes and Bad CRC Statistic Register
+namespace RMON_T_FRAG {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_FRAG, 16, 0> TXPKTS;  // Number of packets less than 64 bytes with bad CRC
+}  // namespace RMON_T_FRAG
+
+// Tx Packets Greater Than MAX_FL bytes and Bad CRC Statistic Register
+namespace RMON_T_JAB {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_JAB, 16, 0> TXPKTS;  // Number of transmit packets greater than MAX_FL bytes and bad CRC
+}  // namespace RMON_T_JAB
+
+// Tx Collision Count Statistic Register
+namespace RMON_T_COL {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_COL, 16, 0> TXPKTS;  // Number of transmit collisions
+}  // namespace RMON_T_COL
+
+// Tx 64-Byte Packets Statistic Register
+namespace RMON_T_P64 {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_P64, 16, 0> TXPKTS;  // Number of 64-byte transmit packets
+}  // namespace RMON_T_P64
+
+// Tx 65- to 127-byte Packets Statistic Register
+namespace RMON_T_P65TO127 {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_P65TO127, 16, 0> TXPKTS;  // Number of 65- to 127-byte transmit packets
+}  // namespace RMON_T_P65TO127
+
+// Tx 128- to 255-byte Packets Statistic Register
+namespace RMON_T_P128TO255 {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_P128TO255, 16, 0> TXPKTS;  // Number of 128- to 255-byte transmit packets
+}  // namespace RMON_T_P128TO255
+
+// Tx 256- to 511-byte Packets Statistic Register
+namespace RMON_T_P256TO511 {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_P256TO511, 16, 0> TXPKTS;  // Number of 256- to 511-byte transmit packets
+}  // namespace RMON_T_P256TO511
+
+// Tx 512- to 1023-byte Packets Statistic Register
+namespace RMON_T_P512TO1023 {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_P512TO1023, 16, 0> TXPKTS;  // Number of 512- to 1023-byte transmit packets
+}  // namespace RMON_T_P512TO1023
+
+// Tx 1024- to 2047-byte Packets Statistic Register
+namespace RMON_T_P1024TO2047 {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_P1024TO2047, 16, 0> TXPKTS;  // Number of 1024- to 2047-byte transmit packets
+}  // namespace RMON_T_P1024TO2047
+
+// Tx Packets Greater Than 2048 Bytes Statistic Register
+namespace RMON_T_P_GTE2048 {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_P_GTE2048, 16, 0> TXPKTS;  // Number of transmit packets greater than 2048 bytes
+}  // namespace RMON_T_P_GTE2048
+
+// Frames Transmitted OK Statistic Register
+namespace IEEE_T_FRAME_OK {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_FRAME_OK, 16, 0> COUNT;  // Number of frames transmitted OK
+}  // namespace IEEE_T_FRAME_OK
+
+// Frames Transmitted with Single Collision Statistic Register
+namespace IEEE_T_1COL {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_1COL, 16, 0> COUNT;  // Number of frames transmitted with one collision
+}  // namespace IEEE_T_1COL
+
+// Frames Transmitted with Multiple Collisions Statistic Register
+namespace IEEE_T_MCOL {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_MCOL, 16, 0> COUNT;  // Number of frames transmitted with multiple collisions
+}  // namespace IEEE_T_MCOL
+
+// Frames Transmitted after Deferral Delay Statistic Register
+namespace IEEE_T_DEF {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_DEF, 16, 0> COUNT;  // Number of frames transmitted with deferral delay
+}  // namespace IEEE_T_DEF
+
+// Frames Transmitted with Late Collision Statistic Register
+namespace IEEE_T_LCOL {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_LCOL, 16, 0> COUNT;  // Number of frames transmitted with late collision
+}  // namespace IEEE_T_LCOL
+
+// Frames Transmitted with Excessive Collisions Statistic Register
+namespace IEEE_T_EXCOL {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_EXCOL, 16, 0> COUNT;  // Number of frames transmitted with excessive collisions
+}  // namespace IEEE_T_EXCOL
+
+// Frames Transmitted with Tx FIFO Underrun Statistic Register
+namespace IEEE_T_MACERR {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_MACERR, 16, 0> COUNT;  // Number of frames transmitted with transmit FIFO underrun
+}  // namespace IEEE_T_MACERR
+
+// Frames Transmitted with Carrier Sense Error Statistic Register
+namespace IEEE_T_CSERR {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_CSERR, 16, 0> COUNT;  // Number of frames transmitted with carrier sense error
+}  // namespace IEEE_T_CSERR
+
+// Reserved Statistic Register
+namespace IEEE_T_SQE {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_SQE, 16, 0> COUNT;  // This read-only field is reserved and always has the value 0
+}  // namespace IEEE_T_SQE
+
+// Flow Control Pause Frames Transmitted Statistic Register
+namespace IEEE_T_FDXFC {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_FDXFC, 16, 0> COUNT;  // Number of flow-control pause frames transmitted
+}  // namespace IEEE_T_FDXFC
+
+// Rx Packet Count Statistic Register
+namespace RMON_R_PACKETS {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_PACKETS, 16, 0> COUNT;  // Number of packets received
+}  // namespace RMON_R_PACKETS
+
+// Rx Broadcast Packets Statistic Register
+namespace RMON_R_BC_PKT {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_BC_PKT, 16, 0> COUNT;  // Number of receive broadcast packets
+}  // namespace RMON_R_BC_PKT
+
+// Rx Multicast Packets Statistic Register
+namespace RMON_R_MC_PKT {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_MC_PKT, 16, 0> COUNT;  // Number of receive multicast packets
+}  // namespace RMON_R_MC_PKT
+
+// Rx Packets with CRC/Align Error Statistic Register
+namespace RMON_R_CRC_ALIGN {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_CRC_ALIGN, 16, 0> COUNT;  // Number of receive packets with CRC or align error
+}  // namespace RMON_R_CRC_ALIGN
+
+// Rx Packets with Less Than 64 Bytes and Good CRC Statistic Register
+namespace RMON_R_UNDERSIZE {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_UNDERSIZE, 16, 0> COUNT;  // Number of receive packets with less than 64 bytes and good CRC
+}  // namespace RMON_R_UNDERSIZE
+
+// Rx Packets Greater Than MAX_FL and Good CRC Statistic Register
+namespace RMON_R_OVERSIZE {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_OVERSIZE, 16, 0> COUNT;  // Number of receive packets greater than MAX_FL and good CRC
+}  // namespace RMON_R_OVERSIZE
+
+// Rx Packets Less Than 64 Bytes and Bad CRC Statistic Register
+namespace RMON_R_FRAG {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_FRAG, 16, 0> COUNT;  // Number of receive packets with less than 64 bytes and bad CRC
+}  // namespace RMON_R_FRAG
+
+// Rx Packets Greater Than MAX_FL Bytes and Bad CRC Statistic Register
+namespace RMON_R_JAB {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_JAB, 16, 0> COUNT;  // Number of receive packets greater than MAX_FL and bad CRC
+}  // namespace RMON_R_JAB
+
+// Rx 64-Byte Packets Statistic Register
+namespace RMON_R_P64 {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_P64, 16, 0> COUNT;  // Number of 64-byte receive packets
+}  // namespace RMON_R_P64
+
+// Rx 65- to 127-Byte Packets Statistic Register
+namespace RMON_R_P65TO127 {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_P65TO127, 16, 0> COUNT;  // Number of 65- to 127-byte recieve packets
+}  // namespace RMON_R_P65TO127
+
+// Rx 128- to 255-Byte Packets Statistic Register
+namespace RMON_R_P128TO255 {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_P128TO255, 16, 0> COUNT;  // Number of 128- to 255-byte recieve packets
+}  // namespace RMON_R_P128TO255
+
+// Rx 256- to 511-Byte Packets Statistic Register
+namespace RMON_R_P256TO511 {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_P256TO511, 16, 0> COUNT;  // Number of 256- to 511-byte recieve packets
+}  // namespace RMON_R_P256TO511
+
+// Rx 512- to 1023-Byte Packets Statistic Register
+namespace RMON_R_P512TO1023 {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_P512TO1023, 16, 0> COUNT;  // Number of 512- to 1023-byte recieve packets
+}  // namespace RMON_R_P512TO1023
+
+// Rx 1024- to 2047-Byte Packets Statistic Register
+namespace RMON_R_P1024TO2047 {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_P1024TO2047, 16, 0> COUNT;  // Number of 1024- to 2047-byte recieve packets
+}  // namespace RMON_R_P1024TO2047
+
+// Rx Packets Greater than 2048 Bytes Statistic Register
+namespace RMON_R_P_GTE2048 {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_P_GTE2048, 16, 0> COUNT;  // Number of greater-than-2048-byte recieve packets
+}  // namespace RMON_R_P_GTE2048
+
+// Frames not Counted Correctly Statistic Register
+namespace IEEE_R_DROP {
+constexpr ENET_Reg<&ENET_Layout::IEEE_R_DROP, 16, 0> COUNT;  // Frame count
+}  // namespace IEEE_R_DROP
+
+// Frames Received OK Statistic Register
+namespace IEEE_R_FRAME_OK {
+constexpr ENET_Reg<&ENET_Layout::IEEE_R_FRAME_OK, 16, 0> COUNT;  // Number of frames received OK
+}  // namespace IEEE_R_FRAME_OK
+
+// Frames Received with CRC Error Statistic Register
+namespace IEEE_R_CRC {
+constexpr ENET_Reg<&ENET_Layout::IEEE_R_CRC, 16, 0> COUNT;  // Number of frames received with CRC error
+}  // namespace IEEE_R_CRC
+
+// Frames Received with Alignment Error Statistic Register
+namespace IEEE_R_ALIGN {
+constexpr ENET_Reg<&ENET_Layout::IEEE_R_ALIGN, 16, 0> COUNT;  // Number of frames received with alignment error
+}  // namespace IEEE_R_ALIGN
+
+// Receive FIFO Overflow Count Statistic Register
+namespace IEEE_R_MACERR {
+constexpr ENET_Reg<&ENET_Layout::IEEE_R_MACERR, 16, 0> COUNT;  // Receive FIFO overflow count
+}  // namespace IEEE_R_MACERR
+
+// Flow Control Pause Frames Received Statistic Register
+namespace IEEE_R_FDXFC {
+constexpr ENET_Reg<&ENET_Layout::IEEE_R_FDXFC, 16, 0> COUNT;  // Number of flow-control pause frames received
+}  // namespace IEEE_R_FDXFC
+
 }  // namespace ENET
 
 namespace ENET2 {
@@ -908,6 +1145,196 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0>       TDRE;   // Timer DMA Request Enable
 }  // namespace TCSR
 }  // namespace CHANNEL
+
+// Low-width read-only statistic counter fields
+
+namespace RMON_T_PACKETS {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_PACKETS, 16, 0> TXPKTS;
+}  // namespace RMON_T_PACKETS
+
+namespace RMON_T_BC_PKT {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_BC_PKT, 16, 0> TXPKTS;
+}  // namespace RMON_T_BC_PKT
+
+namespace RMON_T_MC_PKT {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_MC_PKT, 16, 0> TXPKTS;
+}  // namespace RMON_T_MC_PKT
+
+namespace RMON_T_CRC_ALIGN {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_CRC_ALIGN, 16, 0> TXPKTS;
+}  // namespace RMON_T_CRC_ALIGN
+
+namespace RMON_T_UNDERSIZE {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_UNDERSIZE, 16, 0> TXPKTS;
+}  // namespace RMON_T_UNDERSIZE
+
+namespace RMON_T_OVERSIZE {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_OVERSIZE, 16, 0> TXPKTS;
+}  // namespace RMON_T_OVERSIZE
+
+namespace RMON_T_FRAG {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_FRAG, 16, 0> TXPKTS;
+}  // namespace RMON_T_FRAG
+
+namespace RMON_T_JAB {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_JAB, 16, 0> TXPKTS;
+}  // namespace RMON_T_JAB
+
+namespace RMON_T_COL {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_COL, 16, 0> TXPKTS;
+}  // namespace RMON_T_COL
+
+namespace RMON_T_P64 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_P64, 16, 0> TXPKTS;
+}  // namespace RMON_T_P64
+
+namespace RMON_T_P65TO127 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_P65TO127, 16, 0> TXPKTS;
+}  // namespace RMON_T_P65TO127
+
+namespace RMON_T_P128TO255 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_P128TO255, 16, 0> TXPKTS;
+}  // namespace RMON_T_P128TO255
+
+namespace RMON_T_P256TO511 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_P256TO511, 16, 0> TXPKTS;
+}  // namespace RMON_T_P256TO511
+
+namespace RMON_T_P512TO1023 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_P512TO1023, 16, 0> TXPKTS;
+}  // namespace RMON_T_P512TO1023
+
+namespace RMON_T_P1024TO2047 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_P1024TO2047, 16, 0> TXPKTS;
+}  // namespace RMON_T_P1024TO2047
+
+namespace RMON_T_P_GTE2048 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_P_GTE2048, 16, 0> TXPKTS;
+}  // namespace RMON_T_P_GTE2048
+
+namespace IEEE_T_FRAME_OK {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_FRAME_OK, 16, 0> COUNT;
+}  // namespace IEEE_T_FRAME_OK
+
+namespace IEEE_T_1COL {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_1COL, 16, 0> COUNT;
+}  // namespace IEEE_T_1COL
+
+namespace IEEE_T_MCOL {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_MCOL, 16, 0> COUNT;
+}  // namespace IEEE_T_MCOL
+
+namespace IEEE_T_DEF {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_DEF, 16, 0> COUNT;
+}  // namespace IEEE_T_DEF
+
+namespace IEEE_T_LCOL {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_LCOL, 16, 0> COUNT;
+}  // namespace IEEE_T_LCOL
+
+namespace IEEE_T_EXCOL {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_EXCOL, 16, 0> COUNT;
+}  // namespace IEEE_T_EXCOL
+
+namespace IEEE_T_MACERR {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_MACERR, 16, 0> COUNT;
+}  // namespace IEEE_T_MACERR
+
+namespace IEEE_T_CSERR {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_CSERR, 16, 0> COUNT;
+}  // namespace IEEE_T_CSERR
+
+namespace IEEE_T_SQE {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_SQE, 16, 0> COUNT;
+}  // namespace IEEE_T_SQE
+
+namespace IEEE_T_FDXFC {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_FDXFC, 16, 0> COUNT;
+}  // namespace IEEE_T_FDXFC
+
+namespace RMON_R_PACKETS {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_PACKETS, 16, 0> COUNT;
+}  // namespace RMON_R_PACKETS
+
+namespace RMON_R_BC_PKT {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_BC_PKT, 16, 0> COUNT;
+}  // namespace RMON_R_BC_PKT
+
+namespace RMON_R_MC_PKT {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_MC_PKT, 16, 0> COUNT;
+}  // namespace RMON_R_MC_PKT
+
+namespace RMON_R_CRC_ALIGN {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_CRC_ALIGN, 16, 0> COUNT;
+}  // namespace RMON_R_CRC_ALIGN
+
+namespace RMON_R_UNDERSIZE {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_UNDERSIZE, 16, 0> COUNT;
+}  // namespace RMON_R_UNDERSIZE
+
+namespace RMON_R_OVERSIZE {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_OVERSIZE, 16, 0> COUNT;
+}  // namespace RMON_R_OVERSIZE
+
+namespace RMON_R_FRAG {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_FRAG, 16, 0> COUNT;
+}  // namespace RMON_R_FRAG
+
+namespace RMON_R_JAB {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_JAB, 16, 0> COUNT;
+}  // namespace RMON_R_JAB
+
+namespace RMON_R_P64 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_P64, 16, 0> COUNT;
+}  // namespace RMON_R_P64
+
+namespace RMON_R_P65TO127 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_P65TO127, 16, 0> COUNT;
+}  // namespace RMON_R_P65TO127
+
+namespace RMON_R_P128TO255 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_P128TO255, 16, 0> COUNT;
+}  // namespace RMON_R_P128TO255
+
+namespace RMON_R_P256TO511 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_P256TO511, 16, 0> COUNT;
+}  // namespace RMON_R_P256TO511
+
+namespace RMON_R_P512TO1023 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_P512TO1023, 16, 0> COUNT;
+}  // namespace RMON_R_P512TO1023
+
+namespace RMON_R_P1024TO2047 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_P1024TO2047, 16, 0> COUNT;
+}  // namespace RMON_R_P1024TO2047
+
+namespace RMON_R_P_GTE2048 {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_P_GTE2048, 16, 0> COUNT;
+}  // namespace RMON_R_P_GTE2048
+
+namespace IEEE_R_DROP {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_R_DROP, 16, 0> COUNT;
+}  // namespace IEEE_R_DROP
+
+namespace IEEE_R_FRAME_OK {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_R_FRAME_OK, 16, 0> COUNT;
+}  // namespace IEEE_R_FRAME_OK
+
+namespace IEEE_R_CRC {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_R_CRC, 16, 0> COUNT;
+}  // namespace IEEE_R_CRC
+
+namespace IEEE_R_ALIGN {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_R_ALIGN, 16, 0> COUNT;
+}  // namespace IEEE_R_ALIGN
+
+namespace IEEE_R_MACERR {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_R_MACERR, 16, 0> COUNT;
+}  // namespace IEEE_R_MACERR
+
+namespace IEEE_R_FDXFC {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_R_FDXFC, 16, 0> COUNT;
+}  // namespace IEEE_R_FDXFC
 
 }  // namespace ENET2
 
