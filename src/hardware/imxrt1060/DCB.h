@@ -43,6 +43,7 @@ using DCB_Reg = regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift,
 namespace DCB {
 
 // DCB Debug Halting Control and Status Register Definitions
+// Exercise caution when setting or assigning fields in this register.
 namespace DHCSR {
 constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, false, true> DBGKEY;       // Debug key
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 25> S_RESET_ST;   // Reset sticky status
@@ -59,6 +60,7 @@ constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  0> C_DEBUGEN;    // Debug enable cont
 }  // namespace DHCSR
 
 // DCB Debug Core Register Selector Register Definitions
+// Exercise caution when setting or assigning fields in this register.
 namespace DCRSR {
 constexpr DCB_Reg<&DCB_Layout::DCRSR, 1, 16, false, true> REGWnR;  // Register write/not-read
 constexpr DCB_Reg<&DCB_Layout::DCRSR, 7,  0, false, true> REGSEL;  // Register selector

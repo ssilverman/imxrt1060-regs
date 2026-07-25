@@ -121,6 +121,7 @@ constexpr SCB_Reg<&SCB_Layout::VTOR, 25, 7> TBLOFF;
 }  // namespace VTOR
 
 // SCB Application Interrupt and Reset Control Register Definitions
+// Exercise caution when setting or assigning fields in this register.
 namespace AIRCR {
 constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, false, true> VECTKEY;
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR), 16, 16> VECTKEYSTAT;
@@ -255,18 +256,21 @@ constexpr SCB_Reg<&SCB_Layout::STIR, 9, 0, false, true> INTID;
 }  // namespace STIR
 
 // SCB D-Cache Invalidate by Set-way Register Definitions
+// Exercise caution when setting or assigning fields in this register.
 namespace DCISW {
 constexpr SCB_Reg<&SCB_Layout::DCISW, 2, 30, false, true> WAY;
 constexpr SCB_Reg<&SCB_Layout::DCISW, 9,  5, false, true> SET;
 }  // namespace DCISW
 
 // SCB D-Cache Clean by Set-way Register Definitions
+// Exercise caution when setting or assigning fields in this register.
 namespace DCCSW {
 constexpr SCB_Reg<&SCB_Layout::DCCSW, 2, 30, false, true> WAY;
 constexpr SCB_Reg<&SCB_Layout::DCCSW, 9,  5, false, true> SET;
 }  // namespace DCCSW
 
 // SCB D-Cache Clean and Invalidate by Set-way Register Definitions
+// Exercise caution when setting or assigning fields in this register.
 namespace DCCISW {
 constexpr SCB_Reg<&SCB_Layout::DCCISW, 2, 30, false, true> WAY;
 constexpr SCB_Reg<&SCB_Layout::DCCISW, 9,  5, false, true> SET;

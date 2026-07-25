@@ -118,6 +118,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPLR, 1,  0> ZMK_WSL;
 }  // namespace HPLR
 
 // SNVS_HP Command Register
+// Exercise caution when setting or assigning fields in this register.
 namespace HPCOMR {
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 31> NPSWA_EN;
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 19> HAC_STOP;
