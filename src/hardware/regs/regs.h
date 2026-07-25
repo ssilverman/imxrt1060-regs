@@ -156,8 +156,10 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value.
   template <bool Writable = kMemberIsWritable,
+            bool IsDirectAssign = DirectAssign,
             bool Readable = !WriteOnly,
             typename = std::enable_if_t<Writable>,
+            typename = std::enable_if_t<!IsDirectAssign>,
             typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator&=(const R val) const {
@@ -168,8 +170,10 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value.
   template <bool Writable = kMemberIsWritable,
+            bool IsDirectAssign = DirectAssign,
             bool Readable = !WriteOnly,
             typename = std::enable_if_t<Writable>,
+            typename = std::enable_if_t<!IsDirectAssign>,
             typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator|=(const R val) const {
@@ -179,8 +183,10 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value.
   template <bool Writable = kMemberIsWritable,
+            bool IsDirectAssign = DirectAssign,
             bool Readable = !WriteOnly,
             typename = std::enable_if_t<Writable>,
+            typename = std::enable_if_t<!IsDirectAssign>,
             typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator^=(const R val) const {
