@@ -46,6 +46,9 @@ class RegGroup {
 // to the register after masking and shifting. This is appropriate for things
 // like "CLR" and "SET" registers, where only the 1-assigned bits are set to
 // something. Or, it could be used for write-1-to-clear bits.
+//
+// Note that caution should be observed when working with registers having
+// fields marked as 'DirectAssign' if not all fields are also 'DirectAssign'.
 template <typename R, uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
