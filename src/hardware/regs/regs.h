@@ -53,7 +53,8 @@ template <typename R, uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          bool DirectAssign = false,
+          bool WriteOnly = false>
 class Reg {
   using MemberExpr   = decltype(std::declval<Layout&>().*Member);
   using MemberType   = std::remove_reference_t<MemberExpr>;
@@ -126,7 +127,8 @@ class Reg {
   [[gnu::always_inline]]
   const Reg& operator=(const R val) const {
     // Clear and then set the bits
-    if constexpr (DirectAssign || ((Bits == kWholeRegBits) && (Shift == 0))) {
+    if constexpr (DirectAssign || WriteOnly ||
+                  ((Bits == kWholeRegBits) && (Shift == 0))) {
       *r() = (*this)(val);
     } else {
       *r() = (*r() & ~kMask) | (*this)(val);
@@ -136,6 +138,8 @@ class Reg {
 
   // Gets the value of this register part. This returns the raw value not
   // masked or shifted.
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   explicit operator R() const {
     return (*r() & kMask) >> Shift;
@@ -143,6 +147,8 @@ class Reg {
 
   // Converts the register to an R. This is useful for when an explicit
   // conversion isn't desired. This calls operatorR().
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   R operator*() const {
     return static_cast<R>(*this);
@@ -150,7 +156,9 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value.
   template <bool Writable = kMemberIsWritable,
-            typename = std::enable_if_t<Writable>>
+            bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Writable>,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator&=(const R val) const {
     // Preserve bits outside the range
@@ -160,7 +168,9 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value.
   template <bool Writable = kMemberIsWritable,
-            typename = std::enable_if_t<Writable>>
+            bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Writable>,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator|=(const R val) const {
     *r() |= (*this)(val);
@@ -169,7 +179,9 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value.
   template <bool Writable = kMemberIsWritable,
-            typename = std::enable_if_t<Writable>>
+            bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Writable>,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator^=(const R val) const {
     *r() ^= (*this)(val);
@@ -178,6 +190,8 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value, and then
   // returns a value that isn't masked or shifted.
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   R operator&(const R val) const {
     return ((*r() & (*this)(val)) & kMask) >> Shift;
@@ -185,6 +199,8 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value, and then
   // returns a value that isn't masked or shifted.
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   R operator|(const R val) const {
     return ((*r() | (*this)(val)) & kMask) >> Shift;
@@ -192,6 +208,8 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value, and then
   // returns a value that isn't masked or shifted.
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   R operator^(const R val) const {
     return ((*r() ^ (*this)(val)) & kMask) >> Shift;
@@ -199,6 +217,8 @@ class Reg {
 
   // Performs the operation after masking and shifting the given value, and then
   // returns a value that isn't masked or shifted.
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   R operator~() const {
     return ((~(*r())) & kMask) >> Shift;
@@ -206,12 +226,16 @@ class Reg {
 
   // Tests if given value, after masking and shifting, is equal to this
   // register part.
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   bool operator==(const R val) const {
     return (*r() & kMask) == (*this)(val);
   }
 
   // Calls !operator==().
+  template <bool Readable = !WriteOnly,
+            typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   bool operator!=(const R val) const {
     return !(*this == val);
@@ -262,9 +286,10 @@ class RegValue {
 template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
-          size_t Bits, unsigned int Shift, bool DirectAssign = false>
+          size_t Bits, unsigned int Shift,
+          bool DirectAssign = false, bool WriteOnly = false>
 using Reg32 = Reg<uint32_t, Base, Layout, Member, MemberOffset, Bits, Shift,
-                  DirectAssign>;
+                  DirectAssign, WriteOnly>;
 
 template <size_t Bits, unsigned int Shift>
 using RegValue32 = RegValue<uint32_t, Bits, Shift>;
@@ -272,9 +297,10 @@ using RegValue32 = RegValue<uint32_t, Bits, Shift>;
 template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
-          size_t Bits, unsigned int Shift, bool DirectAssign = false>
+          size_t Bits, unsigned int Shift,
+          bool DirectAssign = false, bool WriteOnly = false>
 using Reg16 = Reg<uint16_t, Base, Layout, Member, MemberOffset, Bits, Shift,
-                  DirectAssign>;
+                  DirectAssign, WriteOnly>;
 
 template <size_t Bits, unsigned int Shift>
 using RegValue16 = RegValue<uint16_t, Bits, Shift>;
@@ -282,9 +308,10 @@ using RegValue16 = RegValue<uint16_t, Bits, Shift>;
 template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
-          size_t Bits, unsigned int Shift, bool DirectAssign = false>
+          size_t Bits, unsigned int Shift,
+          bool DirectAssign = false, bool WriteOnly = false>
 using Reg8 = Reg<uint8_t, Base, Layout, Member, MemberOffset, Bits, Shift,
-                 DirectAssign>;
+                 DirectAssign, WriteOnly>;
 
 template <size_t Bits, unsigned int Shift>
 using RegValue8 = RegValue<uint8_t, Bits, Shift>;
