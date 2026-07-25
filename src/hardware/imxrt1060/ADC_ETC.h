@@ -152,28 +152,28 @@ constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  0, true> TRIG0_DONE0;
 
 // ETC DONE_2 and DONE_ERR IRQ State Register
 namespace DONE2_3_ERR_IRQ {
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 23>       TRIG7_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 23, true> TRIG7_ERR;
     // 0b0..No TRIG7_ERR interrupt detected
     // 0b1..TRIG7_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 22>       TRIG6_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 22, true> TRIG6_ERR;
     // 0b0..No TRIG6_ERR interrupt detected
     // 0b1..TRIG6_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 21>       TRIG5_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 21, true> TRIG5_ERR;
     // 0b0..No TRIG5_ERR interrupt detected
     // 0b1..TRIG5_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 20>       TRIG4_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 20, true> TRIG4_ERR;
     // 0b0..No TRIG4_ERR interrupt detected
     // 0b1..TRIG4_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 19>       TRIG3_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 19, true> TRIG3_ERR;
     // 0b0..No TRIG3_ERR interrupt detected
     // 0b1..TRIG3_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 18>       TRIG2_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 18, true> TRIG2_ERR;
     // 0b0..No TRIG2_ERR interrupt detected
     // 0b1..TRIG2_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 17>       TRIG1_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 17, true> TRIG1_ERR;
     // 0b0..No TRIG1_ERR interrupt detected
     // 0b1..TRIG1_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 16>       TRIG0_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 16, true> TRIG0_ERR;
     // 0b0..No TRIG0_ERR interrupt detected
     // 0b1..TRIG0_ERR interrupt detected
 constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  7, true> TRIG7_DONE2;

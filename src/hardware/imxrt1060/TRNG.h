@@ -1,4 +1,3 @@
-
 // SPDX-FileCopyrightText: (c) 2026 Shawn Silverman <shawn@pobox.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -97,9 +96,9 @@ constexpr regs::RegGroup<TRNG_Layout, kTRNG_size, kTRNG_base> group;
 }  // namespace TRNG
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using TRNG_Reg =
-    regs::Reg32<kTRNG_base, TRNG_Layout, Member, 0, Bits, Shift, DirectAssign>;
+          bool DirectAssign = false, bool WriteOnly = false>
+using TRNG_Reg = regs::Reg32<kTRNG_base, TRNG_Layout, Member, 0, Bits, Shift,
+                             DirectAssign, WriteOnly>;
 
 namespace TRNG {
 
@@ -107,16 +106,16 @@ namespace TRNG {
 namespace MCTL {
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 16>       PRGM;
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 14>       LRUN_CONT;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 13>       TSTOP_OK;
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 13>       TSTOP_OK;
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 12, true> ERR;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 11>       TST_OUT;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 10>       ENT_VAL;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  9>       FCT_VAL;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  8>       FCT_FAIL;
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 11>       TST_OUT;
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 10>       ENT_VAL;
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  9>       FCT_VAL;
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  8>       FCT_FAIL;
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  7>       FOR_SCLK;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6>       RST_DEF;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  5>       UNUSED5;
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  4>       UNUSED4;
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6, false, true>       RST_DEF;
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  5>       UNUSED5;
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  4>       UNUSED4;
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  2>       OSC_DIV;
     // 1/2^value
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  0>       SAMP_MODE;

@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: (c) 2026 Shawn Silverman <shawn@pobox.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-// SNVS.h defines all the SNVS registers.
+// OCOTP.h defines all the OCOTP registers.
 // This file is part of the imxrt1060-regs library.
 
 #pragma once
@@ -45,7 +45,7 @@ struct OCOTP_Layout {
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[27];
   volatile uint32_t TIMING2;                           /**< OTP Controller Timing Register 2, offset: 0x100 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[191];
-  const volatile uint32_t LOCK;                        /**< Value of OTP Bank0 Word0 (Lock controls), offset: 0x400 */
+  const volatile uint32_t LOCK;                        /**< SDK uses non-const, Value of OTP Bank0 Word0 (Lock controls), offset: 0x400 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[3];
   volatile uint32_t CFG0;                              /**< Value of OTP Bank0 Word1 (Configuration and Manufacturing Info.), offset: 0x410 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[3];
@@ -176,7 +176,7 @@ namespace CTRL_SET {
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET, 16, 16, true> WR_UNLOCK;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1, 10, true> RELOAD_SHADOWS;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1,  9, true> ERROR;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1,  8, true> BUSY;
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_SET),  1,  8>       BUSY;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  6,  0, true> ADDR;
 }  // namespace CTRL_SET
 
@@ -185,7 +185,7 @@ namespace CTRL_CLR {
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR, 16, 16, true> WR_UNLOCK;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1, 10, true> RELOAD_SHADOWS;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1,  9, true> ERROR;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1,  8, true> BUSY;
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_CLR),  1,  8>       BUSY;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  6,  0, true> ADDR;
 }  // namespace CTRL_CLR
 
@@ -194,7 +194,7 @@ namespace CTRL_TOG {
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG, 16, 16, true> WR_UNLOCK;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1, 10, true> RELOAD_SHADOWS;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1,  9, true> ERROR;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1,  8, true> BUSY;
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_TOG),  1,  8>       BUSY;
 constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  6,  0, true> ADDR;
 }  // namespace CTRL_TOG
 

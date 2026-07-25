@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: (c) 2026 Shawn Silverman <shawn@pobox.com>
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-// CCM.h defines all the CCM registers.
+// ENET.h defines all the ENET registers.
 // This file is part of the imxrt1060-regs library.
 
 #pragma once

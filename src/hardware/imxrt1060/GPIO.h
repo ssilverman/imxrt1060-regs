@@ -31,9 +31,9 @@ struct GPIO_Layout {
   volatile uint32_t ISR;                               /**< w1c, GPIO interrupt status register, offset: 0x18 */
   volatile uint32_t EDGE_SEL;                          /**< GPIO edge select register, offset: 0x1C */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[25];
-  volatile uint32_t DR_SET;                            /**< GPIO data register SET, offset: 0x84 */
-  volatile uint32_t DR_CLEAR;                          /**< GPIO data register CLEAR, offset: 0x88 */
-  volatile uint32_t DR_TOGGLE;                         /**< GPIO data register TOGGLE, offset: 0x8C */
+  volatile uint32_t DR_SET;                            /**< W/O, GPIO data register SET, offset: 0x84 */
+  volatile uint32_t DR_CLEAR;                          /**< W/O, GPIO data register CLEAR, offset: 0x88 */
+  volatile uint32_t DR_TOGGLE;                         /**< W/O, GPIO data register TOGGLE, offset: 0x8C */
 };
 
 constexpr size_t    kGPIO_size  = 0x90;

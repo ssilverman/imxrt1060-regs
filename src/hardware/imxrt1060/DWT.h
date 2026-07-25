@@ -63,11 +63,11 @@ namespace DWT {
 
 // DWT Control Register Definitions
 namespace CTRL {
-constexpr DWT_Reg<&DWT_Layout::CTRL, 4, 28> NUMCOMP;
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 27> NOTRCPKT;
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 26> NOEXTTRIG;
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 25> NOCYCCNT;
-constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 24> NOPRFCNT;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::CTRL), 4, 28> NUMCOMP;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::CTRL), 1, 27> NOTRCPKT;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::CTRL), 1, 26> NOEXTTRIG;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::CTRL), 1, 25> NOCYCCNT;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::CTRL), 1, 24> NOPRFCNT;
 constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 22> CYCEVTENA;
 constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 21> FOLDEVTENA;
 constexpr DWT_Reg<&DWT_Layout::CTRL, 1, 20> LSUEVTENA;

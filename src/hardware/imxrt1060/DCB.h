@@ -36,21 +36,21 @@ constexpr regs::RegGroup<DCB_Layout, kDCB_size, kDCB_base> group;
 }  // namespace DCB
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using DCB_Reg =
-    regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift, DirectAssign>;
+          bool DirectAssign = false, bool WriteOnly = false>
+using DCB_Reg = regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift,
+                            DirectAssign, WriteOnly>;
 
 namespace DCB {
 
 // DCB Debug Halting Control and Status Register Definitions
 namespace DHCSR {
-constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16> DBGKEY;       // Debug key
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1, 25> S_RESET_ST;   // Reset sticky status
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1, 24> S_RETIRE_ST;  // Retire sticky status
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1, 19> S_LOCKUP;     // Lockup status
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1, 18> S_SLEEP;      // Sleeping status
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1, 17> S_HALT;       // Halted status
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1, 16> S_REGRDY;     // Register ready status
+constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, false, true> DBGKEY;       // Debug key
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 25> S_RESET_ST;   // Reset sticky status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 24> S_RETIRE_ST;  // Retire sticky status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 19> S_LOCKUP;     // Lockup status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 18> S_SLEEP;      // Sleeping status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 17> S_HALT;       // Halted status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 16> S_REGRDY;     // Register ready status
 constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  5> C_SNAPSTALL;  // Snap stall control
 constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  3> C_MASKINTS;   // Mask interrupts control
 constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  2> C_STEP;       // Step control
@@ -60,8 +60,8 @@ constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  0> C_DEBUGEN;    // Debug enable cont
 
 // DCB Debug Core Register Selector Register Definitions
 namespace DCRSR {
-constexpr DCB_Reg<&DCB_Layout::DCRSR, 1, 16> REGWnR;  // Register write/not-read
-constexpr DCB_Reg<&DCB_Layout::DCRSR, 7,  0> REGSEL;  // Register selector
+constexpr DCB_Reg<&DCB_Layout::DCRSR, 1, 16, false, true> REGWnR;  // Register write/not-read
+constexpr DCB_Reg<&DCB_Layout::DCRSR, 7,  0, false, true> REGSEL;  // Register selector
 }  // namespace DCRSR
 
 // DCB Debug Core Register Data Register Definitions

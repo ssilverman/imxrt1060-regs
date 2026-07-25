@@ -71,9 +71,9 @@ constexpr regs::RegGroup<SNVS_Layout, kSNVS_size, kSNVS_base> group;
 }  // namespace SNVS
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using SNVS_Reg =
-    regs::Reg32<kSNVS_base, SNVS_Layout, Member, 0, Bits, Shift, DirectAssign>;
+          bool DirectAssign = false, bool WriteOnly = false>
+using SNVS_Reg = regs::Reg32<kSNVS_base, SNVS_Layout, Member, 0, Bits, Shift,
+                             DirectAssign, WriteOnly>;
 
 namespace SNVS {
 
@@ -121,10 +121,10 @@ constexpr SNVS_Reg<&SNVS_Layout::HPLR, 1,  0> ZMK_WSL;
 namespace HPCOMR {
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 31> NPSWA_EN;
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 19> HAC_STOP;
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18> HAC_CLEAR;
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18, false, true> HAC_CLEAR;
     // 0b0..No Action
     // 0b1..Clear the HAC
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17> HAC_LOAD;
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17, false, true> HAC_LOAD;
     // 0b0..No Action
     // 0b1..Load the HAC
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 16> HAC_EN;
@@ -133,7 +133,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 16> HAC_EN;
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 13> MKS_EN;
     // 0b0..OTP master key is selected as an SNVS master key
     // 0b1..SNVS master key is selected according to the setting of the MASTER_KEY_SEL field of LPMKCR
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12> PROG_ZMK;
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12, false, true> PROG_ZMK;
     // 0b0..No Action
     // 0b1..Activate hardware key programming mechanism
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 10> SW_LPSV;
@@ -142,7 +142,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  8> SW_SV;
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  5> LP_SWR_DIS;
     // 0b0..LP software reset is enabled
     // 0b1..LP software reset is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4> LP_SWR;
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4, false, true> LP_SWR;
     // 0b0..No Action
     // 0b1..Reset LP section
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  2>  SSM_SFNS_DIS;
@@ -151,7 +151,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  2>  SSM_SFNS_DIS;
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  1> SSM_ST_DIS;
     // 0b0..Secure to Trusted State transition is enabled
     // 0b1..Secure to Trusted State transition is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0> SSM_ST;
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0, false, true> SSM_ST;
 }  // namespace HPCOMR
 
 // SNVS_HP Control Register
@@ -244,20 +244,20 @@ constexpr SNVS_Reg<&SNVS_Layout::HPSVCR, 1,  0> SV0_CFG;
 
 // SNVS_HP Status Register
 namespace HPSR {
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 31, true> ZMK_ZERO;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 31>       ZMK_ZERO;
     // 0b0..The ZMK is not zero.
     // 0b1..The ZMK is zero.
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 27, true> OTPMK_ZERO;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 27>       OTPMK_ZERO;
     // 0b0..The OTPMK is not zero.
     // 0b1..The OTPMK is zero.
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 9, 16, true> OTPMK_SYNDROME;
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 15, true> SYS_SECURE_BOOT;
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 3, 12, true> SYS_SECURITY_CFG;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 9, 16>       OTPMK_SYNDROME;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 15>       SYS_SECURE_BOOT;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 3, 12>       SYS_SECURITY_CFG;
     // 0b000..Fab Configuration - the default configuration of newly fabricated chips
     // 0b001..Open Configuration - the configuration after NXP-programmable fuses have been blown
     // 0b011..Closed Configuration - the configuration after OEM-programmable fuses have been blown
     // 0b111..Field Return Configuration - the configuration of chips that are returned to NXP for analysis
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 4,  8, true> SSM_STATE;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 4,  8>       SSM_STATE;
     // 0b0000..Init
     // 0b0001..Hard Fail
     // 0b0011..Soft Fail
@@ -267,8 +267,8 @@ constexpr SNVS_Reg<&SNVS_Layout::HPSR, 4,  8, true> SSM_STATE;
     // 0b1101..Trusted
     // 0b1111..Secure
 constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 7, true> BI;
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 6, true> BTN;
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 4, true> LPDIS;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 6>       BTN;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 4>       LPDIS;
 constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 1, true> PI;
     // 0b0..No periodic interrupt occurred.
     // 0b1..A periodic interrupt occurred.
@@ -293,14 +293,14 @@ constexpr uint32_t kSYS_SECURITY_CFG_FIELD_RETURN = 7;
 
 // SNVS_HP Security Violation Status Register
 namespace HPSVSR {
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 31, true> LP_SEC_VIO;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 31>       LP_SEC_VIO;
 constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 27, true> ZMK_ECC_FAIL;
     // 0b0..ZMK ECC Failure was not detected.
     // 0b1..ZMK ECC Failure was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 9, 16> ZMK_SYNDROME;
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 15, true> SW_LPSV;
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 14, true> SW_FSV;
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 13, true> SW_SV;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 9, 16>       ZMK_SYNDROME;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 15>       SW_LPSV;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 14>       SW_FSV;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 13>       SW_SV;
 constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  5, true> SV5;
     // 0b0..No Security Violation 5 security violation was detected.
     // 0b1..Security Violation 5 security violation was detected.
@@ -407,7 +407,7 @@ constexpr SNVS_Reg<&SNVS_Layout::LPCR, 1,  0> SRTC_ENV;
 
 // SNVS_LP Master Key Control Register
 namespace LPMKCR {
-constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 9, 7> ZMK_ECC_VALUE;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPMKCR), 9, 7> ZMK_ECC_VALUE;
 constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 4> ZMK_ECC_EN;
     // 0b0..ZMK ECC check is disabled.
     // 0b1..ZMK ECC check is enabled.
@@ -472,34 +472,34 @@ constexpr SNVS_Reg<&SNVS_Layout::LPSECR, 1,  1> SRTCR_EN;
 
 // SNVS_LP Status Register
 namespace LPSR {
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 31> LPS;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 31>       LPS;
     // 0b0..LP section was not programmed in secure or trusted state.
     // 0b1..LP section was programmed in secure or trusted state.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 30> LPNS;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 30>       LPNS;
     // 0b0..LP section was not programmed in the non-secure state.
     // 0b1..LP section was programmed in the non-secure state.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 19> SPON;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 19, true> SPON;
     // 0b0..Set Power On Interrupt was not detected.
     // 0b1..Set Power On Interrupt was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 18> SPOF;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 18, true> SPOF;
     // 0b0..Set Power Off was not detected.
     // 0b1..Set Power Off was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 17> EO;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 17, true> EO;
     // 0b0..Emergency off was not detected.
     // 0b1..Emergency off was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 16> ESVD;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 16, true> ESVD;
     // 0b0..No external security violation.
     // 0b1..External security violation is detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  3> LVD;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  3, true> LVD;
     // 0b0..No low voltage event detected.
     // 0b1..Low voltage event is detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  2> MCR;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  2, true> MCR;
     // 0b0..MC has not reached its maximum value.
     // 0b1..MC has reached its maximum value.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  1> SRTCR;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  1, true> SRTCR;
     // 0b0..SRTC has not reached its maximum value.
     // 0b1..SRTC has reached its maximum value.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  0> LPTA;
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  0, true> LPTA;
     // 0b0..No time alarm interrupt occurred.
     // 0b1..A time alarm interrupt occurred.
 }  // namespace LPSR
@@ -511,7 +511,7 @@ constexpr SNVS_Reg<&SNVS_Layout::LPSRTCMR, 15, 0> SRTC;
 
 // SNVS_LP Secure Monotonic Counter MSB Register
 namespace LPSMCMR {
-constexpr SNVS_Reg<&SNVS_Layout::LPSMCMR, 16, 16> MC_ERA_BITS;
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSMCMR), 16, 16> MC_ERA_BITS;
 constexpr SNVS_Reg<&SNVS_Layout::LPSMCMR, 16,  0> MON_COUNTER;
 }  // namespace LPSMCMR
 

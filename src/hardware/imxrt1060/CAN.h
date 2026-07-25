@@ -63,58 +63,66 @@ struct CAN_Layout {
   const volatile uint32_t DBG1;                        /**< Debug 1 register, offset: 0x58, available only on: CAN1, CAN2 (missing on CAN3) */
   const volatile uint32_t DBG2;                        /**< Debug 2 register, offset: 0x5C, available only on: CAN1, CAN2 (missing on CAN3) */
   uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[32];
-  union {                                          /* offset: 0x80 */
-    struct {                                         /* offset: 0x80, array step: 0x10 */
-      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 63 CS Register, array offset: 0x80, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
-      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 63 ID Register, array offset: 0x84, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
-      volatile uint32_t WORD[kCAN_MB_SIZE_MB_8B_GROUP_MB_8B_WORD_8B_count];     /**< Message Buffer 0 WORD_8B Register..Message Buffer 63 WORD_8B Register, array offset: 0x88, array step: index*0x10, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
-    } MB_8B[kCAN_MB_SIZE_MB_8B_GROUP_MB_8B_count];
-    struct {                                         /* offset: 0x80 */
-      struct {                                         /* offset: 0x80, array step: 0x18 */
-        volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 20 CS Register, array offset: 0x80, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 20 ID Register, array offset: 0x84, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t WORD[kCAN_MB_SIZE_MB_16B_MB_16B_L_WORD_16B_L_count];       /**< Message Buffer 0 WORD_16B Register..Message Buffer 20 WORD_16B Register, array offset: 0x88, array step: index*0x18, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
-      } MB_16B_L[kCAN_MB_SIZE_MB_16B_MB_16B_L_count];
-      uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[8];
-      struct {                                         /* offset: 0x280, array step: 0x18 */
-        volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 20 CS Register, array offset: 0x280, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 20 ID Register, array offset: 0x284, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t WORD[kCAN_MB_SIZE_MB_16B_MB_16B_H_WORD_16B_H_count];       /**< Message Buffer 0 WORD_16B Register..Message Buffer 20 WORD_16B Register, array offset: 0x288, array step: index*0x18, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
-      } MB_16B_H[kCAN_MB_SIZE_MB_16B_MB_16B_H_count];
-    } MB_16B;
-    struct {                                         /* offset: 0x80 */
-      struct {                                         /* offset: 0x80, array step: 0x28 */
-        volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 11 CS Register, array offset: 0x80, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 11 ID Register, array offset: 0x84, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t WORD[kCAN_MB_SIZE_MB_32B_MB_32B_L_WORD_32B_L_count];       /**< Message Buffer 0 WORD_32B Register..Message Buffer 11 WORD_32B Register, array offset: 0x88, array step: index*0x28, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
-      } MB_32B_L[kCAN_MB_SIZE_MB_32B_MB_32B_L_count];
-      uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[32];
-      struct {                                         /* offset: 0x280, array step: 0x28 */
-        volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 11 CS Register, array offset: 0x280, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 11 ID Register, array offset: 0x284, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t WORD[kCAN_MB_SIZE_MB_32B_MB_32B_H_WORD_32B_H_count];       /**< Message Buffer 0 WORD_32B Register..Message Buffer 11 WORD_32B Register, array offset: 0x288, array step: index*0x28, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
-      } MB_32B_H[kCAN_MB_SIZE_MB_32B_MB_32B_H_count];
-    } MB_32B;
-    struct {                                         /* offset: 0x80 */
-      struct {                                         /* offset: 0x80, array step: 0x48 */
-        volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 6 CS Register, array offset: 0x80, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 6 ID Register, array offset: 0x84, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t WORD[kCAN_MB_SIZE_MB_64B_MB_64B_L_WORD_64B_L_count];       /**< Message Buffer 0 WORD_64B Register..Message Buffer 6 WORD_64B Register, array offset: 0x88, array step: index*0x48, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
-      } MB_64B_L[kCAN_MB_SIZE_MB_64B_MB_64B_L_count];
-      uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[8];
-      struct {                                         /* offset: 0x280, array step: 0x48 */
-        volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 6 CS Register, array offset: 0x280, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 6 ID Register, array offset: 0x284, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
-        volatile uint32_t WORD[kCAN_MB_SIZE_MB_64B_MB_64B_H_WORD_64B_H_count];       /**< Message Buffer 0 WORD_64B Register..Message Buffer 6 WORD_64B Register, array offset: 0x288, array step: index*0x48, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
-      } MB_64B_H[kCAN_MB_SIZE_MB_64B_MB_64B_H_count];
-    } MB_64B;
-    struct {                                         /* offset: 0x80, array step: 0x10 */
-      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 63 CS Register, array offset: 0x80, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
-      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 63 ID Register, array offset: 0x84, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
-      volatile uint32_t WORD0;                             /**< Message Buffer 0 WORD0 Register..Message Buffer 63 WORD0 Register, array offset: 0x88, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
-      volatile uint32_t WORD1;                             /**< Message Buffer 0 WORD1 Register..Message Buffer 63 WORD1 Register, array offset: 0x8C, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
-    } MB[kCAN_MB_SIZE_MB_GROUP_MB_count];
+
+  struct MB_8B_Layout {                            /* offset: 0x80, array step: 0x10 */
+    volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 63 CS Register, array offset: 0x80, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
+    volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 63 ID Register, array offset: 0x84, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
+    volatile uint32_t WORD[kCAN_MB_SIZE_MB_8B_GROUP_MB_8B_WORD_8B_count];     /**< Message Buffer 0 WORD_8B Register..Message Buffer 63 WORD_8B Register, array offset: 0x88, array step: index*0x10, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
   };
+  struct MB_16B_Layout {                           /* offset: 0x80 */
+    struct {                                         /* offset: 0x80, array step: 0x18 */
+      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 20 CS Register, array offset: 0x80, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 20 ID Register, array offset: 0x84, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t WORD[kCAN_MB_SIZE_MB_16B_MB_16B_L_WORD_16B_L_count];       /**< Message Buffer 0 WORD_16B Register..Message Buffer 20 WORD_16B Register, array offset: 0x88, array step: index*0x18, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
+    } MB_16B_L[kCAN_MB_SIZE_MB_16B_MB_16B_L_count];
+    uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[8];
+    struct {                                         /* offset: 0x280, array step: 0x18 */
+      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 20 CS Register, array offset: 0x280, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 20 ID Register, array offset: 0x284, array step: 0x18, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t WORD[kCAN_MB_SIZE_MB_16B_MB_16B_H_WORD_16B_H_count];       /**< Message Buffer 0 WORD_16B Register..Message Buffer 20 WORD_16B Register, array offset: 0x288, array step: index*0x18, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
+    } MB_16B_H[kCAN_MB_SIZE_MB_16B_MB_16B_H_count];
+  };
+  struct MB_32B_Layout {                           /* offset: 0x80 */
+    struct {                                         /* offset: 0x80, array step: 0x28 */
+      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 11 CS Register, array offset: 0x80, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 11 ID Register, array offset: 0x84, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t WORD[kCAN_MB_SIZE_MB_32B_MB_32B_L_WORD_32B_L_count];       /**< Message Buffer 0 WORD_32B Register..Message Buffer 11 WORD_32B Register, array offset: 0x88, array step: index*0x28, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
+    } MB_32B_L[kCAN_MB_SIZE_MB_32B_MB_32B_L_count];
+    uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[32];
+    struct {                                         /* offset: 0x280, array step: 0x28 */
+      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 11 CS Register, array offset: 0x280, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 11 ID Register, array offset: 0x284, array step: 0x28, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t WORD[kCAN_MB_SIZE_MB_32B_MB_32B_H_WORD_32B_H_count];       /**< Message Buffer 0 WORD_32B Register..Message Buffer 11 WORD_32B Register, array offset: 0x288, array step: index*0x28, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
+    } MB_32B_H[kCAN_MB_SIZE_MB_32B_MB_32B_H_count];
+  };
+  struct MB_64B_Layout {                           /* offset: 0x80 */
+    struct {                                         /* offset: 0x80, array step: 0x48 */
+      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 6 CS Register, array offset: 0x80, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 6 ID Register, array offset: 0x84, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t WORD[kCAN_MB_SIZE_MB_64B_MB_64B_L_WORD_64B_L_count];       /**< Message Buffer 0 WORD_64B Register..Message Buffer 6 WORD_64B Register, array offset: 0x88, array step: index*0x48, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
+    } MB_64B_L[kCAN_MB_SIZE_MB_64B_MB_64B_L_count];
+    uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[8];
+    struct {                                         /* offset: 0x280, array step: 0x48 */
+      volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 6 CS Register, array offset: 0x280, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 6 ID Register, array offset: 0x284, array step: 0x48, available only on: CAN3 (missing on CAN1, CAN2) */
+      volatile uint32_t WORD[kCAN_MB_SIZE_MB_64B_MB_64B_H_WORD_64B_H_count];       /**< Message Buffer 0 WORD_64B Register..Message Buffer 6 WORD_64B Register, array offset: 0x288, array step: index*0x48, index2*0x4, available only on: CAN3 (missing on CAN1, CAN2) */
+    } MB_64B_H[kCAN_MB_SIZE_MB_64B_MB_64B_H_count];
+  };
+  struct MB_Layout {                               /* offset: 0x80, array step: 0x10 */
+    volatile uint32_t CS;                                /**< Message Buffer 0 CS Register..Message Buffer 63 CS Register, array offset: 0x80, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
+    volatile uint32_t ID;                                /**< Message Buffer 0 ID Register..Message Buffer 63 ID Register, array offset: 0x84, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
+    volatile uint32_t WORD0;                             /**< Message Buffer 0 WORD0 Register..Message Buffer 63 WORD0 Register, array offset: 0x88, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
+    volatile uint32_t WORD1;                             /**< Message Buffer 0 WORD1 Register..Message Buffer 63 WORD1 Register, array offset: 0x8C, array step: 0x10, available only on: CAN3 (missing on CAN1, CAN2) */
+  };
+
+  union {                                          /* offset: 0x80 */
+    MB_8B_Layout MB_8B[kCAN_MB_SIZE_MB_8B_GROUP_MB_8B_count];
+    MB_16B_Layout MB_16B;
+    MB_32B_Layout MB_32B;
+    MB_64B_Layout MB_64B;
+    MB_Layout MB[kCAN_MB_SIZE_MB_GROUP_MB_count];
+  };
+
   uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[1024];
   volatile uint32_t RXIMR[kCAN_RXIMR_count];            /**< Rx Individual Mask Registers, array offset: 0x880, array step: 0x4 */
   uint8_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[96];
@@ -278,10 +286,14 @@ constexpr CAN1_Reg<&CAN_Layout::TIMER, 16, 0> TIMER;  // Timer Value
 
 // Error Counter
 namespace ECR {
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ECR), 8, 24> RXERRCNT_FAST;   // Receive Error Counter for fast bits
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::ECR), 8, 16> TXERRCNT_FAST;   // Transmit Error Counter for fast bits
+constexpr CAN1_Reg<&CAN_Layout::ECR, 8, 24> RXERRCNT_FAST;   // Receive Error Counter for fast bits
+    // Writable only with zero in Freeze mode
+constexpr CAN1_Reg<&CAN_Layout::ECR, 8, 16> TXERRCNT_FAST;   // Transmit Error Counter for fast bits
+    // Writable only with zero in Freeze mode
 constexpr CAN1_Reg<&CAN_Layout::ECR, 8,  8> RX_ERR_COUNTER;  // Receive Error Counter
+    // Writable only in Freeze mode
 constexpr CAN1_Reg<&CAN_Layout::ECR, 8,  0> TX_ERR_COUNTER;  // Transmit Error Counter
+    // Writable only in Freeze mode
 }  // namespace ECR
 
 // Error and Status 1 Register
@@ -452,18 +464,6 @@ namespace RXFIR {
 constexpr CAN1_Reg<&CAN_Layout::RXFIR, 9, 0> IDHIT;  // Identifier Acceptance Filter Hit Indicator
 }  // namespace RXFIR
 
-// CAN Bit Timing Register
-namespace CBT {
-constexpr CAN1_Reg<&CAN_Layout::CBT,  1, 31> BTF;       // Bit Timing Format Enable
-    // 0b0..Extended bit time definitions disabled.
-    // 0b1..Extended bit time definitions enabled.
-constexpr CAN1_Reg<&CAN_Layout::CBT, 10, 21> EPRESDIV;  // Extended Prescaler Division Factor
-constexpr CAN1_Reg<&CAN_Layout::CBT,  5, 16> ERJW;      // Extended Resync Jump Width
-constexpr CAN1_Reg<&CAN_Layout::CBT,  6, 10> EPROPSEG;  // Extended Propagation Segment
-constexpr CAN1_Reg<&CAN_Layout::CBT,  5,  5> EPSEG1;    // Extended Phase Segment 1
-constexpr CAN1_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;    // Extended Phase Segment 2
-}  // namespace CBT
-
 // Debug 1 register
 namespace DBG1 {
 constexpr CAN1_Reg<&CAN_Layout::DBG1, 5, 24> CBN;   // CAN Bit Number
@@ -486,46 +486,6 @@ constexpr CAN1_Reg<&CAN_Layout::DBG2, 7,  0> RMP;  // Rx Matching Pointer
 namespace GFWR {
 constexpr CAN1_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 }  // namespace GFWR
-
-// CAN FD Control Register
-namespace FDCTRL {
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;   // Bit Rate Switch Enable
-    // 0b0..Transmit a frame in nominal rate. The BRS bit in the Tx MB has no effect.
-    // 0b1..Transmit a frame with bit rate switching if the BRS bit in the Tx MB is recessive.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;   // Message Buffer Data Size for Region 1
-    // 0b00..Selects 8 bytes per message buffer.
-    // 0b01..Selects 16 bytes per message buffer.
-    // 0b10..Selects 32 bytes per message buffer.
-    // 0b11..Selects 64 bytes per message buffer.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;   // Message Buffer Data Size for Region 0
-    // 0b00..Selects 8 bytes per message buffer.
-    // 0b01..Selects 16 bytes per message buffer.
-    // 0b10..Selects 32 bytes per message buffer.
-    // 0b11..Selects 64 bytes per message buffer.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;    // Transceiver Delay Compensation Enable
-    // 0b0..TDC is disabled
-    // 0b1..TDC is enabled
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 1, 14, true> TDCFAIL;  // Transceiver Delay Compensation Fail
-    // 0b0..Measured loop delay is in range.
-    // 0b1..Measured loop delay is out of range.
-constexpr CAN1_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;   // Transceiver Delay Compensation Offset
-constexpr CAN1_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;   // Transceiver Delay Compensation Value
-}  // namespace FDCTRL
-
-// CAN FD Bit Timing Register
-namespace FDCBT {
-constexpr CAN1_Reg<&CAN_Layout::FDCBT, 10, 20> FPRESDIV;  // Fast Prescaler Division Factor
-constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3, 16> FRJW;      // Fast Resync Jump Width
-constexpr CAN1_Reg<&CAN_Layout::FDCBT,  5, 10> FPROPSEG;  // Fast Propagation Segment
-constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3,  5> FPSEG1;    // Fast Phase Segment 1
-constexpr CAN1_Reg<&CAN_Layout::FDCBT,  3,  0> FPSEG2;    // Fast Phase Segment 2
-}  // namespace FDCBT
-
-// CAN FD CRC Register
-namespace FDCRC {
-constexpr CAN1_Reg<&CAN_Layout::FDCRC,  7, 24> FD_MBCRC;  // CRC Mailbox Number for FD_TXCRC
-constexpr CAN1_Reg<&CAN_Layout::FDCRC, 21,  0> FD_TXCRC;  // Extended Transmitted CRC value
-}  // namespace FDCRC
 
 }  // namespace CAN1
 
@@ -583,8 +543,8 @@ constexpr CAN2_Reg<&CAN_Layout::TIMER, 16,  0> TIMER;
 
 // CAN2 Error Counter
 namespace ECR {
-constexpr CAN2_Reg<regs::constify(&CAN_Layout::ECR), 8, 24> RXERRCNT_FAST;
-constexpr CAN2_Reg<regs::constify(&CAN_Layout::ECR), 8, 16> TXERRCNT_FAST;
+constexpr CAN2_Reg<&CAN_Layout::ECR, 8, 24> RXERRCNT_FAST;
+constexpr CAN2_Reg<&CAN_Layout::ECR, 8, 16> TXERRCNT_FAST;
 constexpr CAN2_Reg<&CAN_Layout::ECR, 8,  8> RX_ERR_COUNTER;
 constexpr CAN2_Reg<&CAN_Layout::ECR, 8,  0> TX_ERR_COUNTER;
 }  // namespace ECR
@@ -664,16 +624,6 @@ namespace RXFIR {
 constexpr CAN2_Reg<&CAN_Layout::RXFIR, 9, 0> IDHIT;
 }  // namespace RXFIR
 
-// CAN2 CAN Bit Timing Register
-namespace CBT {
-constexpr CAN2_Reg<&CAN_Layout::CBT,  1, 31> BTF;
-constexpr CAN2_Reg<&CAN_Layout::CBT, 10, 21> EPRESDIV;
-constexpr CAN2_Reg<&CAN_Layout::CBT,  5, 16> ERJW;
-constexpr CAN2_Reg<&CAN_Layout::CBT,  6, 10> EPROPSEG;
-constexpr CAN2_Reg<&CAN_Layout::CBT,  5,  5> EPSEG1;
-constexpr CAN2_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;
-}  // namespace CBT
-
 // CAN2 Debug 1 register
 namespace DBG1 {
 constexpr CAN2_Reg<&CAN_Layout::DBG1, 5, 24> CBN;
@@ -692,32 +642,6 @@ constexpr CAN2_Reg<&CAN_Layout::DBG2, 7,  0> RMP;
 namespace GFWR {
 constexpr CAN2_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 }  // namespace GFWR
-
-// CAN2 CAN FD Control Register
-namespace FDCTRL {
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 1, 14, true> TDCFAIL;
-constexpr CAN2_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;
-constexpr CAN2_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;
-}  // namespace FDCTRL
-
-// CAN2 CAN FD Bit Timing Register
-namespace FDCBT {
-constexpr CAN2_Reg<&CAN_Layout::FDCBT, 10, 20> FPRESDIV;
-constexpr CAN2_Reg<&CAN_Layout::FDCBT,  3, 16> FRJW;
-constexpr CAN2_Reg<&CAN_Layout::FDCBT,  5, 10> FPROPSEG;
-constexpr CAN2_Reg<&CAN_Layout::FDCBT,  3,  5> FPSEG1;
-constexpr CAN2_Reg<&CAN_Layout::FDCBT,  3,  0> FPSEG2;
-}  // namespace FDCBT
-
-// CAN2 CAN FD CRC Register
-namespace FDCRC {
-constexpr CAN2_Reg<&CAN_Layout::FDCRC,  7, 24> FD_MBCRC;
-constexpr CAN2_Reg<&CAN_Layout::FDCRC, 21,  0> FD_TXCRC;
-}  // namespace FDCRC
 
 }  // namespace CAN2
 
@@ -775,8 +699,8 @@ constexpr CAN3_Reg<&CAN_Layout::TIMER, 16, 0> TIMER;
 
 // CAN3 Error Counter
 namespace ECR {
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ECR), 8, 24> RXERRCNT_FAST;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::ECR), 8, 16> TXERRCNT_FAST;
+constexpr CAN3_Reg<&CAN_Layout::ECR, 8, 24> RXERRCNT_FAST;
+constexpr CAN3_Reg<&CAN_Layout::ECR, 8, 16> TXERRCNT_FAST;
 constexpr CAN3_Reg<&CAN_Layout::ECR, 8,  8> RX_ERR_COUNTER;
 constexpr CAN3_Reg<&CAN_Layout::ECR, 8,  0> TX_ERR_COUNTER;
 }  // namespace ECR
@@ -858,57 +782,54 @@ constexpr CAN3_Reg<&CAN_Layout::RXFIR, 9, 0> IDHIT;
 
 // CAN3 CAN Bit Timing Register
 namespace CBT {
-constexpr CAN3_Reg<&CAN_Layout::CBT,  1, 31> BTF;
-constexpr CAN3_Reg<&CAN_Layout::CBT, 10, 21> EPRESDIV;
-constexpr CAN3_Reg<&CAN_Layout::CBT,  5, 16> ERJW;
-constexpr CAN3_Reg<&CAN_Layout::CBT,  6, 10> EPROPSEG;
-constexpr CAN3_Reg<&CAN_Layout::CBT,  5,  5> EPSEG1;
-constexpr CAN3_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;
+constexpr CAN3_Reg<&CAN_Layout::CBT,  1, 31> BTF;       // Bit Timing Format Enable
+    // 0b0..Extended bit time definitions disabled.
+    // 0b1..Extended bit time definitions enabled.
+constexpr CAN3_Reg<&CAN_Layout::CBT, 10, 21> EPRESDIV;  // Extended Prescaler Division Factor
+constexpr CAN3_Reg<&CAN_Layout::CBT,  5, 16> ERJW;      // Extended Resync Jump Width
+constexpr CAN3_Reg<&CAN_Layout::CBT,  6, 10> EPROPSEG;  // Extended Propagation Segment
+constexpr CAN3_Reg<&CAN_Layout::CBT,  5,  5> EPSEG1;    // Extended Phase Segment 1
+constexpr CAN3_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;    // Extended Phase Segment 2
 }  // namespace CBT
 
-// CAN3 Debug 1 register
-namespace DBG1 {
-constexpr CAN3_Reg<&CAN_Layout::DBG1, 5, 24> CBN;
-constexpr CAN3_Reg<&CAN_Layout::DBG1, 6,  0> CFSM;
-}  // namespace DBG1
-
-// CAN3 Debug 2 register
-namespace DBG2 {
-constexpr CAN3_Reg<&CAN_Layout::DBG2, 1, 15> APP;
-constexpr CAN3_Reg<&CAN_Layout::DBG2, 7,  8> TAP;
-constexpr CAN3_Reg<&CAN_Layout::DBG2, 1,  7> MPP;
-constexpr CAN3_Reg<&CAN_Layout::DBG2, 7,  0> RMP;
-}  // namespace DBG2
-
-// CAN3 Glitch Filter Width Registers
-namespace GFWR {
-constexpr CAN3_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
-}  // namespace GFWR
-
-// CAN3 CAN FD Control Register
+// CAN3 FD Control Register
 namespace FDCTRL {
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 14, true> TDCFAIL;
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 31>       FDRATE;   // Bit Rate Switch Enable
+    // 0b0..Transmit a frame in nominal rate. The BRS bit in the Tx MB has no effect.
+    // 0b1..Transmit a frame with bit rate switching if the BRS bit in the Tx MB is recessive.
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 19>       MBDSR1;   // Message Buffer Data Size for Region 1
+    // 0b00..Selects 8 bytes per message buffer.
+    // 0b01..Selects 16 bytes per message buffer.
+    // 0b10..Selects 32 bytes per message buffer.
+    // 0b11..Selects 64 bytes per message buffer.
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 16>       MBDSR0;   // Message Buffer Data Size for Region 0
+    // 0b00..Selects 8 bytes per message buffer.
+    // 0b01..Selects 16 bytes per message buffer.
+    // 0b10..Selects 32 bytes per message buffer.
+    // 0b11..Selects 64 bytes per message buffer.
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 15>       TDCEN;    // Transceiver Delay Compensation Enable
+    // 0b0..TDC is disabled
+    // 0b1..TDC is enabled
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 14, true> TDCFAIL;  // Transceiver Delay Compensation Fail
+    // 0b0..Measured loop delay is in range.
+    // 0b1..Measured loop delay is out of range.
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 5,  8>       TDCOFF;   // Transceiver Delay Compensation Offset
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0>       TDCVAL;   // Transceiver Delay Compensation Value
 }  // namespace FDCTRL
 
-// CAN3 CAN FD Bit Timing Register
+// CAN3 FD Bit Timing Register
 namespace FDCBT {
-constexpr CAN3_Reg<&CAN_Layout::FDCBT, 10, 20> FPRESDIV;
-constexpr CAN3_Reg<&CAN_Layout::FDCBT,  3, 16> FRJW;
-constexpr CAN3_Reg<&CAN_Layout::FDCBT,  5, 10> FPROPSEG;
-constexpr CAN3_Reg<&CAN_Layout::FDCBT,  3,  5> FPSEG1;
-constexpr CAN3_Reg<&CAN_Layout::FDCBT,  3,  0> FPSEG2;
+constexpr CAN3_Reg<&CAN_Layout::FDCBT, 10, 20> FPRESDIV;  // Fast Prescaler Division Factor
+constexpr CAN3_Reg<&CAN_Layout::FDCBT,  3, 16> FRJW;      // Fast Resync Jump Width
+constexpr CAN3_Reg<&CAN_Layout::FDCBT,  5, 10> FPROPSEG;  // Fast Propagation Segment
+constexpr CAN3_Reg<&CAN_Layout::FDCBT,  3,  5> FPSEG1;    // Fast Phase Segment 1
+constexpr CAN3_Reg<&CAN_Layout::FDCBT,  3,  0> FPSEG2;    // Fast Phase Segment 2
 }  // namespace FDCBT
 
-// CAN3 CAN FD CRC Register
+// CAN3 FD CRC Register
 namespace FDCRC {
-constexpr CAN3_Reg<&CAN_Layout::FDCRC,  7, 24> FD_MBCRC;
-constexpr CAN3_Reg<&CAN_Layout::FDCRC, 21,  0> FD_TXCRC;
+constexpr CAN3_Reg<&CAN_Layout::FDCRC,  7, 24> FD_MBCRC;  // CRC Mailbox Number for FD_TXCRC
+constexpr CAN3_Reg<&CAN_Layout::FDCRC, 21,  0> FD_TXCRC;  // Extended Transmitted CRC value
 }  // namespace FDCRC
 
 }  // namespace CAN3

@@ -133,10 +133,10 @@ namespace DCP {
 namespace CTRL {
 constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 31> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 30> CLKGATE;
-constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 29> PRESENT_CRYPTO;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL), 1, 29> PRESENT_CRYPTO;
     // 0b0..Absent
     // 0b1..Present
-constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 28> PRESENT_SHA;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL), 1, 28> PRESENT_SHA;
     // 0b0..Absent
     // 0b1..Present
 constexpr DCP_Reg<&DCP_Layout::CTRL, 1, 23> GATHER_RESIDUAL_WRITES;
@@ -155,8 +155,8 @@ constexpr DCP_Reg<&DCP_Layout::CTRL, 8,  0> CHANNEL_INTERRUPT_ENABLE;
 namespace CTRL_SET {
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 31, true> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 30, true> CLKGATE;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 29, true> PRESENT_CRYPTO;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 28, true> PRESENT_SHA;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_SET), 1, 29, true> PRESENT_CRYPTO;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_SET), 1, 28, true> PRESENT_SHA;
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 23, true> GATHER_RESIDUAL_WRITES;
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 22, true> ENABLE_CONTEXT_CACHING;
 constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 21, true> ENABLE_CONTEXT_SWITCHING;
@@ -168,8 +168,8 @@ constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
 namespace CTRL_CLR {
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 31, true> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 30, true> CLKGATE;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 29, true> PRESENT_CRYPTO;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 28, true> PRESENT_SHA;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_CLR), 1, 29, true> PRESENT_CRYPTO;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_CLR), 1, 28, true> PRESENT_SHA;
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 23, true> GATHER_RESIDUAL_WRITES;
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 22, true> ENABLE_CONTEXT_CACHING;
 constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 21, true> ENABLE_CONTEXT_SWITCHING;
@@ -181,8 +181,8 @@ constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
 namespace CTRL_TOG {
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 31, true> SFTRST;
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 30, true> CLKGATE;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 29, true> PRESENT_CRYPTO;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 28, true> PRESENT_SHA;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_TOG), 1, 29, true> PRESENT_CRYPTO;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_TOG), 1, 28, true> PRESENT_SHA;
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 23, true> GATHER_RESIDUAL_WRITES;
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 22, true> ENABLE_CONTEXT_CACHING;
 constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 21, true> ENABLE_CONTEXT_SWITCHING;
@@ -192,15 +192,15 @@ constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
 
 // DCP status register
 namespace STAT {
-constexpr DCP_Reg<&DCP_Layout::STAT, 1, 28> OTP_KEY_READY;
-constexpr DCP_Reg<&DCP_Layout::STAT, 4, 24> CUR_CHANNEL;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT), 1, 28> OTP_KEY_READY;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT), 4, 24> CUR_CHANNEL;
     // None: 0, Channel: channel + 1:
     // 0b0000..None
     // 0b0001..CH0
     // 0b0010..CH1
     // 0b0011..CH2
     // 0b0100..CH3
-constexpr DCP_Reg<&DCP_Layout::STAT, 8, 16> READY_CHANNELS;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT), 8, 16> READY_CHANNELS;
     // Channel mask is (1 << channel):
     // 0b00000001..CH0
     // 0b00000010..CH1
@@ -212,27 +212,27 @@ constexpr DCP_Reg<&DCP_Layout::STAT, 4,  0> IRQ;
 
 // DCP status register
 namespace STAT_SET {
-constexpr DCP_Reg<&DCP_Layout::STAT_SET, 1, 28, true> OTP_KEY_READY;
-constexpr DCP_Reg<&DCP_Layout::STAT_SET, 4, 24, true> CUR_CHANNEL;
-constexpr DCP_Reg<&DCP_Layout::STAT_SET, 8, 16, true> READY_CHANNELS;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 1, 28, true> OTP_KEY_READY;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 4, 24, true> CUR_CHANNEL;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 8, 16, true> READY_CHANNELS;
 constexpr DCP_Reg<&DCP_Layout::STAT_SET, 1,  8, true> RSVD_IRQ;
 constexpr DCP_Reg<&DCP_Layout::STAT_SET, 4,  0, true> IRQ;
 }  // namespace STAT_SET
 
 // DCP status register
 namespace STAT_CLR {
-constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 1, 28, true> OTP_KEY_READY;
-constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 4, 24, true> CUR_CHANNEL;
-constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 8, 16, true> READY_CHANNELS;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 1, 28, true> OTP_KEY_READY;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 4, 24, true> CUR_CHANNEL;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 8, 16, true> READY_CHANNELS;
 constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 1,  8, true> RSVD_IRQ;
 constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 4,  0, true> IRQ;
 }  // namespace STAT_CLR
 
 // DCP status register
 namespace STAT_TOG {
-constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 1, 28, true> OTP_KEY_READY;
-constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 4, 24, true> CUR_CHANNEL;
-constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 8, 16, true> READY_CHANNELS;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 1, 28, true> OTP_KEY_READY;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 4, 24, true> CUR_CHANNEL;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 8, 16, true> READY_CHANNELS;
 constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 1,  8, true> RSVD_IRQ;
 constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 4,  0, true> IRQ;
 }  // namespace STAT_TOG
@@ -284,8 +284,8 @@ namespace CAPABILITY0 {
 constexpr DCP_Reg<&DCP_Layout::CAPABILITY0,  1, 31> DISABLE_DECRYPT;
 constexpr DCP_Reg<&DCP_Layout::CAPABILITY0,  1, 29> DISABLE_UNIQUE_KEY;
 constexpr DCP_Reg<&DCP_Layout::CAPABILITY0, 17, 12> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CAPABILITY0,  4,  8> NUM_CHANNELS;
-constexpr DCP_Reg<&DCP_Layout::CAPABILITY0,  8,  0> NUM_KEYS;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CAPABILITY0),  4,  8> NUM_CHANNELS;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CAPABILITY0),  8,  0> NUM_KEYS;
 }  // namespace CAPABILITY0
 
 // DCP capability 1 register
@@ -385,13 +385,13 @@ constexpr uint32_t kHASH_SELECT_SHA256    = 2;
 
 // DCP channel 0 semaphore register
 namespace CH0SEMA {
-constexpr DCP_Reg<&DCP_Layout::CH0SEMA, 8, 16> VALUE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0SEMA), 8, 16> VALUE;
 constexpr DCP_Reg<&DCP_Layout::CH0SEMA, 8,  0> INCREMENT;
 }  // namespace CH0SEMA
 
 // DCP channel 0 status register
 namespace CH0STAT {
-constexpr DCP_Reg<&DCP_Layout::CH0STAT, 8, 24> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT), 8, 24> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT, 8, 16> ERROR_CODE;
     // 0b00000001..Error signalled because the next pointer is 0x00000000
     // 0b00000010..Error signalled because the semaphore is non-zero and neither chain bit is set
@@ -409,7 +409,7 @@ constexpr DCP_Reg<&DCP_Layout::CH0STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 0 status register
 namespace CH0STAT_SET {
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_SET), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  5, true> ERROR_DST;
@@ -422,7 +422,7 @@ constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 0 status register
 namespace CH0STAT_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_CLR), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  5, true> ERROR_DST;
@@ -435,7 +435,7 @@ constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 0 status register
 namespace CH0STAT_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_TOG), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  5, true> ERROR_DST;
@@ -472,13 +472,13 @@ constexpr DCP_Reg<&DCP_Layout::CH0OPTS_TOG, 16,  0, true> RECOVERY_TIMER;
 
 // DCP channel 1 semaphore register
 namespace CH1SEMA {
-constexpr DCP_Reg<&DCP_Layout::CH1SEMA, 8, 16> VALUE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1SEMA), 8, 16> VALUE;
 constexpr DCP_Reg<&DCP_Layout::CH1SEMA, 8,  0> INCREMENT;
 }  // namespace CH1SEMA
 
 // DCP channel 1 status register
 namespace CH1STAT {
-constexpr DCP_Reg<&DCP_Layout::CH1STAT, 8, 24> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT), 8, 24> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT, 8, 16> ERROR_CODE;
     // 0b00000001..Error is signalled because the next pointer is 0x00000000.
     // 0b00000010..Error is signalled because the semaphore is of a non-zero value and neither of the chain bits is set.
@@ -496,7 +496,7 @@ constexpr DCP_Reg<&DCP_Layout::CH1STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 1 status register
 namespace CH1STAT_SET {
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_SET), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  5, true> ERROR_DST;
@@ -509,7 +509,7 @@ constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 1 status register
 namespace CH1STAT_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_CLR), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  5, true> ERROR_DST;
@@ -522,7 +522,7 @@ constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 1 status register
 namespace CH1STAT_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_TOG), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  5, true> ERROR_DST;
@@ -559,13 +559,13 @@ constexpr DCP_Reg<&DCP_Layout::CH1OPTS_TOG, 16,  0, true> RECOVERY_TIMER;
 
 // DCP channel 2 semaphore register
 namespace CH2SEMA {
-constexpr DCP_Reg<&DCP_Layout::CH2SEMA, 8, 16> VALUE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2SEMA), 8, 16> VALUE;
 constexpr DCP_Reg<&DCP_Layout::CH2SEMA, 8,  0> INCREMENT;
 }  // namespace CH2SEMA
 
 // DCP channel 2 status register
 namespace CH2STAT {
-constexpr DCP_Reg<&DCP_Layout::CH2STAT, 8, 24> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT), 8, 24> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT, 8, 16> ERROR_CODE;
     // 0b00000001..Error is signalled because the next pointer is 0x00000000.
     // 0b00000010..Error is signalled because the semaphore is of a non-zero value and neither of the chain bits is set.
@@ -583,7 +583,7 @@ constexpr DCP_Reg<&DCP_Layout::CH2STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 2 status register
 namespace CH2STAT_SET {
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_SET), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  5, true> ERROR_DST;
@@ -596,7 +596,7 @@ constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 2 status register
 namespace CH2STAT_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_CLR), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  5, true> ERROR_DST;
@@ -609,7 +609,7 @@ constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 2 status register
 namespace CH2STAT_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_TOG), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  5, true> ERROR_DST;
@@ -646,13 +646,13 @@ constexpr DCP_Reg<&DCP_Layout::CH2OPTS_TOG, 16,  0, true> RECOVERY_TIMER;
 
 // DCP channel 3 semaphore register
 namespace CH3SEMA {
-constexpr DCP_Reg<&DCP_Layout::CH3SEMA, 8, 16> VALUE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3SEMA), 8, 16> VALUE;
 constexpr DCP_Reg<&DCP_Layout::CH3SEMA, 8,  0> INCREMENT;
 }  // namespace CH3SEMA
 
 // DCP channel 3 status register
 namespace CH3STAT {
-constexpr DCP_Reg<&DCP_Layout::CH3STAT, 8, 24> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT), 8, 24> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT, 8, 16> ERROR_CODE;
     // 0b00000001..Error is signalled because the next pointer is 0x00000000.
     // 0b00000010..Error is signalled because the semaphore is of a non-zero value and neither of the chain bits is set.
@@ -670,7 +670,7 @@ constexpr DCP_Reg<&DCP_Layout::CH3STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 3 status register
 namespace CH3STAT_SET {
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_SET), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  5, true> ERROR_DST;
@@ -683,7 +683,7 @@ constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 3 status register
 namespace CH3STAT_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_CLR), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  5, true> ERROR_DST;
@@ -696,7 +696,7 @@ constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  0, true> RSVD_COMPLETE;
 
 // DCP channel 3 status register
 namespace CH3STAT_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 8, 24, true> TAG;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_TOG), 8, 24, true> TAG;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 8, 16, true> ERROR_CODE;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
 constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  5, true> ERROR_DST;

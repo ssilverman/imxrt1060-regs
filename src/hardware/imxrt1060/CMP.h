@@ -140,7 +140,7 @@ constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;    // Analog Comparator Fl
 constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;    // Analog Comparator Flag Falling
     // 0b0..Falling-edge on COUT has not been detected.
     // 0b1..Falling-edge on COUT has occurred.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 0>       COUT;   // Analog Comparator Output
+constexpr CMP1_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;   // Analog Comparator Output
 }  // namespace SCR
 
 // DAC Control Register
@@ -209,7 +209,7 @@ constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 4>       IER;
 constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 3>       IEF;
 constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;
 constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 0>       COUT;
+constexpr CMP2_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;
 }  // namespace SCR
 
 // CMP2 DAC Control Register
@@ -258,7 +258,7 @@ constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 4>       IER;
 constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 3>       IEF;
 constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;
 constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 0>       COUT;
+constexpr CMP3_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;
 }  // namespace SCR
 
 // CMP3 DAC Control Register
@@ -307,7 +307,7 @@ constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 4>       IER;
 constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 3>       IEF;
 constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;
 constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 0>       COUT;
+constexpr CMP4_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;
 }  // namespace SCR
 
 // CMP4 DAC Control Register
