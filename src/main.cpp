@@ -31,7 +31,7 @@ using namespace qindesign::hardware::imxrt1060;
 #endif  // !USE_OLD_WAY
 
 static void init_watchdog();
-static void reboot();
+[[noreturn]] static void reboot();
 static void enable_enet_clocks();
 static void disable_enet_clocks();
 static bool arm_high_resolution_clock_init();
