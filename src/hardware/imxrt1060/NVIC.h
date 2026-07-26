@@ -20,13 +20,13 @@ namespace imxrt1060 {
 // See:
 // * https://github.com/nxp-mcuxpresso/mcu-sdk-cmsis/blob/mcux_main/Core/Include/core_cm7.h
 struct NVIC_Layout {
-  volatile uint32_t ISER[8];               /*!< Offset: 0x000 (R/W)  Interrupt Set Enable Register */
+  volatile uint32_t ISER[8];               /*!< w1s, Offset: 0x000 (R/W)  Interrupt Set Enable Register */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[24];
-  volatile uint32_t ICER[8];               /*!< Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
+  volatile uint32_t ICER[8];               /*!< w1c, Offset: 0x080 (R/W)  Interrupt Clear Enable Register */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[24];
-  volatile uint32_t ISPR[8];               /*!< Offset: 0x100 (R/W)  Interrupt Set Pending Register */
+  volatile uint32_t ISPR[8];               /*!< w1s, Offset: 0x100 (R/W)  Interrupt Set Pending Register */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[24];
-  volatile uint32_t ICPR[8];               /*!< Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
+  volatile uint32_t ICPR[8];               /*!< w1c, Offset: 0x180 (R/W)  Interrupt Clear Pending Register */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[24];
   volatile uint32_t IABR[8];               /*!< Offset: 0x200 (R/W)  Interrupt Active bit Register */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[56];
@@ -43,6 +43,27 @@ constexpr uintptr_t kNVIC_base = NVIC::kSCS_base + 0x0100;  /*!< NVIC Base Addre
 
 namespace NVIC {
 constexpr regs::RegGroup<NVIC_Layout, kNVIC_size, kNVIC_base> group;
+}  // namespace NVIC
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false, bool WriteOnly = false>
+using NVIC_Reg = regs::Reg32<kNVIC_base, NVIC_Layout, Member, 0, Bits, Shift,
+                             DirectAssign, WriteOnly>;
+
+namespace NVIC {
+
+// Software Trigger Interrupt Register
+namespace STIR {
+constexpr NVIC_Reg<&NVIC_Layout::STIR, 9, 0, false, true> INTID;
+  // Interrupt ID of the interrupt to trigger, in the range 0-239.
+  // For example, a value of 0x03 specifies interrupt IRQ3.
+}  // namespace STIR
+
+// Interrupt Priority Register
+namespace IPR {
+constexpr regs::RegValue8<4, 4> PRI;  // Priority of the Nth interrupt
+}  // namespace IPR
+
 }  // namespace NVIC
 
 }  // namespace imxrt1060
