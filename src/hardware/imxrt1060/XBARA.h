@@ -98,12 +98,12 @@ namespace XBARA1 {
 constexpr regs::RegGroup<XBARA_Layout, kXBARA_size, kXBARA1_base> group;
 }  // namespace XBARA1
 
+namespace XBARA1 {
+
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using XBARA1_Reg =
     regs::Reg16<kXBARA1_base, XBARA_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-namespace XBARA1 {
 
 // Crossbar A Select Register 0
 namespace SEL0 {

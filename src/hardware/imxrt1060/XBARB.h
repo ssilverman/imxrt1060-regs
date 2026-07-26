@@ -43,17 +43,12 @@ namespace XBARB3 {
 constexpr regs::RegGroup<XBARB_Layout, kXBARB_size, kXBARB3_base> group;
 }  // namespace XBARB3
 
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using XBARB2_Reg =
-    regs::Reg16<kXBARB2_base, XBARB_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using XBARB3_Reg =
-    regs::Reg16<kXBARB3_base, XBARB_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
 namespace XBARB2 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using XBARB2_Reg = regs::Reg16<kXBARB2_base, XBARB_Layout, Member, 0, Bits,
+                               Shift, DirectAssign>;
 
 // Crossbar B Select Register 0
 namespace SEL0 {
@@ -201,6 +196,11 @@ constexpr uint16_t kAOI1_IN14 = 14;
 }  // namespace XBARB2
 
 namespace XBARB3 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using XBARB3_Reg = regs::Reg16<kXBARB3_base, XBARB_Layout, Member, 0, Bits,
+                               Shift, DirectAssign>;
 
 // XBARB3 Crossbar B Select Register 0
 namespace SEL0 {

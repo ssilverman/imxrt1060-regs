@@ -150,22 +150,12 @@ namespace CAN3 {
 constexpr regs::RegGroup<CAN_Layout, kCAN_size, kCAN3_base> group;
 }  // namespace CAN3
 
+namespace CAN1 {
+
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using CAN1_Reg =
     regs::Reg32<kCAN1_base, CAN_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using CAN2_Reg =
-    regs::Reg32<kCAN2_base, CAN_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using CAN3_Reg =
-    regs::Reg32<kCAN3_base, CAN_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-namespace CAN1 {
 
 // Module Configuration Register
 namespace MCR {
@@ -491,6 +481,11 @@ constexpr CAN1_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 
 namespace CAN2 {
 
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using CAN2_Reg =
+    regs::Reg32<kCAN2_base, CAN_Layout, Member, 0, Bits, Shift, DirectAssign>;
+
 // CAN2 Module Configuration Register
 namespace MCR {
 constexpr CAN2_Reg<&CAN_Layout::MCR, 1, 31> MDIS;
@@ -646,6 +641,11 @@ constexpr CAN2_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 }  // namespace CAN2
 
 namespace CAN3 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using CAN3_Reg =
+    regs::Reg32<kCAN3_base, CAN_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 // CAN3 Module Configuration Register
 namespace MCR {

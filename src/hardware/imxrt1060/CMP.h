@@ -51,27 +51,12 @@ namespace CMP4 {
 constexpr regs::RegGroup<CMP_Layout, kCMP_size, kCMP4_base> group;
 }  // namespace CMP4
 
+namespace CMP1 {
+
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using CMP1_Reg =
     regs::Reg8<kCMP1_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using CMP2_Reg =
-    regs::Reg8<kCMP2_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using CMP3_Reg =
-    regs::Reg8<kCMP3_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using CMP4_Reg =
-    regs::Reg8<kCMP4_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-namespace CMP1 {
 
 // CMP Control Register 0
 namespace CR0 {
@@ -180,6 +165,11 @@ constexpr CMP1_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;  // Minus Input Mux Control
 
 namespace CMP2 {
 
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using CMP2_Reg =
+    regs::Reg8<kCMP2_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+
 // CMP2 CMP Control Register 0
 namespace CR0 {
 constexpr CMP2_Reg<&CMP_Layout::CR0, 3, 4> FILTER_CNT;
@@ -229,6 +219,11 @@ constexpr CMP2_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;
 
 namespace CMP3 {
 
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using CMP3_Reg =
+    regs::Reg8<kCMP3_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+
 // CMP3 CMP Control Register 0
 namespace CR0 {
 constexpr CMP3_Reg<&CMP_Layout::CR0, 3, 4> FILTER_CNT;
@@ -277,6 +272,11 @@ constexpr CMP3_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;
 }  // namespace CMP3
 
 namespace CMP4 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using CMP4_Reg =
+    regs::Reg8<kCMP4_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 // CMP4 CMP Control Register 0
 namespace CR0 {

@@ -93,17 +93,12 @@ namespace USB2 {
 constexpr regs::RegGroup<USB_Layout, kUSB_size, kUSB2_base> group;
 }  // namespace USB2
 
+namespace USB1 {
+
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using USB1_Reg =
     regs::Reg32<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using USB2_Reg =
-    regs::Reg32<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-namespace USB1 {
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           bool DirectAssign = false,
@@ -556,6 +551,11 @@ constexpr ENDPTCTRL_Reg<Index, 1,  0> RXS;
 }  // namespace USB1
 
 namespace USB2 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using USB2_Reg =
+    regs::Reg32<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           bool DirectAssign = false,

@@ -49,17 +49,12 @@ namespace ADC2 {
 constexpr regs::RegGroup<ADC_Layout, kADC_size, kADC2_base> group;
 }  // namespace ADC2
 
+namespace ADC1 {
+
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using ADC1_Reg =
     regs::Reg32<kADC1_base, ADC_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using ADC2_Reg =
-    regs::Reg32<kADC2_base, ADC_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-namespace ADC1 {
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           bool DirectAssign = false,
@@ -222,6 +217,11 @@ constexpr ADC1_Reg<&ADC_Layout::CAL, 4, 0> CAL_CODE;  // Calibration Result Valu
 }  // namespace ADC1
 
 namespace ADC2 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using ADC2_Reg =
+    regs::Reg32<kADC2_base, ADC_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           bool DirectAssign = false,

@@ -40,17 +40,12 @@ namespace WDOG2 {
 constexpr regs::RegGroup<WDOG_Layout, kWDOG_size, kWDOG2_base> group;
 }  // namespace WDOG2
 
+namespace WDOG1 {
+
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using WDOG1_Reg =
     regs::Reg16<kWDOG1_base, WDOG_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using WDOG2_Reg =
-    regs::Reg16<kWDOG2_base, WDOG_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-namespace WDOG1 {
 
 // Watchdog Control Register
 namespace WCR {
@@ -131,6 +126,11 @@ constexpr WDOG1_Reg<&WDOG_Layout::WMCR, 1, 0> PDE;
 }  // namespace WDOG1
 
 namespace WDOG2 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using WDOG2_Reg =
+    regs::Reg16<kWDOG2_base, WDOG_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 // WDOG2 Watchdog Control Register
 namespace WCR {

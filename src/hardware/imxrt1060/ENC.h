@@ -65,27 +65,12 @@ namespace ENC4 {
 constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC4_base> group;
 }  // namespace ENC4
 
+namespace ENC1 {
+
 template <auto Member, size_t Bits, unsigned int Shift,
           bool DirectAssign = false>
 using ENC1_Reg =
     regs::Reg16<kENC1_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using ENC2_Reg =
-    regs::Reg16<kENC2_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using ENC3_Reg =
-    regs::Reg16<kENC3_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
-using ENC4_Reg =
-    regs::Reg16<kENC4_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
-
-namespace ENC1 {
 
 // ENC1 Control Register
 namespace CTRL {
@@ -209,9 +194,15 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 0>       UPDHLD;  // Update Hold Regis
     // 0b0..Disable updates of hold registers on the rising edge of TRIGGER input signal
     // 0b1..Enable updates of hold registers on the rising edge of TRIGGER input signal
 }  // namespace CTRL2
+
 }  // namespace ENC1
 
 namespace ENC2 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using ENC2_Reg =
+    regs::Reg16<kENC2_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 // ENC2 Control Register
 namespace CTRL {
@@ -274,9 +265,15 @@ constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 2>       MOD;
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 1>       UPDPOS;
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 0>       UPDHLD;
 }  // namespace CTRL2
+
 }  // namespace ENC2
 
 namespace ENC3 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using ENC3_Reg =
+    regs::Reg16<kENC3_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 // ENC3 Control Register
 namespace CTRL {
@@ -339,9 +336,15 @@ constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 2>       MOD;
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 1>       UPDPOS;
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 0>       UPDHLD;
 }  // namespace CTRL2
+
 }  // namespace ENC3
 
 namespace ENC4 {
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          bool DirectAssign = false>
+using ENC4_Reg =
+    regs::Reg16<kENC4_base, ENC_Layout, Member, 0, Bits, Shift, DirectAssign>;
 
 // ENC4 Control Register
 namespace CTRL {
