@@ -15,7 +15,7 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// Structure type to access the Debug Control Block Registers (DCB).
+// Structure type to access the Debug Control Block (DCB) registers.
 //
 // Comments are from BSD-3-licensed NXP SDK.
 //

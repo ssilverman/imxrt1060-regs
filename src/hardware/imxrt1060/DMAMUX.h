@@ -19,7 +19,10 @@ namespace imxrt1060 {
 // Size of Registers Arrays
 constexpr size_t kDMAMUX_CHCFG_count = 32;
 
-// DMAMUX layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the Direct Memory Access Multiplexer
+// (DMAMUX) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_DMAMUX.h

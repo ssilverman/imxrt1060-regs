@@ -33,7 +33,10 @@ constexpr size_t kCAN_MB_SIZE_MB_64B_MB_64B_H_count            = 7;
 constexpr size_t kCAN_MB_SIZE_MB_GROUP_MB_count                = 64;
 constexpr size_t kCAN_RXIMR_count                              = 64;
 
-// CAN layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the Flexible Data-rate Controller Area Network
+// (CANFD) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_CAN.h

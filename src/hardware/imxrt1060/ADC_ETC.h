@@ -17,10 +17,13 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-/** ADC_ETC - Size of Registers Arrays */
+// Size of Registers Arrays
 constexpr size_t kADC_ETC_TRIG_count = 8;
 
-// ADC_ETC layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the ADC External Trigger Control
+// (ADC_ETC) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_ADC_ETC.h

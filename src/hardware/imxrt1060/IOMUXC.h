@@ -16,12 +16,15 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// IOMUXC layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the IOMUX Controller (IOMUXC) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_IOMUXC.h
 // * https://github.com/nxp-mcuxpresso/legacy-mcux-sdk/blob/main/devices/MIMXRT1062/MIMXRT1062.h
 
+// Size of Registers Arrays
 constexpr size_t kIOMUXC_SW_MUX_CTL_PAD_count   = 124;
 constexpr size_t kIOMUXC_SW_PAD_CTL_PAD_count   = 124;
 constexpr size_t kIOMUXC_SELECT_INPUT_count     = 154;

@@ -15,10 +15,12 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-/** TRNG - Size of Registers Arrays */
+// Size of Registers Arrays
 constexpr size_t kTRNG_ENTA_count = 16;
 
-// TRNG layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the True Random Number Generator (TRNG) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_TRNG.h

@@ -15,7 +15,7 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// Structure type to access the Data Watchpoint and Trace Register (DWT).
+// Structure type to access the Data Watchpoint and Trace (DWT) registers.
 //
 // Comments are from BSD-3-licensed NXP SDK.
 //

@@ -15,7 +15,9 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// IOMUXC_GPR layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the IOMUXC_GPR (IOMUXC_GPR) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_IOMUXC_GPR.h

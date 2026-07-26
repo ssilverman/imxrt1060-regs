@@ -20,7 +20,9 @@ namespace imxrt1060 {
 constexpr size_t kADC_HC_count = 8;
 constexpr size_t kADC_R_count  = 8;
 
-// ADC layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the Analog-to-Digital Converter (ADC) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_ADC.h

@@ -15,7 +15,10 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// NVIC layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the Nested Vectored Interrupt Controller
+// (NVIC) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcu-sdk-cmsis/blob/mcux_main/Core/Include/core_cm7.h

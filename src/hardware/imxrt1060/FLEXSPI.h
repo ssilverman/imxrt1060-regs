@@ -16,7 +16,7 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-/** FLEXSPI - Size of Registers Arrays */
+// Size of Registers Arrays
 constexpr size_t kFLEXSPI_AHBRXBUFCR0_count = 4;
 constexpr size_t kFLEXSPI_FLSHCR0_count     = 4;
 constexpr size_t kFLEXSPI_FLSHCR1_count     = 4;
@@ -26,7 +26,9 @@ constexpr size_t kFLEXSPI_RFDR_count        = 32;
 constexpr size_t kFLEXSPI_TFDR_count        = 32;
 constexpr size_t kFLEXSPI_LUT_count         = 64;
 
-// FLEXSPI layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the FlexSPI (FLEXSPI) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_FLEXSPI.h

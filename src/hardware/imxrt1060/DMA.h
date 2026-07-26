@@ -16,10 +16,12 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-/** DMA - Size of Registers Arrays */
+// Size of Registers Arrays
 constexpr size_t kDMA_TCD_count = 32;
 
-// DMA layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the Enhanced Direct Memory Access (eDMA) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_DMA.h

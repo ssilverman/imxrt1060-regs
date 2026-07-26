@@ -16,11 +16,14 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
+// Size of Registers Arrays
 constexpr size_t kENET_TXIC_count    = 1;
 constexpr size_t kENET_RXIC_count    = 1;
 constexpr size_t kENET_CHANNEL_count = 4;
 
-// ENET layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the 10/100-Mbps Ethernet MAC (ENET) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_ENET.h

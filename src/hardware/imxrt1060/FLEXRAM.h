@@ -15,7 +15,9 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// FLEXRAM layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the FlexRAM (FLEXRAM) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_FLEXRAM.h

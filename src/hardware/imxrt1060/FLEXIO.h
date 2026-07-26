@@ -16,7 +16,7 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-/** FLEXIO - Size of Registers Arrays */
+// Size of Registers Arrays
 constexpr size_t kFLEXIO_SHIFTCTL_count    = 8;
 constexpr size_t kFLEXIO_SHIFTCFG_count    = 8;
 constexpr size_t kFLEXIO_SHIFTBUF_count    = 8;
@@ -30,7 +30,9 @@ constexpr size_t kFLEXIO_SHIFTBUFNBS_count = 8;
 constexpr size_t kFLEXIO_SHIFTBUFHWS_count = 8;
 constexpr size_t kFLEXIO_SHIFTBUFNIS_count = 8;
 
-// FLEXIO layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the Flexible I/O (FLEXIO) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_FLEXIO.h

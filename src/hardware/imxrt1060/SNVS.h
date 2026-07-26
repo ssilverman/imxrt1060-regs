@@ -15,12 +15,15 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// SNVS_HP and SNVS_LP layout. Comments are from BSD-3-licensed NXP SDK.
+// Structure type to access the SNVS_HP and SNVS_LP (SNVS) registers.
+//
+// Comments are from BSD-3-licensed NXP SDK.
 //
 // See:
 // * https://github.com/nxp-mcuxpresso/mcux-devices-rt/blob/main/RT1060/periph/PERI_SNVS.h
 // * https://github.com/nxp-mcuxpresso/legacy-mcux-sdk/blob/main/devices/MIMXRT1062/MIMXRT1062.h
 
+// Size of Registers Arrays
 constexpr size_t kSNVS_LPZMKR_count        = 8;
 constexpr size_t kSNVS_LPGPR0_LPGPR3_count = 4;
 constexpr size_t kSNVS_LPGPR0_LPGPR7_count = 8;
