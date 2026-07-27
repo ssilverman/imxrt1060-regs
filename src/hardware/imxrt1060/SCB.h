@@ -412,6 +412,31 @@ namespace STIR {
 constexpr SCB_Reg<&SCB_Layout::STIR, 9, 0, false, true> INTID;  // Indicates the interrupt to be triggered
 }  // namespace STIR
 
+// Media and VFP Feature Register 0
+namespace MVFR0 {
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4, 28> FPRound;      // Rounding modes bits
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4, 24> FPShortvec;   // Short vectors bits
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4, 20> FPSqrt;       // Square root bits
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4, 16> FPDivide;     // Divide bits
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4, 12> FPExceptrap;  // Exception trapping bits
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4,  8> FPDP;         // Double-precision bits
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4,  4> FPSP;         // Single-precision bits
+constexpr SCB_Reg<&SCB_Layout::MVFR0, 4,  0> SIMDReg;      // SIMD registers bits
+}  // namespace MVFR0
+
+// Media and VFP Feature Register 1
+namespace MVFR1 {
+constexpr SCB_Reg<&SCB_Layout::MVFR1, 4, 28> FMAC;    // Fused MAC bits
+constexpr SCB_Reg<&SCB_Layout::MVFR1, 4, 24> FPHP;    // FP HPFP bits
+constexpr SCB_Reg<&SCB_Layout::MVFR1, 4,  4> FPDNaN;  // D_NaN mode bits
+constexpr SCB_Reg<&SCB_Layout::MVFR1, 4,  0> FPFtZ;   // FtZ mode bits
+}  // namespace MVFR1
+
+// Media and VFP Feature Register 2
+namespace MVFR2 {
+constexpr SCB_Reg<&SCB_Layout::MVFR2, 4, 4> FPMisc;  // VFP Misc bits
+}  // namespace MVFR2
+
 // Data cache invalidate by set/way
 // Exercise caution when setting or assigning fields in this register.
 namespace DCISW {
