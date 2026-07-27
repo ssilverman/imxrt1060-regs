@@ -127,8 +127,7 @@ class Reg {
   [[gnu::always_inline]]
   const Reg& operator=(const R val) const {
     // Clear and then set the bits
-    if constexpr (DirectAssign || WriteOnly ||
-                  ((Bits == kWholeRegBits) && (Shift == 0))) {
+    if constexpr (DirectAssign || ((Bits == kWholeRegBits) && (Shift == 0))) {
       *r() = (*this)(val);
     } else {
       *r() = (*r() & ~kMask) | (*this)(val);
