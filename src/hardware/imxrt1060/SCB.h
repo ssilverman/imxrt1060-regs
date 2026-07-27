@@ -409,7 +409,7 @@ constexpr SCB_Reg<&SCB_Layout::CPACR, 2,  0> CP0;   // Access privileges for cop
 
 // Software Triggered Interrupt Register
 namespace STIR {
-constexpr SCB_Reg<&SCB_Layout::STIR, 9, 0, false, true> INTID;  // Indicates the interrupt to be triggered
+constexpr SCB_Reg<&SCB_Layout::STIR, 9, 0, true, true> INTID;  // Indicates the interrupt to be triggered
 }  // namespace STIR
 
 // Media and VFP Feature Register 0
@@ -440,22 +440,22 @@ constexpr SCB_Reg<&SCB_Layout::MVFR2, 4, 4> FPMisc;  // VFP Misc bits
 // Data cache invalidate by set/way
 // Exercise caution when setting or assigning fields in this register.
 namespace DCISW {
-constexpr SCB_Reg<&SCB_Layout::DCISW, 2, 30, false, true> WAY;
-constexpr SCB_Reg<&SCB_Layout::DCISW, 9,  5, false, true> SET;
+constexpr SCB_Reg<&SCB_Layout::DCISW, 2, 30, true, true> WAY;
+constexpr SCB_Reg<&SCB_Layout::DCISW, 9,  5, true, true> SET;
 }  // namespace DCISW
 
 // Data cache clean by set/way
 // Exercise caution when setting or assigning fields in this register.
 namespace DCCSW {
-constexpr SCB_Reg<&SCB_Layout::DCCSW, 2, 30, false, true> WAY;
-constexpr SCB_Reg<&SCB_Layout::DCCSW, 9,  5, false, true> SET;
+constexpr SCB_Reg<&SCB_Layout::DCCSW, 2, 30, true, true> WAY;
+constexpr SCB_Reg<&SCB_Layout::DCCSW, 9,  5, true, true> SET;
 }  // namespace DCCSW
 
 // Data cache clean and invalidate by set/way
 // Exercise caution when setting or assigning fields in this register.
 namespace DCCISW {
-constexpr SCB_Reg<&SCB_Layout::DCCISW, 2, 30, false, true> WAY;
-constexpr SCB_Reg<&SCB_Layout::DCCISW, 9,  5, false, true> SET;
+constexpr SCB_Reg<&SCB_Layout::DCCISW, 2, 30, true, true> WAY;
+constexpr SCB_Reg<&SCB_Layout::DCCISW, 9,  5, true, true> SET;
 }  // namespace DCCISW
 
 // Instruction Tightly-Coupled Memory Control Register

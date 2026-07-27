@@ -62,8 +62,8 @@ constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  0> C_DEBUGEN;    // Debug enable cont
 // DCB Debug Core Register Selector Register Definitions
 // Exercise caution when setting or assigning fields in this register.
 namespace DCRSR {
-constexpr DCB_Reg<&DCB_Layout::DCRSR, 1, 16, false, true> REGWnR;  // Register write/not-read
-constexpr DCB_Reg<&DCB_Layout::DCRSR, 7,  0, false, true> REGSEL;  // Register selector
+constexpr DCB_Reg<&DCB_Layout::DCRSR, 1, 16, true, true> REGWnR;  // Register write/not-read
+constexpr DCB_Reg<&DCB_Layout::DCRSR, 7,  0, true, true> REGSEL;  // Register selector
 }  // namespace DCRSR
 
 // DCB Debug Core Register Data Register Definitions

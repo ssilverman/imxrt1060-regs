@@ -57,7 +57,7 @@ namespace NVIC {
 
 // Software Trigger Interrupt Register
 namespace STIR {
-constexpr NVIC_Reg<&NVIC_Layout::STIR, 9, 0, false, true> INTID;
+constexpr NVIC_Reg<&NVIC_Layout::STIR, 9, 0, true, true> INTID;
   // Interrupt ID of the interrupt to trigger, in the range 0-239.
   // For example, a value of 0x03 specifies interrupt IRQ3.
 }  // namespace STIR
