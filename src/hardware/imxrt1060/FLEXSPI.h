@@ -86,66 +86,75 @@ constexpr regs::RegGroup<FLEXSPI_Layout, kFLEXSPI_size, kFLEXSPI2_base> group;
 namespace FLEXSPI {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using FLEXSPI_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, Member, 0, Bits, Shift,
-                DirectAssign, WriteOnly>;
+                AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_AHBRXBUFCR0_count)>>
 using AHBRXBUFCR0_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::AHBRXBUFCR0,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR0_count)>>
 using FLSHCR0_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR0,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR1_count)>>
 using FLSHCR1_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR1,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR2_count)>>
 using FLSHCR2_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR2,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_DLLCR_count)>>
 using DLLCR_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::DLLCR,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_RFDR_count)>>
 using RFDR_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::RFDR,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_TFDR_count)>>
 using TFDR_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::TFDR,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_LUT_count)>>
 using LUT_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::LUT,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 // Module Control Register 0
 namespace MCR0 {
@@ -293,24 +302,24 @@ constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTEN, 1,  0> IPCMDDONEEN;      // IP tri
 
 // Interrupt Register
 namespace INTR {
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1, 11, true> SEQTIMEOUT;     // Sequence execution timeout interrupt.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1, 10, true> AHBBUSTIMEOUT;  // AHB Bus timeout interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1, 11, 0x0> SEQTIMEOUT;     // Sequence execution timeout interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1, 10, 0x0> AHBBUSTIMEOUT;  // AHB Bus timeout interrupt.
     // Refer Interrupts chapter for more details.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  9, true> SCKSTOPBYWR;
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  9, 0x0> SCKSTOPBYWR;
     // SCLK is stopped during command sequence because Async TX FIFO empty interrupt.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  8, true> SCKSTOPBYRD;
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  8, 0x0> SCKSTOPBYRD;
     // SCLK is stopped during command sequence because Async RX FIFO full interrupt.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  6, true> IPTXWE;         // IP TX FIFO watermark empty interrupt.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  5, true> IPRXWA;         // IP RX FIFO watermark available interrupt.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  4, true> AHBCMDERR;      // AHB triggered Command Sequences Error Detected interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  6, 0x0> IPTXWE;         // IP TX FIFO watermark empty interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  5, 0x0> IPRXWA;         // IP RX FIFO watermark available interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  4, 0x0> AHBCMDERR;      // AHB triggered Command Sequences Error Detected interrupt.
     // When an error detected for AHB command, this
     //     command will be ignored and not executed at all.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  3, true> IPCMDERR;       // IP triggered Command Sequences Error Detected interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  3, 0x0> IPCMDERR;       // IP triggered Command Sequences Error Detected interrupt.
     // When an error detected for IP command, this command
     //     will be ignored and not executed at all.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  2, true> AHBCMDGE;       // AHB triggered Command Sequences Grant Timeout interrupt.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  1, true> IPCMDGE;        // IP triggered Command Sequences Grant Timeout interrupt.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  0, true> IPCMDDONE;      // IP triggered Command Sequences Execution finished interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  2, 0x0> AHBCMDGE;       // AHB triggered Command Sequences Grant Timeout interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  1, 0x0> IPCMDGE;        // IP triggered Command Sequences Grant Timeout interrupt.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  0, 0x0> IPCMDDONE;      // IP triggered Command Sequences Execution finished interrupt.
     // This interrupt is also generated when there is
     //     IPCMDGE or IPCMDERR interrupt generated.
 }  // namespace INTR
@@ -577,66 +586,75 @@ constexpr LUT_Reg<Index, 8,  0> OPERAND0;   // OPERAND0
 namespace FLEXSPI2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using FLEXSPI2_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, Member, 0, Bits, Shift,
-                DirectAssign, WriteOnly>;
+                AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_AHBRXBUFCR0_count)>>
 using AHBRXBUFCR0_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::AHBRXBUFCR0,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR0_count)>>
 using FLSHCR0_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR0,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR1_count)>>
 using FLSHCR1_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR1,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR2_count)>>
 using FLSHCR2_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR2,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_DLLCR_count)>>
 using DLLCR_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::DLLCR,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_RFDR_count)>>
 using RFDR_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::RFDR,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_TFDR_count)>>
 using TFDR_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::TFDR,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kFLEXSPI_LUT_count)>>
 using LUT_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::LUT,
-                Index, Bits, Shift, DirectAssign, WriteOnly>;
+                Index, Bits, Shift, AssignMask, WriteOnly>;
 
 // Module Control Register 0
 namespace MCR0 {
@@ -698,17 +716,17 @@ constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTEN, 1,  0> IPCMDDONEEN;
 
 // Interrupt Register
 namespace INTR {
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1, 11, true> SEQTIMEOUT;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1, 10, true> AHBBUSTIMEOUT;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  9, true> SCKSTOPBYWR;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  8, true> SCKSTOPBYRD;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  6, true> IPTXWE;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  5, true> IPRXWA;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  4, true> AHBCMDERR;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  3, true> IPCMDERR;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  2, true> AHBCMDGE;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  1, true> IPCMDGE;
-constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  0, true> IPCMDDONE;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1, 11, 0x0> SEQTIMEOUT;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1, 10, 0x0> AHBBUSTIMEOUT;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  9, 0x0> SCKSTOPBYWR;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  8, 0x0> SCKSTOPBYRD;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  6, 0x0> IPTXWE;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  5, 0x0> IPRXWA;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  4, 0x0> AHBCMDERR;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  3, 0x0> IPCMDERR;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  2, 0x0> AHBCMDGE;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  1, 0x0> IPCMDGE;
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  0, 0x0> IPCMDDONE;
 }  // namespace INTR
 
 // LUT Control Register

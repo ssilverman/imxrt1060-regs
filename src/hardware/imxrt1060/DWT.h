@@ -55,9 +55,9 @@ constexpr regs::RegGroup<DWT_Layout, kDWT_size, kDWT_base> group;
 }  // namespace DWT
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using DWT_Reg =
-    regs::Reg32<kDWT_base, DWT_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kDWT_base, DWT_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 namespace DWT {
 

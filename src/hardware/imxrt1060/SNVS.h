@@ -74,9 +74,10 @@ constexpr regs::RegGroup<SNVS_Layout, kSNVS_size, kSNVS_base> group;
 }  // namespace SNVS
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using SNVS_Reg = regs::Reg32<kSNVS_base, SNVS_Layout, Member, 0, Bits, Shift,
-                             DirectAssign, WriteOnly>;
+                             AssignMask, WriteOnly>;
 
 namespace SNVS {
 
@@ -123,39 +124,41 @@ constexpr SNVS_Reg<&SNVS_Layout::HPLR, 1,  0> ZMK_WSL;    // Zeroizable Master K
 // SNVS_HP Command Register
 // Exercise caution when setting or assigning fields in this register.
 namespace HPCOMR {
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 31> NPSWA_EN;      // Non-Privileged Software Access Enable When set, allows non-privileged software to access all SNVS registers, including those that are privileged software read/write access only
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 19> HAC_STOP;      // High Assurance Counter Stop This bit can be set only when SSM is in soft fail state
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18, false, true> HAC_CLEAR;     // High Assurance Counter Clear When set, it clears the High Assurance Counter Register
+constexpr uint32_t kWO = 0x0006'1011;
+
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 31, (uint32_t{0x1} << 31) | kWO> NPSWA_EN;      // Non-Privileged Software Access Enable When set, allows non-privileged software to access all SNVS registers, including those that are privileged software read/write access only
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 19, (uint32_t{0x1} << 19) | kWO> HAC_STOP;      // High Assurance Counter Stop This bit can be set only when SSM is in soft fail state
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18, kWO, true> HAC_CLEAR;     // High Assurance Counter Clear When set, it clears the High Assurance Counter Register
     // 0b0..No Action
     // 0b1..Clear the HAC
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17, false, true> HAC_LOAD;      // High Assurance Counter Load When set, it loads the High Assurance Counter Register with the value of the High Assurance Counter Load Register
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17, kWO, true> HAC_LOAD;      // High Assurance Counter Load When set, it loads the High Assurance Counter Register with the value of the High Assurance Counter Load Register
     // 0b0..No Action
     // 0b1..Load the HAC
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 16> HAC_EN;        // High Assurance Counter Enable This bit controls the SSM transition from the soft fail to the hard fail state
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 16, (uint32_t{0x1} << 16) | kWO> HAC_EN;        // High Assurance Counter Enable This bit controls the SSM transition from the soft fail to the hard fail state
     // 0b0..High Assurance Counter is disabled
     // 0b1..High Assurance Counter is enable
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 13> MKS_EN;        // Master Key Select Enable When not set, the one time programmable (OTP) master key is selected by default
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 13, (uint32_t{0x1} << 13) | kWO> MKS_EN;        // Master Key Select Enable When not set, the one time programmable (OTP) master key is selected by default
     // 0b0..OTP master key is selected as an SNVS master key
     // 0b1..SNVS master key is selected according to the setting of the MASTER_KEY_SEL field of LPMKCR
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12, false, true> PROG_ZMK;      // Program Zeroizable Master Key This bit activates ZMK hardware programming mechanism
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12, kWO, true> PROG_ZMK;      // Program Zeroizable Master Key This bit activates ZMK hardware programming mechanism
     // 0b0..No Action
     // 0b1..Activate hardware key programming mechanism
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 10> SW_LPSV;       // LP Software Security Violation When set, SNVS_LP treats this bit as a security violation
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  9> SW_FSV;        // Software Fatal Security Violation When set, the system security monitor treats this bit as a fatal security violation
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  8> SW_SV;         // Software Security Violation When set, the system security monitor treats this bit as a non-fatal security violation
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  5> LP_SWR_DIS;    // LP Software Reset Disable When set, disables the LP software reset
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 10, (uint32_t{0x1} << 10) | kWO> SW_LPSV;       // LP Software Security Violation When set, SNVS_LP treats this bit as a security violation
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  9, (uint32_t{0x1} <<  9) | kWO> SW_FSV;        // Software Fatal Security Violation When set, the system security monitor treats this bit as a fatal security violation
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  8, (uint32_t{0x1} <<  8) | kWO> SW_SV;         // Software Security Violation When set, the system security monitor treats this bit as a non-fatal security violation
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  5, (uint32_t{0x1} <<  5) | kWO> LP_SWR_DIS;    // LP Software Reset Disable When set, disables the LP software reset
     // 0b0..LP software reset is enabled
     // 0b1..LP software reset is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4, false, true> LP_SWR;        // LP Software Reset When set to 1, most registers in the SNVS_LP section are reset, but the following registers are not reset by an LP software reset: Monotonic Counter Secure Real Time Counter Time Alarm Register This bit cannot be set when the LP_SWR_DIS bit is set
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4, kWO, true> LP_SWR;        // LP Software Reset When set to 1, most registers in the SNVS_LP section are reset, but the following registers are not reset by an LP software reset: Monotonic Counter Secure Real Time Counter Time Alarm Register This bit cannot be set when the LP_SWR_DIS bit is set
     // 0b0..No Action
     // 0b1..Reset LP section
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  2>  SSM_SFNS_DIS;  // SSM Soft Fail to Non-Secure State Transition Disable When set, it disables the SSM transition from soft fail to non-secure state
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  2, (uint32_t{0x1} <<  2) | kWO> SSM_SFNS_DIS;  // SSM Soft Fail to Non-Secure State Transition Disable When set, it disables the SSM transition from soft fail to non-secure state
     // 0b0..Soft Fail to Non-Secure State transition is enabled
     // 0b1..Soft Fail to Non-Secure State transition is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  1> SSM_ST_DIS;    // SSM Secure to Trusted State Transition Disable When set, disables the SSM transition from secure to trusted state
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  1, (uint32_t{0x1} <<  1) | kWO> SSM_ST_DIS;    // SSM Secure to Trusted State Transition Disable When set, disables the SSM transition from secure to trusted state
     // 0b0..Secure to Trusted State transition is enabled
     // 0b1..Secure to Trusted State transition is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0, false, true> SSM_ST;        // SSM State Transition Transition state of the system security monitor
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0, kWO, true> SSM_ST;        // SSM State Transition Transition state of the system security monitor
 }  // namespace HPCOMR
 
 // SNVS_HP Control Register
@@ -248,20 +251,20 @@ constexpr SNVS_Reg<&SNVS_Layout::HPSVCR, 1,  0> SV0_CFG;   // Security Violation
 
 // SNVS_HP Status Register
 namespace HPSR {
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 31>       ZMK_ZERO;          // Zeroizable Master Key is Equal to Zero
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 31> ZMK_ZERO;          // Zeroizable Master Key is Equal to Zero
     // 0b0..The ZMK is not zero.
     // 0b1..The ZMK is zero.
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 27>       OTPMK_ZERO;        // One Time Programmable Master Key is Equal to Zero
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 27> OTPMK_ZERO;        // One Time Programmable Master Key is Equal to Zero
     // 0b0..The OTPMK is not zero.
     // 0b1..The OTPMK is zero.
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 9, 16>       OTPMK_SYNDROME;    // One Time Programmable Master Key Syndrome In the case of a single-bit error, the eight lower bits of this value indicate the bit number of error location
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 15>       SYS_SECURE_BOOT;   // System Secure Boot If SYS_SECURE_BOOT is 1, the chip boots from internal ROM
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 3, 12>       SYS_SECURITY_CFG;  // System Security Configuration This field reflects the three security configuration inputs to SNVS
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 9, 16> OTPMK_SYNDROME;    // One Time Programmable Master Key Syndrome In the case of a single-bit error, the eight lower bits of this value indicate the bit number of error location
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1, 15> SYS_SECURE_BOOT;   // System Secure Boot If SYS_SECURE_BOOT is 1, the chip boots from internal ROM
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 3, 12> SYS_SECURITY_CFG;  // System Security Configuration This field reflects the three security configuration inputs to SNVS
     // 0b000..Fab Configuration - the default configuration of newly fabricated chips
     // 0b001..Open Configuration - the configuration after NXP-programmable fuses have been blown
     // 0b011..Closed Configuration - the configuration after OEM-programmable fuses have been blown
     // 0b111..Field Return Configuration - the configuration of chips that are returned to NXP for analysis
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 4,  8>       SSM_STATE;         // System Security Monitor State This field contains the encoded state of the SSM's state machine
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 4,  8> SSM_STATE;         // System Security Monitor State This field contains the encoded state of the SSM's state machine
     // 0b0000..Init
     // 0b0001..Hard Fail
     // 0b0011..Soft Fail
@@ -270,13 +273,13 @@ constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 4,  8>       SSM_STATE;  
     // 0b1011..Non-Secure
     // 0b1101..Trusted
     // 0b1111..Secure
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 7, true> BI;  // Button Interrupt Signal ipi_snvs_btn_int_b was asserted.
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1,  6>       BTN;               // Button Value of the BTN input
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1,  4>       LPDIS;             // Low Power Disable If 1, the low power section has been disabled by means of an input signal to SNVS
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 1, true> PI;                // Periodic Interrupt Indicates that periodic interrupt has occurred since this bit was last cleared.
+constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 7, 0x0> BI;  // Button Interrupt Signal ipi_snvs_btn_int_b was asserted.
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1,  6> BTN;               // Button Value of the BTN input
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1,  4> LPDIS;             // Low Power Disable If 1, the low power section has been disabled by means of an input signal to SNVS
+constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 1, 0x0> PI;                // Periodic Interrupt Indicates that periodic interrupt has occurred since this bit was last cleared.
     // 0b0..No periodic interrupt occurred.
     // 0b1..A periodic interrupt occurred.
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 0, true> HPTA;              // HP Time Alarm Indicates that the HP Time Alarm has occurred since this bit was last cleared.
+constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 0, 0x0> HPTA;              // HP Time Alarm Indicates that the HP Time Alarm has occurred since this bit was last cleared.
     // 0b0..No time alarm interrupt occurred.
     // 0b1..A time alarm interrupt occurred.
 
@@ -297,30 +300,30 @@ constexpr uint32_t kSYS_SECURITY_CFG_FIELD_RETURN = 7;
 
 // SNVS_HP Security Violation Status Register
 namespace HPSVSR {
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 31>       LP_SEC_VIO;    // LP Security Violation A security volation was detected in the SNVS low power section
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 27, true> ZMK_ECC_FAIL;  // Zeroizable Master Key Error Correcting Code Check Failure When set, this bit triggers a bad key violation to the SSM and a security violation to the SNVS_LP section, which clears security sensitive data
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 31> LP_SEC_VIO;    // LP Security Violation A security volation was detected in the SNVS low power section
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 27, 0x0> ZMK_ECC_FAIL;  // Zeroizable Master Key Error Correcting Code Check Failure When set, this bit triggers a bad key violation to the SSM and a security violation to the SNVS_LP section, which clears security sensitive data
     // 0b0..ZMK ECC Failure was not detected.
     // 0b1..ZMK ECC Failure was detected.
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 9, 16>       ZMK_SYNDROME;  // Zeroizable Master Key Syndrome The ZMK syndrome indicates the single-bit error location and parity for the ZMK register
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 15>       SW_LPSV;       // LP Software Security Violation This bit is a read-only copy of the SW_LPSV bit in the HP Command Register
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 14>       SW_FSV;        // Software Fatal Security Violation This bit is a read-only copy of the SW_FSV bit in the HP Command Register
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 13>       SW_SV;         // Software Security Violation This bit is a read-only copy of the SW_SV bit in the HP Command Register
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  5, true> SV5;           // Security Violation 5 security violation was detected.
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 9, 16> ZMK_SYNDROME;  // Zeroizable Master Key Syndrome The ZMK syndrome indicates the single-bit error location and parity for the ZMK register
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 15> SW_LPSV;       // LP Software Security Violation This bit is a read-only copy of the SW_LPSV bit in the HP Command Register
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 14> SW_FSV;        // Software Fatal Security Violation This bit is a read-only copy of the SW_FSV bit in the HP Command Register
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 13> SW_SV;         // Software Security Violation This bit is a read-only copy of the SW_SV bit in the HP Command Register
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  5, 0x0> SV5;           // Security Violation 5 security violation was detected.
     // 0b0..No Security Violation 5 security violation was detected.
     // 0b1..Security Violation 5 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  4, true> SV4;           // Security Violation 4 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  4, 0x0> SV4;           // Security Violation 4 security violation was detected.
     // 0b0..No Security Violation 4 security violation was detected.
     // 0b1..Security Violation 4 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  3, true> SV3;           // Security Violation 3 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  3, 0x0> SV3;           // Security Violation 3 security violation was detected.
     // 0b0..No Security Violation 3 security violation was detected.
     // 0b1..Security Violation 3 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  2, true> SV2;           // Security Violation 2 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  2, 0x0> SV2;           // Security Violation 2 security violation was detected.
     // 0b0..No Security Violation 2 security violation was detected.
     // 0b1..Security Violation 2 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  1, true> SV1;           // Security Violation 1 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  1, 0x0> SV1;           // Security Violation 1 security violation was detected.
     // 0b0..No Security Violation 1 security violation was detected.
     // 0b1..Security Violation 1 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  0, true> SV0;           // Security Violation 0 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  0, 0x0> SV0;           // Security Violation 0 security violation was detected.
     // 0b0..No Security Violation 0 security violation was detected.
     // 0b1..Security Violation 0 security violation was detected.
 }  // namespace HPSVSR
@@ -476,34 +479,34 @@ constexpr SNVS_Reg<&SNVS_Layout::LPSECR, 1,  1> SRTCR_EN;    // SRTC Rollover En
 
 // SNVS_LP Status Register
 namespace LPSR {
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 31>       LPS;    // LP Section is Secured Indicates that the LP section is provisioned/programmed in the secure or trusted state
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 31> LPS;    // LP Section is Secured Indicates that the LP section is provisioned/programmed in the secure or trusted state
     // 0b0..LP section was not programmed in secure or trusted state.
     // 0b1..LP section was programmed in secure or trusted state.
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 30>       LPNS;   // LP Section is Non-Secured Indicates that LP section was provisioned/programmed in the non-secure state
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 30> LPNS;   // LP Section is Non-Secured Indicates that LP section was provisioned/programmed in the non-secure state
     // 0b0..LP section was not programmed in the non-secure state.
     // 0b1..LP section was programmed in the non-secure state.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 19, true> SPON;   // Set Power On The SPON bit is set when the set_pwr_on_irq interrupt is triggered, which happens when the power button is pressed longer than the configured debounce time
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 19, 0x0> SPON;   // Set Power On The SPON bit is set when the set_pwr_on_irq interrupt is triggered, which happens when the power button is pressed longer than the configured debounce time
     // 0b0..Set Power On Interrupt was not detected.
     // 0b1..Set Power On Interrupt was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 18, true> SPOF;   // Set Power Off The SPO bit is set when the power button is pressed longer than the configured debounce time
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 18, 0x0> SPOF;   // Set Power Off The SPO bit is set when the power button is pressed longer than the configured debounce time
     // 0b0..Set Power Off was not detected.
     // 0b1..Set Power Off was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 17, true> EO;     // Emergency Off This bit is set when a power off is requested.
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 17, 0x0> EO;     // Emergency Off This bit is set when a power off is requested.
     // 0b0..Emergency off was not detected.
     // 0b1..Emergency off was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 16, true> ESVD;   // External Security Violation Detected Indicates that a security violation is detected on one of the HP security violation ports
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 16, 0x0> ESVD;   // External Security Violation Detected Indicates that a security violation is detected on one of the HP security violation ports
     // 0b0..No external security violation.
     // 0b1..External security violation is detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  3, true> LVD;    // Digital Low Voltage Event Detected
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  3, 0x0> LVD;    // Digital Low Voltage Event Detected
     // 0b0..No low voltage event detected.
     // 0b1..Low voltage event is detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  2, true> MCR;    // Monotonic Counter Rollover
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  2, 0x0> MCR;    // Monotonic Counter Rollover
     // 0b0..MC has not reached its maximum value.
     // 0b1..MC has reached its maximum value.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  1, true> SRTCR;  // Secure Real Time Counter Rollover
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  1, 0x0> SRTCR;  // Secure Real Time Counter Rollover
     // 0b0..SRTC has not reached its maximum value.
     // 0b1..SRTC has reached its maximum value.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  0, true> LPTA;   // LP Time Alarm
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  0, 0x0> LPTA;   // LP Time Alarm
     // 0b0..No time alarm interrupt occurred.
     // 0b1..A time alarm interrupt occurred.
 }  // namespace LPSR

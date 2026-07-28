@@ -50,9 +50,9 @@ constexpr regs::RegGroup<CSI_Layout, kCSI_size, kCSI_base> group;
 }  // namespace CSI
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CSI_Reg =
-    regs::Reg32<kCSI_base, CSI_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kCSI_base, CSI_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 namespace CSI {
 
@@ -235,52 +235,52 @@ constexpr CSI_Reg<&CSI_Layout::RXCNT, 22,  0> RXCNT;
 
 // Status Register
 namespace SR {
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 28, true> BASEADDR_CHHANGE_ERROR;
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 27, true> DMA_FIELD0_DONE;
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 26, true> DMA_FIELD1_DONE;
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 25, true> SF_OR_INT;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 28, 0x0> BASEADDR_CHHANGE_ERROR;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 27, 0x0> DMA_FIELD0_DONE;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 26, 0x0> DMA_FIELD1_DONE;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 25, 0x0> SF_OR_INT;
     // 0b0..STATFIFO has not overflowed.
     // 0b1..STATFIFO has overflowed.
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 24, true> RF_OR_INT;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 24, 0x0> RF_OR_INT;
     // 0b0..RXFIFO has not overflowed.
     // 0b1..RXFIFO has overflowed.
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 22, true> DMA_TSF_DONE_SFF;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 22, 0x0> DMA_TSF_DONE_SFF;
     // 0b0..DMA transfer is not completed.
     // 0b1..DMA transfer is completed.
-constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 21>       STATFF_INT;
+constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 21> STATFF_INT;
     // 0b0..STATFIFO is not full.
     // 0b1..STATFIFO is full.
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 20, true> DMA_TSF_DONE_FB2;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 20, 0x0> DMA_TSF_DONE_FB2;
     // 0b0..DMA transfer is not completed.
     // 0b1..DMA transfer is completed.
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 19, true> DMA_TSF_DONE_FB1;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 19, 0x0> DMA_TSF_DONE_FB1;
     // 0b0..DMA transfer is not completed.
     // 0b1..DMA transfer is completed.
-constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 18>       RxFF_INT;
+constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 18> RxFF_INT;
     // 0b0..RxFIFO is not full.
     // 0b1..RxFIFO is full.
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 17, true> EOF_INT;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 17, 0x0> EOF_INT;
     // 0b0..EOF is not detected.
     // 0b1..EOF is detected.
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 16, true> SOF_INT;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 16, 0x0> SOF_INT;
     // 0b0..SOF is not detected.
     // 0b1..SOF is detected.
-constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 15>       F2_INT;
+constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 15> F2_INT;
     // 0b0..Field 2 of video is not detected
     // 0b1..Field 2 of video is about to start
-constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 14>       F1_INT;
+constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1, 14> F1_INT;
     // 0b0..Field 1 of video is not detected.
     // 0b1..Field 1 of video is about to start.
-constexpr CSI_Reg<&CSI_Layout::SR, 1, 13, true> COF_INT;
+constexpr CSI_Reg<&CSI_Layout::SR, 1, 13, 0x0> COF_INT;
     // 0b0..Video field has no change.
     // 0b1..Change of video field is detected.
-constexpr CSI_Reg<&CSI_Layout::SR, 1,  7, true> HRESP_ERR_INT;
+constexpr CSI_Reg<&CSI_Layout::SR, 1,  7, 0x0> HRESP_ERR_INT;
     // 0b0..No hresponse error.
     // 0b1..Hresponse error is detected.
-constexpr CSI_Reg<&CSI_Layout::SR, 1,  1, true> ECC_INT;
+constexpr CSI_Reg<&CSI_Layout::SR, 1,  1, 0x0> ECC_INT;
     // 0b0..No error detected
     // 0b1..Error is detected in BT.656 coding
-constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1,  0>       DRDY;
+constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1,  0> DRDY;
     // 0b0..No data (word) is ready
     // 0b1..At least 1 datum (word) is ready in RXFIFO.
 }  // namespace SR
@@ -350,7 +350,7 @@ constexpr CSI_Reg<&CSI_Layout::CR18, 1,  2> DEINTERLACE_EN;
 
 // Control Register 19
 namespace CR19 {
-constexpr CSI_Reg<&CSI_Layout::CR19, 8, 0, true> DMA_RFIFO_HIGHEST_FIFO_LEVEL;
+constexpr CSI_Reg<&CSI_Layout::CR19, 8, 0, 0x0> DMA_RFIFO_HIGHEST_FIFO_LEVEL;
     // Cleared by writing 0xff
 }  // namespace CR19
 

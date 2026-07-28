@@ -45,9 +45,9 @@ constexpr regs::RegGroup<WDOG_Layout, kWDOG_size, kWDOG2_base> group;
 namespace WDOG1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using WDOG1_Reg =
-    regs::Reg16<kWDOG1_base, WDOG_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg16<kWDOG1_base, WDOG_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 // Watchdog Control Register
 namespace WCR {
@@ -85,7 +85,7 @@ constexpr WDOG1_Reg<&WDOG_Layout::WCR, 1, 0> WDZST;
 
 // Watchdog Service Register
 namespace WSR {
-constexpr WDOG1_Reg<&WDOG_Layout::WSR, 16, 0, true> WSR;
+constexpr WDOG1_Reg<&WDOG_Layout::WSR, 16, 0, 0x0> WSR;
     // 0b0101010101010101..Write to the Watchdog Service Register (WDOG_WSR).
     // 0b1010101010101010..Write to the Watchdog Service Register (WDOG_WSR).
 }  // namespace WSR
@@ -105,13 +105,15 @@ constexpr WDOG1_Reg<&WDOG_Layout::WRSR, 1, 0> SFTW;
 
 // Watchdog Interrupt Control Register
 namespace WICR {
-constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 15>       WIE;
+constexpr uint16_t kW1C = 0x4000;
+
+constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 15, (uint16_t{0x01} << 15) | kW1C> WIE;
     // 0b0..Disable Interrupt (Default).
     // 0b1..Enable Interrupt.
-constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 14, true> WTIS;
+constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 14, kW1C> WTIS;
     // 0b0..No interrupt has occurred (Default).
     // 0b1..Interrupt has occurred
-constexpr WDOG1_Reg<&WDOG_Layout::WICR, 8,  0>       WICT;
+constexpr WDOG1_Reg<&WDOG_Layout::WICR, 8,  0, (uint16_t{0xff} <<  0) | kW1C> WICT;
     // 0b00000000..WICT[7:0] = Time duration between interrupt and time-out is 0 seconds.
     // 0b00000001..WICT[7:0] = Time duration between interrupt and time-out is 0.5 seconds.
     // 0b00000100..WICT[7:0] = Time duration between interrupt and time-out is 2 seconds (Default).
@@ -130,9 +132,9 @@ constexpr WDOG1_Reg<&WDOG_Layout::WMCR, 1, 0> PDE;
 namespace WDOG2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using WDOG2_Reg =
-    regs::Reg16<kWDOG2_base, WDOG_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg16<kWDOG2_base, WDOG_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 // WDOG2 Watchdog Control Register
 namespace WCR {
@@ -149,7 +151,7 @@ constexpr WDOG2_Reg<&WDOG_Layout::WCR, 1, 0> WDZST;
 
 // WDOG2 Watchdog Service Register
 namespace WSR {
-constexpr WDOG2_Reg<&WDOG_Layout::WSR, 16, 0, true> WSR;
+constexpr WDOG2_Reg<&WDOG_Layout::WSR, 16, 0, 0x0> WSR;
 }  // namespace WSR
 
 // WDOG2 Watchdog Reset Status Register
@@ -161,9 +163,11 @@ constexpr WDOG2_Reg<&WDOG_Layout::WRSR, 1, 0> SFTW;
 
 // WDOG2 Watchdog Interrupt Control Register
 namespace WICR {
-constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 15>       WIE;
-constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 14, true> WTIS;
-constexpr WDOG2_Reg<&WDOG_Layout::WICR, 8,  0>       WICT;
+constexpr uint16_t kW1C = 0x4000;
+
+constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 15, (uint16_t{0x01} << 15) | kW1C> WIE;
+constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 14, kW1C> WTIS;
+constexpr WDOG2_Reg<&WDOG_Layout::WICR, 8,  0, (uint16_t{0xff} <<  0) | kW1C> WICT;
 }  // namespace WICR
 
 // WDOG2 Watchdog Miscellaneous Control Register

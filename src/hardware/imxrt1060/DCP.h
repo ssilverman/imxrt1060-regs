@@ -125,9 +125,9 @@ constexpr regs::RegGroup<DCP_Layout, kDCP_size, kDCP_base> group;
 }  // namespace DCP
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using DCP_Reg =
-    regs::Reg32<kDCP_base, DCP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kDCP_base, DCP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 namespace DCP {
 
@@ -155,41 +155,41 @@ constexpr DCP_Reg<&DCP_Layout::CTRL, 8,  0> CHANNEL_INTERRUPT_ENABLE;
 
 // DCP control register 0
 namespace CTRL_SET {
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 31, true> SFTRST;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 30, true> CLKGATE;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_SET), 1, 29, true> PRESENT_CRYPTO;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_SET), 1, 28, true> PRESENT_SHA;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 23, true> GATHER_RESIDUAL_WRITES;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 22, true> ENABLE_CONTEXT_CACHING;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 21, true> ENABLE_CONTEXT_SWITCHING;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1,  8, true> RSVD_CSC_INTERRUPT_ENABLE;
-constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 31, 0x0> SFTRST;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 30, 0x0> CLKGATE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_SET), 1, 29> PRESENT_CRYPTO;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_SET), 1, 28> PRESENT_SHA;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 23, 0x0> GATHER_RESIDUAL_WRITES;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 22, 0x0> ENABLE_CONTEXT_CACHING;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1, 21, 0x0> ENABLE_CONTEXT_SWITCHING;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 1,  8, 0x0> RSVD_CSC_INTERRUPT_ENABLE;
+constexpr DCP_Reg<&DCP_Layout::CTRL_SET, 8,  0, 0x0> CHANNEL_INTERRUPT_ENABLE;
 }  // namespace CTRL_SET
 
 // DCP control register 0
 namespace CTRL_CLR {
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 31, true> SFTRST;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 30, true> CLKGATE;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_CLR), 1, 29, true> PRESENT_CRYPTO;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_CLR), 1, 28, true> PRESENT_SHA;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 23, true> GATHER_RESIDUAL_WRITES;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 22, true> ENABLE_CONTEXT_CACHING;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 21, true> ENABLE_CONTEXT_SWITCHING;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1,  8, true> RSVD_CSC_INTERRUPT_ENABLE;
-constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 31, 0x0> SFTRST;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 30, 0x0> CLKGATE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_CLR), 1, 29> PRESENT_CRYPTO;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_CLR), 1, 28> PRESENT_SHA;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 23, 0x0> GATHER_RESIDUAL_WRITES;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 22, 0x0> ENABLE_CONTEXT_CACHING;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1, 21, 0x0> ENABLE_CONTEXT_SWITCHING;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 1,  8, 0x0> RSVD_CSC_INTERRUPT_ENABLE;
+constexpr DCP_Reg<&DCP_Layout::CTRL_CLR, 8,  0, 0x0> CHANNEL_INTERRUPT_ENABLE;
 }  // namespace CTRL_CLR
 
 // DCP control register 0
 namespace CTRL_TOG {
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 31, true> SFTRST;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 30, true> CLKGATE;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_TOG), 1, 29, true> PRESENT_CRYPTO;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_TOG), 1, 28, true> PRESENT_SHA;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 23, true> GATHER_RESIDUAL_WRITES;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 22, true> ENABLE_CONTEXT_CACHING;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 21, true> ENABLE_CONTEXT_SWITCHING;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1,  8, true> RSVD_CSC_INTERRUPT_ENABLE;
-constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 8,  0, true> CHANNEL_INTERRUPT_ENABLE;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 31, 0x0> SFTRST;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 30, 0x0> CLKGATE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_TOG), 1, 29> PRESENT_CRYPTO;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CTRL_TOG), 1, 28> PRESENT_SHA;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 23, 0x0> GATHER_RESIDUAL_WRITES;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 22, 0x0> ENABLE_CONTEXT_CACHING;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1, 21, 0x0> ENABLE_CONTEXT_SWITCHING;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 1,  8, 0x0> RSVD_CSC_INTERRUPT_ENABLE;
+constexpr DCP_Reg<&DCP_Layout::CTRL_TOG, 8,  0, 0x0> CHANNEL_INTERRUPT_ENABLE;
 }  // namespace CTRL_TOG
 
 // DCP status register
@@ -214,29 +214,29 @@ constexpr DCP_Reg<&DCP_Layout::STAT, 4,  0> IRQ;
 
 // DCP status register
 namespace STAT_SET {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 1, 28, true> OTP_KEY_READY;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 4, 24, true> CUR_CHANNEL;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 8, 16, true> READY_CHANNELS;
-constexpr DCP_Reg<&DCP_Layout::STAT_SET, 1,  8, true> RSVD_IRQ;
-constexpr DCP_Reg<&DCP_Layout::STAT_SET, 4,  0, true> IRQ;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 1, 28> OTP_KEY_READY;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 4, 24> CUR_CHANNEL;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_SET), 8, 16> READY_CHANNELS;
+constexpr DCP_Reg<&DCP_Layout::STAT_SET, 1,  8, 0x0> RSVD_IRQ;
+constexpr DCP_Reg<&DCP_Layout::STAT_SET, 4,  0, 0x0> IRQ;
 }  // namespace STAT_SET
 
 // DCP status register
 namespace STAT_CLR {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 1, 28, true> OTP_KEY_READY;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 4, 24, true> CUR_CHANNEL;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 8, 16, true> READY_CHANNELS;
-constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 1,  8, true> RSVD_IRQ;
-constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 4,  0, true> IRQ;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 1, 28> OTP_KEY_READY;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 4, 24> CUR_CHANNEL;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_CLR), 8, 16> READY_CHANNELS;
+constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 1,  8, 0x0> RSVD_IRQ;
+constexpr DCP_Reg<&DCP_Layout::STAT_CLR, 4,  0, 0x0> IRQ;
 }  // namespace STAT_CLR
 
 // DCP status register
 namespace STAT_TOG {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 1, 28, true> OTP_KEY_READY;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 4, 24, true> CUR_CHANNEL;
-constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 8, 16, true> READY_CHANNELS;
-constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 1,  8, true> RSVD_IRQ;
-constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 4,  0, true> IRQ;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 1, 28> OTP_KEY_READY;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 4, 24> CUR_CHANNEL;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::STAT_TOG), 8, 16> READY_CHANNELS;
+constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 1,  8, 0x0> RSVD_IRQ;
+constexpr DCP_Reg<&DCP_Layout::STAT_TOG, 4,  0, 0x0> IRQ;
 }  // namespace STAT_TOG
 
 // DCP channel control register
@@ -259,26 +259,26 @@ constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL,  8,  0> ENABLE_CHANNEL;
 
 // DCP channel control register
 namespace CHANNELCTRL_SET {
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET, 15, 17, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET,  1, 16, true> CH0_IRQ_MERGED;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET,  8,  8, true> HIGH_PRIORITY_CHANNEL;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET,  8,  0, true> ENABLE_CHANNEL;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET, 15, 17, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET,  1, 16, 0x0> CH0_IRQ_MERGED;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET,  8,  8, 0x0> HIGH_PRIORITY_CHANNEL;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_SET,  8,  0, 0x0> ENABLE_CHANNEL;
 }  // namespace CHANNELCTRL_SET
 
 // DCP channel control register
 namespace CHANNELCTRL_CLR {
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR, 15, 17, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR,  1, 16, true> CH0_IRQ_MERGED;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR,  8,  8, true> HIGH_PRIORITY_CHANNEL;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR,  8,  0, true> ENABLE_CHANNEL;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR, 15, 17, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR,  1, 16, 0x0> CH0_IRQ_MERGED;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR,  8,  8, 0x0> HIGH_PRIORITY_CHANNEL;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_CLR,  8,  0, 0x0> ENABLE_CHANNEL;
 }  // namespace CHANNELCTRL_CLR
 
 // DCP channel control register
 namespace CHANNELCTRL_TOG {
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG, 15, 17, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG,  1, 16, true> CH0_IRQ_MERGED;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG,  8,  8, true> HIGH_PRIORITY_CHANNEL;
-constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG,  8,  0, true> ENABLE_CHANNEL;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG, 15, 17, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG,  1, 16, 0x0> CH0_IRQ_MERGED;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG,  8,  8, 0x0> HIGH_PRIORITY_CHANNEL;
+constexpr DCP_Reg<&DCP_Layout::CHANNELCTRL_TOG,  8,  0, 0x0> ENABLE_CHANNEL;
 }  // namespace CHANNELCTRL_TOG
 
 // DCP capability 0 register
@@ -411,41 +411,41 @@ constexpr DCP_Reg<&DCP_Layout::CH0STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 0 status register
 namespace CH0STAT_SET {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_SET), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_SET), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_SET, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH0STAT_SET
 
 // DCP channel 0 status register
 namespace CH0STAT_CLR {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_CLR), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_CLR), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_CLR, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH0STAT_CLR
 
 // DCP channel 0 status register
 namespace CH0STAT_TOG {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_TOG), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH0STAT_TOG), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH0STAT_TOG, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH0STAT_TOG
 
 // DCP channel 0 options register
@@ -456,20 +456,20 @@ constexpr DCP_Reg<&DCP_Layout::CH0OPTS, 16,  0> RECOVERY_TIMER;
 
 // DCP channel 0 options register
 namespace CH0OPTS_SET {
-constexpr DCP_Reg<&DCP_Layout::CH0OPTS_SET, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH0OPTS_SET, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH0OPTS_SET, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH0OPTS_SET, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH0OPTS_SET
 
 // DCP channel 0 options register
 namespace CH0OPTS_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH0OPTS_CLR, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH0OPTS_CLR, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH0OPTS_CLR, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH0OPTS_CLR, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH0OPTS_CLR
 
 // DCP channel 0 options register
 namespace CH0OPTS_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH0OPTS_TOG, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH0OPTS_TOG, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH0OPTS_TOG, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH0OPTS_TOG, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH0OPTS_TOG
 
 // DCP channel 1 semaphore register
@@ -498,41 +498,41 @@ constexpr DCP_Reg<&DCP_Layout::CH1STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 1 status register
 namespace CH1STAT_SET {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_SET), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_SET), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_SET, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH1STAT_SET
 
 // DCP channel 1 status register
 namespace CH1STAT_CLR {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_CLR), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_CLR), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_CLR, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH1STAT_CLR
 
 // DCP channel 1 status register
 namespace CH1STAT_TOG {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_TOG), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1STAT_TOG), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH1STAT_TOG, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH1STAT_TOG
 
 // DCP channel 1 options register
@@ -543,20 +543,20 @@ constexpr DCP_Reg<&DCP_Layout::CH1OPTS, 16,  0> RECOVERY_TIMER;
 
 // DCP channel 1 options register
 namespace CH1OPTS_SET {
-constexpr DCP_Reg<&DCP_Layout::CH1OPTS_SET, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH1OPTS_SET, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH1OPTS_SET, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH1OPTS_SET, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH1OPTS_SET
 
 // DCP channel 1 options register
 namespace CH1OPTS_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH1OPTS_CLR, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH1OPTS_CLR, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH1OPTS_CLR, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH1OPTS_CLR, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH1OPTS_CLR
 
 // DCP channel 1 options register
 namespace CH1OPTS_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH1OPTS_TOG, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH1OPTS_TOG, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH1OPTS_TOG, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH1OPTS_TOG, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH1OPTS_TOG
 
 // DCP channel 2 semaphore register
@@ -585,41 +585,41 @@ constexpr DCP_Reg<&DCP_Layout::CH2STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 2 status register
 namespace CH2STAT_SET {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_SET), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_SET), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_SET, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH2STAT_SET
 
 // DCP channel 2 status register
 namespace CH2STAT_CLR {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_CLR), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_CLR), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_CLR, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH2STAT_CLR
 
 // DCP channel 2 status register
 namespace CH2STAT_TOG {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_TOG), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2STAT_TOG), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH2STAT_TOG, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH2STAT_TOG
 
 // DCP channel 2 options register
@@ -630,20 +630,20 @@ constexpr DCP_Reg<&DCP_Layout::CH2OPTS, 16,  0> RECOVERY_TIMER;
 
 // DCP channel 2 options register
 namespace CH2OPTS_SET {
-constexpr DCP_Reg<&DCP_Layout::CH2OPTS_SET, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH2OPTS_SET, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH2OPTS_SET, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH2OPTS_SET, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH2OPTS_SET
 
 // DCP channel 2 options register
 namespace CH2OPTS_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH2OPTS_CLR, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH2OPTS_CLR, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH2OPTS_CLR, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH2OPTS_CLR, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH2OPTS_CLR
 
 // DCP channel 2 options register
 namespace CH2OPTS_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH2OPTS_TOG, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH2OPTS_TOG, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH2OPTS_TOG, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH2OPTS_TOG, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH2OPTS_TOG
 
 // DCP channel 3 semaphore register
@@ -672,41 +672,41 @@ constexpr DCP_Reg<&DCP_Layout::CH3STAT, 1,  0> RSVD_COMPLETE;
 
 // DCP channel 3 status register
 namespace CH3STAT_SET {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_SET), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_SET), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_SET, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH3STAT_SET
 
 // DCP channel 3 status register
 namespace CH3STAT_CLR {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_CLR), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_CLR), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_CLR, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH3STAT_CLR
 
 // DCP channel 3 status register
 namespace CH3STAT_TOG {
-constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_TOG), 8, 24, true> TAG;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 8, 16, true> ERROR_CODE;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  6, true> ERROR_PAGEFAULT;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  5, true> ERROR_DST;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  4, true> ERROR_SRC;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  3, true> ERROR_PACKET;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  2, true> ERROR_SETUP;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  1, true> HASH_MISMATCH;
-constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  0, true> RSVD_COMPLETE;
+constexpr DCP_Reg<regs::constify(&DCP_Layout::CH3STAT_TOG), 8, 24> TAG;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 8, 16, 0x0> ERROR_CODE;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  6, 0x0> ERROR_PAGEFAULT;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  5, 0x0> ERROR_DST;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  4, 0x0> ERROR_SRC;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  3, 0x0> ERROR_PACKET;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  2, 0x0> ERROR_SETUP;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  1, 0x0> HASH_MISMATCH;
+constexpr DCP_Reg<&DCP_Layout::CH3STAT_TOG, 1,  0, 0x0> RSVD_COMPLETE;
 }  // namespace CH3STAT_TOG
 
 // DCP channel 3 options register
@@ -717,20 +717,20 @@ constexpr DCP_Reg<&DCP_Layout::CH3OPTS, 16,  0> RECOVERY_TIMER;
 
 // DCP channel 3 options register
 namespace CH3OPTS_SET {
-constexpr DCP_Reg<&DCP_Layout::CH3OPTS_SET, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH3OPTS_SET, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH3OPTS_SET, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH3OPTS_SET, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH3OPTS_SET
 
 // DCP channel 3 options register
 namespace CH3OPTS_CLR {
-constexpr DCP_Reg<&DCP_Layout::CH3OPTS_CLR, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH3OPTS_CLR, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH3OPTS_CLR, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH3OPTS_CLR, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH3OPTS_CLR
 
 // DCP channel 3 options register
 namespace CH3OPTS_TOG {
-constexpr DCP_Reg<&DCP_Layout::CH3OPTS_TOG, 16, 16, true> RSVD;
-constexpr DCP_Reg<&DCP_Layout::CH3OPTS_TOG, 16,  0, true> RECOVERY_TIMER;
+constexpr DCP_Reg<&DCP_Layout::CH3OPTS_TOG, 16, 16, 0x0> RSVD;
+constexpr DCP_Reg<&DCP_Layout::CH3OPTS_TOG, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH3OPTS_TOG
 
 // DCP debug select register

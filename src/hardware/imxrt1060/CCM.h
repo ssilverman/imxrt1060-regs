@@ -66,9 +66,9 @@ constexpr regs::RegGroup<CCM_Layout, kCCM_size, kCCM_base> group;
 }  // namespace CCM
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CCM_Reg =
-    regs::Reg32<kCCM_base, CCM_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kCCM_base, CCM_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 namespace CCM {
 
@@ -427,25 +427,25 @@ constexpr CCM_Reg<&CCM_Layout::CLPCR, 2,  0> LPM;
 
 // CCM Interrupt Status Register
 namespace CISR {
-constexpr CCM_Reg<&CCM_Layout::CISR, 1, 26, true> ARM_PODF_LOADED;
+constexpr CCM_Reg<&CCM_Layout::CISR, 1, 26, 0x0> ARM_PODF_LOADED;
     // 0b0..interrupt is not generated due to frequency change of arm_podf
     // 0b1..interrupt generated due to frequency change of arm_podf
-constexpr CCM_Reg<&CCM_Layout::CISR, 1, 22, true> PERIPH_CLK_SEL_LOADED;
+constexpr CCM_Reg<&CCM_Layout::CISR, 1, 22, 0x0> PERIPH_CLK_SEL_LOADED;
     // 0b0..interrupt is not generated due to update of periph_clk_sel.
     // 0b1..interrupt generated due to update of periph_clk_sel.
-constexpr CCM_Reg<&CCM_Layout::CISR, 1, 20, true> AHB_PODF_LOADED;
+constexpr CCM_Reg<&CCM_Layout::CISR, 1, 20, 0x0> AHB_PODF_LOADED;
     // 0b0..interrupt is not generated due to frequency change of ahb_podf
     // 0b1..interrupt generated due to frequency change of ahb_podf
-constexpr CCM_Reg<&CCM_Layout::CISR, 1, 19, true> PERIPH2_CLK_SEL_LOADED;
+constexpr CCM_Reg<&CCM_Layout::CISR, 1, 19, 0x0> PERIPH2_CLK_SEL_LOADED;
     // 0b0..interrupt is not generated due to frequency change of periph2_clk_sel
     // 0b1..interrupt generated due to frequency change of periph2_clk_sel
-constexpr CCM_Reg<&CCM_Layout::CISR, 1, 17, true> SEMC_PODF_LOADED;
+constexpr CCM_Reg<&CCM_Layout::CISR, 1, 17, 0x0> SEMC_PODF_LOADED;
     // 0b0..interrupt is not generated due to frequency change of semc_podf
     // 0b1..interrupt generated due to frequency change of semc_podf
-constexpr CCM_Reg<&CCM_Layout::CISR, 1,  6, true> COSC_READY;
+constexpr CCM_Reg<&CCM_Layout::CISR, 1,  6, 0x0> COSC_READY;
     // 0b0..interrupt is not generated due to on board oscillator ready
     // 0b1..interrupt generated due to on board oscillator ready
-constexpr CCM_Reg<&CCM_Layout::CISR, 1,  0, true> LRF_PLL;
+constexpr CCM_Reg<&CCM_Layout::CISR, 1,  0, 0x0> LRF_PLL;
     // 0b0..interrupt is not generated due to lock ready of all enabled and not bypaseed PLLs
     // 0b1..interrupt generated due to lock ready of all enabled and not bypaseed PLLs
 }  // namespace CISR

@@ -36,24 +36,44 @@ class RegGroup {
   Layout* operator->() const { return reinterpret_cast<Layout*>(BaseAddr); }
 };
 
+// Gets the basic shifted mask for the given parameters.
+template <typename R, size_t Bits, unsigned int Shift>
+constexpr R shiftedMask() {
+  // Add -1 using R-bit modular arithmetic
+  return static_cast<R>(
+             (((Bits < std::numeric_limits<R>::digits) ? (R{1} << Bits)
+                                                       : R{0}) +
+              std::numeric_limits<R>::max())
+             << Shift);
+}
+
 // Reg defines an easier way to access parts of a register.
 //
 // The 'R' parameter is the unsigned type of each whole register, for example,
 // uint32_t or uint16_t.
 //
-// The 'DirectAssign' parameter means that assignment will not use the "read,
-// clear, set, assign" approach. Instead, the given value is directly assigned
-// to the register after masking and shifting. This is appropriate for things
-// like "CLR" and "SET" registers, where only the 1-assigned bits are set to
-// something. Or, it could be used for write-1-to-clear bits.
+// There are two ways to write to the register:
+// 1. Direct assignment
+// 2. Read-modify-write: read -> AND(NOT(mask)) -> OR(value)
+//
+// For the second form, set '0' for the bits you'd like to keep and '1' for the
+// bits that will be masked away. The first form is used when the mask is zero.
+// The mask defaults to 1's for all the field's bit positions and 0's
+// everywhere else.
+//
+// A direct assignment, when the mask is zero, is appropriate for things like
+// "CLR" and "SET" registers where only the 1-assigned bits are set to
+// something. Or, it could be used for write-1-to-clear bits, when all the other
+// bits in the register are also SET or CLR or w1c.
 //
 // Note that caution should be observed when working with registers having
-// fields marked as 'DirectAssign' if not all fields are also 'DirectAssign'.
+// fields marked with a zero 'AssignMask' if not all fields have a
+// zero 'AssignMask'.
 template <typename R, uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          bool DirectAssign = false,
+          R AssignMask = shiftedMask<R, Bits, Shift>(),
           bool WriteOnly = false>
 class Reg {
   using MemberExpr   = decltype(std::declval<Layout&>().*Member);
@@ -97,13 +117,14 @@ class Reg {
   static constexpr size_t kBits = Bits;
 
   // The shifted mask.
-  static constexpr R kMask =  // Add -1 using R-bit modular arithmetic
-      static_cast<R>((((Bits < kWholeRegBits) ? (R{1} << Bits) : R{0}) +
-                      std::numeric_limits<R>::max())
-                     << Shift);
+  static constexpr R kMask = shiftedMask<R, Bits, Shift>();
   // static constexpr R kMask =
   //     static_cast<R>(std::make_signed_t<R>{-1}) >> (kWholeRegBits - Bits);
   // static constexpr R kMask = ((R{1} << Bits) - R{1});
+
+  // Mask checks
+  static_assert((AssignMask == 0) || ((AssignMask & kMask) == kMask),
+                "Nonzero AssignMask must include the complete field mask");
 
   // Returns the masked and shifted version of the given value.
   [[gnu::always_inline]]
@@ -129,11 +150,12 @@ class Reg {
             typename = std::enable_if_t<Writable>>
   [[gnu::always_inline]]
   const Reg& operator=(const R val) const {
-    // Clear and then set the bits
-    if constexpr (DirectAssign || ((Bits == kWholeRegBits) && (Shift == 0))) {
+    // Either directly assign or clear and then set the bits
+    if constexpr ((AssignMask == 0) ||
+                  ((Bits == kWholeRegBits) && (Shift == 0))) {
       *r() = (*this)(val);
     } else {
-      *r() = (*r() & ~kMask) | (*this)(val);
+      *r() = (*r() & ~AssignMask) | (*this)(val);
     }
     return *this;
   }
@@ -157,42 +179,56 @@ class Reg {
   }
 
   // Performs the operation after masking and shifting the given value.
+  //
+  // This should not be used for w1c fields and the like.
   template <bool Writable = kMemberIsWritable,
-            bool IsDirectAssign = DirectAssign,
+            bool IsDirectAssign = (AssignMask == 0),
             bool Readable = !WriteOnly,
             typename = std::enable_if_t<Writable>,
             typename = std::enable_if_t<!IsDirectAssign>,
             typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator&=(const R val) const {
-    // Preserve bits outside the range
-    *r() &= static_cast<R>(~kMask) | (*this)(val);
+    const R curr = *r();
+    *r() = static_cast<R>((curr & static_cast<R>(~AssignMask)) |
+                          ((curr & kMask) & (*this)(val)));
+    // *r() &= static_cast<R>(static_cast<R>(~AssignMask) | (*this)(val));
     return *this;
   }
 
   // Performs the operation after masking and shifting the given value.
+  //
+  // This should not be used for w1c fields and the like.
   template <bool Writable = kMemberIsWritable,
-            bool IsDirectAssign = DirectAssign,
+            bool IsDirectAssign = (AssignMask == 0),
             bool Readable = !WriteOnly,
             typename = std::enable_if_t<Writable>,
             typename = std::enable_if_t<!IsDirectAssign>,
             typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator|=(const R val) const {
-    *r() |= (*this)(val);
+    const R curr = *r();
+    *r() = static_cast<R>((curr & static_cast<R>(~AssignMask)) |
+                          (curr & kMask) | (*this)(val));
+    // *r() = static_cast<R>((*r() & (static_cast<R>(~AssignMask) | kMask)) |
+    //                       (*this)(val));
     return *this;
   }
 
   // Performs the operation after masking and shifting the given value.
+  //
+  // This should not be used for w1c fields and the like.
   template <bool Writable = kMemberIsWritable,
-            bool IsDirectAssign = DirectAssign,
+            bool IsDirectAssign = (AssignMask == 0),
             bool Readable = !WriteOnly,
             typename = std::enable_if_t<Writable>,
             typename = std::enable_if_t<!IsDirectAssign>,
             typename = std::enable_if_t<Readable>>
   [[gnu::always_inline]]
   const Reg& operator^=(const R val) const {
-    *r() ^= (*this)(val);
+    const R curr = *r();
+    *r() = static_cast<R>((curr & static_cast<R>(~AssignMask)) |
+                          ((curr & kMask) ^ (*this)(val)));
     return *this;
   }
 
@@ -279,10 +315,7 @@ class RegValue {
   static constexpr size_t kBits = Bits;
 
   // The shifted mask.
-  static constexpr R kMask =  // Add -1 using R-bit modular arithmetic
-      static_cast<R>((((Bits < kWholeRegBits) ? (R{1} << Bits) : R{0}) +
-                      std::numeric_limits<R>::max())
-                     << Shift);
+  static constexpr R kMask = shiftedMask<R, Bits, Shift>();
 
   // Returns the masked and shifted version of the given value.
   [[gnu::always_inline]]
@@ -295,9 +328,10 @@ template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using Reg32 = Reg<uint32_t, Base, Layout, Member, MemberOffset, Bits, Shift,
-                  DirectAssign, WriteOnly>;
+                  AssignMask, WriteOnly>;
 
 template <size_t Bits, unsigned int Shift>
 using RegValue32 = RegValue<uint32_t, Bits, Shift>;
@@ -306,9 +340,10 @@ template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = shiftedMask<uint16_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using Reg16 = Reg<uint16_t, Base, Layout, Member, MemberOffset, Bits, Shift,
-                  DirectAssign, WriteOnly>;
+                  AssignMask, WriteOnly>;
 
 template <size_t Bits, unsigned int Shift>
 using RegValue16 = RegValue<uint16_t, Bits, Shift>;
@@ -317,9 +352,10 @@ template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = shiftedMask<uint8_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using Reg8 = Reg<uint8_t, Base, Layout, Member, MemberOffset, Bits, Shift,
-                 DirectAssign, WriteOnly>;
+                 AssignMask, WriteOnly>;
 
 template <size_t Bits, unsigned int Shift>
 using RegValue8 = RegValue<uint8_t, Bits, Shift>;

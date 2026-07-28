@@ -69,9 +69,9 @@ constexpr regs::RegGroup<IOMUXC_GPR_Layout, kIOMUXC_GPR_size, kIOMUXC_GPR_base>
 }  // namespace IOMUXC_GPR
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using IOMUXC_GPR_Reg = regs::Reg32<kIOMUXC_GPR_base, IOMUXC_GPR_Layout, Member,
-                                   0, Bits, Shift, DirectAssign>;
+                                   0, Bits, Shift, AssignMask>;
 
 namespace IOMUXC_GPR {
 

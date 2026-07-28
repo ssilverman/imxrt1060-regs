@@ -165,14 +165,14 @@ constexpr regs::RegGroup<ENET_Layout, kENET_size, kENET2_base> group;
 }  // namespace ENET2
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using ENET_Reg =
-    regs::Reg32<kENET_base, ENET_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kENET_base, ENET_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using ENET2_Reg =
-    regs::Reg32<kENET2_base, ENET_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kENET2_base, ENET_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 namespace ENET {
 
@@ -184,29 +184,29 @@ constexpr uintptr_t ChannelBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CHANNEL_Reg =
     regs::Reg32<ChannelBase<Index>(), ENET_Layout::CHANNEL_Layout, Member, 0,
-                Bits, Shift, DirectAssign>;
+                Bits, Shift, AssignMask>;
 
 // Interrupt Event Register
 namespace EIR {
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 30, true> BABR;      // Babbling Receive Error
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 29, true> BABT;      // Babbling Transmit Error
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 28, true> GRA;       // Graceful Stop Complete
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 27, true> TXF;       // Transmit Frame Interrupt
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 26, true> TXB;       // Transmit Buffer Interrupt
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 25, true> RXF;       // Receive Frame Interrupt
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 24, true> RXB;       // Receive Buffer Interrupt
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 23, true> MII;       // MII Interrupt
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 22, true> EBERR;     // Ethernet Bus Error
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 21, true> LC;        // Late Collision
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 20, true> RL;        // Collision Retry Limit
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 19, true> UN;        // Transmit FIFO Underrun
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 18, true> PLR;       // Payload Receive Error
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 17, true> WAKEUP;    // Node Wakeup Request Indication
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 16, true> TS_AVAIL;  // Transmit Timestamp Available
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 15, true> TS_TIMER;  // Timestamp Timer
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 30, 0x0> BABR;      // Babbling Receive Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 29, 0x0> BABT;      // Babbling Transmit Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 28, 0x0> GRA;       // Graceful Stop Complete
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 27, 0x0> TXF;       // Transmit Frame Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 26, 0x0> TXB;       // Transmit Buffer Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 25, 0x0> RXF;       // Receive Frame Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 24, 0x0> RXB;       // Receive Buffer Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 23, 0x0> MII;       // MII Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 22, 0x0> EBERR;     // Ethernet Bus Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 21, 0x0> LC;        // Late Collision
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 20, 0x0> RL;        // Collision Retry Limit
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 19, 0x0> UN;        // Transmit FIFO Underrun
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 18, 0x0> PLR;       // Payload Receive Error
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 17, 0x0> WAKEUP;    // Node Wakeup Request Indication
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 16, 0x0> TS_AVAIL;  // Transmit Timestamp Available
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 15, 0x0> TS_TIMER;  // Timestamp Timer
 }  // namespace EIR
 
 // Interrupt Mask Register
@@ -598,16 +598,16 @@ constexpr ENET_Reg<&ENET_Layout::ATINC, 7, 0> INC;       // Clock Period Of The 
 
 // Timer Global Status Register
 namespace TGSR {
-constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 3, true> TF3;  // Copy Of Timer Flag For Channel 3
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 3, 0x0> TF3;  // Copy Of Timer Flag For Channel 3
     // 0b0..Timer Flag for Channel 3 is clear
     // 0b1..Timer Flag for Channel 3 is set
-constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 2, true> TF2;  // Copy Of Timer Flag For Channel 2
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 2, 0x0> TF2;  // Copy Of Timer Flag For Channel 2
     // 0b0..Timer Flag for Channel 2 is clear
     // 0b1..Timer Flag for Channel 2 is set
-constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 1, true> TF1;  // Copy Of Timer Flag For Channel 1
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 1, 0x0> TF1;  // Copy Of Timer Flag For Channel 1
     // 0b0..Timer Flag for Channel 1 is clear
     // 0b1..Timer Flag for Channel 1 is set
-constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 0, true> TF0;  // Copy Of Timer Flag For Channel 0
+constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 0, 0x0> TF0;  // Copy Of Timer Flag For Channel 0
     // 0b0..Timer Flag for Channel 0 is clear
     // 0b1..Timer Flag for Channel 0 is set
 }  // namespace TGSR
@@ -615,8 +615,10 @@ constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 0, true> TF0;  // Copy Of Timer Flag F
 // Timer Control Status Register
 namespace CHANNEL {
 namespace TCSR {
+constexpr uint32_t kW1C = 0x0000'0080;
+
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11>       TPWC;   // Timer PulseWidth Control
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11, (uint32_t{0x1f} << 11) | kW1C> TPWC;   // Timer PulseWidth Control
     // 'value' + 1 1588-clock cycles:
     // 0b00000..Pulse width is one 1588-clock cycle.
     // 0b00001..Pulse width is two 1588-clock cycles.
@@ -624,15 +626,15 @@ constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11>       TP
     // 0b00011..Pulse width is four 1588-clock cycles.
     // 0b11111..Pulse width is 32 1588-clock cycles.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, true> TF;     // Timer Flag
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, kW1C> TF;     // Timer Flag
     // 0b0..Input Capture or Output Compare has not occurred.
     // 0b1..Input Capture or Output Compare has occurred.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6>       TIE;    // Timer Interrupt Enable
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6, (uint32_t{0x01} <<  6) | kW1C> TIE;    // Timer Interrupt Enable
     // 0b0..Interrupt is disabled
     // 0b1..Interrupt is enabled
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2>       TMODE;  // Timer Mode
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2, (uint32_t{0x0f} <<  2) | kW1C> TMODE;  // Timer Mode
     // 0b0000..Timer Channel is disabled.
     // 0b0001..Timer Channel is configured for Input Capture on rising edge.
     // 0b0010..Timer Channel is configured for Input Capture on falling edge.
@@ -648,7 +650,7 @@ constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2>       TM
     // 0b1110..Timer Channel is configured for Output Compare - pulse output low on compare for 1 to 32 1588-clock cycles as specified by TPWC.
     // 0b1111..Timer Channel is configured for Output Compare - pulse output high on compare for 1 to 32 1588-clock cycles as specified by TPWC.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0>       TDRE;   // Timer DMA Request Enable
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0, (uint32_t{0x01} <<  0) | kW1C> TDRE;   // Timer DMA Request Enable
     // 0b0..DMA request is disabled
     // 0b1..DMA request is enabled
 }  // namespace TCSR
@@ -903,28 +905,28 @@ constexpr uintptr_t ChannelBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CHANNEL_Reg =
     regs::Reg32<ChannelBase<Index>(), ENET_Layout::CHANNEL_Layout, Member, 0,
-                Bits, Shift, DirectAssign>;
+                Bits, Shift, AssignMask>;
 
 namespace EIR {
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 30, true> BABR;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 29, true> BABT;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 28, true> GRA;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 27, true> TXF;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 26, true> TXB;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 25, true> RXF;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 24, true> RXB;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 23, true> MII;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 22, true> EBERR;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 21, true> LC;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 20, true> RL;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 19, true> UN;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 18, true> PLR;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 17, true> WAKEUP;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 16, true> TS_AVAIL;
-constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 15, true> TS_TIMER;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 30, 0x0> BABR;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 29, 0x0> BABT;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 28, 0x0> GRA;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 27, 0x0> TXF;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 26, 0x0> TXB;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 25, 0x0> RXF;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 24, 0x0> RXB;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 23, 0x0> MII;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 22, 0x0> EBERR;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 21, 0x0> LC;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 20, 0x0> RL;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 19, 0x0> UN;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 18, 0x0> PLR;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 17, 0x0> WAKEUP;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 16, 0x0> TS_AVAIL;
+constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 15, 0x0> TS_TIMER;
 }  // namespace EIR
 
 namespace EIMR {
@@ -1127,25 +1129,27 @@ constexpr ENET2_Reg<&ENET_Layout::ATINC, 7, 0> INC;
 }  // namespace ATINC
 
 namespace TGSR {
-constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 3, true> TF3;
-constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 2, true> TF2;
-constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 1, true> TF1;
-constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 0, true> TF0;
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 3, 0x0> TF3;
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 2, 0x0> TF2;
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 1, 0x0> TF1;
+constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 0, 0x0> TF0;
 }  // namespace TGSR
 
 // Timer Control Status Register
 namespace CHANNEL {
 namespace TCSR {
+constexpr uint32_t kW1C = 0x0000'0080;
+
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11>       TPWC;   // Timer PulseWidth Control
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11, (uint32_t{0x1f} << 11) | kW1C> TPWC;
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, true> TF;     // Timer Flag
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, kW1C> TF;
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6>       TIE;    // Timer Interrupt Enable
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  6, (uint32_t{0x01} <<  6) | kW1C> TIE;
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2>       TMODE;  // Timer Mode
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2, (uint32_t{0x0f} <<  2) | kW1C> TMODE;
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0>       TDRE;   // Timer DMA Request Enable
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0, (uint32_t{0x01} <<  0) | kW1C> TDRE;
 }  // namespace TCSR
 }  // namespace CHANNEL
 

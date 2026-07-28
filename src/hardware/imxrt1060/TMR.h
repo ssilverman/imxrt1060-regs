@@ -78,10 +78,10 @@ constexpr uintptr_t ChannelBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using CHANNEL_Reg =
     regs::Reg16<ChannelBase<Index>(), TMR_Layout::CHANNEL_Layout, Member, 0,
-                Bits, Shift, DirectAssign>;
+                Bits, Shift, AssignMask>;
 
 namespace CHANNEL {
 
@@ -294,10 +294,10 @@ constexpr uintptr_t ChannelBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using CHANNEL_Reg =
     regs::Reg16<ChannelBase<Index>(), TMR_Layout::CHANNEL_Layout, Member, 0,
-                Bits, Shift, DirectAssign>;
+                Bits, Shift, AssignMask>;
 
 namespace CHANNEL {
 
@@ -423,10 +423,10 @@ constexpr uintptr_t ChannelBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using CHANNEL_Reg =
     regs::Reg16<ChannelBase<Index>(), TMR_Layout::CHANNEL_Layout, Member, 0,
-                Bits, Shift, DirectAssign>;
+                Bits, Shift, AssignMask>;
 
 namespace CHANNEL {
 
@@ -552,10 +552,10 @@ constexpr uintptr_t ChannelBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using CHANNEL_Reg =
     regs::Reg16<ChannelBase<Index>(), TMR_Layout::CHANNEL_Layout, Member, 0,
-                Bits, Shift, DirectAssign>;
+                Bits, Shift, AssignMask>;
 
 namespace CHANNEL {
 

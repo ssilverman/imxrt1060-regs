@@ -40,10 +40,11 @@ constexpr regs::RegGroup<FLEXRAM_Layout, kFLEXRAM_size, kFLEXRAM_base> group;
 namespace FLEXRAM {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using FLEXRAM_Reg =
     regs::Reg32<kFLEXRAM_base, FLEXRAM_Layout, Member, 0, Bits, Shift,
-                DirectAssign, WriteOnly>;
+                AssignMask, WriteOnly>;
 
 // TCM CRTL Register
 namespace TCM_CTRL {
@@ -58,13 +59,13 @@ constexpr FLEXRAM_Reg<&FLEXRAM_Layout::TCM_CTRL, 1, 0> TCM_WWAIT_EN;  // TCM Wri
 
 // Interrupt Status Register
 namespace INT_STATUS {
-constexpr FLEXRAM_Reg<&FLEXRAM_Layout::INT_STATUS, 1, 5, true> OCRAM_ERR_STATUS;  // OCRAM Access Error Status
+constexpr FLEXRAM_Reg<&FLEXRAM_Layout::INT_STATUS, 1, 5, 0x0> OCRAM_ERR_STATUS;  // OCRAM Access Error Status
     // 0b0..OCRAM access error does not happen
     // 0b1..OCRAM access error happens.
-constexpr FLEXRAM_Reg<&FLEXRAM_Layout::INT_STATUS, 1, 4, true> DTCM_ERR_STATUS;   // DTCM Access Error Status
+constexpr FLEXRAM_Reg<&FLEXRAM_Layout::INT_STATUS, 1, 4, 0x0> DTCM_ERR_STATUS;   // DTCM Access Error Status
     // 0b0..DTCM access error does not happen
     // 0b1..DTCM access error happens.
-constexpr FLEXRAM_Reg<&FLEXRAM_Layout::INT_STATUS, 1, 3, true> ITCM_ERR_STATUS;   // ITCM Access Error Status
+constexpr FLEXRAM_Reg<&FLEXRAM_Layout::INT_STATUS, 1, 3, 0x0> ITCM_ERR_STATUS;   // ITCM Access Error Status
     // 0b0..ITCM access error does not happen
     // 0b1..ITCM access error happens.
 }  // namespace INT_STATUS

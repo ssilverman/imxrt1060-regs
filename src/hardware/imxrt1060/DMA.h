@@ -116,14 +116,16 @@ constexpr regs::RegGroup<DMA_Layout, kDMA_size, kDMA_base> group;
 }  // namespace DMA
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using DMA_Reg8 = regs::Reg8<kDMA_base, DMA_Layout, Member, 0, Bits, Shift,
-                            DirectAssign, WriteOnly>;
+                            AssignMask, WriteOnly>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using DMA_Reg32 = regs::Reg32<kDMA_base, DMA_Layout, Member, 0, Bits, Shift,
-                              DirectAssign, WriteOnly>;
+                              AssignMask, WriteOnly>;
 
 namespace DMA {
 
@@ -135,14 +137,14 @@ constexpr uintptr_t TcdBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using TCD_Reg32 = regs::Reg32<TcdBase<Index>(), DMA_Layout::TCD_Layout, Member,
-                              0, Bits, Shift, DirectAssign>;
+                              0, Bits, Shift, AssignMask>;
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using TCD_Reg16 = regs::Reg16<TcdBase<Index>(), DMA_Layout::TCD_Layout, Member,
-                              0, Bits, Shift, DirectAssign>;
+                              0, Bits, Shift, AssignMask>;
 
 // Control
 namespace CR {
@@ -428,288 +430,288 @@ constexpr DMA_Reg32<&DMA_Layout::EEI, 1,  0> EEI0;   // Enable Error Interrupt 0
 
 // Clear Enable Error Interrupt
 namespace CEEI {
-constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 6, true, true> CAEE;  // Clear All Enable Error Interrupts
+constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 6, 0x0, true> CAEE;  // Clear All Enable Error Interrupts
     // 0b0..Write 0 only to the EEI field specified in the CEEI field
     // 0b1..Write 0 to all fields in EEI
-constexpr DMA_Reg8<&DMA_Layout::CEEI, 5, 0, true, true> CEEI;  // Clear Enable Error Interrupt
+constexpr DMA_Reg8<&DMA_Layout::CEEI, 5, 0, 0x0, true> CEEI;  // Clear Enable Error Interrupt
 }  // namespace CEEI
 
 // Set Enable Error Interrupt
 namespace SEEI {
-constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 6, true, true> SAEE;  // Set All Enable Error Interrupts
+constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 6, 0x0, true> SAEE;  // Set All Enable Error Interrupts
     // 0b0..Write 1 only to the EEI field specified in the SEEI field
     // 0b1..Writes 1 to all fields in EEI
-constexpr DMA_Reg8<&DMA_Layout::SEEI, 5, 0, true, true> SEEI;  // Set Enable Error Interrupt
+constexpr DMA_Reg8<&DMA_Layout::SEEI, 5, 0, 0x0, true> SEEI;  // Set Enable Error Interrupt
 }  // namespace SEEI
 
 // Clear Enable Request
 namespace CERQ {
-constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 6, true, true> CAER;  // Clear All Enable Requests
+constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 6, 0x0, true> CAER;  // Clear All Enable Requests
     // 0b0..Write 0 to only the ERQ field specified in the CERQ field
     // 0b1..Write 0 to all fields in ERQ
-constexpr DMA_Reg8<&DMA_Layout::CERQ, 5, 0, true, true> CERQ;  // Clear Enable Request
+constexpr DMA_Reg8<&DMA_Layout::CERQ, 5, 0, 0x0, true> CERQ;  // Clear Enable Request
 }  // namespace CERQ
 
 // Set Enable Request
 namespace SERQ {
-constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 6, true, true> SAER;  // Set All Enable Requests
+constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 6, 0x0, true> SAER;  // Set All Enable Requests
     // 0b0..Write 1 to only the ERQ field specified in the SERQ field
     // 0b1..Write 1 to all fields in ERQ
-constexpr DMA_Reg8<&DMA_Layout::SERQ, 5, 0, true, true> SERQ;  // Set Enable Request
+constexpr DMA_Reg8<&DMA_Layout::SERQ, 5, 0, 0x0, true> SERQ;  // Set Enable Request
 }  // namespace SERQ
 
 // Clear DONE Status Bit
 namespace CDNE {
-constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 6, true, true> CADN;  // Clears All DONE fields
+constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 6, 0x0, true> CADN;  // Clears All DONE fields
     // 0b0..Writes 0 to only the TCDn_CSR[DONE] field specified in the CDNE field
     // 0b1..Writes 0 to all bits in TCDn_CSR[DONE]
-constexpr DMA_Reg8<&DMA_Layout::CDNE, 5, 0, true, true> CDNE;  // Clear DONE field
+constexpr DMA_Reg8<&DMA_Layout::CDNE, 5, 0, 0x0, true> CDNE;  // Clear DONE field
 }  // namespace CDNE
 
 // Set START Bit
 namespace SSRT {
-constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 6, true, true> SAST;  // Set All START fields (activates all channels)
+constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 6, 0x0, true> SAST;  // Set All START fields (activates all channels)
     // 0b0..Write 1 to only the TCDn_CSR[START] field specified in the SSRT field
     // 0b1..Write 1 to all bits in TCDn_CSR[START]
-constexpr DMA_Reg8<&DMA_Layout::SSRT, 5, 0, true, true> SSRT;  // Set START field
+constexpr DMA_Reg8<&DMA_Layout::SSRT, 5, 0, 0x0, true> SSRT;  // Set START field
 }  // namespace SSRT
 
 // Clear Error
 namespace CERR {
-constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 6, true, true> CAEI;  // Clear All Error Indicators
+constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 6, 0x0, true> CAEI;  // Clear All Error Indicators
     // 0b0..Write 0 to only the ERR field specified in the CERR field
     // 0b1..Write 0 to all fields in ERR
-constexpr DMA_Reg8<&DMA_Layout::CERR, 5, 0, true, true> CERR;  // Clear Error Indicator
+constexpr DMA_Reg8<&DMA_Layout::CERR, 5, 0, 0x0, true> CERR;  // Clear Error Indicator
 }  // namespace CERR
 
 // Clear Interrupt Request
 namespace CINT {
-constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 7, true, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 7, 0x0, true> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 6, true, true> CAIR;  // Clear All Interrupt Requests
+constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 6, 0x0, true> CAIR;  // Clear All Interrupt Requests
     // 0b0..Clear only the INT field specified in the CINT field
     // 0b1..Clear all bits in INT
-constexpr DMA_Reg8<&DMA_Layout::CINT, 5, 0, true, true> CINT;  // Clear Interrupt Request
+constexpr DMA_Reg8<&DMA_Layout::CINT, 5, 0, 0x0, true> CINT;  // Clear Interrupt Request
 }  // namespace CINT
 
 // Interrupt Request
 namespace INT {
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 31, true> INT31;  // Interrupt Request 31
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 31, 0x0> INT31;  // Interrupt Request 31
     // 0b0..The interrupt request for channel 31 is cleared
     // 0b1..The interrupt request for channel 31 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 30, true> INT30;  // Interrupt Request 30
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 30, 0x0> INT30;  // Interrupt Request 30
     // 0b0..The interrupt request for channel 30 is cleared
     // 0b1..The interrupt request for channel 30 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 29, true> INT29;  // Interrupt Request 29
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 29, 0x0> INT29;  // Interrupt Request 29
     // 0b0..The interrupt request for channel 29 is cleared
     // 0b1..The interrupt request for channel 29 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 28, true> INT28;  // Interrupt Request 28
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 28, 0x0> INT28;  // Interrupt Request 28
     // 0b0..The interrupt request for channel 28 is cleared
     // 0b1..The interrupt request for channel 28 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 27, true> INT27;  // Interrupt Request 27
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 27, 0x0> INT27;  // Interrupt Request 27
     // 0b0..The interrupt request for channel 27 is cleared
     // 0b1..The interrupt request for channel 27 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 26, true> INT26;  // Interrupt Request 26
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 26, 0x0> INT26;  // Interrupt Request 26
     // 0b0..The interrupt request for channel 26 is cleared
     // 0b1..The interrupt request for channel 26 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 25, true> INT25;  // Interrupt Request 25
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 25, 0x0> INT25;  // Interrupt Request 25
     // 0b0..The interrupt request for channel 25 is cleared
     // 0b1..The interrupt request for channel 25 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 24, true> INT24;  // Interrupt Request 24
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 24, 0x0> INT24;  // Interrupt Request 24
     // 0b0..The interrupt request for channel 24 is cleared
     // 0b1..The interrupt request for channel 24 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 23, true> INT23;  // Interrupt Request 23
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 23, 0x0> INT23;  // Interrupt Request 23
     // 0b0..The interrupt request for channel 23 is cleared
     // 0b1..The interrupt request for channel 23 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 22, true> INT22;  // Interrupt Request 22
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 22, 0x0> INT22;  // Interrupt Request 22
     // 0b0..The interrupt request for channel 22 is cleared
     // 0b1..The interrupt request for channel 22 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 21, true> INT21;  // Interrupt Request 21
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 21, 0x0> INT21;  // Interrupt Request 21
     // 0b0..The interrupt request for channel 21 is cleared
     // 0b1..The interrupt request for channel 21 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 20, true> INT20;  // Interrupt Request 20
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 20, 0x0> INT20;  // Interrupt Request 20
     // 0b0..The interrupt request for channel 20 is cleared
     // 0b1..The interrupt request for channel 20 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 19, true> INT19;  // Interrupt Request 19
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 19, 0x0> INT19;  // Interrupt Request 19
     // 0b0..The interrupt request for channel 19 is cleared
     // 0b1..The interrupt request for channel 19 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 18, true> INT18;  // Interrupt Request 18
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 18, 0x0> INT18;  // Interrupt Request 18
     // 0b0..The interrupt request for channel 18 is cleared
     // 0b1..The interrupt request for channel 18 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 17, true> INT17;  // Interrupt Request 17
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 17, 0x0> INT17;  // Interrupt Request 17
     // 0b0..The interrupt request for channel 17 is cleared
     // 0b1..The interrupt request for channel 17 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 16, true> INT16;  // Interrupt Request 16
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 16, 0x0> INT16;  // Interrupt Request 16
     // 0b0..The interrupt request for channel 16 is cleared
     // 0b1..The interrupt request for channel 16 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 15, true> INT15;  // Interrupt Request 15
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 15, 0x0> INT15;  // Interrupt Request 15
     // 0b0..The interrupt request for channel 15 is cleared
     // 0b1..The interrupt request for channel 15 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 14, true> INT14;  // Interrupt Request 14
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 14, 0x0> INT14;  // Interrupt Request 14
     // 0b0..The interrupt request for channel 14 is cleared
     // 0b1..The interrupt request for channel 14 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 13, true> INT13;  // Interrupt Request 13
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 13, 0x0> INT13;  // Interrupt Request 13
     // 0b0..The interrupt request for channel 13 is cleared
     // 0b1..The interrupt request for channel 13 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 12, true> INT12;  // Interrupt Request 12
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 12, 0x0> INT12;  // Interrupt Request 12
     // 0b0..The interrupt request for channel 12 is cleared
     // 0b1..The interrupt request for channel 12 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 11, true> INT11;  // Interrupt Request 11
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 11, 0x0> INT11;  // Interrupt Request 11
     // 0b0..The interrupt request for channel 11 is cleared
     // 0b1..The interrupt request for channel 11 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1, 10, true> INT10;  // Interrupt Request 10
+constexpr DMA_Reg32<&DMA_Layout::INT, 1, 10, 0x0> INT10;  // Interrupt Request 10
     // 0b0..The interrupt request for channel 10 is cleared
     // 0b1..The interrupt request for channel 10 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  9, true> INT9;   // Interrupt Request 9
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  9, 0x0> INT9;   // Interrupt Request 9
     // 0b0..The interrupt request for channel 9 is cleared
     // 0b1..The interrupt request for channel 9 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  8, true> INT8;   // Interrupt Request 8
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  8, 0x0> INT8;   // Interrupt Request 8
     // 0b0..The interrupt request for channel 8 is cleared
     // 0b1..The interrupt request for channel 8 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  7, true> INT7;   // Interrupt Request 7
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  7, 0x0> INT7;   // Interrupt Request 7
     // 0b0..The interrupt request for channel 7 is cleared
     // 0b1..The interrupt request for channel 7 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  6, true> INT6;   // Interrupt Request 6
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  6, 0x0> INT6;   // Interrupt Request 6
     // 0b0..The interrupt request for channel 6 is cleared
     // 0b1..The interrupt request for channel 6 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  5, true> INT5;   // Interrupt Request 5
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  5, 0x0> INT5;   // Interrupt Request 5
     // 0b0..The interrupt request for channel 5 is cleared
     // 0b1..The interrupt request for channel 5 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  4, true> INT4;   // Interrupt Request 4
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  4, 0x0> INT4;   // Interrupt Request 4
     // 0b0..The interrupt request for channel 4 is cleared
     // 0b1..The interrupt request for channel 4 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  3, true> INT3;   // Interrupt Request 3
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  3, 0x0> INT3;   // Interrupt Request 3
     // 0b0..The interrupt request for channel 3 is cleared
     // 0b1..The interrupt request for channel 3 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  2, true> INT2;   // Interrupt Request 2
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  2, 0x0> INT2;   // Interrupt Request 2
     // 0b0..The interrupt request for channel 2 is cleared
     // 0b1..The interrupt request for channel 2 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  1, true> INT1;   // Interrupt Request 1
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  1, 0x0> INT1;   // Interrupt Request 1
     // 0b0..The interrupt request for channel 1 is cleared
     // 0b1..The interrupt request for channel 1 is active
-constexpr DMA_Reg32<&DMA_Layout::INT, 1,  0, true> INT0;   // Interrupt Request 0
+constexpr DMA_Reg32<&DMA_Layout::INT, 1,  0, 0x0> INT0;   // Interrupt Request 0
     // 0b0..The interrupt request for channel 0 is cleared
     // 0b1..The interrupt request for channel 0 is active
 }  // namespace INT
 
 // Error
 namespace ERR {
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 31, true> ERR31;  // Error In Channel 31
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 31, 0x0> ERR31;  // Error In Channel 31
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 30, true> ERR30;  // Error In Channel 30
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 30, 0x0> ERR30;  // Error In Channel 30
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 29, true> ERR29;  // Error In Channel 29
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 29, 0x0> ERR29;  // Error In Channel 29
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 28, true> ERR28;  // Error In Channel 28
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 28, 0x0> ERR28;  // Error In Channel 28
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 27, true> ERR27;  // Error In Channel 27
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 27, 0x0> ERR27;  // Error In Channel 27
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 26, true> ERR26;  // Error In Channel 26
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 26, 0x0> ERR26;  // Error In Channel 26
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 25, true> ERR25;  // Error In Channel 25
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 25, 0x0> ERR25;  // Error In Channel 25
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 24, true> ERR24;  // Error In Channel 24
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 24, 0x0> ERR24;  // Error In Channel 24
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 23, true> ERR23;  // Error In Channel 23
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 23, 0x0> ERR23;  // Error In Channel 23
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 22, true> ERR22;  // Error In Channel 22
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 22, 0x0> ERR22;  // Error In Channel 22
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 21, true> ERR21;  // Error In Channel 21
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 21, 0x0> ERR21;  // Error In Channel 21
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 20, true> ERR20;  // Error In Channel 20
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 20, 0x0> ERR20;  // Error In Channel 20
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 19, true> ERR19;  // Error In Channel 19
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 19, 0x0> ERR19;  // Error In Channel 19
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 18, true> ERR18;  // Error In Channel 18
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 18, 0x0> ERR18;  // Error In Channel 18
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 17, true> ERR17;  // Error In Channel 17
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 17, 0x0> ERR17;  // Error In Channel 17
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 16, true> ERR16;  // Error In Channel 16
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 16, 0x0> ERR16;  // Error In Channel 16
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 15, true> ERR15;  // Error In Channel 15
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 15, 0x0> ERR15;  // Error In Channel 15
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 14, true> ERR14;  // Error In Channel 14
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 14, 0x0> ERR14;  // Error In Channel 14
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 13, true> ERR13;  // Error In Channel 13
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 13, 0x0> ERR13;  // Error In Channel 13
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 12, true> ERR12;  // Error In Channel 12
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 12, 0x0> ERR12;  // Error In Channel 12
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 11, true> ERR11;  // Error In Channel 11
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 11, 0x0> ERR11;  // Error In Channel 11
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 10, true> ERR10;  // Error In Channel 10
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1, 10, 0x0> ERR10;  // Error In Channel 10
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  9, true> ERR9;   // Error In Channel 9
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  9, 0x0> ERR9;   // Error In Channel 9
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  8, true> ERR8;   // Error In Channel 8
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  8, 0x0> ERR8;   // Error In Channel 8
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  7, true> ERR7;   // Error In Channel 7
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  7, 0x0> ERR7;   // Error In Channel 7
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  6, true> ERR6;   // Error In Channel 6
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  6, 0x0> ERR6;   // Error In Channel 6
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  5, true> ERR5;   // Error In Channel 5
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  5, 0x0> ERR5;   // Error In Channel 5
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  4, true> ERR4;   // Error In Channel 4
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  4, 0x0> ERR4;   // Error In Channel 4
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  3, true> ERR3;   // Error In Channel 3
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  3, 0x0> ERR3;   // Error In Channel 3
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  2, true> ERR2;   // Error In Channel 2
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  2, 0x0> ERR2;   // Error In Channel 2
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  1, true> ERR1;   // Error In Channel 1
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  1, 0x0> ERR1;   // Error In Channel 1
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
-constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  0, true> ERR0;   // Error In Channel 0
+constexpr DMA_Reg32<&DMA_Layout::ERR, 1,  0, 0x0> ERR0;   // Error In Channel 0
     // 0b0..No error in this channel has occurred
     // 0b1..An error in this channel has occurred
 }  // namespace ERR

@@ -150,9 +150,9 @@ constexpr regs::RegGroup<OCOTP_Layout, kOCOTP_size, kOCOTP_base> group;
 }  // namespace OCOTP
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using OCOTP_Reg = regs::Reg32<kOCOTP_base, OCOTP_Layout, Member, 0, Bits, Shift,
-                              DirectAssign>;
+                              AssignMask>;
 
 namespace OCOTP {
 
@@ -175,29 +175,29 @@ constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  6,  0> ADDR;            // OTP write a
 
 // OTP Controller Control and Status Register
 namespace CTRL_SET {
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET, 16, 16, true> WR_UNLOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1, 10, true> RELOAD_SHADOWS;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1,  9, true> ERROR;
-constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_SET),  1,  8>       BUSY;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  6,  0, true> ADDR;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET, 16, 16, 0x0> WR_UNLOCK;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1, 10, 0x0> RELOAD_SHADOWS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1,  9, 0x0> ERROR;
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_SET),  1,  8> BUSY;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  6,  0, 0x0> ADDR;
 }  // namespace CTRL_SET
 
 // OTP Controller Control and Status Register
 namespace CTRL_CLR {
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR, 16, 16, true> WR_UNLOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1, 10, true> RELOAD_SHADOWS;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1,  9, true> ERROR;
-constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_CLR),  1,  8>       BUSY;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  6,  0, true> ADDR;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR, 16, 16, 0x0> WR_UNLOCK;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1, 10, 0x0> RELOAD_SHADOWS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1,  9, 0x0> ERROR;
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_CLR),  1,  8> BUSY;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  6,  0, 0x0> ADDR;
 }  // namespace CTRL_CLR
 
 // OTP Controller Control and Status Register
 namespace CTRL_TOG {
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG, 16, 16, true> WR_UNLOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1, 10, true> RELOAD_SHADOWS;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1,  9, true> ERROR;
-constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_TOG),  1,  8>       BUSY;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  6,  0, true> ADDR;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG, 16, 16, 0x0> WR_UNLOCK;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1, 10, 0x0> RELOAD_SHADOWS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1,  9, 0x0> ERROR;
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_TOG),  1,  8> BUSY;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  6,  0, 0x0> ADDR;
 }  // namespace CTRL_TOG
 
 // OTP Controller Timing Register
@@ -237,23 +237,23 @@ constexpr OCOTP_Reg<&OCOTP_Layout::SCS,  1,  0> HAB_JDE;  // HAB JTAG Debug Enab
 
 // Software Controllable Signals Register
 namespace SCS_SET {
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1, 31, true> LOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET, 30,  1, true> SPARE;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1,  0, true> HAB_JDE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1, 31, 0x0> LOCK;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET, 30,  1, 0x0> SPARE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1,  0, 0x0> HAB_JDE;
 }  // namespace SCS_SET
 
 // Software Controllable Signals Register
 namespace SCS_CLR {
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1, 31, true> LOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR, 30,  1, true> SPARE;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1,  0, true> HAB_JDE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1, 31, 0x0> LOCK;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR, 30,  1, 0x0> SPARE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1,  0, 0x0> HAB_JDE;
 }  // namespace SCS_CLR
 
 // Software Controllable Signals Register
 namespace SCS_TOG {
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1, 31, true> LOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG, 30,  1, true> SPARE;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1,  0, true> HAB_JDE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1, 31, 0x0> LOCK;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG, 30,  1, 0x0> SPARE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1,  0, 0x0> HAB_JDE;
 }  // namespace SCS_TOG
 
 // OTP Controller Version Register

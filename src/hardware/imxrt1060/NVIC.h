@@ -49,15 +49,16 @@ constexpr regs::RegGroup<NVIC_Layout, kNVIC_size, kNVIC_base> group;
 }  // namespace NVIC
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using NVIC_Reg = regs::Reg32<kNVIC_base, NVIC_Layout, Member, 0, Bits, Shift,
-                             DirectAssign, WriteOnly>;
+                             AssignMask, WriteOnly>;
 
 namespace NVIC {
 
 // Software Trigger Interrupt Register
 namespace STIR {
-constexpr NVIC_Reg<&NVIC_Layout::STIR, 9, 0, true, true> INTID;
+constexpr NVIC_Reg<&NVIC_Layout::STIR, 9, 0, 0x0, true> INTID;
   // Interrupt ID of the interrupt to trigger, in the range 0-239.
   // For example, a value of 0x03 specifies interrupt IRQ3.
 }  // namespace STIR

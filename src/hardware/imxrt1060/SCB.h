@@ -86,9 +86,10 @@ constexpr regs::RegGroup<SCB_Layout, kSCB_size, kSCB_base> group;
 }  // namespace SCB
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using SCB_Reg = regs::Reg32<kSCB_base, SCB_Layout, Member, 0, Bits, Shift,
-                            DirectAssign, WriteOnly>;
+                            AssignMask, WriteOnly>;
 
 template <auto Member, size_t MemberOffset, size_t Bits, unsigned int Shift>
 using SCB_ArrayReg32 =
@@ -111,11 +112,11 @@ constexpr SCB_Reg<&SCB_Layout::CPUID,  4,  0> REVISION;      // Indicates patch 
 
 // Interrupt Control and State Register
 namespace ICSR {
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 31, true> NMIPENDSET;   // NMI set-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 28, true> PENDSVSET;    // PendSV set-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 27, false, true> PENDSVCLR;    // PendSV clear-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 26, true> PENDSTSET;    // SysTick exception set-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 25, false, true> PENDSTCLR;    // SysTick exception clear-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 31, 0x0> NMIPENDSET;   // NMI set-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 28, 0x0> PENDSVSET;    // PendSV set-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 27, 0x0, true> PENDSVCLR;    // PendSV clear-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 26, 0x0> PENDSTSET;    // SysTick exception set-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 25, 0x0, true> PENDSTCLR;    // SysTick exception clear-pending bit
 constexpr SCB_Reg<regs::constify(&SCB_Layout::ICSR), 1, 23> ISRPREEMPT;
 constexpr SCB_Reg<regs::constify(&SCB_Layout::ICSR), 1, 22> ISRPENDING;   // Interrupt pending flag, excluding NMI and Faults
 constexpr SCB_Reg<regs::constify(&SCB_Layout::ICSR), 9, 12> VECTPENDING;  // Exception number of the highest priority pending enabled exception
@@ -131,15 +132,17 @@ constexpr SCB_Reg<&SCB_Layout::VTOR, 25, 7> TBLOFF;  // Vector table base offset
 // Application Interrupt and Reset Control Register
 // Exercise caution when setting or assigning fields in this register.
 namespace AIRCR {
-constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, false, true> VECTKEY;        // Register key
+constexpr uint32_t kWO = 0xffff'0007;
+
+constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, kWO, true> VECTKEY;        // Register key
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR), 16, 16> VECTKEYSTAT;
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR),  1, 15> ENDIANNESS;     // Data endianness
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  3,  8> PRIGROUP;       // Interrupt priority grouping field.
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  3,  8, (uint32_t{0x7} << 8) | kWO> PRIGROUP;       // Interrupt priority grouping field.
     // This field determines the split of group priority from subpriority.
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  2, false, true> SYSRESETREQ;    // System reset request
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  1, false, true> VECTCLRACTIVE;
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  2, kWO, true> SYSRESETREQ;    // System reset request
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  1, kWO, true> VECTCLRACTIVE;
     // Writing 1 to this bit clears all active state information for fixed and configurable exceptions.
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  0, false, true> VECTRESET;
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  0, kWO, true> VECTRESET;
     // Writing 1 to this bit causes a local system reset
 }  // namespace AIRCR
 
@@ -207,51 +210,51 @@ constexpr SCB_Reg<&SCB_Layout::SHCSR, 1,  0> MEMFAULTACT;     // MemManage excep
 
 // Configurable Fault Status Register
 namespace CFSR {
-constexpr SCB_Reg<&SCB_Layout::CFSR, 16, 16, true> USGFAULTSR;
-constexpr SCB_Reg<&SCB_Layout::CFSR,  8,  8, true> BUSFAULTSR;
-constexpr SCB_Reg<&SCB_Layout::CFSR,  8,  0, true> MEMFAULTSR;
+constexpr SCB_Reg<&SCB_Layout::CFSR, 16, 16, 0x0> USGFAULTSR;
+constexpr SCB_Reg<&SCB_Layout::CFSR,  8,  8, 0x0> BUSFAULTSR;
+constexpr SCB_Reg<&SCB_Layout::CFSR,  8,  0, 0x0> MEMFAULTSR;
 
 // MemManage Fault Status Register Definitions
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 7, true> MMARVALID;  // MemManage Fault Address Register (MMFAR) valid flag
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 5, true> MLSPERR;    // MemManage fault occurred during floating-point lazy state preservation
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 4, true> MSTKERR;    // MemManage fault on stacking for exception entry
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 3, true> MUNSTKERR;  // MemManage fault on unstacking for a return from exception
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 1, true> DACCVIOL;   // Data access violation flag
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 0, true> IACCVIOL;   // Instruction access violation flag
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 7, 0x0> MMARVALID;  // MemManage Fault Address Register (MMFAR) valid flag
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 5, 0x0> MLSPERR;    // MemManage fault occurred during floating-point lazy state preservation
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 4, 0x0> MSTKERR;    // MemManage fault on stacking for exception entry
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 3, 0x0> MUNSTKERR;  // MemManage fault on unstacking for a return from exception
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 1, 0x0> DACCVIOL;   // Data access violation flag
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 0, 0x0> IACCVIOL;   // Instruction access violation flag
 
 // BusFault Status Register Definitions
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 15, true> BFARVALID;    // BusFault Address Register (BFAR) valid flag
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 13, true> LSPERR;       // Bus fault occurred during floating-point lazy state preservation
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 12, true> STKERR;       // BusFault on stacking for exception entry
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 11, true> UNSTKERR;     // BusFault on unstacking for a return from exception
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 10, true> IMPRECISERR;  // Imprecise data bus error
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1,  9, true> PRECISERR;    // Precise data bus error
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1,  8, true> IBUSERR;      // Instruction bus error
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 15, 0x0> BFARVALID;    // BusFault Address Register (BFAR) valid flag
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 13, 0x0> LSPERR;       // Bus fault occurred during floating-point lazy state preservation
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 12, 0x0> STKERR;       // BusFault on stacking for exception entry
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 11, 0x0> UNSTKERR;     // BusFault on unstacking for a return from exception
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 10, 0x0> IMPRECISERR;  // Imprecise data bus error
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1,  9, 0x0> PRECISERR;    // Precise data bus error
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1,  8, 0x0> IBUSERR;      // Instruction bus error
 
 // UsageFault Status Register Definitions
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 25, true> DIVBYZERO;   // Divide by zero UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 24, true> UNALIGNED;   // Unaligned access UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 19, true> NOCP;        // No coprocessor UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 18, true> INVPC;       // Invalid PC load UsageFault, caused by an invalid PC load by EXC_RETURN
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 17, true> INVSTATE;    // Invalid state UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 16, true> UNDEFINSTR;  // Undefined instruction UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 25, 0x0> DIVBYZERO;   // Divide by zero UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 24, 0x0> UNALIGNED;   // Unaligned access UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 19, 0x0> NOCP;        // No coprocessor UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 18, 0x0> INVPC;       // Invalid PC load UsageFault, caused by an invalid PC load by EXC_RETURN
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 17, 0x0> INVSTATE;    // Invalid state UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 16, 0x0> UNDEFINSTR;  // Undefined instruction UsageFault
 }  // namespace CFSR
 
 // HardFault Status register
 namespace HFSR {
-constexpr SCB_Reg<&SCB_Layout::HFSR, 1, 31, true> DEBUGEVT;  // Reserved for Debug use.
+constexpr SCB_Reg<&SCB_Layout::HFSR, 1, 31, 0x0> DEBUGEVT;  // Reserved for Debug use.
     // When writing to the register you must write 0 to this bit, otherwise behavior is Unpredictable.
-constexpr SCB_Reg<&SCB_Layout::HFSR, 1, 30, true> FORCED;    // Indicates a forced hard fault, generated by escalation of a fault with configurable priority that cannot be handles, either because of priority or because it is disabled.
-constexpr SCB_Reg<&SCB_Layout::HFSR, 1,  1, true> VECTTBL;   // Indicates a BusFault on a vector table read during exception processing.
+constexpr SCB_Reg<&SCB_Layout::HFSR, 1, 30, 0x0> FORCED;    // Indicates a forced hard fault, generated by escalation of a fault with configurable priority that cannot be handles, either because of priority or because it is disabled.
+constexpr SCB_Reg<&SCB_Layout::HFSR, 1,  1, 0x0> VECTTBL;   // Indicates a BusFault on a vector table read during exception processing.
 }  // namespace HFSR
 
 // Debug Fault Status Register
 namespace DFSR {
-constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 4, true> EXTERNAL;  // Debug event generated because of the assertion of an external debug request
-constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 3, true> VCATCH;    // Indicates triggering of a Vector catch
-constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 2, true> DWTTRAP;   // Debug event generated by the DWT
-constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 1, true> BKPT;      // Debug event generated by BKPT instruction execution or a breakpoint match in FPB
-constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 0, true> HALTED;    // Indicates a debug event generated by either a C_HALT or C_STEP request, triggered by a write to the DHCSR or a step request triggered by setting DEMCR.MON_STEP to 1.
+constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 4, 0x0> EXTERNAL;  // Debug event generated because of the assertion of an external debug request
+constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 3, 0x0> VCATCH;    // Indicates triggering of a Vector catch
+constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 2, 0x0> DWTTRAP;   // Debug event generated by the DWT
+constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 1, 0x0> BKPT;      // Debug event generated by BKPT instruction execution or a breakpoint match in FPB
+constexpr SCB_Reg<&SCB_Layout::DFSR, 1, 0, 0x0> HALTED;    // Indicates a debug event generated by either a C_HALT or C_STEP request, triggered by a write to the DHCSR or a step request triggered by setting DEMCR.MON_STEP to 1.
 }  // namespace DFSR
 
 // Processor Feature Register 0
@@ -409,7 +412,7 @@ constexpr SCB_Reg<&SCB_Layout::CPACR, 2,  0> CP0;   // Access privileges for cop
 
 // Software Triggered Interrupt Register
 namespace STIR {
-constexpr SCB_Reg<&SCB_Layout::STIR, 9, 0, true, true> INTID;  // Indicates the interrupt to be triggered
+constexpr SCB_Reg<&SCB_Layout::STIR, 9, 0, 0x0, true> INTID;  // Indicates the interrupt to be triggered
 }  // namespace STIR
 
 // Media and VFP Feature Register 0
@@ -440,22 +443,22 @@ constexpr SCB_Reg<&SCB_Layout::MVFR2, 4, 4> FPMisc;  // VFP Misc bits
 // Data cache invalidate by set/way
 // Exercise caution when setting or assigning fields in this register.
 namespace DCISW {
-constexpr SCB_Reg<&SCB_Layout::DCISW, 2, 30, true, true> WAY;
-constexpr SCB_Reg<&SCB_Layout::DCISW, 9,  5, true, true> SET;
+constexpr SCB_Reg<&SCB_Layout::DCISW, 2, 30, 0x0, true> WAY;
+constexpr SCB_Reg<&SCB_Layout::DCISW, 9,  5, 0x0, true> SET;
 }  // namespace DCISW
 
 // Data cache clean by set/way
 // Exercise caution when setting or assigning fields in this register.
 namespace DCCSW {
-constexpr SCB_Reg<&SCB_Layout::DCCSW, 2, 30, true, true> WAY;
-constexpr SCB_Reg<&SCB_Layout::DCCSW, 9,  5, true, true> SET;
+constexpr SCB_Reg<&SCB_Layout::DCCSW, 2, 30, 0x0, true> WAY;
+constexpr SCB_Reg<&SCB_Layout::DCCSW, 9,  5, 0x0, true> SET;
 }  // namespace DCCSW
 
 // Data cache clean and invalidate by set/way
 // Exercise caution when setting or assigning fields in this register.
 namespace DCCISW {
-constexpr SCB_Reg<&SCB_Layout::DCCISW, 2, 30, true, true> WAY;
-constexpr SCB_Reg<&SCB_Layout::DCCISW, 9,  5, true, true> SET;
+constexpr SCB_Reg<&SCB_Layout::DCCISW, 2, 30, 0x0, true> WAY;
+constexpr SCB_Reg<&SCB_Layout::DCCISW, 9,  5, 0x0, true> SET;
 }  // namespace DCCISW
 
 // Instruction Tightly-Coupled Memory Control Register

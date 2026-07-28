@@ -98,9 +98,9 @@ constexpr regs::RegGroup<CCM_ANALOG_Layout, kCCM_ANALOG_size, kCCM_ANALOG_base>
 }  // namespace CCM_ANALOG
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CCM_ANALOG_Reg = regs::Reg32<kCCM_ANALOG_base, CCM_ANALOG_Layout, Member,
-                                   0, Bits, Shift, DirectAssign>;
+                                   0, Bits, Shift, AssignMask>;
 
 namespace CCM_ANALOG {
 
@@ -121,35 +121,35 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM, 7,  0> DIV_SELECT;
 
 // Analog ARM PLL control Register
 namespace PLL_ARM_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_SET), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 19, true> PLL_SEL;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_SET), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 19, 0x0> PLL_SEL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_ARM_SET
 
 // Analog ARM PLL control Register
 namespace PLL_ARM_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_CLR), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 19, true> PLL_SEL;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_CLR), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 19, 0x0> PLL_SEL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_ARM_CLR
 
 // Analog ARM PLL control Register
 namespace PLL_ARM_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_TOG), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 19, true> PLL_SEL;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_TOG), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 19, 0x0> PLL_SEL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_ARM_TOG
 
 // Analog USB1 480MHz PLL Control Register
@@ -169,35 +169,35 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1, 1,  1> DIV_SELECT;
 
 // Analog USB1 480MHz PLL Control Register
 namespace PLL_USB1_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_SET), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 12, true> POWER;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1,  6, true> EN_USB_CLKS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1,  1, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_SET), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 12, 0x0> POWER;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1,  6, 0x0> EN_USB_CLKS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1,  1, 0x0> DIV_SELECT;
 }  // namespace PLL_USB1_SET
 
 // Analog USB1 480MHz PLL Control Register
 namespace PLL_USB1_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_CLR), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 12, true> POWER;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1,  6, true> EN_USB_CLKS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1,  1, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_CLR), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 12, 0x0> POWER;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1,  6, 0x0> EN_USB_CLKS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1,  1, 0x0> DIV_SELECT;
 }  // namespace PLL_USB1_CLR
 
 // Analog USB1 480MHz PLL Control Register
 namespace PLL_USB1_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_TOG), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 12, true> POWER;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1,  6, true> EN_USB_CLKS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1,  1, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_TOG), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 12, 0x0> POWER;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1,  6, 0x0> EN_USB_CLKS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1,  1, 0x0> DIV_SELECT;
 }  // namespace PLL_USB1_TOG
 
 // Analog USB2 480MHz PLL Control Register
@@ -217,35 +217,35 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2, 1,  1> DIV_SELECT;
 
 // Analog USB2 480MHz PLL Control Register
 namespace PLL_USB2_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_SET), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 12, true> POWER;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1,  6, true> EN_USB_CLKS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1,  1, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_SET), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 12, 0x0> POWER;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1,  6, 0x0> EN_USB_CLKS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1,  1, 0x0> DIV_SELECT;
 }  // namespace PLL_USB2_SET
 
 // Analog USB2 480MHz PLL Control Register
 namespace PLL_USB2_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_CLR), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 12, true> POWER;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1,  6, true> EN_USB_CLKS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1,  1, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_CLR), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 12, 0x0> POWER;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1,  6, 0x0> EN_USB_CLKS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1,  1, 0x0> DIV_SELECT;
 }  // namespace PLL_USB2_CLR
 
 // Analog USB2 480MHz PLL Control Register
 namespace PLL_USB2_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_TOG), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 12, true> POWER;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1,  6, true> EN_USB_CLKS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1,  1, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_TOG), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 12, 0x0> POWER;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1,  6, 0x0> EN_USB_CLKS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1,  1, 0x0> DIV_SELECT;
 }  // namespace PLL_USB2_TOG
 
 // Analog System PLL Control Register
@@ -262,32 +262,32 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1,  0> DIV_SELECT;
 
 // Analog System PLL Control Register
 namespace PLL_SYS_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_SET), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_SET), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_SYS_SET
 
 // Analog System PLL Control Register
 namespace PLL_SYS_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_CLR), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_CLR), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_SYS_CLR
 
 // Analog System PLL Control Register
 namespace PLL_SYS_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_TOG), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_TOG), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_SYS_TOG
 
 // 528MHz System PLL Spread Spectrum Register
@@ -330,35 +330,35 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO, 7,  0> DIV_SELECT;
 
 // Analog Audio PLL control Register
 namespace PLL_AUDIO_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_SET), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 2, 19, true> POST_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_SET), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 2, 19, 0x0> POST_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_AUDIO_SET
 
 // Analog Audio PLL control Register
 namespace PLL_AUDIO_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_CLR), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 2, 19, true> POST_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_CLR), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 2, 19, 0x0> POST_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_AUDIO_CLR
 
 // Analog Audio PLL control Register
 namespace PLL_AUDIO_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_TOG), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 2, 19, true> POST_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_TOG), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 2, 19, 0x0> POST_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_AUDIO_TOG
 
 // Numerator of Audio PLL Fractional Loop Divider Register
@@ -392,35 +392,35 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO, 7,  0> DIV_SELECT;
 
 // Analog Video PLL control Register
 namespace PLL_VIDEO_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_SET), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 2, 19, true> POST_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_SET), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 2, 19, 0x0> POST_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_VIDEO_SET
 
 // Analog Video PLL control Register
 namespace PLL_VIDEO_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_CLR), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 2, 19, true> POST_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_CLR), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 2, 19, 0x0> POST_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_VIDEO_CLR
 
 // Analog Video PLL control Register
 namespace PLL_VIDEO_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_TOG), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 2, 19, true> POST_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 7,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_TOG), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 2, 19, 0x0> POST_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 7,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_VIDEO_TOG
 
 // Numerator of Video PLL Fractional Loop Divider Register
@@ -462,41 +462,41 @@ constexpr uint32_t kENET2_DIV_SELECT_125MHZ = 3;
 
 // Analog ENET PLL Control Register
 namespace PLL_ENET_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_SET), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 21, true> ENET_25M_REF_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 20, true> ENET2_REF_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 2,  2, true> ENET2_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 2,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_SET), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 21, 0x0> ENET_25M_REF_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 20, 0x0> ENET2_REF_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 2,  2, 0x0> ENET2_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 2,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_ENET_SET
 
 // Analog ENET PLL Control Register
 namespace PLL_ENET_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_CLR), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 21, true> ENET_25M_REF_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 20, true> ENET2_REF_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 2,  2, true> ENET2_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 2,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_CLR), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 21, 0x0> ENET_25M_REF_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 20, 0x0> ENET2_REF_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 2,  2, 0x0> ENET2_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 2,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_ENET_CLR
 
 // Analog ENET PLL Control Register
 namespace PLL_ENET_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_TOG), 1, 31, true> LOCK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 21, true> ENET_25M_REF_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 20, true> ENET2_REF_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 16, true> BYPASS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 2, 14, true> BYPASS_CLK_SRC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 13, true> ENABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 12, true> POWERDOWN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 2,  2, true> ENET2_DIV_SELECT;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 2,  0, true> DIV_SELECT;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_TOG), 1, 31> LOCK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 21, 0x0> ENET_25M_REF_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 20, 0x0> ENET2_REF_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 16, 0x0> BYPASS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 13, 0x0> ENABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 12, 0x0> POWERDOWN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 2,  2, 0x0> ENET2_DIV_SELECT;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 2,  0, 0x0> DIV_SELECT;
 }  // namespace PLL_ENET_TOG
 
 // 480MHz Clock (PLL3) Phase Fractional Divider Control Register
@@ -517,50 +517,50 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480, 6,  0> PFD0_FRAC;
 
 // 480MHz Clock (PLL3) Phase Fractional Divider Control Register
 namespace PFD_480_SET {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1, 31, true> PFD3_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1, 30, true> PFD3_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6, 24, true> PFD3_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1, 23, true> PFD2_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1, 22, true> PFD2_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6, 16, true> PFD2_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1, 15, true> PFD1_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1, 14, true> PFD1_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6,  8, true> PFD1_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1,  7, true> PFD0_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1,  6, true> PFD0_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6,  0, true> PFD0_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1, 31, 0x0> PFD3_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1, 30> PFD3_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6, 24, 0x0> PFD3_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1, 23, 0x0> PFD2_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1, 22> PFD2_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6, 16, 0x0> PFD2_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1, 15, 0x0> PFD1_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1, 14> PFD1_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6,  8, 0x0> PFD1_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 1,  7, 0x0> PFD0_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_SET), 1,  6> PFD0_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_SET, 6,  0, 0x0> PFD0_FRAC;
 }  // namespace PFD_480_SET
 
 // 480MHz Clock (PLL3) Phase Fractional Divider Control Register
 namespace PFD_480_CLR {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1, 31, true> PFD3_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1, 30, true> PFD3_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6, 24, true> PFD3_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1, 23, true> PFD2_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1, 22, true> PFD2_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6, 16, true> PFD2_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1, 15, true> PFD1_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1, 14, true> PFD1_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6,  8, true> PFD1_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1,  7, true> PFD0_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1,  6, true> PFD0_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6,  0, true> PFD0_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1, 31, 0x0> PFD3_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1, 30> PFD3_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6, 24, 0x0> PFD3_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1, 23, 0x0> PFD2_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1, 22> PFD2_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6, 16, 0x0> PFD2_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1, 15, 0x0> PFD1_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1, 14> PFD1_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6,  8, 0x0> PFD1_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 1,  7, 0x0> PFD0_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_CLR), 1,  6> PFD0_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_CLR, 6,  0, 0x0> PFD0_FRAC;
 }  // namespace PFD_480_CLR
 
 // 480MHz Clock (PLL3) Phase Fractional Divider Control Register
 namespace PFD_480_TOG {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1, 31, true> PFD3_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1, 30, true> PFD3_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6, 24, true> PFD3_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1, 23, true> PFD2_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1, 22, true> PFD2_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6, 16, true> PFD2_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1, 15, true> PFD1_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1, 14, true> PFD1_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6,  8, true> PFD1_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1,  7, true> PFD0_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1,  6, true> PFD0_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6,  0, true> PFD0_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1, 31, 0x0> PFD3_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1, 30> PFD3_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6, 24, 0x0> PFD3_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1, 23, 0x0> PFD2_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1, 22> PFD2_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6, 16, 0x0> PFD2_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1, 15, 0x0> PFD1_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1, 14> PFD1_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6,  8, 0x0> PFD1_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 1,  7, 0x0> PFD0_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_480_TOG), 1,  6> PFD0_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_480_TOG, 6,  0, 0x0> PFD0_FRAC;
 }  // namespace PFD_480_TOG
 
 // 528MHz Clock (PLL2) Phase Fractional Divider Control Register
@@ -581,50 +581,50 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528, 6,  0> PFD0_FRAC;
 
 // 528MHz Clock (PLL2) Phase Fractional Divider Control Register
 namespace PFD_528_SET {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1, 31, true> PFD3_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1, 30, true> PFD3_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6, 24, true> PFD3_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1, 23, true> PFD2_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1, 22, true> PFD2_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6, 16, true> PFD2_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1, 15, true> PFD1_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1, 14, true> PFD1_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6,  8, true> PFD1_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1,  7, true> PFD0_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1,  6, true> PFD0_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6,  0, true> PFD0_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1, 31, 0x0> PFD3_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1, 30> PFD3_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6, 24, 0x0> PFD3_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1, 23, 0x0> PFD2_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1, 22> PFD2_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6, 16, 0x0> PFD2_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1, 15, 0x0> PFD1_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1, 14> PFD1_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6,  8, 0x0> PFD1_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 1,  7, 0x0> PFD0_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_SET), 1,  6> PFD0_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_SET, 6,  0, 0x0> PFD0_FRAC;
 }  // namespace PFD_528_SET
 
 // 528MHz Clock (PLL2) Phase Fractional Divider Control Register
 namespace PFD_528_CLR {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1, 31, true> PFD3_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1, 30, true> PFD3_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6, 24, true> PFD3_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1, 23, true> PFD2_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1, 22, true> PFD2_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6, 16, true> PFD2_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1, 15, true> PFD1_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1, 14, true> PFD1_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6,  8, true> PFD1_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1,  7, true> PFD0_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1,  6, true> PFD0_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6,  0, true> PFD0_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1, 31, 0x0> PFD3_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1, 30> PFD3_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6, 24, 0x0> PFD3_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1, 23, 0x0> PFD2_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1, 22> PFD2_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6, 16, 0x0> PFD2_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1, 15, 0x0> PFD1_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1, 14> PFD1_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6,  8, 0x0> PFD1_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 1,  7, 0x0> PFD0_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_CLR), 1,  6> PFD0_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_CLR, 6,  0, 0x0> PFD0_FRAC;
 }  // namespace PFD_528_CLR
 
 // 528MHz Clock (PLL2) Phase Fractional Divider Control Register
 namespace PFD_528_TOG {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1, 31, true> PFD3_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1, 30, true> PFD3_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6, 24, true> PFD3_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1, 23, true> PFD2_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1, 22, true> PFD2_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6, 16, true> PFD2_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1, 15, true> PFD1_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1, 14, true> PFD1_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6,  8, true> PFD1_FRAC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1,  7, true> PFD0_CLKGATE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1,  6, true> PFD0_STABLE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6,  0, true> PFD0_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1, 31, 0x0> PFD3_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1, 30> PFD3_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6, 24, 0x0> PFD3_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1, 23, 0x0> PFD2_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1, 22> PFD2_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6, 16, 0x0> PFD2_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1, 15, 0x0> PFD1_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1, 14> PFD1_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6,  8, 0x0> PFD1_FRAC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 1,  7, 0x0> PFD0_CLKGATE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PFD_528_TOG), 1,  6> PFD0_STABLE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PFD_528_TOG, 6,  0, 0x0> PFD0_FRAC;
 }  // namespace PFD_528_TOG
 
 // Miscellaneous Register 0
@@ -692,67 +692,69 @@ constexpr uint32_t kRTC_XTAL_SOURCE_XTAL     = 1;
 
 // Miscellaneous Register 0
 namespace MISC0_SET {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 30, true> XTAL_24M_PWD;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_SET), 1, 29, true> RTC_XTAL_SOURCE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 3, 26, true> CLKGATE_DELAY;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 25, true> CLKGATE_CTRL;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 16, true> OSC_XTALOK_EN;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_SET), 1, 15, true> OSC_XTALOK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 2, 13, true> OSC_I;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 12, true> DISCON_HIGH_SNVS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 2, 10, true> STOP_MODE_CONFIG;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1,  7, true> REFTOP_VBGUP;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 3,  4, true> REFTOP_VBGADJ;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1,  3, true> REFTOP_SELFBIASOFF;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1,  0, true> REFTOP_PWD;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 30, 0x0> XTAL_24M_PWD;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_SET), 1, 29> RTC_XTAL_SOURCE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 3, 26, 0x0> CLKGATE_DELAY;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 25, 0x0> CLKGATE_CTRL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 16, 0x0> OSC_XTALOK_EN;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_SET), 1, 15> OSC_XTALOK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 2, 13, 0x0> OSC_I;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1, 12, 0x0> DISCON_HIGH_SNVS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 2, 10, 0x0> STOP_MODE_CONFIG;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1,  7, 0x0> REFTOP_VBGUP;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 3,  4, 0x0> REFTOP_VBGADJ;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1,  3, 0x0> REFTOP_SELFBIASOFF;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_SET, 1,  0, 0x0> REFTOP_PWD;
 }  // namespace MISC0_SET
 
 // Miscellaneous Register 0
 namespace MISC0_CLR {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 30, true> XTAL_24M_PWD;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_CLR), 1, 29, true> RTC_XTAL_SOURCE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 3, 26, true> CLKGATE_DELAY;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 25, true> CLKGATE_CTRL;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 16, true> OSC_XTALOK_EN;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_CLR), 1, 15, true> OSC_XTALOK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 2, 13, true> OSC_I;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 12, true> DISCON_HIGH_SNVS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 2, 10, true> STOP_MODE_CONFIG;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1,  7, true> REFTOP_VBGUP;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 3,  4, true> REFTOP_VBGADJ;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1,  3, true> REFTOP_SELFBIASOFF;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1,  0, true> REFTOP_PWD;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 30, 0x0> XTAL_24M_PWD;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_CLR), 1, 29> RTC_XTAL_SOURCE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 3, 26, 0x0> CLKGATE_DELAY;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 25, 0x0> CLKGATE_CTRL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 16, 0x0> OSC_XTALOK_EN;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_CLR), 1, 15> OSC_XTALOK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 2, 13, 0x0> OSC_I;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1, 12, 0x0> DISCON_HIGH_SNVS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 2, 10, 0x0> STOP_MODE_CONFIG;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1,  7, 0x0> REFTOP_VBGUP;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 3,  4, 0x0> REFTOP_VBGADJ;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1,  3, 0x0> REFTOP_SELFBIASOFF;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_CLR, 1,  0, 0x0> REFTOP_PWD;
 }  // namespace MISC0_CLR
 
 // Miscellaneous Register 0
 namespace MISC0_TOG {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 30, true> XTAL_24M_PWD;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_TOG), 1, 29, true> RTC_XTAL_SOURCE;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 3, 26, true> CLKGATE_DELAY;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 25, true> CLKGATE_CTRL;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 16, true> OSC_XTALOK_EN;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_TOG), 1, 15, true> OSC_XTALOK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 2, 13, true> OSC_I;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 12, true> DISCON_HIGH_SNVS;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 2, 10, true> STOP_MODE_CONFIG;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1,  7, true> REFTOP_VBGUP;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 3,  4, true> REFTOP_VBGADJ;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1,  3, true> REFTOP_SELFBIASOFF;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1,  0, true> REFTOP_PWD;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 30, 0x0> XTAL_24M_PWD;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_TOG), 1, 29> RTC_XTAL_SOURCE;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 3, 26, 0x0> CLKGATE_DELAY;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 25, 0x0> CLKGATE_CTRL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 16, 0x0> OSC_XTALOK_EN;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC0_TOG), 1, 15> OSC_XTALOK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 2, 13, 0x0> OSC_I;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1, 12, 0x0> DISCON_HIGH_SNVS;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 2, 10, 0x0> STOP_MODE_CONFIG;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1,  7, 0x0> REFTOP_VBGUP;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 3,  4, 0x0> REFTOP_VBGADJ;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1,  3, 0x0> REFTOP_SELFBIASOFF;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1,  0, 0x0> REFTOP_PWD;
 }  // namespace MISC0_TOG
 
 // Miscellaneous Register 1
 namespace MISC1 {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 31, true> IRQ_DIG_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 30, true> IRQ_ANA_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 29, true> IRQ_TEMPHIGH;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 28, true> IRQ_TEMPLOW;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 27, true> IRQ_TEMPPANIC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 17>       PFD_528_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 16>       PFD_480_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 12>       LVDSCLK1_IBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 10>       LVDSCLK1_OBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 5,  0>       LVDS1_CLK_SEL;
+constexpr uint32_t kW1C = 0xf800'0000;
+
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 31, kW1C> IRQ_DIG_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 30, kW1C> IRQ_ANA_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 29, kW1C> IRQ_TEMPHIGH;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 28, kW1C> IRQ_TEMPLOW;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 27, kW1C> IRQ_TEMPPANIC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 17, (uint32_t{0x01} << 17) | kW1C> PFD_528_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 16, (uint32_t{0x01} << 16) | kW1C> PFD_480_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 12, (uint32_t{0x01} << 12) | kW1C> LVDSCLK1_IBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 10, (uint32_t{0x01} << 10) | kW1C> LVDSCLK1_OBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 5,  0, (uint32_t{0x1f} <<  0) | kW1C> LVDS1_CLK_SEL;
     // 0b00000..Arm PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -773,44 +775,44 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 5,  0>       LVDS1_CLK_SEL;
 
 // Miscellaneous Register 1
 namespace MISC1_SET {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 31, true> IRQ_DIG_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 30, true> IRQ_ANA_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 29, true> IRQ_TEMPHIGH;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 28, true> IRQ_TEMPLOW;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 27, true> IRQ_TEMPPANIC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 17, true> PFD_528_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 16, true> PFD_480_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 12, true> LVDSCLK1_IBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 10, true> LVDSCLK1_OBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 5,  0, true> LVDS1_CLK_SEL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 31, 0x0> IRQ_DIG_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 30, 0x0> IRQ_ANA_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 29, 0x0> IRQ_TEMPHIGH;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 28, 0x0> IRQ_TEMPLOW;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 27, 0x0> IRQ_TEMPPANIC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 17, 0x0> PFD_528_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 16, 0x0> PFD_480_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 12, 0x0> LVDSCLK1_IBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 1, 10, 0x0> LVDSCLK1_OBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_SET, 5,  0, 0x0> LVDS1_CLK_SEL;
 }  // namespace MISC1_SET
 
 // Miscellaneous Register 1
 namespace MISC1_CLR {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 31, true> IRQ_DIG_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 30, true> IRQ_ANA_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 29, true> IRQ_TEMPHIGH;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 28, true> IRQ_TEMPLOW;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 27, true> IRQ_TEMPPANIC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 17, true> PFD_528_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 16, true> PFD_480_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 12, true> LVDSCLK1_IBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 10, true> LVDSCLK1_OBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 5,  0, true> LVDS1_CLK_SEL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 31, 0x0> IRQ_DIG_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 30, 0x0> IRQ_ANA_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 29, 0x0> IRQ_TEMPHIGH;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 28, 0x0> IRQ_TEMPLOW;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 27, 0x0> IRQ_TEMPPANIC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 17, 0x0> PFD_528_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 16, 0x0> PFD_480_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 12, 0x0> LVDSCLK1_IBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 1, 10, 0x0> LVDSCLK1_OBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_CLR, 5,  0, 0x0> LVDS1_CLK_SEL;
 }  // namespace MISC1_CLR
 
 // Miscellaneous Register 1
 namespace MISC1_TOG {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 31, true> IRQ_DIG_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 30, true> IRQ_ANA_BO;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 29, true> IRQ_TEMPHIGH;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 28, true> IRQ_TEMPLOW;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 27, true> IRQ_TEMPPANIC;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 17, true> PFD_528_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 16, true> PFD_480_AUTOGATE_EN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 12, true> LVDSCLK1_IBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 10, true> LVDSCLK1_OBEN;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 5,  0, true> LVDS1_CLK_SEL;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 31, 0x0> IRQ_DIG_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 30, 0x0> IRQ_ANA_BO;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 29, 0x0> IRQ_TEMPHIGH;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 28, 0x0> IRQ_TEMPLOW;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 27, 0x0> IRQ_TEMPPANIC;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 17, 0x0> PFD_528_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 16, 0x0> PFD_480_AUTOGATE_EN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 12, 0x0> LVDSCLK1_IBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 1, 10, 0x0> LVDSCLK1_OBEN;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1_TOG, 5,  0, 0x0> LVDS1_CLK_SEL;
 }  // namespace MISC1_TOG
 
 // Miscellaneous Register 2
@@ -873,71 +875,71 @@ constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2), 3,  0> REG0_
 
 // Miscellaneous Register 2
 namespace MISC2_SET {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 30, true> VIDEO_DIV;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 28, true> REG2_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 26, true> REG1_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 24, true> REG0_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 23, true> AUDIO_DIV_MSB;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 22, true> REG2_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 21, true> REG2_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 19, true> REG2_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 3, 16, true> REG2_BO_OFFSET;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 15, true> AUDIO_DIV_LSB;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 14, true> REG1_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 13, true> REG1_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 11, true> REG1_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 3,  8, true> REG1_BO_OFFSET;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1,  7, true> PLL3_DISABLE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1,  6, true> REG0_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1,  5, true> REG0_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1,  3, true> REG0_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 3,  0, true> REG0_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 30, 0x0> VIDEO_DIV;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 28, 0x0> REG2_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 26, 0x0> REG1_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 2, 24, 0x0> REG0_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 23, 0x0> AUDIO_DIV_MSB;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 22> REG2_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 21, 0x0> REG2_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 19> REG2_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 3, 16> REG2_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 15, 0x0> AUDIO_DIV_LSB;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 14> REG1_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1, 13, 0x0> REG1_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1, 11> REG1_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 3,  8> REG1_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1,  7, 0x0> PLL3_DISABLE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1,  6> REG0_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_SET, 1,  5, 0x0> REG0_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 1,  3> REG0_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_SET), 3,  0> REG0_BO_OFFSET;
 }  // namespace MISC2_SET
 
 // Miscellaneous Register 2
 namespace MISC2_CLR {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 30, true> VIDEO_DIV;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 28, true> REG2_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 26, true> REG1_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 24, true> REG0_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 23, true> AUDIO_DIV_MSB;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 22, true> REG2_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 21, true> REG2_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 19, true> REG2_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 3, 16, true> REG2_BO_OFFSET;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 15, true> AUDIO_DIV_LSB;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 14, true> REG1_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 13, true> REG1_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 11, true> REG1_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 3,  8, true> REG1_BO_OFFSET;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1,  7, true> PLL3_DISABLE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1,  6, true> REG0_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1,  5, true> REG0_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1,  3, true> REG0_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 3,  0, true> REG0_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 30, 0x0> VIDEO_DIV;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 28, 0x0> REG2_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 26, 0x0> REG1_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 2, 24, 0x0> REG0_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 23, 0x0> AUDIO_DIV_MSB;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 22> REG2_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 21, 0x0> REG2_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 19> REG2_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 3, 16> REG2_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 15, 0x0> AUDIO_DIV_LSB;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 14> REG1_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1, 13, 0x0> REG1_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1, 11> REG1_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 3,  8> REG1_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1,  7, 0x0> PLL3_DISABLE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1,  6> REG0_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_CLR, 1,  5, 0x0> REG0_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 1,  3> REG0_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_CLR), 3,  0> REG0_BO_OFFSET;
 }  // namespace MISC2_CLR
 
 // Miscellaneous Register 2
 namespace MISC2_TOG {
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 30, true> VIDEO_DIV;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 28, true> REG2_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 26, true> REG1_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 24, true> REG0_STEP_TIME;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 23, true> AUDIO_DIV_MSB;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 22, true> REG2_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 21, true> REG2_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 19, true> REG2_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 3, 16, true> REG2_BO_OFFSET;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 15, true> AUDIO_DIV_LSB;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 14, true> REG1_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 13, true> REG1_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 11, true> REG1_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 3,  8, true> REG1_BO_OFFSET;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1,  7, true> PLL3_DISABLE;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1,  6, true> REG0_OK;
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1,  5, true> REG0_ENABLE_BO;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1,  3, true> REG0_BO_STATUS;
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 3,  0, true> REG0_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 30, 0x0> VIDEO_DIV;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 28, 0x0> REG2_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 26, 0x0> REG1_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 2, 24, 0x0> REG0_STEP_TIME;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 23, 0x0> AUDIO_DIV_MSB;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 22> REG2_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 21, 0x0> REG2_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 19> REG2_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 3, 16> REG2_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 15, 0x0> AUDIO_DIV_LSB;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 14> REG1_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1, 13, 0x0> REG1_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1, 11> REG1_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 3,  8> REG1_BO_OFFSET;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1,  7, 0x0> PLL3_DISABLE;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1,  6> REG0_OK;
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC2_TOG, 1,  5, 0x0> REG0_ENABLE_BO;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 1,  3> REG0_BO_STATUS;
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::MISC2_TOG), 3,  0> REG0_BO_OFFSET;
 }  // namespace MISC2_TOG
 
 // CCM_ANALOG_PLL_xxx_BYPASS_CLK_SRC values

@@ -54,21 +54,21 @@ constexpr regs::RegGroup<ADC_Layout, kADC_size, kADC2_base> group;
 namespace ADC1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using ADC1_Reg =
-    regs::Reg32<kADC1_base, ADC_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kADC1_base, ADC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_HC_count)>>
 using HC_Reg = regs::Reg32<kADC1_base, ADC_Layout, &ADC_Layout::HC, Index, Bits,
-                           Shift, DirectAssign>;
+                           Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_R_count)>>
 using R_Reg = regs::Reg32<kADC1_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
-                          Shift, DirectAssign>;
+                          Shift, AssignMask>;
 
 // Control register for hardware triggers values
 namespace HC {
@@ -186,13 +186,13 @@ constexpr ADC1_Reg<&ADC_Layout::GC, 1, 0> ADACKEN;  // Asynchronous clock output
 
 // General status register
 namespace GS {
-constexpr ADC1_Reg<&ADC_Layout::GS, 1, 2, true> AWKST;  // Asynchronous wakeup interrupt status
+constexpr ADC1_Reg<&ADC_Layout::GS, 1, 2, 0x0> AWKST;  // Asynchronous wakeup interrupt status
     // 0b0..No asynchronous interrupt.
     // 0b1..Asynchronous wake up interrupt occurred in stop mode.
-constexpr ADC1_Reg<&ADC_Layout::GS, 1, 1, true> CALF;   // Calibration Failed Flag
+constexpr ADC1_Reg<&ADC_Layout::GS, 1, 1, 0x0> CALF;   // Calibration Failed Flag
     // 0b0..Calibration completed normally.
     // 0b1..Calibration failed. ADC accuracy specifications are not guaranteed.
-constexpr ADC1_Reg<regs::constify(&ADC_Layout::GS), 1, 0>       ADACT;  // Conversion Active
+constexpr ADC1_Reg<regs::constify(&ADC_Layout::GS), 1, 0> ADACT;  // Conversion Active
     // 0b0..Conversion not in progress.
     // 0b1..Conversion in progress.
 }  // namespace GS
@@ -221,21 +221,21 @@ constexpr ADC1_Reg<&ADC_Layout::CAL, 4, 0> CAL_CODE;  // Calibration Result Valu
 namespace ADC2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using ADC2_Reg =
-    regs::Reg32<kADC2_base, ADC_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kADC2_base, ADC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_HC_count)>>
 using HC_Reg = regs::Reg32<kADC2_base, ADC_Layout, &ADC_Layout::HC, Index, Bits,
-                           Shift, DirectAssign>;
+                           Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_R_count)>>
 using R_Reg = regs::Reg32<kADC2_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
-                          Shift, DirectAssign>;
+                          Shift, AssignMask>;
 
 // Control register for hardware triggers values
 namespace HC {
@@ -292,9 +292,9 @@ constexpr ADC2_Reg<&ADC_Layout::GC, 1, 0> ADACKEN;
 
 // ADC2 General status register
 namespace GS {
-constexpr ADC2_Reg<&ADC_Layout::GS, 1, 2, true> AWKST;
-constexpr ADC2_Reg<&ADC_Layout::GS, 1, 1, true> CALF;
-constexpr ADC2_Reg<regs::constify(&ADC_Layout::GS), 1, 0>       ADACT;
+constexpr ADC2_Reg<&ADC_Layout::GS, 1, 2, 0x0> AWKST;
+constexpr ADC2_Reg<&ADC_Layout::GS, 1, 1, 0x0> CALF;
+constexpr ADC2_Reg<regs::constify(&ADC_Layout::GS), 1, 0> ADACT;
 }  // namespace GS
 
 // ADC2 Compare value register

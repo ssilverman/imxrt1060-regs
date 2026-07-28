@@ -48,9 +48,9 @@ constexpr regs::RegGroup<PIT_Layout, kPIT_size, kPIT_base> group;
 }  // namespace PIT
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using PIT_Reg =
-    regs::Reg32<kPIT_base, PIT_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kPIT_base, PIT_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 namespace PIT {
 
@@ -62,10 +62,10 @@ constexpr uintptr_t ChannelBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CHANNEL_Reg =
     regs::Reg32<ChannelBase<Index>(), PIT_Layout::CHANNEL_Layout, Member, 0,
-                Bits, Shift, DirectAssign>;
+                Bits, Shift, AssignMask>;
 
 // PIT Module Control Register
 namespace MCR {
@@ -98,7 +98,7 @@ constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::TCTRL, 1, 0> TEN;  // 
 // Timer Flag Register
 namespace TFLG {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::TFLG, 1, 0, true> TIF;  // Timer Interrupt Flag
+constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::TFLG, 1, 0, 0x0> TIF;  // Timer Interrupt Flag
     // 0b0..Timeout has not yet occurred.
     // 0b1..Timeout has occurred.
 }  // namespace TFLG

@@ -99,16 +99,16 @@ constexpr regs::RegGroup<USB_Layout, kUSB_size, kUSB2_base> group;
 namespace USB1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using USB1_Reg =
-    regs::Reg32<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
 using ENDPTCTRL_Reg =
     regs::Reg32<kUSB1_base, USB_Layout, &USB_Layout::ENDPTCTRL, Index, Bits,
-                Shift, DirectAssign>;
+                Shift, AssignMask>;
 
 // USB1 Identification register
 namespace ID {
@@ -280,23 +280,23 @@ constexpr USB1_Reg<&USB_Layout::USBCMD, 1,  0> RS;
 
 // USB1 USB Status Register
 namespace USBSTS {
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 25, true> TI1;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 24, true> TI0;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 25, 0x0> TI1;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 24, 0x0> TI0;
 constexpr USB1_Reg<regs::constify(&USB_Layout::USBSTS), 1, 16> NAKI;
 constexpr USB1_Reg<regs::constify(&USB_Layout::USBSTS), 1, 15> AS;
 constexpr USB1_Reg<regs::constify(&USB_Layout::USBSTS), 1, 14> PS;
 constexpr USB1_Reg<regs::constify(&USB_Layout::USBSTS), 1, 13> RCL;
 constexpr USB1_Reg<regs::constify(&USB_Layout::USBSTS), 1, 12> HCH;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 10, true> ULPII;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  8, true> SLI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  7, true> SRI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  6, true> URI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  5, true> AAI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  4, true> SEI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  3, true> FRI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  2, true> PCI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  1, true> UEI;
-constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  0, true> UI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1, 10, 0x0> ULPII;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  8, 0x0> SLI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  7, 0x0> SRI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  6, 0x0> URI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  5, 0x0> AAI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  4, 0x0> SEI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  3, 0x0> FRI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  2, 0x0> PCI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  1, 0x0> UEI;
+constexpr USB1_Reg<&USB_Layout::USBSTS, 1,  0, 0x0> UI;
 }  // namespace USBSTS
 
 // USB1 Interrupt Enable Register
@@ -367,8 +367,8 @@ constexpr USB1_Reg<&USB_Layout::TXFILLTUNING, 8,  0> TXSCHOH;
 
 // USB1 Endpoint NAK
 namespace ENDPTNAK {
-constexpr USB1_Reg<&USB_Layout::ENDPTNAK, 8, 16, true> EPTN;
-constexpr USB1_Reg<&USB_Layout::ENDPTNAK, 8,  0, true> EPRN;
+constexpr USB1_Reg<&USB_Layout::ENDPTNAK, 8, 16, 0x0> EPTN;
+constexpr USB1_Reg<&USB_Layout::ENDPTNAK, 8,  0, 0x0> EPRN;
 }  // namespace ENDPTNAK
 
 // USB1 Endpoint NAK Enable
@@ -388,27 +388,29 @@ constexpr USB1_Reg<&USB_Layout::CONFIGFLAG, 1, 0> CF;
 // Caution when writing to this register: Direct W1C assignment can zero
 // ordinary RW fields; read-modify-write can clear unrelated W1C flags.
 namespace PORTSC1 {
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 30>       PTS_1;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 29>       STS;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 28>       PTW;
+constexpr uint32_t kW1C = 0x0000'002a;
+
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 30, (uint32_t{0x3} << 30) | kW1C> PTS_1;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 29, (uint32_t{0x1} << 29) | kW1C> STS;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 28, (uint32_t{0x1} << 28) | kW1C> PTW;
     // 0b0..Select the 8-bit UTMI interface [60MHz]
     // 0b1..Select the 16-bit UTMI interface [30MHz]
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26>       PSPD;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26> PSPD;
     // 0b00..Full Speed
     // 0b01..Low Speed
     // 0b10..High Speed
     // 0b11..Undefined
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 25>       PTS_2;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 24>       PFSC;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 25, (uint32_t{0x1} << 25) | kW1C> PTS_2;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 24, (uint32_t{0x1} << 24) | kW1C> PFSC;
     // 0b0..Normal operation
     // 0b1..Forced to full speed
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 23>       PHCD;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 23, (uint32_t{0x1} << 23) | kW1C> PHCD;
     // 0b0..Enable PHY clock
     // 0b1..Disable PHY clock
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 22>       WKOC;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 21>       WKDC;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 20>       WKCN;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 4, 16>       PTC;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 22, (uint32_t{0x1} << 22) | kW1C> WKOC;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 21, (uint32_t{0x1} << 21) | kW1C> WKDC;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 20, (uint32_t{0x1} << 20) | kW1C> WKCN;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 4, 16, (uint32_t{0xf} << 16) | kW1C> PTC;
     // 0b0000..TEST_MODE_DISABLE
     // 0b0001..J_STATE
     // 0b0010..K_STATE
@@ -418,62 +420,64 @@ constexpr USB1_Reg<&USB_Layout::PORTSC1, 4, 16>       PTC;
     // 0b0110..FORCE_ENABLE_FS
     // 0b0111..FORCE_ENABLE_LS
     // 0b1000-0b1111..Reserved
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 14>       PIC;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 14, (uint32_t{0x3} << 14) | kW1C> PIC;
     // 0b00..Port indicators are off
     // 0b01..Amber
     // 0b10..Green
     // 0b11..Undefined
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 13>       PO;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 12>       PP;
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10>       LS;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 13, (uint32_t{0x1} << 13) | kW1C> PO;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 12, (uint32_t{0x1} << 12) | kW1C> PP;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10> LS;
     // 0b00..SE0
     // 0b01..K-state
     // 0b10..J-state
     // 0b11..Undefined
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1, 9>       HSP;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  8>       PR;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  7>       SUSP;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  6>       FPR;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  5, true> OCC;
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1, 4>       OCA;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9> HSP;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  8, (uint32_t{0x1} <<  8) | kW1C> PR;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  7, (uint32_t{0x1} <<  7) | kW1C> SUSP;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  6, (uint32_t{0x1} <<  6) | kW1C> FPR;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  5, kW1C> OCC;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;
     // 0b0..This port does not have an over-current condition.
     // 0b1..This port currently has an over-current condition
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  3, true> PEC;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  2>       PE;
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  1, true> CSC;
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0>       CCS;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  3, kW1C> PEC;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  2, (uint32_t{0x1} <<  2) | kW1C> PE;
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  1, kW1C> CSC;
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;
 }  // namespace PORTSC1
 
 // USB1 On-The-Go Status & control
 // Caution when writing to this register: Direct W1C assignment can zero
 // ordinary RW fields; read-modify-write can clear unrelated W1C flags.
 namespace OTGSC {
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 30>       DPIE;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 29>       EN_1MS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 28>       BSEIE;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 27>       BSVIE;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 26>       ASVIE;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 25>       AVVIE;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 24>       IDIE;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 22, true> DPIS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 21, true> STATUS_1MS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 20, true> BSEIS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 19, true> BSVIS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 18, true> ASVIS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 17, true> AVVIS;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 16, true> IDIS;
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14>       DPS;
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13>       TOG_1MS;
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12>       BSE;
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11>       BSV;
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10>       ASV;
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9>       AVV;
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8>       ID;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  5>       IDPU;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  4>       DP;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  3>       OT;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  1>       VC;
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  0>       VD;
+constexpr uint32_t kW1C = 0x007f'0000;
+
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 30, (uint32_t{0x1} << 30) | kW1C> DPIE;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 29, (uint32_t{0x1} << 29) | kW1C> EN_1MS;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 28, (uint32_t{0x1} << 28) | kW1C> BSEIE;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 27, (uint32_t{0x1} << 27) | kW1C> BSVIE;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 26, (uint32_t{0x1} << 26) | kW1C> ASVIE;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 25, (uint32_t{0x1} << 25) | kW1C> AVVIE;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 24, (uint32_t{0x1} << 24) | kW1C> IDIE;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 22, kW1C> DPIS;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 21, kW1C> STATUS_1MS;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 20, kW1C> BSEIS;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 19, kW1C> BSVIS;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 18, kW1C> ASVIS;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 17, kW1C> AVVIS;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 16, kW1C> IDIS;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14> DPS;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13> TOG_1MS;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12> BSE;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11> BSV;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  5, (uint32_t{0x1} <<  5) | kW1C> IDPU;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  4, (uint32_t{0x1} <<  4) | kW1C> DP;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  3, (uint32_t{0x1} <<  3) | kW1C> OT;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  1, (uint32_t{0x1} <<  1) | kW1C> VC;
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  0, (uint32_t{0x1} <<  0) | kW1C> VD;
 }  // namespace OTGSC
 
 // USB1 USB Device Mode
@@ -494,19 +498,19 @@ constexpr USB1_Reg<&USB_Layout::USBMODE, 2, 0> CM;
 
 // USB1 Endpoint Setup Status
 namespace ENDPTSETUPSTAT {
-constexpr USB1_Reg<&USB_Layout::ENDPTSETUPSTAT, 16, 0, true> ENDPTSETUPSTAT;
+constexpr USB1_Reg<&USB_Layout::ENDPTSETUPSTAT, 16, 0, 0x0> ENDPTSETUPSTAT;
 }  // namespace ENDPTSETUPSTAT
 
 // USB1 Endpoint Prime
 namespace ENDPTPRIME {
-constexpr USB1_Reg<&USB_Layout::ENDPTPRIME, 8, 16, true> PETB;
-constexpr USB1_Reg<&USB_Layout::ENDPTPRIME, 8,  0, true> PERB;
+constexpr USB1_Reg<&USB_Layout::ENDPTPRIME, 8, 16, 0x0> PETB;
+constexpr USB1_Reg<&USB_Layout::ENDPTPRIME, 8,  0, 0x0> PERB;
 }  // namespace ENDPTPRIME
 
 // USB1 Endpoint Flush
 namespace ENDPTFLUSH {
-constexpr USB1_Reg<&USB_Layout::ENDPTFLUSH, 8, 16, true> FETB;
-constexpr USB1_Reg<&USB_Layout::ENDPTFLUSH, 8,  0, true> FERB;
+constexpr USB1_Reg<&USB_Layout::ENDPTFLUSH, 8, 16, 0x0> FETB;
+constexpr USB1_Reg<&USB_Layout::ENDPTFLUSH, 8,  0, 0x0> FERB;
 }  // namespace ENDPTFLUSH
 
 // USB1 Endpoint Status
@@ -517,8 +521,8 @@ constexpr USB1_Reg<&USB_Layout::ENDPTSTAT, 8,  0> ERBR;
 
 // USB1 Endpoint Complete
 namespace ENDPTCOMPLETE {
-constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16, true> ETCE;
-constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0, true> ERCE;
+constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16, 0x0> ETCE;
+constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0, 0x0> ERCE;
 }  // namespace ENDPTCOMPLETE
 
 // Endpoint Control values
@@ -556,16 +560,16 @@ constexpr ENDPTCTRL_Reg<Index, 1,  0> RXS;
 namespace USB2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using USB2_Reg =
-    regs::Reg32<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg32<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
 using ENDPTCTRL_Reg =
     regs::Reg32<kUSB2_base, USB_Layout, &USB_Layout::ENDPTCTRL, Index, Bits,
-                Shift, DirectAssign>;
+                Shift, AssignMask>;
 
 // USB2 Identification register
 namespace ID {
@@ -681,23 +685,23 @@ constexpr USB2_Reg<&USB_Layout::USBCMD, 1,  0> RS;
 
 // USB2 USB Status Register
 namespace USBSTS {
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 25, true> TI1;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 24, true> TI0;
-constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 16>       NAKI;
-constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 15>       AS;
-constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 14>       PS;
-constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 13>       RCL;
-constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 12>       HCH;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 10, true> ULPII;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  8, true> SLI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  7, true> SRI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  6, true> URI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  5, true> AAI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  4, true> SEI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  3, true> FRI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  2, true> PCI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  1, true> UEI;
-constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  0, true> UI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 25, 0x0> TI1;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 24, 0x0> TI0;
+constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 16> NAKI;
+constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 15> AS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 14> PS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 13> RCL;
+constexpr USB2_Reg<regs::constify(&USB_Layout::USBSTS), 1, 12> HCH;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1, 10, 0x0> ULPII;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  8, 0x0> SLI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  7, 0x0> SRI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  6, 0x0> URI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  5, 0x0> AAI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  4, 0x0> SEI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  3, 0x0> FRI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  2, 0x0> PCI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  1, 0x0> UEI;
+constexpr USB2_Reg<&USB_Layout::USBSTS, 1,  0, 0x0> UI;
 }  // namespace USBSTS
 
 // USB2 Interrupt Enable Register
@@ -760,8 +764,8 @@ constexpr USB2_Reg<&USB_Layout::TXFILLTUNING, 8,  0> TXSCHOH;
 
 // USB2 Endpoint NAK
 namespace ENDPTNAK {
-constexpr USB2_Reg<&USB_Layout::ENDPTNAK, 8, 16, true> EPTN;
-constexpr USB2_Reg<&USB_Layout::ENDPTNAK, 8,  0, true> EPRN;
+constexpr USB2_Reg<&USB_Layout::ENDPTNAK, 8, 16, 0x0> EPTN;
+constexpr USB2_Reg<&USB_Layout::ENDPTNAK, 8,  0, 0x0> EPRN;
 }  // namespace ENDPTNAK
 
 // USB2 Endpoint NAK Enable
@@ -779,63 +783,67 @@ constexpr USB2_Reg<&USB_Layout::CONFIGFLAG, 1, 0> CF;
 // Caution when writing to this register: Direct W1C assignment can zero
 // ordinary RW fields; read-modify-write can clear unrelated W1C flags.
 namespace PORTSC1 {
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 30>       PTS_1;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 29>       STS;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 28>       PTW;
-constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26>       PSPD;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 25>       PTS_2;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 24>       PFSC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 23>       PHCD;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 22>       WKOC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 21>       WKDC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 20>       WKCN;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 4, 16>       PTC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 14>       PIC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 13>       PO;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 12>       PP;
-constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10>       LS;
-constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9>       HSP;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  8>       PR;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  7>       SUSP;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  6>       FPR;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  5, true> OCC;
-constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4>       OCA;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  3, true> PEC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  2>       PE;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  1, true> CSC;
-constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0>       CCS;
+constexpr uint32_t kW1C = 0x0000'002a;
+
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 30, (uint32_t{0x3} << 30) | kW1C> PTS_1;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 29, (uint32_t{0x1} << 29) | kW1C> STS;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 28, (uint32_t{0x1} << 28) | kW1C> PTW;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26> PSPD;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 25, (uint32_t{0x1} << 25) | kW1C> PTS_2;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 24, (uint32_t{0x1} << 24) | kW1C> PFSC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 23, (uint32_t{0x1} << 23) | kW1C> PHCD;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 22, (uint32_t{0x1} << 22) | kW1C> WKOC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 21, (uint32_t{0x1} << 21) | kW1C> WKDC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 20, (uint32_t{0x1} << 20) | kW1C> WKCN;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 4, 16, (uint32_t{0xf} << 16) | kW1C> PTC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 14, (uint32_t{0x3} << 14) | kW1C> PIC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 13, (uint32_t{0x1} << 13) | kW1C> PO;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 12, (uint32_t{0x1} << 12) | kW1C> PP;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10> LS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9> HSP;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  8, (uint32_t{0x1} <<  8) | kW1C> PR;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  7, (uint32_t{0x1} <<  7) | kW1C> SUSP;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  6, (uint32_t{0x1} <<  6) | kW1C> FPR;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  5, kW1C> OCC;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  3, kW1C> PEC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  2, (uint32_t{0x1} <<  2) | kW1C> PE;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  1, kW1C> CSC;
+constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;
 }  // namespace PORTSC1
 
 // USB2 On-The-Go Status & control
 // Caution when writing to this register: Direct W1C assignment can zero
 // ordinary RW fields; read-modify-write can clear unrelated W1C flags.
 namespace OTGSC {
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 30>       DPIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 29>       EN_1MS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 28>       BSEIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 27>       BSVIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 26>       ASVIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 25>       AVVIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 24>       IDIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 22, true> DPIS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 21, true> STATUS_1MS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 20, true> BSEIS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 19, true> BSVIS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 18, true> ASVIS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 17, true> AVVIS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 16, true> IDIS;
-constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14>       DPS;
-constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13>       TOG_1MS;
-constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12>       BSE;
-constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11>       BSV;
-constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10>       ASV;
-constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9>       AVV;
-constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8>       ID;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  5>       IDPU;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  4>       DP;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  3>       OT;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  1>       VC;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  0>       VD;
+constexpr uint32_t kW1C = 0x007f'0000;
+
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 30, (uint32_t{0x1} << 30) | kW1C> DPIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 29, (uint32_t{0x1} << 29) | kW1C> EN_1MS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 28, (uint32_t{0x1} << 28) | kW1C> BSEIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 27, (uint32_t{0x1} << 27) | kW1C> BSVIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 26, (uint32_t{0x1} << 26) | kW1C> ASVIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 25, (uint32_t{0x1} << 25) | kW1C> AVVIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 24, (uint32_t{0x1} << 24) | kW1C> IDIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 22, kW1C> DPIS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 21, kW1C> STATUS_1MS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 20, kW1C> BSEIS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 19, kW1C> BSVIS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 18, kW1C> ASVIS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 17, kW1C> AVVIS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 16, kW1C> IDIS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14> DPS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13> TOG_1MS;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12> BSE;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11> BSV;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;
+constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  5, (uint32_t{0x1} <<  5) | kW1C> IDPU;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  4, (uint32_t{0x1} <<  4) | kW1C> DP;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  3, (uint32_t{0x1} <<  3) | kW1C> OT;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  1, (uint32_t{0x1} <<  1) | kW1C> VC;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  0, (uint32_t{0x1} <<  0) | kW1C> VD;
 }  // namespace OTGSC
 
 // USB2 USB Device Mode
@@ -848,19 +856,19 @@ constexpr USB2_Reg<&USB_Layout::USBMODE, 2, 0> CM;
 
 // USB2 Endpoint Setup Status
 namespace ENDPTSETUPSTAT {
-constexpr USB2_Reg<&USB_Layout::ENDPTSETUPSTAT, 16, 0, true> ENDPTSETUPSTAT;
+constexpr USB2_Reg<&USB_Layout::ENDPTSETUPSTAT, 16, 0, 0x0> ENDPTSETUPSTAT;
 }  // namespace ENDPTSETUPSTAT
 
 // USB2 Endpoint Prime
 namespace ENDPTPRIME {
-constexpr USB2_Reg<&USB_Layout::ENDPTPRIME, 8, 16, true> PETB;
-constexpr USB2_Reg<&USB_Layout::ENDPTPRIME, 8,  0, true> PERB;
+constexpr USB2_Reg<&USB_Layout::ENDPTPRIME, 8, 16, 0x0> PETB;
+constexpr USB2_Reg<&USB_Layout::ENDPTPRIME, 8,  0, 0x0> PERB;
 }  // namespace ENDPTPRIME
 
 // USB2 Endpoint Flush
 namespace ENDPTFLUSH {
-constexpr USB2_Reg<&USB_Layout::ENDPTFLUSH, 8, 16, true> FETB;
-constexpr USB2_Reg<&USB_Layout::ENDPTFLUSH, 8,  0, true> FERB;
+constexpr USB2_Reg<&USB_Layout::ENDPTFLUSH, 8, 16, 0x0> FETB;
+constexpr USB2_Reg<&USB_Layout::ENDPTFLUSH, 8,  0, 0x0> FERB;
 }  // namespace ENDPTFLUSH
 
 // USB2 Endpoint Status
@@ -871,8 +879,8 @@ constexpr USB2_Reg<&USB_Layout::ENDPTSTAT, 8,  0> ERBR;
 
 // USB2 Endpoint Complete
 namespace ENDPTCOMPLETE {
-constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16, true> ETCE;
-constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0, true> ERCE;
+constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16, 0x0> ETCE;
+constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0, 0x0> ERCE;
 }  // namespace ENDPTCOMPLETE
 
 // Endpoint Control values

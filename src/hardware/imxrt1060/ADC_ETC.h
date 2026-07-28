@@ -55,9 +55,9 @@ constexpr regs::RegGroup<ADC_ETC_Layout, kADC_ETC_size, kADC_ETC_base> group;
 }  // namespace ADC_ETC
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using ADC_ETC_Reg = regs::Reg32<kADC_ETC_base, ADC_ETC_Layout, Member, 0, Bits,
-                                Shift, DirectAssign>;
+                                Shift, AssignMask>;
 
 namespace ADC_ETC {
 
@@ -69,9 +69,9 @@ constexpr uintptr_t TrigBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using TRIG_Reg = regs::Reg32<TrigBase<Index>(), ADC_ETC_Layout::TRIG_Layout,
-                             Member, 0, Bits, Shift, DirectAssign>;
+                             Member, 0, Bits, Shift, AssignMask>;
 
 // ADC_ETC Global Control Register
 namespace CTRL {
@@ -103,156 +103,160 @@ constexpr ADC_ETC_Reg<&ADC_ETC_Layout::CTRL, 8,  0> TRIG_ENABLE;
 
 // ETC DONE0 and DONE1 IRQ State Register
 namespace DONE0_1_IRQ {
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 23, true> TRIG7_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 23, 0x0> TRIG7_DONE1;
     // 0b0..No TRIG7_DONE1 interrupt detected
     // 0b1..TRIG7_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 22, true> TRIG6_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 22, 0x0> TRIG6_DONE1;
     // 0b0..No TRIG6_DONE1 interrupt detected
     // 0b1..TRIG6_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 21, true> TRIG5_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 21, 0x0> TRIG5_DONE1;
     // 0b0..No TRIG5_DONE1 interrupt detected
     // 0b1..TRIG5_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 20, true> TRIG4_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 20, 0x0> TRIG4_DONE1;
     // 0b0..No TRIG4_DONE1 interrupt detected
     // 0b1..TRIG4_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 19, true> TRIG3_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 19, 0x0> TRIG3_DONE1;
     // 0b0..No TRIG3_DONE1 interrupt detected
     // 0b1..TRIG3_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 18, true> TRIG2_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 18, 0x0> TRIG2_DONE1;
     // 0b0..No TRIG2_DONE1 interrupt detected
     // 0b1..TRIG2_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 17, true> TRIG1_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 17, 0x0> TRIG1_DONE1;
     // 0b0..No TRIG1_DONE1 interrupt detected
     // 0b1..TRIG1_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 16, true> TRIG0_DONE1;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1, 16, 0x0> TRIG0_DONE1;
     // 0b0..No TRIG0_DONE1 interrupt detected
     // 0b1..TRIG0_DONE1 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  7, true> TRIG7_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  7, 0x0> TRIG7_DONE0;
     // 0b0..No TRIG7_DONE0 interrupt detected
     // 0b1..TRIG7_DONE0 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  6, true> TRIG6_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  6, 0x0> TRIG6_DONE0;
     // 0b0..No TRIG6_DONE0 interrupt detected
     // 0b1..TRIG6_DONE0 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  5, true> TRIG5_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  5, 0x0> TRIG5_DONE0;
     // 0b0..No TRIG5_DONE0 interrupt detected
     // 0b1..TRIG5_DONE0 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  4, true> TRIG4_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  4, 0x0> TRIG4_DONE0;
     // 0b0..No TRIG4_DONE0 interrupt detected
     // 0b1..TRIG4_DONE0 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  3, true> TRIG3_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  3, 0x0> TRIG3_DONE0;
     // 0b0..No TRIG3_DONE0 interrupt detected
     // 0b1..TRIG3_DONE0 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  2, true> TRIG2_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  2, 0x0> TRIG2_DONE0;
     // 0b0..No TRIG2_DONE0 interrupt detected
     // 0b1..TRIG2_DONE0 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  1, true> TRIG1_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  1, 0x0> TRIG1_DONE0;
     // 0b0..No TRIG1_DONE0 interrupt detected
     // 0b1..TRIG1_DONE0 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  0, true> TRIG0_DONE0;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE0_1_IRQ, 1,  0, 0x0> TRIG0_DONE0;
     // 0b0..No TRIG0_DONE0 interrupt detected
     // 0b1..TRIG0_DONE0 interrupt detected
 }  // namespace DONE0_1_IRQ
 
 // ETC DONE_2 and DONE_ERR IRQ State Register
 namespace DONE2_3_ERR_IRQ {
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 23, true> TRIG7_ERR;
+constexpr uint32_t kW1C = 0x0000'00ff;
+
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 23, (uint32_t{0x1} << 23) | kW1C> TRIG7_ERR;
     // 0b0..No TRIG7_ERR interrupt detected
     // 0b1..TRIG7_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 22, true> TRIG6_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 22, (uint32_t{0x1} << 22) | kW1C> TRIG6_ERR;
     // 0b0..No TRIG6_ERR interrupt detected
     // 0b1..TRIG6_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 21, true> TRIG5_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 21, (uint32_t{0x1} << 21) | kW1C> TRIG5_ERR;
     // 0b0..No TRIG5_ERR interrupt detected
     // 0b1..TRIG5_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 20, true> TRIG4_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 20, (uint32_t{0x1} << 20) | kW1C> TRIG4_ERR;
     // 0b0..No TRIG4_ERR interrupt detected
     // 0b1..TRIG4_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 19, true> TRIG3_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 19, (uint32_t{0x1} << 19) | kW1C> TRIG3_ERR;
     // 0b0..No TRIG3_ERR interrupt detected
     // 0b1..TRIG3_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 18, true> TRIG2_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 18, (uint32_t{0x1} << 18) | kW1C> TRIG2_ERR;
     // 0b0..No TRIG2_ERR interrupt detected
     // 0b1..TRIG2_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 17, true> TRIG1_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 17, (uint32_t{0x1} << 17) | kW1C> TRIG1_ERR;
     // 0b0..No TRIG1_ERR interrupt detected
     // 0b1..TRIG1_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 16, true> TRIG0_ERR;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 16, (uint32_t{0x1} << 16) | kW1C> TRIG0_ERR;
     // 0b0..No TRIG0_ERR interrupt detected
     // 0b1..TRIG0_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  7, true> TRIG7_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  7, kW1C> TRIG7_DONE2;
     // 0b0..No TRIG7_DONE2 interrupt detected
     // 0b1..TRIG7_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  6, true> TRIG6_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  6, kW1C> TRIG6_DONE2;
     // 0b0..No TRIG6_DONE2 interrupt detected
     // 0b1..TRIG6_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  5, true> TRIG5_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  5, kW1C> TRIG5_DONE2;
     // 0b0..No TRIG5_DONE2 interrupt detected
     // 0b1..TRIG5_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  4, true> TRIG4_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  4, kW1C> TRIG4_DONE2;
     // 0b0..No TRIG4_DONE2 interrupt detected
     // 0b1..TRIG4_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  3, true> TRIG3_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  3, kW1C> TRIG3_DONE2;
     // 0b0..No TRIG3_DONE2 interrupt detected
     // 0b1..TRIG3_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  2, true> TRIG2_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  2, kW1C> TRIG2_DONE2;
     // 0b0..No TRIG2_DONE2 interrupt detected
     // 0b1..TRIG2_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  1, true> TRIG1_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  1, kW1C> TRIG1_DONE2;
     // 0b0..No TRIG1_DONE2 interrupt detected
     // 0b1..TRIG1_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  0, true> TRIG0_DONE2;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  0, kW1C> TRIG0_DONE2;
     // 0b0..No TRIG0_DONE2 interrupt detected
     // 0b1..TRIG0_DONE2 interrupt detected
 }  // namespace DONE2_3_ERR_IRQ
 
 // ETC DMA control Register
 namespace DMA_CTRL {
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 23, true> TRIG7_REQ;
+constexpr uint32_t kW1C = 0x00ff'0000;
+
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 23, kW1C> TRIG7_REQ;
     // 0b0..TRIG7_REQ not detected.
     // 0b1..TRIG7_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 22, true> TRIG6_REQ;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 22, kW1C> TRIG6_REQ;
     // 0b0..TRIG6_REQ not detected.
     // 0b1..TRIG6_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 21, true> TRIG5_REQ;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 21, kW1C> TRIG5_REQ;
     // 0b0..TRIG5_REQ not detected.
     // 0b1..TRIG5_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 20, true> TRIG4_REQ;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 20, kW1C> TRIG4_REQ;
     // 0b0..TRIG4_REQ not detected.
     // 0b1..TRIG4_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 19, true> TRIG3_REQ;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 19, kW1C> TRIG3_REQ;
     // 0b0..TRIG3_REQ not detected.
     // 0b1..TRIG3_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 18, true> TRIG2_REQ;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 18, kW1C> TRIG2_REQ;
     // 0b0..TRIG2_REQ not detected.
     // 0b1..TRIG2_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 17, true> TRIG1_REQ;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 17, kW1C> TRIG1_REQ;
     // 0b0..TRIG1_REQ not detected.
     // 0b1..TRIG1_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 16, true> TRIG0_REQ;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 16, kW1C> TRIG0_REQ;
     // 0b0..TRIG0_REQ not detected.
     // 0b1..TRIG0_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  7>       TRIG7_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  7, (uint32_t{0x1} << 7) | kW1C> TRIG7_ENABLE;
     // 0b0..TRIG7 DMA request disabled.
     // 0b1..TRIG7 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  6>       TRIG6_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  6, (uint32_t{0x1} << 6) | kW1C> TRIG6_ENABLE;
     // 0b0..TRIG6 DMA request disabled.
     // 0b1..TRIG6 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  5>       TRIG5_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  5, (uint32_t{0x1} << 5) | kW1C> TRIG5_ENABLE;
     // 0b0..TRIG5 DMA request disabled.
     // 0b1..TRIG5 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  4>       TRIG4_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  4, (uint32_t{0x1} << 4) | kW1C> TRIG4_ENABLE;
     // 0b0..TRIG4 DMA request disabled.
     // 0b1..TRIG4 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  3>       TRIG3_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  3, (uint32_t{0x1} << 3) | kW1C> TRIG3_ENABLE;
     // 0b0..TRIG3 DMA request disabled.
     // 0b1..TRIG3 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  2>       TRIG2_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  2, (uint32_t{0x1} << 2) | kW1C> TRIG2_ENABLE;
     // 0b0..TRIG2 DMA request disabled.
     // 0b1..TRIG2 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  1>       TRIG1_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  1, (uint32_t{0x1} << 1) | kW1C> TRIG1_ENABLE;
     // 0b0..TRIG1 DMA request disabled.
     // 0b1..TRIG1 DMA request enabled.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  0>       TRIG0_ENABLE;
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  0, (uint32_t{0x1} << 0) | kW1C> TRIG0_ENABLE;
     // 0b0..TRIG0 DMA request disabled.
     // 0b1..TRIG0 DMA request enabled.
 }  // namespace DMA_CTRL
@@ -287,6 +291,7 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 1,  4> TRIG_MODE;
     // 0b1..Software trigger. The hardware trigger will be ignored.
 template <size_t Index>
 constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 1,  0> SW_TRIG;
+    // This field is self-clearing.
     // 0b0..No software trigger event generated.
     // 0b1..Software trigger event generated.
 }  // namespace CTRL

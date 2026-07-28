@@ -36,34 +36,37 @@ constexpr regs::RegGroup<DCB_Layout, kDCB_size, kDCB_base> group;
 }  // namespace DCB
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false, bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          bool WriteOnly = false>
 using DCB_Reg = regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift,
-                            DirectAssign, WriteOnly>;
+                            AssignMask, WriteOnly>;
 
 namespace DCB {
 
 // DCB Debug Halting Control and Status Register Definitions
 // Exercise caution when setting or assigning fields in this register.
 namespace DHCSR {
-constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, false, true> DBGKEY;       // Debug key
+constexpr uint32_t kWO = 0xffff'0000;
+
+constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, kWO, true> DBGKEY;       // Debug key
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 25> S_RESET_ST;   // Reset sticky status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 24> S_RETIRE_ST;  // Retire sticky status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 19> S_LOCKUP;     // Lockup status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 18> S_SLEEP;      // Sleeping status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 17> S_HALT;       // Halted status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 16> S_REGRDY;     // Register ready status
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  5> C_SNAPSTALL;  // Snap stall control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  3> C_MASKINTS;   // Mask interrupts control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  2> C_STEP;       // Step control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  1> C_HALT;       // Halt control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  0> C_DEBUGEN;    // Debug enable control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  5, (uint32_t{0x1} << 5) | kWO> C_SNAPSTALL;  // Snap stall control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  3, (uint32_t{0x1} << 3) | kWO> C_MASKINTS;   // Mask interrupts control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  2, (uint32_t{0x1} << 2) | kWO> C_STEP;       // Step control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  1, (uint32_t{0x1} << 1) | kWO> C_HALT;       // Halt control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  0, (uint32_t{0x1} << 0) | kWO> C_DEBUGEN;    // Debug enable control
 }  // namespace DHCSR
 
 // DCB Debug Core Register Selector Register Definitions
 // Exercise caution when setting or assigning fields in this register.
 namespace DCRSR {
-constexpr DCB_Reg<&DCB_Layout::DCRSR, 1, 16, true, true> REGWnR;  // Register write/not-read
-constexpr DCB_Reg<&DCB_Layout::DCRSR, 7,  0, true, true> REGSEL;  // Register selector
+constexpr DCB_Reg<&DCB_Layout::DCRSR, 1, 16, 0x0, true> REGWnR;  // Register write/not-read
+constexpr DCB_Reg<&DCB_Layout::DCRSR, 7,  0, 0x0, true> REGSEL;  // Register selector
 }  // namespace DCRSR
 
 // DCB Debug Core Register Data Register Definitions

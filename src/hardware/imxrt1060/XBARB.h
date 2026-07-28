@@ -49,9 +49,9 @@ constexpr regs::RegGroup<XBARB_Layout, kXBARB_size, kXBARB3_base> group;
 namespace XBARB2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using XBARB2_Reg = regs::Reg16<kXBARB2_base, XBARB_Layout, Member, 0, Bits,
-                               Shift, DirectAssign>;
+                               Shift, AssignMask>;
 
 // Crossbar B Select Register 0
 namespace SEL0 {
@@ -201,9 +201,9 @@ constexpr uint16_t kAOI1_IN14 = 14;
 namespace XBARB3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
 using XBARB3_Reg = regs::Reg16<kXBARB3_base, XBARB_Layout, Member, 0, Bits,
-                               Shift, DirectAssign>;
+                               Shift, AssignMask>;
 
 // XBARB3 Crossbar B Select Register 0
 namespace SEL0 {

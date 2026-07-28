@@ -56,9 +56,9 @@ constexpr regs::RegGroup<CMP_Layout, kCMP_size, kCMP4_base> group;
 namespace CMP1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
 using CMP1_Reg =
-    regs::Reg8<kCMP1_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP1_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 // CMP Control Register 0
 namespace CR0 {
@@ -112,22 +112,24 @@ constexpr CMP1_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;  // Filter Sample Period
 
 // CMP Status and Control Register
 namespace SCR {
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 6>       DMAEN;  // DMA Enable Control
+constexpr uint8_t kW1C = 0x06;
+
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;  // DMA Enable Control
     // 0b0..DMA is disabled.
     // 0b1..DMA is enabled.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 4>       IER;    // Comparator Interrupt Enable Rising
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;    // Comparator Interrupt Enable Rising
     // 0b0..Interrupt is disabled.
     // 0b1..Interrupt is enabled.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 3>       IEF;    // Comparator Interrupt Enable Falling
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;    // Comparator Interrupt Enable Falling
     // 0b0..Interrupt is disabled.
     // 0b1..Interrupt is enabled.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;    // Analog Comparator Flag Rising
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;    // Analog Comparator Flag Rising
     // 0b0..Rising-edge on COUT has not been detected.
     // 0b1..Rising-edge on COUT has occurred.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;    // Analog Comparator Flag Falling
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;    // Analog Comparator Flag Falling
     // 0b0..Falling-edge on COUT has not been detected.
     // 0b1..Falling-edge on COUT has occurred.
-constexpr CMP1_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;   // Analog Comparator Output
+constexpr CMP1_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;   // Analog Comparator Output
 }  // namespace SCR
 
 // DAC Control Register
@@ -168,9 +170,9 @@ constexpr CMP1_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;  // Minus Input Mux Control
 namespace CMP2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
 using CMP2_Reg =
-    regs::Reg8<kCMP2_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP2_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 // CMP2 CMP Control Register 0
 namespace CR0 {
@@ -196,12 +198,14 @@ constexpr CMP2_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 
 // CMP2 CMP Status and Control Register
 namespace SCR {
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 6>       DMAEN;
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 4>       IER;
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 3>       IEF;
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;
-constexpr CMP2_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;
+constexpr uint8_t kW1C = 0x06;
+
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;
+constexpr CMP2_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;
 }  // namespace SCR
 
 // CMP2 DAC Control Register
@@ -222,9 +226,9 @@ constexpr CMP2_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;
 namespace CMP3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
 using CMP3_Reg =
-    regs::Reg8<kCMP3_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP3_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 // CMP3 CMP Control Register 0
 namespace CR0 {
@@ -250,12 +254,14 @@ constexpr CMP3_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 
 // CMP3 CMP Status and Control Register
 namespace SCR {
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 6>       DMAEN;
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 4>       IER;
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 3>       IEF;
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;
-constexpr CMP3_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;
+constexpr uint8_t kW1C = 0x06;
+
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;
+constexpr CMP3_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;
 }  // namespace SCR
 
 // CMP3 DAC Control Register
@@ -276,9 +282,9 @@ constexpr CMP3_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;
 namespace CMP4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          bool DirectAssign = false>
+          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
 using CMP4_Reg =
-    regs::Reg8<kCMP4_base, CMP_Layout, Member, 0, Bits, Shift, DirectAssign>;
+    regs::Reg8<kCMP4_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 // CMP4 CMP Control Register 0
 namespace CR0 {
@@ -304,12 +310,14 @@ constexpr CMP4_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 
 // CMP4 CMP Status and Control Register
 namespace SCR {
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 6>       DMAEN;
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 4>       IER;
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 3>       IEF;
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 2, true> CFR;
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 1, true> CFF;
-constexpr CMP4_Reg<regs::constify(&CMP_Layout::SCR), 1, 0>       COUT;
+constexpr uint8_t kW1C = 0x06;
+
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;
+constexpr CMP4_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;
 }  // namespace SCR
 
 // CMP4 DAC Control Register
