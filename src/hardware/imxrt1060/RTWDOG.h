@@ -15,7 +15,7 @@ namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
 
-// Structure type to access the RTWDOG (RTWDOG) registers.
+// Structure type to access the RTWDOG (WDOG3) registers.
 //
 // Comments are from BSD-3-licensed NXP SDK.
 //
