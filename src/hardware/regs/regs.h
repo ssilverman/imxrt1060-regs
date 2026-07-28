@@ -59,7 +59,6 @@ class Reg {
   using MemberExpr   = decltype(std::declval<Layout&>().*Member);
   using MemberType   = std::remove_reference_t<MemberExpr>;
   using RegType      = std::remove_extent_t<MemberType>;
-  using RegValueType = std::remove_cv_t<RegType>;
 
   static constexpr bool kMemberIsWritable = !std::is_const_v<RegType>;
   static constexpr bool kMemberIsArray    = std::is_array_v<MemberType>;
@@ -70,14 +69,18 @@ class Reg {
   static_assert(Bits != 0, "Bits shouldn't be zero");
 
   // Array checks
-  static_assert(std::is_same_v<RegValueType, R>,
-                "Array element type must match register type");
   static_assert(kMemberIsArray || (MemberOffset == 0),
                 "Non-array members must use a zero offset");
   static_assert(!kMemberIsArray || (MemberOffset < std::extent_v<MemberType>),
                 "Member offset out of range");
 
  public:
+  // The register value type, with any const-volatile removed
+  using RegValueType = std::remove_cv_t<RegType>;
+
+  static_assert(std::is_same_v<RegValueType, R>,
+                "Array element type must match register type");
+
   // Number of bits in whole register.
   static constexpr size_t kWholeRegBits = std::numeric_limits<R>::digits;
 
