@@ -283,8 +283,8 @@ constexpr SW_MUX_CTL_PAD_Reg<8, 1, 4> SION;
 constexpr SW_MUX_CTL_PAD_Reg<8, 3, 0> MUX_MODE;
 }  // namespace EMC_08
 namespace EMC_09 {
-constexpr SW_MUX_CTL_PAD_Reg<8, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<8, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<9, 1, 4> SION;
+constexpr SW_MUX_CTL_PAD_Reg<9, 4, 0> MUX_MODE;
 }  // namespace EMC_09
 namespace EMC_10 {
 constexpr SW_MUX_CTL_PAD_Reg<10, 1, 4> SION;
@@ -297,11 +297,11 @@ constexpr SW_MUX_CTL_PAD_Reg<11, 4, 0> MUX_MODE;
 namespace EMC_12 {
 constexpr SW_MUX_CTL_PAD_Reg<12, 1, 4> SION;
 constexpr SW_MUX_CTL_PAD_Reg<12, 4, 0> MUX_MODE;
-}  // namespace EMC_09
+}  // namespace EMC_12
 namespace EMC_13 {
 constexpr SW_MUX_CTL_PAD_Reg<13, 1, 4> SION;
 constexpr SW_MUX_CTL_PAD_Reg<13, 4, 0> MUX_MODE;
-}  // namespace EMC_09
+}  // namespace EMC_13
 namespace EMC_14 {
 constexpr SW_MUX_CTL_PAD_Reg<14, 1, 4> SION;
 constexpr SW_MUX_CTL_PAD_Reg<14, 4, 0> MUX_MODE;
