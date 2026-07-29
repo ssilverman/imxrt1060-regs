@@ -33,7 +33,9 @@ class RegGroup {
   static_assert((BaseAddr % alignof(Layout)) == 0, "Bad alignment");
 
  public:
-  Layout* operator->() const { return reinterpret_cast<Layout*>(BaseAddr); }
+  Layout* operator&() const { return reinterpret_cast<Layout*>(BaseAddr); }
+  Layout* operator->() const { return operator&(); }
+  Layout& operator*() const { return *operator&(); }
 };
 
 // Gets the basic shifted mask for the given parameters.
