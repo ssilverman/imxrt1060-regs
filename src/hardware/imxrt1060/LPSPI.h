@@ -96,6 +96,7 @@ constexpr LPSPI1_Reg<&LPSPI_Layout::PARAM, 8,  0> TXFIFO;  // Transmit FIFO Size
 
 // Control
 namespace CR {
+// TODO: Is this correct?
 constexpr uint32_t kWO = 0x0000'0300;
 
 constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;    // Reset Receive FIFO
@@ -369,6 +370,7 @@ constexpr LPSPI2_Reg<&LPSPI_Layout::PARAM, 8,  0> TXFIFO;
 
 // Control
 namespace CR {
+// TODO: Is this correct?
 constexpr uint32_t kWO = 0x0000'0300;
 
 constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;
@@ -521,6 +523,7 @@ constexpr LPSPI3_Reg<&LPSPI_Layout::PARAM, 8,  0> TXFIFO;
 
 // Control
 namespace CR {
+// TODO: Is this correct?
 constexpr uint32_t kWO = 0x0000'0300;
 
 constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;
@@ -673,6 +676,7 @@ constexpr LPSPI4_Reg<&LPSPI_Layout::PARAM, 8,  0> TXFIFO;
 
 // Control
 namespace CR {
+// TODO: Is this correct?
 constexpr uint32_t kWO = 0x0000'0300;
 
 constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;

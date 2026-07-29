@@ -429,91 +429,99 @@ constexpr DMA_Reg32<&DMA_Layout::EEI, 1,  0> EEI0;   // Enable Error Interrupt 0
 }  // namespace EEI
 
 // Clear Enable Error Interrupt
+// WORZ
 namespace CEEI {
-constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 6, 0x0, true> CAEE;  // Clear All Enable Error Interrupts
+constexpr DMA_Reg8<&DMA_Layout::CEEI, 1, 6, 0x0> CAEE;  // Clear All Enable Error Interrupts
     // 0b0..Write 0 only to the EEI field specified in the CEEI field
     // 0b1..Write 0 to all fields in EEI
-constexpr DMA_Reg8<&DMA_Layout::CEEI, 5, 0, 0x0, true> CEEI;  // Clear Enable Error Interrupt
+constexpr DMA_Reg8<&DMA_Layout::CEEI, 5, 0, 0x0> CEEI;  // Clear Enable Error Interrupt
 }  // namespace CEEI
 
 // Set Enable Error Interrupt
+// WORZ
 namespace SEEI {
-constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 6, 0x0, true> SAEE;  // Set All Enable Error Interrupts
+constexpr DMA_Reg8<&DMA_Layout::SEEI, 1, 6, 0x0> SAEE;  // Set All Enable Error Interrupts
     // 0b0..Write 1 only to the EEI field specified in the SEEI field
     // 0b1..Writes 1 to all fields in EEI
-constexpr DMA_Reg8<&DMA_Layout::SEEI, 5, 0, 0x0, true> SEEI;  // Set Enable Error Interrupt
+constexpr DMA_Reg8<&DMA_Layout::SEEI, 5, 0, 0x0> SEEI;  // Set Enable Error Interrupt
 }  // namespace SEEI
 
 // Clear Enable Request
+// WORZ
 namespace CERQ {
-constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 6, 0x0, true> CAER;  // Clear All Enable Requests
+constexpr DMA_Reg8<&DMA_Layout::CERQ, 1, 6, 0x0> CAER;  // Clear All Enable Requests
     // 0b0..Write 0 to only the ERQ field specified in the CERQ field
     // 0b1..Write 0 to all fields in ERQ
-constexpr DMA_Reg8<&DMA_Layout::CERQ, 5, 0, 0x0, true> CERQ;  // Clear Enable Request
+constexpr DMA_Reg8<&DMA_Layout::CERQ, 5, 0, 0x0> CERQ;  // Clear Enable Request
 }  // namespace CERQ
 
 // Set Enable Request
+// WORZ
 namespace SERQ {
-constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation, ignore the other fields in this register
-constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 6, 0x0, true> SAER;  // Set All Enable Requests
+constexpr DMA_Reg8<&DMA_Layout::SERQ, 1, 6, 0x0> SAER;  // Set All Enable Requests
     // 0b0..Write 1 to only the ERQ field specified in the SERQ field
     // 0b1..Write 1 to all fields in ERQ
-constexpr DMA_Reg8<&DMA_Layout::SERQ, 5, 0, 0x0, true> SERQ;  // Set Enable Request
+constexpr DMA_Reg8<&DMA_Layout::SERQ, 5, 0, 0x0> SERQ;  // Set Enable Request
 }  // namespace SERQ
 
 // Clear DONE Status Bit
+// WORZ
 namespace CDNE {
-constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 6, 0x0, true> CADN;  // Clears All DONE fields
+constexpr DMA_Reg8<&DMA_Layout::CDNE, 1, 6, 0x0> CADN;  // Clears All DONE fields
     // 0b0..Writes 0 to only the TCDn_CSR[DONE] field specified in the CDNE field
     // 0b1..Writes 0 to all bits in TCDn_CSR[DONE]
-constexpr DMA_Reg8<&DMA_Layout::CDNE, 5, 0, 0x0, true> CDNE;  // Clear DONE field
+constexpr DMA_Reg8<&DMA_Layout::CDNE, 5, 0, 0x0> CDNE;  // Clear DONE field
 }  // namespace CDNE
 
 // Set START Bit
+// WORZ
 namespace SSRT {
-constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 6, 0x0, true> SAST;  // Set All START fields (activates all channels)
+constexpr DMA_Reg8<&DMA_Layout::SSRT, 1, 6, 0x0> SAST;  // Set All START fields (activates all channels)
     // 0b0..Write 1 to only the TCDn_CSR[START] field specified in the SSRT field
     // 0b1..Write 1 to all bits in TCDn_CSR[START]
-constexpr DMA_Reg8<&DMA_Layout::SSRT, 5, 0, 0x0, true> SSRT;  // Set START field
+constexpr DMA_Reg8<&DMA_Layout::SSRT, 5, 0, 0x0> SSRT;  // Set START field
 }  // namespace SSRT
 
 // Clear Error
+// WORZ
 namespace CERR {
-constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 6, 0x0, true> CAEI;  // Clear All Error Indicators
+constexpr DMA_Reg8<&DMA_Layout::CERR, 1, 6, 0x0> CAEI;  // Clear All Error Indicators
     // 0b0..Write 0 to only the ERR field specified in the CERR field
     // 0b1..Write 0 to all fields in ERR
-constexpr DMA_Reg8<&DMA_Layout::CERR, 5, 0, 0x0, true> CERR;  // Clear Error Indicator
+constexpr DMA_Reg8<&DMA_Layout::CERR, 5, 0, 0x0> CERR;  // Clear Error Indicator
 }  // namespace CERR
 
 // Clear Interrupt Request
+// WORZ
 namespace CINT {
-constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 7, 0x0, true> NOP;   // No Op Enable
+constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 7, 0x0> NOP;   // No Op Enable
     // 0b0..Normal operation
     // 0b1..No operation; all other fields in this register are ignored.
-constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 6, 0x0, true> CAIR;  // Clear All Interrupt Requests
+constexpr DMA_Reg8<&DMA_Layout::CINT, 1, 6, 0x0> CAIR;  // Clear All Interrupt Requests
     // 0b0..Clear only the INT field specified in the CINT field
     // 0b1..Clear all bits in INT
-constexpr DMA_Reg8<&DMA_Layout::CINT, 5, 0, 0x0, true> CINT;  // Clear Interrupt Request
+constexpr DMA_Reg8<&DMA_Layout::CINT, 5, 0, 0x0> CINT;  // Clear Interrupt Request
 }  // namespace CINT
 
 // Interrupt Request

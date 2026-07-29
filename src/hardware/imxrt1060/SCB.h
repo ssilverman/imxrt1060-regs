@@ -132,6 +132,7 @@ constexpr SCB_Reg<&SCB_Layout::VTOR, 25, 7> TBLOFF;  // Vector table base offset
 // Application Interrupt and Reset Control Register
 // Exercise caution when setting or assigning fields in this register.
 namespace AIRCR {
+// TODO: Is this correct?
 constexpr uint32_t kWO = 0xffff'0007;
 
 constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, kWO, true> VECTKEY;        // Register key

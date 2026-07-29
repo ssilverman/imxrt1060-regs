@@ -107,6 +107,7 @@ namespace TRNG {
 
 // Miscellaneous Control Register
 namespace MCTL {
+// TODO: Is this correct?
 constexpr uint32_t kW1C = 0x0000'1000;
 constexpr uint32_t kWO  = 0x0000'0040;
 

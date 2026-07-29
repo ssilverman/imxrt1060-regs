@@ -130,6 +130,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPLR, 1,  0> ZMK_WSL;    // Zeroizable Master K
 // SNVS_HP Command Register
 // Exercise caution when setting or assigning fields in this register.
 namespace HPCOMR {
+// TODO: Is this correct?
 constexpr uint32_t kWO = 0x0006'1011;
 
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 31, (uint32_t{0x1} << 31) | kWO> NPSWA_EN;      // Non-Privileged Software Access Enable When set, allows non-privileged software to access all SNVS registers, including those that are privileged software read/write access only
