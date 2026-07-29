@@ -403,6 +403,11 @@ constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0> GTS;        // Graceful Transmit Sto
     // 0b1..Enable graceful transmit stop
 }  // namespace TCR
 
+// Physical Address Lower Register
+namespace PALR {
+constexpr ENET_Reg<&ENET_Layout::PALR, 32, 0> PADDR1;  // Pause Address
+}  // namespace PALR
+
 // Physical Address Upper Register
 namespace PAUR {
 constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;
@@ -438,6 +443,26 @@ constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 30> ICCS;  // Interrupt Coalescing T
 constexpr ENET_Reg<&ENET_Layout::RXIC,   8, 20> ICFT;  // Interrupt coalescing frame count threshold
 constexpr ENET_Reg<&ENET_Layout::RXIC,  16,  0> ICTT;  // Interrupt coalescing timer threshold
 }  // namespace RXIC
+
+// Descriptor Individual Upper Address Register
+namespace IAUR {
+constexpr ENET_Reg<&ENET_Layout::IAUR, 32, 0> IADDR1;  // Contains the upper 32 bits of the 64-bit hash table used in the address recognition process for receive frames with a unicast address
+}  // namespace IAUR
+
+// Descriptor Individual Lower Address Register
+namespace IALR {
+constexpr ENET_Reg<&ENET_Layout::IALR, 32, 0> IADDR2;  // Contains the lower 32 bits of the 64-bit hash table used in the address recognition process for receive frames with a unicast address
+}  // namespace IALR
+
+// Descriptor Group Upper Address Register
+namespace GAUR {
+constexpr ENET_Reg<&ENET_Layout::GAUR, 32, 0> GADDR1;  // Contains the upper 32 bits of the 64-bit hash table used in the address recognition process for receive frames with a multicast address
+}  // namespace GAUR
+
+// Descriptor Group Lower Address Register
+namespace GALR {
+constexpr ENET_Reg<&ENET_Layout::GALR, 32, 0> GADDR2;  // Contains the lower 32 bits of the 64-bit hash table used in the address recognition process for receive frames with a multicast address
+}  // namespace GALR
 
 // Transmit FIFO Watermark Register
 namespace TFWR {
@@ -585,6 +610,21 @@ constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  0> EN;       // Enable Timer
     // 0b1..The timer starts incrementing.
 }  // namespace ATCR
 
+// Timer Value Register
+namespace ATVR {
+constexpr ENET_Reg<&ENET_Layout::ATVR, 32, 0> ATIME;  // A write sets the timer
+}  // namespace ATVR
+
+// Timer Offset Register
+namespace ATOFF {
+constexpr ENET_Reg<&ENET_Layout::ATOFF, 32, 0> OFFSET;  // Offset value for one-shot event generation
+}  // namespace ATOFF
+
+// Timer Period Register
+namespace ATPER {
+constexpr ENET_Reg<&ENET_Layout::ATPER, 32, 0> PERIOD;  // Value for generating periodic events
+}  // namespace ATPER
+
 // Timer Correction Register
 namespace ATCOR {
 constexpr ENET_Reg<&ENET_Layout::ATCOR, 31, 0> COR;  // Correction Counter Wrap-Around Value
@@ -595,6 +635,13 @@ namespace ATINC {
 constexpr ENET_Reg<&ENET_Layout::ATINC, 7, 8> INC_CORR;  // Correction Increment Value
 constexpr ENET_Reg<&ENET_Layout::ATINC, 7, 0> INC;       // Clock Period Of The Timestamping Clock (ts_clk) In Nanoseconds
 }  // namespace ATINC
+
+// Timestamp of Last Transmitted Frame
+namespace ATSTMP {
+constexpr ENET_Reg<&ENET_Layout::ATSTMP, 32, 0> TIMESTAMP;
+    // Timestamp of the last frame transmitted by the core that had TxBD[TS] set the
+    // ff_tx_ts_frm signal asserted from the user application
+}  // namespace ATSTMP
 
 // Timer Global Status Register
 namespace TGSR {
@@ -654,9 +701,15 @@ constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0, (uint32_
     // 0b0..DMA request is disabled
     // 0b1..DMA request is enabled
 }  // namespace TCSR
+
+// Timer Compare Capture Register
+namespace TCCR {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCCR, 32, 0> TCC;  // Timer Capture Compare
+}  // namespace TCCR
 }  // namespace CHANNEL
 
-// Low-width read-only statistic counter fields
+// Read-only statistic counter fields
 
 // Tx Packet Count Statistic Register
 namespace RMON_T_PACKETS {
@@ -738,6 +791,11 @@ namespace RMON_T_P_GTE2048 {
 constexpr ENET_Reg<&ENET_Layout::RMON_T_P_GTE2048, 16, 0> TXPKTS;  // Number of transmit packets greater than 2048 bytes
 }  // namespace RMON_T_P_GTE2048
 
+// Tx Octets Statistic Register
+namespace RMON_T_OCTETS {
+constexpr ENET_Reg<&ENET_Layout::RMON_T_OCTETS, 32, 0> TXOCTS;  // Number of transmit octets
+}  // namespace RMON_T_OCTETS
+
 // Frames Transmitted OK Statistic Register
 namespace IEEE_T_FRAME_OK {
 constexpr ENET_Reg<&ENET_Layout::IEEE_T_FRAME_OK, 16, 0> COUNT;  // Number of frames transmitted OK
@@ -787,6 +845,12 @@ constexpr ENET_Reg<&ENET_Layout::IEEE_T_SQE, 16, 0> COUNT;  // This read-only fi
 namespace IEEE_T_FDXFC {
 constexpr ENET_Reg<&ENET_Layout::IEEE_T_FDXFC, 16, 0> COUNT;  // Number of flow-control pause frames transmitted
 }  // namespace IEEE_T_FDXFC
+
+// Octet Count for Frames Transmitted w/o Error Statistic Register
+namespace IEEE_T_OCTETS_OK {
+constexpr ENET_Reg<&ENET_Layout::IEEE_T_OCTETS_OK, 32, 0> COUNT;  // Octet count for frames transmitted without error
+    // Counts total octets (includes header and FCS fields).
+}  // namespace IEEE_T_OCTETS_OK
 
 // Rx Packet Count Statistic Register
 namespace RMON_R_PACKETS {
@@ -863,6 +927,11 @@ namespace RMON_R_P_GTE2048 {
 constexpr ENET_Reg<&ENET_Layout::RMON_R_P_GTE2048, 16, 0> COUNT;  // Number of greater-than-2048-byte recieve packets
 }  // namespace RMON_R_P_GTE2048
 
+// Rx Octets Statistic Register
+namespace RMON_R_OCTETS {
+constexpr ENET_Reg<&ENET_Layout::RMON_R_OCTETS, 32, 0> COUNT;  // Number of receive octets
+}  // namespace RMON_R_OCTETS
+
 // Frames not Counted Correctly Statistic Register
 namespace IEEE_R_DROP {
 constexpr ENET_Reg<&ENET_Layout::IEEE_R_DROP, 16, 0> COUNT;  // Frame count
@@ -892,6 +961,11 @@ constexpr ENET_Reg<&ENET_Layout::IEEE_R_MACERR, 16, 0> COUNT;  // Receive FIFO o
 namespace IEEE_R_FDXFC {
 constexpr ENET_Reg<&ENET_Layout::IEEE_R_FDXFC, 16, 0> COUNT;  // Number of flow-control pause frames received
 }  // namespace IEEE_R_FDXFC
+
+// Octet Count for Frames Received without Error Statistic Register
+namespace IEEE_R_OCTETS_OK {
+constexpr ENET_Reg<&ENET_Layout::IEEE_R_OCTETS_OK, 32, 0> COUNT;  // Number of octets for frames received without error
+}  // namespace IEEE_R_OCTETS_OK
 
 }  // namespace ENET
 
@@ -1016,6 +1090,10 @@ constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 2> FDEN;
 constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 0> GTS;
 }  // namespace TCR
 
+namespace PALR {
+constexpr ENET2_Reg<&ENET_Layout::PALR, 32, 0> PADDR1;
+}  // namespace PALR
+
 namespace PAUR {
 constexpr ENET2_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;
 constexpr ENET2_Reg<regs::constify(&ENET_Layout::PAUR), 16,  0> TYPE;
@@ -1039,6 +1117,22 @@ constexpr ENET2_Reg<&ENET_Layout::RXIC,  1, 30> ICCS;
 constexpr ENET2_Reg<&ENET_Layout::RXIC,  8, 20> ICFT;
 constexpr ENET2_Reg<&ENET_Layout::RXIC, 16,  0> ICTT;
 }  // namespace RXIC
+
+namespace IAUR {
+constexpr ENET2_Reg<&ENET_Layout::IAUR, 32, 0> IADDR1;
+}  // namespace IAUR
+
+namespace IALR {
+constexpr ENET2_Reg<&ENET_Layout::IALR, 32, 0> IADDR2;
+}  // namespace IALR
+
+namespace GAUR {
+constexpr ENET2_Reg<&ENET_Layout::GAUR, 32, 0> GADDR1;
+}  // namespace GAUR
+
+namespace GALR {
+constexpr ENET2_Reg<&ENET_Layout::GALR, 32, 0> GADDR2;
+}  // namespace GALR
 
 namespace TFWR {
 constexpr ENET2_Reg<&ENET_Layout::TFWR, 1, 8> STRFWD;
@@ -1119,6 +1213,18 @@ constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  2> OFFEN;
 constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  0> EN;
 }  // namespace ATCR
 
+namespace ATVR {
+constexpr ENET2_Reg<&ENET_Layout::ATVR, 32, 0> ATIME;
+}  // namespace ATVR
+
+namespace ATOFF {
+constexpr ENET2_Reg<&ENET_Layout::ATOFF, 32, 0> OFFSET;
+}  // namespace ATOFF
+
+namespace ATPER {
+constexpr ENET2_Reg<&ENET_Layout::ATPER, 32, 0> PERIOD;
+}  // namespace ATPER
+
 namespace ATCOR {
 constexpr ENET2_Reg<&ENET_Layout::ATCOR, 31, 0> COR;
 }  // namespace ATCOR
@@ -1127,6 +1233,10 @@ namespace ATINC {
 constexpr ENET2_Reg<&ENET_Layout::ATINC, 7, 8> INC_CORR;
 constexpr ENET2_Reg<&ENET_Layout::ATINC, 7, 0> INC;
 }  // namespace ATINC
+
+namespace ATSTMP {
+constexpr ENET2_Reg<&ENET_Layout::ATSTMP, 32, 0> TIMESTAMP;
+}  // namespace ATSTMP
 
 namespace TGSR {
 constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 3, 0x0> TF3;
@@ -1151,9 +1261,14 @@ constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 4,  2, (uint32_
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  0, (uint32_t{0x01} <<  0) | kW1C> TDRE;
 }  // namespace TCSR
+
+namespace TCCR {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCCR, 32, 0> TCC;
+}  // namespace TCCR
 }  // namespace CHANNEL
 
-// Low-width read-only statistic counter fields
+// Read-only statistic counter fields
 
 namespace RMON_T_PACKETS {
 constexpr ENET2_Reg<&ENET_Layout::RMON_T_PACKETS, 16, 0> TXPKTS;
@@ -1219,6 +1334,10 @@ namespace RMON_T_P_GTE2048 {
 constexpr ENET2_Reg<&ENET_Layout::RMON_T_P_GTE2048, 16, 0> TXPKTS;
 }  // namespace RMON_T_P_GTE2048
 
+namespace RMON_T_OCTETS {
+constexpr ENET2_Reg<&ENET_Layout::RMON_T_OCTETS, 32, 0> TXOCTS;
+}  // namespace RMON_T_OCTETS
+
 namespace IEEE_T_FRAME_OK {
 constexpr ENET2_Reg<&ENET_Layout::IEEE_T_FRAME_OK, 16, 0> COUNT;
 }  // namespace IEEE_T_FRAME_OK
@@ -1258,6 +1377,10 @@ constexpr ENET2_Reg<&ENET_Layout::IEEE_T_SQE, 16, 0> COUNT;
 namespace IEEE_T_FDXFC {
 constexpr ENET2_Reg<&ENET_Layout::IEEE_T_FDXFC, 16, 0> COUNT;
 }  // namespace IEEE_T_FDXFC
+
+namespace IEEE_T_OCTETS_OK {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_T_OCTETS_OK, 32, 0> COUNT;
+}  // namespace IEEE_T_OCTETS_OK
 
 namespace RMON_R_PACKETS {
 constexpr ENET2_Reg<&ENET_Layout::RMON_R_PACKETS, 16, 0> COUNT;
@@ -1319,6 +1442,10 @@ namespace RMON_R_P_GTE2048 {
 constexpr ENET2_Reg<&ENET_Layout::RMON_R_P_GTE2048, 16, 0> COUNT;
 }  // namespace RMON_R_P_GTE2048
 
+namespace RMON_R_OCTETS {
+constexpr ENET2_Reg<&ENET_Layout::RMON_R_OCTETS, 32, 0> COUNT;
+}  // namespace RMON_R_OCTETS
+
 namespace IEEE_R_DROP {
 constexpr ENET2_Reg<&ENET_Layout::IEEE_R_DROP, 16, 0> COUNT;
 }  // namespace IEEE_R_DROP
@@ -1342,6 +1469,10 @@ constexpr ENET2_Reg<&ENET_Layout::IEEE_R_MACERR, 16, 0> COUNT;
 namespace IEEE_R_FDXFC {
 constexpr ENET2_Reg<&ENET_Layout::IEEE_R_FDXFC, 16, 0> COUNT;
 }  // namespace IEEE_R_FDXFC
+
+namespace IEEE_R_OCTETS_OK {
+constexpr ENET2_Reg<&ENET_Layout::IEEE_R_OCTETS_OK, 32, 0> COUNT;
+}  // namespace IEEE_R_OCTETS_OK
 
 }  // namespace ENET2
 

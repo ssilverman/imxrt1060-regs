@@ -665,6 +665,16 @@ constexpr LCDIF_Reg<&LCDIF_Layout::TRANSFER_COUNT, 16, 16> V_COUNT;  // Number o
 constexpr LCDIF_Reg<&LCDIF_Layout::TRANSFER_COUNT, 16,  0> H_COUNT;  // Total valid data (pixels) in each horizontal line
 }  // namespace TRANSFER_COUNT
 
+// LCD Interface Current Buffer Address Register
+namespace CUR_BUF {
+constexpr LCDIF_Reg<&LCDIF_Layout::CUR_BUF, 32, 0> ADDR;  // Address of the current frame being transmitted by LCDIF.
+}  // namespace CUR_BUF
+
+// LCD Interface Next Buffer Address Register
+namespace NEXT_BUF {
+constexpr LCDIF_Reg<&LCDIF_Layout::NEXT_BUF, 32, 0> ADDR;  // Address of the next frame that will be transmitted by LCDIF.
+}  // namespace NEXT_BUF
+
 // LCDIF VSYNC Mode and Dotclk Mode Control Register0
 namespace VDCTRL0 {
 constexpr LCDIF_Reg<&LCDIF_Layout::VDCTRL0,  1, 28> ENABLE_PRESENT;
@@ -769,6 +779,11 @@ constexpr LCDIF_Reg<&LCDIF_Layout::VDCTRL0_TOG,  1, 18, 0x0> HALF_LINE_MODE;
 constexpr LCDIF_Reg<&LCDIF_Layout::VDCTRL0_TOG, 18,  0, 0x0> VSYNC_PULSE_WIDTH;  // Number of units for which VSYNC signal is active
 }  // namespace VDCTRL0_TOG
 
+// LCDIF VSYNC Mode and Dotclk Mode Control Register1
+namespace VDCTRL1 {
+constexpr LCDIF_Reg<&LCDIF_Layout::VDCTRL1, 32, 0> VSYNC_PERIOD;  // Total number of units between two positive or two negative edges of the VSYNC signal
+}  // namespace VDCTRL1
+
 // LCDIF VSYNC Mode and Dotclk Mode Control Register2
 namespace VDCTRL2 {
 constexpr LCDIF_Reg<&LCDIF_Layout::VDCTRL2, 14, 18> HSYNC_PULSE_WIDTH;  // Number of DISPLAY CLOCK (pix_clk) cycles for which HSYNC signal is active.
@@ -803,6 +818,16 @@ constexpr LCDIF_Reg<&LCDIF_Layout::VDCTRL4,  1, 18> SYNC_SIGNALS_ON;
     //     one frame after the data transfers end
 constexpr LCDIF_Reg<&LCDIF_Layout::VDCTRL4, 18,  0> DOTCLK_H_VALID_DATA_CNT;  // Total number of DISPLAY CLOCK (pix_clk) cycles on each horizontal line that carry valid data in DOTCLK mode
 }  // namespace VDCTRL4
+
+// Bus Master Error Status Register
+namespace BM_ERROR_STAT {
+constexpr LCDIF_Reg<&LCDIF_Layout::BM_ERROR_STAT, 32, 0> ADDR;  // Virtual address at which bus master error occurred.
+}  // namespace BM_ERROR_STAT
+
+// CRC Status Register
+namespace CRC_STAT {
+constexpr LCDIF_Reg<&LCDIF_Layout::CRC_STAT, 32, 0> CRC_VALUE;  // Calculated CRC value
+}  // namespace CRC_STAT
 
 // LCD Interface Status Register
 namespace STAT {
@@ -898,10 +923,24 @@ namespace LUT0_ADDR {
 constexpr LCDIF_Reg<&LCDIF_Layout::LUT0_ADDR, 8, 0> ADDR;  // LUT indexed address pointer
 }  // namespace LUT0_ADDR
 
+// Lookup Table 0 Data Register
+namespace LUT0_DATA {
+constexpr LCDIF_Reg<&LCDIF_Layout::LUT0_DATA, 32, 0> DATA;
+    // Writing this field will load 4 bytes, aligned to four byte boundaries, of
+    // data indexed by the ADDR field of the REG_LUT_CTRL register
+}  // namespace LUT0_DATA
+
 // Lookup Table 1 Index Register
 namespace LUT1_ADDR {
 constexpr LCDIF_Reg<&LCDIF_Layout::LUT1_ADDR, 8, 0> ADDR;  // LUT indexed address pointer
 }  // namespace LUT1_ADDR
+
+// Lookup Table 1 Data Register
+namespace LUT1_DATA {
+constexpr LCDIF_Reg<&LCDIF_Layout::LUT1_DATA, 32, 0> DATA;
+    // Writing this field will load 4 bytes, aligned to four byte boundaries, of
+    // data indexed by the ADDR field of the REG_LUT_CTRL register
+}  // namespace LUT1_DATA
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kLCDIF_PIGEON_count)>>

@@ -138,6 +138,61 @@ constexpr ENC1_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;   // Input Filter Sample 
 constexpr ENC1_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;   // Input Filter Sample Period
 }  // namespace FILT
 
+// ENC1 Watchdog Timeout Register
+namespace WTR {
+constexpr ENC1_Reg<&ENC_Layout::WTR, 16, 0> WDOG;  // WDOG
+}  // namespace WTR
+
+// ENC1 Position Difference Counter Register
+namespace POSD {
+constexpr ENC1_Reg<&ENC_Layout::POSD, 16, 0> POSD;  // POSD
+}  // namespace POSD
+
+// ENC1 Position Difference Hold Register
+namespace POSDH {
+constexpr ENC1_Reg<&ENC_Layout::POSDH, 16, 0> POSDH;  // POSDH
+}  // namespace POSDH
+
+// ENC1 Revolution Counter Register
+namespace REV {
+constexpr ENC1_Reg<&ENC_Layout::REV, 16, 0> REV;  // REV
+}  // namespace REV
+
+// ENC1 Revolution Hold Register
+namespace REVH {
+constexpr ENC1_Reg<&ENC_Layout::REVH, 16, 0> REVH;  // REVH
+}  // namespace REVH
+
+// ENC1 Upper Position Counter Register
+namespace UPOS {
+constexpr ENC1_Reg<&ENC_Layout::UPOS, 16, 0> POS;  // POS
+}  // namespace UPOS
+
+// ENC1 Lower Position Counter Register
+namespace LPOS {
+constexpr ENC1_Reg<&ENC_Layout::LPOS, 16, 0> POS;  // POS
+}  // namespace LPOS
+
+// ENC1 Upper Position Hold Register
+namespace UPOSH {
+constexpr ENC1_Reg<&ENC_Layout::UPOSH, 16, 0> POSH;  // POSH
+}  // namespace UPOSH
+
+// ENC1 Lower Position Hold Register
+namespace LPOSH {
+constexpr ENC1_Reg<&ENC_Layout::LPOSH, 16, 0> POSH;  // POSH
+}  // namespace LPOSH
+
+// ENC1 Upper Initialization Register
+namespace UINIT {
+constexpr ENC1_Reg<&ENC_Layout::UINIT, 16, 0> INIT;  // INIT
+}  // namespace UINIT
+
+// ENC1 Lower Initialization Register
+namespace LINIT {
+constexpr ENC1_Reg<&ENC_Layout::LINIT, 16, 0> INIT;  // INIT
+}  // namespace LINIT
+
 // ENC1 Input Monitor Register
 namespace IMR {
 constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
@@ -201,6 +256,26 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{0x1} << 0) | kW1C> UPDHLD
     // 0b1..Enable updates of hold registers on the rising edge of TRIGGER input signal
 }  // namespace CTRL2
 
+// ENC1 Upper Modulus Register
+namespace UMOD {
+constexpr ENC1_Reg<&ENC_Layout::UMOD, 16, 0> MOD;  // MOD
+}  // namespace UMOD
+
+// ENC1 Lower Modulus Register
+namespace LMOD {
+constexpr ENC1_Reg<&ENC_Layout::LMOD, 16, 0> MOD;  // MOD
+}  // namespace LMOD
+
+// ENC1 Upper Position Compare Register
+namespace UCOMP {
+constexpr ENC1_Reg<&ENC_Layout::UCOMP, 16, 0> COMP;  // COMP
+}  // namespace UCOMP
+
+// ENC1 Lower Position Compare Register
+namespace LCOMP {
+constexpr ENC1_Reg<&ENC_Layout::LCOMP, 16, 0> COMP;  // COMP
+}  // namespace LCOMP
+
 }  // namespace ENC1
 
 namespace ENC2 {
@@ -239,6 +314,61 @@ constexpr ENC2_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;
 constexpr ENC2_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;
 }  // namespace FILT
 
+// ENC2 Watchdog Timeout Register
+namespace WTR {
+constexpr ENC2_Reg<&ENC_Layout::WTR, 16, 0> WDOG;
+}  // namespace WTR
+
+// ENC2 Position Difference Counter Register
+namespace POSD {
+constexpr ENC2_Reg<&ENC_Layout::POSD, 16, 0> POSD;
+}  // namespace POSD
+
+// ENC2 Position Difference Hold Register
+namespace POSDH {
+constexpr ENC2_Reg<&ENC_Layout::POSDH, 16, 0> POSDH;
+}  // namespace POSDH
+
+// ENC2 Revolution Counter Register
+namespace REV {
+constexpr ENC2_Reg<&ENC_Layout::REV, 16, 0> REV;
+}  // namespace REV
+
+// ENC2 Revolution Hold Register
+namespace REVH {
+constexpr ENC2_Reg<&ENC_Layout::REVH, 16, 0> REVH;
+}  // namespace REVH
+
+// ENC2 Upper Position Counter Register
+namespace UPOS {
+constexpr ENC2_Reg<&ENC_Layout::UPOS, 16, 0> POS;
+}  // namespace UPOS
+
+// ENC2 Lower Position Counter Register
+namespace LPOS {
+constexpr ENC2_Reg<&ENC_Layout::LPOS, 16, 0> POS;
+}  // namespace LPOS
+
+// ENC2 Upper Position Hold Register
+namespace UPOSH {
+constexpr ENC2_Reg<&ENC_Layout::UPOSH, 16, 0> POSH;
+}  // namespace UPOSH
+
+// ENC2 Lower Position Hold Register
+namespace LPOSH {
+constexpr ENC2_Reg<&ENC_Layout::LPOSH, 16, 0> POSH;
+}  // namespace LPOSH
+
+// ENC2 Upper Initialization Register
+namespace UINIT {
+constexpr ENC2_Reg<&ENC_Layout::UINIT, 16, 0> INIT;
+}  // namespace UINIT
+
+// ENC2 Lower Initialization Register
+namespace LINIT {
+constexpr ENC2_Reg<&ENC_Layout::LINIT, 16, 0> INIT;
+}  // namespace LINIT
+
 // ENC2 Input Monitor Register
 namespace IMR {
 constexpr ENC2_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
@@ -275,6 +405,26 @@ constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{1} << 2) | kW1C> MOD;
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 1, (uint16_t{1} << 1) | kW1C> UPDPOS;
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{1} << 0) | kW1C> UPDHLD;
 }  // namespace CTRL2
+
+// ENC2 Upper Modulus Register
+namespace UMOD {
+constexpr ENC2_Reg<&ENC_Layout::UMOD, 16, 0> MOD;
+}  // namespace UMOD
+
+// ENC2 Lower Modulus Register
+namespace LMOD {
+constexpr ENC2_Reg<&ENC_Layout::LMOD, 16, 0> MOD;
+}  // namespace LMOD
+
+// ENC2 Upper Position Compare Register
+namespace UCOMP {
+constexpr ENC2_Reg<&ENC_Layout::UCOMP, 16, 0> COMP;
+}  // namespace UCOMP
+
+// ENC2 Lower Position Compare Register
+namespace LCOMP {
+constexpr ENC2_Reg<&ENC_Layout::LCOMP, 16, 0> COMP;
+}  // namespace LCOMP
 
 }  // namespace ENC2
 
@@ -314,6 +464,61 @@ constexpr ENC3_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;
 constexpr ENC3_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;
 }  // namespace FILT
 
+// ENC3 Watchdog Timeout Register
+namespace WTR {
+constexpr ENC3_Reg<&ENC_Layout::WTR, 16, 0> WDOG;
+}  // namespace WTR
+
+// ENC3 Position Difference Counter Register
+namespace POSD {
+constexpr ENC3_Reg<&ENC_Layout::POSD, 16, 0> POSD;
+}  // namespace POSD
+
+// ENC3 Position Difference Hold Register
+namespace POSDH {
+constexpr ENC3_Reg<&ENC_Layout::POSDH, 16, 0> POSDH;
+}  // namespace POSDH
+
+// ENC3 Revolution Counter Register
+namespace REV {
+constexpr ENC3_Reg<&ENC_Layout::REV, 16, 0> REV;
+}  // namespace REV
+
+// ENC3 Revolution Hold Register
+namespace REVH {
+constexpr ENC3_Reg<&ENC_Layout::REVH, 16, 0> REVH;
+}  // namespace REVH
+
+// ENC3 Upper Position Counter Register
+namespace UPOS {
+constexpr ENC3_Reg<&ENC_Layout::UPOS, 16, 0> POS;
+}  // namespace UPOS
+
+// ENC3 Lower Position Counter Register
+namespace LPOS {
+constexpr ENC3_Reg<&ENC_Layout::LPOS, 16, 0> POS;
+}  // namespace LPOS
+
+// ENC3 Upper Position Hold Register
+namespace UPOSH {
+constexpr ENC3_Reg<&ENC_Layout::UPOSH, 16, 0> POSH;
+}  // namespace UPOSH
+
+// ENC3 Lower Position Hold Register
+namespace LPOSH {
+constexpr ENC3_Reg<&ENC_Layout::LPOSH, 16, 0> POSH;
+}  // namespace LPOSH
+
+// ENC3 Upper Initialization Register
+namespace UINIT {
+constexpr ENC3_Reg<&ENC_Layout::UINIT, 16, 0> INIT;
+}  // namespace UINIT
+
+// ENC3 Lower Initialization Register
+namespace LINIT {
+constexpr ENC3_Reg<&ENC_Layout::LINIT, 16, 0> INIT;
+}  // namespace LINIT
+
 // ENC3 Input Monitor Register
 namespace IMR {
 constexpr ENC3_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
@@ -350,6 +555,26 @@ constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{1} << 2) | kW1C> MOD;
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 1, (uint16_t{1} << 1) | kW1C> UPDPOS;
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{1} << 0) | kW1C> UPDHLD;
 }  // namespace CTRL2
+
+// ENC3 Upper Modulus Register
+namespace UMOD {
+constexpr ENC3_Reg<&ENC_Layout::UMOD, 16, 0> MOD;
+}  // namespace UMOD
+
+// ENC3 Lower Modulus Register
+namespace LMOD {
+constexpr ENC3_Reg<&ENC_Layout::LMOD, 16, 0> MOD;
+}  // namespace LMOD
+
+// ENC3 Upper Position Compare Register
+namespace UCOMP {
+constexpr ENC3_Reg<&ENC_Layout::UCOMP, 16, 0> COMP;
+}  // namespace UCOMP
+
+// ENC3 Lower Position Compare Register
+namespace LCOMP {
+constexpr ENC3_Reg<&ENC_Layout::LCOMP, 16, 0> COMP;
+}  // namespace LCOMP
 
 }  // namespace ENC3
 
@@ -389,6 +614,61 @@ constexpr ENC4_Reg<&ENC_Layout::FILT, 3,  8> FILT_CNT;
 constexpr ENC4_Reg<&ENC_Layout::FILT, 8,  0> FILT_PER;
 }  // namespace FILT
 
+// ENC4 Watchdog Timeout Register
+namespace WTR {
+constexpr ENC4_Reg<&ENC_Layout::WTR, 16, 0> WDOG;
+}  // namespace WTR
+
+// ENC4 Position Difference Counter Register
+namespace POSD {
+constexpr ENC4_Reg<&ENC_Layout::POSD, 16, 0> POSD;
+}  // namespace POSD
+
+// ENC4 Position Difference Hold Register
+namespace POSDH {
+constexpr ENC4_Reg<&ENC_Layout::POSDH, 16, 0> POSDH;
+}  // namespace POSDH
+
+// ENC4 Revolution Counter Register
+namespace REV {
+constexpr ENC4_Reg<&ENC_Layout::REV, 16, 0> REV;
+}  // namespace REV
+
+// ENC4 Revolution Hold Register
+namespace REVH {
+constexpr ENC4_Reg<&ENC_Layout::REVH, 16, 0> REVH;
+}  // namespace REVH
+
+// ENC4 Upper Position Counter Register
+namespace UPOS {
+constexpr ENC4_Reg<&ENC_Layout::UPOS, 16, 0> POS;
+}  // namespace UPOS
+
+// ENC4 Lower Position Counter Register
+namespace LPOS {
+constexpr ENC4_Reg<&ENC_Layout::LPOS, 16, 0> POS;
+}  // namespace LPOS
+
+// ENC4 Upper Position Hold Register
+namespace UPOSH {
+constexpr ENC4_Reg<&ENC_Layout::UPOSH, 16, 0> POSH;
+}  // namespace UPOSH
+
+// ENC4 Lower Position Hold Register
+namespace LPOSH {
+constexpr ENC4_Reg<&ENC_Layout::LPOSH, 16, 0> POSH;
+}  // namespace LPOSH
+
+// ENC4 Upper Initialization Register
+namespace UINIT {
+constexpr ENC4_Reg<&ENC_Layout::UINIT, 16, 0> INIT;
+}  // namespace UINIT
+
+// ENC4 Lower Initialization Register
+namespace LINIT {
+constexpr ENC4_Reg<&ENC_Layout::LINIT, 16, 0> INIT;
+}  // namespace LINIT
+
 // ENC4 Input Monitor Register
 namespace IMR {
 constexpr ENC4_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
@@ -425,6 +705,26 @@ constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{1} << 2) | kW1C> MOD;
 constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 1, (uint16_t{1} << 1) | kW1C> UPDPOS;
 constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{1} << 0) | kW1C> UPDHLD;
 }  // namespace CTRL2
+
+// ENC4 Upper Modulus Register
+namespace UMOD {
+constexpr ENC4_Reg<&ENC_Layout::UMOD, 16, 0> MOD;
+}  // namespace UMOD
+
+// ENC4 Lower Modulus Register
+namespace LMOD {
+constexpr ENC4_Reg<&ENC_Layout::LMOD, 16, 0> MOD;
+}  // namespace LMOD
+
+// ENC4 Upper Position Compare Register
+namespace UCOMP {
+constexpr ENC4_Reg<&ENC_Layout::UCOMP, 16, 0> COMP;
+}  // namespace UCOMP
+
+// ENC4 Lower Position Compare Register
+namespace LCOMP {
+constexpr ENC4_Reg<&ENC_Layout::LCOMP, 16, 0> COMP;
+}  // namespace LCOMP
 
 }  // namespace ENC4
 

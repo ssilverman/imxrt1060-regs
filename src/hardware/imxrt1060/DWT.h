@@ -83,6 +83,11 @@ constexpr DWT_Reg<&DWT_Layout::CTRL, 4,  1> POSTPRESET;
 constexpr DWT_Reg<&DWT_Layout::CTRL, 1,  0> CYCCNTENA;
 }  // namespace CTRL
 
+// DWT Cycle Count Register Definitions
+namespace CYCCNT {
+constexpr DWT_Reg<&DWT_Layout::CYCCNT, 32, 0> CYCCNT;
+}  // namespace CYCCNT
+
 // DWT CPI Count Register Definitions
 namespace CPICNT {
 constexpr DWT_Reg<&DWT_Layout::CPICNT, 8, 0> CPICNT;
@@ -108,6 +113,16 @@ namespace FOLDCNT {
 constexpr DWT_Reg<&DWT_Layout::FOLDCNT, 8, 0> FOLDCNT;
 }  // namespace FOLDCNT
 
+// DWT Program Counter Sample Register Definitions
+namespace PCSR {
+constexpr DWT_Reg<&DWT_Layout::PCSR, 32, 0> EIASAMPLE;
+}  // namespace PCSR
+
+// DWT Comparator Register Definitions
+namespace COMP0 {
+constexpr DWT_Reg<&DWT_Layout::COMP0, 32, 0> COMP;
+}  // namespace COMP0
+
 // DWT Comparator Mask Register Definitions
 namespace MASK0 {
 constexpr DWT_Reg<&DWT_Layout::MASK0, 5, 0> MASK;
@@ -125,6 +140,11 @@ constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 1,  7> CYCMATCH;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 1,  5> EMITRANGE;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 4,  0> FUNCTION;
 }  // namespace FUNCTION0
+
+// DWT Comparator Register Definitions
+namespace COMP1 {
+constexpr DWT_Reg<&DWT_Layout::COMP1, 32, 0> COMP;
+}  // namespace COMP1
 
 // DWT Comparator Mask Register Definitions
 namespace MASK1 {
@@ -144,6 +164,11 @@ constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 1,  5> EMITRANGE;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 4,  0> FUNCTION;
 }  // namespace FUNCTION1
 
+// DWT Comparator Register Definitions
+namespace COMP2 {
+constexpr DWT_Reg<&DWT_Layout::COMP2, 32, 0> COMP;
+}  // namespace COMP2
+
 // DWT Comparator Mask Register Definitions
 namespace MASK2 {
 constexpr DWT_Reg<&DWT_Layout::MASK2, 5, 0> MASK;
@@ -161,6 +186,11 @@ constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 1,  7> CYCMATCH;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 1,  5> EMITRANGE;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 4,  0> FUNCTION;
 }  // namespace FUNCTION2
+
+// DWT Comparator Register Definitions
+namespace COMP3 {
+constexpr DWT_Reg<&DWT_Layout::COMP3, 32, 0> COMP;
+}  // namespace COMP3
 
 // DWT Comparator Mask Register Definitions
 namespace MASK3 {

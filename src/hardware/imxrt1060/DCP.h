@@ -306,6 +306,11 @@ constexpr uint32_t kHASH_ALGORITHMS_CRC32    = 2;
 constexpr uint32_t kHASH_ALGORITHMS_SHA256   = 4;
 }  // namespace CAPABILITY1
 
+// DCP context buffer pointer
+namespace CONTEXT {
+constexpr DCP_Reg<&DCP_Layout::CONTEXT, 32, 0> ADDR;  // Context pointer address
+}  // namespace CONTEXT
+
 // DCP key index
 namespace KEY {
 constexpr DCP_Reg<&DCP_Layout::KEY, 24, 8> RSVD;
@@ -314,6 +319,17 @@ constexpr DCP_Reg<&DCP_Layout::KEY,  2, 4> INDEX;
 constexpr DCP_Reg<&DCP_Layout::KEY,  2, 2> RSVD_SUBWORD;
 constexpr DCP_Reg<&DCP_Layout::KEY,  2, 0> SUBWORD;
 }  // namespace KEY
+
+// DCP key data
+namespace KEYDATA {
+constexpr DCP_Reg<&DCP_Layout::KEYDATA, 32, 0> DATA;  // Word 0 data for the key.
+    // This is the least-significant word.
+}  // namespace KEYDATA
+
+// DCP work packet 0 status register
+namespace PACKET0 {
+constexpr DCP_Reg<&DCP_Layout::PACKET0, 32, 0> ADDR;  // Next pointer register
+}  // namespace PACKET0
 
 // DCP work packet 1 status register
 namespace PACKET1 {
@@ -384,6 +400,32 @@ constexpr uint32_t kHASH_SELECT_SHA1      = 0;
 constexpr uint32_t kHASH_SELECT_CRC32     = 1;
 constexpr uint32_t kHASH_SELECT_SHA256    = 2;
 }  // namespace PACKET2
+
+// DCP work packet 3 status register
+namespace PACKET3 {
+constexpr DCP_Reg<&DCP_Layout::PACKET3, 32, 0> ADDR;  // Source buffer address pointer
+}  // namespace PACKET3
+
+// DCP work packet 4 status register
+namespace PACKET4 {
+constexpr DCP_Reg<&DCP_Layout::PACKET4, 32, 0> ADDR;  // Destination buffer address pointer
+}  // namespace PACKET4
+
+// DCP work packet 5 status register
+namespace PACKET5 {
+constexpr DCP_Reg<&DCP_Layout::PACKET5, 32, 0> COUNT;  // Byte count register.
+    // This value is the working value and updates as the operation proceeds.
+}  // namespace PACKET5
+
+// DCP work packet 6 status register
+namespace PACKET6 {
+constexpr DCP_Reg<&DCP_Layout::PACKET6, 32, 0> ADDR;  // This register reflects the payload pointer for the current control packet.
+}  // namespace PACKET6
+
+// DCP channel 0 command pointer address register
+namespace CH0CMDPTR {
+constexpr DCP_Reg<&DCP_Layout::CH0CMDPTR, 32, 0> ADDR;  // Pointer to the descriptor structure to be processed for channel 0.
+}  // namespace CH0CMDPTR
 
 // DCP channel 0 semaphore register
 namespace CH0SEMA {
@@ -472,6 +514,11 @@ constexpr DCP_Reg<&DCP_Layout::CH0OPTS_TOG, 16, 16, 0x0> RSVD;
 constexpr DCP_Reg<&DCP_Layout::CH0OPTS_TOG, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH0OPTS_TOG
 
+// DCP channel 1 command pointer address register
+namespace CH1CMDPTR {
+constexpr DCP_Reg<&DCP_Layout::CH1CMDPTR, 32, 0> ADDR;  // Pointer to the descriptor structure to be processed for channel 1.
+}  // namespace CH1CMDPTR
+
 // DCP channel 1 semaphore register
 namespace CH1SEMA {
 constexpr DCP_Reg<regs::constify(&DCP_Layout::CH1SEMA), 8, 16> VALUE;
@@ -559,6 +606,11 @@ constexpr DCP_Reg<&DCP_Layout::CH1OPTS_TOG, 16, 16, 0x0> RSVD;
 constexpr DCP_Reg<&DCP_Layout::CH1OPTS_TOG, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH1OPTS_TOG
 
+// DCP channel 2 command pointer address register
+namespace CH2CMDPTR {
+constexpr DCP_Reg<&DCP_Layout::CH2CMDPTR, 32, 0> ADDR;  // Pointer to the descriptor structure to be processed for channel 2.
+}  // namespace CH2CMDPTR
+
 // DCP channel 2 semaphore register
 namespace CH2SEMA {
 constexpr DCP_Reg<regs::constify(&DCP_Layout::CH2SEMA), 8, 16> VALUE;
@@ -645,6 +697,11 @@ namespace CH2OPTS_TOG {
 constexpr DCP_Reg<&DCP_Layout::CH2OPTS_TOG, 16, 16, 0x0> RSVD;
 constexpr DCP_Reg<&DCP_Layout::CH2OPTS_TOG, 16,  0, 0x0> RECOVERY_TIMER;
 }  // namespace CH2OPTS_TOG
+
+// DCP channel 3 command pointer address register
+namespace CH3CMDPTR {
+constexpr DCP_Reg<&DCP_Layout::CH3CMDPTR, 32, 0> ADDR;  // Pointer to the descriptor structure to be processed for channel 3.
+}  // namespace CH3CMDPTR
 
 // DCP channel 3 semaphore register
 namespace CH3SEMA {
@@ -750,6 +807,11 @@ constexpr uint32_t kINDEX_OTPKEY1 = (1u << 4) + 1u;
 constexpr uint32_t kINDEX_OTPKEY2 = (1u << 4) + 2u;
 constexpr uint32_t kINDEX_OTPKEY3 = (1u << 4) + 3u;
 }  // namespace DBGSELECT
+
+// DCP debug data register
+namespace DBGDATA {
+constexpr DCP_Reg<&DCP_Layout::DBGDATA, 32, 0> DATA;  // Debug data
+}  // namespace DBGDATA
 
 // DCP page table register
 namespace PAGETABLE {

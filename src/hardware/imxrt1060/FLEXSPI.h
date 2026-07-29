@@ -324,6 +324,11 @@ constexpr FLEXSPI_Reg<&FLEXSPI_Layout::INTR, 1,  0, 0x0> IPCMDDONE;      // IP t
     //     IPCMDGE or IPCMDERR interrupt generated.
 }  // namespace INTR
 
+// LUT Key Register
+namespace LUTKEY {
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::LUTKEY, 32, 0> KEY;  // The Key to lock or unlock LUT.
+}  // namespace LUTKEY
+
 // LUT Control Register
 namespace LUTCR {
 constexpr FLEXSPI_Reg<&FLEXSPI_Layout::LUTCR, 1, 1> UNLOCK;  // Unlock LUT
@@ -429,6 +434,11 @@ constexpr FLEXSPI_Reg<&FLEXSPI_Layout::FLSHCR4, 1,  0> WMOPT1;            // Wri
     // 0b1..DQS pin will not be used as Write Mask when writing to external device. There is limitation on AHB write
     //     burst start address alignment when flash is accessed in individual mode.
 }  // namespace FLSHCR4
+
+// IP Control Register 0
+namespace IPCR0 {
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::IPCR0, 32, 0> SFAR;  // Serial Flash Address for IP command.
+}  // namespace IPCR0
 
 // IP Control Register 1
 namespace IPCR1 {
@@ -564,6 +574,18 @@ namespace IPTXFSTS {
 constexpr FLEXSPI_Reg<&FLEXSPI_Layout::IPTXFSTS, 16, 16> WRCNTR;  // Total Write Data Counter: WRCNTR * 64 Bits.
 constexpr FLEXSPI_Reg<&FLEXSPI_Layout::IPTXFSTS,  8,  0> FILL;    // Fill level of IP TX FIFO.
 }  // namespace IPTXFSTS
+
+// IP RX FIFO Data Register 0..IP RX FIFO Data Register 31
+namespace RFDR {
+template <size_t Index>
+constexpr RFDR_Reg<Index, 32, 0> RXDATA;  // RX Data
+}  // namespace RFDR
+
+// IP TX FIFO Data Register 0..IP TX FIFO Data Register 31
+namespace TFDR {
+template <size_t Index>
+constexpr TFDR_Reg<Index, 32, 0, 0x0, true> TXDATA;  // TX Data
+}  // namespace TFDR
 
 // LUT 0..LUT 63
 namespace LUT {
@@ -729,6 +751,11 @@ constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  1, 0x0> IPCMDGE;
 constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::INTR, 1,  0, 0x0> IPCMDDONE;
 }  // namespace INTR
 
+// LUT Key Register
+namespace LUTKEY {
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::LUTKEY, 32, 0> KEY;
+}  // namespace LUTKEY
+
 // LUT Control Register
 namespace LUTCR {
 constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::LUTCR, 1,  1> UNLOCK;
@@ -797,6 +824,11 @@ constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::FLSHCR4, 1,  3> WMENB;
 constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::FLSHCR4, 1,  2> WMENA;
 constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::FLSHCR4, 1,  0> WMOPT1;
 }  // namespace FLSHCR4
+
+// IP Control Register 0
+namespace IPCR0 {
+constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::IPCR0, 32, 0> SFAR;
+}  // namespace IPCR0
 
 // IP Control Register 1
 namespace IPCR1 {
@@ -887,6 +919,18 @@ namespace IPTXFSTS {
 constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::IPTXFSTS, 16, 16> WRCNTR;
 constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::IPTXFSTS, 8,  0> FILL;
 }  // namespace IPTXFSTS
+
+// IP RX FIFO Data Register 0..IP RX FIFO Data Register 31
+namespace RFDR {
+template <size_t Index>
+constexpr RFDR_Reg<Index, 32, 0> RXDATA;
+}  // namespace RFDR
+
+// IP TX FIFO Data Register 0..IP TX FIFO Data Register 31
+namespace TFDR {
+template <size_t Index>
+constexpr TFDR_Reg<Index, 32, 0, 0x0, true> TXDATA;
+}  // namespace TFDR
 
 // LUT 0..LUT 63
 namespace LUT {

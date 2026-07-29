@@ -85,6 +85,42 @@ using CHANNEL_Reg =
 
 namespace CHANNEL {
 
+// Timer Channel Compare Register 1
+namespace COMP1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+}  // namespace COMP1
+
+// Timer Channel Compare Register 2
+namespace COMP2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+}  // namespace COMP2
+
+// Timer Channel Capture Register
+namespace CAPT {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+}  // namespace CAPT
+
+// Timer Channel Load Register
+namespace LOAD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+}  // namespace LOAD
+
+// Timer Channel Hold Register
+namespace HOLD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+}  // namespace HOLD
+
+// Timer Channel Counter Register
+namespace CNTR {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+}  // namespace CNTR
+
 // Timer Channel Control Register
 namespace CTRL {
 template <size_t Index>
@@ -202,6 +238,18 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;    
     //      their input see the driven value. The polarity of the signal is determined by OPS.
 }  // namespace SCTRL
 
+// Timer Channel Comparator Load Register 1
+namespace CMPLD1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+}  // namespace CMPLD1
+
+// Timer Channel Comparator Load Register 2
+namespace CMPLD2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+}  // namespace CMPLD2
+
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {
 template <size_t Index>
@@ -301,6 +349,42 @@ using CHANNEL_Reg =
 
 namespace CHANNEL {
 
+// Timer Channel Compare Register 1
+namespace COMP1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+}  // namespace COMP1
+
+// Timer Channel Compare Register 2
+namespace COMP2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+}  // namespace COMP2
+
+// Timer Channel Capture Register
+namespace CAPT {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+}  // namespace CAPT
+
+// Timer Channel Load Register
+namespace LOAD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+}  // namespace LOAD
+
+// Timer Channel Hold Register
+namespace HOLD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+}  // namespace HOLD
+
+// Timer Channel Counter Register
+namespace CNTR {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+}  // namespace CNTR
+
 // Timer Channel Control Register
 namespace CTRL {
 template <size_t Index>
@@ -354,6 +438,18 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;    
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;           // Output Enable
 }  // namespace SCTRL
+
+// Timer Channel Comparator Load Register 1
+namespace CMPLD1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+}  // namespace CMPLD1
+
+// Timer Channel Comparator Load Register 2
+namespace CMPLD2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+}  // namespace CMPLD2
 
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {
@@ -430,6 +526,42 @@ using CHANNEL_Reg =
 
 namespace CHANNEL {
 
+// Timer Channel Compare Register 1
+namespace COMP1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+}  // namespace COMP1
+
+// Timer Channel Compare Register 2
+namespace COMP2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+}  // namespace COMP2
+
+// Timer Channel Capture Register
+namespace CAPT {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+}  // namespace CAPT
+
+// Timer Channel Load Register
+namespace LOAD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+}  // namespace LOAD
+
+// Timer Channel Hold Register
+namespace HOLD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+}  // namespace HOLD
+
+// Timer Channel Counter Register
+namespace CNTR {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+}  // namespace CNTR
+
 // Timer Channel Control Register
 namespace CTRL {
 template <size_t Index>
@@ -483,6 +615,18 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;    
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;           // Output Enable
 }  // namespace SCTRL
+
+// Timer Channel Comparator Load Register 1
+namespace CMPLD1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+}  // namespace CMPLD1
+
+// Timer Channel Comparator Load Register 2
+namespace CMPLD2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+}  // namespace CMPLD2
 
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {
@@ -559,6 +703,42 @@ using CHANNEL_Reg =
 
 namespace CHANNEL {
 
+// Timer Channel Compare Register 1
+namespace COMP1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+}  // namespace COMP1
+
+// Timer Channel Compare Register 2
+namespace COMP2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+}  // namespace COMP2
+
+// Timer Channel Capture Register
+namespace CAPT {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+}  // namespace CAPT
+
+// Timer Channel Load Register
+namespace LOAD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+}  // namespace LOAD
+
+// Timer Channel Hold Register
+namespace HOLD {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+}  // namespace HOLD
+
+// Timer Channel Counter Register
+namespace CNTR {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+}  // namespace CNTR
+
 // Timer Channel Control Register
 namespace CTRL {
 template <size_t Index>
@@ -612,6 +792,18 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;    
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;           // Output Enable
 }  // namespace SCTRL
+
+// Timer Channel Comparator Load Register 1
+namespace CMPLD1 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+}  // namespace CMPLD1
+
+// Timer Channel Comparator Load Register 2
+namespace CMPLD2 {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+}  // namespace CMPLD2
 
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {

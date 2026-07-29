@@ -79,6 +79,12 @@ template <auto Member, size_t Bits, unsigned int Shift,
 using SNVS_Reg = regs::Reg32<kSNVS_base, SNVS_Layout, Member, 0, Bits, Shift,
                              AssignMask, WriteOnly>;
 
+template <auto Member, size_t MemberOffset, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+using SNVS_ArrayReg =
+    regs::Reg32<kSNVS_base, SNVS_Layout, Member, MemberOffset, Bits, Shift,
+                AssignMask>;
+
 namespace SNVS {
 
 // SNVS_HP Lock Register
@@ -328,15 +334,40 @@ constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  0, 0x0> SV0;           // Security 
     // 0b1..Security Violation 0 security violation was detected.
 }  // namespace HPSVSR
 
-// SNVS_HP Time Alarm MSB Register
-namespace HPRTCMR {
-constexpr SNVS_Reg<&SNVS_Layout::HPRTCMR, 15, 0> RTC;  // HP Real Time Counter The most-significant 15 bits of the RTC
-}  // namespace HPRTCMR
+// SNVS_HP High Assurance Counter IV Register
+namespace HPHACIVR {
+constexpr SNVS_Reg<&SNVS_Layout::HPHACIVR, 32, 0> HAC_COUNTER_IV;  // High Assurance Counter Initial Value
+    // This register is used to set the starting count value to the high
+    // assurance counter
+}  // namespace HPHACIVR
+
+// SNVS_HP High Assurance Counter Register
+namespace HPHACR {
+constexpr SNVS_Reg<&SNVS_Layout::HPHACR, 32, 0> HAC_COUNTER;  // High Assurance Counter
+    // When the HAC_EN bit is set and the SSM is in the soft fail state, this
+    // counter starts to count down with the system clock
+}  // namespace HPHACR
 
 // SNVS_HP Real Time Counter MSB Register
+namespace HPRTCMR {
+constexpr SNVS_Reg<&SNVS_Layout::HPRTCMR, 15, 0> RTC;  // HP Real Time Counter
+    // The most-significant 15 bits of the RTC
+}  // namespace HPRTCMR
+
+// SNVS_HP Real Time Counter LSB Register
+namespace HPRTCLR {
+constexpr SNVS_Reg<&SNVS_Layout::HPRTCLR, 32, 0> RTC;  // HP Real Time Counter least-significant 32 bits
+}  // namespace HPRTCLR
+
+// SNVS_HP Time Alarm MSB Register
 namespace HPTAMR {
 constexpr SNVS_Reg<&SNVS_Layout::HPTAMR, 15, 0> HPTA_MS;  // HP Time Alarm, most-significant 15 bits
 }  // namespace HPTAMR
+
+// SNVS_HP Time Alarm LSB Register
+namespace HPTALR {
+constexpr SNVS_Reg<&SNVS_Layout::HPTALR, 32, 0> HPTA_LS;  // HP Time Alarm, 32 least-significant bits
+}  // namespace HPTALR
 
 // SNVS_LP Lock Register
 namespace LPLR {
@@ -513,14 +544,68 @@ constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  0, 0x0> LPTA;   // LP Time Alarm
 
 // SNVS_LP Secure Real Time Counter MSB Register
 namespace LPSRTCMR {
-constexpr SNVS_Reg<&SNVS_Layout::LPSRTCMR, 15, 0> SRTC;  // LP Secure Real Time Counter The most-significant 15 bits of the SRTC
+constexpr SNVS_Reg<&SNVS_Layout::LPSRTCMR, 15, 0> SRTC;  // LP Secure Real Time Counter
+    // The most-significant 15 bits of the SRTC
 }  // namespace LPSRTCMR
+
+// SNVS_LP Secure Real Time Counter LSB Register
+namespace LPSRTCLR {
+constexpr SNVS_Reg<&SNVS_Layout::LPSRTCLR, 32, 0> SRTC;  // LP Secure Real Time Counter least-significant 32 bits
+    // This register can be programmed only when SRTC is not active and not
+    // locked, meaning the SRTC_ENV, SRTC_SL, and SRTC_HL bits are not set
+}  // namespace LPSRTCLR
+
+// SNVS_LP Time Alarm Register
+namespace LPTAR {
+constexpr SNVS_Reg<&SNVS_Layout::LPTAR, 32, 0> LPTA;  // LP Time Alarm
+    // This register can be programmed only when the LP time alarm is disabled
+    // (LPTA_EN bit is not set)
+}  // namespace LPTAR
 
 // SNVS_LP Secure Monotonic Counter MSB Register
 namespace LPSMCMR {
 constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSMCMR), 16, 16> MC_ERA_BITS;  // Monotonic Counter Era Bits These bits are inputs to the module and typically connect to fuses
 constexpr SNVS_Reg<&SNVS_Layout::LPSMCMR, 16,  0> MON_COUNTER;  // Monotonic Counter most-significant 16 Bits Note that writing to this register does not change the value of this field to the value that was written
 }  // namespace LPSMCMR
+
+// SNVS_LP Secure Monotonic Counter LSB Register
+namespace LPSMCLR {
+constexpr SNVS_Reg<&SNVS_Layout::LPSMCLR, 32, 0> MON_COUNTER;  // Monotonic Counter bits
+    // Note that writing to this register does not change the value of this
+    // field to the value that was written
+}  // namespace LPSMCLR
+
+// SNVS_LP Digital Low-Voltage Detector Register
+namespace LPLVDR {
+constexpr SNVS_Reg<&SNVS_Layout::LPLVDR, 32, 0> LVD;  // Low-Voltage Detector Value
+}  // namespace LPLVDR
+
+// SNVS_LP General Purpose Register 0 (legacy alias)
+namespace LPGPR0_LEGACY_ALIAS {
+constexpr SNVS_Reg<&SNVS_Layout::LPGPR0_LEGACY_ALIAS, 32, 0> GPR;  // General Purpose Register
+    // When GPR_SL or GPR_HL bit is set, the register cannot be programmed.
+}  // namespace LPGPR0_LEGACY_ALIAS
+
+// SNVS_LP Zeroizable Master Key Register
+namespace LPZMKR {
+template <size_t Index>
+constexpr SNVS_ArrayReg<&SNVS_Layout::LPZMKR, Index, 32, 0> ZMK;  // Zeroizable Master Key
+    // Each of these registers contains 32 bits of the 256-bit ZMK value
+}  // namespace LPZMKR
+
+// SNVS_LP General Purpose Registers 0 .. 3
+namespace LPGPR_ALIAS {
+template <size_t Index>
+constexpr SNVS_ArrayReg<&SNVS_Layout::LPGPR_ALIAS, Index, 32, 0> GPR;  // General Purpose Register
+    // When GPR_SL or GPR_HL bit is set, the register cannot be programmed.
+}  // namespace LPGPR_ALIAS
+
+// SNVS_LP General Purpose Registers 0 .. 7
+namespace LPGPR {
+template <size_t Index>
+constexpr SNVS_ArrayReg<&SNVS_Layout::LPGPR, Index, 32, 0> GPR;  // General Purpose Register
+    // When GPR_SL or GPR_HL bit is set, the register cannot be programmed.
+}  // namespace LPGPR
 
 // SNVS_HP Version ID Register 1
 namespace HPVIDR1 {

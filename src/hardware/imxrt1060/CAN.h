@@ -8,6 +8,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 
 #include "hardware/regs/regs.h"
 
@@ -160,6 +161,13 @@ template <auto Member, size_t Bits, unsigned int Shift,
 using CAN1_Reg =
     regs::Reg32<kCAN1_base, CAN_Layout, Member, 0, Bits, Shift, AssignMask>;
 
+template <size_t Index, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          typename = std::enable_if_t<(Index < kCAN_RXIMR_count)>>
+using RXIMR_Reg =
+    regs::Reg32<kCAN1_base, CAN_Layout, &CAN_Layout::RXIMR, Index, Bits, Shift,
+                AssignMask>;
+
 // Module Configuration Register
 namespace MCR {
 constexpr CAN1_Reg<&CAN_Layout::MCR, 1, 31> MDIS;     // Module Disable
@@ -277,6 +285,21 @@ namespace TIMER {
 constexpr CAN1_Reg<&CAN_Layout::TIMER, 16, 0> TIMER;  // Timer Value
 }  // namespace TIMER
 
+// Rx Mailboxes Global Mask register
+namespace RXMGMASK {
+constexpr CAN1_Reg<&CAN_Layout::RXMGMASK, 32, 0> MG;  // Rx Mailboxes Global Mask Bits
+}  // namespace RXMGMASK
+
+// Rx 14 Mask register
+namespace RX14MASK {
+constexpr CAN1_Reg<&CAN_Layout::RX14MASK, 32, 0> RX14M;  // Rx Buffer 14 Mask Bits
+}  // namespace RX14MASK
+
+// Rx 15 Mask register
+namespace RX15MASK {
+constexpr CAN1_Reg<&CAN_Layout::RX15MASK, 32, 0> RX15M;  // Rx Buffer 15 Mask Bits
+}  // namespace RX15MASK
+
 // Error Counter
 namespace ECR {
 constexpr CAN1_Reg<&CAN_Layout::ECR, 8, 24> RXERRCNT_FAST;   // Receive Error Counter for fast bits
@@ -372,6 +395,21 @@ constexpr CAN1_Reg<&CAN_Layout::ESR1, 1,  0, 0x0> WAKINT;        // Wake-Up Inte
     // 0b1..Indicates a recessive to dominant transition received on the CAN bus when the FLEXCAN module is in Stop Mode
 }  // namespace ESR1
 
+// Interrupt Masks 2 register
+namespace IMASK2 {
+constexpr CAN1_Reg<&CAN_Layout::IMASK2, 32, 0> BUF63TO32M;  // Buffer MBi Mask
+}  // namespace IMASK2
+
+// Interrupt Masks 1 register
+namespace IMASK1 {
+constexpr CAN1_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
+}  // namespace IMASK1
+
+// Interrupt Flags 2 register
+namespace IFLAG2 {
+constexpr CAN1_Reg<&CAN_Layout::IFLAG2, 32, 0> BUF63TO32I;  // Buffer MBi Interrupt
+}  // namespace IFLAG2
+
 // Interrupt Flags 1 Register
 namespace IFLAG1 {
 constexpr CAN1_Reg<&CAN_Layout::IFLAG1, 24, 8, 0x0> BUF31TO8I;  // Buffer MBi Interrupt
@@ -452,6 +490,11 @@ constexpr CAN1_Reg<&CAN_Layout::CRCR,  7, 16> MBCRC;  // CRC Mailbox
 constexpr CAN1_Reg<&CAN_Layout::CRCR, 15,  0> TXCRC;  // Transmitted CRC value
 }  // namespace CRCR
 
+// Rx FIFO Global Mask register
+namespace RXFGMASK {
+constexpr CAN1_Reg<&CAN_Layout::RXFGMASK, 32, 0> FGM;  // Rx FIFO Global Mask Bits
+}  // namespace RXFGMASK
+
 // Rx FIFO Information Register
 namespace RXFIR {
 constexpr CAN1_Reg<&CAN_Layout::RXFIR, 9, 0> IDHIT;  // Identifier Acceptance Filter Hit Indicator
@@ -475,6 +518,14 @@ constexpr CAN1_Reg<&CAN_Layout::DBG2, 1,  7> MPP;  // Matching Process in Progre
 constexpr CAN1_Reg<&CAN_Layout::DBG2, 7,  0> RMP;  // Rx Matching Pointer
 }  // namespace DBG2
 
+// Rx Individual Mask Registers
+namespace RXIMR {
+template <size_t Index>
+constexpr RXIMR_Reg<Index, 32, 0> MI;  // Individual Mask Bits
+    // 0b00000000000000000000000000000000..the corresponding bit in the filter is "don't care"
+    // 0b00000000000000000000000000000001..The corresponding bit in the filter is checked
+}  // namespace RXIMR
+
 // Glitch Filter Width Registers
 namespace GFWR {
 constexpr CAN1_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
@@ -488,6 +539,13 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CAN2_Reg =
     regs::Reg32<kCAN2_base, CAN_Layout, Member, 0, Bits, Shift, AssignMask>;
+
+template <size_t Index, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          typename = std::enable_if_t<(Index < kCAN_RXIMR_count)>>
+using RXIMR_Reg =
+    regs::Reg32<kCAN2_base, CAN_Layout, &CAN_Layout::RXIMR, Index, Bits, Shift,
+                AssignMask>;
 
 // CAN2 Module Configuration Register
 namespace MCR {
@@ -539,6 +597,21 @@ namespace TIMER {
 constexpr CAN2_Reg<&CAN_Layout::TIMER, 16,  0> TIMER;
 }  // namespace TIMER
 
+// CAN2 Rx Mailboxes Global Mask register
+namespace RXMGMASK {
+constexpr CAN2_Reg<&CAN_Layout::RXMGMASK, 32, 0> MG;  // Rx Mailboxes Global Mask Bits
+}  // namespace RXMGMASK
+
+// CAN2 Rx 14 Mask register
+namespace RX14MASK {
+constexpr CAN2_Reg<&CAN_Layout::RX14MASK, 32, 0> RX14M;  // Rx Buffer 14 Mask Bits
+}  // namespace RX14MASK
+
+// CAN2 Rx 15 Mask register
+namespace RX15MASK {
+constexpr CAN2_Reg<&CAN_Layout::RX15MASK, 32, 0> RX15M;  // Rx Buffer 15 Mask Bits
+}  // namespace RX15MASK
+
 // CAN2 Error Counter
 namespace ECR {
 constexpr CAN2_Reg<&CAN_Layout::ECR, 8, 24> RXERRCNT_FAST;
@@ -576,6 +649,21 @@ constexpr CAN2_Reg<&CAN_Layout::ESR1, 1,  2, 0x0> BOFFINT;
 constexpr CAN2_Reg<&CAN_Layout::ESR1, 1,  1, 0x0> ERRINT;
 constexpr CAN2_Reg<&CAN_Layout::ESR1, 1,  0, 0x0> WAKINT;
 }  // namespace ESR1
+
+// CAN2 Interrupt Masks 2 register
+namespace IMASK2 {
+constexpr CAN2_Reg<&CAN_Layout::IMASK2, 32, 0> BUF63TO32M;  // Buffer MBi Mask
+}  // namespace IMASK2
+
+// CAN2 Interrupt Masks 1 register
+namespace IMASK1 {
+constexpr CAN2_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
+}  // namespace IMASK1
+
+// CAN2 Interrupt Flags 2 register
+namespace IFLAG2 {
+constexpr CAN2_Reg<&CAN_Layout::IFLAG2, 32, 0> BUF63TO32I;  // Buffer MBi Interrupt
+}  // namespace IFLAG2
 
 // CAN2 Interrupt Flags 1 Register
 namespace IFLAG1 {
@@ -617,6 +705,11 @@ constexpr CAN2_Reg<&CAN_Layout::CRCR,  7, 16> MBCRC;
 constexpr CAN2_Reg<&CAN_Layout::CRCR, 15,  0> TXCRC;
 }  // namespace CRCR
 
+// CAN2 Rx FIFO Global Mask register
+namespace RXFGMASK {
+constexpr CAN2_Reg<&CAN_Layout::RXFGMASK, 32, 0> FGM;  // Rx FIFO Global Mask Bits
+}  // namespace RXFGMASK
+
 // CAN2 Rx FIFO Information Register
 namespace RXFIR {
 constexpr CAN2_Reg<&CAN_Layout::RXFIR, 9, 0> IDHIT;
@@ -636,6 +729,12 @@ constexpr CAN2_Reg<&CAN_Layout::DBG2, 1,  7> MPP;
 constexpr CAN2_Reg<&CAN_Layout::DBG2, 7,  0> RMP;
 }  // namespace DBG2
 
+// CAN2 Rx Individual Mask Registers
+namespace RXIMR {
+template <size_t Index>
+constexpr RXIMR_Reg<Index, 32, 0> MI;
+}  // namespace RXIMR
+
 // CAN2 Glitch Filter Width Registers
 namespace GFWR {
 constexpr CAN2_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
@@ -649,6 +748,13 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using CAN3_Reg =
     regs::Reg32<kCAN3_base, CAN_Layout, Member, 0, Bits, Shift, AssignMask>;
+
+template <size_t Index, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          typename = std::enable_if_t<(Index < kCAN_RXIMR_count)>>
+using RXIMR_Reg =
+    regs::Reg32<kCAN3_base, CAN_Layout, &CAN_Layout::RXIMR, Index, Bits, Shift,
+                AssignMask>;
 
 // CAN3 Module Configuration Register
 namespace MCR {
@@ -700,6 +806,21 @@ namespace TIMER {
 constexpr CAN3_Reg<&CAN_Layout::TIMER, 16, 0> TIMER;
 }  // namespace TIMER
 
+// CAN3 Rx Mailboxes Global Mask register
+namespace RXMGMASK {
+constexpr CAN3_Reg<&CAN_Layout::RXMGMASK, 32, 0> MG;  // Rx Mailboxes Global Mask Bits
+}  // namespace RXMGMASK
+
+// CAN3 Rx 14 Mask register
+namespace RX14MASK {
+constexpr CAN3_Reg<&CAN_Layout::RX14MASK, 32, 0> RX14M;  // Rx Buffer 14 Mask Bits
+}  // namespace RX14MASK
+
+// CAN3 Rx 15 Mask register
+namespace RX15MASK {
+constexpr CAN3_Reg<&CAN_Layout::RX15MASK, 32, 0> RX15M;  // Rx Buffer 15 Mask Bits
+}  // namespace RX15MASK
+
 // CAN3 Error Counter
 namespace ECR {
 constexpr CAN3_Reg<&CAN_Layout::ECR, 8, 24> RXERRCNT_FAST;
@@ -737,6 +858,21 @@ constexpr CAN3_Reg<&CAN_Layout::ESR1, 1,  2, 0x0> BOFFINT;
 constexpr CAN3_Reg<&CAN_Layout::ESR1, 1,  1, 0x0> ERRINT;
 constexpr CAN3_Reg<&CAN_Layout::ESR1, 1,  0, 0x0> WAKINT;
 }  // namespace ESR1
+
+// CAN3 Interrupt Masks 2 register
+namespace IMASK2 {
+constexpr CAN3_Reg<&CAN_Layout::IMASK2, 32, 0> BUF63TO32M;  // Buffer MBi Mask
+}  // namespace IMASK2
+
+// CAN3 Interrupt Masks 1 register
+namespace IMASK1 {
+constexpr CAN3_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
+}  // namespace IMASK1
+
+// CAN3 Interrupt Flags 2 register
+namespace IFLAG2 {
+constexpr CAN3_Reg<&CAN_Layout::IFLAG2, 32, 0> BUF63TO32I;  // Buffer MBi Interrupt
+}  // namespace IFLAG2
 
 // CAN3 Interrupt Flags 1 Register
 namespace IFLAG1 {
@@ -778,6 +914,11 @@ constexpr CAN3_Reg<&CAN_Layout::CRCR,  7, 16> MBCRC;
 constexpr CAN3_Reg<&CAN_Layout::CRCR, 15,  0> TXCRC;
 }  // namespace CRCR
 
+// CAN3 Rx FIFO Global Mask register
+namespace RXFGMASK {
+constexpr CAN3_Reg<&CAN_Layout::RXFGMASK, 32, 0> FGM;  // Rx FIFO Global Mask Bits
+}  // namespace RXFGMASK
+
 // CAN3 Rx FIFO Information Register
 namespace RXFIR {
 constexpr CAN3_Reg<&CAN_Layout::RXFIR, 9, 0> IDHIT;
@@ -794,6 +935,12 @@ constexpr CAN3_Reg<&CAN_Layout::CBT,  6, 10> EPROPSEG;  // Extended Propagation 
 constexpr CAN3_Reg<&CAN_Layout::CBT,  5,  5> EPSEG1;    // Extended Phase Segment 1
 constexpr CAN3_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;    // Extended Phase Segment 2
 }  // namespace CBT
+
+// CAN3 Rx Individual Mask Registers
+namespace RXIMR {
+template <size_t Index>
+constexpr RXIMR_Reg<Index, 32, 0> MI;
+}  // namespace RXIMR
 
 // CAN3 FD Control Register
 namespace FDCTRL {

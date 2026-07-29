@@ -209,9 +209,21 @@ constexpr OCOTP_Reg<&OCOTP_Layout::TIMING, 12,  0> STROBE_PROG;  // Write Strobe
 }  // namespace TIMING
 
 // OTP Controller Write Data Register
+namespace DATA {
+constexpr OCOTP_Reg<&OCOTP_Layout::DATA, 32, 0> DATA;  // Used to initiate a write to OTP.
+    // See the section for operating details.
+}  // namespace DATA
+
+// OTP Controller Write Data Register
 namespace READ_CTRL {
 constexpr OCOTP_Reg<&OCOTP_Layout::READ_CTRL, 1, 0> READ_FUSE;
 }  // namespace READ_CTRL
+
+// OTP Controller Read Data Register
+namespace READ_FUSE_DATA {
+constexpr OCOTP_Reg<&OCOTP_Layout::READ_FUSE_DATA, 32, 0> DATA;  // The data read from OTP.
+    // See the section for operating details.
+}  // namespace READ_FUSE_DATA
 
 // Sticky bit Register
 namespace SW_STICKY {
@@ -301,6 +313,236 @@ constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1,  6> SJC_RESP;      // SJC_RESP Lock 
     //      region's shadow register and OTP fuse word are also blocked
 constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2,  2> BOOT_CFG;      // BOOT_CFG Write Lock Status
 }  // namespace LOCK
+
+// Value of OTP Bank0 Word1 (Configuration and Manufacturing Info.)
+namespace CFG0 {
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG0, 32, 0> BITS;
+}  // namespace CFG0
+
+// Value of OTP Bank0 Word2 (Configuration and Manufacturing Info.)
+namespace CFG1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG1, 32, 0> BITS;
+}  // namespace CFG1
+
+// Value of OTP Bank0 Word3 (Configuration and Manufacturing Info.)
+namespace CFG2 {
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG2, 32, 0> BITS;
+}  // namespace CFG2
+
+// Value of OTP Bank0 Word4 (Configuration and Manufacturing Info.)
+namespace CFG3 {
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG3, 32, 0> BITS;
+}  // namespace CFG3
+
+// Value of OTP Bank0 Word5 (Configuration and Manufacturing Info.)
+namespace CFG4 {
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG4, 32, 0> BITS;
+}  // namespace CFG4
+
+// Value of OTP Bank0 Word6 (Configuration and Manufacturing Info.)
+namespace CFG5 {
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG5, 32, 0> BITS;
+}  // namespace CFG5
+
+// Value of OTP Bank0 Word7 (Configuration and Manufacturing Info.)
+namespace CFG6 {
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG6, 32, 0> BITS;
+}  // namespace CFG6
+
+// Value of OTP Bank1 Word0 (Memory Related Info.)
+namespace MEM0 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM0, 32, 0> BITS;
+}  // namespace MEM0
+
+// Value of OTP Bank1 Word1 (Memory Related Info.)
+namespace MEM1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM1, 32, 0> BITS;
+}  // namespace MEM1
+
+// Value of OTP Bank1 Word2 (Memory Related Info.)
+namespace MEM2 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM2, 32, 0> BITS;
+}  // namespace MEM2
+
+// Value of OTP Bank1 Word3 (Memory Related Info.)
+namespace MEM3 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM3, 32, 0> BITS;
+}  // namespace MEM3
+
+// Value of OTP Bank1 Word4 (Memory Related Info.)
+namespace MEM4 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM4, 32, 0> BITS;
+}  // namespace MEM4
+
+// Value of OTP Bank1 Word5 (Analog Info.)
+namespace ANA0 {
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA0, 32, 0> BITS;
+}  // namespace ANA0
+
+// Value of OTP Bank1 Word6 (Analog Info.)
+namespace ANA1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA1, 32, 0> BITS;
+}  // namespace ANA1
+
+// Value of OTP Bank1 Word7 (Analog Info.)
+namespace ANA2 {
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA2, 32, 0> BITS;
+}  // namespace ANA2
+
+// Shadow Register for OTP Bank3 Word0 (SRK Hash)
+namespace SRK0 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK0, 32, 0> BITS;
+}  // namespace SRK0
+
+// Shadow Register for OTP Bank3 Word1 (SRK Hash)
+namespace SRK1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK1, 32, 0> BITS;
+}  // namespace SRK1
+
+// Shadow Register for OTP Bank3 Word2 (SRK Hash)
+namespace SRK2 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK2, 32, 0> BITS;
+}  // namespace SRK2
+
+// Shadow Register for OTP Bank3 Word3 (SRK Hash)
+namespace SRK3 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK3, 32, 0> BITS;
+}  // namespace SRK3
+
+// Shadow Register for OTP Bank3 Word4 (SRK Hash)
+namespace SRK4 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK4, 32, 0> BITS;
+}  // namespace SRK4
+
+// Shadow Register for OTP Bank3 Word5 (SRK Hash)
+namespace SRK5 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK5, 32, 0> BITS;
+}  // namespace SRK5
+
+// Shadow Register for OTP Bank3 Word6 (SRK Hash)
+namespace SRK6 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK6, 32, 0> BITS;
+}  // namespace SRK6
+
+// Shadow Register for OTP Bank3 Word7 (SRK Hash)
+namespace SRK7 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK7, 32, 0> BITS;
+}  // namespace SRK7
+
+// Value of OTP Bank4 Word0 (Secure JTAG Response Field)
+namespace SJC_RESP0 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SJC_RESP0, 32, 0> BITS;
+}  // namespace SJC_RESP0
+
+// Value of OTP Bank4 Word1 (Secure JTAG Response Field)
+namespace SJC_RESP1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SJC_RESP1, 32, 0> BITS;
+}  // namespace SJC_RESP1
+
+// Value of OTP Bank4 Word2 (MAC Address)
+namespace MAC0 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MAC0, 32, 0> BITS;
+}  // namespace MAC0
+
+// Value of OTP Bank4 Word3 (MAC Address)
+namespace MAC1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MAC1, 32, 0> BITS;
+}  // namespace MAC1
+
+// Value of OTP Bank4 Word4 (MAC2 Address)
+namespace MAC2 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MAC2, 32, 0> BITS;
+}  // namespace MAC2
+
+// Value of OTP Bank4 Word6 (General Purpose Customer Defined Info)
+namespace GP1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP1, 32, 0> BITS;
+}  // namespace GP1
+
+// Value of OTP Bank4 Word7 (General Purpose Customer Defined Info)
+namespace GP2 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP2, 32, 0> BITS;
+}  // namespace GP2
+
+// Value of OTP Bank5 Word0 (SW GP1)
+namespace SW_GP1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP1, 32, 0> BITS;
+}  // namespace SW_GP1
+
+// Value of OTP Bank5 Word1 (SW GP2)
+namespace SW_GP20 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP20, 32, 0> BITS;
+}  // namespace SW_GP20
+
+// Value of OTP Bank5 Word2 (SW GP2)
+namespace SW_GP21 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP21, 32, 0> BITS;
+}  // namespace SW_GP21
+
+// Value of OTP Bank5 Word3 (SW GP2)
+namespace SW_GP22 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP22, 32, 0> BITS;
+}  // namespace SW_GP22
+
+// Value of OTP Bank5 Word4 (SW GP2)
+namespace SW_GP23 {
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP23, 32, 0> BITS;
+}  // namespace SW_GP23
+
+// Value of OTP Bank5 Word5 (Misc Conf)
+namespace MISC_CONF0 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MISC_CONF0, 32, 0> BITS;
+}  // namespace MISC_CONF0
+
+// Value of OTP Bank5 Word6 (Misc Conf)
+namespace MISC_CONF1 {
+constexpr OCOTP_Reg<&OCOTP_Layout::MISC_CONF1, 32, 0> BITS;
+}  // namespace MISC_CONF1
+
+// Value of OTP Bank5 Word7 (SRK Revoke)
+namespace SRK_REVOKE {
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK_REVOKE, 32, 0> BITS;
+}  // namespace SRK_REVOKE
+
+// Value of OTP Bank7 Word0 (GP3)
+namespace GP30 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP30, 32, 0> BITS;
+}  // namespace GP30
+
+// Value of OTP Bank7 Word1 (GP3)
+namespace GP31 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP31, 32, 0> BITS;
+}  // namespace GP31
+
+// Value of OTP Bank7 Word2 (GP3)
+namespace GP32 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP32, 32, 0> BITS;
+}  // namespace GP32
+
+// Value of OTP Bank7 Word3 (GP3)
+namespace GP33 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP33, 32, 0> BITS;
+}  // namespace GP33
+
+// Value of OTP Bank7 Word4 (GP4)
+namespace GP40 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP40, 32, 0> BITS;
+}  // namespace GP40
+
+// Value of OTP Bank7 Word5 (GP4)
+namespace GP41 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP41, 32, 0> BITS;
+}  // namespace GP41
+
+// Value of OTP Bank7 Word6 (GP4)
+namespace GP42 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP42, 32, 0> BITS;
+}  // namespace GP42
+
+// Value of OTP Bank7 Word7 (GP4)
+namespace GP43 {
+constexpr OCOTP_Reg<&OCOTP_Layout::GP43, 32, 0> BITS;
+}  // namespace GP43
 
 }  // namespace OCOTP
 

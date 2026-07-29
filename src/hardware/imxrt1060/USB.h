@@ -103,6 +103,16 @@ template <auto Member, size_t Bits, unsigned int Shift,
 using USB1_Reg =
     regs::Reg32<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
+template <auto Member, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+using USB1_Reg8 =
+    regs::Reg8<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+using USB1_Reg16 =
+    regs::Reg16<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
+
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
@@ -219,6 +229,20 @@ constexpr USB1_Reg<&USB_Layout::SBUSCFG, 3, 0> AHBBRST;
     // 0b111..INCR16 burst, INCR8 burst, INCR4 burst, then incremental burst of unspecified length
 }  // namespace SBUSCFG
 
+// USB1 Capability Registers Length
+namespace CAPLENGTH {
+constexpr USB1_Reg8<&USB_Layout::CAPLENGTH, 8, 0> CAPLENGTH;
+    // These bits are used as an offset to add to register base to find the
+    // beginning of the Operational Register
+}  // namespace CAPLENGTH
+
+// USB1 Host Controller Interface Version
+namespace HCIVERSION {
+constexpr USB1_Reg16<&USB_Layout::HCIVERSION, 16, 0> HCIVERSION;
+    // Host Controller Interface Version Number Default value is '10h', which
+    // means EHCI rev1.0.
+}  // namespace HCIVERSION
+
 // USB1 Host Controller Structural Parameters
 namespace HCSPARAMS {
 constexpr USB1_Reg<&USB_Layout::HCSPARAMS, 4, 24> N_TT;
@@ -240,6 +264,12 @@ constexpr USB1_Reg<&USB_Layout::HCCPARAMS, 1, 2> ASP;
 constexpr USB1_Reg<&USB_Layout::HCCPARAMS, 1, 1> PFL;
 constexpr USB1_Reg<&USB_Layout::HCCPARAMS, 1, 0> ADC;
 }  // namespace HCCPARAMS
+
+// USB1 Device Controller Interface Version
+namespace DCIVERSION {
+constexpr USB1_Reg16<&USB_Layout::DCIVERSION, 16, 0> DCIVERSION;
+    // Device Controller Interface Version Number Default value is '01h', which means rev0.1.
+}  // namespace DCIVERSION
 
 // USB1 Device Controller Capability Parameters
 namespace DCCPARAMS {
@@ -564,6 +594,16 @@ template <auto Member, size_t Bits, unsigned int Shift,
 using USB2_Reg =
     regs::Reg32<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
+template <auto Member, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+using USB2_Reg8 =
+    regs::Reg8<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
+
+template <auto Member, size_t Bits, unsigned int Shift,
+          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+using USB2_Reg16 =
+    regs::Reg16<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
+
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
@@ -640,6 +680,16 @@ namespace SBUSCFG {
 constexpr USB2_Reg<&USB_Layout::SBUSCFG, 3, 0> AHBBRST;
 }  // namespace SBUSCFG
 
+// USB2 Capability Registers Length
+namespace CAPLENGTH {
+constexpr USB2_Reg8<&USB_Layout::CAPLENGTH, 8, 0> CAPLENGTH;
+}  // namespace CAPLENGTH
+
+// USB2 Host Controller Interface Version
+namespace HCIVERSION {
+constexpr USB2_Reg16<&USB_Layout::HCIVERSION, 16, 0> HCIVERSION;
+}  // namespace HCIVERSION
+
 // USB2 Host Controller Structural Parameters
 namespace HCSPARAMS {
 constexpr USB2_Reg<&USB_Layout::HCSPARAMS, 4, 24> N_TT;
@@ -659,6 +709,11 @@ constexpr USB2_Reg<&USB_Layout::HCCPARAMS, 1, 2> ASP;
 constexpr USB2_Reg<&USB_Layout::HCCPARAMS, 1, 1> PFL;
 constexpr USB2_Reg<&USB_Layout::HCCPARAMS, 1, 0> ADC;
 }  // namespace HCCPARAMS
+
+// USB2 Device Controller Interface Version
+namespace DCIVERSION {
+constexpr USB2_Reg16<&USB_Layout::DCIVERSION, 16, 0> DCIVERSION;
+}  // namespace DCIVERSION
 
 // USB2 Device Controller Capability Parameters
 namespace DCCPARAMS {

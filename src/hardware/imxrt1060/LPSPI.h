@@ -244,6 +244,16 @@ constexpr LPSPI1_Reg<&LPSPI_Layout::CFGR1, 1,  0> MASTER;   // Master Mode
     // 0b1..Master mode
 }  // namespace CFGR1
 
+// Data Match 0
+namespace DMR0 {
+constexpr LPSPI1_Reg<&LPSPI_Layout::DMR0, 32, 0> MATCH0;  // Match 0 Value
+}  // namespace DMR0
+
+// Data Match 1
+namespace DMR1 {
+constexpr LPSPI1_Reg<&LPSPI_Layout::DMR1, 32, 0> MATCH1;  // Match 1 Value
+}  // namespace DMR1
+
 // Clock Configuration
 namespace CCR {
 constexpr LPSPI1_Reg<&LPSPI_Layout::CCR, 8, 24> SCKPCS;  // SCK-to-PCS Delay
@@ -326,6 +336,11 @@ constexpr LPSPI1_Reg<&LPSPI_Layout::RSR, 1, 0> SOF;      // Start Of Frame
     // 0b0..Subsequent data word received after PCS assertion
     // 0b1..First data word received after PCS assertion
 }  // namespace RSR
+
+// Receive Data
+namespace RDR {
+constexpr LPSPI1_Reg<&LPSPI_Layout::RDR, 32, 0> DATA;  // Receive Data
+}  // namespace RDR
 
 }  // namespace LPSPI1
 
@@ -417,6 +432,16 @@ constexpr LPSPI2_Reg<&LPSPI_Layout::CFGR1, 1,  1> SAMPLE;
 constexpr LPSPI2_Reg<&LPSPI_Layout::CFGR1, 1,  0> MASTER;
 }  // namespace CFGR1
 
+// Data Match 0
+namespace DMR0 {
+constexpr LPSPI2_Reg<&LPSPI_Layout::DMR0, 32, 0> MATCH0;
+}  // namespace DMR0
+
+// Data Match 1
+namespace DMR1 {
+constexpr LPSPI2_Reg<&LPSPI_Layout::DMR1, 32, 0> MATCH1;
+}  // namespace DMR1
+
 // Clock Configuration
 namespace CCR {
 constexpr LPSPI2_Reg<&LPSPI_Layout::CCR, 8, 24> SCKPCS;
@@ -463,6 +488,11 @@ namespace RSR {
 constexpr LPSPI2_Reg<&LPSPI_Layout::RSR, 1, 1> RXEMPTY;
 constexpr LPSPI2_Reg<&LPSPI_Layout::RSR, 1, 0> SOF;
 }  // namespace RSR
+
+// Receive Data
+namespace RDR {
+constexpr LPSPI2_Reg<&LPSPI_Layout::RDR, 32, 0> DATA;
+}  // namespace RDR
 
 }  // namespace LPSPI2
 
@@ -554,6 +584,16 @@ constexpr LPSPI3_Reg<&LPSPI_Layout::CFGR1, 1,  1> SAMPLE;
 constexpr LPSPI3_Reg<&LPSPI_Layout::CFGR1, 1,  0> MASTER;
 }  // namespace CFGR1
 
+// Data Match 0
+namespace DMR0 {
+constexpr LPSPI3_Reg<&LPSPI_Layout::DMR0, 32, 0> MATCH0;
+}  // namespace DMR0
+
+// Data Match 1
+namespace DMR1 {
+constexpr LPSPI3_Reg<&LPSPI_Layout::DMR1, 32, 0> MATCH1;
+}  // namespace DMR1
+
 // Clock Configuration
 namespace CCR {
 constexpr LPSPI3_Reg<&LPSPI_Layout::CCR, 8, 24> SCKPCS;
@@ -600,6 +640,11 @@ namespace RSR {
 constexpr LPSPI3_Reg<&LPSPI_Layout::RSR, 1, 1> RXEMPTY;
 constexpr LPSPI3_Reg<&LPSPI_Layout::RSR, 1, 0> SOF;
 }  // namespace RSR
+
+// Receive Data
+namespace RDR {
+constexpr LPSPI3_Reg<&LPSPI_Layout::RDR, 32, 0> DATA;
+}  // namespace RDR
 
 }  // namespace LPSPI3
 
@@ -691,6 +736,16 @@ constexpr LPSPI4_Reg<&LPSPI_Layout::CFGR1, 1,  1> SAMPLE;
 constexpr LPSPI4_Reg<&LPSPI_Layout::CFGR1, 1,  0> MASTER;
 }  // namespace CFGR1
 
+// Data Match 0
+namespace DMR0 {
+constexpr LPSPI4_Reg<&LPSPI_Layout::DMR0, 32, 0> MATCH0;
+}  // namespace DMR0
+
+// Data Match 1
+namespace DMR1 {
+constexpr LPSPI4_Reg<&LPSPI_Layout::DMR1, 32, 0> MATCH1;
+}  // namespace DMR1
+
 // Clock Configuration
 namespace CCR {
 constexpr LPSPI4_Reg<&LPSPI_Layout::CCR, 8, 24> SCKPCS;
@@ -737,6 +792,11 @@ namespace RSR {
 constexpr LPSPI4_Reg<&LPSPI_Layout::RSR, 1, 1> RXEMPTY;
 constexpr LPSPI4_Reg<&LPSPI_Layout::RSR, 1, 0> SOF;
 }  // namespace RSR
+
+// Receive Data
+namespace RDR {
+constexpr LPSPI4_Reg<&LPSPI_Layout::RDR, 32, 0> DATA;
+}  // namespace RDR
 
 }  // namespace LPSPI4
 

@@ -228,6 +228,16 @@ constexpr CSI_Reg<&CSI_Layout::CR3,  1,  0> ECC_AUTO_EN;
     // 0b1..Auto Error correction is enabled.
 }  // namespace CR3
 
+// Statistic FIFO Register
+namespace STATFIFO {
+constexpr CSI_Reg<&CSI_Layout::STATFIFO, 32, 0> STAT;
+}  // namespace STATFIFO
+
+// RX FIFO Register
+namespace RFIFO {
+constexpr CSI_Reg<&CSI_Layout::RFIFO, 32, 0> IMAGE;
+}  // namespace RFIFO
+
 // RX Count Register
 namespace RXCNT {
 constexpr CSI_Reg<&CSI_Layout::RXCNT, 22,  0> RXCNT;
@@ -289,6 +299,11 @@ constexpr CSI_Reg<regs::constify(&CSI_Layout::SR), 1,  0> DRDY;
 namespace DMASA_STATFIFO {
 constexpr CSI_Reg<&CSI_Layout::DMASA_STATFIFO, 30, 2> DMA_START_ADDR_SFF;
 }  // namespace DMASA_STATFIFO
+
+// DMA Transfer Size Register - for STATFIFO
+namespace DMATS_STATFIFO {
+constexpr CSI_Reg<&CSI_Layout::DMATS_STATFIFO, 32, 0> DMA_TSF_SIZE_SFF;
+}  // namespace DMATS_STATFIFO
 
 // DMA Start Address Register - for Frame Buffer1
 namespace DMASA_FB1 {

@@ -236,6 +236,11 @@ constexpr FLEXIO1_Reg<&FLEXIO_Layout::CTRL, 1,  0> FLEXEN;   // FlexIO Enable
     // 0b1..FlexIO module is enabled.
 }  // namespace CTRL
 
+// Pin State Register
+namespace PIN {
+constexpr FLEXIO1_Reg<&FLEXIO_Layout::PIN, 16, 0> PDI;  // Pin Data Input
+}  // namespace PIN
+
 // Shifter Status Register
 namespace SHIFTSTAT {
 constexpr FLEXIO1_Reg<&FLEXIO_Layout::SHIFTSTAT, 8, 0, 0x0> SSF;  // Shifter Status Flag
@@ -337,6 +342,30 @@ constexpr SHIFTCFG_Reg<Index, 2,  0> SSTART;  // Shifter Start bit
     //     error flag if start bit is not 1
 }  // namespace SHIFTCFG
 
+// Shifter Buffer N Register
+namespace SHIFTBUF {
+template <size_t Index>
+constexpr SHIFTBUF_Reg<Index, 32, 0> SHIFTBUF;  // Shift Buffer
+}  // namespace SHIFTBUF
+
+// Shifter Buffer N Bit Swapped Register
+namespace SHIFTBUFBIS {
+template <size_t Index>
+constexpr SHIFTBUFBIS_Reg<Index, 32, 0> SHIFTBUFBIS;  // Shift Buffer
+}  // namespace SHIFTBUFBIS
+
+// Shifter Buffer N Byte Swapped Register
+namespace SHIFTBUFBYS {
+template <size_t Index>
+constexpr SHIFTBUFBYS_Reg<Index, 32, 0> SHIFTBUFBYS;  // Shift Buffer
+}  // namespace SHIFTBUFBYS
+
+// Shifter Buffer N Bit Byte Swapped Register
+namespace SHIFTBUFBBS {
+template <size_t Index>
+constexpr SHIFTBUFBBS_Reg<Index, 32, 0> SHIFTBUFBBS;  // Shift Buffer
+}  // namespace SHIFTBUFBBS
+
 // Timer Control N Register
 namespace TIMCTL {
 template <size_t Index>
@@ -430,6 +459,24 @@ namespace TIMCMP {
 template <size_t Index>
 constexpr TIMCMP_Reg<Index, 16, 0> CMP;  // Timer Compare Value
 }  // namespace TIMCMP
+
+// Shifter Buffer N Nibble Byte Swapped Register
+namespace SHIFTBUFNBS {
+template <size_t Index>
+constexpr SHIFTBUFNBS_Reg<Index, 32, 0> SHIFTBUFNBS;  // Shift Buffer
+}  // namespace SHIFTBUFNBS
+
+// Shifter Buffer N Half Word Swapped Register
+namespace SHIFTBUFHWS {
+template <size_t Index>
+constexpr SHIFTBUFHWS_Reg<Index, 32, 0> SHIFTBUFHWS;  // Shift Buffer
+}  // namespace SHIFTBUFHWS
+
+// Shifter Buffer N Nibble Swapped Register
+namespace SHIFTBUFNIS {
+template <size_t Index>
+constexpr SHIFTBUFNIS_Reg<Index, 32, 0> SHIFTBUFNIS;  // Shift Buffer
+}  // namespace SHIFTBUFNIS
 
 }  // namespace FLEXIO1
 
@@ -561,6 +608,11 @@ constexpr FLEXIO2_Reg<&FLEXIO_Layout::CTRL, 1,  1> SWRST;
 constexpr FLEXIO2_Reg<&FLEXIO_Layout::CTRL, 1,  0> FLEXEN;
 }  // namespace CTRL
 
+// Pin State Register
+namespace PIN {
+constexpr FLEXIO2_Reg<&FLEXIO_Layout::PIN, 32, 0> PDI;
+}  // namespace PIN
+
 // Shifter Status Register
 namespace SHIFTSTAT {
 constexpr FLEXIO2_Reg<&FLEXIO_Layout::SHIFTSTAT, 8, 0, 0x0> SSF;
@@ -629,6 +681,30 @@ template <size_t Index>
 constexpr SHIFTCFG_Reg<Index, 2,  0> SSTART;
 }  // namespace SHIFTCFG
 
+// Shifter Buffer N Register
+namespace SHIFTBUF {
+template <size_t Index>
+constexpr SHIFTBUF_Reg<Index, 32, 0> SHIFTBUF;
+}  // namespace SHIFTBUF
+
+// Shifter Buffer N Bit Swapped Register
+namespace SHIFTBUFBIS {
+template <size_t Index>
+constexpr SHIFTBUFBIS_Reg<Index, 32, 0> SHIFTBUFBIS;
+}  // namespace SHIFTBUFBIS
+
+// Shifter Buffer N Byte Swapped Register
+namespace SHIFTBUFBYS {
+template <size_t Index>
+constexpr SHIFTBUFBYS_Reg<Index, 32, 0> SHIFTBUFBYS;
+}  // namespace SHIFTBUFBYS
+
+// Shifter Buffer N Bit Byte Swapped Register
+namespace SHIFTBUFBBS {
+template <size_t Index>
+constexpr SHIFTBUFBBS_Reg<Index, 32, 0> SHIFTBUFBBS;
+}  // namespace SHIFTBUFBBS
+
 // Timer Control N Register
 namespace TIMCTL {
 template <size_t Index>
@@ -670,6 +746,24 @@ namespace TIMCMP {
 template <size_t Index>
 constexpr TIMCMP_Reg<Index, 16, 0> CMP;
 }  // namespace TIMCMP
+
+// Shifter Buffer N Nibble Byte Swapped Register
+namespace SHIFTBUFNBS {
+template <size_t Index>
+constexpr SHIFTBUFNBS_Reg<Index, 32, 0> SHIFTBUFNBS;
+}  // namespace SHIFTBUFNBS
+
+// Shifter Buffer N Half Word Swapped Register
+namespace SHIFTBUFHWS {
+template <size_t Index>
+constexpr SHIFTBUFHWS_Reg<Index, 32, 0> SHIFTBUFHWS;
+}  // namespace SHIFTBUFHWS
+
+// Shifter Buffer N Nibble Swapped Register
+namespace SHIFTBUFNIS {
+template <size_t Index>
+constexpr SHIFTBUFNIS_Reg<Index, 32, 0> SHIFTBUFNIS;
+}  // namespace SHIFTBUFNIS
 
 }  // namespace FLEXIO2
 
@@ -801,6 +895,11 @@ constexpr FLEXIO3_Reg<&FLEXIO_Layout::CTRL, 1,  1> SWRST;
 constexpr FLEXIO3_Reg<&FLEXIO_Layout::CTRL, 1,  0> FLEXEN;
 }  // namespace CTRL
 
+// Pin State Register
+namespace PIN {
+constexpr FLEXIO3_Reg<&FLEXIO_Layout::PIN, 32, 0> PDI;
+}  // namespace PIN
+
 // Shifter Status Register
 namespace SHIFTSTAT {
 constexpr FLEXIO3_Reg<&FLEXIO_Layout::SHIFTSTAT, 8, 0, 0x0> SSF;
@@ -869,6 +968,30 @@ template <size_t Index>
 constexpr SHIFTCFG_Reg<Index, 2,  0> SSTART;
 }  // namespace SHIFTCFG
 
+// Shifter Buffer N Register
+namespace SHIFTBUF {
+template <size_t Index>
+constexpr SHIFTBUF_Reg<Index, 32, 0> SHIFTBUF;
+}  // namespace SHIFTBUF
+
+// Shifter Buffer N Bit Swapped Register
+namespace SHIFTBUFBIS {
+template <size_t Index>
+constexpr SHIFTBUFBIS_Reg<Index, 32, 0> SHIFTBUFBIS;
+}  // namespace SHIFTBUFBIS
+
+// Shifter Buffer N Byte Swapped Register
+namespace SHIFTBUFBYS {
+template <size_t Index>
+constexpr SHIFTBUFBYS_Reg<Index, 32, 0> SHIFTBUFBYS;
+}  // namespace SHIFTBUFBYS
+
+// Shifter Buffer N Bit Byte Swapped Register
+namespace SHIFTBUFBBS {
+template <size_t Index>
+constexpr SHIFTBUFBBS_Reg<Index, 32, 0> SHIFTBUFBBS;
+}  // namespace SHIFTBUFBBS
+
 // Timer Control N Register
 namespace TIMCTL {
 template <size_t Index>
@@ -910,6 +1033,24 @@ namespace TIMCMP {
 template <size_t Index>
 constexpr TIMCMP_Reg<Index, 16, 0> CMP;
 }  // namespace TIMCMP
+
+// Shifter Buffer N Nibble Byte Swapped Register
+namespace SHIFTBUFNBS {
+template <size_t Index>
+constexpr SHIFTBUFNBS_Reg<Index, 32, 0> SHIFTBUFNBS;
+}  // namespace SHIFTBUFNBS
+
+// Shifter Buffer N Half Word Swapped Register
+namespace SHIFTBUFHWS {
+template <size_t Index>
+constexpr SHIFTBUFHWS_Reg<Index, 32, 0> SHIFTBUFHWS;
+}  // namespace SHIFTBUFHWS
+
+// Shifter Buffer N Nibble Swapped Register
+namespace SHIFTBUFNIS {
+template <size_t Index>
+constexpr SHIFTBUFNIS_Reg<Index, 32, 0> SHIFTBUFNIS;
+}  // namespace SHIFTBUFNIS
 
 }  // namespace FLEXIO3
 

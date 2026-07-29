@@ -77,7 +77,29 @@ constexpr PIT_Reg<&PIT_Layout::MCR, 1, 0> FRZ;  // Freeze
     // 0b1..Timers are stopped in Debug mode.
 }  // namespace MCR
 
+// PIT Upper Lifetime Timer Register
+namespace LTMR64H {
+constexpr PIT_Reg<&PIT_Layout::LTMR64H, 32, 0> LTH;  // Life Timer value
+}  // namespace LTMR64H
+
+// PIT Lower Lifetime Timer Register
+namespace LTMR64L {
+constexpr PIT_Reg<&PIT_Layout::LTMR64L, 32, 0> LTL;  // Life Timer value
+}  // namespace LTMR64L
+
 namespace CHANNEL {
+
+// Timer Load Value Register
+namespace LDVAL {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::LDVAL, 32, 0> TSV;  // Timer Start Value
+}  // namespace LDVAL
+
+// Current Timer Value Register
+namespace CVAL {
+template <size_t Index>
+constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::CVAL, 32, 0> TVL;  // Current Timer Value
+}  // namespace CVAL
 
 // Timer Control Register
 namespace TCTRL {

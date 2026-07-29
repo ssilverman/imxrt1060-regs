@@ -1300,6 +1300,18 @@ constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI28), 2, 4> GRPPRI;  // Chan
 constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 4, 0> CHPRI;   // Channel n Arbitration Priority
 }  // namespace DCHPRI28
 
+// TCD Source Address values
+namespace SADDR {
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::SADDR, 32, 0> SADDR;  // Source Address
+}  // namespace SADDR
+
+// TCD Signed Source Address Offset values
+namespace SOFF {
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::SOFF, 16, 0> SOFF;  // Source address signed offset
+}  // namespace SOFF
+
 // TCD Transfer Attributes values
 namespace ATTR {
 template <size_t Index>
@@ -1321,6 +1333,12 @@ constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 5,  3> DMOD;    // Des
 template <size_t Index>
 constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  0> DSIZE;   // Destination data transfer size
 }  // namespace ATTR
+
+// TCD Minor Byte Count (Minor Loop Mapping Disabled) values
+namespace NBYTES_MLNO {
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLNO, 32, 0> NBYTES;  // Minor Byte Transfer Count
+}  // namespace NBYTES_MLNO
 
 // TCD Signed Minor Loop Offset (Minor Loop Mapping Enabled and Offset Disabled) values
 namespace NBYTES_MLOFFNO {
@@ -1353,6 +1371,18 @@ constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES, 20, 10> MLO
 template <size_t Index>
 constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES, 10,  0> NBYTES;  // Minor Byte Transfer Count
 }  // namespace NBYTES_MLOFFYES
+
+// TCD Destination Address values
+namespace DADDR {
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::DADDR, 32, 0> DADDR;  // Destination Address
+}  // namespace DADDR
+
+// TCD Signed Destination Address Offset values
+namespace DOFF {
+template <size_t Index>
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::DOFF, 16, 0> DOFF;  // Destination Address Signed Offset
+}  // namespace DOFF
 
 // TCD Current Minor Loop Link, Major Loop Count (Channel Linking Disabled) values
 namespace CITER_ELINKNO {
