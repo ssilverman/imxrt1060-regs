@@ -46,6 +46,7 @@ namespace DCB {
 // DCB Debug Halting Control and Status Register Definitions
 // Exercise caution when setting or assigning fields in this register.
 namespace DHCSR {
+// TODO: Is this correct?
 constexpr uint32_t kWO = 0xffff'0000;
 
 constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, kWO, true> DBGKEY;       // Debug key
