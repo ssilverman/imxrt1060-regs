@@ -407,7 +407,7 @@ constexpr CAN1_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
 
 // Interrupt Flags 2 register
 namespace IFLAG2 {
-constexpr CAN1_Reg<&CAN_Layout::IFLAG2, 32, 0> BUF63TO32I;  // Buffer MBi Interrupt
+constexpr CAN1_Reg<&CAN_Layout::IFLAG2, 32, 0, 0x0> BUF63TO32I;  // Buffer MBi Interrupt
 }  // namespace IFLAG2
 
 // Interrupt Flags 1 Register
@@ -662,7 +662,7 @@ constexpr CAN2_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
 
 // CAN2 Interrupt Flags 2 register
 namespace IFLAG2 {
-constexpr CAN2_Reg<&CAN_Layout::IFLAG2, 32, 0> BUF63TO32I;  // Buffer MBi Interrupt
+constexpr CAN2_Reg<&CAN_Layout::IFLAG2, 32, 0, 0x0> BUF63TO32I;  // Buffer MBi Interrupt
 }  // namespace IFLAG2
 
 // CAN2 Interrupt Flags 1 Register
@@ -871,7 +871,7 @@ constexpr CAN3_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
 
 // CAN3 Interrupt Flags 2 register
 namespace IFLAG2 {
-constexpr CAN3_Reg<&CAN_Layout::IFLAG2, 32, 0> BUF63TO32I;  // Buffer MBi Interrupt
+constexpr CAN3_Reg<&CAN_Layout::IFLAG2, 32, 0, 0x0> BUF63TO32I;  // Buffer MBi Interrupt
 }  // namespace IFLAG2
 
 // CAN3 Interrupt Flags 1 Register
@@ -1020,7 +1020,8 @@ constexpr regs::RegValue32< 3, 29> PRIO;  // R/O, Local priority.
     //   makes sense for Tx buffers. These bits are not transmitted. They are appended to the regular
     //   ID to define the transmission priority.
 constexpr regs::RegValue32<11, 18> STD;  // Contains standard/extended (HIGH word) identifier of message buffer.
-constexpr regs::RegValue32<29,  0> EXT;  // Contains extended (LOW word) identifier of message buffer.
+constexpr regs::RegValue32<18,  0> EXT;  // Contains extended (LOW word) identifier of message buffer.
+constexpr regs::RegValue32<29,  0> EXT_complete;  // Contains the whole extended identifier
     // Note: EXT overlaps STD intentionally
 }  // namespace ID
 
