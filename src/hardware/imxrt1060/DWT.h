@@ -130,11 +130,11 @@ constexpr DWT_Reg<&DWT_Layout::MASK0, 5, 0> MASK;
 
 // DWT Comparator Function Register Definitions
 namespace FUNCTION0 {
-constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 1, 24> MATCHED;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION0), 1, 24> MATCHED;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 4, 16> DATAVADDR1;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 4, 12> DATAVADDR0;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 2, 10> DATAVSIZE;
-constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 1,  9> LNK1ENA;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION0), 1,  9> LNK1ENA;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 1,  8> DATAVMATCH;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 1,  7> CYCMATCH;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION0, 1,  5> EMITRANGE;
@@ -153,13 +153,12 @@ constexpr DWT_Reg<&DWT_Layout::MASK1, 5, 0> MASK;
 
 // DWT Comparator Function Register Definitions
 namespace FUNCTION1 {
-constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 1, 24> MATCHED;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION1), 1, 24> MATCHED;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 4, 16> DATAVADDR1;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 4, 12> DATAVADDR0;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 2, 10> DATAVSIZE;
-constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 1,  9> LNK1ENA;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION1), 1,  9> LNK1ENA;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 1,  8> DATAVMATCH;
-constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 1,  7> CYCMATCH;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 1,  5> EMITRANGE;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION1, 4,  0> FUNCTION;
 }  // namespace FUNCTION1
@@ -176,13 +175,12 @@ constexpr DWT_Reg<&DWT_Layout::MASK2, 5, 0> MASK;
 
 // DWT Comparator Function Register Definitions
 namespace FUNCTION2 {
-constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 1, 24> MATCHED;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION2), 1, 24> MATCHED;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 4, 16> DATAVADDR1;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 4, 12> DATAVADDR0;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 2, 10> DATAVSIZE;
-constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 1,  9> LNK1ENA;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION2), 1,  9> LNK1ENA;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 1,  8> DATAVMATCH;
-constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 1,  7> CYCMATCH;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 1,  5> EMITRANGE;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION2, 4,  0> FUNCTION;
 }  // namespace FUNCTION2
@@ -199,13 +197,12 @@ constexpr DWT_Reg<&DWT_Layout::MASK3, 5, 0> MASK;
 
 // DWT Comparator Function Register Definitions
 namespace FUNCTION3 {
-constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 1, 24> MATCHED;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION3), 1, 24> MATCHED;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 4, 16> DATAVADDR1;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 4, 12> DATAVADDR0;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 2, 10> DATAVSIZE;
-constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 1,  9> LNK1ENA;
+constexpr DWT_Reg<regs::constify(&DWT_Layout::FUNCTION3), 1,  9> LNK1ENA;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 1,  8> DATAVMATCH;
-constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 1,  7> CYCMATCH;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 1,  5> EMITRANGE;
 constexpr DWT_Reg<&DWT_Layout::FUNCTION3, 4,  0> FUNCTION;
 }  // namespace FUNCTION3
