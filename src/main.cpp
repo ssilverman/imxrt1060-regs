@@ -159,7 +159,7 @@ static void enable_enet_clocks() {
   CCM::CCGR1::ENET = CCM::CCGR::kON;
 
   // Configure PLL6 for 50 MHz (page 1112)
-  CCM_ANALOG::group->PLL_ENET_SET = CCM_ANALOG::PLL_ENET::BYPASS(1);
+  CCM_ANALOG::PLL_ENET_SET::BYPASS = 1;
   CCM_ANALOG::group->PLL_ENET_CLR = 0
                                     | CCM_ANALOG::PLL_ENET::BYPASS_CLK_SRC(3)
                                     | CCM_ANALOG::PLL_ENET::ENET2_DIV_SELECT(3)
@@ -170,16 +170,19 @@ static void enable_enet_clocks() {
                                     | CCM_ANALOG::PLL_ENET::ENABLE(1)
                                     // | CCM_ANALOG::PLL_ENET::ENET2_DIV_SELECT(1)
                                     | CCM_ANALOG::PLL_ENET::DIV_SELECT(1);
-  CCM_ANALOG::group->PLL_ENET_CLR = CCM_ANALOG::PLL_ENET::POWERDOWN(1);
+  CCM_ANALOG::PLL_ENET_CLR::POWERDOWN = 1;
   while (CCM_ANALOG::PLL_ENET::LOCK == 0) {
     // Wait for PLL lock
   }
-  CCM_ANALOG::group->PLL_ENET_CLR = CCM_ANALOG::PLL_ENET::BYPASS(1);
+  CCM_ANALOG::PLL_ENET_CLR::BYPASS = 1;
 
   // Configure REFCLK to be driven as output by PLL6 (page 325)
   IOMUXC_GPR::GPR1::ENET1_CLK_SEL     = 0;
-  IOMUXC_GPR::GPR1::ENET_IPG_CLK_S_EN = 1;
-  IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR  = 1;
+  IOMUXC_GPR::group->GPR1 |= IOMUXC_GPR::GPR1::ENET_IPG_CLK_S_EN(1) |
+                             IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR(1);
+  // Alternative:
+  // IOMUXC_GPR::GPR1::ENET_IPG_CLK_S_EN = 1;
+  // IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR  = 1;
 #else
   // Enable the Ethernet clock
   CCM_CCGR1 |= CCM_CCGR1_ENET(CCM_CCGR_ON);
@@ -220,7 +223,7 @@ static void disable_enet_clocks() {
   IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR = 0;
 
   // Stop the PLL (first bypassing)
-  CCM_ANALOG::group->PLL_ENET_SET = CCM_ANALOG::PLL_ENET::BYPASS(1);
+  CCM_ANALOG::PLL_ENET_SET::BYPASS = 1;
   CCM_ANALOG::group->PLL_ENET = 0
                                 | CCM_ANALOG::PLL_ENET::BYPASS(1)  // Reset to default
                                 | CCM_ANALOG::PLL_ENET::POWERDOWN(1)
