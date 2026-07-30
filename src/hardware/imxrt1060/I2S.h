@@ -564,15 +564,15 @@ constexpr I2S2_Reg<&I2S_Layout::TCR2, 8,  0> DIV;
 
 // Transmit Configuration 3
 namespace TCR3 {
-constexpr I2S2_Reg<&I2S_Layout::TCR3, 4, 24> CFR;
-constexpr I2S2_Reg<&I2S_Layout::TCR3, 4, 16> TCE;
+// CFR not in SAI2
+constexpr I2S2_Reg<&I2S_Layout::TCR3, 1, 16> TCE;  // Different than I2S1
 constexpr I2S2_Reg<&I2S_Layout::TCR3, 5,  0> WDFL;
 }  // namespace TCR3
 
 // Transmit Configuration 4
 namespace TCR4 {
 constexpr I2S2_Reg<&I2S_Layout::TCR4, 1, 28> FCONT;
-constexpr I2S2_Reg<&I2S_Layout::TCR4, 2, 26> FCOMB;
+// FCOMB not in SAI2
 constexpr I2S2_Reg<&I2S_Layout::TCR4, 2, 24> FPACK;
 constexpr I2S2_Reg<&I2S_Layout::TCR4, 5, 16> FRSZ;
 constexpr I2S2_Reg<&I2S_Layout::TCR4, 5,  8> SYWD;
@@ -655,15 +655,15 @@ constexpr I2S2_Reg<&I2S_Layout::RCR2, 8,  0> DIV;
 
 // Receive Configuration 3
 namespace RCR3 {
-constexpr I2S2_Reg<&I2S_Layout::RCR3, 4, 24> CFR;
-constexpr I2S2_Reg<&I2S_Layout::RCR3, 4, 16> RCE;
+// CFR not in SAI2
+constexpr I2S2_Reg<&I2S_Layout::RCR3, 1, 16> RCE;  // Different than I2S1
 constexpr I2S2_Reg<&I2S_Layout::RCR3, 5,  0> WDFL;
 }  // namespace RCR3
 
 // Receive Configuration 4
 namespace RCR4 {
 constexpr I2S2_Reg<&I2S_Layout::RCR4, 1, 28> FCONT;
-constexpr I2S2_Reg<&I2S_Layout::RCR4, 2, 26> FCOMB;
+// FCOMB not in SAI2
 constexpr I2S2_Reg<&I2S_Layout::RCR4, 2, 24> FPACK;
 constexpr I2S2_Reg<&I2S_Layout::RCR4, 5, 16> FRSZ;
 constexpr I2S2_Reg<&I2S_Layout::RCR4, 5,  8> SYWD;
@@ -796,15 +796,15 @@ constexpr I2S3_Reg<&I2S_Layout::TCR2, 8,  0> DIV;
 
 // Transmit Configuration 3
 namespace TCR3 {
-constexpr I2S3_Reg<&I2S_Layout::TCR3, 4, 24> CFR;
-constexpr I2S3_Reg<&I2S_Layout::TCR3, 4, 16> TCE;
+// CFR not in SAI3
+constexpr I2S3_Reg<&I2S_Layout::TCR3, 1, 16> TCE;  // Different than I2S1
 constexpr I2S3_Reg<&I2S_Layout::TCR3, 5,  0> WDFL;
 }  // namespace TCR3
 
 // Transmit Configuration 4
 namespace TCR4 {
 constexpr I2S3_Reg<&I2S_Layout::TCR4, 1, 28> FCONT;
-constexpr I2S3_Reg<&I2S_Layout::TCR4, 2, 26> FCOMB;
+// FCOMB not in SAI3
 constexpr I2S3_Reg<&I2S_Layout::TCR4, 2, 24> FPACK;
 constexpr I2S3_Reg<&I2S_Layout::TCR4, 5, 16> FRSZ;
 constexpr I2S3_Reg<&I2S_Layout::TCR4, 5,  8> SYWD;
@@ -886,15 +886,15 @@ constexpr I2S3_Reg<&I2S_Layout::RCR2, 8,  0> DIV;
 
 // Receive Configuration 3
 namespace RCR3 {
-constexpr I2S3_Reg<&I2S_Layout::RCR3, 4, 24> CFR;
-constexpr I2S3_Reg<&I2S_Layout::RCR3, 4, 16> RCE;
+// CFR not in SAI3
+constexpr I2S3_Reg<&I2S_Layout::RCR3, 1, 16> RCE;  // Different than I2S1
 constexpr I2S3_Reg<&I2S_Layout::RCR3, 5,  0> WDFL;
 }  // namespace RCR3
 
 // Receive Configuration 4
 namespace RCR4 {
 constexpr I2S3_Reg<&I2S_Layout::RCR4, 1, 28> FCONT;
-constexpr I2S3_Reg<&I2S_Layout::RCR4, 2, 26> FCOMB;
+// FCOMB not in SAI3
 constexpr I2S3_Reg<&I2S_Layout::RCR4, 2, 24> FPACK;
 constexpr I2S3_Reg<&I2S_Layout::RCR4, 5, 16> FRSZ;
 constexpr I2S3_Reg<&I2S_Layout::RCR4, 5,  8> SYWD;
