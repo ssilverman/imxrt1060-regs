@@ -219,13 +219,6 @@ constexpr I2S1_Reg<&I2S_Layout::TCR2, 1, 24> BCD;   // Bit Clock Direction
     // 0b0..Bit clock is generated externally in Slave mode.
     // 0b1..Bit clock is generated internally in Master mode.
 constexpr I2S1_Reg<&I2S_Layout::TCR2, 8,  0> DIV;   // Bit Clock Divide
-
-// MCLK select values
-constexpr uint32_t kMSEL_BUS    = 0;
-constexpr uint32_t kMSEL_MCLK_1 = 1;
-constexpr uint32_t kMSEL_MCLK_2 = 2;
-constexpr uint32_t kMSEL_MCLK_3 = 3;
-
 }  // namespace TCR2
 
 // Transmit Configuration 3
@@ -274,17 +267,6 @@ constexpr I2S1_Reg<&I2S_Layout::TCR4, 1,  1> FSP;    // Frame Sync Polarity
 constexpr I2S1_Reg<&I2S_Layout::TCR4, 1,  0> FSD;    // Frame Sync Direction
     // 0b0..Frame sync is generated externally in Slave mode.
     // 0b1..Frame sync is generated internally in Master mode.
-
-// FIFO combine mode values
-constexpr uint32_t kFCOMB_DISABLED         = 0;
-constexpr uint32_t kFCOMB_READS            = 1;
-constexpr uint32_t kFCOMB_WRITES           = 2;
-constexpr uint32_t kFCOMB_READS_AND_WRITES = 3;
-
-// FIFO packing mode values
-constexpr uint32_t kFPACK_DISABLED = 0;
-constexpr uint32_t kFPACK_8_BIT    = 2;
-constexpr uint32_t kFPACK_16_BIT   = 3;
 }  // namespace TCR4
 
 // Transmit Configuration 5
@@ -600,12 +582,6 @@ constexpr I2S2_Reg<&I2S_Layout::TCR4, 1,  3> FSE;
 constexpr I2S2_Reg<&I2S_Layout::TCR4, 1,  2> ONDEM;
 constexpr I2S2_Reg<&I2S_Layout::TCR4, 1,  1> FSP;
 constexpr I2S2_Reg<&I2S_Layout::TCR4, 1,  0> FSD;
-
-// FIFO packing mode values
-constexpr uint32_t kFPACK_DISABLED = 0;
-constexpr uint32_t kFPACK_8_BIT    = 2;
-constexpr uint32_t kFPACK_16_BIT   = 3;
-
 }  // namespace TCR4
 
 // Transmit Configuration 5
@@ -838,11 +814,6 @@ constexpr I2S3_Reg<&I2S_Layout::TCR4, 1,  3> FSE;
 constexpr I2S3_Reg<&I2S_Layout::TCR4, 1,  2> ONDEM;
 constexpr I2S3_Reg<&I2S_Layout::TCR4, 1,  1> FSP;
 constexpr I2S3_Reg<&I2S_Layout::TCR4, 1,  0> FSD;
-
-// FIFO packing mode values
-constexpr uint32_t kFPACK_DISABLED = 0;
-constexpr uint32_t kFPACK_8_BIT    = 2;
-constexpr uint32_t kFPACK_16_BIT   = 3;
 }  // namespace TCR4
 
 // Transmit Configuration 5
@@ -963,6 +934,44 @@ constexpr I2S3_Reg<&I2S_Layout::RMR, 32, 0> RWM;
 }  // namespace RMR
 
 }  // namespace I2S3
+
+namespace I2S {
+
+namespace TCR2 {
+// MCLK select values
+constexpr uint32_t kMSEL_BUS    = 0;
+constexpr uint32_t kMSEL_MCLK_1 = 1;
+constexpr uint32_t kMSEL_MCLK_2 = 2;
+constexpr uint32_t kMSEL_MCLK_3 = 3;
+}  // namespace TCR2
+
+namespace TCR4 {
+// FIFO combine mode values
+constexpr uint32_t kFCOMB_DISABLED         = 0;
+constexpr uint32_t kFCOMB_READS            = 1;
+constexpr uint32_t kFCOMB_WRITES           = 2;
+constexpr uint32_t kFCOMB_READS_AND_WRITES = 3;
+
+// FIFO packing mode values
+constexpr uint32_t kFPACK_DISABLED = 0;
+constexpr uint32_t kFPACK_8_BIT    = 2;
+constexpr uint32_t kFPACK_16_BIT   = 3;
+}  // namespace TCR4
+
+namespace RCR4 {
+// FIFO combine mode values
+constexpr uint32_t kFCOMB_DISABLED         = 0;
+constexpr uint32_t kFCOMB_WRITES           = 1;
+constexpr uint32_t kFCOMB_READS            = 2;
+constexpr uint32_t kFCOMB_WRITES_AND_READS = 3;
+
+// FIFO packing mode values
+constexpr uint32_t kFPACK_DISABLED = 0;
+constexpr uint32_t kFPACK_8_BIT    = 2;
+constexpr uint32_t kFPACK_16_BIT   = 3;
+}  // namespace RCR4
+
+}  // namespace I2S
 
 }  // namespace imxrt1060
 }  // namespace hardware
