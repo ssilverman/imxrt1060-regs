@@ -134,7 +134,7 @@ constexpr CCM_Reg<&CCM_Layout::CACRR, 3, 0> ARM_PODF;
 // CCM Bus Clock Divider Register
 namespace CBCDR {
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 3, 27> PERIPH_CLK2_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
     // 0b000..divide by 1
     // 0b001..divide by 2
     // 0b010..divide by 3
@@ -147,7 +147,7 @@ constexpr CCM_Reg<&CCM_Layout::CBCDR, 1, 25> PERIPH_CLK_SEL;
     // 0b0..derive clock from pre_periph_clk_sel
     // 0b1..derive clock from periph_clk2_clk_divided
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 3, 16> SEMC_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
     // 0b000..divide by 1
     // 0b001..divide by 2
     // 0b010..divide by 3
@@ -157,7 +157,7 @@ constexpr CCM_Reg<&CCM_Layout::CBCDR, 3, 16> SEMC_PODF;
     // 0b110..divide by 7
     // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 3, 10> AHB_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
     // 0b000..divide by 1
     // 0b001..divide by 2
     // 0b010..divide by 3
@@ -191,11 +191,35 @@ constexpr uint32_t kCBCDR_PERIPH_CLK_SEL_PRE_PERIPH_CLK2_CLK_DIV = 1;
 // CCM Bus Clock Multiplexer Register
 namespace CBCMR {
 constexpr CCM_Reg<&CCM_Layout::CBCMR, 3, 29> FLEXSPI2_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CBCMR, 3, 26> LPSPI_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CBCMR, 3, 23> LCDIF_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CBCMR, 2, 18> PRE_PERIPH_CLK_SEL;
     // 0b00..derive clock from PLL2
     // 0b01..derive clock from PLL2 PFD2
@@ -231,7 +255,15 @@ constexpr CCM_Reg<&CCM_Layout::CSCMR1, 2, 29> FLEXSPI_CLK_SEL;
     // 0b10..derive clock from PLL2 PFD2
     // 0b11..derive clock from PLL3 PFD0
 constexpr CCM_Reg<&CCM_Layout::CSCMR1, 3, 23> FLEXSPI_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CSCMR1, 1, 17> USDHC2_CLK_SEL;
     // 0b0..derive clock from PLL2 PFD2
     // 0b1..derive clock from PLL2 PFD0
@@ -279,11 +311,31 @@ constexpr CCM_Reg<&CCM_Layout::CSCMR2, 6,  2> CAN_CLK_PODF;  // Divider for CAN/
 // CCM Serial Clock Divider Register 1
 namespace CSCDR1 {
 constexpr CCM_Reg<&CCM_Layout::CSCDR1, 2, 25> TRACE_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b00..divide by 1
+    // 0b01..divide by 2
+    // 0b10..divide by 3
+    // 0b11..divide by 4
 constexpr CCM_Reg<&CCM_Layout::CSCDR1, 3, 16> USDHC2_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CSCDR1, 3, 11> USDHC1_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CSCDR1, 1,  6> UART_CLK_SEL;
     // 0b0..derive clock from pll3_80m
     // 0b1..derive clock from osc_clk
@@ -295,17 +347,49 @@ constexpr CCM_Reg<&CCM_Layout::CSCDR1, 6,  0> UART_CLK_PODF;  // Divider for uar
 namespace CS1CDR {
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 3, 25> FLEXIO2_CLK_PODF;  //  Divider for flexio2/flexio3 clock.
     // Divider should be updated when output clock is gated.
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 3, 22> SAI3_CLK_PRED;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 6, 16> SAI3_CLK_PODF;     // Divider for sai3 clock podf.
     // The input clock to this divider should be lower
     //   than 300Mhz, the predivider can be used to achieve this.
     // Divide by 'value' + 1
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 3,  9> FLEXIO2_CLK_PRED;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 3,  6> SAI1_CLK_PRED;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 6,  0> SAI1_CLK_PODF;     // Divider for sai1 clock podf.
     // The input clock to this divider should be lower
     //   than 300Mhz, the predivider can be used to achieve this.
@@ -315,7 +399,15 @@ constexpr CCM_Reg<&CCM_Layout::CS1CDR, 6,  0> SAI1_CLK_PODF;     // Divider for 
 // CCM Clock Divider Register
 namespace CS2CDR {
 constexpr CCM_Reg<&CCM_Layout::CS2CDR, 3, 6> SAI2_CLK_PRED;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CS2CDR, 6, 0> SAI2_CLK_PODF;  // Divider for sai2 clock podf.
     // The input clock to this divider should be lower
     //   than 300Mhz, the predivider can be used to achieve this.
@@ -326,10 +418,26 @@ constexpr CCM_Reg<&CCM_Layout::CS2CDR, 6, 0> SAI2_CLK_PODF;  // Divider for sai2
 namespace CDCDR {
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3, 25> SPDIF0_CLK_PRED;  // Divider for spdif0 clock pred.
     // Divider should be updated when output clock is gated.
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3, 22> SPDIF0_CLK_PODF;  // Divider for spdif0 clock podf.
     // Divider should be updated when output clock is gated.
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 2, 20> SPDIF0_CLK_SEL;
     // 0b00..derive clock from PLL4
     // 0b01..derive clock from PLL3 PFD2
@@ -337,10 +445,26 @@ constexpr CCM_Reg<&CCM_Layout::CDCDR, 2, 20> SPDIF0_CLK_SEL;
     // 0b11..derive clock from pll3_sw_clk
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3, 12> FLEXIO1_CLK_PRED;  // Divider for flexio1 clock pred.
     // Divider should be updated when output clock is gated.
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3,  9> FLEXIO1_CLK_PODF;  // Divider for flexio1 clock podf.
     // Divider should be updated when output clock is gated.
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 2,  7> FLEXIO1_CLK_SEL;
     // 0b00..derive clock from PLL4
     // 0b01..derive clock from PLL3 PFD2
@@ -367,13 +491,29 @@ constexpr CCM_Reg<&CCM_Layout::CSCDR2, 3, 15> LCDIF_PRE_CLK_SEL;
     // 0b101..derive clock from PLL3 PFD1
     // 0b110-0b111..Reserved
 constexpr CCM_Reg<&CCM_Layout::CSCDR2, 3, 12> LCDIF_PRED;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 }  // namespace CSCDR2
 
 // CCM Serial Clock Divider Register 3
 namespace CSCDR3 {
 constexpr CCM_Reg<&CCM_Layout::CSCDR3, 3, 11> CSI_PODF;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CSCDR3, 2,  9> CSI_CLK_SEL;
     // 0b00..derive clock from osc_clk (24M)
     // 0b01..derive clock from PLL2 PFD2
@@ -505,7 +645,15 @@ constexpr CCM_Reg<&CCM_Layout::CCOSR, 1, 24> CLKO2_EN;
     // 0b0..CCM_CLKO2 disabled.
     // 0b1..CCM_CLKO2 enabled.
 constexpr CCM_Reg<&CCM_Layout::CCOSR, 3, 21> CLKO2_DIV;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CCOSR, 5, 16> CLKO2_SEL;
     // 0b00011..usdhc1_clk_root
     // 0b00110..lpi2c_clk_root
@@ -527,7 +675,15 @@ constexpr CCM_Reg<&CCM_Layout::CCOSR, 1,  7> CLKO1_EN;
     // 0b0..CCM_CLKO1 disabled.
     // 0b1..CCM_CLKO1 enabled.
 constexpr CCM_Reg<&CCM_Layout::CCOSR, 3,  4> CLKO1_DIV;
-    // Divide by 'value' + 1
+    // Divide by 'value' + 1:
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CCOSR, 4,  0> CLKO1_SEL;
     // 0b0000..USB1 PLL clock (divided by 2)
     // 0b0001..SYS PLL clock (divided by 2)
