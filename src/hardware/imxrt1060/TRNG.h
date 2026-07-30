@@ -130,6 +130,11 @@ constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  0, (uint32_t{0x3} <<  0) | kW1C | kWO
     // 0b01..use raw data into both Entropy shifter and Statistical Checker
     // 0b10..use Von Neumann data into Entropy shifter. Use raw data into Statistical Checker
     // 0b11..undefined/reserved.
+
+// Sample Mode values
+constexpr uint32_t SAMP_MODE_VON_NEUMANN_BOTH                = 0;
+constexpr uint32_t SAMP_MODE_RAW_BOTH                        = 1;
+constexpr uint32_t SAMP_MODE_VON_NEUMANN_SHIFTER_RAW_CHECKER = 2;
 }  // namespace MCTL
 
 // Statistical Check Miscellaneous Register
