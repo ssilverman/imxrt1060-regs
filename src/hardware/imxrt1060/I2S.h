@@ -565,7 +565,7 @@ constexpr I2S2_Reg<&I2S_Layout::TCR2, 8,  0> DIV;
 // Transmit Configuration 3
 namespace TCR3 {
 // CFR not in SAI2
-constexpr I2S2_Reg<&I2S_Layout::TCR3, 1, 16> TCE;  // Different than I2S1
+constexpr I2S2_Reg<&I2S_Layout::TCR3, 1, 16> TCE;   // Different than I2S1
 constexpr I2S2_Reg<&I2S_Layout::TCR3, 5,  0> WDFL;
 }  // namespace TCR3
 

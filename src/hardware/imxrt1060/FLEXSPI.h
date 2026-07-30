@@ -337,7 +337,7 @@ constexpr AHBRXBUFCR0_Reg<Index, 1, 31> PREFETCHEN;  // AHB Read Prefetch Enable
 template <size_t Index>
 constexpr AHBRXBUFCR0_Reg<Index, 1, 30> REGIONEN;    // AHB RX Buffer address region funciton enable
 template <size_t Index>
-constexpr AHBRXBUFCR0_Reg<Index, 2, 24> PRIORITY;  // This priority for AHB Master Read which this AHB RX Buffer is assigned.
+constexpr AHBRXBUFCR0_Reg<Index, 2, 24> PRIORITY;    // This priority for AHB Master Read which this AHB RX Buffer is assigned.
     // 7 is the highest priority, 0 the lowest.
 template <size_t Index>
 constexpr AHBRXBUFCR0_Reg<Index, 4, 16> MSTRID;      // This AHB RX Buffer is assigned according to AHB Master with ID (MSTR_ID).
@@ -354,7 +354,7 @@ constexpr FLSHCR0_Reg<Index, 23, 0> FLSHSZ;  // Flash Size in KByte.
 // Flash Control Register 1
 namespace FLSHCR1 {
 template <size_t Index>
-constexpr FLSHCR1_Reg<Index, 16, 16> CSINTERVAL;  // This field is used to set the minimum interval between flash device Chip selection deassertion and flash device Chip selection assertion.
+constexpr FLSHCR1_Reg<Index, 16, 16> CSINTERVAL;      // This field is used to set the minimum interval between flash device Chip selection deassertion and flash device Chip selection assertion.
     // If external flash has a limitation on the interval between command
     //     sequences, this field should be set accordingly. If there is no limitation, set this field with value
     //     0x0.
