@@ -938,7 +938,7 @@ constexpr I2S3_Reg<&I2S_Layout::RMR, 32, 0> RWM;
 namespace I2S {
 
 namespace TCR2 {
-// MCLK select values
+// MCLK Select values
 constexpr uint32_t kMSEL_BUS    = 0;
 constexpr uint32_t kMSEL_MCLK_1 = 1;
 constexpr uint32_t kMSEL_MCLK_2 = 2;
@@ -946,26 +946,26 @@ constexpr uint32_t kMSEL_MCLK_3 = 3;
 }  // namespace TCR2
 
 namespace TCR4 {
-// FIFO combine mode values
+// FIFO Combine Mode values
 constexpr uint32_t kFCOMB_DISABLED         = 0;
 constexpr uint32_t kFCOMB_READS            = 1;
 constexpr uint32_t kFCOMB_WRITES           = 2;
 constexpr uint32_t kFCOMB_READS_AND_WRITES = 3;
 
-// FIFO packing mode values
+// FIFO Packing Mode values
 constexpr uint32_t kFPACK_DISABLED = 0;
 constexpr uint32_t kFPACK_8_BIT    = 2;
 constexpr uint32_t kFPACK_16_BIT   = 3;
 }  // namespace TCR4
 
 namespace RCR4 {
-// FIFO combine mode values
+// FIFO Combine Mode values
 constexpr uint32_t kFCOMB_DISABLED         = 0;
 constexpr uint32_t kFCOMB_WRITES           = 1;
 constexpr uint32_t kFCOMB_READS            = 2;
 constexpr uint32_t kFCOMB_WRITES_AND_READS = 3;
 
-// FIFO packing mode values
+// FIFO Packing Mode values
 constexpr uint32_t kFPACK_DISABLED = 0;
 constexpr uint32_t kFPACK_8_BIT    = 2;
 constexpr uint32_t kFPACK_16_BIT   = 3;
