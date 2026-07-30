@@ -315,6 +315,7 @@ constexpr LPUART1_Reg<&LPUART_Layout::CTRL, 1, 11> M7;       // 7-Bit Mode Selec
     // 0b0..Receiver and transmitter use 8-bit to 10-bit data characters.
     // 0b1..Receiver and transmitter use 7-bit data characters.
 constexpr LPUART1_Reg<&LPUART_Layout::CTRL, 3,  8> IDLECFG;  // Idle Configuration
+    // 2^'value':
     // 0b000..1 idle character
     // 0b001..2 idle characters
     // 0b010..4 idle characters
@@ -392,6 +393,7 @@ constexpr LPUART1_Reg<&LPUART_Layout::MODIR, 1, 18> IREN;      // Infrared enabl
     // 0b0..IR disabled.
     // 0b1..IR enabled.
 constexpr LPUART1_Reg<&LPUART_Layout::MODIR, 2, 16> TNP;       // Transmitter narrow pulse
+    // ('value' + 1)/OSR:
     // 0b00..1/OSR.
     // 0b01..2/OSR.
     // 0b10..3/OSR.
@@ -1702,6 +1704,24 @@ constexpr LPUART8_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 }  // namespace WATER
 
 }  // namespace LPUART8
+
+namespace LPUART {
+
+namespace PINCFG {
+constexpr uint32_t kTRGSEL_DISABLED     = 0;
+constexpr uint32_t kTRGSEL_NOT_RXD      = 1;
+constexpr uint32_t kTRGSEL_NOT_CTS_B    = 2;
+constexpr uint32_t kTRGSEL_MODULATE_TXD = 3;
+}  // namespace PINCFG
+
+namespace BAUD {
+constexpr uint32_t kMATCFG_ADDRESS_MATCH_WAKEUP                   = 0;
+constexpr uint32_t kMATCFG_IDLE_MATCH_WAKEUP                      = 1;
+constexpr uint32_t kMATCFG_MATCH_ON_OFF                           = 2;
+constexpr uint32_t kMATCFG_DATA_MATCH_RWU_AND_MATCH_ON_OFF_TX_CTS = 3;
+}  // namespace BAUD
+
+}  // namespace LPUART
 
 }  // namespace imxrt1060
 }  // namespace hardware
