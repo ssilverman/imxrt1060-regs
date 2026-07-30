@@ -91,12 +91,12 @@ constexpr HC_Reg<Index, 5, 0> ADCH;  // Input Channel Select
 
 // Status register for HW triggers
 namespace HS {
-constexpr ADC1_Reg<&ADC_Layout::HS, 1, 7> COCO7;
-constexpr ADC1_Reg<&ADC_Layout::HS, 1, 6> COCO6;
-constexpr ADC1_Reg<&ADC_Layout::HS, 1, 5> COCO5;
-constexpr ADC1_Reg<&ADC_Layout::HS, 1, 4> COCO4;
-constexpr ADC1_Reg<&ADC_Layout::HS, 1, 3> COCO3;
-constexpr ADC1_Reg<&ADC_Layout::HS, 1, 2> COCO2;
+constexpr ADC1_Reg<&ADC_Layout::HS, 1, 7> COCO7;  // See description for COCO1.
+constexpr ADC1_Reg<&ADC_Layout::HS, 1, 6> COCO6;  // See description for COCO1.
+constexpr ADC1_Reg<&ADC_Layout::HS, 1, 5> COCO5;  // See description for COCO1.
+constexpr ADC1_Reg<&ADC_Layout::HS, 1, 4> COCO4;  // See description for COCO1.
+constexpr ADC1_Reg<&ADC_Layout::HS, 1, 3> COCO3;  // See description for COCO1.
+constexpr ADC1_Reg<&ADC_Layout::HS, 1, 2> COCO2;  // See description for COCO1.
 constexpr ADC1_Reg<&ADC_Layout::HS, 1, 1> COCO1;  // Conversion Complete Flag
 constexpr ADC1_Reg<&ADC_Layout::HS, 1, 0> COCO0;  // Conversion Complete Flag
 }  // namespace HS
@@ -128,7 +128,7 @@ constexpr ADC1_Reg<&ADC_Layout::CFG, 2, 11> REFSEL;  // Voltage Reference Select
 constexpr ADC1_Reg<&ADC_Layout::CFG, 1, 10> ADHSC;   // High Speed Configuration
     // 0b0..Normal conversion selected.
     // 0b1..High speed conversion selected.
-constexpr ADC1_Reg<&ADC_Layout::CFG, 2,  8> ADSTS;
+constexpr ADC1_Reg<&ADC_Layout::CFG, 2,  8> ADSTS;   // Defines the total sample time duration in number of full cycles
     // 0b00..Sample period (ADC clocks) = 3 if ADLSMP=0b Sample period (ADC clocks) = 13 if ADLSMP=1b
     // 0b01..Sample period (ADC clocks) = 5 if ADLSMP=0b Sample period (ADC clocks) = 17 if ADLSMP=1b
     // 0b10..Sample period (ADC clocks) = 7 if ADLSMP=0b Sample period (ADC clocks) = 21 if ADLSMP=1b
@@ -186,10 +186,10 @@ constexpr ADC1_Reg<&ADC_Layout::GC, 1, 0> ADACKEN;  // Asynchronous clock output
 
 // General status register
 namespace GS {
-constexpr ADC1_Reg<&ADC_Layout::GS, 1, 2, 0x0> AWKST;  // Asynchronous wakeup interrupt status
+constexpr ADC1_Reg<&ADC_Layout::GS, 1, 2, 0x0> AWKST;             // Asynchronous wakeup interrupt status
     // 0b0..No asynchronous interrupt.
     // 0b1..Asynchronous wake up interrupt occurred in stop mode.
-constexpr ADC1_Reg<&ADC_Layout::GS, 1, 1, 0x0> CALF;   // Calibration Failed Flag
+constexpr ADC1_Reg<&ADC_Layout::GS, 1, 1, 0x0> CALF;              // Calibration Failed Flag
     // 0b0..Calibration completed normally.
     // 0b1..Calibration failed. ADC accuracy specifications are not guaranteed.
 constexpr ADC1_Reg<regs::constify(&ADC_Layout::GS), 1, 0> ADACT;  // Conversion Active

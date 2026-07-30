@@ -72,7 +72,7 @@ namespace MCR {
 constexpr PIT_Reg<&PIT_Layout::MCR, 1, 1> MDIS;  // Module Disable for PIT
     // 0b0..Clock for standard PIT timers is enabled.
     // 0b1..Clock for standard PIT timers is disabled.
-constexpr PIT_Reg<&PIT_Layout::MCR, 1, 0> FRZ;  // Freeze
+constexpr PIT_Reg<&PIT_Layout::MCR, 1, 0> FRZ;   // Freeze
     // 0b0..Timers continue to run in Debug mode.
     // 0b1..Timers are stopped in Debug mode.
 }  // namespace MCR

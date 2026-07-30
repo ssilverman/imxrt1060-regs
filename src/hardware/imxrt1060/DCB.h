@@ -49,13 +49,13 @@ namespace DHCSR {
 // TODO: Is this the correct way?
 constexpr uint32_t kWO = 0xffff'0000;
 
-constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, kWO, true> DBGKEY;       // Debug key
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 25> S_RESET_ST;   // Reset sticky status
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 24> S_RETIRE_ST;  // Retire sticky status
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 19> S_LOCKUP;     // Lockup status
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 18> S_SLEEP;      // Sleeping status
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 17> S_HALT;       // Halted status
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 16> S_REGRDY;     // Register ready status
+constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, kWO, true> DBGKEY;                        // Debug key
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 25> S_RESET_ST;               // Reset sticky status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 24> S_RETIRE_ST;              // Retire sticky status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 19> S_LOCKUP;                 // Lockup status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 18> S_SLEEP;                  // Sleeping status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 17> S_HALT;                   // Halted status
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 16> S_REGRDY;                 // Register ready status
 constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  5, (uint32_t{0x1} << 5) | kWO> C_SNAPSTALL;  // Snap stall control
 constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  3, (uint32_t{0x1} << 3) | kWO> C_MASKINTS;   // Mask interrupts control
 constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  2, (uint32_t{0x1} << 2) | kWO> C_STEP;       // Step control

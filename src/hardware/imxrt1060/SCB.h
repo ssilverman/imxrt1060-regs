@@ -112,11 +112,11 @@ constexpr SCB_Reg<&SCB_Layout::CPUID,  4,  0> REVISION;      // Indicates patch 
 
 // Interrupt Control and State Register
 namespace ICSR {
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 31, 0x0> NMIPENDSET;   // NMI set-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 28, 0x0> PENDSVSET;    // PendSV set-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 27, 0x0, true> PENDSVCLR;    // PendSV clear-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 26, 0x0> PENDSTSET;    // SysTick exception set-pending bit
-constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 25, 0x0, true> PENDSTCLR;    // SysTick exception clear-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 31, 0x0> NMIPENDSET;              // NMI set-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 28, 0x0> PENDSVSET;               // PendSV set-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 27, 0x0, true> PENDSVCLR;         // PendSV clear-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 26, 0x0> PENDSTSET;               // SysTick exception set-pending bit
+constexpr SCB_Reg<&SCB_Layout::ICSR, 1, 25, 0x0, true> PENDSTCLR;         // SysTick exception clear-pending bit
 constexpr SCB_Reg<regs::constify(&SCB_Layout::ICSR), 1, 23> ISRPREEMPT;
 constexpr SCB_Reg<regs::constify(&SCB_Layout::ICSR), 1, 22> ISRPENDING;   // Interrupt pending flag, excluding NMI and Faults
 constexpr SCB_Reg<regs::constify(&SCB_Layout::ICSR), 9, 12> VECTPENDING;  // Exception number of the highest priority pending enabled exception
@@ -135,16 +135,14 @@ namespace AIRCR {
 // TODO: Is this the correct way?
 constexpr uint32_t kWO = 0xffff'0007;
 
-constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, kWO, true> VECTKEY;        // Register key
+constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, kWO, true> VECTKEY;                    // Register key
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR), 16, 16> VECTKEYSTAT;
-constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR),  1, 15> ENDIANNESS;     // Data endianness
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  3,  8, (uint32_t{0x7} << 8) | kWO> PRIGROUP;       // Interrupt priority grouping field.
+constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR),  1, 15> ENDIANNESS;            // Data endianness
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  3,  8, (uint32_t{0x7} << 8) | kWO> PRIGROUP;  // Interrupt priority grouping field.
     // This field determines the split of group priority from subpriority.
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  2, kWO, true> SYSRESETREQ;    // System reset request
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  1, kWO, true> VECTCLRACTIVE;
-    // Writing 1 to this bit clears all active state information for fixed and configurable exceptions.
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  0, kWO, true> VECTRESET;
-    // Writing 1 to this bit causes a local system reset
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  2, kWO, true> SYSRESETREQ;                // System reset request
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  1, kWO, true> VECTCLRACTIVE;              // Writing 1 to this bit clears all active state information for fixed and configurable exceptions.
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  0, kWO, true> VECTRESET;                  // Writing 1 to this bit causes a local system reset
 }  // namespace AIRCR
 
 // System Control Register
@@ -156,16 +154,16 @@ constexpr SCB_Reg<&SCB_Layout::SCR, 1, 1> SLEEPONEXIT;  // Indicates sleep-on-ex
 
 // Configuration and Control Register
 namespace CCR {
-constexpr SCB_Reg<regs::constify(&SCB_Layout::CCR), 1, 18> BP;
-    // Always reads-as-one. It indicates branch prediction is enabled.
-constexpr SCB_Reg<&SCB_Layout::CCR, 1, 17> IC;              // Enables L1 instruction cache.
-constexpr SCB_Reg<&SCB_Layout::CCR, 1, 16> DC;              // Enables L1 data cache.
-constexpr SCB_Reg<&SCB_Layout::CCR, 1,  9> STKALIGN;        // Indicates stack alignment on exception entry
-constexpr SCB_Reg<&SCB_Layout::CCR, 1,  8> BFHFNMIGN;       // Enables handlers with priority -1 or -2 to ignore data BusFaults caused by load and store instructions.
-constexpr SCB_Reg<&SCB_Layout::CCR, 1,  4> DIV_0_TRP;       // Enables faulting or halting when the processor executes an SDIV or UDIV instruction with a divisor of 0
-constexpr SCB_Reg<&SCB_Layout::CCR, 1,  3> UNALIGN_TRP;     // Enables unaligned access traps
-constexpr SCB_Reg<&SCB_Layout::CCR, 1,  1> USERSETMPEND;    // Enables unprivileged software access to the STIR
-constexpr SCB_Reg<&SCB_Layout::CCR, 1,  0> NONBASETHRDENA;  // Indicates how the processor enters Thread mode
+constexpr SCB_Reg<regs::constify(&SCB_Layout::CCR), 1, 18> BP;  // Always reads-as-one.
+    // It indicates branch prediction is enabled.
+constexpr SCB_Reg<&SCB_Layout::CCR, 1, 17> IC;                  // Enables L1 instruction cache.
+constexpr SCB_Reg<&SCB_Layout::CCR, 1, 16> DC;                  // Enables L1 data cache.
+constexpr SCB_Reg<&SCB_Layout::CCR, 1,  9> STKALIGN;            // Indicates stack alignment on exception entry
+constexpr SCB_Reg<&SCB_Layout::CCR, 1,  8> BFHFNMIGN;           // Enables handlers with priority -1 or -2 to ignore data BusFaults caused by load and store instructions.
+constexpr SCB_Reg<&SCB_Layout::CCR, 1,  4> DIV_0_TRP;           // Enables faulting or halting when the processor executes an SDIV or UDIV instruction with a divisor of 0
+constexpr SCB_Reg<&SCB_Layout::CCR, 1,  3> UNALIGN_TRP;         // Enables unaligned access traps
+constexpr SCB_Reg<&SCB_Layout::CCR, 1,  1> USERSETMPEND;        // Enables unprivileged software access to the STIR
+constexpr SCB_Reg<&SCB_Layout::CCR, 1,  0> NONBASETHRDENA;      // Indicates how the processor enters Thread mode
 }  // namespace CCR
 
 // The following SHPR fields expose only the four implemented priority bits.
@@ -216,12 +214,12 @@ constexpr SCB_Reg<&SCB_Layout::CFSR,  8,  8, 0x0> BUSFAULTSR;
 constexpr SCB_Reg<&SCB_Layout::CFSR,  8,  0, 0x0> MEMFAULTSR;
 
 // MemManage Fault Status Register Definitions
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 7, 0x0> MMARVALID;  // MemManage Fault Address Register (MMFAR) valid flag
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 5, 0x0> MLSPERR;    // MemManage fault occurred during floating-point lazy state preservation
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 4, 0x0> MSTKERR;    // MemManage fault on stacking for exception entry
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 3, 0x0> MUNSTKERR;  // MemManage fault on unstacking for a return from exception
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 1, 0x0> DACCVIOL;   // Data access violation flag
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 0, 0x0> IACCVIOL;   // Instruction access violation flag
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 7, 0x0> MMARVALID;     // MemManage Fault Address Register (MMFAR) valid flag
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 5, 0x0> MLSPERR;       // MemManage fault occurred during floating-point lazy state preservation
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 4, 0x0> MSTKERR;       // MemManage fault on stacking for exception entry
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 3, 0x0> MUNSTKERR;     // MemManage fault on unstacking for a return from exception
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 1, 0x0> DACCVIOL;      // Data access violation flag
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 0, 0x0> IACCVIOL;      // Instruction access violation flag
 
 // BusFault Status Register Definitions
 constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 15, 0x0> BFARVALID;    // BusFault Address Register (BFAR) valid flag
@@ -233,12 +231,12 @@ constexpr SCB_Reg<&SCB_Layout::CFSR, 1,  9, 0x0> PRECISERR;    // Precise data b
 constexpr SCB_Reg<&SCB_Layout::CFSR, 1,  8, 0x0> IBUSERR;      // Instruction bus error
 
 // UsageFault Status Register Definitions
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 25, 0x0> DIVBYZERO;   // Divide by zero UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 24, 0x0> UNALIGNED;   // Unaligned access UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 19, 0x0> NOCP;        // No coprocessor UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 18, 0x0> INVPC;       // Invalid PC load UsageFault, caused by an invalid PC load by EXC_RETURN
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 17, 0x0> INVSTATE;    // Invalid state UsageFault
-constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 16, 0x0> UNDEFINSTR;  // Undefined instruction UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 25, 0x0> DIVBYZERO;    // Divide by zero UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 24, 0x0> UNALIGNED;    // Unaligned access UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 19, 0x0> NOCP;         // No coprocessor UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 18, 0x0> INVPC;        // Invalid PC load UsageFault, caused by an invalid PC load by EXC_RETURN
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 17, 0x0> INVSTATE;     // Invalid state UsageFault
+constexpr SCB_Reg<&SCB_Layout::CFSR, 1, 16, 0x0> UNDEFINSTR;   // Undefined instruction UsageFault
 }  // namespace CFSR
 
 // HardFault Status register
@@ -381,29 +379,26 @@ constexpr SCB_Reg<&SCB_Layout::CLIDR, 3,  0> CL1;    // Indicate the type of cac
 
 // Cache Type Register
 namespace CTR {
-constexpr SCB_Reg<&SCB_Layout::CTR, 3, 29> FORMAT;  // Indicates the implemented CTR format.
-constexpr SCB_Reg<&SCB_Layout::CTR, 4, 24> CWG;     // Cache Write-back Granule.
+constexpr SCB_Reg<&SCB_Layout::CTR, 3, 29> FORMAT;    // Indicates the implemented CTR format.
+constexpr SCB_Reg<&SCB_Layout::CTR, 4, 24> CWG;       // Cache Write-back Granule.
     // The maximum size of memory that can be overwritten as a result of the eviction of a cache entry that has had a memory location in it modified, encoded as Log2 of the number of words.
-constexpr SCB_Reg<&SCB_Layout::CTR, 4, 20> ERG;     // Exclusives Reservation Granule.
+constexpr SCB_Reg<&SCB_Layout::CTR, 4, 20> ERG;       // Exclusives Reservation Granule.
     // The maximum size of the reservation granule that has been implemented for the Load-Exclusive and Store-Exclusive instructions, encoded as Log2 of the number of words.
-constexpr SCB_Reg<&SCB_Layout::CTR, 4, 16> DMINLINE;
-    // Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the processor.
-constexpr SCB_Reg<&SCB_Layout::CTR, 4,  0> IMINLINE;
-    // Log2 of the number of words in the smallest cache line of all the instruction caches that are controlled by the processor.
+constexpr SCB_Reg<&SCB_Layout::CTR, 4, 16> DMINLINE;  // Log2 of the number of words in the smallest cache line of all the data caches and unified caches that are controlled by the processor.
+constexpr SCB_Reg<&SCB_Layout::CTR, 4,  0> IMINLINE;  // Log2 of the number of words in the smallest cache line of all the instruction caches that are controlled by the processor.
 }  // namespace CTR
 
 // Cache Size ID Register
 namespace CCSIDR {
-constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 31> WT;  // Indicates whether the cache level supports write-through
-constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 30> WB;  // Indicates whether the cache level supports write-back
-constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 29> RA;  // Indicates whether the cache level supports read-allocation
-constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 28> WA;  // Indicates whether the cache level supports write-allocation
-constexpr SCB_Reg<&SCB_Layout::CCSIDR, 15, 13> NUMSETS;
-    // (Number of sets in cache) - 1, therefore a value of 0 indicates 1 set in the cache. The number of sets does not have to be a power of 2.
-constexpr SCB_Reg<&SCB_Layout::CCSIDR, 10,  3> ASSOCIATIVITY;
-    // (Associativity of cache) - 1, therefore a value of 0 indicates an associativity of 1. The associativity does not have to be a power of 2.
-constexpr SCB_Reg<&SCB_Layout::CCSIDR,  3,  0> LINESIZE;
-    // (Log2(Number of words in cache line)) - 2.
+constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 31> WT;             // Indicates whether the cache level supports write-through
+constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 30> WB;             // Indicates whether the cache level supports write-back
+constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 29> RA;             // Indicates whether the cache level supports read-allocation
+constexpr SCB_Reg<&SCB_Layout::CCSIDR,  1, 28> WA;             // Indicates whether the cache level supports write-allocation
+constexpr SCB_Reg<&SCB_Layout::CCSIDR, 15, 13> NUMSETS;        // (Number of sets in cache) - 1, therefore a value of 0 indicates 1 set in the cache.
+    // The number of sets does not have to be a power of 2.
+constexpr SCB_Reg<&SCB_Layout::CCSIDR, 10,  3> ASSOCIATIVITY;  // (Associativity of cache) - 1, therefore a value of 0 indicates an associativity of 1.
+    // The associativity does not have to be a power of 2.
+constexpr SCB_Reg<&SCB_Layout::CCSIDR,  3,  0> LINESIZE;       // (Log2(Number of words in cache line)) - 2.
 }  // namespace CCSIDR
 
 // Cache Size Selection Register
@@ -497,8 +492,7 @@ constexpr SCB_Reg<&SCB_Layout::DCCSW, 9,  5, 0x0, true> SET;
 
 // Data cache clean and invalidate by address to PoC
 namespace DCCIMVAC {
-constexpr SCB_Reg<&SCB_Layout::DCCIMVAC, 32, 0, 0x0, true> DCCIMVAC;
-    // D-cache clean and invalidate by MVA to PoC
+constexpr SCB_Reg<&SCB_Layout::DCCIMVAC, 32, 0, 0x0, true> DCCIMVAC;  // D-cache clean and invalidate by MVA to PoC
 }  // namespace DCCIMVAC
 
 // Data cache clean and invalidate by set/way
@@ -515,32 +509,32 @@ constexpr SCB_Reg<&SCB_Layout::BPIALL, 32, 0, 0x0, true> BPIALL;
 
 // Instruction Tightly-Coupled Memory Control Register
 namespace ITCMCR {
-constexpr SCB_Reg<regs::constify(&SCB_Layout::ITCMCR), 4, 3> SZ;     // TCM size.
+constexpr SCB_Reg<regs::constify(&SCB_Layout::ITCMCR), 4, 3> SZ;  // TCM size.
     // Indicates the size of the relevant TCM.
-constexpr SCB_Reg<&SCB_Layout::ITCMCR, 1, 2> RETEN;  // Retry phase enable.
+constexpr SCB_Reg<&SCB_Layout::ITCMCR, 1, 2> RETEN;               // Retry phase enable.
     // When enabled the processor guarantees to honor the retry output on the corresponding TCM interface, re-executing the instruction which carried out the TCM access.
-constexpr SCB_Reg<&SCB_Layout::ITCMCR, 1, 1> RMW;    // Read-Modify-Write (RMW) enable.
+constexpr SCB_Reg<&SCB_Layout::ITCMCR, 1, 1> RMW;                 // Read-Modify-Write (RMW) enable.
     // Indicates that all writes to TCM, that are not the full width of the TCM RAM, use a RMW sequence.
-constexpr SCB_Reg<&SCB_Layout::ITCMCR, 1, 0> EN;     // TCM enable.
+constexpr SCB_Reg<&SCB_Layout::ITCMCR, 1, 0> EN;                  // TCM enable.
     // When a TCM is disabled all accesses are made to the AXIM interface.
 }  // namespace ITCMCR
 
 // Data Tightly-Coupled Memory Control Register
 namespace DTCMCR {
-constexpr SCB_Reg<regs::constify(&SCB_Layout::DTCMCR), 4, 3> SZ;     // TCM size.
+constexpr SCB_Reg<regs::constify(&SCB_Layout::DTCMCR), 4, 3> SZ;  // TCM size.
     // Indicates the size of the relevant TCM.
-constexpr SCB_Reg<&SCB_Layout::DTCMCR, 1, 2> RETEN;  // Retry phase enable.
+constexpr SCB_Reg<&SCB_Layout::DTCMCR, 1, 2> RETEN;               // Retry phase enable.
     // When enabled the processor guarantees to honor the retry output on the corresponding TCM interface, re-executing the instruction which carried out the TCM access.
-constexpr SCB_Reg<&SCB_Layout::DTCMCR, 1, 1> RMW;    // Read-Modify-Write (RMW) enable.
+constexpr SCB_Reg<&SCB_Layout::DTCMCR, 1, 1> RMW;                 // Read-Modify-Write (RMW) enable.
     // Indicates that all writes to TCM, that are not the full width of the TCM RAM, use a RMW sequence.
-constexpr SCB_Reg<&SCB_Layout::DTCMCR, 1, 0> EN;     // TCM enable.
+constexpr SCB_Reg<&SCB_Layout::DTCMCR, 1, 0> EN;                  // TCM enable.
     // When a TCM is disabled all accesses are made to the AXIM interface.
 }  // namespace DTCMCR
 
 // AHBP Control Register
 namespace AHBPCR {
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AHBPCR), 3, 1> SZ;  // AHBP size.
-constexpr SCB_Reg<&SCB_Layout::AHBPCR, 1, 0> EN;  // AHBP enable.
+constexpr SCB_Reg<&SCB_Layout::AHBPCR, 1, 0> EN;                  // AHBP enable.
 }  // namespace AHBPCR
 
 // L1 Cache Control Register

@@ -99,10 +99,10 @@ namespace CR {
 // TODO: Is this the correct way?
 constexpr uint32_t kWO = 0x0000'0300;
 
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;    // Reset Receive FIFO
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;                     // Reset Receive FIFO
     // 0b0..No effect
     // 0b1..Reset the Receive FIFO. The register bit always reads zero.
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;    // Reset Transmit FIFO
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;                     // Reset Transmit FIFO
     // 0b0..No effect
     // 0b1..Reset the Transmit FIFO. The register bit always reads zero.
 constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 3, (uint32_t{0x1} << 3) | kWO> DBGEN;  // Debug Enable
@@ -125,28 +125,28 @@ namespace SR {
 constexpr LPSPI1_Reg<regs::constify(&LPSPI_Layout::SR), 1, 24> MBF;  // Module Busy Flag
     // 0b0..LPSPI is idle
     // 0b1..LPSPI is busy
-constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 13, 0x0> DMF;            // Data Match Flag
+constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 13, 0x0> DMF;             // Data Match Flag
     // 0b0..Have not received matching data
     // 0b1..Have received matching data
-constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 12, 0x0> REF;            // Receive Error Flag
+constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 12, 0x0> REF;             // Receive Error Flag
     // 0b0..Receive FIFO has not overflowed
     // 0b1..Receive FIFO has overflowed
-constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 11, 0x0> TEF;            // Transmit Error Flag
+constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 11, 0x0> TEF;             // Transmit Error Flag
     // 0b0..Transmit FIFO underrun has not occurred
     // 0b1..Transmit FIFO underrun has occurred
-constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 10, 0x0> TCF;            // Transfer Complete Flag
+constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1, 10, 0x0> TCF;             // Transfer Complete Flag
     // 0b0..All transfers have not completed
     // 0b1..All transfers have completed
-constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1,  9, 0x0> FCF;            // Frame Complete Flag
+constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1,  9, 0x0> FCF;             // Frame Complete Flag
     // 0b0..Frame transfer has not completed
     // 0b1..Frame transfer has completed
-constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1,  8, 0x0> WCF;            // Word Complete Flag
+constexpr LPSPI1_Reg<&LPSPI_Layout::SR, 1,  8, 0x0> WCF;             // Word Complete Flag
     // 0b0..Transfer of a received word has not yet completed
     // 0b1..Transfer of a received word has completed
-constexpr LPSPI1_Reg<regs::constify(&LPSPI_Layout::SR), 1,  1> RDF;            // Receive Data Flag
+constexpr LPSPI1_Reg<regs::constify(&LPSPI_Layout::SR), 1,  1> RDF;  // Receive Data Flag
     // 0b0..Receive Data is not ready
     // 0b1..Receive data is ready
-constexpr LPSPI1_Reg<regs::constify(&LPSPI_Layout::SR), 1,  0> TDF;            // Transmit Data Flag
+constexpr LPSPI1_Reg<regs::constify(&LPSPI_Layout::SR), 1,  0> TDF;  // Transmit Data Flag
     // 0b0..Transmit data not requested
     // 0b1..Transmit data is requested
 }  // namespace SR

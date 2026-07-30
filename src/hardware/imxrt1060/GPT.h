@@ -70,19 +70,19 @@ using ICR_Reg = regs::Reg32<kGPT1_base, GPT_Layout, &GPT_Layout::ICR, Index,
 
 // GPT1 Control Register
 namespace CR {
-constexpr GPT1_Reg<&GPT_Layout::CR, 1, 31> FO3;      // Force Output Compare for Channel 3
+constexpr GPT1_Reg<&GPT_Layout::CR, 1, 31> FO3;     // Force Output Compare for Channel 3
     // WORZ
     // 0b0..No effect
     // 0b1..Trigger the programmed response on the pin
-constexpr GPT1_Reg<&GPT_Layout::CR, 1, 30> FO2;      // Force Output Compare for Channel 2
+constexpr GPT1_Reg<&GPT_Layout::CR, 1, 30> FO2;     // Force Output Compare for Channel 2
     // WORZ
     // 0b0..No effect
     // 0b1..Trigger the programmed response on the pin
-constexpr GPT1_Reg<&GPT_Layout::CR, 1, 29> FO1;      // Force Output Compare for Channel 1
+constexpr GPT1_Reg<&GPT_Layout::CR, 1, 29> FO1;     // Force Output Compare for Channel 1
     // WORZ
     // 0b0..No effect
     // 0b1..Trigger the programmed response on the pin
-constexpr GPT1_Reg<&GPT_Layout::CR, 3, 26> OM3;      // Output Compare Operating Mode for Channel 3
+constexpr GPT1_Reg<&GPT_Layout::CR, 3, 26> OM3;     // Output Compare Operating Mode for Channel 3
     // 0b000..Output disabled. No response on pin.
     // 0b001..Toggle output pin
     // 0b010..Clear output pin
@@ -90,7 +90,7 @@ constexpr GPT1_Reg<&GPT_Layout::CR, 3, 26> OM3;      // Output Compare Operating
     // 0b1xx..Generate a low pulse that is one input clock cycle wide on the output pin. When OMn is first programmed
     //         as 1xx, the output pin is set to one immediately on the next input clock (if it was not one already).
     //         "Input clock" here refers to the clock selected by the CLKSRC field of this register.
-constexpr GPT1_Reg<&GPT_Layout::CR, 3, 23> OM2;      // Output Compare Operating Mode for Channel 2
+constexpr GPT1_Reg<&GPT_Layout::CR, 3, 23> OM2;     // Output Compare Operating Mode for Channel 2
     // 0b000..Output disabled. No response on pin.
     // 0b001..Toggle output pin
     // 0b010..Clear output pin
@@ -98,7 +98,7 @@ constexpr GPT1_Reg<&GPT_Layout::CR, 3, 23> OM2;      // Output Compare Operating
     // 0b1xx..Generate a low pulse that is one input clock cycle wide on the output pin. When OMn is first programmed
     //         as 1xx, the output pin is set to one immediately on the next input clock (if it was not one already).
     //         "Input clock" here refers to the clock selected by the CLKSRC field of this register.
-constexpr GPT1_Reg<&GPT_Layout::CR, 3, 20> OM1;      // Output Compare Operating Mode for Channel 1
+constexpr GPT1_Reg<&GPT_Layout::CR, 3, 20> OM1;     // Output Compare Operating Mode for Channel 1
     // 0b000..Output disabled. No response on pin.
     // 0b001..Toggle output pin
     // 0b010..Clear output pin
@@ -106,49 +106,49 @@ constexpr GPT1_Reg<&GPT_Layout::CR, 3, 20> OM1;      // Output Compare Operating
     // 0b1xx..Generate a low pulse that is one input clock cycle wide on the output pin. When OMn is first programmed
     //         as 1xx, the output pin is set to one immediately on the next input clock (if it was not one already).
     //         "Input clock" here refers to the clock selected by the CLKSRC field of this register.
-constexpr GPT1_Reg<&GPT_Layout::CR, 2, 18> IM2;      // Input Capture Operating Mode for Channel 2
+constexpr GPT1_Reg<&GPT_Layout::CR, 2, 18> IM2;     // Input Capture Operating Mode for Channel 2
     // 0b00..Capture disabled
     // 0b01..Capture on rising edge only
     // 0b10..Capture on falling edge only
     // 0b11..Capture on both edges
-constexpr GPT1_Reg<&GPT_Layout::CR, 2, 16> IM1;      // Input Capture Operating Mode for Channel 1
+constexpr GPT1_Reg<&GPT_Layout::CR, 2, 16> IM1;     // Input Capture Operating Mode for Channel 1
     // 0b00..Capture disabled
     // 0b01..Capture on rising edge only
     // 0b10..Capture on falling edge only
     // 0b11..Capture on both edges
-constexpr GPT1_Reg<&GPT_Layout::CR, 1, 15> SWR;      // Software Reset
+constexpr GPT1_Reg<&GPT_Layout::CR, 1, 15> SWR;     // Software Reset
     // 0b0..GPT is not in software reset state
     // 0b1..GPT is in software reset state
-constexpr GPT1_Reg<&GPT_Layout::CR, 1, 10> EN_24M;   // Enable Oscillator Clock Input
+constexpr GPT1_Reg<&GPT_Layout::CR, 1, 10> EN_24M;  // Enable Oscillator Clock Input
     // 0b0..Disable
     // 0b1..Enable
-constexpr GPT1_Reg<&GPT_Layout::CR, 1,  9> FRR;      // Free-Run or Restart Mode
+constexpr GPT1_Reg<&GPT_Layout::CR, 1,  9> FRR;     // Free-Run or Restart Mode
     // 0b0..Restart mode. After a compare event, the counter resets to 0x0000_0000 and resumes counting.
     // 0b1..Free-Run mode. After a compare event, the counter continues counting until 0xFFFF_FFFF and then rolls over
     //     to 0.
-constexpr GPT1_Reg<&GPT_Layout::CR, 3,  6> CLKSRC;   // Clock Source Select
+constexpr GPT1_Reg<&GPT_Layout::CR, 3,  6> CLKSRC;  // Clock Source Select
     // 0b000..No clock
     // 0b001..Peripheral Clock (ipg_clk)
     // 0b010..High Frequency Reference Clock (ipg_clk_highfreq)
     // 0b011..External Clock
     // 0b100..Low Frequency Reference Clock (ipg_clk_32k)
     // 0b101..Oscillator as Reference Clock (ipg_clk_24M)
-constexpr GPT1_Reg<&GPT_Layout::CR, 1,  5> STOPEN;   // GPT Stop Mode Enable
+constexpr GPT1_Reg<&GPT_Layout::CR, 1,  5> STOPEN;  // GPT Stop Mode Enable
     // 0b0..Disable in Stop mode
     // 0b1..Enable in Stop mode
-constexpr GPT1_Reg<&GPT_Layout::CR, 1,  4> DOZEEN;   // GPT Doze Mode Enable
+constexpr GPT1_Reg<&GPT_Layout::CR, 1,  4> DOZEEN;  // GPT Doze Mode Enable
     // 0b0..Disable in Doze mode
     // 0b1..Enable in Doze mode
-constexpr GPT1_Reg<&GPT_Layout::CR, 1,  3> WAITEN;   // GPT Wait Mode Enable
+constexpr GPT1_Reg<&GPT_Layout::CR, 1,  3> WAITEN;  // GPT Wait Mode Enable
     // 0b0..Disable in Wait mode
     // 0b1..Enable in Wait mode
-constexpr GPT1_Reg<&GPT_Layout::CR, 1,  2> DBGEN;    // GPT Debug Mode Enable
+constexpr GPT1_Reg<&GPT_Layout::CR, 1,  2> DBGEN;   // GPT Debug Mode Enable
     // 0b0..Disable in Debug mode
     // 0b1..Enable in Debug mode
-constexpr GPT1_Reg<&GPT_Layout::CR, 1,  1> ENMOD;    // GPT Enable Mode
+constexpr GPT1_Reg<&GPT_Layout::CR, 1,  1> ENMOD;   // GPT Enable Mode
     // 0b0..Restart counting from their frozen values after GPT is enabled (EN=1).
     // 0b1..Reset counting from 0 after GPT is enabled (EN=1).
-constexpr GPT1_Reg<&GPT_Layout::CR, 1,  0> EN;       // GPT Enable
+constexpr GPT1_Reg<&GPT_Layout::CR, 1,  0> EN;      // GPT Enable
     // 0b0..Disable
     // 0b1..Enable
 }  // namespace CR

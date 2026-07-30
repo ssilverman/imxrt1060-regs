@@ -113,16 +113,19 @@ constexpr uint32_t kWO  = 0x0000'0040;
 
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 16, (uint32_t{0x1} << 16) | kW1C | kWO> PRGM;       // Programming Mode Select
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 14, (uint32_t{0x1} << 14) | kW1C | kWO> LRUN_CONT;  // Long run count continues between entropy generations
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 13> TSTOP_OK;   // TRNG_OK_TO_STOP
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 12, kW1C | kWO> ERR;        // Read: Error status
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 11> TST_OUT;    // Read only: Test point inside ring oscillator.
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 10> ENT_VAL;    // Read only: Entropy Valid
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  9> FCT_VAL;    // Read only: Frequency Count Valid. Indicates that a valid frequency count may be read from FRQCNT.
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  8> FCT_FAIL;   // Read only: Frequency Count Fail
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 13> TSTOP_OK;                       // TRNG_OK_TO_STOP
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 12, kW1C | kWO> ERR;                                // Read: Error status
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 11> TST_OUT;                        // Read only: Test point inside ring oscillator.
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 10> ENT_VAL;                        // Read only: Entropy Valid
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  9> FCT_VAL;                        // Read only: Frequency Count Valid.
+    // Indicates that a valid frequency count may be read from FRQCNT.
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  8> FCT_FAIL;                       // Read only: Frequency Count Fail
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  7, (uint32_t{0x1} <<  7) | kW1C | kWO> FOR_SCLK;   // Force System Clock
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6, kW1C | kWO, true> RST_DEF;    // Reset Defaults
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  5> UNUSED5;    // This bit is unused. Always reads zero.
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  4> UNUSED4;    // This bit is unused. Always reads zero.
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6, kW1C | kWO, true> RST_DEF;                      // Reset Defaults
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  5> UNUSED5;                        // This bit is unused.
+    // Always reads zero.
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  4> UNUSED4;                        // This bit is unused.
+    // Always reads zero.
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  2, (uint32_t{0x3} <<  2) | kW1C | kWO> OSC_DIV;    // Oscillator Divide
     // 1/2^value
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  0, (uint32_t{0x3} <<  0) | kW1C | kWO> SAMP_MODE;  // Sample Mode
@@ -275,22 +278,36 @@ constexpr TRNG_Reg<&TRNG_Layout::SCR6PL, 11,  0> RUN6P_MAX;  // Run Length 6+ Ma
 // Status Register
 namespace STATUS {
 constexpr TRNG_Reg<&TRNG_Layout::STATUS, 4, 16> RETRY_CT;  // RETRY COUNT
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 15> TFMB;      // Test Fail, Mono Bit. If TFMB=1, the Mono Bit Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 14> TFP;       // Test Fail, Poker. If TFP=1, the Poker Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 13> TFLR;      // Test Fail, Long Run. If TFLR=1, the Long Run Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 12> TFSB;      // Test Fail, Sparse Bit. If TFSB=1, the Sparse Bit Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 15> TFMB;      // Test Fail, Mono Bit.
+    // If TFMB=1, the Mono Bit Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 14> TFP;       // Test Fail, Poker.
+    // If TFP=1, the Poker Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 13> TFLR;      // Test Fail, Long Run.
+    // If TFLR=1, the Long Run Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 12> TFSB;      // Test Fail, Sparse Bit.
+    // If TFSB=1, the Sparse Bit Test has failed.
 constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 11> TF6PBR1;   // Test Fail, 6 Plus Bit Run, Sampling 1s
 constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1, 10> TF6PBR0;   // Test Fail, 6 Plus Bit Run, Sampling 0s
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  9> TF5BR1;    // Test Fail, 5-Bit Run, Sampling 1s. If TF5BR1=1, the 5-Bit Run, Sampling 1s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  8> TF5BR0;    // Test Fail, 5-Bit Run, Sampling 0s. If TF5BR0=1, the 5-Bit Run, Sampling 0s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  7> TF4BR1;    // Test Fail, 4-Bit Run, Sampling 1s. If TF4BR1=1, the 4-Bit Run, Sampling 1s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  6> TF4BR0;    // Test Fail, 4-Bit Run, Sampling 0s. If TF4BR0=1, the 4-Bit Run, Sampling 0s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  5> TF3BR1;    // Test Fail, 3-Bit Run, Sampling 1s. If TF3BR1=1, the 3-Bit Run, Sampling 1s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  4> TF3BR0;    // Test Fail, 3-Bit Run, Sampling 0s. If TF3BR0=1, the 3-Bit Run, Sampling 0s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  3> TF2BR1;    // Test Fail, 2-Bit Run, Sampling 1s. If TF2BR1=1, the 2-Bit Run, Sampling 1s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  2> TF2BR0;    // Test Fail, 2-Bit Run, Sampling 0s. If TF2BR0=1, the 2-Bit Run, Sampling 0s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  1> TF1BR1;    // Test Fail, 1-Bit Run, Sampling 1s. If TF1BR1=1, the 1-Bit Run, Sampling 1s Test has failed.
-constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  0> TF1BR0;    // Test Fail, 1-Bit Run, Sampling 0s. If TF1BR0=1, the 1-Bit Run, Sampling 0s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  9> TF5BR1;    // Test Fail, 5-Bit Run, Sampling 1s.
+    // If TF5BR1=1, the 5-Bit Run, Sampling 1s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  8> TF5BR0;    // Test Fail, 5-Bit Run, Sampling 0s.
+    // If TF5BR0=1, the 5-Bit Run, Sampling 0s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  7> TF4BR1;    // Test Fail, 4-Bit Run, Sampling 1s.
+    // If TF4BR1=1, the 4-Bit Run, Sampling 1s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  6> TF4BR0;    // Test Fail, 4-Bit Run, Sampling 0s.
+    // If TF4BR0=1, the 4-Bit Run, Sampling 0s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  5> TF3BR1;    // Test Fail, 3-Bit Run, Sampling 1s.
+    // If TF3BR1=1, the 3-Bit Run, Sampling 1s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  4> TF3BR0;    // Test Fail, 3-Bit Run, Sampling 0s.
+    // If TF3BR0=1, the 3-Bit Run, Sampling 0s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  3> TF2BR1;    // Test Fail, 2-Bit Run, Sampling 1s.
+    // If TF2BR1=1, the 2-Bit Run, Sampling 1s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  2> TF2BR0;    // Test Fail, 2-Bit Run, Sampling 0s.
+    // If TF2BR0=1, the 2-Bit Run, Sampling 0s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  1> TF1BR1;    // Test Fail, 1-Bit Run, Sampling 1s.
+    // If TF1BR1=1, the 1-Bit Run, Sampling 1s Test has failed.
+constexpr TRNG_Reg<&TRNG_Layout::STATUS, 1,  0> TF1BR0;    // Test Fail, 1-Bit Run, Sampling 0s.
+    // If TF1BR0=1, the 1-Bit Run, Sampling 0s Test has failed.
 }  // namespace STATUS
 
 // Statistical Check Poker Count 1 and 0 Register
@@ -342,11 +359,13 @@ constexpr TRNG_Reg<&TRNG_Layout::PKRCNTFE, 16,  0> PKR_E_CT;  // Poker Eh Count
 }  // namespace PKRCNTFE
 
 namespace SEC_CFG {
-constexpr TRNG_Reg<&TRNG_Layout::SEC_CFG, 1, 2> UNUSED2;  // This bit is unused. Ignore.
+constexpr TRNG_Reg<&TRNG_Layout::SEC_CFG, 1, 2> UNUSED2;  // This bit is unused.
+    // Ignore.
 constexpr TRNG_Reg<&TRNG_Layout::SEC_CFG, 1, 1> NO_PRGM;  // If set, the TRNG registers cannot be programmed
     // 0b0..Programability of registers controlled only by the Miscellaneous Control Register's access mode bit.
     // 0b1..Overides Miscellaneous Control Register access mode and prevents TRNG register programming.
-constexpr TRNG_Reg<&TRNG_Layout::SEC_CFG, 1, 0> UNUSED0;  // This bit is unused. Ignore.
+constexpr TRNG_Reg<&TRNG_Layout::SEC_CFG, 1, 0> UNUSED0;  // This bit is unused.
+    // Ignore.
 }  // namespace SEC_CFG
 
 // Interrupt Control Register

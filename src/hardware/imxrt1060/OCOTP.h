@@ -158,46 +158,46 @@ namespace OCOTP {
 
 // OTP Controller Control and Status Register
 namespace CTRL {
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL, 16, 16> WR_UNLOCK;       // Write Unlock
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL, 16, 16> WR_UNLOCK;             // Write Unlock
     // 0b0000000000000000..OTP write access is locked.
     // 0b0011111001110111..OTP write access is unlocked.
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1, 10> RELOAD_SHADOWS;  // Reload Shadow Registers
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1, 10> RELOAD_SHADOWS;        // Reload Shadow Registers
     // 0b0..Do not force shadow register re-load.
     // 0b1..Force shadow register re-load. This bit is cleared automatically after shadow registers are re-loaded.
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1,  9> ERROR;           // Locked Region Access Error
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  1,  9> ERROR;                 // Locked Region Access Error
     // 0b0..No error.
     // 0b1..Error - access to a locked region requested.
-constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL),  1,  8> BUSY;            // OTP controller status bit
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL),  1,  8> BUSY;  // OTP controller status bit
     // 0b0..No write or read access to OTP started.
     // 0b1..Write or read access to OTP started.
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  6,  0> ADDR;            // OTP write and read access address register
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL,  6,  0> ADDR;                  // OTP write and read access address register
 }  // namespace CTRL
 
 // OTP Controller Control and Status Register
 namespace CTRL_SET {
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET, 16, 16, 0x0> WR_UNLOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1, 10, 0x0> RELOAD_SHADOWS;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1,  9, 0x0> ERROR;
-constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_SET),  1,  8> BUSY;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  6,  0, 0x0> ADDR;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET, 16, 16, 0x0> WR_UNLOCK;        // Write Unlock
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1, 10, 0x0> RELOAD_SHADOWS;   // Reload Shadow Registers
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  1,  9, 0x0> ERROR;            // Locked Region Access Error
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_SET),  1,  8> BUSY;  // OTP controller status bit
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_SET,  6,  0, 0x0> ADDR;             // OTP write and read access address register
 }  // namespace CTRL_SET
 
 // OTP Controller Control and Status Register
 namespace CTRL_CLR {
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR, 16, 16, 0x0> WR_UNLOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1, 10, 0x0> RELOAD_SHADOWS;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1,  9, 0x0> ERROR;
-constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_CLR),  1,  8> BUSY;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  6,  0, 0x0> ADDR;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR, 16, 16, 0x0> WR_UNLOCK;        // Write Unlock
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1, 10, 0x0> RELOAD_SHADOWS;   // Reload Shadow Registers
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  1,  9, 0x0> ERROR;            // Locked Region Access Error
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_CLR),  1,  8> BUSY;  // OTP controller status bit
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_CLR,  6,  0, 0x0> ADDR;             // OTP write and read access address register
 }  // namespace CTRL_CLR
 
 // OTP Controller Control and Status Register
 namespace CTRL_TOG {
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG, 16, 16, 0x0> WR_UNLOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1, 10, 0x0> RELOAD_SHADOWS;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1,  9, 0x0> ERROR;
-constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_TOG),  1,  8> BUSY;
-constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  6,  0, 0x0> ADDR;
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG, 16, 16, 0x0> WR_UNLOCK;        // Write Unlock
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1, 10, 0x0> RELOAD_SHADOWS;   // Reload Shadow Registers
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  1,  9, 0x0> ERROR;            // Locked Region Access Error
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::CTRL_TOG),  1,  8> BUSY;  // OTP controller status bit
+constexpr OCOTP_Reg<&OCOTP_Layout::CTRL_TOG,  6,  0, 0x0> ADDR;             // OTP write and read access address register
 }  // namespace CTRL_TOG
 
 // OTP Controller Timing Register
@@ -216,7 +216,7 @@ constexpr OCOTP_Reg<&OCOTP_Layout::DATA, 32, 0> DATA;  // Used to initiate a wri
 
 // OTP Controller Write Data Register
 namespace READ_CTRL {
-constexpr OCOTP_Reg<&OCOTP_Layout::READ_CTRL, 1, 0> READ_FUSE;
+constexpr OCOTP_Reg<&OCOTP_Layout::READ_CTRL, 1, 0> READ_FUSE;  // READ_FUSE
 }  // namespace READ_CTRL
 
 // OTP Controller Read Data Register
@@ -237,11 +237,11 @@ constexpr OCOTP_Reg<&OCOTP_Layout::SW_STICKY, 1, 1> SRK_REVOKE_LOCK;    // SRK R
 
 // Software Controllable Signals Register
 namespace SCS {
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS,  1, 31> LOCK;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS,  1, 31> LOCK;     // Lock
     // 0b0..Bits in this register are unlocked.
     // 0b1..Bits in this register are locked. When set, all of the bits in this register are locked and can not be
     //      changed through SW programming. After this bit is set, it can only be cleared by a POR.
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS, 30,  1> SPARE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS, 30,  1> SPARE;    // Unallocated read/write bits for implementation specific software use.
 constexpr OCOTP_Reg<&OCOTP_Layout::SCS,  1,  0> HAB_JDE;  // HAB JTAG Debug Enable
     // 0b0..JTAG debugging is not enabled by the HAB (it may still be enabled by other mechanisms).
     // 0b1..JTAG debugging is enabled by the HAB (though this signal may be gated off).
@@ -249,30 +249,30 @@ constexpr OCOTP_Reg<&OCOTP_Layout::SCS,  1,  0> HAB_JDE;  // HAB JTAG Debug Enab
 
 // Software Controllable Signals Register
 namespace SCS_SET {
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1, 31, 0x0> LOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET, 30,  1, 0x0> SPARE;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1,  0, 0x0> HAB_JDE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1, 31, 0x0> LOCK;     // Lock
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET, 30,  1, 0x0> SPARE;    // Unallocated read/write bits for implementation specific software use.
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_SET,  1,  0, 0x0> HAB_JDE;  // HAB JTAG Debug Enable
 }  // namespace SCS_SET
 
 // Software Controllable Signals Register
 namespace SCS_CLR {
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1, 31, 0x0> LOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR, 30,  1, 0x0> SPARE;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1,  0, 0x0> HAB_JDE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1, 31, 0x0> LOCK;     // Lock
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR, 30,  1, 0x0> SPARE;    // Unallocated read/write bits for implementation specific software use.
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_CLR,  1,  0, 0x0> HAB_JDE;  // HAB JTAG Debug Enable
 }  // namespace SCS_CLR
 
 // Software Controllable Signals Register
 namespace SCS_TOG {
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1, 31, 0x0> LOCK;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG, 30,  1, 0x0> SPARE;
-constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1,  0, 0x0> HAB_JDE;
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1, 31, 0x0> LOCK;     // Lock
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG, 30,  1, 0x0> SPARE;    // Unallocated read/write bits for implementation specific software use.
+constexpr OCOTP_Reg<&OCOTP_Layout::SCS_TOG,  1,  0, 0x0> HAB_JDE;  // HAB JTAG Debug Enable
 }  // namespace SCS_TOG
 
 // OTP Controller Version Register
 namespace VERSION {
-constexpr OCOTP_Reg<&OCOTP_Layout::VERSION,  8, 24> MAJOR;
-constexpr OCOTP_Reg<&OCOTP_Layout::VERSION,  8, 16> MINOR;
-constexpr OCOTP_Reg<&OCOTP_Layout::VERSION, 16,  0> STEP;
+constexpr OCOTP_Reg<&OCOTP_Layout::VERSION,  8, 24> MAJOR;  // Major RTL Version
+constexpr OCOTP_Reg<&OCOTP_Layout::VERSION,  8, 16> MINOR;  // Minor RTL Version
+constexpr OCOTP_Reg<&OCOTP_Layout::VERSION, 16,  0> STEP;   // RTL Version Steping
 }  // namespace VERSION
 
 // OTP Controller Timing Register 2
@@ -316,232 +316,232 @@ constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2,  2> BOOT_CFG;      // BOOT_CFG Write
 
 // Value of OTP Bank0 Word1 (Configuration and Manufacturing Info.)
 namespace CFG0 {
-constexpr OCOTP_Reg<&OCOTP_Layout::CFG0, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG0, 32, 0> BITS;  // BITS
 }  // namespace CFG0
 
 // Value of OTP Bank0 Word2 (Configuration and Manufacturing Info.)
 namespace CFG1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::CFG1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG1, 32, 0> BITS;  // BITS
 }  // namespace CFG1
 
 // Value of OTP Bank0 Word3 (Configuration and Manufacturing Info.)
 namespace CFG2 {
-constexpr OCOTP_Reg<&OCOTP_Layout::CFG2, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG2, 32, 0> BITS;  // BITS
 }  // namespace CFG2
 
 // Value of OTP Bank0 Word4 (Configuration and Manufacturing Info.)
 namespace CFG3 {
-constexpr OCOTP_Reg<&OCOTP_Layout::CFG3, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG3, 32, 0> BITS;  // BITS
 }  // namespace CFG3
 
 // Value of OTP Bank0 Word5 (Configuration and Manufacturing Info.)
 namespace CFG4 {
-constexpr OCOTP_Reg<&OCOTP_Layout::CFG4, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG4, 32, 0> BITS;  // BITS
 }  // namespace CFG4
 
 // Value of OTP Bank0 Word6 (Configuration and Manufacturing Info.)
 namespace CFG5 {
-constexpr OCOTP_Reg<&OCOTP_Layout::CFG5, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG5, 32, 0> BITS;  // BITS
 }  // namespace CFG5
 
 // Value of OTP Bank0 Word7 (Configuration and Manufacturing Info.)
 namespace CFG6 {
-constexpr OCOTP_Reg<&OCOTP_Layout::CFG6, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::CFG6, 32, 0> BITS;  // BITS
 }  // namespace CFG6
 
 // Value of OTP Bank1 Word0 (Memory Related Info.)
 namespace MEM0 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MEM0, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM0, 32, 0> BITS;  // BITS
 }  // namespace MEM0
 
 // Value of OTP Bank1 Word1 (Memory Related Info.)
 namespace MEM1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MEM1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM1, 32, 0> BITS;  // BITS
 }  // namespace MEM1
 
 // Value of OTP Bank1 Word2 (Memory Related Info.)
 namespace MEM2 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MEM2, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM2, 32, 0> BITS;  // BITS
 }  // namespace MEM2
 
 // Value of OTP Bank1 Word3 (Memory Related Info.)
 namespace MEM3 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MEM3, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM3, 32, 0> BITS;  // BITS
 }  // namespace MEM3
 
 // Value of OTP Bank1 Word4 (Memory Related Info.)
 namespace MEM4 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MEM4, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MEM4, 32, 0> BITS;  // BITS
 }  // namespace MEM4
 
 // Value of OTP Bank1 Word5 (Analog Info.)
 namespace ANA0 {
-constexpr OCOTP_Reg<&OCOTP_Layout::ANA0, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA0, 32, 0> BITS;  // BITS
 }  // namespace ANA0
 
 // Value of OTP Bank1 Word6 (Analog Info.)
 namespace ANA1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::ANA1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA1, 32, 0> BITS;  // BITS
 }  // namespace ANA1
 
 // Value of OTP Bank1 Word7 (Analog Info.)
 namespace ANA2 {
-constexpr OCOTP_Reg<&OCOTP_Layout::ANA2, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA2, 32, 0> BITS;  // BITS
 }  // namespace ANA2
 
 // Shadow Register for OTP Bank3 Word0 (SRK Hash)
 namespace SRK0 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK0, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK0, 32, 0> BITS;  // BITS
 }  // namespace SRK0
 
 // Shadow Register for OTP Bank3 Word1 (SRK Hash)
 namespace SRK1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK1, 32, 0> BITS;  // BITS
 }  // namespace SRK1
 
 // Shadow Register for OTP Bank3 Word2 (SRK Hash)
 namespace SRK2 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK2, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK2, 32, 0> BITS;  // BITS
 }  // namespace SRK2
 
 // Shadow Register for OTP Bank3 Word3 (SRK Hash)
 namespace SRK3 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK3, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK3, 32, 0> BITS;  // BITS
 }  // namespace SRK3
 
 // Shadow Register for OTP Bank3 Word4 (SRK Hash)
 namespace SRK4 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK4, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK4, 32, 0> BITS;  // BITS
 }  // namespace SRK4
 
 // Shadow Register for OTP Bank3 Word5 (SRK Hash)
 namespace SRK5 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK5, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK5, 32, 0> BITS;  // BITS
 }  // namespace SRK5
 
 // Shadow Register for OTP Bank3 Word6 (SRK Hash)
 namespace SRK6 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK6, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK6, 32, 0> BITS;  // BITS
 }  // namespace SRK6
 
 // Shadow Register for OTP Bank3 Word7 (SRK Hash)
 namespace SRK7 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK7, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK7, 32, 0> BITS;  // BITS
 }  // namespace SRK7
 
 // Value of OTP Bank4 Word0 (Secure JTAG Response Field)
 namespace SJC_RESP0 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SJC_RESP0, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SJC_RESP0, 32, 0> BITS;  // BITS
 }  // namespace SJC_RESP0
 
 // Value of OTP Bank4 Word1 (Secure JTAG Response Field)
 namespace SJC_RESP1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SJC_RESP1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SJC_RESP1, 32, 0> BITS;  // BITS
 }  // namespace SJC_RESP1
 
 // Value of OTP Bank4 Word2 (MAC Address)
 namespace MAC0 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MAC0, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MAC0, 32, 0> BITS;  // BITS
 }  // namespace MAC0
 
 // Value of OTP Bank4 Word3 (MAC Address)
 namespace MAC1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MAC1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MAC1, 32, 0> BITS;  // BITS
 }  // namespace MAC1
 
 // Value of OTP Bank4 Word4 (MAC2 Address)
 namespace MAC2 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MAC2, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MAC2, 32, 0> BITS;  // BITS
 }  // namespace MAC2
 
 // Value of OTP Bank4 Word6 (General Purpose Customer Defined Info)
 namespace GP1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP1, 32, 0> BITS;  // BITS
 }  // namespace GP1
 
 // Value of OTP Bank4 Word7 (General Purpose Customer Defined Info)
 namespace GP2 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP2, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP2, 32, 0> BITS;  // BITS
 }  // namespace GP2
 
 // Value of OTP Bank5 Word0 (SW GP1)
 namespace SW_GP1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP1, 32, 0> BITS;  // BITS
 }  // namespace SW_GP1
 
 // Value of OTP Bank5 Word1 (SW GP2)
 namespace SW_GP20 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP20, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP20, 32, 0> BITS;  // BITS
 }  // namespace SW_GP20
 
 // Value of OTP Bank5 Word2 (SW GP2)
 namespace SW_GP21 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP21, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP21, 32, 0> BITS;  // BITS
 }  // namespace SW_GP21
 
 // Value of OTP Bank5 Word3 (SW GP2)
 namespace SW_GP22 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP22, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP22, 32, 0> BITS;  // BITS
 }  // namespace SW_GP22
 
 // Value of OTP Bank5 Word4 (SW GP2)
 namespace SW_GP23 {
-constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP23, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SW_GP23, 32, 0> BITS;  // BITS
 }  // namespace SW_GP23
 
 // Value of OTP Bank5 Word5 (Misc Conf)
 namespace MISC_CONF0 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MISC_CONF0, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MISC_CONF0, 32, 0> BITS;  // BITS
 }  // namespace MISC_CONF0
 
 // Value of OTP Bank5 Word6 (Misc Conf)
 namespace MISC_CONF1 {
-constexpr OCOTP_Reg<&OCOTP_Layout::MISC_CONF1, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::MISC_CONF1, 32, 0> BITS;  // BITS
 }  // namespace MISC_CONF1
 
 // Value of OTP Bank5 Word7 (SRK Revoke)
 namespace SRK_REVOKE {
-constexpr OCOTP_Reg<&OCOTP_Layout::SRK_REVOKE, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::SRK_REVOKE, 32, 0> BITS;  // BITS
 }  // namespace SRK_REVOKE
 
 // Value of OTP Bank7 Word0 (GP3)
 namespace GP30 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP30, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP30, 32, 0> BITS;  // BITS
 }  // namespace GP30
 
 // Value of OTP Bank7 Word1 (GP3)
 namespace GP31 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP31, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP31, 32, 0> BITS;  // BITS
 }  // namespace GP31
 
 // Value of OTP Bank7 Word2 (GP3)
 namespace GP32 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP32, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP32, 32, 0> BITS;  // BITS
 }  // namespace GP32
 
 // Value of OTP Bank7 Word3 (GP3)
 namespace GP33 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP33, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP33, 32, 0> BITS;  // BITS
 }  // namespace GP33
 
 // Value of OTP Bank7 Word4 (GP4)
 namespace GP40 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP40, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP40, 32, 0> BITS;  // BITS
 }  // namespace GP40
 
 // Value of OTP Bank7 Word5 (GP4)
 namespace GP41 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP41, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP41, 32, 0> BITS;  // BITS
 }  // namespace GP41
 
 // Value of OTP Bank7 Word6 (GP4)
 namespace GP42 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP42, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP42, 32, 0> BITS;  // BITS
 }  // namespace GP42
 
 // Value of OTP Bank7 Word7 (GP4)
 namespace GP43 {
-constexpr OCOTP_Reg<&OCOTP_Layout::GP43, 32, 0> BITS;
+constexpr OCOTP_Reg<&OCOTP_Layout::GP43, 32, 0> BITS;  // BITS
 }  // namespace GP43
 
 }  // namespace OCOTP

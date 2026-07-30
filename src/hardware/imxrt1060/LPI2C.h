@@ -142,25 +142,25 @@ constexpr LPI2C1_Reg<regs::constify(&LPI2C_Layout::MSR), 1, 25> BBF;  // Bus Bus
 constexpr LPI2C1_Reg<regs::constify(&LPI2C_Layout::MSR), 1, 24> MBF;  // Master Busy Flag
     // 0b0..I2C Master is idle
     // 0b1..I2C Master is busy
-constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 14, 0x0> DMF;            // Data Match Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 14, 0x0> DMF;             // Data Match Flag
     // 0b0..Have not received matching data
     // 0b1..Have received matching data
-constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 13, 0x0> PLTF;           // Pin Low Timeout Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 13, 0x0> PLTF;            // Pin Low Timeout Flag
     // 0b0..Pin low timeout has not occurred or is disabled
     // 0b1..Pin low timeout has occurred
-constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 12, 0x0> FEF;            // FIFO Error Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 12, 0x0> FEF;             // FIFO Error Flag
     // 0b0..No error
     // 0b1..Master sending or receiving data without a START condition
-constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 11, 0x0> ALF;            // Arbitration Lost Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 11, 0x0> ALF;             // Arbitration Lost Flag
     // 0b0..Master has not lost arbitration
     // 0b1..Master has lost arbitration
-constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 10, 0x0> NDF;            // NACK Detect Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1, 10, 0x0> NDF;             // NACK Detect Flag
     // 0b0..Unexpected NACK was not detected
     // 0b1..Unexpected NACK was detected
-constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1,  9, 0x0> SDF;            // STOP Detect Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1,  9, 0x0> SDF;             // STOP Detect Flag
     // 0b0..Master has not generated a STOP condition
     // 0b1..Master has generated a STOP condition
-constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1,  8, 0x0> EPF;            // End Packet Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::MSR, 1,  8, 0x0> EPF;             // End Packet Flag
     // 0b0..Master has not generated a STOP or Repeated START condition
     // 0b1..Master has generated a STOP or Repeated START condition
 constexpr LPI2C1_Reg<regs::constify(&LPI2C_Layout::MSR), 1,  1> RDF;  // Receive Data Flag
@@ -385,16 +385,16 @@ constexpr LPI2C1_Reg<regs::constify(&LPI2C_Layout::SSR), 1, 13> AM1F;  // Addres
 constexpr LPI2C1_Reg<regs::constify(&LPI2C_Layout::SSR), 1, 12> AM0F;  // Address Match 0 Flag
     // 0b0..Have not received an ADDR0 matching address
     // 0b1..Have received an ADDR0 matching address
-constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1, 11, 0x0> FEF;             // FIFO Error Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1, 11, 0x0> FEF;              // FIFO Error Flag
     // 0b0..FIFO underflow or overflow was not detected
     // 0b1..FIFO underflow or overflow was detected
-constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1, 10, 0x0> BEF;             // Bit Error Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1, 10, 0x0> BEF;              // Bit Error Flag
     // 0b0..Slave has not detected a bit error
     // 0b1..Slave has detected a bit error
-constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1,  9, 0x0> SDF;             // STOP Detect Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1,  9, 0x0> SDF;              // STOP Detect Flag
     // 0b0..Slave has not detected a STOP condition
     // 0b1..Slave has detected a STOP condition
-constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1,  8, 0x0> RSF;             // Repeated Start Flag
+constexpr LPI2C1_Reg<&LPI2C_Layout::SSR, 1,  8, 0x0> RSF;              // Repeated Start Flag
     // 0b0..Slave has not detected a Repeated START condition
     // 0b1..Slave has detected a Repeated START condition
 constexpr LPI2C1_Reg<regs::constify(&LPI2C_Layout::SSR), 1,  3> TAF;   // Transmit ACK Flag

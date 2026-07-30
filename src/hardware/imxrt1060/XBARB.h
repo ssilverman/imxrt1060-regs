@@ -55,50 +55,50 @@ using XBARB2_Reg = regs::Reg16<kXBARB2_base, XBARB_Layout, Member, 0, Bits,
 
 // Crossbar B Select Register 0
 namespace SEL0 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL0, 6, 8> SEL1;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL0, 6, 0> SEL0;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL0, 6, 8> SEL1;  // Input (XBARB_INn) to be muxed to XBARB_OUT1 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL0, 6, 0> SEL0;  // Input (XBARB_INn) to be muxed to XBARB_OUT0 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL0
 
 // Crossbar B Select Register 1
 namespace SEL1 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL1, 6, 8> SEL3;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL1, 6, 0> SEL2;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL1, 6, 8> SEL3;  // Input (XBARB_INn) to be muxed to XBARB_OUT3 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL1, 6, 0> SEL2;  // Input (XBARB_INn) to be muxed to XBARB_OUT2 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL1
 
 // Crossbar B Select Register 2
 namespace SEL2 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL2, 6, 8> SEL5;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL2, 6, 0> SEL4;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL2, 6, 8> SEL5;  // Input (XBARB_INn) to be muxed to XBARB_OUT5 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL2, 6, 0> SEL4;  // Input (XBARB_INn) to be muxed to XBARB_OUT4 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL2
 
 // Crossbar B Select Register 3
 namespace SEL3 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL3, 6, 8> SEL7;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL3, 6, 0> SEL6;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL3, 6, 8> SEL7;  // Input (XBARB_INn) to be muxed to XBARB_OUT7 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL3, 6, 0> SEL6;  // Input (XBARB_INn) to be muxed to XBARB_OUT6 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL3
 
 // Crossbar B Select Register 4
 namespace SEL4 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL4, 6, 8> SEL9;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL4, 6, 0> SEL8;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL4, 6, 8> SEL9;  // Input (XBARB_INn) to be muxed to XBARB_OUT9 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL4, 6, 0> SEL8;  // Input (XBARB_INn) to be muxed to XBARB_OUT8 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL4
 
 // Crossbar B Select Register 5
 namespace SEL5 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL5, 6, 8> SEL11;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL5, 6, 0> SEL10;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL5, 6, 8> SEL11;  // Input (XBARB_INn) to be muxed to XBARB_OUT11 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL5, 6, 0> SEL10;  // Input (XBARB_INn) to be muxed to XBARB_OUT10 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL5
 
 // Crossbar B Select Register 6
 namespace SEL6 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL6, 6, 8> SEL13;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL6, 6, 0> SEL12;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL6, 6, 8> SEL13;  // Input (XBARB_INn) to be muxed to XBARB_OUT13 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL6, 6, 0> SEL12;  // Input (XBARB_INn) to be muxed to XBARB_OUT12 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL6
 
 // Crossbar B Select Register 7
 namespace SEL7 {
-constexpr XBARB2_Reg<&XBARB_Layout::SEL7, 6, 8> SEL15;
-constexpr XBARB2_Reg<&XBARB_Layout::SEL7, 6, 0> SEL14;
+constexpr XBARB2_Reg<&XBARB_Layout::SEL7, 6, 8> SEL15;  // Input (XBARB_INn) to be muxed to XBARB_OUT15 (refer to Functional Description section for input/output assignment)
+constexpr XBARB2_Reg<&XBARB_Layout::SEL7, 6, 0> SEL14;  // Input (XBARB_INn) to be muxed to XBARB_OUT14 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL7
 
 namespace IN {

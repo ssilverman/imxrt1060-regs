@@ -78,55 +78,55 @@ using ENC1_Reg =
 namespace CTRL {
 constexpr uint16_t kW1C = 0x8112;
 
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;    // HOME Signal Transition Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;                           // HOME Signal Transition Interrupt Request
     // 0b0..No transition on the HOME signal has occurred
     // 0b1..A transition on the HOME signal has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 14, (uint16_t{0x1} << 14) | kW1C> HIE;     // HOME Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 14, (uint16_t{0x1} << 14) | kW1C> HIE;    // HOME Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 13, (uint16_t{0x1} << 13) | kW1C> HIP;     // Enable HOME to Initialize Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 13, (uint16_t{0x1} << 13) | kW1C> HIP;    // Enable HOME to Initialize Position Counters UPOS and LPOS
     // 0b0..No action
     // 0b1..HOME signal initializes the position counter
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 12, (uint16_t{0x1} << 12) | kW1C> HNE;     // Use Negative Edge of HOME Input
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 12, (uint16_t{0x1} << 12) | kW1C> HNE;    // Use Negative Edge of HOME Input
     // 0b0..Use positive-going edge-to-trigger initialization of position counters UPOS and LPOS
     // 0b1..Use negative-going edge-to-trigger initialization of position counters UPOS and LPOS
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 11, (uint16_t{0x1} << 11) | kW1C> SWIP;    // Software-Triggered Initialization of Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 11, (uint16_t{0x1} << 11) | kW1C> SWIP;   // Software-Triggered Initialization of Position Counters UPOS and LPOS
     // 0b0..No action
     // 0b1..Initialize position counter (using upper and lower initialization registers, UINIT and LINIT)
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 10, (uint16_t{0x1} << 10) | kW1C> REV;     // Enable Reverse Direction Counting
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 10, (uint16_t{0x1} << 10) | kW1C> REV;    // Enable Reverse Direction Counting
     // 0b0..Count normally
     // 0b1..Count in the reverse direction
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9, (uint16_t{0x1} <<  9) | kW1C> PH1;     // Enable Signal Phase Count Mode
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9, (uint16_t{0x1} <<  9) | kW1C> PH1;    // Enable Signal Phase Count Mode
     // 0b0..Use the standard quadrature decoder, where PHASEA and PHASEB represent a two-phase quadrature signal.
     // 0b1..Bypass the quadrature decoder. A positive transition of the PHASEA input generates a count signal. The
     //      PHASEB input and the REV bit control the counter direction: If CTRL[REV] = 0, PHASEB = 0, then count up If
     //      CTRL[REV] = 1, PHASEB = 1, then count up If CTRL[REV] = 0, PHASEB = 1, then count down If CTRL[REV] = 1,
     //      PHASEB = 0, then count down
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;    // INDEX Pulse Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;                           // INDEX Pulse Interrupt Request
     // 0b0..INDEX pulse has not occurred
     // 0b1..INDEX pulse has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  7, (uint16_t{0x1} <<  7) | kW1C> XIE;     // INDEX Pulse Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  7, (uint16_t{0x1} <<  7) | kW1C> XIE;    // INDEX Pulse Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  6, (uint16_t{0x1} <<  6) | kW1C> XIP;     // INDEX Triggered Initialization of Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  6, (uint16_t{0x1} <<  6) | kW1C> XIP;    // INDEX Triggered Initialization of Position Counters UPOS and LPOS
     // 0b0..INDEX pulse does not initialize the position counter
     // 0b1..INDEX pulse initializes the position counter
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  5, (uint16_t{0x1} <<  5) | kW1C> XNE;     // Use Negative Edge of INDEX Pulse
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  5, (uint16_t{0x1} <<  5) | kW1C> XNE;    // Use Negative Edge of INDEX Pulse
     // 0b0..Use positive edge of INDEX pulse
     // 0b1..Use negative edge of INDEX pulse
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;    // Watchdog Timeout Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;                           // Watchdog Timeout Interrupt Request
     // 0b0..No Watchdog timeout interrupt has occurred
     // 0b1..Watchdog timeout interrupt has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3, (uint16_t{0x1} <<  3) | kW1C> DIE;     // Watchdog Timeout Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3, (uint16_t{0x1} <<  3) | kW1C> DIE;    // Watchdog Timeout Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  2, (uint16_t{0x1} <<  2) | kW1C> WDE;     // Watchdog Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  2, (uint16_t{0x1} <<  2) | kW1C> WDE;    // Watchdog Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;  // Compare Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;                         // Compare Interrupt Request
     // 0b0..No match has occurred (the counter does not match the COMP value)
     // 0b1..COMP match has occurred (the counter matches the COMP value)
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  0, (uint16_t{0x1} <<  0) | kW1C> CMPIE;   // Compare Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  0, (uint16_t{0x1} <<  0) | kW1C> CMPIE;  // Compare Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
 }  // namespace CTRL
@@ -195,29 +195,29 @@ constexpr ENC1_Reg<&ENC_Layout::LINIT, 16, 0> INIT;  // INIT
 
 // ENC1 Input Monitor Register
 namespace IMR {
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 7> FPHA;
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 6> FPHB;
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 5> FIND;
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 4> FHOM;
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 3> PHA;
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 2> PHB;
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 1> INDEX;
-constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 0> HOME;
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 7> FPHA;   // FPHA
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 6> FPHB;   // FPHB
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 5> FIND;   // FIND
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 4> FHOM;   // FHOM
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 3> PHA;    // PHA
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 2> PHB;    // PHB
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 1> INDEX;  // INDEX
+constexpr ENC1_Reg<&ENC_Layout::IMR, 1, 0> HOME;   // HOME
 }  // namespace IMR
 
 // ENC1 Test Register
 namespace TST {
-constexpr ENC1_Reg<&ENC_Layout::TST, 1, 15> TEN;  // Test Mode Enable
+constexpr ENC1_Reg<&ENC_Layout::TST, 1, 15> TEN;          // Test Mode Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::TST, 1, 14> TCE;  // Test Counter Enable
+constexpr ENC1_Reg<&ENC_Layout::TST, 1, 14> TCE;          // Test Counter Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::TST, 1, 13> QDN;  // Quadrature Decoder Negative Signal
+constexpr ENC1_Reg<&ENC_Layout::TST, 1, 13> QDN;          // Quadrature Decoder Negative Signal
     // 0b0..Generates a positive quadrature decoder signal
     // 0b1..Generates a negative quadrature decoder signal
-constexpr ENC1_Reg<&ENC_Layout::TST, 5,  8> TEST_PERIOD;
-constexpr ENC1_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
+constexpr ENC1_Reg<&ENC_Layout::TST, 5,  8> TEST_PERIOD;  // TEST_PERIOD
+constexpr ENC1_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;   // TEST_COUNT
 }  // namespace TST
 
 // ENC1 Control 2 Register
@@ -230,19 +230,19 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 9, (uint16_t{0x1} << 9) | kW1C> OUTCTL
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 8, (uint16_t{0x1} << 8) | kW1C> REVMOD;  // Revolution Counter Modulus Enable
     // 0b0..Use INDEX pulse to increment/decrement revolution counter (REV)
     // 0b1..Use modulus counting roll-over/under to increment/decrement revolution counter (REV)
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;   // Roll-over Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;                          // Roll-over Interrupt Request
     // 0b0..No roll-over has occurred
     // 0b1..Roll-over has occurred
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 6, (uint16_t{0x1} << 6) | kW1C> ROIE;    // Roll-over Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;   // Roll-under Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;                          // Roll-under Interrupt Request
     // 0b0..No roll-under has occurred
     // 0b1..Roll-under has occurred
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 4, (uint16_t{0x1} << 4) | kW1C> RUIE;    // Roll-under Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;     // Count Direction Flag
+constexpr ENC1_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;                  // Count Direction Flag
     // 0b0..Last count was in the down direction
     // 0b1..Last count was in the up direction
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{0x1} << 2) | kW1C> MOD;     // Enable Modulo Counting

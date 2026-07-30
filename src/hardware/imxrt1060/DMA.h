@@ -148,36 +148,36 @@ using TCD_Reg16 = regs::Reg16<TcdBase<Index>(), DMA_Layout::TCD_Layout, Member,
 
 // Control
 namespace CR {
-constexpr DMA_Reg32<regs::constify(&DMA_Layout::CR), 1, 31> ACTIVE;   // eDMA Active Status
+constexpr DMA_Reg32<regs::constify(&DMA_Layout::CR), 1, 31> ACTIVE;  // eDMA Active Status
     // 0b0..eDMA is idle
     // 0b1..eDMA is executing a channel
-constexpr DMA_Reg32<&DMA_Layout::CR, 1, 17> CX;       // Cancel Transfer
+constexpr DMA_Reg32<&DMA_Layout::CR, 1, 17> CX;                      // Cancel Transfer
     // 0b0..Normal operation
     // 0b1..Cancel the remaining data transfer
-constexpr DMA_Reg32<&DMA_Layout::CR, 1, 16> ECX;      // Error Cancel Transfer
+constexpr DMA_Reg32<&DMA_Layout::CR, 1, 16> ECX;                     // Error Cancel Transfer
     // 0b0..Normal operation
     // 0b1..Cancel the remaining data transfer
-constexpr DMA_Reg32<&DMA_Layout::CR, 1, 10> GRP1PRI;  // Channel Group 1 Priority
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  8> GRP0PRI;  // Channel Group 0 Priority
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  7> EMLM;     // Enable Minor Loop Mapping
+constexpr DMA_Reg32<&DMA_Layout::CR, 1, 10> GRP1PRI;                 // Channel Group 1 Priority
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  8> GRP0PRI;                 // Channel Group 0 Priority
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  7> EMLM;                    // Enable Minor Loop Mapping
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  6> CLM;      // Continuous Link Mode
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  6> CLM;                     // Continuous Link Mode
     // 0b0..Continuous link mode is off
     // 0b1..Continuous link mode is on
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  5> HALT;     // Halt eDMA Operations
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  5> HALT;                    // Halt eDMA Operations
     // 0b0..Normal operation
     // 0b1..eDMA operations halted
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  4> HOE;      // Halt On Error
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  4> HOE;                     // Halt On Error
     // 0b0..Normal operation
     // 0b1..Error causes HALT field to be automatically set to 1
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  3> ERGA;     // Enable Round Robin Group Arbitration
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  3> ERGA;                    // Enable Round Robin Group Arbitration
     // 0b0..Fixed priority arbitration
     // 0b1..Round robin arbitration
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  2> ERCA;     // Enable Round Robin Channel Arbitration
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  2> ERCA;                    // Enable Round Robin Channel Arbitration
     // 0b0..Fixed priority arbitration within each group
     // 0b1..Round robin arbitration within each group
-constexpr DMA_Reg32<&DMA_Layout::CR, 1,  1> EDBG;     // Enable Debug
+constexpr DMA_Reg32<&DMA_Layout::CR, 1,  1> EDBG;                    // Enable Debug
     // 0b0..When the chip is in Debug mode, the eDMA continues to operate.
     // 0b1..When the chip is in debug mode, the DMA stalls the start of a new channel. Executing channels are allowed to complete.
 }  // namespace CR
@@ -926,386 +926,450 @@ constexpr DMA_Reg32<&DMA_Layout::EARS, 1,  0> EDREQ_0;   // Enable asynchronous 
 
 // Channel Priority
 namespace DCHPRI3 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI3, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI3, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI3, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI3, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI3), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI3, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI3, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI3
 
 // Channel Priority
 namespace DCHPRI2 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI2, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI2, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI2, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI2, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI2), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI2, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI2, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI2
 
 // Channel Priority
 namespace DCHPRI1 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI1, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI1, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI1, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI1, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI1), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI1, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI1, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI1
 
 // Channel Priority
 namespace DCHPRI0 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI0, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI0, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI0, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI0, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI0), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI0, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI0, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI0
 
 // Channel Priority
 namespace DCHPRI7 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI7, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI7, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI7, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI7, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI7), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI7, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI7, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI7
 
 // Channel Priority
 namespace DCHPRI6 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI6, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI6, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI6, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI6, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI6), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI6, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI6, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI6
 
 // Channel Priority
 namespace DCHPRI5 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI5, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI5, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI5, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI5, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI5), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI5, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI5, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI5
 
 // Channel Priority
 namespace DCHPRI4 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 1, 7> ECP;                     // Enable Channel Preemption
+    //  This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI4), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI4
 
 // Channel Priority
 namespace DCHPRI11 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI11, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI11, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI11, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI11, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI11), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI11, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI11, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI11
 
 // Channel Priority
 namespace DCHPRI10 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI10, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI10, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI10, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI10, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI10), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI10, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI10, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI10
 
 // Channel Priority
 namespace DCHPRI9 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI9, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI9, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI9, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI9, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI9), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI9, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI9, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI9
 
 // Channel Priority
 namespace DCHPRI8 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI8, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI8, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI8, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI8, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI8), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI8, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI8, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI8
 
 // Channel Priority
 namespace DCHPRI15 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI15, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI15, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI15, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI15, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI15), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI15, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI15, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI15
 
 // Channel Priority
 namespace DCHPRI14 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI14, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI14, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI14, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI14, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI14), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI14, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI14, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI14
 
 // Channel Priority
 namespace DCHPRI13 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI13, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI13, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI13, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI13, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI13), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI13, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI13, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI13
 
 // Channel Priority
 namespace DCHPRI12 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI12, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI12, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI12, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI12, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI12), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI12, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI12, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI12
 
 // Channel Priority
 namespace DCHPRI19 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI19, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI19, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI19, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI19, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI19), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI19, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI19, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI19
 
 // Channel Priority
 namespace DCHPRI18 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI18, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI18, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI18, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI18, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI18), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI18, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI18, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI18
 
 // Channel Priority
 namespace DCHPRI17 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI17, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI17, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI17, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI17, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI17), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI17, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI17, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI17
 
 // Channel Priority
 namespace DCHPRI16 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI16, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI16, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI16, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI16, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI16), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI16, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI16, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI16
 
 // Channel Priority
 namespace DCHPRI23 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI23, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI23, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI23, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI23, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI23), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI23, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI23, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI23
 
 // Channel Priority
 namespace DCHPRI22 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI22, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI22, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI22, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI22, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI22), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI22, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI22, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI22
 
 // Channel Priority
 namespace DCHPRI21 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI21, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI21, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI21, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI21, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI21), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI21, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI21, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI21
 
 // Channel Priority
 namespace DCHPRI20 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI20, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI20, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI20, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI20, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI20), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI20, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI20, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI20
 
 // Channel Priority
 namespace DCHPRI27 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI27, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI27, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI27, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI27, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI27), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI27, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI27, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI27
 
 // Channel Priority
 namespace DCHPRI26 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI26, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI26, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI26, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI26, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI26), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI26, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI26, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI26
 
 // Channel Priority
 namespace DCHPRI25 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI25, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI25, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI25, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI25, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI25), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI25, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI25, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI25
 
 // Channel Priority
 namespace DCHPRI24 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI24, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI24, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI24, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI24, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI24), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI24, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI24, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI24
 
 // Channel Priority
 namespace DCHPRI31 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI31, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI31, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI31, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI31, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI31), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI31, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI31, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI31
 
 // Channel Priority
 namespace DCHPRI30 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI30, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI30, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI30, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI30, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI30), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI30, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI30, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI30
 
 // Channel Priority
 namespace DCHPRI29 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI29, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI29, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI29, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI29, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI29), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI29, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI29, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI29
 
 // Channel Priority
 namespace DCHPRI28 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 1, 7> ECP;     // Enable Channel Preemption. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 1, 7> ECP;                     // Enable Channel Preemption.
+    // This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 1, 6> DPA;     // Disable Preempt Ability. This field resets to 0.
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 1, 6> DPA;                     // Disable Preempt Ability.
+    // This field resets to 0.
     // 0b0..Channel n can suspend a lower priority channel
     // 0b1..Channel n cannot suspend any channel, regardless of channel priority
 constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI28), 2, 4> GRPPRI;  // Channel n Current Group Priority
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 4, 0> CHPRI;   // Channel n Arbitration Priority
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI28
 
 // TCD Source Address values
@@ -1323,11 +1387,11 @@ constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::SOFF, 16, 0> SOFF;  // Sourc
 // TCD Transfer Attributes values
 namespace ATTR {
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 5, 11> SMOD;    // Source Address Modulo
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 5, 11> SMOD;   // Source Address Modulo
     // 0b00000..Source address modulo feature is disabled
     // 0b00001-0b11111..Value defines address range used to set up circular data queue
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  8> SSIZE;   // Source data transfer size
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  8> SSIZE;  // Source data transfer size
     // 0b000..8-bit
     // 0b001..16-bit
     // 0b010..32-bit
@@ -1337,9 +1401,9 @@ constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  8> SSIZE;   // Sou
     // 0b110..Reserved
     // 0b111..Reserved
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 5,  3> DMOD;    // Destination Address Modulo
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 5,  3> DMOD;   // Destination Address Modulo
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  0> DSIZE;   // Destination data transfer size
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::ATTR, 3,  0> DSIZE;  // Destination data transfer size
 }  // namespace ATTR
 
 // TCD Minor Byte Count (Minor Loop Mapping Disabled) values
@@ -1373,9 +1437,7 @@ constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES,  1, 30> DML
     // 0b0..The minor loop offset is not applied to the DADDR
     // 0b1..The minor loop offset is applied to the DADDR
 template <size_t Index>
-constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES, 20, 10> MLOFF;
-    // If SMLOE = 1 or DMLOE = 1, this field represents a sign-extended offset applied to the
-    //   source or destination address to form the next-state value after the minor loop completes.
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES, 20, 10> MLOFF;   // If SMLOE = 1 or DMLOE = 1, this field represents a sign-extended offset applied to the source or destination address to form the next-state value after the minor loop completes.
 template <size_t Index>
 constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::NBYTES_MLOFFYES, 10,  0> NBYTES;  // Minor Byte Transfer Count
 }  // namespace NBYTES_MLOFFYES
@@ -1417,39 +1479,39 @@ constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CITER_ELINKYES, 9,  0> CITER
 // TCD Control and Status values
 namespace CSR {
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 2, 14> BWC;          // Bandwidth Control
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 2, 14> BWC;                     // Bandwidth Control
     // 0b00..No eDMA engine stalls
     // 0b01..Reserved
     // 0b10..eDMA engine stalls for 4 cycles after each R/W
     // 0b11..eDMA engine stalls for 8 cycles after each R/W
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 5,  8> MAJORLINKCH;  // Major Loop Link Channel Number
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 5,  8> MAJORLINKCH;             // Major Loop Link Channel Number
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  7> DONE;         // Channel Done
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  7> DONE;                    // Channel Done
 template <size_t Index>
-constexpr TCD_Reg16<Index, regs::constify(&DMA_Layout::TCD_Layout::CSR), 1,  6> ACTIVE;       // Channel Active
+constexpr TCD_Reg16<Index, regs::constify(&DMA_Layout::TCD_Layout::CSR), 1,  6> ACTIVE;  // Channel Active
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  5> MAJORELINK;   // Enable channel-to-channel linking on major loop complete
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  5> MAJORELINK;              // Enable channel-to-channel linking on major loop complete
     // 0b0..Channel-to-channel linking is disabled
     // 0b1..Channel-to-channel linking is enabled
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  4> ESG;          // Enable Scatter/Gather Processing
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  4> ESG;                     // Enable Scatter/Gather Processing
     // 0b0..The current channel's TCD is normal format
     // 0b1..The current channel's TCD specifies a scatter gather format
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  3> DREQ;         // Disable Request
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  3> DREQ;                    // Disable Request
     // 0b0..The channel's ERQ field is not affected
     // 0b1..The channel's ERQ field value changes to 0 when the major loop is complete
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  2> INTHALF;      // Enable an interrupt when major counter is half complete.
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  2> INTHALF;                 // Enable an interrupt when major counter is half complete.
     // 0b0..Half-point interrupt is disabled
     // 0b1..Half-point interrupt is enabled
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  1> INTMAJOR;     // Enable an interrupt when major iteration count completes.
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  1> INTMAJOR;                // Enable an interrupt when major iteration count completes.
     // 0b0..End of major loop interrupt is disabled
     // 0b1..End of major loop interrupt is enabled
 template <size_t Index>
-constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  0> START;        // Channel Start
+constexpr TCD_Reg16<Index, &DMA_Layout::TCD_Layout::CSR, 1,  0> START;                   // Channel Start
     // 0b0..Channel is not explicitly started
     // 0b1..Channel is explicitly started via a software initiated service request
 }  // namespace CSR

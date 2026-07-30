@@ -198,41 +198,41 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE; 
 // Timer Channel Status and Control Register
 namespace SCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;           // Timer Compare Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;                    // Timer Compare Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;         // Timer Compare Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;                  // Timer Compare Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;           // Timer Overflow Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;                    // Timer Overflow Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;         // Timer Overflow Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;                  // Timer Overflow Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;           // Input Edge Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;                    // Input Edge Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;         // Input Edge Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;                  // Input Edge Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;           // Input Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;                    // Input Polarity Select
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;         // External Input Signal
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;  // External Input Signal
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;  // Input Capture Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;           // Input Capture Mode
     // 0b00..Capture function is disabled
     // 0b01..Load capture register on rising edge (when IPS=0) or falling edge (when IPS=1) of input
     // 0b10..Load capture register on falling edge (when IPS=0) or rising edge (when IPS=1) of input
     // 0b11..Load capture register on both edges of input
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;          // Master Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;                   // Master Mode
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;          // Enable External OFLAG Force
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;                   // Enable External OFLAG Force
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;           // Forced OFLAG Value
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;                    // Forced OFLAG Value
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;         // Force OFLAG Output
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;                  // Force OFLAG Output
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;           // Output Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;                    // Output Polarity Select
     // 0b0..True polarity.
     // 0b1..Inverted polarity.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;           // Output Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;                    // Output Enable
     // 0b0..The external pin is configured as an input.
     // 0b1..The OFLAG output signal is driven on the external pin. Other timer groups using this external pin as
     //      their input see the driven value. The polarity of the signal is determined by OPS.
@@ -253,49 +253,49 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARA
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;    // Debug Actions Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;                 // Debug Actions Enable
     // 0b00..Continue with normal operation during debug mode. (default)
     // 0b01..Halt TMR counter during debug mode.
     // 0b10..Force TMR output to logic 0 (prior to consideration of SCTRL[OPS]).
     // 0b11..Both halt counter and force output to 0 during debug mode.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;     // Fault Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;                  // Fault Enable
     // 0b0..Fault function disabled.
     // 0b1..Fault function enabled.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;  // Alternative Load Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;               // Alternative Load Enable
     // 0b0..Counter can be re-initialized only with the LOAD register.
     // 0b1..Counter can be re-initialized with the LOAD or CMPLD2 registers depending on count direction.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;       // Reload on Capture
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;                    // Reload on Capture
     // 0b0..Do not reload the counter on a capture event.
     // 0b1..Reload the counter on a capture event.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;       // Triggered Count Initialization Control
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;                    // Triggered Count Initialization Control
     // 0b0..Stop counter upon receiving a second trigger event while still counting from the first trigger event.
     // 0b1..Reload the counter upon receiving a second trigger event while still counting from the first trigger event.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;        // Counting Direction Indicator
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;     // Counting Direction Indicator
     // 0b0..The last count was in the DOWN direction.
     // 0b1..The last count was in the UP direction.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;     // Output flag
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;  // Output flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;    // Timer Compare 2 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;                 // Timer Compare 2 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;    // Timer Compare 1 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;                 // Timer Compare 1 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;      // Timer Compare 2 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;                   // Timer Compare 2 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;      // Timer Compare 1 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;                   // Timer Compare 1 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;       // Compare Load Control 2
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;                    // Compare Load Control 2
     // 0b00..Never preload
     // 0b01..Load upon successful compare with the value in COMP1
     // 0b10..Load upon successful compare with the value in COMP2
     // 0b11..Reserved
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;       // Compare Load Control 1
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;                    // Compare Load Control 1
     // 0b00..Never preload
     // 0b01..Load upon successful compare with the value in COMP1
     // 0b10..Load upon successful compare with the value in COMP2
@@ -408,35 +408,35 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE; 
 // Timer Channel Status and Control Register
 namespace SCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;           // Timer Compare Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;                    // Timer Compare Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;         // Timer Compare Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;                  // Timer Compare Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;           // Timer Overflow Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;                    // Timer Overflow Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;         // Timer Overflow Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;                  // Timer Overflow Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;           // Input Edge Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;                    // Input Edge Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;         // Input Edge Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;                  // Input Edge Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;           // Input Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;                    // Input Polarity Select
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;         // External Input Signal
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;  // External Input Signal
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;  // Input Capture Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;           // Input Capture Mode
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;          // Master Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;                   // Master Mode
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;          // Enable External OFLAG Force
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;                   // Enable External OFLAG Force
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;           // Forced OFLAG Value
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;                    // Forced OFLAG Value
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;         // Force OFLAG Output
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;                  // Force OFLAG Output
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;           // Output Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;                    // Output Polarity Select
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;           // Output Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;                    // Output Enable
 }  // namespace SCTRL
 
 // Timer Channel Comparator Load Register 1
@@ -454,31 +454,31 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARA
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;    // Debug Actions Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;                 // Debug Actions Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;     // Fault Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;                  // Fault Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;  // Alternative Load Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;               // Alternative Load Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;       // Reload on Capture
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;                    // Reload on Capture
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;       // Triggered Count Initialization Control
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;                    // Triggered Count Initialization Control
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;        // Counting Direction Indicator
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;     // Counting Direction Indicator
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;     // Output flag
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;  // Output flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;    // Timer Compare 2 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;                 // Timer Compare 2 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;    // Timer Compare 1 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;                 // Timer Compare 1 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;      // Timer Compare 2 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;                   // Timer Compare 2 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;      // Timer Compare 1 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;                   // Timer Compare 1 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;       // Compare Load Control 2
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;                    // Compare Load Control 2
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;       // Compare Load Control 1
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;                    // Compare Load Control 1
 }  // namespace CSCTRL
 
 // Timer Channel Input Filter Register
@@ -585,35 +585,35 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE; 
 // Timer Channel Status and Control Register
 namespace SCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;           // Timer Compare Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;                    // Timer Compare Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;         // Timer Compare Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;                  // Timer Compare Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;           // Timer Overflow Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;                    // Timer Overflow Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;         // Timer Overflow Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;                  // Timer Overflow Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;           // Input Edge Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;                    // Input Edge Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;         // Input Edge Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;                  // Input Edge Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;           // Input Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;                    // Input Polarity Select
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;         // External Input Signal
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;  // External Input Signal
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;  // Input Capture Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;           // Input Capture Mode
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;          // Master Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;                   // Master Mode
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;          // Enable External OFLAG Force
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;                   // Enable External OFLAG Force
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;           // Forced OFLAG Value
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;                    // Forced OFLAG Value
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;         // Force OFLAG Output
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;                  // Force OFLAG Output
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;           // Output Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;                    // Output Polarity Select
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;           // Output Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;                    // Output Enable
 }  // namespace SCTRL
 
 // Timer Channel Comparator Load Register 1
@@ -631,31 +631,31 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARA
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;    // Debug Actions Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;                 // Debug Actions Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;     // Fault Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;                  // Fault Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;  // Alternative Load Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;               // Alternative Load Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;       // Reload on Capture
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;                    // Reload on Capture
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;       // Triggered Count Initialization Control
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;                    // Triggered Count Initialization Control
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;        // Counting Direction Indicator
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;     // Counting Direction Indicator
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;     // Output flag
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;  // Output flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;    // Timer Compare 2 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;                 // Timer Compare 2 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;    // Timer Compare 1 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;                 // Timer Compare 1 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;      // Timer Compare 2 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;                   // Timer Compare 2 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;      // Timer Compare 1 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;                   // Timer Compare 1 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;       // Compare Load Control 2
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;                    // Compare Load Control 2
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;       // Compare Load Control 1
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;                    // Compare Load Control 1
 }  // namespace CSCTRL
 
 // Timer Channel Input Filter Register
@@ -762,35 +762,35 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE; 
 // Timer Channel Status and Control Register
 namespace SCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;           // Timer Compare Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 15> TCF;                    // Timer Compare Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;         // Timer Compare Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 14> TCFIE;                  // Timer Compare Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;           // Timer Overflow Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 13> TOF;                    // Timer Overflow Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;         // Timer Overflow Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 12> TOFIE;                  // Timer Overflow Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;           // Input Edge Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 11> IEF;                    // Input Edge Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;         // Input Edge Flag Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1, 10> IEFIE;                  // Input Edge Flag Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;           // Input Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  9> IPS;                    // Input Polarity Select
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;         // External Input Signal
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::SCTRL), 1,  8> INPUT;  // External Input Signal
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;  // Input Capture Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 2,  6> CAPTURE_MODE;           // Input Capture Mode
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;          // Master Mode
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  5> MSTR;                   // Master Mode
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;          // Enable External OFLAG Force
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  4> EEOF;                   // Enable External OFLAG Force
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;           // Forced OFLAG Value
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  3> VAL;                    // Forced OFLAG Value
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;         // Force OFLAG Output
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  2> FORCE;                  // Force OFLAG Output
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;           // Output Polarity Select
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;                    // Output Polarity Select
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;           // Output Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;                    // Output Enable
 }  // namespace SCTRL
 
 // Timer Channel Comparator Load Register 1
@@ -808,31 +808,31 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARA
 // Timer Channel Comparator Status and Control Register
 namespace CSCTRL {
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;    // Debug Actions Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2, 14> DBG_EN;                 // Debug Actions Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;     // Fault Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 13> FAULT;                  // Fault Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;  // Alternative Load Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 12> ALT_LOAD;               // Alternative Load Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;       // Reload on Capture
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 11> ROC;                    // Reload on Capture
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;       // Triggered Count Initialization Control
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1, 10> TCI;                    // Triggered Count Initialization Control
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;        // Counting Direction Indicator
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  9> UP;     // Counting Direction Indicator
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;     // Output flag
+constexpr CHANNEL_Reg<Index, regs::constify(&TMR_Layout::CHANNEL_Layout::CSCTRL), 1,  8> OFLAG;  // Output flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;    // Timer Compare 2 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  7> TCF2EN;                 // Timer Compare 2 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;    // Timer Compare 1 Interrupt Enable
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  6> TCF1EN;                 // Timer Compare 1 Interrupt Enable
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;      // Timer Compare 2 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  5> TCF2;                   // Timer Compare 2 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;      // Timer Compare 1 Interrupt Flag
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 1,  4> TCF1;                   // Timer Compare 1 Interrupt Flag
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;       // Compare Load Control 2
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;                    // Compare Load Control 2
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;       // Compare Load Control 1
+constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;                    // Compare Load Control 1
 }  // namespace CSCTRL
 
 // Timer Channel Input Filter Register

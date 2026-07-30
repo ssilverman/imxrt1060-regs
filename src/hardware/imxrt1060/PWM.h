@@ -178,8 +178,7 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 1,  7> FRCEN;       // FR
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 1,  6> FORCE;       // Force Initialization
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 3,  3> FORCE_SEL;
-    // This read/write bit determines the source of the FORCE OUTPUT signal for this submodule.
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 3,  3> FORCE_SEL;   // This read/write bit determines the source of the FORCE OUTPUT signal for this submodule.
     // 0b000..The local force signal, CTRL2[FORCE], from this submodule is used to force updates.
     // 0b001..The master force signal from submodule 0 is used to force updates. This setting should not be used in
     //     submodule 0 as it will hold the FORCE OUTPUT signal to logic 0.
@@ -235,9 +234,9 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1, 10> FULL;              
     // 0b0..Full-cycle reloads disabled.
     // 0b1..Full-cycle reloads enabled.
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CTRL), 2,  8> DT;        // Deadtime
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CTRL), 2,  8> DT;  // Deadtime
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  7> COMPMODE;  // Compare Mode
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  7> COMPMODE;            // Compare Mode
     // 0b0..The VAL* registers and the PWM counter are compared using an "equal to" method. This means that PWM
     //     edges are only produced when the counter is equal to one of the VAL* register values. This implies that a
     //     PWMA output that is high at the end of a period will maintain this state until a match with VAL3 clears
@@ -248,7 +247,7 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  7> COMPMODE;  // Compa
     //     the next period if the starting counter value is greater than (but not necessarily equal to) the new VAL3
     //     value.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 3,  4> PRSC;      // Prescaler
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 3,  4> PRSC;                // Prescaler
     // 0b000..Prescaler 1
     // 0b001..Prescaler 2
     // 0b010..Prescaler 4
@@ -258,21 +257,21 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 3,  4> PRSC;      // Presc
     // 0b110..Prescaler 64
     // 0b111..Prescaler 128
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  3> SPLIT;     // Split the DBLPWM signal to PWMA and PWMB
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  3> SPLIT;               // Split the DBLPWM signal to PWMA and PWMB
     // 0b0..DBLPWM is not split. PWMA and PWMB each have double pulses.
     // 0b1..DBLPWM is split to PWMA and PWMB.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  2> LDMOD;     // Load Mode Select
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  2> LDMOD;               // Load Mode Select
     // 0b0..Buffered registers of this submodule are loaded and take effect at the next PWM reload if MCTRL[LDOK] is
     //     set.
     // 0b1..Buffered registers of this submodule are loaded and take effect immediately upon MCTRL[LDOK] being set.
     //     In this case it is not necessary to set CTRL[FULL] or CTRL[HALF].
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  1> DBLX;      // PWMX Double Switching Enable
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  1> DBLX;                // PWMX Double Switching Enable
     // 0b0..PWMX double pulse disabled.
     // 0b1..PWMX double pulse enabled.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  0> DBLEN;     // Double Switching Enable
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  0> DBLEN;               // Double Switching Enable
     // 0b0..Double switching disabled.
     // 0b1..Double switching enabled.
 }  // namespace CTRL
@@ -346,21 +345,21 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL5, 16, 0> VAL5;  // Value Reg
 // Fractional Control Register
 namespace FRCTRL {
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::FRCTRL), 1, 15> TEST;     // Test Status Bit
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::FRCTRL), 1, 15> TEST;  // Test Status Bit
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  8> FRAC_PU;    // Fractional Delay Circuit Power Up
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  8> FRAC_PU;               // Fractional Delay Circuit Power Up
     // 0b0..Turn off fractional delay logic.
     // 0b1..Power up fractional delay logic.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  4> FRAC45_EN;  // Fractional Cycle Placement Enable for PWM_B
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  4> FRAC45_EN;             // Fractional Cycle Placement Enable for PWM_B
     // 0b0..Disable fractional cycle placement for PWM_B.
     // 0b1..Enable fractional cycle placement for PWM_B.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  2> FRAC23_EN;  // Fractional Cycle Placement Enable for PWM_A
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  2> FRAC23_EN;             // Fractional Cycle Placement Enable for PWM_A
     // 0b0..Disable fractional cycle placement for PWM_A.
     // 0b1..Enable fractional cycle placement for PWM_A.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  1> FRAC1_EN;   // Fractional Cycle PWM Period Enable
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  1> FRAC1_EN;              // Fractional Cycle PWM Period Enable
     // 0b0..Disable fractional cycle length for the PWM period.
     // 0b1..Enable fractional cycle length for the PWM period.
 }  // namespace FRCTRL
@@ -374,29 +373,29 @@ constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::OCTRL), 1, 14> PW
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::OCTRL), 1, 13> PWMX_IN;  // PWM_X Input
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 1, 10> POLA;     // PWM_A Output Polarity
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 1, 10> POLA;                     // PWM_A Output Polarity
     // 0b0..PWM_A output not inverted. A high level on the PWM_A pin represents the "on" or "active" state.
     // 0b1..PWM_A output inverted. A low level on the PWM_A pin represents the "on" or "active" state.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 1,  9> POLB;     // PWM_B Output Polarity
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 1,  9> POLB;                     // PWM_B Output Polarity
     // 0b0..PWM_B output not inverted. A high level on the PWM_B pin represents the "on" or "active" state.
     // 0b1..PWM_B output inverted. A low level on the PWM_B pin represents the "on" or "active" state.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 1,  8> POLX;     // PWM_X Output Polarity
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 1,  8> POLX;                     // PWM_X Output Polarity
     // 0b0..PWM_X output not inverted. A high level on the PWM_X pin represents the "on" or "active" state.
     // 0b1..PWM_X output inverted. A low level on the PWM_X pin represents the "on" or "active" state.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  4> PWMAFS;   // PWM_A Fault State
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  4> PWMAFS;                   // PWM_A Fault State
     // 0b00..Output is forced to logic 0 state prior to consideration of output polarity control.
     // 0b01..Output is forced to logic 1 state prior to consideration of output polarity control.
     // 0b10, 0b11..Output is tristated.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  2> PWMBFS;   // PWM_B Fault State
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  2> PWMBFS;                   // PWM_B Fault State
     // 0b00..Output is forced to logic 0 state prior to consideration of output polarity control.
     // 0b01..Output is forced to logic 1 state prior to consideration of output polarity control.
     // 0b10, 0b11..Output is tristated.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  0> PWMXFS;   // PWM_X Fault State
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  0> PWMXFS;                   // PWM_X Fault State
     // 0b00..Output is forced to logic 0 state prior to consideration of output polarity control.
     // 0b01..Output is forced to logic 1 state prior to consideration of output polarity control.
     // 0b10, 0b11..Output is tristated.
@@ -405,31 +404,31 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  0> PWMXFS;   // PWM_X
 // Status Register
 namespace STS {
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::STS), 1, 14> RUF;   // Registers Updated Flag
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::STS), 1, 14> RUF;  // Registers Updated Flag
     // 0b0..No register update has occurred since last reload.
     // 0b1..At least one of the double buffered registers has been updated since the last reload.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 13, 0x0> REF;   // Reload Error Flag
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 13, 0x0> REF;             // Reload Error Flag
     // 0b0..No reload error occurred.
     // 0b1..Reload signal occurred with non-coherent data and MCTRL[LDOK] = 0.
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 12, 0x0> RF;    // Reload Flag
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 12, 0x0> RF;              // Reload Flag
     // 0b0..No new reload cycle since last STS[RF] clearing
     // 0b1..New reload cycle since last STS[RF] clearing
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 11, 0x0> CFA1;  // Capture Flag A1
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 11, 0x0> CFA1;            // Capture Flag A1
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 10, 0x0> CFA0;  // Capture Flag A0
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1, 10, 0x0> CFA0;            // Capture Flag A0
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  9, 0x0> CFB1;  // Capture Flag B1
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  9, 0x0> CFB1;            // Capture Flag B1
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  8, 0x0> CFB0;  // Capture Flag B0
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  8, 0x0> CFB0;            // Capture Flag B0
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  7, 0x0> CFX1;  // Capture Flag X1
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  7, 0x0> CFX1;            // Capture Flag X1
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  6, 0x0> CFX0;  // Capture Flag X0
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  6, 0x0> CFX0;            // Capture Flag X0
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 6,  0, 0x0> CMPF;  // Compare Flags
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 6,  0, 0x0> CMPF;            // Compare Flags
     // 0b000000..No compare event has occurred for a particular VALx value.
     // 0b000001..A compare event has occurred for a particular VALx value.
 }  // namespace STS
@@ -557,37 +556,37 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT1, 16, 0> DTCNT1;  // DTCNT
 // Capture Control A Register
 namespace CAPTCTRLA {
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLA), 3, 13> CA1CNT;      // Capture A1 FIFO Word Count
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLA), 3, 13> CA1CNT;  // Capture A1 FIFO Word Count
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLA), 3, 10> CA0CNT;      // Capture A0 FIFO Word Count
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLA), 3, 10> CA0CNT;  // Capture A0 FIFO Word Count
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 2,  8> CFAWM;       // Capture A FIFOs Water Mark
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 2,  8> CFAWM;                   // Capture A FIFOs Water Mark
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  7> EDGCNTA_EN;  // Edge Counter A Enable
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  7> EDGCNTA_EN;              // Edge Counter A Enable
     // 0b0..Edge counter disabled and held in reset
     // 0b1..Edge counter enabled
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  6> INP_SELA;    // Input Select A
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  6> INP_SELA;                // Input Select A
     // 0b0..Raw PWM_A input signal selected as source.
     // 0b1..Edge Counter
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 2,  4> EDGA1;       // Edge A 1
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 2,  4> EDGA1;                   // Edge A 1
     // 0b00..Disabled
     // 0b01..Capture falling edges
     // 0b10..Capture rising edges
     // 0b11..Capture any edge
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 2,  2> EDGA0;       // Edge A 0
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 2,  2> EDGA0;                   // Edge A 0
     // 0b00..Disabled
     // 0b01..Capture falling edges
     // 0b10..Capture rising edges
     // 0b11..Capture any edge
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  1> ONESHOTA;    // One Shot Mode A
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  1> ONESHOTA;                // One Shot Mode A
     // 0b0..Free Running
     // 0b1..One Shot
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  0> ARMA;        // Arm A
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  0> ARMA;                    // Arm A
     // 0b0..Input capture operation is disabled.
     // 0b1..Input capture operation as specified by CAPTCTRLA[EDGAx] is enabled.
 }  // namespace CAPTCTRLA
@@ -597,43 +596,43 @@ namespace CAPTCOMPA {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPA), 8, 8> EDGCNTA;  // Edge Counter A
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPA, 8, 0> EDGCMPA;  // Edge Compare A
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPA, 8, 0> EDGCMPA;                  // Edge Compare A
 }  // namespace CAPTCOMPA
 
 // Capture Control B Register
 namespace CAPTCTRLB {
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLB), 3, 13> CB1CNT;      // Capture B1 FIFO Word Count
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLB), 3, 13> CB1CNT;  // Capture B1 FIFO Word Count
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLB), 3, 10> CB0CNT;      // Capture B0 FIFO Word Count
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLB), 3, 10> CB0CNT;  // Capture B0 FIFO Word Count
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 2,  8> CFBWM;       // Capture B FIFOs Water Mark
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 2,  8> CFBWM;                   // Capture B FIFOs Water Mark
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  7> EDGCNTB_EN;  // Edge Counter B Enable
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  7> EDGCNTB_EN;              // Edge Counter B Enable
     // 0b0..Edge counter disabled and held in reset
     // 0b1..Edge counter enabled
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  6> INP_SELB;    // Input Select B
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  6> INP_SELB;                // Input Select B
     // 0b0..Raw PWM_B input signal selected as source.
     // 0b1..Edge Counter
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 2,  4> EDGB1;       // Edge B 1
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 2,  4> EDGB1;                   // Edge B 1
     // 0b00..Disabled
     // 0b01..Capture falling edges
     // 0b10..Capture rising edges
     // 0b11..Capture any edge
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 2,  2> EDGB0;       // Edge B 0
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 2,  2> EDGB0;                   // Edge B 0
     // 0b00..Disabled
     // 0b01..Capture falling edges
     // 0b10..Capture rising edges
     // 0b11..Capture any edge
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  1> ONESHOTB;    // One Shot Mode B
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  1> ONESHOTB;                // One Shot Mode B
     // 0b0..Free Running
     // 0b1..One Shot
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  0> ARMB;        // Arm B
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  0> ARMB;                    // Arm B
     // 0b0..Input capture operation is disabled.
     // 0b1..Input capture operation as specified by CAPTCTRLB[EDGBx] is enabled.
 }  // namespace CAPTCTRLB
@@ -643,43 +642,43 @@ namespace CAPTCOMPB {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPB), 8, 8> EDGCNTB;  // Edge Counter B
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPB, 8, 0> EDGCMPB;  // Edge Compare B
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPB, 8, 0> EDGCMPB;                  // Edge Compare B
 }  // namespace CAPTCOMPB
 
 // Capture Control X Register
 namespace CAPTCTRLX {
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLX), 3, 13> CX1CNT;      // Capture X1 FIFO Word Count
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLX), 3, 13> CX1CNT;  // Capture X1 FIFO Word Count
 template <size_t Index>
-constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLX), 3, 10> CX0CNT;      // Capture X0 FIFO Word Count
+constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCTRLX), 3, 10> CX0CNT;  // Capture X0 FIFO Word Count
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 2,  8> CFXWM;       // Capture X FIFOs Water Mark
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 2,  8> CFXWM;                   // Capture X FIFOs Water Mark
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  7> EDGCNTX_EN;  // Edge Counter X Enable
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  7> EDGCNTX_EN;              // Edge Counter X Enable
     // 0b0..Edge counter disabled and held in reset
     // 0b1..Edge counter enabled
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  6> INP_SELX;    // Input Select X
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  6> INP_SELX;                // Input Select X
     // 0b0..Raw PWM_X input signal selected as source.
     // 0b1..Edge Counter
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 2,  4> EDGX1;       // Edge X 1
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 2,  4> EDGX1;                   // Edge X 1
     // 0b00..Disabled
     // 0b01..Capture falling edges
     // 0b10..Capture rising edges
     // 0b11..Capture any edge
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 2,  2> EDGX0;       // Edge X 0
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 2,  2> EDGX0;                   // Edge X 0
     // 0b00..Disabled
     // 0b01..Capture falling edges
     // 0b10..Capture rising edges
     // 0b11..Capture any edge
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  1> ONESHOTX;    // One Shot Mode Aux
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  1> ONESHOTX;                // One Shot Mode Aux
     // 0b0..Free Running
     // 0b1..One Shot
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  0> ARMX;        // Arm X
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  0> ARMX;                    // Arm X
     // 0b0..Input capture operation is disabled.
     // 0b1..Input capture operation as specified by CAPTCTRLX[EDGXx] is enabled.
 }  // namespace CAPTCTRLX
@@ -689,7 +688,7 @@ namespace CAPTCOMPX {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPX), 8, 8> EDGCNTX;  // Edge Counter X
 template <size_t Index>
-constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPX, 8, 0> EDGCMPX;  // Edge Compare X
+constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPX, 8, 0> EDGCMPX;                  // Edge Compare X
 }  // namespace CAPTCOMPX
 
 // Capture Value 0 Register
@@ -784,18 +783,18 @@ namespace MASK {
 // TODO: Is this the correct way?
 constexpr uint16_t kWO = 0xf000;
 
-constexpr PWM1_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;  // Update Mask Bits Immediately
+constexpr PWM1_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;             // Update Mask Bits Immediately
     // 0b0000..Normal operation. MASK* bits within the corresponding submodule are not updated until a FORCE_OUT
     //     event occurs within the submodule.
     // 0b0001..Immediate operation. MASK* bits within the corresponding submodule are updated on the following clock
     //     edge after setting this bit.
-constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;        // PWM_A Masks
+constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
     // 0b0000..PWM_A output normal.
     // 0b0001..PWM_A output masked.
-constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;        // PWM_B Masks
+constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
     // 0b0000..PWM_B output normal.
     // 0b0001..PWM_B output masked.
-constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;        // PWM_X Masks
+constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
     // 0b0000..PWM_X output normal.
     // 0b0001..PWM_X output masked.
 }  // namespace MASK
@@ -935,11 +934,11 @@ constexpr uint16_t kW1C = 0x000f;
 constexpr PWM1_Reg<&PWM_Layout::FSTS, 4, 12, (uint16_t{0xf} << 12) | kW1C> FHALF;  // Half Cycle Fault Recovery
     // 0b0000..PWM outputs are not re-enabled at the start of a half cycle.
     // 0b0001..PWM outputs are re-enabled at the start of a half cycle (as defined by VAL0).
-constexpr PWM1_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;  // Filtered Fault Pins
-constexpr PWM1_Reg<&PWM_Layout::FSTS, 4,  4, (uint16_t{0xf} << 4) | kW1C> FFULL;  // Full Cycle
+constexpr PWM1_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;                // Filtered Fault Pins
+constexpr PWM1_Reg<&PWM_Layout::FSTS, 4,  4, (uint16_t{0xf} << 4) | kW1C> FFULL;   // Full Cycle
     // 0b0000..PWM outputs are not re-enabled at the start of a full cycle
     // 0b0001..PWM outputs are re-enabled at the start of a full cycle
-constexpr PWM1_Reg<&PWM_Layout::FSTS, 4,  0, kW1C> FFLAG;  // Fault Flags
+constexpr PWM1_Reg<&PWM_Layout::FSTS, 4,  0, kW1C> FFLAG;                          // Fault Flags
     // 0b0000..No fault on the FAULTx pin.
     // 0b0001..Fault on the FAULTx pin.
 }  // namespace FSTS
@@ -1440,10 +1439,10 @@ namespace MASK {
 // TODO: Is this the correct way?
 constexpr uint16_t kWO = 0xf000;
 
-constexpr PWM2_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;  // Update Mask Bits Immediately
-constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;        // PWM_A Masks
-constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;        // PWM_B Masks
-constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;        // PWM_X Masks
+constexpr PWM2_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;             // Update Mask Bits Immediately
+constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
+constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
+constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
 }  // namespace MASK
 
 // Software Controlled Output Register
@@ -1989,10 +1988,10 @@ namespace MASK {
 // TODO: Is this the correct way?
 constexpr uint16_t kWO = 0xf000;
 
-constexpr PWM3_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;  // Update Mask Bits Immediately
-constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;        // PWM_A Masks
-constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;        // PWM_B Masks
-constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;        // PWM_X Masks
+constexpr PWM3_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;             // Update Mask Bits Immediately
+constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
+constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
+constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
 }  // namespace MASK
 
 // Software Controlled Output Register
@@ -2538,10 +2537,10 @@ namespace MASK {
 // TODO: Is this the correct way?
 constexpr uint16_t kWO = 0xf000;
 
-constexpr PWM4_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;  // Update Mask Bits Immediately
-constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;        // PWM_A Masks
-constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;        // PWM_B Masks
-constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;        // PWM_X Masks
+constexpr PWM4_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;             // Update Mask Bits Immediately
+constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
+constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
+constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
 }  // namespace MASK
 
 // Software Controlled Output Register

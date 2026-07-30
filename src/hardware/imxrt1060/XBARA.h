@@ -110,405 +110,405 @@ using XBARA1_Reg =
 
 // Crossbar A Select Register 0
 namespace SEL0 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL0, 7, 8> SEL1;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL0, 7, 0> SEL0;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL0, 7, 8> SEL1;  // Input (XBARA_INn) to be muxed to XBARA_OUT1 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL0, 7, 0> SEL0;  // Input (XBARA_INn) to be muxed to XBARA_OUT0 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL0
 
 // Crossbar A Select Register 1
 namespace SEL1 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL1, 7, 8> SEL3;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL1, 7, 0> SEL2;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL1, 7, 8> SEL3;  // Input (XBARA_INn) to be muxed to XBARA_OUT3 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL1, 7, 0> SEL2;  // Input (XBARA_INn) to be muxed to XBARA_OUT2 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL1
 
 // Crossbar A Select Register 2
 namespace SEL2 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL2, 7, 8> SEL5;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL2, 7, 0> SEL4;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL2, 7, 8> SEL5;  // Input (XBARA_INn) to be muxed to XBARA_OUT5 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL2, 7, 0> SEL4;  // Input (XBARA_INn) to be muxed to XBARA_OUT4 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL2
 
 // Crossbar A Select Register 3
 namespace SEL3 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL3, 7, 8> SEL7;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL3, 7, 0> SEL6;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL3, 7, 8> SEL7;  // Input (XBARA_INn) to be muxed to XBARA_OUT7 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL3, 7, 0> SEL6;  // Input (XBARA_INn) to be muxed to XBARA_OUT6 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL3
 
 // Crossbar A Select Register 4
 namespace SEL4 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL4, 7, 8> SEL9;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL4, 7, 0> SEL8;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL4, 7, 8> SEL9;  // Input (XBARA_INn) to be muxed to XBARA_OUT9 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL4, 7, 0> SEL8;  // Input (XBARA_INn) to be muxed to XBARA_OUT8 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL4
 
 // Crossbar A Select Register 5
 namespace SEL5 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL5, 7, 8> SEL11;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL5, 7, 0> SEL10;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL5, 7, 8> SEL11;  // Input (XBARA_INn) to be muxed to XBARA_OUT11 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL5, 7, 0> SEL10;  // Input (XBARA_INn) to be muxed to XBARA_OUT10 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL5
 
 // Crossbar A Select Register 6
 namespace SEL6 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL6, 7, 8> SEL13;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL6, 7, 0> SEL12;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL6, 7, 8> SEL13;  // Input (XBARA_INn) to be muxed to XBARA_OUT13 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL6, 7, 0> SEL12;  // Input (XBARA_INn) to be muxed to XBARA_OUT12 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL6
 
 // Crossbar A Select Register 7
 namespace SEL7 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL7, 7, 8> SEL15;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL7, 7, 0> SEL14;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL7, 7, 8> SEL15;  // Input (XBARA_INn) to be muxed to XBARA_OUT15 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL7, 7, 0> SEL14;  // Input (XBARA_INn) to be muxed to XBARA_OUT14 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL7
 
 // Crossbar A Select Register 8
 namespace SEL8 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL8, 7, 8> SEL17;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL8, 7, 0> SEL16;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL8, 7, 8> SEL17;  // Input (XBARA_INn) to be muxed to XBARA_OUT17 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL8, 7, 0> SEL16;  // Input (XBARA_INn) to be muxed to XBARA_OUT16 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL8
 
 // Crossbar A Select Register 9
 namespace SEL9 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL9, 7, 8> SEL19;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL9, 7, 0> SEL18;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL9, 7, 8> SEL19;  // Input (XBARA_INn) to be muxed to XBARA_OUT19 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL9, 7, 0> SEL18;  // Input (XBARA_INn) to be muxed to XBARA_OUT18 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL9
 
 // Crossbar A Select Register 10
 namespace SEL10 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL10, 7, 8> SEL21;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL10, 7, 0> SEL20;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL10, 7, 8> SEL21;  // Input (XBARA_INn) to be muxed to XBARA_OUT21 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL10, 7, 0> SEL20;  // Input (XBARA_INn) to be muxed to XBARA_OUT20 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL10
 
 // Crossbar A Select Register 11
 namespace SEL11 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL11, 7, 8> SEL23;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL11, 7, 0> SEL22;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL11, 7, 8> SEL23;  // Input (XBARA_INn) to be muxed to XBARA_OUT23 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL11, 7, 0> SEL22;  // Input (XBARA_INn) to be muxed to XBARA_OUT22 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL11
 
 // Crossbar A Select Register 12
 namespace SEL12 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL12, 7, 8> SEL25;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL12, 7, 0> SEL24;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL12, 7, 8> SEL25;  // Input (XBARA_INn) to be muxed to XBARA_OUT25 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL12, 7, 0> SEL24;  // Input (XBARA_INn) to be muxed to XBARA_OUT24 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL12
 
 // Crossbar A Select Register 13
 namespace SEL13 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL13, 7, 8> SEL27;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL13, 7, 0> SEL26;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL13, 7, 8> SEL27;  // Input (XBARA_INn) to be muxed to XBARA_OUT27 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL13, 7, 0> SEL26;  // Input (XBARA_INn) to be muxed to XBARA_OUT26 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL13
 
 // Crossbar A Select Register 14
 namespace SEL14 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL14, 7, 8> SEL29;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL14, 7, 0> SEL28;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL14, 7, 8> SEL29;  // Input (XBARA_INn) to be muxed to XBARA_OUT29 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL14, 7, 0> SEL28;  // Input (XBARA_INn) to be muxed to XBARA_OUT28 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL14
 
 // Crossbar A Select Register 15
 namespace SEL15 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL15, 7, 8> SEL31;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL15, 7, 0> SEL30;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL15, 7, 8> SEL31;  // Input (XBARA_INn) to be muxed to XBARA_OUT31 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL15, 7, 0> SEL30;  // Input (XBARA_INn) to be muxed to XBARA_OUT30 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL15
 
 // Crossbar A Select Register 16
 namespace SEL16 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL16, 7, 8> SEL33;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL16, 7, 0> SEL32;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL16, 7, 8> SEL33;  // Input (XBARA_INn) to be muxed to XBARA_OUT33 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL16, 7, 0> SEL32;  // Input (XBARA_INn) to be muxed to XBARA_OUT32 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL16
 
 // Crossbar A Select Register 17
 namespace SEL17 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL17, 7, 8> SEL35;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL17, 7, 0> SEL34;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL17, 7, 8> SEL35;  // Input (XBARA_INn) to be muxed to XBARA_OUT35 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL17, 7, 0> SEL34;  // Input (XBARA_INn) to be muxed to XBARA_OUT34 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL17
 
 // Crossbar A Select Register 18
 namespace SEL18 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL18, 7, 8> SEL37;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL18, 7, 0> SEL36;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL18, 7, 8> SEL37;  // Input (XBARA_INn) to be muxed to XBARA_OUT37 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL18, 7, 0> SEL36;  // Input (XBARA_INn) to be muxed to XBARA_OUT36 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL18
 
 // Crossbar A Select Register 19
 namespace SEL19 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL19, 7, 8> SEL39;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL19, 7, 0> SEL38;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL19, 7, 8> SEL39;  // Input (XBARA_INn) to be muxed to XBARA_OUT39 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL19, 7, 0> SEL38;  // Input (XBARA_INn) to be muxed to XBARA_OUT38 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL19
 
 // Crossbar A Select Register 20
 namespace SEL20 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL20, 7, 8> SEL41;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL20, 7, 0> SEL40;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL20, 7, 8> SEL41;  // Input (XBARA_INn) to be muxed to XBARA_OUT41 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL20, 7, 0> SEL40;  // Input (XBARA_INn) to be muxed to XBARA_OUT40 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL20
 
 // Crossbar A Select Register 21
 namespace SEL21 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL21, 7, 8> SEL43;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL21, 7, 0> SEL42;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL21, 7, 8> SEL43;  // Input (XBARA_INn) to be muxed to XBARA_OUT43 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL21, 7, 0> SEL42;  // Input (XBARA_INn) to be muxed to XBARA_OUT42 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL21
 
 // Crossbar A Select Register 22
 namespace SEL22 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL22, 7, 8> SEL45;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL22, 7, 0> SEL44;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL22, 7, 8> SEL45;  // Input (XBARA_INn) to be muxed to XBARA_OUT45 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL22, 7, 0> SEL44;  // Input (XBARA_INn) to be muxed to XBARA_OUT44 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL22
 
 // Crossbar A Select Register 23
 namespace SEL23 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL23, 7, 8> SEL47;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL23, 7, 0> SEL46;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL23, 7, 8> SEL47;  // Input (XBARA_INn) to be muxed to XBARA_OUT47 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL23, 7, 0> SEL46;  // Input (XBARA_INn) to be muxed to XBARA_OUT46 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL23
 
 // Crossbar A Select Register 24
 namespace SEL24 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL24, 7, 8> SEL49;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL24, 7, 0> SEL48;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL24, 7, 8> SEL49;  // Input (XBARA_INn) to be muxed to XBARA_OUT49 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL24, 7, 0> SEL48;  // Input (XBARA_INn) to be muxed to XBARA_OUT48 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL24
 
 // Crossbar A Select Register 25
 namespace SEL25 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL25, 7, 8> SEL51;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL25, 7, 0> SEL50;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL25, 7, 8> SEL51;  // Input (XBARA_INn) to be muxed to XBARA_OUT51 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL25, 7, 0> SEL50;  // Input (XBARA_INn) to be muxed to XBARA_OUT50 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL25
 
 // Crossbar A Select Register 26
 namespace SEL26 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL26, 7, 8> SEL53;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL26, 7, 0> SEL52;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL26, 7, 8> SEL53;  // Input (XBARA_INn) to be muxed to XBARA_OUT53 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL26, 7, 0> SEL52;  // Input (XBARA_INn) to be muxed to XBARA_OUT52 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL26
 
 // Crossbar A Select Register 27
 namespace SEL27 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL27, 7, 8> SEL55;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL27, 7, 0> SEL54;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL27, 7, 8> SEL55;  // Input (XBARA_INn) to be muxed to XBARA_OUT55 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL27, 7, 0> SEL54;  // Input (XBARA_INn) to be muxed to XBARA_OUT54 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL27
 
 // Crossbar A Select Register 28
 namespace SEL28 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL28, 7, 8> SEL57;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL28, 7, 0> SEL56;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL28, 7, 8> SEL57;  // Input (XBARA_INn) to be muxed to XBARA_OUT57 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL28, 7, 0> SEL56;  // Input (XBARA_INn) to be muxed to XBARA_OUT56 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL28
 
 // Crossbar A Select Register 29
 namespace SEL29 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL29, 7, 8> SEL59;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL29, 7, 0> SEL58;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL29, 7, 8> SEL59;  // Input (XBARA_INn) to be muxed to XBARA_OUT59 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL29, 7, 0> SEL58;  // Input (XBARA_INn) to be muxed to XBARA_OUT58 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL29
 
 // Crossbar A Select Register 30
 namespace SEL30 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL30, 7, 8> SEL61;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL30, 7, 0> SEL60;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL30, 7, 8> SEL61;  // Input (XBARA_INn) to be muxed to XBARA_OUT61 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL30, 7, 0> SEL60;  // Input (XBARA_INn) to be muxed to XBARA_OUT60 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL30
 
 // Crossbar A Select Register 31
 namespace SEL31 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL31, 7, 8> SEL63;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL31, 7, 0> SEL62;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL31, 7, 8> SEL63;  // Input (XBARA_INn) to be muxed to XBARA_OUT63 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL31, 7, 0> SEL62;  // Input (XBARA_INn) to be muxed to XBARA_OUT62 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL31
 
 // Crossbar A Select Register 32
 namespace SEL32 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL32, 7, 8> SEL65;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL32, 7, 0> SEL64;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL32, 7, 8> SEL65;  // Input (XBARA_INn) to be muxed to XBARA_OUT65 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL32, 7, 0> SEL64;  // Input (XBARA_INn) to be muxed to XBARA_OUT64 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL32
 
 // Crossbar A Select Register 33
 namespace SEL33 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL33, 7, 8> SEL67;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL33, 7, 0> SEL66;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL33, 7, 8> SEL67;  // Input (XBARA_INn) to be muxed to XBARA_OUT67 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL33, 7, 0> SEL66;  // Input (XBARA_INn) to be muxed to XBARA_OUT66 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL33
 
 // Crossbar A Select Register 34
 namespace SEL34 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL34, 7, 8> SEL69;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL34, 7, 0> SEL68;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL34, 7, 8> SEL69;  // Input (XBARA_INn) to be muxed to XBARA_OUT69 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL34, 7, 0> SEL68;  // Input (XBARA_INn) to be muxed to XBARA_OUT68 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL34
 
 // Crossbar A Select Register 35
 namespace SEL35 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL35, 7, 8> SEL71;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL35, 7, 0> SEL70;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL35, 7, 8> SEL71;  // Input (XBARA_INn) to be muxed to XBARA_OUT71 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL35, 7, 0> SEL70;  // Input (XBARA_INn) to be muxed to XBARA_OUT70 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL35
 
 // Crossbar A Select Register 36
 namespace SEL36 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL36, 7, 8> SEL73;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL36, 7, 0> SEL72;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL36, 7, 8> SEL73;  // Input (XBARA_INn) to be muxed to XBARA_OUT73 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL36, 7, 0> SEL72;  // Input (XBARA_INn) to be muxed to XBARA_OUT72 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL36
 
 // Crossbar A Select Register 37
 namespace SEL37 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL37, 7, 8> SEL75;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL37, 7, 0> SEL74;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL37, 7, 8> SEL75;  // Input (XBARA_INn) to be muxed to XBARA_OUT75 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL37, 7, 0> SEL74;  // Input (XBARA_INn) to be muxed to XBARA_OUT74 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL37
 
 // Crossbar A Select Register 38
 namespace SEL38 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL38, 7, 8> SEL77;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL38, 7, 0> SEL76;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL38, 7, 8> SEL77;  // Input (XBARA_INn) to be muxed to XBARA_OUT77 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL38, 7, 0> SEL76;  // Input (XBARA_INn) to be muxed to XBARA_OUT76 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL38
 
 // Crossbar A Select Register 39
 namespace SEL39 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL39, 7, 8> SEL79;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL39, 7, 0> SEL78;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL39, 7, 8> SEL79;  // Input (XBARA_INn) to be muxed to XBARA_OUT79 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL39, 7, 0> SEL78;  // Input (XBARA_INn) to be muxed to XBARA_OUT78 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL39
 
 // Crossbar A Select Register 40
 namespace SEL40 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL40, 7, 8> SEL81;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL40, 7, 0> SEL80;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL40, 7, 8> SEL81;  // Input (XBARA_INn) to be muxed to XBARA_OUT81 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL40, 7, 0> SEL80;  // Input (XBARA_INn) to be muxed to XBARA_OUT80 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL40
 
 // Crossbar A Select Register 41
 namespace SEL41 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL41, 7, 8> SEL83;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL41, 7, 0> SEL82;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL41, 7, 8> SEL83;  // Input (XBARA_INn) to be muxed to XBARA_OUT83 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL41, 7, 0> SEL82;  // Input (XBARA_INn) to be muxed to XBARA_OUT82 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL41
 
 // Crossbar A Select Register 42
 namespace SEL42 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL42, 7, 8> SEL85;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL42, 7, 0> SEL84;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL42, 7, 8> SEL85;  // Input (XBARA_INn) to be muxed to XBARA_OUT85 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL42, 7, 0> SEL84;  // Input (XBARA_INn) to be muxed to XBARA_OUT84 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL42
 
 // Crossbar A Select Register 43
 namespace SEL43 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL43, 7, 8> SEL87;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL43, 7, 0> SEL86;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL43, 7, 8> SEL87;  // Input (XBARA_INn) to be muxed to XBARA_OUT87 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL43, 7, 0> SEL86;  // Input (XBARA_INn) to be muxed to XBARA_OUT86 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL43
 
 // Crossbar A Select Register 44
 namespace SEL44 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL44, 7, 8> SEL89;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL44, 7, 0> SEL88;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL44, 7, 8> SEL89;  // Input (XBARA_INn) to be muxed to XBARA_OUT89 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL44, 7, 0> SEL88;  // Input (XBARA_INn) to be muxed to XBARA_OUT88 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL44
 
 // Crossbar A Select Register 45
 namespace SEL45 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL45, 7, 8> SEL91;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL45, 7, 0> SEL90;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL45, 7, 8> SEL91;  // Input (XBARA_INn) to be muxed to XBARA_OUT91 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL45, 7, 0> SEL90;  // Input (XBARA_INn) to be muxed to XBARA_OUT90 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL45
 
 // Crossbar A Select Register 46
 namespace SEL46 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL46, 7, 8> SEL93;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL46, 7, 0> SEL92;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL46, 7, 8> SEL93;  // Input (XBARA_INn) to be muxed to XBARA_OUT93 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL46, 7, 0> SEL92;  // Input (XBARA_INn) to be muxed to XBARA_OUT92 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL46
 
 // Crossbar A Select Register 47
 namespace SEL47 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL47, 7, 8> SEL95;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL47, 7, 0> SEL94;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL47, 7, 8> SEL95;  // Input (XBARA_INn) to be muxed to XBARA_OUT95 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL47, 7, 0> SEL94;  // Input (XBARA_INn) to be muxed to XBARA_OUT94 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL47
 
 // Crossbar A Select Register 48
 namespace SEL48 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL48, 7, 8> SEL97;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL48, 7, 0> SEL96;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL48, 7, 8> SEL97;  // Input (XBARA_INn) to be muxed to XBARA_OUT97 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL48, 7, 0> SEL96;  // Input (XBARA_INn) to be muxed to XBARA_OUT96 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL48
 
 // Crossbar A Select Register 49
 namespace SEL49 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL49, 7, 8> SEL99;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL49, 7, 0> SEL98;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL49, 7, 8> SEL99;  // Input (XBARA_INn) to be muxed to XBARA_OUT99 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL49, 7, 0> SEL98;  // Input (XBARA_INn) to be muxed to XBARA_OUT98 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL49
 
 // Crossbar A Select Register 50
 namespace SEL50 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL50, 7, 8> SEL101;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL50, 7, 0> SEL100;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL50, 7, 8> SEL101;  // Input (XBARA_INn) to be muxed to XBARA_OUT101 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL50, 7, 0> SEL100;  // Input (XBARA_INn) to be muxed to XBARA_OUT100 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL50
 
 // Crossbar A Select Register 51
 namespace SEL51 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL51, 7, 8> SEL103;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL51, 7, 0> SEL102;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL51, 7, 8> SEL103;  // Input (XBARA_INn) to be muxed to XBARA_OUT103 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL51, 7, 0> SEL102;  // Input (XBARA_INn) to be muxed to XBARA_OUT102 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL51
 
 // Crossbar A Select Register 52
 namespace SEL52 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL52, 7, 8> SEL105;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL52, 7, 0> SEL104;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL52, 7, 8> SEL105;  // Input (XBARA_INn) to be muxed to XBARA_OUT105 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL52, 7, 0> SEL104;  // Input (XBARA_INn) to be muxed to XBARA_OUT104 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL52
 
 // Crossbar A Select Register 53
 namespace SEL53 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL53, 7, 8> SEL107;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL53, 7, 0> SEL106;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL53, 7, 8> SEL107;  // Input (XBARA_INn) to be muxed to XBARA_OUT107 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL53, 7, 0> SEL106;  // Input (XBARA_INn) to be muxed to XBARA_OUT106 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL53
 
 // Crossbar A Select Register 54
 namespace SEL54 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL54, 7, 8> SEL109;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL54, 7, 0> SEL108;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL54, 7, 8> SEL109;  // Input (XBARA_INn) to be muxed to XBARA_OUT109 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL54, 7, 0> SEL108;  // Input (XBARA_INn) to be muxed to XBARA_OUT108 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL54
 
 // Crossbar A Select Register 55
 namespace SEL55 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL55, 7, 8> SEL111;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL55, 7, 0> SEL110;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL55, 7, 8> SEL111;  // Input (XBARA_INn) to be muxed to XBARA_OUT111 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL55, 7, 0> SEL110;  // Input (XBARA_INn) to be muxed to XBARA_OUT110 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL55
 
 // Crossbar A Select Register 56
 namespace SEL56 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL56, 7, 8> SEL113;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL56, 7, 0> SEL112;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL56, 7, 8> SEL113;  // Input (XBARA_INn) to be muxed to XBARA_OUT113 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL56, 7, 0> SEL112;  // Input (XBARA_INn) to be muxed to XBARA_OUT112 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL56
 
 // Crossbar A Select Register 57
 namespace SEL57 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL57, 7, 8> SEL115;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL57, 7, 0> SEL114;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL57, 7, 8> SEL115;  // Input (XBARA_INn) to be muxed to XBARA_OUT115 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL57, 7, 0> SEL114;  // Input (XBARA_INn) to be muxed to XBARA_OUT114 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL57
 
 // Crossbar A Select Register 58
 namespace SEL58 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL58, 7, 8> SEL117;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL58, 7, 0> SEL116;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL58, 7, 8> SEL117;  // Input (XBARA_INn) to be muxed to XBARA_OUT117 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL58, 7, 0> SEL116;  // Input (XBARA_INn) to be muxed to XBARA_OUT116 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL58
 
 // Crossbar A Select Register 59
 namespace SEL59 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL59, 7, 8> SEL119;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL59, 7, 0> SEL118;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL59, 7, 8> SEL119;  // Input (XBARA_INn) to be muxed to XBARA_OUT119 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL59, 7, 0> SEL118;  // Input (XBARA_INn) to be muxed to XBARA_OUT118 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL59
 
 // Crossbar A Select Register 60
 namespace SEL60 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL60, 7, 8> SEL121;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL60, 7, 0> SEL120;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL60, 7, 8> SEL121;  // Input (XBARA_INn) to be muxed to XBARA_OUT121 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL60, 7, 0> SEL120;  // Input (XBARA_INn) to be muxed to XBARA_OUT120 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL60
 
 // Crossbar A Select Register 61
 namespace SEL61 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL61, 7, 8> SEL123;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL61, 7, 0> SEL122;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL61, 7, 8> SEL123;  // Input (XBARA_INn) to be muxed to XBARA_OUT123 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL61, 7, 0> SEL122;  // Input (XBARA_INn) to be muxed to XBARA_OUT122 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL61
 
 // Crossbar A Select Register 62
 namespace SEL62 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL62, 7, 8> SEL125;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL62, 7, 0> SEL124;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL62, 7, 8> SEL125;  // Input (XBARA_INn) to be muxed to XBARA_OUT125 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL62, 7, 0> SEL124;  // Input (XBARA_INn) to be muxed to XBARA_OUT124 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL62
 
 // Crossbar A Select Register 63
 namespace SEL63 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL63, 7, 8> SEL127;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL63, 7, 0> SEL126;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL63, 7, 8> SEL127;  // Input (XBARA_INn) to be muxed to XBARA_OUT127 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL63, 7, 0> SEL126;  // Input (XBARA_INn) to be muxed to XBARA_OUT126 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL63
 
 // Crossbar A Select Register 64
 namespace SEL64 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL64, 7, 8> SEL129;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL64, 7, 0> SEL128;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL64, 7, 8> SEL129;  // Input (XBARA_INn) to be muxed to XBARA_OUT129 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL64, 7, 0> SEL128;  // Input (XBARA_INn) to be muxed to XBARA_OUT128 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL64
 
 // Crossbar A Select Register 65
 namespace SEL65 {
-constexpr XBARA1_Reg<&XBARA_Layout::SEL65, 7, 8> SEL131;
-constexpr XBARA1_Reg<&XBARA_Layout::SEL65, 7, 0> SEL130;
+constexpr XBARA1_Reg<&XBARA_Layout::SEL65, 7, 8> SEL131;  // Input (XBARA_INn) to be muxed to XBARA_OUT131 (refer to Functional Description section for input/output assignment)
+constexpr XBARA1_Reg<&XBARA_Layout::SEL65, 7, 0> SEL130;  // Input (XBARA_INn) to be muxed to XBARA_OUT130 (refer to Functional Description section for input/output assignment)
 }  // namespace SEL65
 
 // Crossbar A Control Register 0
 namespace CTRL0 {
 constexpr uint16_t kW1C = 0x1010;
 
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1, 12, kW1C> STS1;   // Edge detection status for XBAR_OUT1
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1, 12, kW1C> STS1;                           // Edge detection status for XBAR_OUT1
     // 0b0..Active edge not yet detected on XBAR_OUT1
     // 0b1..Active edge detected on XBAR_OUT1
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2, 10, (uint16_t{0x3} << 10) | kW1C> EDGE1;  // Active edge for edge detection on XBAR_OUT1
@@ -522,7 +522,7 @@ constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  9, (uint16_t{0x1} <<  9) | kW1C> 
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  8, (uint16_t{0x1} <<  8) | kW1C> DEN1;   // DMA Enable for XBAR_OUT1
     // 0b0..DMA disabled
     // 0b1..DMA enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  4, kW1C> STS0;   // Edge detection status for XBAR_OUT0
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  4, kW1C> STS0;                           // Edge detection status for XBAR_OUT0
     // 0b0..Active edge not yet detected on XBAR_OUT0
     // 0b1..Active edge detected on XBAR_OUT0
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2,  2, (uint16_t{0x3} <<  2) | kW1C> EDGE0;  // Active edge for edge detection on XBAR_OUT0
@@ -542,7 +542,7 @@ constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  0, (uint16_t{0x1} <<  0) | kW1C> 
 namespace CTRL1 {
 constexpr uint16_t kW1C = 0x1010;
 
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1, 12, kW1C> STS3;   // Edge detection status for XBAR_OUT3
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1, 12, kW1C> STS3;                           // Edge detection status for XBAR_OUT3
     // 0b0..Active edge not yet detected on XBAR_OUT3
     // 0b1..Active edge detected on XBAR_OUT3
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2, 10, (uint16_t{0x3} << 10) | kW1C> EDGE3;  // Active edge for edge detection on XBAR_OUT3
@@ -556,7 +556,7 @@ constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  9, (uint16_t{0x1} <<  9) | kW1C> 
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  8, (uint16_t{0x1} <<  8) | kW1C> DEN3;   // DMA Enable for XBAR_OUT3
     // 0b0..DMA disabled
     // 0b1..DMA enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  4, kW1C> STS2;   // Edge detection status for XBAR_OUT2
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  4, kW1C> STS2;                           // Edge detection status for XBAR_OUT2
     // 0b0..Active edge not yet detected on XBAR_OUT2
     // 0b1..Active edge detected on XBAR_OUT2
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2,  2, (uint16_t{0x3} <<  2) | kW1C> EDGE2;  // Active edge for edge detection on XBAR_OUT2

@@ -315,9 +315,10 @@ constexpr DCP_Reg<&DCP_Layout::CONTEXT, 32, 0> ADDR;  // Context pointer address
 namespace KEY {
 constexpr DCP_Reg<&DCP_Layout::KEY, 24, 8> RSVD;
 constexpr DCP_Reg<&DCP_Layout::KEY,  2, 6> RSVD_INDEX;
-constexpr DCP_Reg<&DCP_Layout::KEY,  2, 4> INDEX;         // Key index pointer. The valid indices are 0-[number_keys].
+constexpr DCP_Reg<&DCP_Layout::KEY,  2, 4> INDEX;    // Key index pointer.
+    // The valid indices are 0-[number_keys].
 constexpr DCP_Reg<&DCP_Layout::KEY,  2, 2> RSVD_SUBWORD;
-constexpr DCP_Reg<&DCP_Layout::KEY,  2, 0> SUBWORD;       // Key subword pointer
+constexpr DCP_Reg<&DCP_Layout::KEY,  2, 0> SUBWORD;  // Key subword pointer
 }  // namespace KEY
 
 // DCP key data
@@ -334,14 +335,15 @@ constexpr DCP_Reg<&DCP_Layout::PACKET0, 32, 0> ADDR;  // Next pointer register
 // DCP work packet 1 status register
 namespace PACKET1 {
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 8, 24> TAG;               // Packet Tag
-constexpr DCP_Reg<&DCP_Layout::PACKET1, 6, 18> SWAP;  // Alias for 6 fields
+constexpr DCP_Reg<&DCP_Layout::PACKET1, 6, 18> SWAP;              // Alias for 6 fields
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 23> OUTPUT_WORDSWAP;   // Reflects whether the DCP engine wordswaps the output data (big-endian data).
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 22> OUTPUT_BYTESWAP;   // Reflects whether the DCP engine byteswaps the output data (big-endian data).
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 21> INPUT_WORDSWAP;    // Reflects whether the DCP engine wordswaps the input data (big-endian data).
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 20> INPUT_BYTESWAP;    // Reflects whether the DCP engine byteswaps the input data (big-endian data).
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 19> KEY_WORDSWAP;      // Reflects whether the DCP engine swaps the key words (big-endian key).
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 18> KEY_BYTESWAP;      // Reflects whether the DCP engine swaps the key bytes (big-endian key).
-constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 17> TEST_SEMA_IRQ;     // This bit is used to test the channel semaphore transition to 0. FOR TEST USE ONLY!
+constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 17> TEST_SEMA_IRQ;     // This bit is used to test the channel semaphore transition to 0.
+    // FOR TEST USE ONLY!
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 16> CONSTANT_FILL;     // When this bit is set (MEMCOPY and BLIT modes only), the DCP simply fills the destination buffer with the value found in the source address field
 constexpr DCP_Reg<&DCP_Layout::PACKET1, 1, 15> HASH_OUTPUT;       // When the hashing is enabled, this bit controls whether the input or output data is hashed.
     // 0b0..INPUT
@@ -367,7 +369,8 @@ constexpr DCP_Reg<&DCP_Layout::PACKET1, 1,  0> INTERRUPT;         // Reflects wh
 
 // DCP work packet 2 status register
 namespace PACKET2 {
-constexpr DCP_Reg<&DCP_Layout::PACKET2, 8, 24> CIPHER_CFG;     // Cipher configuration bits. Optional configuration bits are required for the ciphers.
+constexpr DCP_Reg<&DCP_Layout::PACKET2, 8, 24> CIPHER_CFG;     // Cipher configuration bits.
+    // Optional configuration bits are required for the ciphers.
 constexpr DCP_Reg<&DCP_Layout::PACKET2, 4, 20> RSVD;
 constexpr DCP_Reg<&DCP_Layout::PACKET2, 4, 16> HASH_SELECT;    // Hash Selection Field
     // 0b0000..SHA1
@@ -380,7 +383,8 @@ constexpr DCP_Reg<&DCP_Layout::PACKET2, 8,  8> KEY_SELECT;     // Key selection 
     // 0b00000011..KEY3
     // 0b11111110..UNIQUE_KEY
     // 0b11111111..OTP_KEY
-constexpr DCP_Reg<&DCP_Layout::PACKET2, 4,  4> CIPHER_MODE;    // Cipher mode selection field. Reflects the mode of operation for the cipher operations.
+constexpr DCP_Reg<&DCP_Layout::PACKET2, 4,  4> CIPHER_MODE;    // Cipher mode selection field.
+    // Reflects the mode of operation for the cipher operations.
     // 0b0000..ECB
     // 0b0001..CBC
 constexpr DCP_Reg<&DCP_Layout::PACKET2, 4,  0> CIPHER_SELECT;  // Cipher selection field
@@ -816,7 +820,8 @@ constexpr DCP_Reg<&DCP_Layout::DBGDATA, 32, 0> DATA;  // Debug data
 // DCP page table register
 namespace PAGETABLE {
 constexpr DCP_Reg<&DCP_Layout::PAGETABLE, 30, 2> BASE;    // Page table base address
-constexpr DCP_Reg<&DCP_Layout::PAGETABLE,  1, 1> FLUSH;   // Page table flush control. To flush the TLB, write this bit to 1 and then back to 0.
+constexpr DCP_Reg<&DCP_Layout::PAGETABLE,  1, 1> FLUSH;   // Page table flush control.
+    // To flush the TLB, write this bit to 1 and then back to 0.
 constexpr DCP_Reg<&DCP_Layout::PAGETABLE,  1, 0> ENABLE;  // Page table enable control
 }  // namespace PAGETABLE
 

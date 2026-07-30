@@ -94,42 +94,42 @@ namespace GPIO {
 
 // ICR1 values
 namespace ICR1 {
-constexpr regs::RegValue32<2, 30> ICR15;
-constexpr regs::RegValue32<2, 28> ICR14;
-constexpr regs::RegValue32<2, 26> ICR13;
-constexpr regs::RegValue32<2, 24> ICR12;
-constexpr regs::RegValue32<2, 22> ICR11;
-constexpr regs::RegValue32<2, 20> ICR10;
-constexpr regs::RegValue32<2, 18> ICR9;
-constexpr regs::RegValue32<2, 16> ICR8;
-constexpr regs::RegValue32<2, 14> ICR7;
-constexpr regs::RegValue32<2, 12> ICR6;
-constexpr regs::RegValue32<2, 10> ICR5;
-constexpr regs::RegValue32<2,  8> ICR4;
-constexpr regs::RegValue32<2,  6> ICR3;
-constexpr regs::RegValue32<2,  4> ICR2;
-constexpr regs::RegValue32<2,  2> ICR1;
-constexpr regs::RegValue32<2,  0> ICR0;
+constexpr regs::RegValue32<2, 30> ICR15;  // Interrupt configuration field for GPIO interrupt 15
+constexpr regs::RegValue32<2, 28> ICR14;  // Interrupt configuration field for GPIO interrupt 14
+constexpr regs::RegValue32<2, 26> ICR13;  // Interrupt configuration field for GPIO interrupt 13
+constexpr regs::RegValue32<2, 24> ICR12;  // Interrupt configuration field for GPIO interrupt 12
+constexpr regs::RegValue32<2, 22> ICR11;  // Interrupt configuration field for GPIO interrupt 11
+constexpr regs::RegValue32<2, 20> ICR10;  // Interrupt configuration field for GPIO interrupt 10
+constexpr regs::RegValue32<2, 18> ICR9;   // Interrupt configuration field for GPIO interrupt 9
+constexpr regs::RegValue32<2, 16> ICR8;   // Interrupt configuration field for GPIO interrupt 8
+constexpr regs::RegValue32<2, 14> ICR7;   // Interrupt configuration field for GPIO interrupt 7
+constexpr regs::RegValue32<2, 12> ICR6;   // Interrupt configuration field for GPIO interrupt 6
+constexpr regs::RegValue32<2, 10> ICR5;   // Interrupt configuration field for GPIO interrupt 5
+constexpr regs::RegValue32<2,  8> ICR4;   // Interrupt configuration field for GPIO interrupt 4
+constexpr regs::RegValue32<2,  6> ICR3;   // Interrupt configuration field for GPIO interrupt 3
+constexpr regs::RegValue32<2,  4> ICR2;   // Interrupt configuration field for GPIO interrupt 2
+constexpr regs::RegValue32<2,  2> ICR1;   // Interrupt configuration field for GPIO interrupt 1
+constexpr regs::RegValue32<2,  0> ICR0;   // Interrupt configuration field for GPIO interrupt 0
 }  // namespace ICR1
 
 // ICR2 values
 namespace ICR2 {
-constexpr regs::RegValue32<2, 30> ICR31;
-constexpr regs::RegValue32<2, 28> ICR30;
-constexpr regs::RegValue32<2, 26> ICR29;
-constexpr regs::RegValue32<2, 24> ICR28;
-constexpr regs::RegValue32<2, 22> ICR27;
-constexpr regs::RegValue32<2, 20> ICR26;
-constexpr regs::RegValue32<2, 18> ICR25;
-constexpr regs::RegValue32<2, 16> ICR24;
-constexpr regs::RegValue32<2, 14> ICR23;
-constexpr regs::RegValue32<2, 12> ICR22;
-constexpr regs::RegValue32<2, 10> ICR21;
-constexpr regs::RegValue32<2,  8> ICR20;
-constexpr regs::RegValue32<2,  6> ICR19;
-constexpr regs::RegValue32<2,  4> ICR18;
-constexpr regs::RegValue32<2,  2> ICR17;
-constexpr regs::RegValue32<2,  0> ICR16;
+constexpr regs::RegValue32<2, 30> ICR31;  // Interrupt configuration field for GPIO interrupt 31
+constexpr regs::RegValue32<2, 28> ICR30;  // Interrupt configuration field for GPIO interrupt 30
+constexpr regs::RegValue32<2, 26> ICR29;  // Interrupt configuration field for GPIO interrupt 29
+constexpr regs::RegValue32<2, 24> ICR28;  // Interrupt configuration field for GPIO interrupt 28
+constexpr regs::RegValue32<2, 22> ICR27;  // Interrupt configuration field for GPIO interrupt 27
+constexpr regs::RegValue32<2, 20> ICR26;  // Interrupt configuration field for GPIO interrupt 26
+constexpr regs::RegValue32<2, 18> ICR25;  // Interrupt configuration field for GPIO interrupt 25
+constexpr regs::RegValue32<2, 16> ICR24;  // Interrupt configuration field for GPIO interrupt 24
+constexpr regs::RegValue32<2, 14> ICR23;  // Interrupt configuration field for GPIO interrupt 23
+constexpr regs::RegValue32<2, 12> ICR22;  // Interrupt configuration field for GPIO interrupt 22
+constexpr regs::RegValue32<2, 10> ICR21;  // Interrupt configuration field for GPIO interrupt 21
+constexpr regs::RegValue32<2,  8> ICR20;  // Interrupt configuration field for GPIO interrupt 20
+constexpr regs::RegValue32<2,  6> ICR19;  // Interrupt configuration field for GPIO interrupt 19
+constexpr regs::RegValue32<2,  4> ICR18;  // Interrupt configuration field for GPIO interrupt 18
+constexpr regs::RegValue32<2,  2> ICR17;  // Interrupt configuration field for GPIO interrupt 17
+constexpr regs::RegValue32<2,  0> ICR16;  // Interrupt configuration field for GPIO interrupt 16
 }  // namespace ICR2
 
 // Individual bits

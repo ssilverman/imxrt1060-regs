@@ -320,85 +320,85 @@ constexpr ENET_Reg<&ENET_Layout::MSCR, 6, 1> MII_SPEED;  // MII Speed
 
 // MIB Control Register
 namespace MIBC {
-constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 31> MIB_DIS;    // Disable MIB Logic
+constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 31> MIB_DIS;                   // Disable MIB Logic
     // 0b0..MIB logic is enabled.
     // 0b1..MIB logic is disabled. The MIB logic halts and does not update any MIB counters.
-constexpr ENET_Reg<regs::constify(&ENET_Layout::MIBC), 1, 30> MIB_IDLE;   // MIB Idle
+constexpr ENET_Reg<regs::constify(&ENET_Layout::MIBC), 1, 30> MIB_IDLE;  // MIB Idle
     // 0b0..The MIB block is updating MIB counters.
     // 0b1..The MIB block is not currently updating any MIB counters.
-constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;  // MIB Clear
+constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;                 // MIB Clear
     // 0b0..See note above.
     // 0b1..All statistics counters are reset to 0.
 }  // namespace MIBC
 
 // Receive Control Register
 namespace RCR {
-constexpr ENET_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;        // Graceful Receive Stopped
+constexpr ENET_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;  // Graceful Receive Stopped
     // 0b0..Receive not stopped
     // 0b1..Receive stopped
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30> NLC;        // Payload Length Check Disable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30> NLC;                 // Payload Length Check Disable
     // 0b0..The payload length check is disabled.
     // 0b1..The core checks the frame's payload length with the frame length/type field. Errors are indicated in the EIR[PLR] field.
-constexpr ENET_Reg<&ENET_Layout::RCR, 14, 16> MAX_FL;     // Maximum Frame Length
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 15> CFEN;       // MAC Control Frame Enable
+constexpr ENET_Reg<&ENET_Layout::RCR, 14, 16> MAX_FL;              // Maximum Frame Length
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 15> CFEN;                // MAC Control Frame Enable
     // 0b0..MAC control frames with any opcode other than 0x0001 (pause frame) are accepted and forwarded to the client interface.
     // 0b1..MAC control frames with any opcode other than 0x0001 (pause frame) are silently discarded.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 14> CRCFWD;     // Terminate/Forward Received CRC
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 14> CRCFWD;              // Terminate/Forward Received CRC
     // 0b0..The CRC field of received frames is transmitted to the user application.
     // 0b1..The CRC field is stripped from the frame.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 13> PAUFWD;     // Terminate/Forward Pause Frames
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 13> PAUFWD;              // Terminate/Forward Pause Frames
     // 0b0..Pause frames are terminated and discarded in the MAC.
     // 0b1..Pause frames are forwarded to the user application.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 12> PADEN;      // Enable Frame Padding Remove On Receive
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 12> PADEN;               // Enable Frame Padding Remove On Receive
     // 0b0..No padding is removed on receive by the MAC.
     // 0b1..Padding is removed from received frames.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  9> RMII_10T;
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  9> RMII_10T;            // Enables 10-Mbit/s mode of the RMII .
     // 0b0..100-Mbit/s operation.
     // 0b1..10-Mbit/s operation.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  8> RMII_MODE;  // RMII Mode Enable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  8> RMII_MODE;           // RMII Mode Enable
     // 0b0..MAC configured for MII mode.
     // 0b1..MAC configured for RMII operation.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  5> FCE;        // Flow Control Enable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  5> FCE;                 // Flow Control Enable
     // 0b0..Disable flow control
     // 0b1..Enable flow control
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  4> BC_REJ;     // Broadcast Frame Reject
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  4> BC_REJ;              // Broadcast Frame Reject
     // 0b0..Will not reject frames as described above
     // 0b1..Will reject frames as described above
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  3> PROM;       // Promiscuous Mode
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  3> PROM;                // Promiscuous Mode
     // 0b0..Disabled.
     // 0b1..Enabled.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  2> MII_MODE;   // Media Independent Interface Mode
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  2> MII_MODE;            // Media Independent Interface Mode
     // 0b0..Reserved.
     // 0b1..MII or RMII mode, as indicated by the RMII_MODE field.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  1> DRT;        // Disable Receive On Transmit
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  1> DRT;                 // Disable Receive On Transmit
     // 0b0..Receive path operates independently of transmit (i.e., full-duplex mode). Can also be used to monitor transmit activity in half-duplex mode.
     // 0b1..Disable reception of frames while transmitting. (Normally used for half-duplex mode.)
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  0> LOOP;       // Internal Loopback
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  0> LOOP;                // Internal Loopback
     // 0b0..Loopback disabled.
     // 0b1..Transmitted frames are looped back internal to the device and transmit MII output signals are not asserted. DRT must be cleared.
 }  // namespace RCR
 
 // Transmit Control Register
 namespace TCR {
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 9> CRCFWD;     // Forward Frame From Application With CRC
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 9> CRCFWD;                     // Forward Frame From Application With CRC
     // 0b0..TxBD[TC] controls whether the frame has a CRC from the application.
     // 0b1..The transmitter does not append any CRC to transmitted frames, as it is expecting a frame with CRC from the application.
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 8> ADDINS;     // Set MAC Address On Transmit
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 8> ADDINS;                     // Set MAC Address On Transmit
     // 0b0..The source MAC address is not modified by the MAC.
     // 0b1..The MAC overwrites the source MAC address with the programmed MAC address according to ADDSEL.
-constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;     // Source MAC Address Select On Transmit
+constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;                     // Source MAC Address Select On Transmit
     // 0b000..Node MAC address programmed on PADDR1/2 registers.
     // 0b100..Reserved.
     // 0b101..Reserved.
     // 0b110..Reserved.
 constexpr ENET_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;  // Receive Frame Control Pause
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;  // Transmit Frame Control Pause
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;                  // Transmit Frame Control Pause
     // 0b0..No PAUSE frame transmitted.
     // 0b1..The MAC stops transmission of data frames after the current transmission is complete.
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 2> FDEN;       // Full-Duplex Enable
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 2> FDEN;                       // Full-Duplex Enable
     // 0b0..Disable full-duplex
     // 0b1..Enable full-duplex
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0> GTS;        // Graceful Transmit Stop
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0> GTS;                        // Graceful Transmit Stop
     // 0b0..Disable graceful transmit stop
     // 0b1..Enable graceful transmit stop
 }  // namespace TCR
@@ -410,14 +410,14 @@ constexpr ENET_Reg<&ENET_Layout::PALR, 32, 0> PADDR1;  // Pause Address
 
 // Physical Address Upper Register
 namespace PAUR {
-constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;
+constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;                // Bytes 4 (bits 31:24) and 5 (bits 23:16) of the 6-byte individual address used for exact match, and the source address field in PAUSE frames
 constexpr ENET_Reg<regs::constify(&ENET_Layout::PAUR), 16,  0> TYPE;  // Type Field In PAUSE Frames
 }  // namespace PAUR
 
 // Opcode/Pause Duration Register
 namespace OPD {
-constexpr ENET_Reg<regs::constify(&ENET_Layout::OPD), 16, 16> OPCODE;     // Opcode Field In PAUSE Frames
-constexpr ENET_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;  // Pause Duration
+constexpr ENET_Reg<regs::constify(&ENET_Layout::OPD), 16, 16> OPCODE;  // Opcode Field In PAUSE Frames
+constexpr ENET_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;               // Pause Duration
 }  // namespace OPD
 
 // Transmit Interrupt Coalescing Register
@@ -469,7 +469,7 @@ namespace TFWR {
 constexpr ENET_Reg<&ENET_Layout::TFWR, 1, 8> STRFWD;  // Store And Forward Enable
     // 0b0..Reset. The transmission start threshold is programmed in TFWR[TFWR].
     // 0b1..Enabled.
-constexpr ENET_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;  // Transmit FIFO Write
+constexpr ENET_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;    // Transmit FIFO Write
     // 0b000000..64 bytes written.
     // 0b000001..64 bytes written.
     // 0b000010..128 bytes written.
@@ -479,17 +479,17 @@ constexpr ENET_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;  // Transmit FIFO Write
 
 // Receive Descriptor Ring 0 Start Register
 namespace RDSR {
-constexpr ENET_Reg<&ENET_Layout::RDSR, 29, 3> R_DES_START;
+constexpr ENET_Reg<&ENET_Layout::RDSR, 29, 3> R_DES_START;  // Pointer to the beginning of the receive buffer descriptor queue.
 }  // namespace RDSR
 
 // Transmit Buffer Descriptor Ring 0 Start Register
 namespace TDSR {
-constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;
+constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;  // Pointer to the beginning of the transmit buffer descriptor queue.
 }  // namespace TDSR
 
 // Maximum Receive Buffer Size Register - Ring 0
 namespace MRBR {
-constexpr ENET_Reg<&ENET_Layout::MRBR, 10, 4> R_BUF_SIZE;
+constexpr ENET_Reg<&ENET_Layout::MRBR, 10, 4> R_BUF_SIZE;  // Receive buffer size in bytes
 }  // namespace MRBR
 
 // Receive FIFO Section Full Threshold
@@ -540,11 +540,11 @@ constexpr ENET_Reg<&ENET_Layout::FTRL, 14, 0> TRUNC_FL;  // Frame Truncation Len
 
 // Transmit Accelerator Function Configuration
 namespace TACC {
-constexpr ENET_Reg<&ENET_Layout::TACC, 1, 4> PROCHK;
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 4> PROCHK;   // Enables insertion of protocol checksum.
     // 0b0..Checksum not inserted.
     // 0b1..If an IP frame with a known protocol is transmitted, the checksum is inserted automatically into the
     //      frame. The checksum field must be cleared. The other frames are not modified.
-constexpr ENET_Reg<&ENET_Layout::TACC, 1, 3> IPCHK;
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 3> IPCHK;    // Enables insertion of IP header checksum.
     // 0b0..Checksum is not inserted.
     // 0b1..If an IP frame is transmitted, the checksum is inserted automatically. The IP header checksum field must
     //      be cleared. If a non-IP frame is transmitted the frame is not modified.
@@ -574,7 +574,7 @@ constexpr ENET_Reg<&ENET_Layout::RACC, 1, 1> IPDIS;    // Enable Discard Of Fram
     // 0b1..If an IPv4 frame is received with a mismatching header checksum, the frame is discarded. IPv6 has no
     //      header checksum and is not affected by this setting. Discarding is only available when the RX FIFO operates in
     //      store and forward mode (RSFL cleared).
-constexpr ENET_Reg<&ENET_Layout::RACC, 1, 0> PADREM;  // Enable Padding Removal For Short IP Frames
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 0> PADREM;   // Enable Padding Removal For Short IP Frames
     // 0b0..Padding not removed.
     // 0b1..Any bytes following the IP payload section of the frame are removed from the frame.
 }  // namespace RACC
@@ -638,9 +638,7 @@ constexpr ENET_Reg<&ENET_Layout::ATINC, 7, 0> INC;       // Clock Period Of The 
 
 // Timestamp of Last Transmitted Frame
 namespace ATSTMP {
-constexpr ENET_Reg<&ENET_Layout::ATSTMP, 32, 0> TIMESTAMP;
-    // Timestamp of the last frame transmitted by the core that had TxBD[TS] set the
-    // ff_tx_ts_frm signal asserted from the user application
+constexpr ENET_Reg<&ENET_Layout::ATSTMP, 32, 0> TIMESTAMP;  // Timestamp of the last frame transmitted by the core that had TxBD[TS] set the ff_tx_ts_frm signal asserted from the user application
 }  // namespace ATSTMP
 
 // Timer Global Status Register
@@ -673,7 +671,7 @@ constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11, (uint32_
     // 0b00011..Pulse width is four 1588-clock cycles.
     // 0b11111..Pulse width is 32 1588-clock cycles.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, kW1C> TF;     // Timer Flag
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, kW1C> TF;                              // Timer Flag
     // 0b0..Input Capture or Output Compare has not occurred.
     // 0b1..Input Capture or Output Compare has occurred.
 template <size_t Index>

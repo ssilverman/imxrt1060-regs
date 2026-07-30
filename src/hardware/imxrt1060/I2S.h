@@ -134,59 +134,59 @@ constexpr I2S1_Reg<regs::constify(&I2S_Layout::PARAM), 4,  0> DATALINE;  // Numb
 namespace TCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> TE;      // Transmitter Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> TE;     // Transmitter Enable
     // 0b0..Transmitter is disabled.
     // 0b1..Transmitter is enabled, or transmitter has been disabled and has not yet reached end of frame.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;   // Stop Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;  // Stop Enable
     // 0b0..Transmitter disabled in Stop mode.
     // 0b1..Transmitter enabled in Stop mode.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;    // Debug Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;   // Debug Enable
     // 0b0..Transmitter is disabled in Debug mode, after completing the current frame.
     // 0b1..Transmitter is enabled in Debug mode.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;     // Bit Clock Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;    // Bit Clock Enable
     // 0b0..Transmit bit clock is disabled.
     // 0b1..Transmit bit clock is enabled.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;      // FIFO Reset
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;     // FIFO Reset
     // WORZ
     // 0b0..No effect.
     // 0b1..FIFO reset.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;      // Software Reset
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;     // Software Reset
     // 0b0..No effect.
     // 0b1..Software reset.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;            // Word Start Flag
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;                            // Word Start Flag
     // 0b0..Start of word not detected.
     // 0b1..Start of word detected.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;            // Sync Error Flag
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;                            // Sync Error Flag
     // 0b0..Sync error not detected.
     // 0b1..Frame sync error detected.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;            // FIFO Error Flag
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;                            // FIFO Error Flag
     // 0b0..Transmit underrun not detected.
     // 0b1..Transmit underrun detected.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;  // FIFO Warning Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;                  // FIFO Warning Flag
     // 0b0..No enabled transmit FIFO is empty.
     // 0b1..Enabled transmit FIFO is empty.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;  // FIFO Request Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;                  // FIFO Request Flag
     // 0b0..Transmit FIFO watermark has not been reached.
     // 0b1..Transmit FIFO watermark has been reached.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;    // Word Start Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;   // Word Start Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;    // Sync Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;   // Sync Error Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;    // FIFO Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;   // FIFO Error Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;    // FIFO Warning Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;   // FIFO Warning Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;    // FIFO Request Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;   // FIFO Request Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;    // FIFO Warning DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;   // FIFO Warning DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;    // FIFO Request DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;   // FIFO Request DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
 }  // namespace TCSR
@@ -307,59 +307,59 @@ constexpr I2S1_Reg<&I2S_Layout::TMR, 32, 0> TWM;  // Transmit Word Mask
 namespace RCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> RE;      // Receiver Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> RE;     // Receiver Enable
     // 0b0..Receiver is disabled.
     // 0b1..Receiver is enabled, or receiver has been disabled and has not yet reached end of frame.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;   // Stop Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;  // Stop Enable
     // 0b0..Receiver disabled in Stop mode.
     // 0b1..Receiver enabled in Stop mode.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;    // Debug Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;   // Debug Enable
     // 0b0..Receiver is disabled in Debug mode, after completing the current frame.
     // 0b1..Receiver is enabled in Debug mode.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;     // Bit Clock Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;    // Bit Clock Enable
     // 0b0..Receive bit clock is disabled.
     // 0b1..Receive bit clock is enabled.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;      // FIFO Reset
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;     // FIFO Reset
     // WORZ
     // 0b0..No effect.
     // 0b1..FIFO reset.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;      // Software Reset
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;     // Software Reset
     // 0b0..No effect.
     // 0b1..Software reset.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 20, kW1C> WSF;            // Word Start Flag
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 20, kW1C> WSF;                            // Word Start Flag
     // 0b0..Start of word not detected.
     // 0b1..Start of word detected.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 19, kW1C> SEF;            // Sync Error Flag
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 19, kW1C> SEF;                            // Sync Error Flag
     // 0b0..Sync error not detected.
     // 0b1..Frame sync error detected.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 18, kW1C> FEF;            // FIFO Error Flag
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 18, kW1C> FEF;                            // FIFO Error Flag
     // 0b0..Receive overflow not detected.
     // 0b1..Receive overflow detected.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 17> FWF;  // FIFO Warning Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 17> FWF;                  // FIFO Warning Flag
     // 0b0..No enabled receive FIFO is full.
     // 0b1..Enabled receive FIFO is full.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 16> FRF;  // FIFO Request Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 16> FRF;                  // FIFO Request Flag
     // 0b0..Receive FIFO watermark not reached.
     // 0b1..Receive FIFO watermark has been reached.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;    // Word Start Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;   // Word Start Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;    // Sync Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;   // Sync Error Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;    // FIFO Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;   // FIFO Error Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;    // FIFO Warning Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;   // FIFO Warning Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;    // FIFO Request Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;   // FIFO Request Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;    // FIFO Warning DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;   // FIFO Warning DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;    // FIFO Request DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;   // FIFO Request DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
 }  // namespace RCSR
@@ -758,24 +758,24 @@ constexpr I2S3_Reg<regs::constify(&I2S_Layout::PARAM), 4,  0> DATALINE;
 namespace TCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> TE;      // Transmitter Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;   // Stop Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;    // Debug Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;     // Bit Clock Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;      // FIFO Reset
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;      // Software Reset
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;            // Word Start Flag
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;            // Sync Error Flag
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;            // FIFO Error Flag
-constexpr I2S3_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;  // FIFO Warning Flag
-constexpr I2S3_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;  // FIFO Request Flag
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;    // Word Start Interrupt Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;    // Sync Error Interrupt Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;    // FIFO Error Interrupt Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;    // FIFO Warning Interrupt Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;    // FIFO Request Interrupt Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;    // FIFO Warning DMA Enable
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;    // FIFO Request DMA Enable
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> TE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;
+constexpr I2S3_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;
+constexpr I2S3_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;
 }  // namespace TCSR
 
 // Transmit Configuration 1

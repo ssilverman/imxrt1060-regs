@@ -219,7 +219,7 @@ constexpr FLEXIO1_Reg<&FLEXIO_Layout::PARAM, 8,  0> SHIFTER;  // Shifter Number
 
 // FlexIO Control Register
 namespace CTRL {
-constexpr FLEXIO1_Reg<&FLEXIO_Layout::CTRL, 1, 31> DOZEN;     // Doze Enable
+constexpr FLEXIO1_Reg<&FLEXIO_Layout::CTRL, 1, 31> DOZEN;    // Doze Enable
     // 0b0..FlexIO enabled in Doze modes.
     // 0b1..FlexIO disabled in Doze modes.
 constexpr FLEXIO1_Reg<&FLEXIO_Layout::CTRL, 1, 30> DBGE;     // Debug Enable

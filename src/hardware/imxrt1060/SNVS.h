@@ -149,11 +149,11 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 31, (uint32_t{0x1} << 31) | kWO> NPS
     // When set, allows non-privileged software to access all SNVS registers, including those that are privileged software read/write access only
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 19, (uint32_t{0x1} << 19) | kWO> HAC_STOP;      // High Assurance Counter Stop
     // This bit can be set only when SSM is in soft fail state
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18, kWO, true> HAC_CLEAR;     // High Assurance Counter Clear
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18, kWO, true> HAC_CLEAR;                       // High Assurance Counter Clear
     // When set, it clears the High Assurance Counter Register
     // 0b0..No Action
     // 0b1..Clear the HAC
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17, kWO, true> HAC_LOAD;      // High Assurance Counter Load
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17, kWO, true> HAC_LOAD;                        // High Assurance Counter Load
     // When set, it loads the High Assurance Counter Register with the value of the High Assurance Counter Load Register
     // 0b0..No Action
     // 0b1..Load the HAC
@@ -165,7 +165,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 13, (uint32_t{0x1} << 13) | kWO> MKS
     // When not set, the one time programmable (OTP) master key is selected by default
     // 0b0..OTP master key is selected as an SNVS master key
     // 0b1..SNVS master key is selected according to the setting of the MASTER_KEY_SEL field of LPMKCR
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12, kWO, true> PROG_ZMK;      // Program Zeroizable Master Key
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12, kWO, true> PROG_ZMK;                        // Program Zeroizable Master Key
     // This bit activates ZMK hardware programming mechanism
     // 0b0..No Action
     // 0b1..Activate hardware key programming mechanism
@@ -179,7 +179,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  5, (uint32_t{0x1} <<  5) | kWO> LP_
     // When set, disables the LP software reset
     // 0b0..LP software reset is enabled
     // 0b1..LP software reset is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4, kWO, true> LP_SWR;        // LP Software Reset
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4, kWO, true> LP_SWR;                          // LP Software Reset
     // When set to 1, most registers in the SNVS_LP section are reset, but the following registers are not reset by an LP software reset: Monotonic Counter Secure Real Time Counter Time Alarm Register This bit cannot be set when the LP_SWR_DIS bit is set
     // 0b0..No Action
     // 0b1..Reset LP section
@@ -191,7 +191,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  1, (uint32_t{0x1} <<  1) | kWO> SSM
     // When set, disables the SSM transition from secure to trusted state
     // 0b0..Secure to Trusted State transition is enabled
     // 0b1..Secure to Trusted State transition is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0, kWO, true> SSM_ST;        // SSM State Transition
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0, kWO, true> SSM_ST;                          // SSM State Transition
     // Transition state of the system security monitor
 }  // namespace HPCOMR
 
@@ -330,15 +330,15 @@ constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 4,  8> SSM_STATE;        
     // 0b1011..Non-Secure
     // 0b1101..Trusted
     // 0b1111..Secure
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 7, 0x0> BI;  // Button Interrupt Signal ipi_snvs_btn_int_b was asserted.
+constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 7, 0x0> BI;                            // Button Interrupt Signal ipi_snvs_btn_int_b was asserted.
 constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1,  6> BTN;               // Button Value of the BTN input
 constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSR), 1,  4> LPDIS;             // Low Power Disable
     // If 1, the low power section has been disabled by means of an input signal to SNVS
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 1, 0x0> PI;                // Periodic Interrupt
+constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 1, 0x0> PI;                            // Periodic Interrupt
     // Indicates that periodic interrupt has occurred since this bit was last cleared.
     // 0b0..No periodic interrupt occurred.
     // 0b1..A periodic interrupt occurred.
-constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 0, 0x0> HPTA;              // HP Time Alarm
+constexpr SNVS_Reg<&SNVS_Layout::HPSR, 1, 0, 0x0> HPTA;                          // HP Time Alarm
     // Indicates that the HP Time Alarm has occurred since this bit was last cleared.
     // 0b0..No time alarm interrupt occurred.
     // 0b1..A time alarm interrupt occurred.
@@ -362,7 +362,7 @@ constexpr uint32_t kSYS_SECURITY_CFG_FIELD_RETURN = 7;
 namespace HPSVSR {
 constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 31> LP_SEC_VIO;    // LP Security Violation
     // A security volation was detected in the SNVS low power section
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 27, 0x0> ZMK_ECC_FAIL;  // Zeroizable Master Key Error Correcting Code Check Failure
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1, 27, 0x0> ZMK_ECC_FAIL;             // Zeroizable Master Key Error Correcting Code Check Failure
     // When set, this bit triggers a bad key violation to the SSM and a security violation to the SNVS_LP section, which clears security sensitive data
     // 0b0..ZMK ECC Failure was not detected.
     // 0b1..ZMK ECC Failure was detected.
@@ -374,22 +374,22 @@ constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 14> SW_FSV;        /
     // This bit is a read-only copy of the SW_FSV bit in the HP Command Register
 constexpr SNVS_Reg<regs::constify(&SNVS_Layout::HPSVSR), 1, 13> SW_SV;         // Software Security Violation
     // This bit is a read-only copy of the SW_SV bit in the HP Command Register
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  5, 0x0> SV5;           // Security Violation 5 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  5, 0x0> SV5;                      // Security Violation 5 security violation was detected.
     // 0b0..No Security Violation 5 security violation was detected.
     // 0b1..Security Violation 5 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  4, 0x0> SV4;           // Security Violation 4 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  4, 0x0> SV4;                      // Security Violation 4 security violation was detected.
     // 0b0..No Security Violation 4 security violation was detected.
     // 0b1..Security Violation 4 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  3, 0x0> SV3;           // Security Violation 3 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  3, 0x0> SV3;                      // Security Violation 3 security violation was detected.
     // 0b0..No Security Violation 3 security violation was detected.
     // 0b1..Security Violation 3 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  2, 0x0> SV2;           // Security Violation 2 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  2, 0x0> SV2;                      // Security Violation 2 security violation was detected.
     // 0b0..No Security Violation 2 security violation was detected.
     // 0b1..Security Violation 2 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  1, 0x0> SV1;           // Security Violation 1 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  1, 0x0> SV1;                      // Security Violation 1 security violation was detected.
     // 0b0..No Security Violation 1 security violation was detected.
     // 0b1..Security Violation 1 security violation was detected.
-constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  0, 0x0> SV0;           // Security Violation 0 security violation was detected.
+constexpr SNVS_Reg<&SNVS_Layout::HPSVSR, 1,  0, 0x0> SV0;                      // Security Violation 0 security violation was detected.
     // 0b0..No Security Violation 0 security violation was detected.
     // 0b1..Security Violation 0 security violation was detected.
 }  // namespace HPSVSR
@@ -504,8 +504,7 @@ constexpr SNVS_Reg<&SNVS_Layout::LPCR, 1,  5> DP_EN;           // Dumb PMIC Enab
     // When set, software can control the system power
     // 0b0..Smart PMIC enabled.
     // 0b1..Dumb PMIC enabled.
-constexpr SNVS_Reg<&SNVS_Layout::LPCR, 1,  4> SRTC_INV_EN;
-    // If this bit is 1, in the case of a security violation the SRTC stops counting and the SRTC is invalidated (SRTC_ENV bit is cleared)
+constexpr SNVS_Reg<&SNVS_Layout::LPCR, 1,  4> SRTC_INV_EN;     // If this bit is 1, in the case of a security violation the SRTC stops counting and the SRTC is invalidated (SRTC_ENV bit is cleared)
     // 0b0..SRTC stays valid in the case of security violation (other than a software violation (HPSVSR[SW_LPSV] = 1 or HPCOMR[SW_LPSV] = 1)).
     // 0b1..SRTC is invalidated in the case of security violation.
 constexpr SNVS_Reg<&SNVS_Layout::LPCR, 1,  3> LPWUI_EN;        // LP Wake-Up Interrupt Enable
@@ -526,21 +525,21 @@ constexpr SNVS_Reg<&SNVS_Layout::LPCR, 1,  0> SRTC_ENV;        // Secure Real Ti
 
 // SNVS_LP Master Key Control Register
 namespace LPMKCR {
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPMKCR), 9, 7> ZMK_ECC_VALUE;   // Zeroizable Master Key Error Correcting Code Value
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPMKCR), 9, 7> ZMK_ECC_VALUE;  // Zeroizable Master Key Error Correcting Code Value
     // This field is automatically calculated and set when one is written into ZMK_ECC_EN bit of this register
-constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 4> ZMK_ECC_EN;      // Zeroizable Master Key Error Correcting Code Check Enable
+constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 4> ZMK_ECC_EN;                     // Zeroizable Master Key Error Correcting Code Check Enable
     // Writing one to this field automatically calculates and sets the ZMK ECC value in the ZMK_ECC_VALUE field of this register
     // 0b0..ZMK ECC check is disabled.
     // 0b1..ZMK ECC check is enabled.
-constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 3> ZMK_VAL;         // Zeroizable Master Key Valid
+constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 3> ZMK_VAL;                        // Zeroizable Master Key Valid
     // When set, the ZMK value can be selected by the master key control block for use by cryptographic modules
     // 0b0..ZMK is not valid.
     // 0b1..ZMK is valid.
-constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 2> ZMK_HWP;         // Zeroizable Master Key hardware Programming mode
+constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 2> ZMK_HWP;                        // Zeroizable Master Key hardware Programming mode
     // When set, only the hardware key programming mechanism can set the ZMK and software cannot read it
     // 0b0..ZMK is in the software programming mode.
     // 0b1..ZMK is in the hardware programming mode.
-constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 2, 0> MASTER_KEY_SEL;  // Master Key Select
+constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 2, 0> MASTER_KEY_SEL;                 // Master Key Select
     // These bits select the SNVS Master Key output when Master Key Select bits are enabled by MKS_EN bit in the HPCOMR
     // 0b0x..Select one time programmable master key.
     // 0b10..Select zeroizable master key when MKS_EN bit is set.
@@ -610,40 +609,40 @@ constexpr SNVS_Reg<&SNVS_Layout::LPSECR, 1,  1> SRTCR_EN;    // SRTC Rollover En
 
 // SNVS_LP Status Register
 namespace LPSR {
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 31> LPS;    // LP Section is Secured
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 31> LPS;   // LP Section is Secured
     // Indicates that the LP section is provisioned/programmed in the secure or trusted state
     // 0b0..LP section was not programmed in secure or trusted state.
     // 0b1..LP section was programmed in secure or trusted state.
-constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 30> LPNS;   // LP Section is Non-Secured
+constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSR), 1, 30> LPNS;  // LP Section is Non-Secured
     // Indicates that LP section was provisioned/programmed in the non-secure state
     // 0b0..LP section was not programmed in the non-secure state.
     // 0b1..LP section was programmed in the non-secure state.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 19, 0x0> SPON;   // Set Power On
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 19, 0x0> SPON;             // Set Power On
     // The SPON bit is set when the set_pwr_on_irq interrupt is triggered, which happens when the power button is pressed longer than the configured debounce time
     // 0b0..Set Power On Interrupt was not detected.
     // 0b1..Set Power On Interrupt was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 18, 0x0> SPOF;   // Set Power Off
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 18, 0x0> SPOF;             // Set Power Off
     // The SPO bit is set when the power button is pressed longer than the configured debounce time
     // 0b0..Set Power Off was not detected.
     // 0b1..Set Power Off was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 17, 0x0> EO;     // Emergency Off
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 17, 0x0> EO;               // Emergency Off
     // This bit is set when a power off is requested.
     // 0b0..Emergency off was not detected.
     // 0b1..Emergency off was detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 16, 0x0> ESVD;   // External Security Violation Detected
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1, 16, 0x0> ESVD;             // External Security Violation Detected
     // Indicates that a security violation is detected on one of the HP security violation ports
     // 0b0..No external security violation.
     // 0b1..External security violation is detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  3, 0x0> LVD;    // Digital Low Voltage Event Detected
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  3, 0x0> LVD;              // Digital Low Voltage Event Detected
     // 0b0..No low voltage event detected.
     // 0b1..Low voltage event is detected.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  2, 0x0> MCR;    // Monotonic Counter Rollover
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  2, 0x0> MCR;              // Monotonic Counter Rollover
     // 0b0..MC has not reached its maximum value.
     // 0b1..MC has reached its maximum value.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  1, 0x0> SRTCR;  // Secure Real Time Counter Rollover
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  1, 0x0> SRTCR;            // Secure Real Time Counter Rollover
     // 0b0..SRTC has not reached its maximum value.
     // 0b1..SRTC has reached its maximum value.
-constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  0, 0x0> LPTA;   // LP Time Alarm
+constexpr SNVS_Reg<&SNVS_Layout::LPSR, 1,  0, 0x0> LPTA;             // LP Time Alarm
     // 0b0..No time alarm interrupt occurred.
     // 0b1..A time alarm interrupt occurred.
 }  // namespace LPSR
@@ -672,7 +671,7 @@ constexpr SNVS_Reg<&SNVS_Layout::LPTAR, 32, 0> LPTA;  // LP Time Alarm
 namespace LPSMCMR {
 constexpr SNVS_Reg<regs::constify(&SNVS_Layout::LPSMCMR), 16, 16> MC_ERA_BITS;  // Monotonic Counter Era Bits
     // These bits are inputs to the module and typically connect to fuses
-constexpr SNVS_Reg<&SNVS_Layout::LPSMCMR, 16,  0> MON_COUNTER;  // Monotonic Counter most-significant 16 Bits
+constexpr SNVS_Reg<&SNVS_Layout::LPSMCMR, 16,  0> MON_COUNTER;                  // Monotonic Counter most-significant 16 Bits
     // Note that writing to this register does not change the value of this field to the value that was written
 }  // namespace LPSMCMR
 

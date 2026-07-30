@@ -181,25 +181,25 @@ constexpr SW_MUX_CTL_PAD_1_Reg<Index, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 namespace SW_PAD_CTL_PAD_1 {
 // IOMUXC_SW_PAD_CTL_PAD_1 values
 template <size_t Index>
-constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 16> HYS;   // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 16> HYS;    // Hyst. Enable Field
     // 0b0..Hysteresis Disabled
     // 0b1..Hysteresis Enabled
 template <size_t Index>
-constexpr SW_PAD_CTL_PAD_1_Reg<Index, 2, 14> PUS;   // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_1_Reg<Index, 2, 14> PUS;    // Pull Up / Down Config. Field
     // 0b00..100K Ohm Pull Down
     // 0b01..47K Ohm Pull Up
     // 0b10..100K Ohm Pull Up
     // 0b11..22K Ohm Pull Up
 template <size_t Index>
-constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 13> PUE;   // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 13> PUE;    // Pull / Keep Select Field
     // 0b0..Keeper
     // 0b1..Pull
 template <size_t Index>
-constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 12> PKE;   // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 12> PKE;    // Pull / Keep Enable Field
     // 0b0..Pull/Keeper Disabled
     // 0b1..Pull/Keeper Enabled
 template <size_t Index>
-constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 11> ODE;   // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1, 11> ODE;    // Open Drain Enable Field
     // 0b0..Open Drain Disabled
     // 0b1..Open Drain Enabled
 template <size_t Index>
@@ -219,7 +219,7 @@ constexpr SW_PAD_CTL_PAD_1_Reg<Index, 3,  3> DSE;    // Drive Strength Field
     // 0b110..R0/6
     // 0b111..R0/7
 template <size_t Index>
-constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1,  0> SRE;  // Slew Rate Field
+constexpr SW_PAD_CTL_PAD_1_Reg<Index, 1,  0> SRE;    // Slew Rate Field
     // 0b0..Slow Slew Rate
     // 0b1..Fast Slew Rate
 }  // namespace SW_PAD_CTL_PAD_1
@@ -247,506 +247,506 @@ namespace SW_MUX_CTL_PAD {
 namespace GPIO {
 
 namespace EMC_00 {
-constexpr SW_MUX_CTL_PAD_Reg<0, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<0, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<0, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<0, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_00
 namespace EMC_01 {
-constexpr SW_MUX_CTL_PAD_Reg<1, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<1, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<1, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<1, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_01
 namespace EMC_02 {
-constexpr SW_MUX_CTL_PAD_Reg<2, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<2, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<2, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<2, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_02
 namespace EMC_03 {
-constexpr SW_MUX_CTL_PAD_Reg<3, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<3, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<3, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<3, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_03
 namespace EMC_04 {
-constexpr SW_MUX_CTL_PAD_Reg<4, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<4, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<4, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<4, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_04
 namespace EMC_05 {
-constexpr SW_MUX_CTL_PAD_Reg<5, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<5, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<5, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<5, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_05
 namespace EMC_06 {
-constexpr SW_MUX_CTL_PAD_Reg<6, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<6, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<6, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<6, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_06
 namespace EMC_07 {
-constexpr SW_MUX_CTL_PAD_Reg<7, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<7, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<7, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<7, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_07
 namespace EMC_08 {
-constexpr SW_MUX_CTL_PAD_Reg<8, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<8, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<8, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<8, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_08
 namespace EMC_09 {
-constexpr SW_MUX_CTL_PAD_Reg<9, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<9, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<9, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<9, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_09
 namespace EMC_10 {
-constexpr SW_MUX_CTL_PAD_Reg<10, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<10, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<10, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<10, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_10
 namespace EMC_11 {
-constexpr SW_MUX_CTL_PAD_Reg<11, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<11, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<11, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<11, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_11
 namespace EMC_12 {
-constexpr SW_MUX_CTL_PAD_Reg<12, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<12, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<12, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<12, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_12
 namespace EMC_13 {
-constexpr SW_MUX_CTL_PAD_Reg<13, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<13, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<13, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<13, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_13
 namespace EMC_14 {
-constexpr SW_MUX_CTL_PAD_Reg<14, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<14, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<14, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<14, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_14
 namespace EMC_15 {
-constexpr SW_MUX_CTL_PAD_Reg<15, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<15, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<15, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<15, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_15
 namespace EMC_16 {
-constexpr SW_MUX_CTL_PAD_Reg<16, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<16, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<16, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<16, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_16
 namespace EMC_17 {
-constexpr SW_MUX_CTL_PAD_Reg<17, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<17, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<17, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<17, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_17
 namespace EMC_18 {
-constexpr SW_MUX_CTL_PAD_Reg<18, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<18, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<18, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<18, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_18
 namespace EMC_19 {
-constexpr SW_MUX_CTL_PAD_Reg<19, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<19, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<19, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<19, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_19
 namespace EMC_20 {
-constexpr SW_MUX_CTL_PAD_Reg<20, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<20, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<20, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<20, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_20
 namespace EMC_21 {
-constexpr SW_MUX_CTL_PAD_Reg<21, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<21, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<21, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<21, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_21
 namespace EMC_22 {
-constexpr SW_MUX_CTL_PAD_Reg<22, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<22, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<22, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<22, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_22
 namespace EMC_23 {
-constexpr SW_MUX_CTL_PAD_Reg<23, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<23, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<23, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<23, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_23
 namespace EMC_24 {
-constexpr SW_MUX_CTL_PAD_Reg<24, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<24, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<24, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<24, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_24
 namespace EMC_25 {
-constexpr SW_MUX_CTL_PAD_Reg<25, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<25, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<25, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<25, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_25
 namespace EMC_26 {
-constexpr SW_MUX_CTL_PAD_Reg<26, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<26, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<26, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<26, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_26
 namespace EMC_27 {
-constexpr SW_MUX_CTL_PAD_Reg<27, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<27, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<27, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<27, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_27
 namespace EMC_28 {
-constexpr SW_MUX_CTL_PAD_Reg<28, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<28, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<28, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<28, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_28
 namespace EMC_29 {
-constexpr SW_MUX_CTL_PAD_Reg<29, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<29, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<29, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<29, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_29
 namespace EMC_30 {
-constexpr SW_MUX_CTL_PAD_Reg<30, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<30, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<30, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<30, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_30
 namespace EMC_31 {
-constexpr SW_MUX_CTL_PAD_Reg<31, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<31, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<31, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<31, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_31
 namespace EMC_32 {
-constexpr SW_MUX_CTL_PAD_Reg<32, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<32, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<32, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<32, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_32
 namespace EMC_33 {
-constexpr SW_MUX_CTL_PAD_Reg<33, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<33, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<33, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<33, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_33
 namespace EMC_34 {
-constexpr SW_MUX_CTL_PAD_Reg<34, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<34, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<34, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<34, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_34
 namespace EMC_35 {
-constexpr SW_MUX_CTL_PAD_Reg<35, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<35, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<35, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<35, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_35
 namespace EMC_36 {
-constexpr SW_MUX_CTL_PAD_Reg<36, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<36, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<36, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<36, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_36
 namespace EMC_37 {
-constexpr SW_MUX_CTL_PAD_Reg<37, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<37, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<37, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<37, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_37
 namespace EMC_38 {
-constexpr SW_MUX_CTL_PAD_Reg<38, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<38, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<38, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<38, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_38
 namespace EMC_39 {
-constexpr SW_MUX_CTL_PAD_Reg<39, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<39, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<39, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<39, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_39
 namespace EMC_40 {
-constexpr SW_MUX_CTL_PAD_Reg<40, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<40, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<40, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<40, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_40
 namespace EMC_41 {
-constexpr SW_MUX_CTL_PAD_Reg<41, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<41, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<41, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<41, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace EMC_41
 
 namespace AD_B0_00 {
-constexpr SW_MUX_CTL_PAD_Reg<42, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<42, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<42, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<42, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_00
 namespace AD_B0_01 {
-constexpr SW_MUX_CTL_PAD_Reg<43, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<43, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<43, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<43, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_01
 namespace AD_B0_02 {
-constexpr SW_MUX_CTL_PAD_Reg<44, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<44, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<44, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<44, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_02
 namespace AD_B0_03 {
-constexpr SW_MUX_CTL_PAD_Reg<45, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<45, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<45, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<45, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_03
 namespace AD_B0_04 {
-constexpr SW_MUX_CTL_PAD_Reg<46, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<46, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<46, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<46, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_04
 namespace AD_B0_05 {
-constexpr SW_MUX_CTL_PAD_Reg<47, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<47, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<47, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<47, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_05
 namespace AD_B0_06 {
-constexpr SW_MUX_CTL_PAD_Reg<48, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<48, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<48, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<48, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_06
 namespace AD_B0_07 {
-constexpr SW_MUX_CTL_PAD_Reg<49, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<49, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<49, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<49, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_07
 namespace AD_B0_08 {
-constexpr SW_MUX_CTL_PAD_Reg<50, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<50, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<50, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<50, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_08
 namespace AD_B0_09 {
-constexpr SW_MUX_CTL_PAD_Reg<51, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<51, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<51, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<51, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_09
 namespace AD_B0_10 {
-constexpr SW_MUX_CTL_PAD_Reg<52, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<52, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<52, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<52, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_10
 namespace AD_B0_11 {
-constexpr SW_MUX_CTL_PAD_Reg<53, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<53, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<53, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<53, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_11
 namespace AD_B0_12 {
-constexpr SW_MUX_CTL_PAD_Reg<54, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<54, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<54, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<54, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_12
 namespace AD_B0_13 {
-constexpr SW_MUX_CTL_PAD_Reg<55, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<55, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<55, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<55, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_13
 namespace AD_B0_14 {
-constexpr SW_MUX_CTL_PAD_Reg<56, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<56, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<56, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<56, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_14
 namespace AD_B0_15 {
-constexpr SW_MUX_CTL_PAD_Reg<57, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<57, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<57, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<57, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B0_15
 
 namespace AD_B1_00 {
-constexpr SW_MUX_CTL_PAD_Reg<58, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<58, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<58, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<58, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_00
 namespace AD_B1_01 {
-constexpr SW_MUX_CTL_PAD_Reg<59, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<59, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<59, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<59, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_01
 namespace AD_B1_02 {
-constexpr SW_MUX_CTL_PAD_Reg<60, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<60, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<60, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<60, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_02
 namespace AD_B1_03 {
-constexpr SW_MUX_CTL_PAD_Reg<61, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<61, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<61, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<61, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_03
 namespace AD_B1_04 {
-constexpr SW_MUX_CTL_PAD_Reg<62, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<62, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<62, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<62, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_04
 namespace AD_B1_05 {
-constexpr SW_MUX_CTL_PAD_Reg<63, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<63, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<63, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<63, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_05
 namespace AD_B1_06 {
-constexpr SW_MUX_CTL_PAD_Reg<64, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<64, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<64, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<64, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_06
 namespace AD_B1_07 {
-constexpr SW_MUX_CTL_PAD_Reg<65, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<65, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<65, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<65, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_07
 namespace AD_B1_08 {
-constexpr SW_MUX_CTL_PAD_Reg<66, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<66, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<66, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<66, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_08
 namespace AD_B1_09 {
-constexpr SW_MUX_CTL_PAD_Reg<67, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<67, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<67, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<67, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_09
 namespace AD_B1_10 {
-constexpr SW_MUX_CTL_PAD_Reg<68, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<68, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<68, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<68, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_10
 namespace AD_B1_11 {
-constexpr SW_MUX_CTL_PAD_Reg<69, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<69, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<69, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<69, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_11
 namespace AD_B1_12 {
-constexpr SW_MUX_CTL_PAD_Reg<70, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<70, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<70, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<70, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_12
 namespace AD_B1_13 {
-constexpr SW_MUX_CTL_PAD_Reg<71, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<71, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<71, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<71, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_13
 namespace AD_B1_14 {
-constexpr SW_MUX_CTL_PAD_Reg<72, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<72, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<72, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<72, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_14
 namespace AD_B1_15 {
-constexpr SW_MUX_CTL_PAD_Reg<73, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<73, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<73, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<73, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace AD_B1_15
 
 namespace B0_00 {
-constexpr SW_MUX_CTL_PAD_Reg<74, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<74, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<74, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<74, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_00
 namespace B0_01 {
-constexpr SW_MUX_CTL_PAD_Reg<75, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<75, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<75, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<75, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_01
 namespace B0_02 {
-constexpr SW_MUX_CTL_PAD_Reg<76, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<76, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<76, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<76, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_02
 namespace B0_03 {
-constexpr SW_MUX_CTL_PAD_Reg<77, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<77, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<77, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<77, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_03
 namespace B0_04 {
-constexpr SW_MUX_CTL_PAD_Reg<78, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<78, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<78, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<78, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_04
 namespace B0_05 {
-constexpr SW_MUX_CTL_PAD_Reg<79, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<79, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<79, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<79, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_05
 namespace B0_06 {
-constexpr SW_MUX_CTL_PAD_Reg<80, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<80, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<80, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<80, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_06
 namespace B0_07 {
-constexpr SW_MUX_CTL_PAD_Reg<81, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<81, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<81, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<81, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_07
 namespace B0_08 {
-constexpr SW_MUX_CTL_PAD_Reg<82, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<82, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<82, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<82, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_08
 namespace B0_09 {
-constexpr SW_MUX_CTL_PAD_Reg<83, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<83, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<83, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<83, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_09
 namespace B0_10 {
-constexpr SW_MUX_CTL_PAD_Reg<84, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<84, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<84, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<84, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_10
 namespace B0_11 {
-constexpr SW_MUX_CTL_PAD_Reg<85, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<85, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<85, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<85, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_11
 namespace B0_12 {
-constexpr SW_MUX_CTL_PAD_Reg<86, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<86, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<86, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<86, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_12
 namespace B0_13 {
-constexpr SW_MUX_CTL_PAD_Reg<87, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<87, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<87, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<87, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_13
 namespace B0_14 {
-constexpr SW_MUX_CTL_PAD_Reg<88, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<88, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<88, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<88, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_14
 namespace B0_15 {
-constexpr SW_MUX_CTL_PAD_Reg<89, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<89, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<89, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<89, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B0_15
 
 namespace B1_00 {
-constexpr SW_MUX_CTL_PAD_Reg<90, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<90, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<90, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<90, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_00
 namespace B1_01 {
-constexpr SW_MUX_CTL_PAD_Reg<91, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<91, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<91, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<91, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_01
 namespace B1_02 {
-constexpr SW_MUX_CTL_PAD_Reg<92, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<92, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<92, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<92, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_02
 namespace B1_03 {
-constexpr SW_MUX_CTL_PAD_Reg<93, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<93, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<93, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<93, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_03
 namespace B1_04 {
-constexpr SW_MUX_CTL_PAD_Reg<94, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<94, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<94, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<94, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_04
 namespace B1_05 {
-constexpr SW_MUX_CTL_PAD_Reg<95, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<95, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<95, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<95, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_05
 namespace B1_06 {
-constexpr SW_MUX_CTL_PAD_Reg<96, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<96, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<96, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<96, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_06
 namespace B1_07 {
-constexpr SW_MUX_CTL_PAD_Reg<97, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<97, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<97, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<97, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_07
 namespace B1_08 {
-constexpr SW_MUX_CTL_PAD_Reg<98, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<98, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<98, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<98, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_08
 namespace B1_09 {
-constexpr SW_MUX_CTL_PAD_Reg<99, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<99, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<99, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<99, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_09
 namespace B1_10 {
-constexpr SW_MUX_CTL_PAD_Reg<100, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<100, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<100, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<100, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_10
 namespace B1_11 {
-constexpr SW_MUX_CTL_PAD_Reg<101, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<101, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<101, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<101, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_11
 namespace B1_12 {
-constexpr SW_MUX_CTL_PAD_Reg<102, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<102, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<102, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<102, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_12
 namespace B1_13 {
-constexpr SW_MUX_CTL_PAD_Reg<103, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<103, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<103, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<103, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_13
 namespace B1_14 {
-constexpr SW_MUX_CTL_PAD_Reg<104, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<104, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<104, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<104, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_14
 namespace B1_15 {
-constexpr SW_MUX_CTL_PAD_Reg<105, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<105, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<105, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<105, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace B1_15
 
 namespace SD_B0_00 {
-constexpr SW_MUX_CTL_PAD_Reg<106, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<106, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<106, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<106, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B0_00
 namespace SD_B0_01 {
-constexpr SW_MUX_CTL_PAD_Reg<107, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<107, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<107, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<107, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B0_01
 namespace SD_B0_02 {
-constexpr SW_MUX_CTL_PAD_Reg<108, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<108, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<108, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<108, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B0_02
 namespace SD_B0_03 {
-constexpr SW_MUX_CTL_PAD_Reg<109, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<109, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<109, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<109, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B0_03
 namespace SD_B0_04 {
-constexpr SW_MUX_CTL_PAD_Reg<110, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<110, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<110, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<110, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B0_04
 namespace SD_B0_05 {
-constexpr SW_MUX_CTL_PAD_Reg<111, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<111, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<111, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<111, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B0_05
 
 namespace SD_B1_00 {
-constexpr SW_MUX_CTL_PAD_Reg<112, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<112, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<112, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<112, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_00
 namespace SD_B1_01 {
-constexpr SW_MUX_CTL_PAD_Reg<113, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<113, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<113, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<113, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_01
 namespace SD_B1_02 {
-constexpr SW_MUX_CTL_PAD_Reg<114, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<114, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<114, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<114, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_02
 namespace SD_B1_03 {
-constexpr SW_MUX_CTL_PAD_Reg<115, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<115, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<115, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<115, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_03
 namespace SD_B1_04 {
-constexpr SW_MUX_CTL_PAD_Reg<116, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<116, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<116, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<116, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_04
 namespace SD_B1_05 {
-constexpr SW_MUX_CTL_PAD_Reg<117, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<117, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<117, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<117, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_05
 namespace SD_B1_06 {
-constexpr SW_MUX_CTL_PAD_Reg<118, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<118, 4, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<118, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<118, 4, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_06
 namespace SD_B1_07 {
-constexpr SW_MUX_CTL_PAD_Reg<119, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<119, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<119, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<119, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_07
 namespace SD_B1_08 {
-constexpr SW_MUX_CTL_PAD_Reg<120, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<120, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<120, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<120, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_08
 namespace SD_B1_09 {
-constexpr SW_MUX_CTL_PAD_Reg<121, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<121, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<121, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<121, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_09
 namespace SD_B1_10 {
-constexpr SW_MUX_CTL_PAD_Reg<122, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<122, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<122, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<122, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_10
 namespace SD_B1_11 {
-constexpr SW_MUX_CTL_PAD_Reg<123, 1, 4> SION;
-constexpr SW_MUX_CTL_PAD_Reg<123, 3, 0> MUX_MODE;
+constexpr SW_MUX_CTL_PAD_Reg<123, 1, 4> SION;      // Software Input On Field.
+constexpr SW_MUX_CTL_PAD_Reg<123, 3, 0> MUX_MODE;  // MUX Mode Select Field.
 }  // namespace SD_B1_11
 
 }  // namespace GPIO
@@ -757,1250 +757,1250 @@ namespace SW_PAD_CTL_PAD {
 namespace GPIO {
 
 namespace EMC_00 {
-constexpr SW_PAD_CTL_PAD_Reg<0, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<0, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<0, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<0, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<0, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<0, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<0, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<0, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<0, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<0, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<0, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<0, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<0, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<0, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<0, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<0, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_00
 namespace EMC_01 {
-constexpr SW_PAD_CTL_PAD_Reg<1, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<1, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<1, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<1, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<1, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<1, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<1, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<1, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<1, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<1, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<1, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<1, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<1, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<1, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<1, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<1, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_01
 namespace EMC_02 {
-constexpr SW_PAD_CTL_PAD_Reg<2, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<2, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<2, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<2, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<2, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<2, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<2, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<2, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<2, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<2, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<2, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<2, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<2, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<2, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<2, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<2, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_02
 namespace EMC_03 {
-constexpr SW_PAD_CTL_PAD_Reg<3, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<3, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<3, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<3, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<3, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<3, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<3, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<3, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<3, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<3, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<3, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<3, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<3, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<3, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<3, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<3, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_03
 namespace EMC_04 {
-constexpr SW_PAD_CTL_PAD_Reg<4, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<4, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<4, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<4, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<4, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<4, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<4, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<4, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<4, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<4, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<4, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<4, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<4, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<4, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<4, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<4, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_04
 namespace EMC_05 {
-constexpr SW_PAD_CTL_PAD_Reg<5, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<5, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<5, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<5, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<5, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<5, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<5, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<5, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<5, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<5, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<5, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<5, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<5, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<5, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<5, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<5, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_05
 namespace EMC_06 {
-constexpr SW_PAD_CTL_PAD_Reg<6, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<6, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<6, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<6, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<6, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<6, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<6, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<6, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<6, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<6, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<6, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<6, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<6, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<6, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<6, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<6, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_06
 namespace EMC_07 {
-constexpr SW_PAD_CTL_PAD_Reg<7, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<7, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<7, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<7, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<7, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<7, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<7, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<7, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<7, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<7, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<7, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<7, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<7, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<7, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<7, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<7, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_07
 namespace EMC_08 {
-constexpr SW_PAD_CTL_PAD_Reg<8, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<8, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<8, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<8, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<8, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<8, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<8, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<8, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<8, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<8, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<8, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<8, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<8, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<8, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<8, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<8, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_08
 namespace EMC_09 {
-constexpr SW_PAD_CTL_PAD_Reg<9, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<9, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<9, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<9, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<9, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<9, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<9, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<9, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<9, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<9, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<9, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<9, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<9, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<9, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<9, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<9, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_09
 namespace EMC_10 {
-constexpr SW_PAD_CTL_PAD_Reg<10, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<10, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<10, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<10, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<10, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<10, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<10, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<10, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<10, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<10, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<10, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<10, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<10, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<10, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<10, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<10, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_10
 namespace EMC_11 {
-constexpr SW_PAD_CTL_PAD_Reg<11, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<11, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<11, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<11, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<11, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<11, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<11, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<11, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<11, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<11, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<11, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<11, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<11, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<11, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<11, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<11, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_11
 namespace EMC_12 {
-constexpr SW_PAD_CTL_PAD_Reg<12, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<12, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<12, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<12, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<12, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<12, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<12, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<12, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<12, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<12, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<12, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<12, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<12, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<12, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<12, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<12, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_12
 namespace EMC_13 {
-constexpr SW_PAD_CTL_PAD_Reg<13, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<13, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<13, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<13, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<13, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<13, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<13, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<13, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<13, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<13, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<13, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<13, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<13, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<13, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<13, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<13, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_13
 namespace EMC_14 {
-constexpr SW_PAD_CTL_PAD_Reg<14, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<14, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<14, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<14, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<14, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<14, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<14, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<14, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<14, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<14, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<14, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<14, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<14, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<14, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<14, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<14, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_14
 namespace EMC_15 {
-constexpr SW_PAD_CTL_PAD_Reg<15, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<15, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<15, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<15, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<15, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<15, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<15, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<15, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<15, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<15, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<15, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<15, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<15, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<15, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<15, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<15, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_15
 namespace EMC_16 {
-constexpr SW_PAD_CTL_PAD_Reg<16, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<16, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<16, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<16, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<16, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<16, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<16, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<16, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<16, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<16, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<16, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<16, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<16, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<16, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<16, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<16, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_16
 namespace EMC_17 {
-constexpr SW_PAD_CTL_PAD_Reg<17, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<17, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<17, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<17, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<17, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<17, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<17, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<17, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<17, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<17, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<17, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<17, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<17, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<17, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<17, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<17, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_17
 namespace EMC_18 {
-constexpr SW_PAD_CTL_PAD_Reg<18, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<18, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<18, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<18, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<18, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<18, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<18, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<18, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<18, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<18, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<18, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<18, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<18, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<18, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<18, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<18, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_18
 namespace EMC_19 {
-constexpr SW_PAD_CTL_PAD_Reg<19, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<19, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<19, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<19, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<19, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<19, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<19, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<19, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<19, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<19, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<19, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<19, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<19, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<19, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<19, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<19, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_19
 namespace EMC_20 {
-constexpr SW_PAD_CTL_PAD_Reg<20, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<20, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<20, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<20, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<20, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<20, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<20, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<20, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<20, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<20, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<20, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<20, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<20, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<20, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<20, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<20, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_20
 namespace EMC_21 {
-constexpr SW_PAD_CTL_PAD_Reg<21, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<21, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<21, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<21, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<21, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<21, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<21, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<21, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<21, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<21, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<21, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<21, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<21, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<21, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<21, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<21, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_21
 namespace EMC_22 {
-constexpr SW_PAD_CTL_PAD_Reg<22, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<22, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<22, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<22, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<22, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<22, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<22, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<22, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<22, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<22, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<22, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<22, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<22, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<22, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<22, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<22, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_22
 namespace EMC_23 {
-constexpr SW_PAD_CTL_PAD_Reg<23, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<23, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<23, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<23, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<23, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<23, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<23, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<23, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<23, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<23, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<23, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<23, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<23, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<23, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<23, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<23, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_23
 namespace EMC_24 {
-constexpr SW_PAD_CTL_PAD_Reg<24, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<24, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<24, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<24, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<24, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<24, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<24, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<24, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<24, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<24, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<24, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<24, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<24, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<24, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<24, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<24, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_24
 namespace EMC_25 {
-constexpr SW_PAD_CTL_PAD_Reg<25, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<25, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<25, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<25, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<25, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<25, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<25, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<25, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<25, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<25, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<25, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<25, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<25, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<25, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<25, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<25, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_25
 namespace EMC_26 {
-constexpr SW_PAD_CTL_PAD_Reg<26, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<26, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<26, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<26, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<26, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<26, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<26, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<26, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<26, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<26, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<26, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<26, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<26, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<26, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<26, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<26, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_26
 namespace EMC_27 {
-constexpr SW_PAD_CTL_PAD_Reg<27, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<27, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<27, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<27, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<27, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<27, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<27, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<27, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<27, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<27, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<27, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<27, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<27, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<27, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<27, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<27, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_27
 namespace EMC_28 {
-constexpr SW_PAD_CTL_PAD_Reg<28, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<28, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<28, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<28, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<28, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<28, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<28, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<28, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<28, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<28, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<28, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<28, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<28, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<28, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<28, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<28, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_28
 namespace EMC_29 {
-constexpr SW_PAD_CTL_PAD_Reg<29, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<29, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<29, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<29, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<29, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<29, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<29, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<29, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<29, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<29, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<29, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<29, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<29, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<29, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<29, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<29, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_29
 namespace EMC_30 {
-constexpr SW_PAD_CTL_PAD_Reg<30, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<30, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<30, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<30, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<30, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<30, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<30, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<30, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<30, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<30, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<30, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<30, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<30, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<30, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<30, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<30, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_30
 namespace EMC_31 {
-constexpr SW_PAD_CTL_PAD_Reg<31, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<31, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<31, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<31, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<31, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<31, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<31, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<31, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<31, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<31, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<31, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<31, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<31, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<31, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<31, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<31, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_31
 namespace EMC_32 {
-constexpr SW_PAD_CTL_PAD_Reg<32, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<32, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<32, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<32, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<32, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<32, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<32, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<32, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<32, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<32, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<32, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<32, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<32, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<32, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<32, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<32, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_32
 namespace EMC_33 {
-constexpr SW_PAD_CTL_PAD_Reg<33, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<33, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<33, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<33, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<33, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<33, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<33, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<33, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<33, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<33, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<33, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<33, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<33, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<33, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<33, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<33, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_33
 namespace EMC_34 {
-constexpr SW_PAD_CTL_PAD_Reg<34, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<34, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<34, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<34, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<34, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<34, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<34, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<34, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<34, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<34, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<34, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<34, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<34, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<34, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<34, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<34, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_34
 namespace EMC_35 {
-constexpr SW_PAD_CTL_PAD_Reg<35, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<35, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<35, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<35, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<35, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<35, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<35, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<35, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<35, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<35, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<35, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<35, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<35, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<35, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<35, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<35, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_35
 namespace EMC_36 {
-constexpr SW_PAD_CTL_PAD_Reg<36, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<36, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<36, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<36, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<36, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<36, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<36, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<36, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<36, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<36, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<36, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<36, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<36, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<36, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<36, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<36, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_36
 namespace EMC_37 {
-constexpr SW_PAD_CTL_PAD_Reg<37, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<37, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<37, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<37, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<37, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<37, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<37, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<37, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<37, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<37, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<37, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<37, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<37, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<37, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<37, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<37, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_37
 namespace EMC_38 {
-constexpr SW_PAD_CTL_PAD_Reg<38, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<38, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<38, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<38, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<38, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<38, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<38, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<38, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<38, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<38, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<38, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<38, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<38, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<38, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<38, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<38, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_38
 namespace EMC_39 {
-constexpr SW_PAD_CTL_PAD_Reg<39, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<39, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<39, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<39, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<39, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<39, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<39, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<39, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<39, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<39, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<39, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<39, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<39, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<39, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<39, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<39, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_39
 namespace EMC_40 {
-constexpr SW_PAD_CTL_PAD_Reg<40, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<40, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<40, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<40, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<40, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<40, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<40, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<40, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<40, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<40, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<40, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<40, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<40, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<40, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<40, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<40, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_40
 namespace EMC_41 {
-constexpr SW_PAD_CTL_PAD_Reg<41, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<41, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<41, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<41, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<41, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<41, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<41, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<41, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<41, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<41, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<41, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<41, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<41, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<41, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<41, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<41, 1,  0> SRE;    // Slew Rate Field
 }  // namespace EMC_41
 
 namespace AD_B0_00 {
-constexpr SW_PAD_CTL_PAD_Reg<42, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<42, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<42, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<42, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<42, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<42, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<42, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<42, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<42, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<42, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<42, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<42, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<42, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<42, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<42, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<42, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_00
 namespace AD_B0_01 {
-constexpr SW_PAD_CTL_PAD_Reg<43, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<43, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<43, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<43, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<43, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<43, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<43, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<43, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<43, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<43, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<43, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<43, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<43, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<43, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<43, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<43, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_01
 namespace AD_B0_02 {
-constexpr SW_PAD_CTL_PAD_Reg<44, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<44, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<44, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<44, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<44, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<44, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<44, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<44, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<44, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<44, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<44, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<44, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<44, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<44, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<44, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<44, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_02
 namespace AD_B0_03 {
-constexpr SW_PAD_CTL_PAD_Reg<45, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<45, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<45, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<45, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<45, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<45, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<45, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<45, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<45, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<45, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<45, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<45, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<45, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<45, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<45, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<45, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_03
 namespace AD_B0_04 {
-constexpr SW_PAD_CTL_PAD_Reg<46, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<46, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<46, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<46, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<46, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<46, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<46, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<46, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<46, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<46, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<46, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<46, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<46, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<46, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<46, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<46, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_04
 namespace AD_B0_05 {
-constexpr SW_PAD_CTL_PAD_Reg<47, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<47, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<47, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<47, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<47, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<47, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<47, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<47, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<47, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<47, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<47, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<47, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<47, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<47, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<47, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<47, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_05
 namespace AD_B0_06 {
-constexpr SW_PAD_CTL_PAD_Reg<48, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<48, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<48, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<48, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<48, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<48, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<48, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<48, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<48, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<48, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<48, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<48, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<48, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<48, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<48, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<48, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_06
 namespace AD_B0_07 {
-constexpr SW_PAD_CTL_PAD_Reg<49, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<49, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<49, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<49, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<49, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<49, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<49, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<49, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<49, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<49, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<49, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<49, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<49, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<49, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<49, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<49, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_07
 namespace AD_B0_08 {
-constexpr SW_PAD_CTL_PAD_Reg<50, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<50, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<50, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<50, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<50, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<50, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<50, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<50, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<50, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<50, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<50, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<50, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<50, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<50, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<50, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<50, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_08
 namespace AD_B0_09 {
-constexpr SW_PAD_CTL_PAD_Reg<51, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<51, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<51, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<51, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<51, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<51, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<51, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<51, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<51, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<51, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<51, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<51, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<51, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<51, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<51, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<51, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_09
 namespace AD_B0_10 {
-constexpr SW_PAD_CTL_PAD_Reg<52, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<52, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<52, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<52, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<52, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<52, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<52, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<52, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<52, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<52, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<52, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<52, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<52, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<52, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<52, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<52, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_10
 namespace AD_B0_11 {
-constexpr SW_PAD_CTL_PAD_Reg<53, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<53, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<53, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<53, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<53, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<53, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<53, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<53, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<53, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<53, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<53, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<53, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<53, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<53, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<53, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<53, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_11
 namespace AD_B0_12 {
-constexpr SW_PAD_CTL_PAD_Reg<54, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<54, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<54, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<54, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<54, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<54, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<54, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<54, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<54, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<54, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<54, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<54, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<54, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<54, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<54, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<54, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_12
 namespace AD_B0_13 {
-constexpr SW_PAD_CTL_PAD_Reg<55, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<55, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<55, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<55, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<55, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<55, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<55, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<55, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<55, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<55, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<55, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<55, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<55, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<55, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<55, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<55, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_13
 namespace AD_B0_14 {
-constexpr SW_PAD_CTL_PAD_Reg<56, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<56, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<56, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<56, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<56, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<56, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<56, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<56, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<56, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<56, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<56, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<56, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<56, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<56, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<56, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<56, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_14
 namespace AD_B0_15 {
-constexpr SW_PAD_CTL_PAD_Reg<57, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<57, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<57, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<57, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<57, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<57, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<57, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<57, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<57, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<57, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<57, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<57, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<57, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<57, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<57, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<57, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B0_15
 
 namespace AD_B1_00 {
-constexpr SW_PAD_CTL_PAD_Reg<58, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<58, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<58, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<58, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<58, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<58, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<58, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<58, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<58, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<58, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<58, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<58, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<58, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<58, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<58, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<58, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_00
 namespace AD_B1_01 {
-constexpr SW_PAD_CTL_PAD_Reg<59, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<59, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<59, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<59, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<59, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<59, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<59, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<59, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<59, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<59, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<59, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<59, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<59, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<59, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<59, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<59, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_01
 namespace AD_B1_02 {
-constexpr SW_PAD_CTL_PAD_Reg<60, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<60, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<60, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<60, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<60, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<60, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<60, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<60, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<60, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<60, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<60, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<60, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<60, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<60, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<60, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<60, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_02
 namespace AD_B1_03 {
-constexpr SW_PAD_CTL_PAD_Reg<61, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<61, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<61, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<61, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<61, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<61, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<61, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<61, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<61, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<61, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<61, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<61, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<61, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<61, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<61, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<61, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_03
 namespace AD_B1_04 {
-constexpr SW_PAD_CTL_PAD_Reg<62, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<62, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<62, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<62, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<62, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<62, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<62, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<62, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<62, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<62, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<62, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<62, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<62, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<62, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<62, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<62, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_04
 namespace AD_B1_05 {
-constexpr SW_PAD_CTL_PAD_Reg<63, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<63, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<63, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<63, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<63, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<63, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<63, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<63, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<63, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<63, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<63, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<63, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<63, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<63, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<63, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<63, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_05
 namespace AD_B1_06 {
-constexpr SW_PAD_CTL_PAD_Reg<64, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<64, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<64, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<64, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<64, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<64, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<64, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<64, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<64, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<64, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<64, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<64, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<64, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<64, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<64, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<64, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_06
 namespace AD_B1_07 {
-constexpr SW_PAD_CTL_PAD_Reg<65, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<65, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<65, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<65, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<65, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<65, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<65, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<65, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<65, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<65, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<65, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<65, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<65, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<65, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<65, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<65, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_07
 namespace AD_B1_08 {
-constexpr SW_PAD_CTL_PAD_Reg<66, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<66, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<66, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<66, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<66, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<66, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<66, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<66, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<66, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<66, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<66, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<66, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<66, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<66, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<66, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<66, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_08
 namespace AD_B1_09 {
-constexpr SW_PAD_CTL_PAD_Reg<67, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<67, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<67, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<67, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<67, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<67, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<67, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<67, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<67, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<67, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<67, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<67, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<67, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<67, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<67, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<67, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_09
 namespace AD_B1_10 {
-constexpr SW_PAD_CTL_PAD_Reg<68, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<68, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<68, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<68, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<68, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<68, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<68, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<68, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<68, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<68, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<68, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<68, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<68, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<68, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<68, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<68, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_10
 namespace AD_B1_11 {
-constexpr SW_PAD_CTL_PAD_Reg<69, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<69, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<69, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<69, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<69, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<69, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<69, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<69, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<69, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<69, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<69, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<69, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<69, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<69, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<69, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<69, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_11
 namespace AD_B1_12 {
-constexpr SW_PAD_CTL_PAD_Reg<70, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<70, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<70, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<70, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<70, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<70, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<70, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<70, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<70, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<70, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<70, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<70, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<70, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<70, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<70, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<70, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_12
 namespace AD_B1_13 {
-constexpr SW_PAD_CTL_PAD_Reg<71, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<71, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<71, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<71, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<71, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<71, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<71, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<71, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<71, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<71, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<71, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<71, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<71, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<71, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<71, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<71, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_13
 namespace AD_B1_14 {
-constexpr SW_PAD_CTL_PAD_Reg<72, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<72, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<72, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<72, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<72, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<72, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<72, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<72, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<72, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<72, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<72, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<72, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<72, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<72, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<72, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<72, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_14
 namespace AD_B1_15 {
-constexpr SW_PAD_CTL_PAD_Reg<73, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<73, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<73, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<73, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<73, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<73, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<73, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<73, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<73, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<73, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<73, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<73, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<73, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<73, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<73, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<73, 1,  0> SRE;    // Slew Rate Field
 }  // namespace AD_B1_15
 
 namespace B0_00 {
-constexpr SW_PAD_CTL_PAD_Reg<74, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<74, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<74, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<74, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<74, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<74, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<74, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<74, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<74, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<74, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<74, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<74, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<74, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<74, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<74, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<74, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_00
 namespace B0_01 {
-constexpr SW_PAD_CTL_PAD_Reg<75, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<75, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<75, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<75, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<75, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<75, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<75, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<75, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<75, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<75, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<75, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<75, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<75, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<75, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<75, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<75, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_01
 namespace B0_02 {
-constexpr SW_PAD_CTL_PAD_Reg<76, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<76, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<76, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<76, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<76, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<76, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<76, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<76, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<76, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<76, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<76, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<76, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<76, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<76, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<76, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<76, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_02
 namespace B0_03 {
-constexpr SW_PAD_CTL_PAD_Reg<77, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<77, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<77, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<77, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<77, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<77, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<77, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<77, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<77, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<77, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<77, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<77, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<77, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<77, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<77, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<77, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_03
 namespace B0_04 {
-constexpr SW_PAD_CTL_PAD_Reg<78, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<78, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<78, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<78, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<78, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<78, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<78, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<78, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<78, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<78, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<78, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<78, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<78, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<78, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<78, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<78, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_04
 namespace B0_05 {
-constexpr SW_PAD_CTL_PAD_Reg<79, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<79, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<79, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<79, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<79, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<79, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<79, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<79, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<79, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<79, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<79, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<79, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<79, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<79, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<79, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<79, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_05
 namespace B0_06 {
-constexpr SW_PAD_CTL_PAD_Reg<80, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<80, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<80, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<80, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<80, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<80, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<80, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<80, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<80, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<80, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<80, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<80, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<80, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<80, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<80, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<80, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_06
 namespace B0_07 {
-constexpr SW_PAD_CTL_PAD_Reg<81, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<81, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<81, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<81, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<81, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<81, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<81, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<81, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<81, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<81, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<81, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<81, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<81, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<81, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<81, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<81, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_07
 namespace B0_08 {
-constexpr SW_PAD_CTL_PAD_Reg<82, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<82, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<82, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<82, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<82, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<82, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<82, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<82, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<82, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<82, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<82, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<82, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<82, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<82, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<82, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<82, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_08
 namespace B0_09 {
-constexpr SW_PAD_CTL_PAD_Reg<83, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<83, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<83, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<83, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<83, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<83, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<83, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<83, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<83, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<83, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<83, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<83, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<83, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<83, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<83, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<83, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_09
 namespace B0_10 {
-constexpr SW_PAD_CTL_PAD_Reg<84, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<84, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<84, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<84, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<84, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<84, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<84, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<84, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<84, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<84, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<84, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<84, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<84, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<84, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<84, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<84, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_10
 namespace B0_11 {
-constexpr SW_PAD_CTL_PAD_Reg<85, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<85, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<85, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<85, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<85, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<85, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<85, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<85, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<85, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<85, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<85, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<85, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<85, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<85, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<85, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<85, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_11
 namespace B0_12 {
-constexpr SW_PAD_CTL_PAD_Reg<86, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<86, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<86, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<86, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<86, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<86, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<86, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<86, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<86, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<86, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<86, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<86, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<86, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<86, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<86, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<86, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_12
 namespace B0_13 {
-constexpr SW_PAD_CTL_PAD_Reg<87, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<87, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<87, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<87, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<87, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<87, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<87, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<87, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<87, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<87, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<87, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<87, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<87, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<87, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<87, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<87, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_13
 namespace B0_14 {
-constexpr SW_PAD_CTL_PAD_Reg<88, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<88, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<88, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<88, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<88, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<88, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<88, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<88, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<88, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<88, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<88, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<88, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<88, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<88, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<88, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<88, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_14
 namespace B0_15 {
-constexpr SW_PAD_CTL_PAD_Reg<89, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<89, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<89, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<89, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<89, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<89, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<89, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<89, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<89, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<89, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<89, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<89, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<89, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<89, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<89, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<89, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B0_15
 
 namespace B1_00 {
-constexpr SW_PAD_CTL_PAD_Reg<90, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<90, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<90, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<90, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<90, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<90, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<90, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<90, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<90, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<90, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<90, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<90, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<90, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<90, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<90, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<90, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_00
 namespace B1_01 {
-constexpr SW_PAD_CTL_PAD_Reg<91, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<91, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<91, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<91, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<91, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<91, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<91, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<91, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<91, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<91, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<91, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<91, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<91, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<91, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<91, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<91, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_01
 namespace B1_02 {
-constexpr SW_PAD_CTL_PAD_Reg<92, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<92, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<92, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<92, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<92, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<92, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<92, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<92, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<92, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<92, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<92, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<92, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<92, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<92, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<92, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<92, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_02
 namespace B1_03 {
-constexpr SW_PAD_CTL_PAD_Reg<93, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<93, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<93, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<93, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<93, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<93, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<93, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<93, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<93, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<93, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<93, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<93, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<93, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<93, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<93, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<93, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_03
 namespace B1_04 {
-constexpr SW_PAD_CTL_PAD_Reg<94, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<94, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<94, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<94, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<94, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<94, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<94, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<94, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<94, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<94, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<94, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<94, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<94, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<94, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<94, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<94, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_04
 namespace B1_05 {
-constexpr SW_PAD_CTL_PAD_Reg<95, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<95, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<95, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<95, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<95, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<95, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<95, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<95, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<95, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<95, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<95, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<95, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<95, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<95, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<95, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<95, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_05
 namespace B1_06 {
-constexpr SW_PAD_CTL_PAD_Reg<96, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<96, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<96, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<96, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<96, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<96, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<96, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<96, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<96, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<96, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<96, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<96, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<96, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<96, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<96, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<96, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_06
 namespace B1_07 {
-constexpr SW_PAD_CTL_PAD_Reg<97, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<97, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<97, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<97, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<97, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<97, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<97, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<97, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<97, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<97, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<97, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<97, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<97, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<97, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<97, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<97, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_07
 namespace B1_08 {
-constexpr SW_PAD_CTL_PAD_Reg<98, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<98, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<98, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<98, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<98, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<98, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<98, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<98, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<98, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<98, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<98, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<98, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<98, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<98, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<98, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<98, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_08
 namespace B1_09 {
-constexpr SW_PAD_CTL_PAD_Reg<99, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<99, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<99, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<99, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<99, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<99, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<99, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<99, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<99, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<99, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<99, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<99, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<99, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<99, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<99, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<99, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_09
 namespace B1_10 {
-constexpr SW_PAD_CTL_PAD_Reg<100, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<100, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<100, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<100, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<100, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<100, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<100, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<100, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<100, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<100, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<100, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<100, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<100, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<100, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<100, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<100, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_10
 namespace B1_11 {
-constexpr SW_PAD_CTL_PAD_Reg<101, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<101, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<101, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<101, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<101, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<101, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<101, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<101, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<101, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<101, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<101, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<101, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<101, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<101, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<101, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<101, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_11
 namespace B1_12 {
-constexpr SW_PAD_CTL_PAD_Reg<102, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<102, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<102, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<102, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<102, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<102, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<102, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<102, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<102, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<102, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<102, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<102, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<102, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<102, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<102, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<102, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_12
 namespace B1_13 {
-constexpr SW_PAD_CTL_PAD_Reg<103, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<103, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<103, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<103, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<103, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<103, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<103, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<103, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<103, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<103, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<103, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<103, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<103, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<103, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<103, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<103, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_13
 namespace B1_14 {
-constexpr SW_PAD_CTL_PAD_Reg<104, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<104, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<104, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<104, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<104, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<104, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<104, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<104, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<104, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<104, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<104, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<104, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<104, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<104, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<104, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<104, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_14
 namespace B1_15 {
-constexpr SW_PAD_CTL_PAD_Reg<105, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<105, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<105, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<105, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<105, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<105, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<105, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<105, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<105, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<105, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<105, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<105, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<105, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<105, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<105, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<105, 1,  0> SRE;    // Slew Rate Field
 }  // namespace B1_15
 
 namespace SD_B0_00 {
-constexpr SW_PAD_CTL_PAD_Reg<106, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<106, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<106, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<106, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<106, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<106, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<106, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<106, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<106, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<106, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<106, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<106, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<106, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<106, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<106, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<106, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B0_00
 namespace SD_B0_01 {
-constexpr SW_PAD_CTL_PAD_Reg<107, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<107, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<107, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<107, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<107, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<107, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<107, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<107, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<107, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<107, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<107, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<107, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<107, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<107, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<107, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<107, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B0_01
 namespace SD_B0_02 {
-constexpr SW_PAD_CTL_PAD_Reg<108, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<108, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<108, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<108, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<108, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<108, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<108, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<108, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<108, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<108, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<108, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<108, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<108, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<108, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<108, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<108, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B0_02
 namespace SD_B0_03 {
-constexpr SW_PAD_CTL_PAD_Reg<109, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<109, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<109, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<109, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<109, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<109, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<109, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<109, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<109, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<109, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<109, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<109, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<109, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<109, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<109, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<109, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B0_03
 namespace SD_B0_04 {
-constexpr SW_PAD_CTL_PAD_Reg<110, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<110, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<110, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<110, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<110, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<110, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<110, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<110, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<110, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<110, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<110, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<110, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<110, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<110, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<110, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<110, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B0_04
 namespace SD_B0_05 {
-constexpr SW_PAD_CTL_PAD_Reg<111, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<111, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<111, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<111, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<111, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<111, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<111, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<111, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<111, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<111, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<111, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<111, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<111, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<111, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<111, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<111, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B0_05
 
 namespace SD_B1_00 {
-constexpr SW_PAD_CTL_PAD_Reg<112, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<112, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<112, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<112, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<112, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<112, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<112, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<112, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<112, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<112, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<112, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<112, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<112, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<112, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<112, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<112, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_00
 namespace SD_B1_01 {
-constexpr SW_PAD_CTL_PAD_Reg<113, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<113, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<113, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<113, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<113, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<113, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<113, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<113, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<113, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<113, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<113, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<113, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<113, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<113, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<113, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<113, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_01
 namespace SD_B1_02 {
-constexpr SW_PAD_CTL_PAD_Reg<114, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<114, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<114, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<114, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<114, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<114, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<114, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<114, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<114, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<114, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<114, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<114, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<114, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<114, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<114, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<114, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_02
 namespace SD_B1_03 {
-constexpr SW_PAD_CTL_PAD_Reg<115, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<115, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<115, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<115, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<115, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<115, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<115, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<115, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<115, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<115, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<115, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<115, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<115, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<115, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<115, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<115, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_03
 namespace SD_B1_04 {
-constexpr SW_PAD_CTL_PAD_Reg<116, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<116, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<116, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<116, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<116, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<116, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<116, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<116, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<116, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<116, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<116, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<116, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<116, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<116, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<116, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<116, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_04
 namespace SD_B1_05 {
-constexpr SW_PAD_CTL_PAD_Reg<117, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<117, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<117, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<117, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<117, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<117, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<117, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<117, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<117, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<117, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<117, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<117, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<117, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<117, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<117, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<117, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_05
 namespace SD_B1_06 {
-constexpr SW_PAD_CTL_PAD_Reg<118, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<118, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<118, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<118, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<118, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<118, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<118, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<118, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<118, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<118, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<118, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<118, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<118, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<118, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<118, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<118, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_06
 namespace SD_B1_07 {
-constexpr SW_PAD_CTL_PAD_Reg<119, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<119, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<119, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<119, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<119, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<119, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<119, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<119, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<119, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<119, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<119, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<119, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<119, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<119, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<119, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<119, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_07
 namespace SD_B1_08 {
-constexpr SW_PAD_CTL_PAD_Reg<120, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<120, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<120, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<120, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<120, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<120, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<120, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<120, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<120, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<120, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<120, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<120, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<120, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<120, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<120, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<120, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_08
 namespace SD_B1_09 {
-constexpr SW_PAD_CTL_PAD_Reg<121, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<121, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<121, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<121, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<121, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<121, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<121, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<121, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<121, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<121, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<121, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<121, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<121, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<121, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<121, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<121, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_09
 namespace SD_B1_10 {
-constexpr SW_PAD_CTL_PAD_Reg<122, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<122, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<122, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<122, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<122, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<122, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<122, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<122, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<122, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<122, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<122, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<122, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<122, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<122, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<122, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<122, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_10
 namespace SD_B1_11 {
-constexpr SW_PAD_CTL_PAD_Reg<123, 1, 16> HYS;
-constexpr SW_PAD_CTL_PAD_Reg<123, 2, 14> PUS;
-constexpr SW_PAD_CTL_PAD_Reg<123, 1, 13> PUE;
-constexpr SW_PAD_CTL_PAD_Reg<123, 1, 12> PKE;
-constexpr SW_PAD_CTL_PAD_Reg<123, 1, 11> ODE;
-constexpr SW_PAD_CTL_PAD_Reg<123, 2,  6> SPEED;
-constexpr SW_PAD_CTL_PAD_Reg<123, 3,  3> DSE;
-constexpr SW_PAD_CTL_PAD_Reg<123, 1,  0> SRE;
+constexpr SW_PAD_CTL_PAD_Reg<123, 1, 16> HYS;    // Hyst. Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<123, 2, 14> PUS;    // Pull Up / Down Config. Field
+constexpr SW_PAD_CTL_PAD_Reg<123, 1, 13> PUE;    // Pull / Keep Select Field
+constexpr SW_PAD_CTL_PAD_Reg<123, 1, 12> PKE;    // Pull / Keep Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<123, 1, 11> ODE;    // Open Drain Enable Field
+constexpr SW_PAD_CTL_PAD_Reg<123, 2,  6> SPEED;  // Speed Field
+constexpr SW_PAD_CTL_PAD_Reg<123, 3,  3> DSE;    // Drive Strength Field
+constexpr SW_PAD_CTL_PAD_Reg<123, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SD_B1_11
 
 }  // namespace GPIO
@@ -2009,568 +2009,568 @@ constexpr SW_PAD_CTL_PAD_Reg<123, 1,  0> SRE;
 namespace SELECT_INPUT {
 
 namespace ANATOP_USB_OTG1_ID {
-constexpr SELECT_INPUT_Reg<0, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<0, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ANATOP_USB_OTG1_ID
 namespace ANATOP_USB_OTG2_ID {
-constexpr SELECT_INPUT_Reg<1, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<1, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ANATOP_USB_OTG2_ID
 namespace CCM_PMIC_READY {
-constexpr SELECT_INPUT_Reg<2, 3, 0> DAISY;
+constexpr SELECT_INPUT_Reg<2, 3, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CCM_PMIC_READY
 namespace CSI_DATA02 {
-constexpr SELECT_INPUT_Reg<3, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<3, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA02
 namespace CSI_DATA03 {
-constexpr SELECT_INPUT_Reg<4, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<4, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA03
 namespace CSI_DATA04 {
-constexpr SELECT_INPUT_Reg<5, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<5, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA04
 namespace CSI_DATA05 {
-constexpr SELECT_INPUT_Reg<6, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<6, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA05
 namespace CSI_DATA06 {
-constexpr SELECT_INPUT_Reg<7, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<7, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA06
 namespace CSI_DATA07 {
-constexpr SELECT_INPUT_Reg<8, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<8, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA07
 namespace CSI_DATA08 {
-constexpr SELECT_INPUT_Reg<9, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<9, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA08
 namespace CSI_DATA09 {
-constexpr SELECT_INPUT_Reg<10, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<10, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_DATA09
 namespace CSI_HSYNC {
-constexpr SELECT_INPUT_Reg<11, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<11, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_HSYNC
 namespace CSI_PIXCLK {
-constexpr SELECT_INPUT_Reg<12, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<12, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_PIXCLK
 namespace CSI_VSYNC {
-constexpr SELECT_INPUT_Reg<13, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<13, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CSI_VSYNC
 namespace ENET_IPG_CLK_RMII {
-constexpr SELECT_INPUT_Reg<14, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<14, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET_IPG_CLK_RMII
 namespace ENET_MDIO {
-constexpr SELECT_INPUT_Reg<15, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<15, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET_MDIO
 namespace ENET0_RXDATA {
-constexpr SELECT_INPUT_Reg<16, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<16, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET0_RXDATA
 namespace ENET1_RXDATA {
-constexpr SELECT_INPUT_Reg<17, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<17, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET1_RXDATA
 namespace ENET_RXEN {
-constexpr SELECT_INPUT_Reg<18, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<18, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET_RXEN
 namespace ENET_RXERR {
-constexpr SELECT_INPUT_Reg<19, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<19, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET_RXERR
 namespace ENET0_TIMER {
-constexpr SELECT_INPUT_Reg<20, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<20, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET0_TIMER
 namespace ENET_TXCLK {
-constexpr SELECT_INPUT_Reg<21, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<21, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET_TXCLK
 namespace FLEXCAN1_RX {
-constexpr SELECT_INPUT_Reg<22, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<22, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXCAN1_RX
 namespace FLEXCAN2_RX {
-constexpr SELECT_INPUT_Reg<23, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<23, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXCAN2_RX
 namespace FLEXPWM1_PWMA3 {
-constexpr SELECT_INPUT_Reg<24, 3, 0> DAISY;
+constexpr SELECT_INPUT_Reg<24, 3, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMA3
 namespace FLEXPWM1_PWMA0 {
-constexpr SELECT_INPUT_Reg<25, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<25, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMA0
 namespace FLEXPWM1_PWMA1 {
-constexpr SELECT_INPUT_Reg<26, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<26, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMA1
 namespace FLEXPWM1_PWMA2 {
-constexpr SELECT_INPUT_Reg<27, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<27, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMA2
 namespace FLEXPWM1_PWMB3 {
-constexpr SELECT_INPUT_Reg<28, 3, 0> DAISY;
+constexpr SELECT_INPUT_Reg<28, 3, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMB3
 namespace FLEXPWM1_PWMB0 {
-constexpr SELECT_INPUT_Reg<29, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<29, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMB0
 namespace FLEXPWM1_PWMB1 {
-constexpr SELECT_INPUT_Reg<30, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<30, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMB1
 namespace FLEXPWM1_PWMB2 {
-constexpr SELECT_INPUT_Reg<31, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<31, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM1_PWMB2
 namespace FLEXPWM2_PWMA3 {
-constexpr SELECT_INPUT_Reg<32, 3, 0> DAISY;
+constexpr SELECT_INPUT_Reg<32, 3, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMA3
 namespace FLEXPWM2_PWMA0 {
-constexpr SELECT_INPUT_Reg<33, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<33, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMA0
 namespace FLEXPWM2_PWMA1 {
-constexpr SELECT_INPUT_Reg<34, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<34, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMA1
 namespace FLEXPWM2_PWMA2 {
-constexpr SELECT_INPUT_Reg<35, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<35, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMA2
 namespace FLEXPWM2_PWMB3 {
-constexpr SELECT_INPUT_Reg<36, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<36, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMB3
 namespace FLEXPWM2_PWMB0 {
-constexpr SELECT_INPUT_Reg<37, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<37, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMB0
 namespace FLEXPWM2_PWMB1 {
-constexpr SELECT_INPUT_Reg<38, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<38, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMB1
 namespace FLEXPWM2_PWMB2 {
-constexpr SELECT_INPUT_Reg<39, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<39, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM2_PWMB2
 namespace FLEXPWM4_PWMA0 {
-constexpr SELECT_INPUT_Reg<40, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<40, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM4_PWMA0
 namespace FLEXPWM4_PWMA1 {
-constexpr SELECT_INPUT_Reg<41, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<41, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM4_PWMA1
 namespace FLEXPWM4_PWMA2 {
-constexpr SELECT_INPUT_Reg<42, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<42, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM4_PWMA2
 namespace FLEXPWM4_PWMA3 {
-constexpr SELECT_INPUT_Reg<43, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<43, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXPWM4_PWMA3
 namespace FLEXSPIA_DQS {
-constexpr SELECT_INPUT_Reg<44, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<44, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIA_DQS
 namespace FLEXSPIA_DATA0 {
-constexpr SELECT_INPUT_Reg<45, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<45, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIA_DATA0
 namespace FLEXSPIA_DATA1 {
-constexpr SELECT_INPUT_Reg<46, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<46, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIA_DATA1
 namespace FLEXSPIA_DATA2 {
-constexpr SELECT_INPUT_Reg<47, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<47, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIA_DATA2
 namespace FLEXSPIA_DATA3 {
-constexpr SELECT_INPUT_Reg<48, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<48, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIA_DATA3
 namespace FLEXSPIB_DATA0 {
-constexpr SELECT_INPUT_Reg<49, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<49, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIB_DATA0
 namespace FLEXSPIB_DATA1 {
-constexpr SELECT_INPUT_Reg<50, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<50, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIB_DATA1
 namespace FLEXSPIB_DATA2 {
-constexpr SELECT_INPUT_Reg<51, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<51, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIB_DATA2
 namespace FLEXSPIB_DATA3 {
-constexpr SELECT_INPUT_Reg<52, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<52, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIB_DATA3
 namespace FLEXSPIA_SCK {
-constexpr SELECT_INPUT_Reg<53, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<53, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPIA_SCK
 namespace LPI2C1_SCL {
-constexpr SELECT_INPUT_Reg<54, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<54, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C1_SCL
 namespace LPI2C1_SDA {
-constexpr SELECT_INPUT_Reg<55, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<55, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C1_SDA
 namespace LPI2C2_SCL {
-constexpr SELECT_INPUT_Reg<56, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<56, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C2_SCL
 namespace LPI2C2_SDA {
-constexpr SELECT_INPUT_Reg<57, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<57, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C2_SDA
 namespace LPI2C3_SCL {
-constexpr SELECT_INPUT_Reg<58, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<58, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C3_SCL
 namespace LPI2C3_SDA {
-constexpr SELECT_INPUT_Reg<59, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<59, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C3_SDA
 namespace LPI2C4_SCL {
-constexpr SELECT_INPUT_Reg<60, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<60, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C4_SCL
 namespace LPI2C4_SDA {
-constexpr SELECT_INPUT_Reg<61, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<61, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPI2C4_SDA
 namespace LPSPI1_PCS0 {
-constexpr SELECT_INPUT_Reg<62, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<62, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI1_PCS0
 namespace LPSPI1_SCK {
-constexpr SELECT_INPUT_Reg<63, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<63, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI1_SCK
 namespace LPSPI1_SDI {
-constexpr SELECT_INPUT_Reg<64, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<64, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI1_SDI
 namespace LPSPI1_SDO {
-constexpr SELECT_INPUT_Reg<65, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<65, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI1_SDO
 namespace LPSPI2_PCS0 {
-constexpr SELECT_INPUT_Reg<66, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<66, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI2_PCS0
 namespace LPSPI2_SCK {
-constexpr SELECT_INPUT_Reg<67, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<67, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI2_SCK
 namespace LPSPI2_SDI {
-constexpr SELECT_INPUT_Reg<68, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<68, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI2_SDI
 namespace LPSPI2_SDO {
-constexpr SELECT_INPUT_Reg<69, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<69, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI2_SDO
 namespace LPSPI3_PCS0 {
-constexpr SELECT_INPUT_Reg<70, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<70, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI3_PCS0
 namespace LPSPI3_SCK {
-constexpr SELECT_INPUT_Reg<71, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<71, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI3_SCK
 namespace LPSPI3_SDI {
-constexpr SELECT_INPUT_Reg<72, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<72, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI3_SDI
 namespace LPSPI3_SDO {
-constexpr SELECT_INPUT_Reg<73, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<73, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI3_SDO
 namespace LPSPI4_PCS0 {
-constexpr SELECT_INPUT_Reg<74, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<74, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI4_PCS0
 namespace LPSPI4_SCK {
-constexpr SELECT_INPUT_Reg<75, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<75, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI4_SCK
 namespace LPSPI4_SDI {
-constexpr SELECT_INPUT_Reg<76, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<76, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI4_SDI
 namespace LPSPI4_SDO {
-constexpr SELECT_INPUT_Reg<77, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<77, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPSPI4_SDO
 namespace LPUART2_RX {
-constexpr SELECT_INPUT_Reg<78, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<78, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART2_RX
 namespace LPUART2_TX {
-constexpr SELECT_INPUT_Reg<79, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<79, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART2_TX
 namespace LPUART3_CTS_B {
-constexpr SELECT_INPUT_Reg<80, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<80, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART3_CTS_B
 namespace LPUART3_RX {
-constexpr SELECT_INPUT_Reg<81, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<81, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART3_RX
 namespace LPUART3_TX {
-constexpr SELECT_INPUT_Reg<82, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<82, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART3_TX
 namespace LPUART4_RX {
-constexpr SELECT_INPUT_Reg<83, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<83, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART4_RX
 namespace LPUART4_TX {
-constexpr SELECT_INPUT_Reg<84, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<84, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART4_TX
 namespace LPUART5_RX {
-constexpr SELECT_INPUT_Reg<85, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<85, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART5_RX
 namespace LPUART5_TX {
-constexpr SELECT_INPUT_Reg<86, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<86, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART5_TX
 namespace LPUART6_RX {
-constexpr SELECT_INPUT_Reg<87, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<87, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART6_RX
 namespace LPUART6_TX {
-constexpr SELECT_INPUT_Reg<88, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<88, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART6_TX
 namespace LPUART7_RX {
-constexpr SELECT_INPUT_Reg<89, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<89, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART7_RX
 namespace LPUART7_TX {
-constexpr SELECT_INPUT_Reg<90, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<90, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART7_TX
 namespace LPUART8_RX {
-constexpr SELECT_INPUT_Reg<91, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<91, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART8_RX
 namespace LPUART8_TX {
-constexpr SELECT_INPUT_Reg<92, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<92, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace LPUART8_TX
 namespace NMI {
-constexpr SELECT_INPUT_Reg<93, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<93, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace NMI
 namespace QTIMER2_TIMER0 {
-constexpr SELECT_INPUT_Reg<94, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<94, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER2_TIMER0
 namespace QTIMER2_TIMER1 {
-constexpr SELECT_INPUT_Reg<95, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<95, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER2_TIMER1
 namespace QTIMER2_TIMER2 {
-constexpr SELECT_INPUT_Reg<96, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<96, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER2_TIMER2
 namespace QTIMER2_TIMER3 {
-constexpr SELECT_INPUT_Reg<97, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<97, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER2_TIMER3
 namespace QTIMER3_TIMER0 {
-constexpr SELECT_INPUT_Reg<98, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<98, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER3_TIMER0
 namespace QTIMER3_TIMER1 {
-constexpr SELECT_INPUT_Reg<99, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<99, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER3_TIMER1
 namespace QTIMER3_TIMER2 {
-constexpr SELECT_INPUT_Reg<100, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<100, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER3_TIMER2
 namespace QTIMER3_TIMER3 {
-constexpr SELECT_INPUT_Reg<101, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<101, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace QTIMER3_TIMER3
 namespace SAI1_MCLK2 {
-constexpr SELECT_INPUT_Reg<102, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<102, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_MCLK2
 namespace SAI1_RX_BCLK {
-constexpr SELECT_INPUT_Reg<103, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<103, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_RX_BCLK
 namespace SAI1_RX_DATA0 {
-constexpr SELECT_INPUT_Reg<104, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<104, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_RX_DATA0
 namespace SAI1_RX_DATA1 {
-constexpr SELECT_INPUT_Reg<105, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<105, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_RX_DATA1
 namespace SAI1_RX_DATA2 {
-constexpr SELECT_INPUT_Reg<106, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<106, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_RX_DATA2
 namespace SAI1_RX_DATA3 {
-constexpr SELECT_INPUT_Reg<107, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<107, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_RX_DATA3
 namespace SAI1_RX_SYNC {
-constexpr SELECT_INPUT_Reg<108, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<108, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_RX_SYNC
 namespace SAI1_TX_BCLK {
-constexpr SELECT_INPUT_Reg<109, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<109, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_TX_BCLK
 namespace SAI1_TX_SYNC {
-constexpr SELECT_INPUT_Reg<110, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<110, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI1_TX_SYNC
 namespace SAI2_MCLK2 {
-constexpr SELECT_INPUT_Reg<111, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<111, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI2_MCLK2
 namespace SAI2_RX_BCLK {
-constexpr SELECT_INPUT_Reg<112, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<112, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI2_RX_BCLK
 namespace SAI2_RX_DATA0 {
-constexpr SELECT_INPUT_Reg<113, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<113, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI2_RX_DATA0
 namespace SAI2_RX_SYNC {
-constexpr SELECT_INPUT_Reg<114, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<114, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI2_RX_SYNC
 namespace SAI2_TX_BCLK {
-constexpr SELECT_INPUT_Reg<115, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<115, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI2_TX_BCLK
 namespace SAI2_TX_SYNC {
-constexpr SELECT_INPUT_Reg<116, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<116, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI2_TX_SYNC
 namespace SPDIF_IN {
-constexpr SELECT_INPUT_Reg<117, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<117, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SPDIF_IN
 namespace USB_OTG2_OC {
-constexpr SELECT_INPUT_Reg<118, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<118, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USB_OTG2_OC
 namespace USB_OTG1_OC {
-constexpr SELECT_INPUT_Reg<119, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<119, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USB_OTG1_OC
 namespace USDHC1_CD_B {
-constexpr SELECT_INPUT_Reg<120, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<120, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC1_CD_B
 namespace USDHC1_WP {
-constexpr SELECT_INPUT_Reg<121, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<121, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC1_WP
 namespace USDHC2_CLK {
-constexpr SELECT_INPUT_Reg<122, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<122, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_CLK
 namespace USDHC2_CD_B {
-constexpr SELECT_INPUT_Reg<123, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<123, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_CD_B
 namespace USDHC2_CMD {
-constexpr SELECT_INPUT_Reg<124, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<124, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_CMD
 namespace USDHC2_DATA0 {
-constexpr SELECT_INPUT_Reg<125, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<125, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA0
 namespace USDHC2_DATA1 {
-constexpr SELECT_INPUT_Reg<126, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<126, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA1
 namespace USDHC2_DATA2 {
-constexpr SELECT_INPUT_Reg<127, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<127, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA2
 namespace USDHC2_DATA3 {
-constexpr SELECT_INPUT_Reg<128, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<128, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA3
 namespace USDHC2_DATA4 {
-constexpr SELECT_INPUT_Reg<129, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<129, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA4
 namespace USDHC2_DATA5 {
-constexpr SELECT_INPUT_Reg<130, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<130, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA5
 namespace USDHC2_DATA6 {
-constexpr SELECT_INPUT_Reg<131, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<131, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA6
 namespace USDHC2_DATA7 {
-constexpr SELECT_INPUT_Reg<132, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<132, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_DATA7
 namespace USDHC2_WP {
-constexpr SELECT_INPUT_Reg<133, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<133, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace USDHC2_WP
 namespace XBAR1_IN02 {
-constexpr SELECT_INPUT_Reg<134, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<134, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN02
 namespace XBAR1_IN03 {
-constexpr SELECT_INPUT_Reg<135, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<135, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN03
 namespace XBAR1_IN04 {
-constexpr SELECT_INPUT_Reg<136, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<136, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN04
 namespace XBAR1_IN05 {
-constexpr SELECT_INPUT_Reg<137, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<137, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN05
 namespace XBAR1_IN06 {
-constexpr SELECT_INPUT_Reg<138, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<138, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN06
 namespace XBAR1_IN07 {
-constexpr SELECT_INPUT_Reg<139, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<139, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN07
 namespace XBAR1_IN08 {
-constexpr SELECT_INPUT_Reg<140, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<140, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN08
 namespace XBAR1_IN09 {
-constexpr SELECT_INPUT_Reg<141, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<141, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN09
 namespace XBAR1_IN17 {
-constexpr SELECT_INPUT_Reg<142, 2, 0> DAISY;
+constexpr SELECT_INPUT_Reg<142, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN17
 namespace XBAR1_IN18 {
-constexpr SELECT_INPUT_Reg<143, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<143, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN18
 namespace XBAR1_IN20 {
-constexpr SELECT_INPUT_Reg<144, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<144, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN20
 namespace XBAR1_IN22 {
-constexpr SELECT_INPUT_Reg<145, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<145, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN22
 namespace XBAR1_IN23 {
-constexpr SELECT_INPUT_Reg<146, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<146, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN23
 namespace XBAR1_IN24 {
-constexpr SELECT_INPUT_Reg<147, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<147, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN24
 namespace XBAR1_IN14 {
-constexpr SELECT_INPUT_Reg<148, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<148, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN14
 namespace XBAR1_IN15 {
-constexpr SELECT_INPUT_Reg<149, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<149, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN15
 namespace XBAR1_IN16 {
-constexpr SELECT_INPUT_Reg<150, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<150, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN16
 namespace XBAR1_IN25 {
-constexpr SELECT_INPUT_Reg<151, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<151, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN25
 namespace XBAR1_IN19 {
-constexpr SELECT_INPUT_Reg<152, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<152, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN19
 namespace XBAR1_IN21 {
-constexpr SELECT_INPUT_Reg<153, 1, 0> DAISY;
+constexpr SELECT_INPUT_Reg<153, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace XBAR1_IN21
 
 // IOMUXC SELECT_INPUT_1
 
 namespace ENET2_IPG_CLK_RMII {
-constexpr SELECT_INPUT_1_Reg<0, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<0, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPG_CLK_RMII
 namespace ENET2_IPP_IND_MAC0_MDIO {
-constexpr SELECT_INPUT_1_Reg<1, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<1, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPP_IND_MAC0_MDIO
 namespace ENET2_IPP_IND_MAC0_RXDATA_0 {
-constexpr SELECT_INPUT_1_Reg<2, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<2, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPP_IND_MAC0_RXDATA_0
 namespace ENET2_IPP_IND_MAC0_RXDATA_1 {
-constexpr SELECT_INPUT_1_Reg<3, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<3, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPP_IND_MAC0_RXDATA_1
 namespace ENET2_IPP_IND_MAC0_RXEN {
-constexpr SELECT_INPUT_1_Reg<4, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<4, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPP_IND_MAC0_RXEN
 namespace ENET2_IPP_IND_MAC0_RXERR {
-constexpr SELECT_INPUT_1_Reg<5, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<5, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPP_IND_MAC0_RXERR
 namespace ENET2_IPP_IND_MAC0_TIMER_0 {
-constexpr SELECT_INPUT_1_Reg<6, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<6, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPP_IND_MAC0_TIMER_0
 namespace ENET2_IPP_IND_MAC0_TXCLK {
-constexpr SELECT_INPUT_1_Reg<7, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<7, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace ENET2_IPP_IND_MAC0_TXCLK
 namespace FLEXSPI2_IPP_IND_DQS_FA {
-constexpr SELECT_INPUT_1_Reg<8, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<8, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_DQS_FA
 namespace FLEXSPI2_IPP_IND_IO_FA_BIT0 {
-constexpr SELECT_INPUT_1_Reg<9, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<9, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FA_BIT0
 namespace FLEXSPI2_IPP_IND_IO_FA_BIT1 {
-constexpr SELECT_INPUT_1_Reg<10, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<10, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FA_BIT1
 namespace FLEXSPI2_IPP_IND_IO_FA_BIT2 {
-constexpr SELECT_INPUT_1_Reg<11, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<11, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FA_BIT2
 namespace FLEXSPI2_IPP_IND_IO_FA_BIT3 {
-constexpr SELECT_INPUT_1_Reg<12, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<12, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FA_BIT3
 namespace FLEXSPI2_IPP_IND_IO_FB_BIT0 {
-constexpr SELECT_INPUT_1_Reg<13, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<13, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FB_BIT0
 namespace FLEXSPI2_IPP_IND_IO_FB_BIT1 {
-constexpr SELECT_INPUT_1_Reg<14, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<14, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FB_BIT1
 namespace FLEXSPI2_IPP_IND_IO_FB_BIT2 {
-constexpr SELECT_INPUT_1_Reg<15, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<15, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FB_BIT2
 namespace FLEXSPI2_IPP_IND_IO_FB_BIT3 {
-constexpr SELECT_INPUT_1_Reg<16, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<16, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_IO_FB_BIT3
 namespace FLEXSPI2_IPP_IND_SCK_FA {
-constexpr SELECT_INPUT_1_Reg<17, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<17, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_SCK_FA
 namespace FLEXSPI2_IPP_IND_SCK_FB {
-constexpr SELECT_INPUT_1_Reg<18, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<18, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace FLEXSPI2_IPP_IND_SCK_FB
 namespace GPT1_IPP_IND_CAPIN1 {
-constexpr SELECT_INPUT_1_Reg<19, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<19, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace GPT1_IPP_IND_CAPIN1
 namespace GPT1_IPP_IND_CAPIN2 {
-constexpr SELECT_INPUT_1_Reg<20, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<20, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace GPT1_IPP_IND_CAPIN2
 namespace GPT1_IPP_IND_CLKIN {
-constexpr SELECT_INPUT_1_Reg<21, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<21, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace GPT1_IPP_IND_CLKIN
 namespace GPT2_IPP_IND_CAPIN1 {
-constexpr SELECT_INPUT_1_Reg<22, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<22, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace GPT2_IPP_IND_CAPIN1
 namespace GPT2_IPP_IND_CAPIN2 {
-constexpr SELECT_INPUT_1_Reg<23, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<23, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace GPT2_IPP_IND_CAPIN2
 namespace GPT2_IPP_IND_CLKIN {
-constexpr SELECT_INPUT_1_Reg<24, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<24, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace GPT2_IPP_IND_CLKIN
 namespace SAI3_IPG_CLK_SAI_MCLK_2 {
-constexpr SELECT_INPUT_1_Reg<25, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<25, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI3_IPG_CLK_SAI_MCLK_2
 namespace SAI3_IPP_IND_SAI_RXBCLK {
-constexpr SELECT_INPUT_1_Reg<26, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<26, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI3_IPP_IND_SAI_RXBCLK
 namespace SAI3_IPP_IND_SAI_RXDATA_0 {
-constexpr SELECT_INPUT_1_Reg<27, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<27, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI3_IPP_IND_SAI_RXDATA_0
 namespace SAI3_IPP_IND_SAI_RXSYNC {
-constexpr SELECT_INPUT_1_Reg<28, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<28, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI3_IPP_IND_SAI_RXSYNC
 namespace SAI3_IPP_IND_SAI_TXBCLK {
-constexpr SELECT_INPUT_1_Reg<29, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<29, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI3_IPP_IND_SAI_TXBCLK
 namespace SAI3_IPP_IND_SAI_TXSYNC {
-constexpr SELECT_INPUT_1_Reg<30, 1, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<30, 1, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SAI3_IPP_IND_SAI_TXSYNC
 namespace SEMC_I_IPP_IND_DQS4 {
-constexpr SELECT_INPUT_1_Reg<31, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<31, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SEMC_I_IPP_IND_DQS4
 namespace CANFD_IPP_IND_CANRX {
-constexpr SELECT_INPUT_1_Reg<32, 2, 0> DAISY;
+constexpr SELECT_INPUT_1_Reg<32, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace CANFD_IPP_IND_CANRX
 
 }  // namespace SELECT_INPUT

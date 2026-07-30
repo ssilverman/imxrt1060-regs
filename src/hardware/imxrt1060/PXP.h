@@ -114,8 +114,7 @@ using PXP_Reg = regs::Reg32<kPXP_base, PXP_Layout, Member, 0, Bits, Shift,
 
 // Control Register 0
 namespace CTRL {
-constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 31> SFTRST;
-    // This bit can be turned on and then off to reset the PXP block to its default state.
+constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 31> SFTRST;                // This bit can be turned on and then off to reset the PXP block to its default state.
     // 0b0..Normal PXP operation is enabled
     // 0b1..Clocking with PXP is disabled and held in its reset (lowest power) state. This is the default value.
 constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 30> CLKGATE;               // This bit must be set to zero for normal operation
@@ -127,18 +126,14 @@ constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 28> EN_REPEAT;             // Enable the
 constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 23> BLOCK_SIZE;            // Select the block size to process.
     // 0b0..Process 8x8 pixel blocks.
     // 0b1..Process 16x16 pixel blocks.
-constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 22> ROT_POS;
-    // This bit controls where rotation will occur in the PXP datapath
-constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 11> VFLIP;
-    // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 22> ROT_POS;               // This bit controls where rotation will occur in the PXP datapath
+constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 11> VFLIP;                 // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
     // 0b0..Vertical Flip is disabled
     // 0b1..Vertical Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 10> HFLIP;
-    // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL, 1, 10> HFLIP;                 // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
     // 0b0..Horizontal Flip is disabled
     // 0b1..Horizontal Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL, 2,  8> ROTATE;
-    // Indicates the clockwise rotation to be applied at the output buffer
+constexpr PXP_Reg<&PXP_Layout::CTRL, 2,  8> ROTATE;                // Indicates the clockwise rotation to be applied at the output buffer
     // 0b00..ROT_0
     // 0b01..ROT_90
     // 0b10..ROT_180
@@ -147,9 +142,8 @@ constexpr PXP_Reg<&PXP_Layout::CTRL, 1,  4> ENABLE_LCD_HANDSHAKE;  // Enable han
 constexpr PXP_Reg<&PXP_Layout::CTRL, 1,  2> NEXT_IRQ_ENABLE;       // Next command interrupt enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL, 1,  1> IRQ_ENABLE;
-    // Interrupt enable When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will
-    //     be used and may therefore enable or disable an interrupt unintentionally
+constexpr PXP_Reg<&PXP_Layout::CTRL, 1,  1> IRQ_ENABLE;            // Interrupt enable
+    // When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will be used and may therefore enable or disable an interrupt unintentionally
     // 0b0..PXP interrupt is disabled
     // 0b1..PXP interrupt is enabled
 constexpr PXP_Reg<&PXP_Layout::CTRL, 1,  0> ENABLE;                // Enables PXP operation with specified parameters
@@ -159,8 +153,7 @@ constexpr PXP_Reg<&PXP_Layout::CTRL, 1,  0> ENABLE;                // Enables PX
 
 // Control Register 0
 namespace CTRL_SET {
-constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 31, 0x0> SFTRST;
-    // This bit can be turned on and then off to reset the PXP block to its default state.
+constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 31, 0x0> SFTRST;                // This bit can be turned on and then off to reset the PXP block to its default state.
     // 0b0..Normal PXP operation is enabled
     // 0b1..Clocking with PXP is disabled and held in its reset (lowest power) state. This is the default value.
 constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 30, 0x0> CLKGATE;               // This bit must be set to zero for normal operation
@@ -172,18 +165,14 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 28, 0x0> EN_REPEAT;             // E
 constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 23, 0x0> BLOCK_SIZE;            // Select the block size to process.
     // 0b0..Process 8x8 pixel blocks.
     // 0b1..Process 16x16 pixel blocks.
-constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 22, 0x0> ROT_POS;
-    // This bit controls where rotation will occur in the PXP datapath
-constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 11, 0x0> VFLIP;
-    // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 22, 0x0> ROT_POS;               // This bit controls where rotation will occur in the PXP datapath
+constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 11, 0x0> VFLIP;                 // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
     // 0b0..Vertical Flip is disabled
     // 0b1..Vertical Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 10, 0x0> HFLIP;
-    // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1, 10, 0x0> HFLIP;                 // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
     // 0b0..Horizontal Flip is disabled
     // 0b1..Horizontal Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 2,  8, 0x0> ROTATE;
-    // Indicates the clockwise rotation to be applied at the output buffer
+constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 2,  8, 0x0> ROTATE;                // Indicates the clockwise rotation to be applied at the output buffer
     // 0b00..ROT_0
     // 0b01..ROT_90
     // 0b10..ROT_180
@@ -192,9 +181,8 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1,  4, 0x0> ENABLE_LCD_HANDSHAKE;  // E
 constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1,  2, 0x0> NEXT_IRQ_ENABLE;       // Next command interrupt enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1,  1, 0x0> IRQ_ENABLE;
-    // Interrupt enable When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will
-    //     be used and may therefore enable or disable an interrupt unintentionally
+constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1,  1, 0x0> IRQ_ENABLE;            // Interrupt enable
+    // When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will be used and may therefore enable or disable an interrupt unintentionally
     // 0b0..PXP interrupt is disabled
     // 0b1..PXP interrupt is enabled
 constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1,  0, 0x0> ENABLE;                // Enables PXP operation with specified parameters
@@ -204,8 +192,7 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_SET, 1,  0, 0x0> ENABLE;                // E
 
 // Control Register 0
 namespace CTRL_CLR {
-constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 31, 0x0> SFTRST;
-    // This bit can be turned on and then off to reset the PXP block to its default state.
+constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 31, 0x0> SFTRST;                // This bit can be turned on and then off to reset the PXP block to its default state.
     // 0b0..Normal PXP operation is enabled
     // 0b1..Clocking with PXP is disabled and held in its reset (lowest power) state. This is the default value.
 constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 30, 0x0> CLKGATE;               // This bit must be set to zero for normal operation
@@ -217,18 +204,14 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 28, 0x0> EN_REPEAT;             // E
 constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 23, 0x0> BLOCK_SIZE;            // Select the block size to process.
     // 0b0..Process 8x8 pixel blocks.
     // 0b1..Process 16x16 pixel blocks.
-constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 22, 0x0> ROT_POS;
-    // This bit controls where rotation will occur in the PXP datapath
-constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 11, 0x0> VFLIP;
-    // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 22, 0x0> ROT_POS;               // This bit controls where rotation will occur in the PXP datapath
+constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 11, 0x0> VFLIP;                 // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
     // 0b0..Vertical Flip is disabled
     // 0b1..Vertical Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 10, 0x0> HFLIP;
-    // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1, 10, 0x0> HFLIP;                 // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
     // 0b0..Horizontal Flip is disabled
     // 0b1..Horizontal Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 2,  8, 0x0> ROTATE;
-    // Indicates the clockwise rotation to be applied at the output buffer
+constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 2,  8, 0x0> ROTATE;                // Indicates the clockwise rotation to be applied at the output buffer
     // 0b00..ROT_0
     // 0b01..ROT_90
     // 0b10..ROT_180
@@ -237,9 +220,8 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1,  4, 0x0> ENABLE_LCD_HANDSHAKE;  // E
 constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1,  2, 0x0> NEXT_IRQ_ENABLE;       // Next command interrupt enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1,  1, 0x0> IRQ_ENABLE;
-    // Interrupt enable When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will
-    //     be used and may therefore enable or disable an interrupt unintentionally
+constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1,  1, 0x0> IRQ_ENABLE;            // Interrupt enable
+    // When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will be used and may therefore enable or disable an interrupt unintentionally
     // 0b0..PXP interrupt is disabled
     // 0b1..PXP interrupt is enabled
 constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1,  0, 0x0> ENABLE;                // Enables PXP operation with specified parameters
@@ -249,8 +231,7 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_CLR, 1,  0, 0x0> ENABLE;                // E
 
 // Control Register 0
 namespace CTRL_TOG {
-constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 31, 0x0> SFTRST;
-    // This bit can be turned on and then off to reset the PXP block to its default state.
+constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 31, 0x0> SFTRST;                // This bit can be turned on and then off to reset the PXP block to its default state.
     // 0b0..Normal PXP operation is enabled
     // 0b1..Clocking with PXP is disabled and held in its reset (lowest power) state. This is the default value.
 constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 30, 0x0> CLKGATE;               // This bit must be set to zero for normal operation
@@ -262,18 +243,14 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 28, 0x0> EN_REPEAT;             // E
 constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 23, 0x0> BLOCK_SIZE;            // Select the block size to process.
     // 0b0..Process 8x8 pixel blocks.
     // 0b1..Process 16x16 pixel blocks.
-constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 22, 0x0> ROT_POS;
-    // This bit controls where rotation will occur in the PXP datapath
-constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 11, 0x0> VFLIP;
-    // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 22, 0x0> ROT_POS;               // This bit controls where rotation will occur in the PXP datapath
+constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 11, 0x0> VFLIP;                 // Indicates that the output buffer should be flipped vertically (effect applied before rotation).
     // 0b0..Vertical Flip is disabled
     // 0b1..Vertical Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 10, 0x0> HFLIP;
-    // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
+constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1, 10, 0x0> HFLIP;                 // Indicates that the output buffer should be flipped horizontally (effect applied before rotation).
     // 0b0..Horizontal Flip is disabled
     // 0b1..Horizontal Flip is enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 2,  8, 0x0> ROTATE;
-    // Indicates the clockwise rotation to be applied at the output buffer
+constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 2,  8, 0x0> ROTATE;                // Indicates the clockwise rotation to be applied at the output buffer
     // 0b00..ROT_0
     // 0b01..ROT_90
     // 0b10..ROT_180
@@ -282,9 +259,8 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1,  4, 0x0> ENABLE_LCD_HANDSHAKE;  // E
 constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1,  2, 0x0> NEXT_IRQ_ENABLE;       // Next command interrupt enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1,  1, 0x0> IRQ_ENABLE;
-    // Interrupt enable When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will
-    //     be used and may therefore enable or disable an interrupt unintentionally
+constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1,  1, 0x0> IRQ_ENABLE;            // Interrupt enable
+    // When using the PXP_NEXT functionality to reprogram the PXP, the new value of this bit will be used and may therefore enable or disable an interrupt unintentionally
     // 0b0..PXP interrupt is disabled
     // 0b1..PXP interrupt is enabled
 constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1,  0, 0x0> ENABLE;                // Enables PXP operation with specified parameters
@@ -294,25 +270,17 @@ constexpr PXP_Reg<&PXP_Layout::CTRL_TOG, 1,  0, 0x0> ENABLE;                // E
 
 // Status Register
 namespace STAT {
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT), 8, 24> BLOCKX;
-    // Indicates the X coordinate of the block currently being rendered.
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT), 8, 16> BLOCKY;
-    // Indicates the Y coordinate of the block currently being rendered.
-constexpr PXP_Reg<&PXP_Layout::STAT, 1,  8> LUT_DMA_LOAD_DONE_IRQ;
-    // Indicates that the LUT DMA transfer has completed.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT), 8, 24> BLOCKX;        // Indicates the X coordinate of the block currently being rendered.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT), 8, 16> BLOCKY;        // Indicates the Y coordinate of the block currently being rendered.
+constexpr PXP_Reg<&PXP_Layout::STAT, 1,  8> LUT_DMA_LOAD_DONE_IRQ;         // Indicates that the LUT DMA transfer has completed.
     // 0b0..LUT DMA LOAD transfer is active
     // 0b1..LUT DMA LOAD transfer is complete
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT), 4,  4> AXI_ERROR_ID;
-    // Indicates the AXI ID of the failing bus operation.
-constexpr PXP_Reg<&PXP_Layout::STAT, 1,  3> NEXT_IRQ;
-    // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command
-    //     may be initiated with a write to the PXP_NEXT register
-constexpr PXP_Reg<&PXP_Layout::STAT, 1,  2> AXI_READ_ERROR;
-    // Indicates PXP encountered an AXI read error and processing has been terminated.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT), 4,  4> AXI_ERROR_ID;  // Indicates the AXI ID of the failing bus operation.
+constexpr PXP_Reg<&PXP_Layout::STAT, 1,  3> NEXT_IRQ;                      // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command may be initiated with a write to the PXP_NEXT register
+constexpr PXP_Reg<&PXP_Layout::STAT, 1,  2> AXI_READ_ERROR;                // Indicates PXP encountered an AXI read error and processing has been terminated.
     // 0b0..AXI read is normal
     // 0b1..AXI read error has occurred
-constexpr PXP_Reg<&PXP_Layout::STAT, 1,  1> AXI_WRITE_ERROR;
-    // Indicates PXP encountered an AXI write error and processing has been terminated.
+constexpr PXP_Reg<&PXP_Layout::STAT, 1,  1> AXI_WRITE_ERROR;               // Indicates PXP encountered an AXI write error and processing has been terminated.
     // 0b0..AXI write is normal
     // 0b1..AXI write error has occurred
 constexpr PXP_Reg<&PXP_Layout::STAT, 1,  0> IRQ;                           // Indicates current PXP interrupt status
@@ -322,25 +290,17 @@ constexpr PXP_Reg<&PXP_Layout::STAT, 1,  0> IRQ;                           // In
 
 // Status Register
 namespace STAT_SET {
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_SET), 8, 24, 0x0> BLOCKX;
-    // Indicates the X coordinate of the block currently being rendered.
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_SET), 8, 16, 0x0> BLOCKY;
-    // Indicates the Y coordinate of the block currently being rendered.
-constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  8, 0x0> LUT_DMA_LOAD_DONE_IRQ;
-    // Indicates that the LUT DMA transfer has completed.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_SET), 8, 24, 0x0> BLOCKX;        // Indicates the X coordinate of the block currently being rendered.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_SET), 8, 16, 0x0> BLOCKY;        // Indicates the Y coordinate of the block currently being rendered.
+constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  8, 0x0> LUT_DMA_LOAD_DONE_IRQ;         // Indicates that the LUT DMA transfer has completed.
     // 0b0..LUT DMA LOAD transfer is active
     // 0b1..LUT DMA LOAD transfer is complete
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_SET), 4,  4, 0x0> AXI_ERROR_ID;
-    // Indicates the AXI ID of the failing bus operation.
-constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  3, 0x0> NEXT_IRQ;
-    // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command
-    //     may be initiated with a write to the PXP_NEXT register
-constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  2, 0x0> AXI_READ_ERROR;
-    // Indicates PXP encountered an AXI read error and processing has been terminated.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_SET), 4,  4, 0x0> AXI_ERROR_ID;  // Indicates the AXI ID of the failing bus operation.
+constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  3, 0x0> NEXT_IRQ;                      // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command may be initiated with a write to the PXP_NEXT register
+constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  2, 0x0> AXI_READ_ERROR;                // Indicates PXP encountered an AXI read error and processing has been terminated.
     // 0b0..AXI read is normal
     // 0b1..AXI read error has occurred
-constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  1, 0x0> AXI_WRITE_ERROR;
-    // Indicates PXP encountered an AXI write error and processing has been terminated.
+constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  1, 0x0> AXI_WRITE_ERROR;               // Indicates PXP encountered an AXI write error and processing has been terminated.
     // 0b0..AXI write is normal
     // 0b1..AXI write error has occurred
 constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  0, 0x0> IRQ;                           // Indicates current PXP interrupt status
@@ -350,25 +310,17 @@ constexpr PXP_Reg<&PXP_Layout::STAT_SET, 1,  0, 0x0> IRQ;                       
 
 // Status Register
 namespace STAT_CLR {
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_CLR), 8, 24, 0x0> BLOCKX;
-    // Indicates the X coordinate of the block currently being rendered.
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_CLR), 8, 16, 0x0> BLOCKY;
-    // Indicates the Y coordinate of the block currently being rendered.
-constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  8, 0x0> LUT_DMA_LOAD_DONE_IRQ;
-    // Indicates that the LUT DMA transfer has completed.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_CLR), 8, 24, 0x0> BLOCKX;        // Indicates the X coordinate of the block currently being rendered.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_CLR), 8, 16, 0x0> BLOCKY;        // Indicates the Y coordinate of the block currently being rendered.
+constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  8, 0x0> LUT_DMA_LOAD_DONE_IRQ;         // Indicates that the LUT DMA transfer has completed.
     // 0b0..LUT DMA LOAD transfer is active
     // 0b1..LUT DMA LOAD transfer is complete
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_CLR), 4,  4, 0x0> AXI_ERROR_ID;
-    // Indicates the AXI ID of the failing bus operation.
-constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  3, 0x0> NEXT_IRQ;
-    // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command
-    //     may be initiated with a write to the PXP_NEXT register
-constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  2, 0x0> AXI_READ_ERROR;
-    // Indicates PXP encountered an AXI read error and processing has been terminated.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_CLR), 4,  4, 0x0> AXI_ERROR_ID;  // Indicates the AXI ID of the failing bus operation.
+constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  3, 0x0> NEXT_IRQ;                      // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command may be initiated with a write to the PXP_NEXT register
+constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  2, 0x0> AXI_READ_ERROR;                // Indicates PXP encountered an AXI read error and processing has been terminated.
     // 0b0..AXI read is normal
     // 0b1..AXI read error has occurred
-constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  1, 0x0> AXI_WRITE_ERROR;
-    // Indicates PXP encountered an AXI write error and processing has been terminated.
+constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  1, 0x0> AXI_WRITE_ERROR;               // Indicates PXP encountered an AXI write error and processing has been terminated.
     // 0b0..AXI write is normal
     // 0b1..AXI write error has occurred
 constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  0, 0x0> IRQ;                           // Indicates current PXP interrupt status
@@ -378,25 +330,17 @@ constexpr PXP_Reg<&PXP_Layout::STAT_CLR, 1,  0, 0x0> IRQ;                       
 
 // Status Register
 namespace STAT_TOG {
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_TOG), 8, 24, 0x0> BLOCKX;
-    // Indicates the X coordinate of the block currently being rendered.
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_TOG), 8, 16, 0x0> BLOCKY;
-    // Indicates the Y coordinate of the block currently being rendered.
-constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  8, 0x0> LUT_DMA_LOAD_DONE_IRQ;
-    // Indicates that the LUT DMA transfer has completed.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_TOG), 8, 24, 0x0> BLOCKX;        // Indicates the X coordinate of the block currently being rendered.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_TOG), 8, 16, 0x0> BLOCKY;        // Indicates the Y coordinate of the block currently being rendered.
+constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  8, 0x0> LUT_DMA_LOAD_DONE_IRQ;         // Indicates that the LUT DMA transfer has completed.
     // 0b0..LUT DMA LOAD transfer is active
     // 0b1..LUT DMA LOAD transfer is complete
-constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_TOG), 4,  4, 0x0> AXI_ERROR_ID;
-    // Indicates the AXI ID of the failing bus operation.
-constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  3, 0x0> NEXT_IRQ;
-    // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command
-    //     may be initiated with a write to the PXP_NEXT register
-constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  2, 0x0> AXI_READ_ERROR;
-    // Indicates PXP encountered an AXI read error and processing has been terminated.
+constexpr PXP_Reg<regs::constify(&PXP_Layout::STAT_TOG), 4,  4, 0x0> AXI_ERROR_ID;  // Indicates the AXI ID of the failing bus operation.
+constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  3, 0x0> NEXT_IRQ;                      // Indicates that a command issued with the "Next Command" functionality has been issued and that a new command may be initiated with a write to the PXP_NEXT register
+constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  2, 0x0> AXI_READ_ERROR;                // Indicates PXP encountered an AXI read error and processing has been terminated.
     // 0b0..AXI read is normal
     // 0b1..AXI read error has occurred
-constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  1, 0x0> AXI_WRITE_ERROR;
-    // Indicates PXP encountered an AXI write error and processing has been terminated.
+constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  1, 0x0> AXI_WRITE_ERROR;               // Indicates PXP encountered an AXI write error and processing has been terminated.
     // 0b0..AXI write is normal
     // 0b1..AXI write error has occurred
 constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  0, 0x0> IRQ;                           // Indicates current PXP interrupt status
@@ -406,11 +350,8 @@ constexpr PXP_Reg<&PXP_Layout::STAT_TOG, 1,  0, 0x0> IRQ;                       
 
 // Output Buffer Control Register
 namespace OUT_CTRL {
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL, 8, 24> ALPHA;
-    // When generating an output buffer with an alpha component, the value in this field will be used when enabled
-    //     to override the alpha passed through the pixel data pipeline
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL, 1, 23> ALPHA_OUTPUT;
-    // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL, 8, 24> ALPHA;              // When generating an output buffer with an alpha component, the value in this field will be used when enabled to override the alpha passed through the pixel data pipeline
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL, 1, 23> ALPHA_OUTPUT;       // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
     // 0b0..Retain
     // 0b1..Overwritten
 constexpr PXP_Reg<&PXP_Layout::OUT_CTRL, 2,  8> INTERLACED_OUTPUT;  // Determines how the PXP writes it's output data
@@ -440,15 +381,11 @@ constexpr PXP_Reg<&PXP_Layout::OUT_CTRL, 5,  0> FORMAT;             // Output fr
 
 // Output Buffer Control Register
 namespace OUT_CTRL_SET {
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_SET, 8, 24, 0x0> ALPHA;
-    // When generating an output buffer with an alpha component, the value in this field will be used when enabled
-    //     to override the alpha passed through the pixel data pipeline
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_SET, 1, 23, 0x0> ALPHA_OUTPUT;
-    // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_SET, 8, 24, 0x0> ALPHA;              // When generating an output buffer with an alpha component, the value in this field will be used when enabled to override the alpha passed through the pixel data pipeline
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_SET, 1, 23, 0x0> ALPHA_OUTPUT;       // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
     // 0b0..Retain
     // 0b1..Overwritten
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_SET, 2,  8, 0x0> INTERLACED_OUTPUT;
-    // Determines how the PXP writes it's output data
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_SET, 2,  8, 0x0> INTERLACED_OUTPUT;  // Determines how the PXP writes it's output data
     // 0b00..All data written in progressive format to the OUTBUF Pointer.
     // 0b01..Interlaced output: only data for field 0 is written to the OUTBUF Pointer.
     // 0b10..Interlaced output: only data for field 1 is written to the OUTBUF2 Pointer.
@@ -475,15 +412,11 @@ constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_SET, 5,  0, 0x0> FORMAT;             // 
 
 // Output Buffer Control Register
 namespace OUT_CTRL_CLR {
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_CLR, 8, 24, 0x0> ALPHA;
-    // When generating an output buffer with an alpha component, the value in this field will be used when enabled
-    //     to override the alpha passed through the pixel data pipeline
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_CLR, 1, 23, 0x0> ALPHA_OUTPUT;
-    // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_CLR, 8, 24, 0x0> ALPHA;              // When generating an output buffer with an alpha component, the value in this field will be used when enabled to override the alpha passed through the pixel data pipeline
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_CLR, 1, 23, 0x0> ALPHA_OUTPUT;       // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
     // 0b0..Retain
     // 0b1..Overwritten
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_CLR, 2,  8, 0x0> INTERLACED_OUTPUT;
-    // Determines how the PXP writes it's output data
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_CLR, 2,  8, 0x0> INTERLACED_OUTPUT;  // Determines how the PXP writes it's output data
     // 0b00..All data written in progressive format to the OUTBUF Pointer.
     // 0b01..Interlaced output: only data for field 0 is written to the OUTBUF Pointer.
     // 0b10..Interlaced output: only data for field 1 is written to the OUTBUF2 Pointer.
@@ -510,15 +443,11 @@ constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_CLR, 5,  0, 0x0> FORMAT;             // 
 
 // Output Buffer Control Register
 namespace OUT_CTRL_TOG {
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_TOG, 8, 24, 0x0> ALPHA;
-    // When generating an output buffer with an alpha component, the value in this field will be used when enabled
-    //     to override the alpha passed through the pixel data pipeline
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_TOG, 1, 23, 0x0> ALPHA_OUTPUT;
-    // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_TOG, 8, 24, 0x0> ALPHA;              // When generating an output buffer with an alpha component, the value in this field will be used when enabled to override the alpha passed through the pixel data pipeline
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_TOG, 1, 23, 0x0> ALPHA_OUTPUT;       // Indicates that alpha component in output buffer pixels should be overwritten by PXP_OUT_CTRL[ALPHA]
     // 0b0..Retain
     // 0b1..Overwritten
-constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_TOG, 2,  8, 0x0> INTERLACED_OUTPUT;
-    // Determines how the PXP writes it's output data
+constexpr PXP_Reg<&PXP_Layout::OUT_CTRL_TOG, 2,  8, 0x0> INTERLACED_OUTPUT;  // Determines how the PXP writes it's output data
     // 0b00..All data written in progressive format to the OUTBUF Pointer.
     // 0b01..Interlaced output: only data for field 0 is written to the OUTBUF Pointer.
     // 0b10..Interlaced output: only data for field 1 is written to the OUTBUF2 Pointer.
@@ -789,8 +718,7 @@ constexpr PXP_Reg<&PXP_Layout::PS_CLRKEYHIGH, 24, 0> PIXEL;  // High range of co
 
 // Alpha Surface Control
 namespace AS_CTRL {
-constexpr PXP_Reg<&PXP_Layout::AS_CTRL, 1, 20> ALPHA_INVERT;
-    // Setting this bit to logic 0 will not alter the alpha value
+constexpr PXP_Reg<&PXP_Layout::AS_CTRL, 1, 20> ALPHA_INVERT;     // Setting this bit to logic 0 will not alter the alpha value
     // 0b0..Not inverted
     // 0b1..Inverted
 constexpr PXP_Reg<&PXP_Layout::AS_CTRL, 4, 16> ROP;              // Indicates a raster operation to perform when enabled
@@ -859,11 +787,10 @@ constexpr PXP_Reg<&PXP_Layout::CSC1_COEF0,  1, 31> YCBCR_MODE;  // Set to 1 when
     // 0b0..YUV to RGB
     // 0b1..YCbCr to RGB
 constexpr PXP_Reg<&PXP_Layout::CSC1_COEF0,  1, 30> BYPASS;      // Bypass the CSC unit in the scaling engine
-constexpr PXP_Reg<&PXP_Layout::CSC1_COEF0, 11, 18> C0;
-    // Two's compliment Y multiplier coefficient. YUV=0x100 (1.000) YCbCr=0x12A (1.164)
+constexpr PXP_Reg<&PXP_Layout::CSC1_COEF0, 11, 18> C0;          // Two's compliment Y multiplier coefficient.
+    // YUV=0x100 (1.000) YCbCr=0x12A (1.164)
 constexpr PXP_Reg<&PXP_Layout::CSC1_COEF0,  9,  9> UV_OFFSET;   // Two's compliment phase offset implicit for CbCr data
-constexpr PXP_Reg<&PXP_Layout::CSC1_COEF0,  9,  0> Y_OFFSET;
-    // Two's compliment amplitude offset implicit in the Y data
+constexpr PXP_Reg<&PXP_Layout::CSC1_COEF0,  9,  0> Y_OFFSET;    // Two's compliment amplitude offset implicit in the Y data
 }  // namespace CSC1_COEF0
 
 // Color Space Conversion Coefficient Register 1
@@ -894,7 +821,7 @@ constexpr PXP_Reg<&PXP_Layout::POWER,  3,  9> ROT_MEM_LP_STATE;  // Select the l
 
 // Next Frame Pointer
 namespace NEXT {
-constexpr PXP_Reg<&PXP_Layout::NEXT, 30, 2> POINTER;  // A pointer to a data structure containing register values to be used when processing the next frame
+constexpr PXP_Reg<&PXP_Layout::NEXT, 30, 2> POINTER;                  // A pointer to a data structure containing register values to be used when processing the next frame
 constexpr PXP_Reg<regs::constify(&PXP_Layout::NEXT),  1, 0> ENABLED;  // Indicates that the "next frame" functionality has been enabled
 }  // namespace NEXT
 
