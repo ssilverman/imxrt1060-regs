@@ -52,6 +52,7 @@ using WDOG1_Reg =
 // Watchdog Control Register
 namespace WCR {
 constexpr WDOG1_Reg<&WDOG_Layout::WCR, 8, 8> WT;
+    // ('value' + 1)*0.5:
     // 0b00000000..- 0.5 Seconds (Default).
     // 0b00000001..- 1.0 Seconds.
     // 0b00000010..- 1.5 Seconds.
