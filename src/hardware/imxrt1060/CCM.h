@@ -120,7 +120,7 @@ constexpr uint32_t kPLL3_SW_CLK_SEL_BYPASS = 1;
 // CCM Arm Clock Root Register
 namespace CACRR {
 constexpr CCM_Reg<&CCM_Layout::CACRR, 3, 0> ARM_PODF;
-    // Divide by 'value + 1:
+    // Divide by 'value' + 1:
     // 0b000..divide by 1
     // 0b001..divide by 2
     // 0b010..divide by 3
@@ -134,14 +134,38 @@ constexpr CCM_Reg<&CCM_Layout::CACRR, 3, 0> ARM_PODF;
 // CCM Bus Clock Divider Register
 namespace CBCDR {
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 3, 27> PERIPH_CLK2_PODF;
-    // Divide by 'value + 1
+    // Divide by 'value' + 1
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 1, 25> PERIPH_CLK_SEL;
     // 0b0..derive clock from pre_periph_clk_sel
     // 0b1..derive clock from periph_clk2_clk_divided
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 3, 16> SEMC_PODF;
     // Divide by 'value' + 1
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 3, 10> AHB_PODF;
     // Divide by 'value' + 1
+    // 0b000..divide by 1
+    // 0b001..divide by 2
+    // 0b010..divide by 3
+    // 0b011..divide by 4
+    // 0b100..divide by 5
+    // 0b101..divide by 6
+    // 0b110..divide by 7
+    // 0b111..divide by 8
 constexpr CCM_Reg<&CCM_Layout::CBCDR, 2,  8> IPG_PODF;
     // Divide by 'value' + 1:
     // 0b00..divide by 1
