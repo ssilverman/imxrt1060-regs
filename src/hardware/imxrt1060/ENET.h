@@ -263,12 +263,14 @@ constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 15> TS_TIMER;  // TS_TIMER Interrupt M
 
 // Receive Descriptor Active Register - Ring 0
 namespace RDAR {
-constexpr ENET_Reg<&ENET_Layout::RDAR, 1, 24> RDAR;  // Receive Descriptor Active
+constexpr ENET_Reg<&ENET_Layout::RDAR, 1, 24, 0x0> RDAR;  // Receive Descriptor Active
+    // Direct-assign because there's only one writable field
 }  // namespace RDAR
 
 // Transmit Descriptor Active Register - Ring 0
 namespace TDAR {
-constexpr ENET_Reg<&ENET_Layout::TDAR, 1, 24> TDAR;  // Transmit Descriptor Active
+constexpr ENET_Reg<&ENET_Layout::TDAR, 1, 24, 0x0> TDAR;  // Transmit Descriptor Active
+    // Direct-assign because there's only one writable field
 }  // namespace TDAR
 
 // Ethernet Control Register
@@ -410,14 +412,16 @@ constexpr ENET_Reg<&ENET_Layout::PALR, 32, 0> PADDR1;  // Pause Address
 
 // Physical Address Upper Register
 namespace PAUR {
-constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;                // Bytes 4 (bits 31:24) and 5 (bits 23:16) of the 6-byte individual address used for exact match, and the source address field in PAUSE frames
+constexpr ENET_Reg<&ENET_Layout::PAUR, 16, 16, 0x0> PADDR2;           // Bytes 4 (bits 31:24) and 5 (bits 23:16) of the 6-byte individual address used for exact match, and the source address field in PAUSE frames
+    // Direct-assign because there's only one writable field
 constexpr ENET_Reg<regs::constify(&ENET_Layout::PAUR), 16,  0> TYPE;  // Type Field In PAUSE Frames
 }  // namespace PAUR
 
 // Opcode/Pause Duration Register
 namespace OPD {
 constexpr ENET_Reg<regs::constify(&ENET_Layout::OPD), 16, 16> OPCODE;  // Opcode Field In PAUSE Frames
-constexpr ENET_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;               // Pause Duration
+constexpr ENET_Reg<&ENET_Layout::OPD, 16,  0, 0x0> PAUSE_DUR;          // Pause Duration
+    // Direct-assign because there's only one writable field
 }  // namespace OPD
 
 // Transmit Interrupt Coalescing Register
@@ -489,12 +493,14 @@ constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;  // Pointer to the be
 
 // Maximum Receive Buffer Size Register - Ring 0
 namespace MRBR {
-constexpr ENET_Reg<&ENET_Layout::MRBR, 10, 4> R_BUF_SIZE;  // Receive buffer size in bytes
+constexpr ENET_Reg<&ENET_Layout::MRBR, 10, 4, 0x0> R_BUF_SIZE;  // Receive buffer size in bytes
+    // Direct-assign because there's only one writable field
 }  // namespace MRBR
 
 // Receive FIFO Section Full Threshold
 namespace RSFL {
-constexpr ENET_Reg<&ENET_Layout::RSFL, 8, 0> RX_SECTION_FULL;  // Value Of Receive FIFO Section Full Threshold
+constexpr ENET_Reg<&ENET_Layout::RSFL, 8, 0, 0x0> RX_SECTION_FULL;  // Value Of Receive FIFO Section Full Threshold
+    // Direct-assign because there's only one writable field
 }  // namespace RSFL
 
 // Receive FIFO Section Empty Threshold
@@ -505,37 +511,44 @@ constexpr ENET_Reg<&ENET_Layout::RSEM, 8,  0> RX_SECTION_EMPTY;    // Value Of T
 
 // Receive FIFO Almost Empty Threshold
 namespace RAEM {
-constexpr ENET_Reg<&ENET_Layout::RAEM, 8, 0> RX_ALMOST_EMPTY;  // Value Of The Receive FIFO Almost Empty Threshold
+constexpr ENET_Reg<&ENET_Layout::RAEM, 8, 0, 0x0> RX_ALMOST_EMPTY;  // Value Of The Receive FIFO Almost Empty Threshold
+    // Direct-assign because there's only one writable field
 }  // namespace RAEM
 
 // Receive FIFO Almost Full Threshold
 namespace RAFL {
-constexpr ENET_Reg<&ENET_Layout::RAFL, 8, 0> RX_ALMOST_FULL;  // Value Of The Receive FIFO Almost Full Threshold
+constexpr ENET_Reg<&ENET_Layout::RAFL, 8, 0, 0x0> RX_ALMOST_FULL;  // Value Of The Receive FIFO Almost Full Threshold
+    // Direct-assign because there's only one writable field
 }  // namespace RAFL
 
 // Transmit FIFO Section Empty Threshold
 namespace TSEM {
-constexpr ENET_Reg<&ENET_Layout::TSEM, 8, 0> TX_SECTION_EMPTY;  // Value Of The Transmit FIFO Section Empty Threshold
+constexpr ENET_Reg<&ENET_Layout::TSEM, 8, 0, 0x0> TX_SECTION_EMPTY;  // Value Of The Transmit FIFO Section Empty Threshold
+    // Direct-assign because there's only one writable field
 }  // namespace TSEM
 
 // Transmit FIFO Almost Empty Threshold
 namespace TAEM {
-constexpr ENET_Reg<&ENET_Layout::TAEM, 8, 0> TX_ALMOST_EMPTY;  // Value of Transmit FIFO Almost Empty Threshold
+constexpr ENET_Reg<&ENET_Layout::TAEM, 8, 0, 0x0> TX_ALMOST_EMPTY;  // Value of Transmit FIFO Almost Empty Threshold
+    // Direct-assign because there's only one writable field
 }  // namespace TAEM
 
 // Transmit FIFO Almost Full Threshold
 namespace TAFL {
-constexpr ENET_Reg<&ENET_Layout::TAFL, 8, 0> TX_ALMOST_FULL;  // Value Of The Transmit FIFO Almost Full Threshold
+constexpr ENET_Reg<&ENET_Layout::TAFL, 8, 0, 0x0> TX_ALMOST_FULL;  // Value Of The Transmit FIFO Almost Full Threshold
+    // Direct-assign because there's only one writable field
 }  // namespace TAFL
 
 // Transmit Inter-Packet Gap
 namespace TIPG {
-constexpr ENET_Reg<&ENET_Layout::TIPG, 5, 0> IPG;  // Transmit Inter-Packet Gap
+constexpr ENET_Reg<&ENET_Layout::TIPG, 5, 0, 0x0> IPG;  // Transmit Inter-Packet Gap
+    // Direct-assign because there's only one writable field
 }  // namespace TIPG
 
 // Frame Truncation Length
 namespace FTRL {
-constexpr ENET_Reg<&ENET_Layout::FTRL, 14, 0> TRUNC_FL;  // Frame Truncation Length
+constexpr ENET_Reg<&ENET_Layout::FTRL, 14, 0, 0x0> TRUNC_FL;  // Frame Truncation Length
+    // Direct-assign because there's only one writable field
 }  // namespace FTRL
 
 // Transmit Accelerator Function Configuration
@@ -627,7 +640,8 @@ constexpr ENET_Reg<&ENET_Layout::ATPER, 32, 0> PERIOD;  // Value for generating 
 
 // Timer Correction Register
 namespace ATCOR {
-constexpr ENET_Reg<&ENET_Layout::ATCOR, 31, 0> COR;  // Correction Counter Wrap-Around Value
+constexpr ENET_Reg<&ENET_Layout::ATCOR, 31, 0, 0x0> COR;  // Correction Counter Wrap-Around Value
+    // Direct-assign because there's only one writable field
 }  // namespace ATCOR
 
 // Time-Stamping Clock Period Register
@@ -1021,11 +1035,11 @@ constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 15> TS_TIMER;
 }  // namespace EIMR
 
 namespace RDAR {
-constexpr ENET2_Reg<&ENET_Layout::RDAR, 1, 24> RDAR;
+constexpr ENET2_Reg<&ENET_Layout::RDAR, 1, 24, 0x0> RDAR;
 }  // namespace RDAR
 
 namespace TDAR {
-constexpr ENET2_Reg<&ENET_Layout::TDAR, 1, 24> TDAR;
+constexpr ENET2_Reg<&ENET_Layout::TDAR, 1, 24, 0x0> TDAR;
 }  // namespace TDAR
 
 namespace ECR {
@@ -1093,13 +1107,13 @@ constexpr ENET2_Reg<&ENET_Layout::PALR, 32, 0> PADDR1;
 }  // namespace PALR
 
 namespace PAUR {
-constexpr ENET2_Reg<&ENET_Layout::PAUR, 16, 16> PADDR2;
+constexpr ENET2_Reg<&ENET_Layout::PAUR, 16, 16, 0x0> PADDR2;
 constexpr ENET2_Reg<regs::constify(&ENET_Layout::PAUR), 16,  0> TYPE;
 }  // namespace PAUR
 
 namespace OPD {
 constexpr ENET2_Reg<regs::constify(&ENET_Layout::OPD), 16, 16> OPCODE;
-constexpr ENET2_Reg<&ENET_Layout::OPD, 16,  0> PAUSE_DUR;
+constexpr ENET2_Reg<&ENET_Layout::OPD, 16,  0, 0x0> PAUSE_DUR;
 }  // namespace OPD
 
 namespace TXIC {
@@ -1146,11 +1160,11 @@ constexpr ENET2_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;
 }  // namespace TDSR
 
 namespace MRBR {
-constexpr ENET2_Reg<&ENET_Layout::MRBR, 10, 4> R_BUF_SIZE;
+constexpr ENET2_Reg<&ENET_Layout::MRBR, 10, 4, 0x0> R_BUF_SIZE;
 }  // namespace MRBR
 
 namespace RSFL {
-constexpr ENET2_Reg<&ENET_Layout::RSFL, 8, 0> RX_SECTION_FULL;
+constexpr ENET2_Reg<&ENET_Layout::RSFL, 8, 0, 0x0> RX_SECTION_FULL;
 }  // namespace RSFL
 
 namespace RSEM {
@@ -1159,31 +1173,31 @@ constexpr ENET2_Reg<&ENET_Layout::RSEM, 8,  0> RX_SECTION_EMPTY;
 }  // namespace RSEM
 
 namespace RAEM {
-constexpr ENET2_Reg<&ENET_Layout::RAEM, 8, 0> RX_ALMOST_EMPTY;
+constexpr ENET2_Reg<&ENET_Layout::RAEM, 8, 0, 0x0> RX_ALMOST_EMPTY;
 }  // namespace RAEM
 
 namespace RAFL {
-constexpr ENET2_Reg<&ENET_Layout::RAFL, 8, 0> RX_ALMOST_FULL;
+constexpr ENET2_Reg<&ENET_Layout::RAFL, 8, 0, 0x0> RX_ALMOST_FULL;
 }  // namespace RAFL
 
 namespace TSEM {
-constexpr ENET2_Reg<&ENET_Layout::TSEM, 8, 0> TX_SECTION_EMPTY;
+constexpr ENET2_Reg<&ENET_Layout::TSEM, 8, 0, 0x0> TX_SECTION_EMPTY;
 }  // namespace TSEM
 
 namespace TAEM {
-constexpr ENET2_Reg<&ENET_Layout::TAEM, 8, 0> TX_ALMOST_EMPTY;
+constexpr ENET2_Reg<&ENET_Layout::TAEM, 8, 0, 0x0> TX_ALMOST_EMPTY;
 }  // namespace TAEM
 
 namespace TAFL {
-constexpr ENET2_Reg<&ENET_Layout::TAFL, 8, 0> TX_ALMOST_FULL;
+constexpr ENET2_Reg<&ENET_Layout::TAFL, 8, 0, 0x0> TX_ALMOST_FULL;
 }  // namespace TAFL
 
 namespace TIPG {
-constexpr ENET2_Reg<&ENET_Layout::TIPG, 5, 0> IPG;
+constexpr ENET2_Reg<&ENET_Layout::TIPG, 5, 0, 0x0> IPG;
 }  // namespace TIPG
 
 namespace FTRL {
-constexpr ENET2_Reg<&ENET_Layout::FTRL, 14, 0> TRUNC_FL;
+constexpr ENET2_Reg<&ENET_Layout::FTRL, 14, 0, 0x0> TRUNC_FL;
 }  // namespace FTRL
 
 namespace TACC {
@@ -1224,7 +1238,7 @@ constexpr ENET2_Reg<&ENET_Layout::ATPER, 32, 0> PERIOD;
 }  // namespace ATPER
 
 namespace ATCOR {
-constexpr ENET2_Reg<&ENET_Layout::ATCOR, 31, 0> COR;
+constexpr ENET2_Reg<&ENET_Layout::ATCOR, 31, 0, 0x0> COR;
 }  // namespace ATCOR
 
 namespace ATINC {
