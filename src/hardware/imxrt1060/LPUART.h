@@ -87,7 +87,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART1_Reg =
     regs::Reg32<kLPUART1_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -509,7 +509,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART2_Reg =
     regs::Reg32<kLPUART2_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -682,7 +682,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART3_Reg =
     regs::Reg32<kLPUART3_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -855,7 +855,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART4_Reg =
     regs::Reg32<kLPUART4_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -1028,7 +1028,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART5_Reg =
     regs::Reg32<kLPUART5_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -1201,7 +1201,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART6_Reg =
     regs::Reg32<kLPUART6_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -1374,7 +1374,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART7_Reg =
     regs::Reg32<kLPUART7_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -1547,7 +1547,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPUART8_Reg =
     regs::Reg32<kLPUART8_base, LPUART_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {

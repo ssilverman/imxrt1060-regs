@@ -12,6 +12,8 @@
 
 #include "hardware/regs/regs.h"
 
+// TODO: Should we force the WOZ (write only zero) bits?
+
 namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
@@ -119,13 +121,13 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>(),
           bool WriteOnly = false>
 using DMA_Reg8 = regs::Reg8<kDMA_base, DMA_Layout, Member, 0, Bits, Shift,
-                            AssignMask, WriteOnly>;
+                            AssignMask, 0, WriteOnly>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using DMA_Reg32 = regs::Reg32<kDMA_base, DMA_Layout, Member, 0, Bits, Shift,
-                              AssignMask, WriteOnly>;
+                              AssignMask, 0, WriteOnly>;
 
 namespace DMA {
 

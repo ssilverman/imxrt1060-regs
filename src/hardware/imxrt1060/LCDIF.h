@@ -12,6 +12,8 @@
 
 #include "hardware/regs/regs.h"
 
+// TODO: Should we force the WOZ (write only zero) bits?
+
 namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
@@ -109,7 +111,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LCDIF_Reg =
     regs::Reg32<kLCDIF_base, LCDIF_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // LCDIF General Control Register
 namespace CTRL {
@@ -780,7 +782,7 @@ template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using PIGEON_Reg =
     regs::Reg32<PigeonBase<Index>(), LCDIF_Layout::PIGEON_Layout,
-                Member, 0, Bits, Shift, AssignMask, WriteOnly>;
+                Member, 0, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 namespace PIGEON {
 

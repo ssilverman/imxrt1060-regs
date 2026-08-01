@@ -89,7 +89,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using SCB_Reg = regs::Reg32<kSCB_base, SCB_Layout, Member, 0, Bits, Shift,
-                            AssignMask, WriteOnly>;
+                            AssignMask, 0, WriteOnly>;
 
 template <auto Member, size_t MemberOffset, size_t Bits, unsigned int Shift>
 using SCB_ArrayReg32 =

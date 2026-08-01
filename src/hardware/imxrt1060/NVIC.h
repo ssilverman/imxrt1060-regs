@@ -52,7 +52,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using NVIC_Reg = regs::Reg32<kNVIC_base, NVIC_Layout, Member, 0, Bits, Shift,
-                             AssignMask, WriteOnly>;
+                             AssignMask, 0, WriteOnly>;
 
 namespace NVIC {
 

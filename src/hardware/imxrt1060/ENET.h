@@ -165,14 +165,16 @@ constexpr regs::RegGroup<ENET_Layout, kENET_size, kENET2_base> group;
 }  // namespace ENET2
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
-using ENET_Reg =
-    regs::Reg32<kENET_base, ENET_Layout, Member, 0, Bits, Shift, AssignMask>;
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          uint32_t AssignSet = 0>
+using ENET_Reg = regs::Reg32<kENET_base, ENET_Layout, Member, 0, Bits, Shift,
+                             AssignMask, AssignSet>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
-using ENET2_Reg =
-    regs::Reg32<kENET2_base, ENET_Layout, Member, 0, Bits, Shift, AssignMask>;
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          uint32_t AssignSet = 0>
+using ENET2_Reg = regs::Reg32<kENET2_base, ENET_Layout, Member, 0, Bits, Shift,
+                              AssignMask, AssignSet>;
 
 namespace ENET {
 
@@ -211,52 +213,54 @@ constexpr ENET_Reg<&ENET_Layout::EIR, 1, 15, 0x0> TS_TIMER;  // Timestamp Timer
 
 // Interrupt Mask Register
 namespace EIMR {
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 30> BABR;      // BABR Interrupt Mask
+constexpr uint32_t kWOZ = 0x8000'7fff;
+
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 30, (uint32_t{0x1} << 30) | kWOZ> BABR;      // BABR Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 29> BABT;      // BABT Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 29, (uint32_t{0x1} << 29) | kWOZ> BABT;      // BABT Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 28> GRA;       // GRA Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 28, (uint32_t{0x1} << 28) | kWOZ> GRA;       // GRA Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 27> TXF;       // TXF Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 27, (uint32_t{0x1} << 27) | kWOZ> TXF;       // TXF Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 26> TXB;       // TXB Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 26, (uint32_t{0x1} << 26) | kWOZ> TXB;       // TXB Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 25> RXF;       // RXF Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 25, (uint32_t{0x1} << 25) | kWOZ> RXF;       // RXF Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 24> RXB;       // RXB Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 24, (uint32_t{0x1} << 24) | kWOZ> RXB;       // RXB Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 23> MII;       // MII Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 23, (uint32_t{0x1} << 23) | kWOZ> MII;       // MII Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 22> EBERR;     // EBERR Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 22, (uint32_t{0x1} << 22) | kWOZ> EBERR;     // EBERR Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 21> LC;        // LC Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 21, (uint32_t{0x1} << 21) | kWOZ> LC;        // LC Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 20> RL;        // RL Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 20, (uint32_t{0x1} << 20) | kWOZ> RL;        // RL Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 19> UN;        // UN Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 19, (uint32_t{0x1} << 19) | kWOZ> UN;        // UN Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 18> PLR;       // PLR Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 18, (uint32_t{0x1} << 18) | kWOZ> PLR;       // PLR Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 17> WAKEUP;    // WAKEUP Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 17, (uint32_t{0x1} << 17) | kWOZ> WAKEUP;    // WAKEUP Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 16> TS_AVAIL;  // TS_AVAIL Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 16, (uint32_t{0x1} << 16) | kWOZ> TS_AVAIL;  // TS_AVAIL Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
-constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 15> TS_TIMER;  // TS_TIMER Interrupt Mask
+constexpr ENET_Reg<&ENET_Layout::EIMR, 1, 15, (uint32_t{0x1} << 15) | kWOZ> TS_TIMER;  // TS_TIMER Interrupt Mask
     // 0b0..The corresponding interrupt source is masked.
     // 0b1..The corresponding interrupt source is not masked.
 }  // namespace EIMR
@@ -275,25 +279,28 @@ constexpr ENET_Reg<&ENET_Layout::TDAR, 1, 24, 0x0> TDAR;  // Transmit Descriptor
 
 // Ethernet Control Register
 namespace ECR {
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 8> DBSWP;    // Descriptor Byte Swapping Enable
+constexpr uint32_t kWOZ = 0x8fff'fea0;
+constexpr uint32_t kWOO = 0x7000'0000;
+
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 8, (uint32_t{0x1} << 8) | kWOZ, kWOO> DBSWP;    // Descriptor Byte Swapping Enable
     // 0b0..The buffer descriptor bytes are not swapped to support big-endian devices.
     // 0b1..The buffer descriptor bytes are swapped to support little-endian devices.
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 6> DBGEN;    // Debug Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 6, (uint32_t{0x1} << 6) | kWOZ, kWOO> DBGEN;    // Debug Enable
     // 0b0..MAC continues operation in debug mode.
     // 0b1..MAC enters hardware freeze mode when the processor is in debug mode.
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 4> EN1588;   // EN1588 Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 4, (uint32_t{0x1} << 4) | kWOZ, kWOO> EN1588;   // EN1588 Enable
     // 0b0..Legacy FEC buffer descriptors and functions enabled.
     // 0b1..Enhanced frame time-stamping functions enabled. Has no effect within the MAC besides controlling the DMA control bit ena_1588.
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 3> SLEEP;    // Sleep Mode Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 3, (uint32_t{0x1} << 3) | kWOZ, kWOO> SLEEP;    // Sleep Mode Enable
     // 0b0..Normal operating mode.
     // 0b1..Sleep mode.
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 2> MAGICEN;  // Magic Packet Detection Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 2, (uint32_t{0x1} << 2) | kWOZ, kWOO> MAGICEN;  // Magic Packet Detection Enable
     // 0b0..Magic detection logic disabled.
     // 0b1..The MAC core detects magic packets and asserts EIR[WAKEUP] when a frame is detected.
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 1> ETHEREN;  // Ethernet Enable
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 1, (uint32_t{0x1} << 1) | kWOZ, kWOO> ETHEREN;  // Ethernet Enable
     // 0b0..Reception immediately stops and transmission stops after a bad CRC is appended to any currently transmitted frame.
     // 0b1..MAC is enabled, and reception and transmission are possible.
-constexpr ENET_Reg<&ENET_Layout::ECR, 1, 0> RESET;    // Ethernet MAC Reset
+constexpr ENET_Reg<&ENET_Layout::ECR, 1, 0, (uint32_t{0x1} << 0) | kWOZ, kWOO> RESET;    // Ethernet MAC Reset
 }  // namespace ECR
 
 // MII Management Frame Register
@@ -335,72 +342,76 @@ constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;                 // MIB 
 
 // Receive Control Register
 namespace RCR {
-constexpr ENET_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;  // Graceful Receive Stopped
+constexpr uint32_t kWOZ = 0x0000'0cc0;
+
+constexpr ENET_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;                          // Graceful Receive Stopped
     // 0b0..Receive not stopped
     // 0b1..Receive stopped
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30> NLC;                 // Payload Length Check Disable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30, (uint32_t{0x0001} << 30) | kWOZ> NLC;        // Payload Length Check Disable
     // 0b0..The payload length check is disabled.
     // 0b1..The core checks the frame's payload length with the frame length/type field. Errors are indicated in the EIR[PLR] field.
-constexpr ENET_Reg<&ENET_Layout::RCR, 14, 16> MAX_FL;              // Maximum Frame Length
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 15> CFEN;                // MAC Control Frame Enable
+constexpr ENET_Reg<&ENET_Layout::RCR, 14, 16, (uint32_t{0x3fff} << 16) | kWOZ> MAX_FL;     // Maximum Frame Length
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 15, (uint32_t{0x0001} << 15) | kWOZ> CFEN;       // MAC Control Frame Enable
     // 0b0..MAC control frames with any opcode other than 0x0001 (pause frame) are accepted and forwarded to the client interface.
     // 0b1..MAC control frames with any opcode other than 0x0001 (pause frame) are silently discarded.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 14> CRCFWD;              // Terminate/Forward Received CRC
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 14, (uint32_t{0x0001} << 14) | kWOZ> CRCFWD;     // Terminate/Forward Received CRC
     // 0b0..The CRC field of received frames is transmitted to the user application.
     // 0b1..The CRC field is stripped from the frame.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 13> PAUFWD;              // Terminate/Forward Pause Frames
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 13, (uint32_t{0x0001} << 13) | kWOZ> PAUFWD;     // Terminate/Forward Pause Frames
     // 0b0..Pause frames are terminated and discarded in the MAC.
     // 0b1..Pause frames are forwarded to the user application.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1, 12> PADEN;               // Enable Frame Padding Remove On Receive
+constexpr ENET_Reg<&ENET_Layout::RCR,  1, 12, (uint32_t{0x0001} << 12) | kWOZ> PADEN;      // Enable Frame Padding Remove On Receive
     // 0b0..No padding is removed on receive by the MAC.
     // 0b1..Padding is removed from received frames.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  9> RMII_10T;            // Enables 10-Mbit/s mode of the RMII .
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  9, (uint32_t{0x0001} <<  9) | kWOZ> RMII_10T;   // Enables 10-Mbit/s mode of the RMII .
     // 0b0..100-Mbit/s operation.
     // 0b1..10-Mbit/s operation.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  8> RMII_MODE;           // RMII Mode Enable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  8, (uint32_t{0x0001} <<  8) | kWOZ> RMII_MODE;  // RMII Mode Enable
     // 0b0..MAC configured for MII mode.
     // 0b1..MAC configured for RMII operation.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  5> FCE;                 // Flow Control Enable
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  5, (uint32_t{0x0001} <<  5) | kWOZ> FCE;        // Flow Control Enable
     // 0b0..Disable flow control
     // 0b1..Enable flow control
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  4> BC_REJ;              // Broadcast Frame Reject
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  4, (uint32_t{0x0001} <<  4) | kWOZ> BC_REJ;     // Broadcast Frame Reject
     // 0b0..Will not reject frames as described above
     // 0b1..Will reject frames as described above
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  3> PROM;                // Promiscuous Mode
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  3, (uint32_t{0x0001} <<  3) | kWOZ> PROM;       // Promiscuous Mode
     // 0b0..Disabled.
     // 0b1..Enabled.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  2> MII_MODE;            // Media Independent Interface Mode
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  2, (uint32_t{0x0001} <<  2) | kWOZ> MII_MODE;   // Media Independent Interface Mode
     // 0b0..Reserved.
     // 0b1..MII or RMII mode, as indicated by the RMII_MODE field.
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  1> DRT;                 // Disable Receive On Transmit
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  1, (uint32_t{0x0001} <<  1) | kWOZ> DRT;        // Disable Receive On Transmit
     // 0b0..Receive path operates independently of transmit (i.e., full-duplex mode). Can also be used to monitor transmit activity in half-duplex mode.
     // 0b1..Disable reception of frames while transmitting. (Normally used for half-duplex mode.)
-constexpr ENET_Reg<&ENET_Layout::RCR,  1,  0> LOOP;                // Internal Loopback
+constexpr ENET_Reg<&ENET_Layout::RCR,  1,  0, (uint32_t{0x0001} <<  0) | kWOZ> LOOP;       // Internal Loopback
     // 0b0..Loopback disabled.
     // 0b1..Transmitted frames are looped back internal to the device and transmit MII output signals are not asserted. DRT must be cleared.
 }  // namespace RCR
 
 // Transmit Control Register
 namespace TCR {
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 9> CRCFWD;                     // Forward Frame From Application With CRC
+constexpr uint32_t kWOZ = 0x0000'0402;
+
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 9, (uint32_t{0x1} << 9) | kWOZ> CRCFWD;     // Forward Frame From Application With CRC
     // 0b0..TxBD[TC] controls whether the frame has a CRC from the application.
     // 0b1..The transmitter does not append any CRC to transmitted frames, as it is expecting a frame with CRC from the application.
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 8> ADDINS;                     // Set MAC Address On Transmit
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 8, (uint32_t{0x1} << 8) | kWOZ> ADDINS;     // Set MAC Address On Transmit
     // 0b0..The source MAC address is not modified by the MAC.
     // 0b1..The MAC overwrites the source MAC address with the programmed MAC address according to ADDSEL.
-constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;                     // Source MAC Address Select On Transmit
+constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5, (uint32_t{0x7} << 5) | kWOZ> ADDSEL;     // Source MAC Address Select On Transmit
     // 0b000..Node MAC address programmed on PADDR1/2 registers.
     // 0b100..Reserved.
     // 0b101..Reserved.
     // 0b110..Reserved.
-constexpr ENET_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;  // Receive Frame Control Pause
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;                  // Transmit Frame Control Pause
+constexpr ENET_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;               // Receive Frame Control Pause
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3, (uint32_t{0x1} << 3) | kWOZ> TFC_PAUSE;  // Transmit Frame Control Pause
     // 0b0..No PAUSE frame transmitted.
     // 0b1..The MAC stops transmission of data frames after the current transmission is complete.
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 2> FDEN;                       // Full-Duplex Enable
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 2, (uint32_t{0x1} << 2) | kWOZ> FDEN;       // Full-Duplex Enable
     // 0b0..Disable full-duplex
     // 0b1..Enable full-duplex
-constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0> GTS;                        // Graceful Transmit Stop
+constexpr ENET_Reg<&ENET_Layout::TCR, 1, 0, (uint32_t{0x1} << 0) | kWOZ> GTS;        // Graceful Transmit Stop
     // 0b0..Disable graceful transmit stop
     // 0b1..Enable graceful transmit stop
 }  // namespace TCR
@@ -426,26 +437,30 @@ constexpr ENET_Reg<&ENET_Layout::OPD, 16,  0, 0x0> PAUSE_DUR;          // Pause 
 
 // Transmit Interrupt Coalescing Register
 namespace TXIC {
-constexpr ENET_Reg<&ENET_Layout::TXIC,  1, 31> ICEN;  // Interrupt Coalescing Enable
+constexpr uint32_t kWOZ = 0x300f'0000;
+
+constexpr ENET_Reg<&ENET_Layout::TXIC,  1, 31, (uint32_t{0x0001} << 31) | kWOZ> ICEN;  // Interrupt Coalescing Enable
     // 0b0..Disable Interrupt coalescing.
     // 0b1..Enable Interrupt coalescing.
-constexpr ENET_Reg<&ENET_Layout::TXIC,  1, 30> ICCS;  // Interrupt Coalescing Timer Clock Source Select
+constexpr ENET_Reg<&ENET_Layout::TXIC,  1, 30, (uint32_t{0x0001} << 30) | kWOZ> ICCS;  // Interrupt Coalescing Timer Clock Source Select
     // 0b0..Use MII/GMII TX clocks.
     // 0b1..Use ENET system clock.
-constexpr ENET_Reg<&ENET_Layout::TXIC,  8, 20> ICFT;  // Interrupt coalescing frame count threshold
-constexpr ENET_Reg<&ENET_Layout::TXIC, 16,  0> ICTT;  // Interrupt coalescing timer threshold
+constexpr ENET_Reg<&ENET_Layout::TXIC,  8, 20, (uint32_t{0x00ff} << 20) | kWOZ> ICFT;  // Interrupt coalescing frame count threshold
+constexpr ENET_Reg<&ENET_Layout::TXIC, 16,  0, (uint32_t{0xffff} <<  0) | kWOZ> ICTT;  // Interrupt coalescing timer threshold
 }  // namespace TXIC
 
 // Receive Interrupt Coalescing Register
 namespace RXIC {
-constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 31> ICEN;  // Interrupt Coalescing Enable
+constexpr uint32_t kWOZ = 0x300f'0000;
+
+constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 31, (uint32_t{0x0001} << 31) | kWOZ> ICEN;  // Interrupt Coalescing Enable
     // 0b0..Disable Interrupt coalescing.
     // 0b1..Enable Interrupt coalescing.
-constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 30> ICCS;  // Interrupt Coalescing Timer Clock Source Select
+constexpr ENET_Reg<&ENET_Layout::RXIC,   1, 30, (uint32_t{0x0001} << 30) | kWOZ> ICCS;  // Interrupt Coalescing Timer Clock Source Select
     // 0b0..Use MII/GMII TX clocks.
     // 0b1..Use ENET system clock.
-constexpr ENET_Reg<&ENET_Layout::RXIC,   8, 20> ICFT;  // Interrupt coalescing frame count threshold
-constexpr ENET_Reg<&ENET_Layout::RXIC,  16,  0> ICTT;  // Interrupt coalescing timer threshold
+constexpr ENET_Reg<&ENET_Layout::RXIC,   8, 20, (uint32_t{0x00ff} << 20) | kWOZ> ICFT;  // Interrupt coalescing frame count threshold
+constexpr ENET_Reg<&ENET_Layout::RXIC,  16,  0, (uint32_t{0xffff} <<  0) | kWOZ> ICTT;  // Interrupt coalescing timer threshold
 }  // namespace RXIC
 
 // Descriptor Individual Upper Address Register
@@ -483,12 +498,16 @@ constexpr ENET_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;    // Transmit FIFO Write
 
 // Receive Descriptor Ring 0 Start Register
 namespace RDSR {
-constexpr ENET_Reg<&ENET_Layout::RDSR, 29, 3> R_DES_START;  // Pointer to the beginning of the receive buffer descriptor queue.
+constexpr uint32_t kWOZ = 0x0000'0004;
+
+constexpr ENET_Reg<&ENET_Layout::RDSR, 29, 3, (uint32_t{0x1fff'ffff} << 3) | kWOZ> R_DES_START;  // Pointer to the beginning of the receive buffer descriptor queue.
 }  // namespace RDSR
 
 // Transmit Buffer Descriptor Ring 0 Start Register
 namespace TDSR {
-constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;  // Pointer to the beginning of the transmit buffer descriptor queue.
+constexpr uint32_t kWOZ = 0x0000'0004;
+
+constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3, (uint32_t{0x1fff'ffff} << 3) | kWOZ> X_DES_START;  // Pointer to the beginning of the transmit buffer descriptor queue.
 }  // namespace TDSR
 
 // Maximum Receive Buffer Size Register - Ring 0
@@ -553,15 +572,17 @@ constexpr ENET_Reg<&ENET_Layout::FTRL, 14, 0, 0x0> TRUNC_FL;  // Frame Truncatio
 
 // Transmit Accelerator Function Configuration
 namespace TACC {
-constexpr ENET_Reg<&ENET_Layout::TACC, 1, 4> PROCHK;   // Enables insertion of protocol checksum.
+constexpr uint32_t kWOZ = 0xffff'ffe6;
+
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 4, (uint32_t{0x1} << 4) | kWOZ> PROCHK;   // Enables insertion of protocol checksum.
     // 0b0..Checksum not inserted.
     // 0b1..If an IP frame with a known protocol is transmitted, the checksum is inserted automatically into the
     //      frame. The checksum field must be cleared. The other frames are not modified.
-constexpr ENET_Reg<&ENET_Layout::TACC, 1, 3> IPCHK;    // Enables insertion of IP header checksum.
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 3, (uint32_t{0x1} << 3) | kWOZ> IPCHK;    // Enables insertion of IP header checksum.
     // 0b0..Checksum is not inserted.
     // 0b1..If an IP frame is transmitted, the checksum is inserted automatically. The IP header checksum field must
     //      be cleared. If a non-IP frame is transmitted the frame is not modified.
-constexpr ENET_Reg<&ENET_Layout::TACC, 1, 0> SHIFT16;  // TX FIFO Shift-16
+constexpr ENET_Reg<&ENET_Layout::TACC, 1, 0, (uint32_t{0x1} << 0) | kWOZ> SHIFT16;  // TX FIFO Shift-16
     // 0b0..Disabled.
     // 0b1..Indicates to the transmit data FIFO that the written frames contain two additional octets before the
     //      frame data. This means the actual frame begins at bit 16 of the first word written into the FIFO. This
@@ -571,54 +592,59 @@ constexpr ENET_Reg<&ENET_Layout::TACC, 1, 0> SHIFT16;  // TX FIFO Shift-16
 
 // Receive Accelerator Function Configuration
 namespace RACC {
-constexpr ENET_Reg<&ENET_Layout::RACC, 1, 7> SHIFT16;  // RX FIFO Shift-16
+constexpr uint32_t kWOZ = 0xffff'ff38;
+
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 7, (uint32_t{0x1} << 7) | kWOZ> SHIFT16;  // RX FIFO Shift-16
     // 0b0..Disabled.
     // 0b1..Instructs the MAC to write two additional bytes in front of each frame received into the RX FIFO.
-constexpr ENET_Reg<&ENET_Layout::RACC, 1, 6> LINEDIS;  // Enable Discard Of Frames With MAC Layer Errors
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 6, (uint32_t{0x1} << 6) | kWOZ> LINEDIS;  // Enable Discard Of Frames With MAC Layer Errors
     // 0b0..Frames with errors are not discarded.
     // 0b1..Any frame received with a CRC, length, or PHY error is automatically discarded and not forwarded to the user application interface.
-constexpr ENET_Reg<&ENET_Layout::RACC, 1, 2> PRODIS;   // Enable Discard Of Frames With Wrong Protocol Checksum
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 2, (uint32_t{0x1} << 2) | kWOZ> PRODIS;   // Enable Discard Of Frames With Wrong Protocol Checksum
     // 0b0..Frames with wrong checksum are not discarded.
     // 0b1..If a TCP/IP, UDP/IP, or ICMP/IP frame is received that has a wrong TCP, UDP, or ICMP checksum, the frame
     //      is discarded. Discarding is only available when the RX FIFO operates in store and forward mode (RSFL
     //      cleared).
-constexpr ENET_Reg<&ENET_Layout::RACC, 1, 1> IPDIS;    // Enable Discard Of Frames With Wrong IPv4 Header Checksum
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 1, (uint32_t{0x1} << 1) | kWOZ> IPDIS;    // Enable Discard Of Frames With Wrong IPv4 Header Checksum
     // 0b0..Frames with wrong IPv4 header checksum are not discarded.
     // 0b1..If an IPv4 frame is received with a mismatching header checksum, the frame is discarded. IPv6 has no
     //      header checksum and is not affected by this setting. Discarding is only available when the RX FIFO operates in
     //      store and forward mode (RSFL cleared).
-constexpr ENET_Reg<&ENET_Layout::RACC, 1, 0> PADREM;   // Enable Padding Removal For Short IP Frames
+constexpr ENET_Reg<&ENET_Layout::RACC, 1, 0, (uint32_t{0x1} << 0) | kWOZ> PADREM;   // Enable Padding Removal For Short IP Frames
     // 0b0..Padding not removed.
     // 0b1..Any bytes following the IP payload section of the frame are removed from the frame.
 }  // namespace RACC
 
 // Adjustable Timer Control Register
 namespace ATCR {
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1, 13> SLAVE;    // Enable Timer Slave Mode
+constexpr uint32_t kWOZ = 0x0000'1542;
+constexpr uint32_t kWOO = 0x0000'0020;
+
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1, 13, (uint32_t{0x1} << 13) | kWOZ, kWOO> SLAVE;    // Enable Timer Slave Mode
     // 0b0..The timer is active and all configuration fields in this register are relevant.
     // 0b1..The internal timer is disabled and the externally provided timer value is used. All other fields, except
     //      CAPTURE, in this register have no effect. CAPTURE can still be used to capture the current timer value.
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1, 11> CAPTURE;  // Capture Timer Value
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1, 11, (uint32_t{0x1} << 11) | kWOZ, kWOO> CAPTURE;  // Capture Timer Value
     // 0b0..No effect.
     // 0b1..The current time is captured and can be read from the ATVR register.
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  9> RESTART;  // Reset Timer
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  7> PINPER;   // Enables event signal output external pin frc_evt_period assertion on period event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  9, (uint32_t{0x1} <<  9) | kWOZ, kWOO> RESTART;  // Reset Timer
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  7, (uint32_t{0x1} <<  7) | kWOZ, kWOO> PINPER;   // Enables event signal output external pin frc_evt_period assertion on period event
     // 0b0..Disable.
     // 0b1..Enable.
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  4> PEREN;    // Enable Periodical Event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  4, (uint32_t{0x1} <<  4) | kWOZ, kWOO> PEREN;    // Enable Periodical Event
     // 0b0..Disable.
     // 0b1..A period event interrupt can be generated (EIR[TS_TIMER]) and the event signal output is asserted when
     //      the timer wraps around according to the periodic setting ATPER. The timer period value must be set before
     //      setting this bit. Not all devices contain the event signal output. See the chip configuration details.
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  3> OFFRST;   // Reset Timer On Offset Event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  3, (uint32_t{0x1} <<  3) | kWOZ, kWOO> OFFRST;   // Reset Timer On Offset Event
     // 0b0..The timer is not affected and no action occurs, besides clearing OFFEN, when the offset is reached.
     // 0b1..If OFFEN is set, the timer resets to zero when the offset setting is reached. The offset event does not cause a timer interrupt.
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  2> OFFEN;    // Enable One-Shot Offset Event
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  2, (uint32_t{0x1} <<  2) | kWOZ, kWOO> OFFEN;    // Enable One-Shot Offset Event
     // 0b0..Disable.
     // 0b1..The timer can be reset to zero when the given offset time is reached (offset event). The field is cleared
     //      when the offset event is reached, so no further event occurs until the field is set again. The timer
     //      offset value must be set before setting this field.
-constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  0> EN;       // Enable Timer
+constexpr ENET_Reg<&ENET_Layout::ATCR, 1,  0, (uint32_t{0x1} <<  0) | kWOZ, kWOO> EN;       // Enable Timer
     // 0b0..The timer stops at the current value.
     // 0b1..The timer starts incrementing.
 }  // namespace ATCR
@@ -1016,22 +1042,24 @@ constexpr ENET2_Reg<&ENET_Layout::EIR, 1, 15, 0x0> TS_TIMER;
 }  // namespace EIR
 
 namespace EIMR {
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 30> BABR;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 29> BABT;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 28> GRA;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 27> TXF;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 26> TXB;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 25> RXF;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 24> RXB;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 23> MII;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 22> EBERR;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 21> LC;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 20> RL;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 19> UN;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 18> PLR;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 17> WAKEUP;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 16> TS_AVAIL;
-constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 15> TS_TIMER;
+constexpr uint32_t kWOZ = 0x8000'7fff;
+
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 30, (uint32_t{0x1} << 30) | kWOZ> BABR;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 29, (uint32_t{0x1} << 29) | kWOZ> BABT;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 28, (uint32_t{0x1} << 28) | kWOZ> GRA;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 27, (uint32_t{0x1} << 27) | kWOZ> TXF;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 26, (uint32_t{0x1} << 26) | kWOZ> TXB;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 25, (uint32_t{0x1} << 25) | kWOZ> RXF;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 24, (uint32_t{0x1} << 24) | kWOZ> RXB;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 23, (uint32_t{0x1} << 23) | kWOZ> MII;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 22, (uint32_t{0x1} << 22) | kWOZ> EBERR;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 21, (uint32_t{0x1} << 21) | kWOZ> LC;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 20, (uint32_t{0x1} << 20) | kWOZ> RL;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 19, (uint32_t{0x1} << 19) | kWOZ> UN;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 18, (uint32_t{0x1} << 18) | kWOZ> PLR;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 17, (uint32_t{0x1} << 17) | kWOZ> WAKEUP;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 16, (uint32_t{0x1} << 16) | kWOZ> TS_AVAIL;
+constexpr ENET2_Reg<&ENET_Layout::EIMR, 1, 15, (uint32_t{0x1} << 15) | kWOZ> TS_TIMER;
 }  // namespace EIMR
 
 namespace RDAR {
@@ -1043,13 +1071,16 @@ constexpr ENET2_Reg<&ENET_Layout::TDAR, 1, 24, 0x0> TDAR;
 }  // namespace TDAR
 
 namespace ECR {
-constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 8> DBSWP;
-constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 6> DBGEN;
-constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 4> EN1588;
-constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 3> SLEEP;
-constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 2> MAGICEN;
-constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 1> ETHEREN;
-constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 0> RESET;
+constexpr uint32_t kWOZ = 0x8fff'fea0;
+constexpr uint32_t kWOO = 0x7000'0000;
+
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 8, (uint32_t{0x1} << 8) | kWOZ, kWOO> DBSWP;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 6, (uint32_t{0x1} << 6) | kWOZ, kWOO> DBGEN;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 4, (uint32_t{0x1} << 4) | kWOZ, kWOO> EN1588;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 3, (uint32_t{0x1} << 3) | kWOZ, kWOO> SLEEP;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 2, (uint32_t{0x1} << 2) | kWOZ, kWOO> MAGICEN;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 1, (uint32_t{0x1} << 1) | kWOZ, kWOO> ETHEREN;
+constexpr ENET2_Reg<&ENET_Layout::ECR, 1, 0, (uint32_t{0x1} << 0) | kWOZ, kWOO> RESET;
 }  // namespace ECR
 
 namespace MMFR {
@@ -1075,31 +1106,35 @@ constexpr ENET2_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;
 }  // namespace MIBC
 
 namespace RCR {
-constexpr ENET2_Reg<regs::constify(&ENET_Layout::RCR),  1, 31> GRS;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 30> NLC;
-constexpr ENET2_Reg<&ENET_Layout::RCR, 14, 16> MAX_FL;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 15> CFEN;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 14> CRCFWD;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 13> PAUFWD;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 12> PADEN;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  9> RMII_10T;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  8> RMII_MODE;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  5> FCE;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  4> BC_REJ;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  3> PROM;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  2> MII_MODE;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  1> DRT;
-constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  0> LOOP;
+constexpr uint32_t kWOZ = 0x0000'0cc0;
+
+constexpr ENET2_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 30, (uint32_t{0x0001} << 30) | kWOZ> NLC;
+constexpr ENET2_Reg<&ENET_Layout::RCR, 14, 16, (uint32_t{0x3fff} << 16) | kWOZ> MAX_FL;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 15, (uint32_t{0x0001} << 15) | kWOZ> CFEN;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 14, (uint32_t{0x0001} << 14) | kWOZ> CRCFWD;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 13, (uint32_t{0x0001} << 13) | kWOZ> PAUFWD;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1, 12, (uint32_t{0x0001} << 12) | kWOZ> PADEN;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  9, (uint32_t{0x0001} <<  9) | kWOZ> RMII_10T;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  8, (uint32_t{0x0001} <<  8) | kWOZ> RMII_MODE;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  5, (uint32_t{0x0001} <<  5) | kWOZ> FCE;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  4, (uint32_t{0x0001} <<  4) | kWOZ> BC_REJ;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  3, (uint32_t{0x0001} <<  3) | kWOZ> PROM;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  2, (uint32_t{0x0001} <<  2) | kWOZ> MII_MODE;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  1, (uint32_t{0x0001} <<  1) | kWOZ> DRT;
+constexpr ENET2_Reg<&ENET_Layout::RCR,  1,  0, (uint32_t{0x0001} <<  0) | kWOZ> LOOP;
 }  // namespace RCR
 
 namespace TCR {
-constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 9> CRCFWD;
-constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 8> ADDINS;
-constexpr ENET2_Reg<&ENET_Layout::TCR, 3, 5> ADDSEL;
+constexpr uint32_t kWOZ = 0x0000'0402;
+
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 9, (uint32_t{0x1} << 9) | kWOZ> CRCFWD;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 8, (uint32_t{0x1} << 8) | kWOZ> ADDINS;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 3, 5, (uint32_t{0x7} << 5) | kWOZ> ADDSEL;
 constexpr ENET2_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;
-constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 3> TFC_PAUSE;
-constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 2> FDEN;
-constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 0> GTS;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 3, (uint32_t{0x1} << 3) | kWOZ> TFC_PAUSE;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 2, (uint32_t{0x1} << 2) | kWOZ> FDEN;
+constexpr ENET2_Reg<&ENET_Layout::TCR, 1, 0, (uint32_t{0x1} << 0) | kWOZ> GTS;
 }  // namespace TCR
 
 namespace PALR {
@@ -1117,17 +1152,21 @@ constexpr ENET2_Reg<&ENET_Layout::OPD, 16,  0, 0x0> PAUSE_DUR;
 }  // namespace OPD
 
 namespace TXIC {
-constexpr ENET2_Reg<&ENET_Layout::TXIC,  1, 31> ICEN;
-constexpr ENET2_Reg<&ENET_Layout::TXIC,  1, 30> ICCS;
-constexpr ENET2_Reg<&ENET_Layout::TXIC,  8, 20> ICFT;
-constexpr ENET2_Reg<&ENET_Layout::TXIC, 16,  0> ICTT;
+constexpr uint32_t kWOZ = 0x300f'0000;
+
+constexpr ENET2_Reg<&ENET_Layout::TXIC,  1, 31, (uint32_t{0x0001} << 31) | kWOZ> ICEN;
+constexpr ENET2_Reg<&ENET_Layout::TXIC,  1, 30, (uint32_t{0x0001} << 30) | kWOZ> ICCS;
+constexpr ENET2_Reg<&ENET_Layout::TXIC,  8, 20, (uint32_t{0x00ff} << 20) | kWOZ> ICFT;
+constexpr ENET2_Reg<&ENET_Layout::TXIC, 16,  0, (uint32_t{0xffff} <<  0) | kWOZ> ICTT;
 }  // namespace TXIC
 
 namespace RXIC {
-constexpr ENET2_Reg<&ENET_Layout::RXIC,  1, 31> ICEN;
-constexpr ENET2_Reg<&ENET_Layout::RXIC,  1, 30> ICCS;
-constexpr ENET2_Reg<&ENET_Layout::RXIC,  8, 20> ICFT;
-constexpr ENET2_Reg<&ENET_Layout::RXIC, 16,  0> ICTT;
+constexpr uint32_t kWOZ = 0x300f'0000;
+
+constexpr ENET2_Reg<&ENET_Layout::RXIC,  1, 31, (uint32_t{0x0001} << 31) | kWOZ> ICEN;
+constexpr ENET2_Reg<&ENET_Layout::RXIC,  1, 30, (uint32_t{0x0001} << 30) | kWOZ> ICCS;
+constexpr ENET2_Reg<&ENET_Layout::RXIC,  8, 20, (uint32_t{0x00ff} << 20) | kWOZ> ICFT;
+constexpr ENET2_Reg<&ENET_Layout::RXIC, 16,  0, (uint32_t{0xffff} <<  0) | kWOZ> ICTT;
 }  // namespace RXIC
 
 namespace IAUR {
@@ -1152,11 +1191,15 @@ constexpr ENET2_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;
 }  // namespace TFWR
 
 namespace RDSR {
-constexpr ENET2_Reg<&ENET_Layout::RDSR, 29, 3> R_DES_START;
+constexpr uint32_t kWOZ = 0x0000'0004;
+
+constexpr ENET2_Reg<&ENET_Layout::RDSR, 29, 3, (uint32_t{0x1fff'ffff} << 3) | kWOZ> R_DES_START;
 }  // namespace RDSR
 
 namespace TDSR {
-constexpr ENET2_Reg<&ENET_Layout::TDSR, 29, 3> X_DES_START;
+constexpr uint32_t kWOZ = 0x0000'0004;
+
+constexpr ENET2_Reg<&ENET_Layout::TDSR, 29, 3, (uint32_t{0x1fff'ffff} << 3) | kWOZ> X_DES_START;
 }  // namespace TDSR
 
 namespace MRBR {
@@ -1201,28 +1244,35 @@ constexpr ENET2_Reg<&ENET_Layout::FTRL, 14, 0, 0x0> TRUNC_FL;
 }  // namespace FTRL
 
 namespace TACC {
-constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 4> PROCHK;
-constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 3> IPCHK;
-constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 0> SHIFT16;
+constexpr uint32_t kWOZ = 0xffff'ffe6;
+
+constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 4, (uint32_t{0x1} << 4) | kWOZ> PROCHK;
+constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 3, (uint32_t{0x1} << 3) | kWOZ> IPCHK;
+constexpr ENET2_Reg<&ENET_Layout::TACC, 1, 0, (uint32_t{0x1} << 0) | kWOZ> SHIFT16;
 }  // namespace TACC
 
 namespace RACC {
-constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 7> SHIFT16;
-constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 6> LINEDIS;
-constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 2> PRODIS;
-constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 1> IPDIS;
-constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 0> PADREM;
+constexpr uint32_t kWOZ = 0xffff'ff38;
+
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 7, (uint32_t{0x1} << 7) | kWOZ> SHIFT16;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 6, (uint32_t{0x1} << 6) | kWOZ> LINEDIS;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 2, (uint32_t{0x1} << 2) | kWOZ> PRODIS;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 1, (uint32_t{0x1} << 1) | kWOZ> IPDIS;
+constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 0, (uint32_t{0x1} << 0) | kWOZ> PADREM;
 }  // namespace RACC
 
 namespace ATCR {
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 13> SLAVE;
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 11> CAPTURE;
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  9> RESTART;
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  7> PINPER;
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  4> PEREN;
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  3> OFFRST;
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  2> OFFEN;
-constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  0> EN;
+constexpr uint32_t kWOZ = 0x0000'1542;
+constexpr uint32_t kWOO = 0x0000'0020;
+
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 13, (uint32_t{0x1} << 13) | kWOZ, kWOO> SLAVE;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 11, (uint32_t{0x1} << 11) | kWOZ, kWOO> CAPTURE;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  9, (uint32_t{0x1} <<  9) | kWOZ, kWOO> RESTART;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  7, (uint32_t{0x1} <<  7) | kWOZ, kWOO> PINPER;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  4, (uint32_t{0x1} <<  4) | kWOZ, kWOO> PEREN;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  3, (uint32_t{0x1} <<  3) | kWOZ, kWOO> OFFRST;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  2, (uint32_t{0x1} <<  2) | kWOZ, kWOO> OFFEN;
+constexpr ENET2_Reg<&ENET_Layout::ATCR, 1,  0, (uint32_t{0x1} <<  0) | kWOZ, kWOO> EN;
 }  // namespace ATCR
 
 namespace ATVR {

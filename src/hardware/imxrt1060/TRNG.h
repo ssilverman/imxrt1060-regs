@@ -101,7 +101,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using TRNG_Reg = regs::Reg32<kTRNG_base, TRNG_Layout, Member, 0, Bits, Shift,
-                             AssignMask, WriteOnly>;
+                             AssignMask, 0, WriteOnly>;
 
 namespace TRNG {
 

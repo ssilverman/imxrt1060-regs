@@ -39,7 +39,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using DCB_Reg = regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift,
-                            AssignMask, WriteOnly>;
+                            AssignMask, 0, WriteOnly>;
 
 namespace DCB {
 

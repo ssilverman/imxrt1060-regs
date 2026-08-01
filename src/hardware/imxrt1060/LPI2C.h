@@ -95,7 +95,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPI2C1_Reg =
     regs::Reg32<kLPI2C1_base, LPI2C_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {
@@ -564,7 +564,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPI2C2_Reg =
     regs::Reg32<kLPI2C2_base, LPI2C_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {
@@ -813,7 +813,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPI2C3_Reg =
     regs::Reg32<kLPI2C3_base, LPI2C_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {
@@ -1062,7 +1062,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPI2C4_Reg =
     regs::Reg32<kLPI2C4_base, LPI2C_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {

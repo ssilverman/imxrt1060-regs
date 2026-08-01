@@ -90,7 +90,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using FLEXSPI_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -98,7 +98,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_AHBRXBUFCR0_count)>>
 using AHBRXBUFCR0_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::AHBRXBUFCR0,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -106,7 +106,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR0_count)>>
 using FLSHCR0_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR0,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -114,7 +114,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR1_count)>>
 using FLSHCR1_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR1,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -122,7 +122,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR2_count)>>
 using FLSHCR2_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR2,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -130,7 +130,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_DLLCR_count)>>
 using DLLCR_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::DLLCR,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -138,7 +138,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_RFDR_count)>>
 using RFDR_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::RFDR,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -146,7 +146,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_TFDR_count)>>
 using TFDR_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::TFDR,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -154,7 +154,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_LUT_count)>>
 using LUT_Reg =
     regs::Reg32<kFLEXSPI_base, FLEXSPI_Layout, &FLEXSPI_Layout::LUT,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Module Control Register 0
 namespace MCR0 {
@@ -599,7 +599,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using FLEXSPI2_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -607,7 +607,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_AHBRXBUFCR0_count)>>
 using AHBRXBUFCR0_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::AHBRXBUFCR0,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -615,7 +615,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR0_count)>>
 using FLSHCR0_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR0,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -623,7 +623,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR1_count)>>
 using FLSHCR1_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR1,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -631,7 +631,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_FLSHCR2_count)>>
 using FLSHCR2_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::FLSHCR2,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -639,7 +639,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_DLLCR_count)>>
 using DLLCR_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::DLLCR,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -647,7 +647,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_RFDR_count)>>
 using RFDR_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::RFDR,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -655,7 +655,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_TFDR_count)>>
 using TFDR_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::TFDR,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -663,7 +663,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXSPI_LUT_count)>>
 using LUT_Reg =
     regs::Reg32<kFLEXSPI2_base, FLEXSPI_Layout, &FLEXSPI_Layout::LUT,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Module Control Register 0
 namespace MCR0 {

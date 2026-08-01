@@ -117,7 +117,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
           bool WriteOnly = false>
 using PWM1_Reg = regs::Reg16<kPWM1_base, PWM_Layout, Member, 0, Bits, Shift,
-                             AssignMask, WriteOnly>;
+                             AssignMask, 0, WriteOnly>;
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kPWM_SM_count)>>
@@ -130,7 +130,7 @@ template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
           bool WriteOnly = false>
 using SM_Reg = regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
-                           Bits, Shift, AssignMask, WriteOnly>;
+                           Bits, Shift, AssignMask, 0, WriteOnly>;
 
 namespace SM {
 
@@ -977,7 +977,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using PWM2_Reg =
     regs::Reg16<kPWM2_base, PWM_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kPWM_SM_count)>>
@@ -991,7 +991,7 @@ template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using SM_Reg =
     regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 namespace SM {
 
@@ -1526,7 +1526,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using PWM3_Reg =
     regs::Reg16<kPWM3_base, PWM_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kPWM_SM_count)>>
@@ -1540,7 +1540,7 @@ template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using SM_Reg =
     regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 namespace SM {
 
@@ -2075,7 +2075,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using PWM4_Reg =
     regs::Reg16<kPWM4_base, PWM_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kPWM_SM_count)>>
@@ -2089,7 +2089,7 @@ template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using SM_Reg =
     regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 namespace SM {
 

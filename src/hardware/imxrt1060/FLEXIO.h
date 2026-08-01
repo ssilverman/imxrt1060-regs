@@ -102,7 +102,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using FLEXIO1_Reg = regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, Member, 0, Bits,
-                                Shift, AssignMask, WriteOnly>;
+                                Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -110,7 +110,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTCTL_count)>>
 using SHIFTCTL_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTCTL, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -118,7 +118,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTCFG_count)>>
 using SHIFTCFG_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTCFG, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -126,7 +126,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUF_count)>>
 using SHIFTBUF_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUF, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -134,7 +134,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBIS_count)>>
 using SHIFTBUFBIS_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBIS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -142,7 +142,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBYS_count)>>
 using SHIFTBUFBYS_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBYS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -150,7 +150,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBBS_count)>>
 using SHIFTBUFBBS_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBBS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -158,7 +158,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCTL_count)>>
 using TIMCTL_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCTL, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -166,7 +166,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCFG_count)>>
 using TIMCFG_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCFG, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -174,7 +174,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCMP_count)>>
 using TIMCMP_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCMP, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -182,7 +182,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFNBS_count)>>
 using SHIFTBUFNBS_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFNBS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -190,7 +190,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFHWS_count)>>
 using SHIFTBUFHWS_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFHWS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -198,7 +198,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFNIS_count)>>
 using SHIFTBUFNIS_Reg =
     regs::Reg32<kFLEXIO1_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFNIS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -486,7 +486,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using FLEXIO2_Reg = regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, Member, 0, Bits,
-                                Shift, AssignMask, WriteOnly>;
+                                Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -494,7 +494,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTCTL_count)>>
 using SHIFTCTL_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTCTL, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -502,7 +502,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTCFG_count)>>
 using SHIFTCFG_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTCFG, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -510,7 +510,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUF_count)>>
 using SHIFTBUF_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUF, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -518,7 +518,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBIS_count)>>
 using SHIFTBUFBIS_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBIS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -526,7 +526,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBYS_count)>>
 using SHIFTBUFBYS_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBYS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -534,7 +534,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBBS_count)>>
 using SHIFTBUFBBS_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBBS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -542,7 +542,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCTL_count)>>
 using TIMCTL_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCTL, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -550,7 +550,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCFG_count)>>
 using TIMCFG_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCFG, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -558,7 +558,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCMP_count)>>
 using TIMCMP_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCMP, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -566,7 +566,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFNBS_count)>>
 using SHIFTBUFNBS_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFNBS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -574,7 +574,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFHWS_count)>>
 using SHIFTBUFHWS_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFHWS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -582,7 +582,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFNIS_count)>>
 using SHIFTBUFNIS_Reg =
     regs::Reg32<kFLEXIO2_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFNIS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {
@@ -773,7 +773,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
 using FLEXIO3_Reg = regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, Member, 0, Bits,
-                                Shift, AssignMask, WriteOnly>;
+                                Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -781,7 +781,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTCTL_count)>>
 using SHIFTCTL_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTCTL, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -789,7 +789,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTCFG_count)>>
 using SHIFTCFG_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTCFG, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -797,7 +797,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUF_count)>>
 using SHIFTBUF_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUF, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -805,7 +805,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBIS_count)>>
 using SHIFTBUFBIS_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBIS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -813,7 +813,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBYS_count)>>
 using SHIFTBUFBYS_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBYS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -821,7 +821,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFBBS_count)>>
 using SHIFTBUFBBS_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFBBS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -829,7 +829,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCTL_count)>>
 using TIMCTL_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCTL, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -837,7 +837,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCFG_count)>>
 using TIMCFG_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCFG, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -845,7 +845,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_TIMCMP_count)>>
 using TIMCMP_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::TIMCMP, Index,
-                Bits, Shift, AssignMask, WriteOnly>;
+                Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -853,7 +853,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFNBS_count)>>
 using SHIFTBUFNBS_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFNBS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -861,7 +861,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFHWS_count)>>
 using SHIFTBUFHWS_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFHWS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
@@ -869,7 +869,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
           typename = std::enable_if_t<(Index < kFLEXIO_SHIFTBUFNIS_count)>>
 using SHIFTBUFNIS_Reg =
     regs::Reg32<kFLEXIO3_base, FLEXIO_Layout, &FLEXIO_Layout::SHIFTBUFNIS,
-                Index, Bits, Shift, AssignMask, WriteOnly>;
+                Index, Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Version ID Register
 namespace VERID {

@@ -40,11 +40,10 @@ constexpr regs::RegGroup<FLEXRAM_Layout, kFLEXRAM_size, kFLEXRAM_base> group;
 namespace FLEXRAM {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
-          bool WriteOnly = false>
+          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
 using FLEXRAM_Reg =
     regs::Reg32<kFLEXRAM_base, FLEXRAM_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask>;
 
 // TCM CRTL Register
 namespace TCM_CTRL {

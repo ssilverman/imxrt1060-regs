@@ -77,7 +77,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPSPI1_Reg =
     regs::Reg32<kLPSPI1_base, LPSPI_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {
@@ -352,7 +352,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPSPI2_Reg =
     regs::Reg32<kLPSPI2_base, LPSPI_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {
@@ -505,7 +505,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPSPI3_Reg =
     regs::Reg32<kLPSPI3_base, LPSPI_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {
@@ -658,7 +658,7 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using LPSPI4_Reg =
     regs::Reg32<kLPSPI4_base, LPSPI_Layout, Member, 0, Bits, Shift,
-                AssignMask, WriteOnly>;
+                AssignMask, 0, WriteOnly>;
 
 // Version ID
 namespace VERID {
