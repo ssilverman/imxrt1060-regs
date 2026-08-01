@@ -94,25 +94,81 @@ using SELECT_INPUT_1_Reg =
                 Index, Bits, Shift, AssignMask>;
 
 namespace SW_MUX_CTL_PAD {
+namespace vals {
+constexpr regs::RegValue32<1, 4> SION;      // Software Input On Field.
+    // 0b0..Input Path is determined by functionality
+    // 0b1..Force input path of pad
+constexpr regs::RegValue32<4, 0> MUX_MODE;  // MUX Mode Select Field.
+    // Some values are less than 4 bits
+    // 0b0000..Select mux mode: ALT0 mux port
+    // 0b0001..Select mux mode: ALT1 mux port
+    // 0b0010..Select mux mode: ALT2 mux port
+    // 0b0011..Select mux mode: ALT3 mux port
+    // 0b0100..Select mux mode: ALT4 mux port
+    // 0b0101..Select mux mode: ALT5 mux port
+    // 0b0110..Select mux mode: ALT6 mux port
+    // 0b0111..Select mux mode: ALT7 mux port
+    // 0b1000..Select mux mode: ALT8 mux port
+    // 0b1001..Select mux mode: ALT9 mux port
+}  // namespace vals
+
 template <size_t Index>
 constexpr SW_MUX_CTL_PAD_Reg<Index, 1, 4> SION;      // Software Input On Field.
     // 0b0..Input Path is determined by functionality
-    // 0b1..Force input path of pad GPIO_AD_B0_00
+    // 0b1..Force input path of pad
 template <size_t Index>
 constexpr SW_MUX_CTL_PAD_Reg<Index, 4, 0> MUX_MODE;  // MUX Mode Select Field.
-    // 0b0000..Select mux mode: ALT0 mux port: USB_OTG1_PWR of instance: usb
-    // 0b0001..Select mux mode: ALT1 mux port: QTIMER3_TIMER1 of instance: qtimer3
-    // 0b0010..Select mux mode: ALT2 mux port: LPUART2_RTS_B of instance: lpuart2
-    // 0b0011..Select mux mode: ALT3 mux port: LPI2C1_SDA of instance: lpi2c1
-    // 0b0100..Select mux mode: ALT4 mux port: CCM_PMIC_READY of instance: ccm
-    // 0b0101..Select mux mode: ALT5 mux port: GPIO1_IO17 of instance: gpio1
-    // 0b0110..Select mux mode: ALT6 mux port: USDHC1_VSELECT of instance: usdhc1
-    // 0b0111..Select mux mode: ALT7 mux port: KPP_COL07 of instance: kpp
-    // 0b1000..Select mux mode: ALT8 mux port: ENET2_1588_EVENT0_IN of instance: enet2
-    // 0b1001..Select mux mode: ALT9 mux port: FLEXIO3_FLEXIO01 of instance: flexio3
+    // Some values are less than 4 bits
+    // 0b0000..Select mux mode: ALT0 mux port
+    // 0b0001..Select mux mode: ALT1 mux port
+    // 0b0010..Select mux mode: ALT2 mux port
+    // 0b0011..Select mux mode: ALT3 mux port
+    // 0b0100..Select mux mode: ALT4 mux port
+    // 0b0101..Select mux mode: ALT5 mux port
+    // 0b0110..Select mux mode: ALT6 mux port
+    // 0b0111..Select mux mode: ALT7 mux port
+    // 0b1000..Select mux mode: ALT8 mux port
+    // 0b1001..Select mux mode: ALT9 mux port
 }  // namespace SW_MUX_CTL_PAD
 
 namespace SW_PAD_CTL_PAD {
+namespace vals {
+constexpr regs::RegValue32<1, 16> HYS;    // Hyst. Enable Field
+    // 0b0..Hysteresis Disabled
+    // 0b1..Hysteresis Enabled
+constexpr regs::RegValue32<2, 14> PUS;    // Pull Up / Down Config. Field
+    // 0b00..100K Ohm Pull Down
+    // 0b01..47K Ohm Pull Up
+    // 0b10..100K Ohm Pull Up
+    // 0b11..22K Ohm Pull Up
+constexpr regs::RegValue32<1, 13> PUE;    // Pull / Keep Select Field
+    // 0b0..Keeper
+    // 0b1..Pull
+constexpr regs::RegValue32<1, 12> PKE;    // Pull / Keep Enable Field
+    // 0b0..Pull/Keeper Disabled
+    // 0b1..Pull/Keeper Enabled
+constexpr regs::RegValue32<1, 11> ODE;    // Open Drain Enable Field
+    // 0b0..Open Drain Disabled
+    // 0b1..Open Drain Enabled
+constexpr regs::RegValue32<2,  6> SPEED;  // Speed Field
+    // 0b00..low(50MHz)
+    // 0b01..medium(100MHz)
+    // 0b10..fast(150MHz)
+    // 0b11..max(200MHz)
+constexpr regs::RegValue32<3,  3> DSE;    // Drive Strength Field
+    // 0b000..output driver disabled;
+    // 0b001..R0(150 Ohm @ 3.3V, 260 Ohm@1.8V)
+    // 0b010..R0/2
+    // 0b011..R0/3
+    // 0b100..R0/4
+    // 0b101..R0/5
+    // 0b110..R0/6
+    // 0b111..R0/7
+constexpr regs::RegValue32<1,  0> SRE;    // Slew Rate Field
+    // 0b0..Slow Slew Rate
+    // 0b1..Fast Slew Rate
+}  // namespace vals
+
 template <size_t Index>
 constexpr SW_PAD_CTL_PAD_Reg<Index, 1, 16> HYS;    // Hyst. Enable Field
     // 0b0..Hysteresis Disabled
@@ -158,24 +214,21 @@ constexpr SW_PAD_CTL_PAD_Reg<Index, 1,  0> SRE;    // Slew Rate Field
 }  // namespace SW_PAD_CTL_PAD
 
 namespace SELECT_INPUT {
+namespace vals {
+constexpr regs::RegValue32<3, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
+    // Some values are less than 3 bits
+}  // namespace vals
+
 template <size_t Index>
 constexpr SELECT_INPUT_Reg<Index, 3, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
-    // 0b000..Selecting Pad: GPIO_SD_B1_03 for Mode: ALT6
-    // 0b001..Selecting Pad: GPIO_AD_B0_12 for Mode: ALT1
-    // 0b010..Selecting Pad: GPIO_AD_B1_01 for Mode: ALT4
-    // 0b011..Selecting Pad: GPIO_AD_B1_08 for Mode: ALT3
-    // 0b100..Selecting Pad: GPIO_EMC_32 for Mode: ALT3
+    // Some values are less than 3 bits
 }  // namespace SELECT_INPUT
 
 namespace SW_MUX_CTL_PAD_1 {
 template <size_t Index>
 constexpr SW_MUX_CTL_PAD_1_Reg<Index, 1, 4> SION;      // Software Input On Field.
-    // 0b0..Input Path is determined by functionality
-    // 0b1..Force input path of pad GPIO_SPI_B0_00
 template <size_t Index>
 constexpr SW_MUX_CTL_PAD_1_Reg<Index, 3, 0> MUX_MODE;  // MUX Mode Select Field.
-    // 0b000..Select mux mode: ALT0 mux port: FLEXSPI2_A_DATA00 of instance: flexspi2
-    // 0b101..Select mux mode: ALT5 mux port: GPIO10_IO02 of instance: gpio10
 }  // namespace SW_MUX_CTL_PAD_1
 
 namespace SW_PAD_CTL_PAD_1 {
@@ -228,10 +281,6 @@ namespace SELECT_INPUT_1 {
 // IOMUXC_SELECT_INPUT_1 values
 template <size_t Index>
 constexpr SELECT_INPUT_1_Reg<Index, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
-    // 0b00..Selecting Pad: GPIO_SD_B0_00 for Mode: ALT9
-    // 0b01..Selecting Pad: GPIO_EMC_39 for Mode: ALT9
-    // 0b10..Selecting Pad: GPIO_AD_B0_09 for Mode: ALT9
-    // 0b11..Selecting Pad: GPIO_B1_13 for Mode: ALT8
 }  // namespace SELECT_INPUT_1
 
 }  // namespace IOMUXC
@@ -2574,6 +2623,329 @@ constexpr SELECT_INPUT_1_Reg<32, 2, 0> DAISY;  // Selecting Pads Involved in Dai
 }  // namespace CANFD_IPP_IND_CANRX
 
 }  // namespace SELECT_INPUT
+
+// SW_MUX_CTL_PAD and SW_PAD_CTL_PAD indexes
+namespace SW_CTL_PAD {
+constexpr size_t kEMC_00   =   0;
+constexpr size_t kEMC_01   =   1;
+constexpr size_t kEMC_02   =   2;
+constexpr size_t kEMC_03   =   3;
+constexpr size_t kEMC_04   =   4;
+constexpr size_t kEMC_05   =   5;
+constexpr size_t kEMC_06   =   6;
+constexpr size_t kEMC_07   =   7;
+constexpr size_t kEMC_08   =   8;
+constexpr size_t kEMC_09   =   9;
+constexpr size_t kEMC_10   =  10;
+constexpr size_t kEMC_11   =  11;
+constexpr size_t kEMC_12   =  12;
+constexpr size_t kEMC_13   =  13;
+constexpr size_t kEMC_14   =  14;
+constexpr size_t kEMC_15   =  15;
+constexpr size_t kEMC_16   =  16;
+constexpr size_t kEMC_17   =  17;
+constexpr size_t kEMC_18   =  18;
+constexpr size_t kEMC_19   =  19;
+constexpr size_t kEMC_20   =  20;
+constexpr size_t kEMC_21   =  21;
+constexpr size_t kEMC_22   =  22;
+constexpr size_t kEMC_23   =  23;
+constexpr size_t kEMC_24   =  24;
+constexpr size_t kEMC_25   =  25;
+constexpr size_t kEMC_26   =  26;
+constexpr size_t kEMC_27   =  27;
+constexpr size_t kEMC_28   =  28;
+constexpr size_t kEMC_29   =  29;
+constexpr size_t kEMC_30   =  30;
+constexpr size_t kEMC_31   =  31;
+constexpr size_t kEMC_32   =  32;
+constexpr size_t kEMC_33   =  33;
+constexpr size_t kEMC_34   =  34;
+constexpr size_t kEMC_35   =  35;
+constexpr size_t kEMC_36   =  36;
+constexpr size_t kEMC_37   =  37;
+constexpr size_t kEMC_38   =  38;
+constexpr size_t kEMC_39   =  39;
+constexpr size_t kEMC_40   =  40;
+constexpr size_t kEMC_41   =  41;
+constexpr size_t kAD_B0_00 =  42;
+constexpr size_t kAD_B0_01 =  43;
+constexpr size_t kAD_B0_02 =  44;
+constexpr size_t kAD_B0_03 =  45;
+constexpr size_t kAD_B0_04 =  46;
+constexpr size_t kAD_B0_05 =  47;
+constexpr size_t kAD_B0_06 =  48;
+constexpr size_t kAD_B0_07 =  49;
+constexpr size_t kAD_B0_08 =  50;
+constexpr size_t kAD_B0_09 =  51;
+constexpr size_t kAD_B0_10 =  52;
+constexpr size_t kAD_B0_11 =  53;
+constexpr size_t kAD_B0_12 =  54;
+constexpr size_t kAD_B0_13 =  55;
+constexpr size_t kAD_B0_14 =  56;
+constexpr size_t kAD_B0_15 =  57;
+constexpr size_t kAD_B1_00 =  58;
+constexpr size_t kAD_B1_01 =  59;
+constexpr size_t kAD_B1_02 =  60;
+constexpr size_t kAD_B1_03 =  61;
+constexpr size_t kAD_B1_04 =  62;
+constexpr size_t kAD_B1_05 =  63;
+constexpr size_t kAD_B1_06 =  64;
+constexpr size_t kAD_B1_07 =  65;
+constexpr size_t kAD_B1_08 =  66;
+constexpr size_t kAD_B1_09 =  67;
+constexpr size_t kAD_B1_10 =  68;
+constexpr size_t kAD_B1_11 =  69;
+constexpr size_t kAD_B1_12 =  70;
+constexpr size_t kAD_B1_13 =  71;
+constexpr size_t kAD_B1_14 =  72;
+constexpr size_t kAD_B1_15 =  73;
+constexpr size_t kB0_00    =  74;
+constexpr size_t kB0_01    =  75;
+constexpr size_t kB0_02    =  76;
+constexpr size_t kB0_03    =  77;
+constexpr size_t kB0_04    =  78;
+constexpr size_t kB0_05    =  79;
+constexpr size_t kB0_06    =  80;
+constexpr size_t kB0_07    =  81;
+constexpr size_t kB0_08    =  82;
+constexpr size_t kB0_09    =  83;
+constexpr size_t kB0_10    =  84;
+constexpr size_t kB0_11    =  85;
+constexpr size_t kB0_12    =  86;
+constexpr size_t kB0_13    =  87;
+constexpr size_t kB0_14    =  88;
+constexpr size_t kB0_15    =  89;
+constexpr size_t kB1_00    =  90;
+constexpr size_t kB1_01    =  91;
+constexpr size_t kB1_02    =  92;
+constexpr size_t kB1_03    =  93;
+constexpr size_t kB1_04    =  94;
+constexpr size_t kB1_05    =  95;
+constexpr size_t kB1_06    =  96;
+constexpr size_t kB1_07    =  97;
+constexpr size_t kB1_08    =  98;
+constexpr size_t kB1_09    =  99;
+constexpr size_t kB1_10    = 100;
+constexpr size_t kB1_11    = 101;
+constexpr size_t kB1_12    = 102;
+constexpr size_t kB1_13    = 103;
+constexpr size_t kB1_14    = 104;
+constexpr size_t kB1_15    = 105;
+constexpr size_t kSD_B0_00 = 106;
+constexpr size_t kSD_B0_01 = 107;
+constexpr size_t kSD_B0_02 = 108;
+constexpr size_t kSD_B0_03 = 109;
+constexpr size_t kSD_B0_04 = 110;
+constexpr size_t kSD_B0_05 = 111;
+constexpr size_t kSD_B1_00 = 112;
+constexpr size_t kSD_B1_01 = 113;
+constexpr size_t kSD_B1_02 = 114;
+constexpr size_t kSD_B1_03 = 115;
+constexpr size_t kSD_B1_04 = 116;
+constexpr size_t kSD_B1_05 = 117;
+constexpr size_t kSD_B1_06 = 118;
+constexpr size_t kSD_B1_07 = 119;
+constexpr size_t kSD_B1_08 = 120;
+constexpr size_t kSD_B1_09 = 121;
+constexpr size_t kSD_B1_10 = 122;
+constexpr size_t kSD_B1_11 = 123;
+}  // namespace SW_CTL_PAD
+
+// SELECT_INPUT indexes
+namespace SELECT_INPUT {
+constexpr size_t kANATOP_USB_OTG1_ID =   0;
+constexpr size_t kANATOP_USB_OTG2_ID =   1;
+constexpr size_t kCCM_PMIC_READY     =   2;
+constexpr size_t kCSI_DATA02         =   3;
+constexpr size_t kCSI_DATA03         =   4;
+constexpr size_t kCSI_DATA04         =   5;
+constexpr size_t kCSI_DATA05         =   6;
+constexpr size_t kCSI_DATA06         =   7;
+constexpr size_t kCSI_DATA07         =   8;
+constexpr size_t kCSI_DATA08         =   9;
+constexpr size_t kCSI_DATA09         =  10;
+constexpr size_t kCSI_HSYNC          =  11;
+constexpr size_t kCSI_PIXCLK         =  12;
+constexpr size_t kCSI_VSYNC          =  13;
+constexpr size_t kENET_IPG_CLK_RMII  =  14;
+constexpr size_t kENET_MDIO          =  15;
+constexpr size_t kENET0_RXDATA       =  16;
+constexpr size_t kENET1_RXDATA       =  17;
+constexpr size_t kENET_RXEN          =  18;
+constexpr size_t kENET_RXERR         =  19;
+constexpr size_t kENET0_TIMER        =  20;
+constexpr size_t kENET_TXCLK         =  21;
+constexpr size_t kFLEXCAN1_RX        =  22;
+constexpr size_t kFLEXCAN2_RX        =  23;
+constexpr size_t kFLEXPWM1_PWMA3     =  24;
+constexpr size_t kFLEXPWM1_PWMA0     =  25;
+constexpr size_t kFLEXPWM1_PWMA1     =  26;
+constexpr size_t kFLEXPWM1_PWMA2     =  27;
+constexpr size_t kFLEXPWM1_PWMB3     =  28;
+constexpr size_t kFLEXPWM1_PWMB0     =  29;
+constexpr size_t kFLEXPWM1_PWMB1     =  30;
+constexpr size_t kFLEXPWM1_PWMB2     =  31;
+constexpr size_t kFLEXPWM2_PWMA3     =  32;
+constexpr size_t kFLEXPWM2_PWMA0     =  33;
+constexpr size_t kFLEXPWM2_PWMA1     =  34;
+constexpr size_t kFLEXPWM2_PWMA2     =  35;
+constexpr size_t kFLEXPWM2_PWMB3     =  36;
+constexpr size_t kFLEXPWM2_PWMB0     =  37;
+constexpr size_t kFLEXPWM2_PWMB1     =  38;
+constexpr size_t kFLEXPWM2_PWMB2     =  39;
+constexpr size_t kFLEXPWM4_PWMA0     =  40;
+constexpr size_t kFLEXPWM4_PWMA1     =  41;
+constexpr size_t kFLEXPWM4_PWMA2     =  42;
+constexpr size_t kFLEXPWM4_PWMA3     =  43;
+constexpr size_t kFLEXSPIA_DQS       =  44;
+constexpr size_t kFLEXSPIA_DATA0     =  45;
+constexpr size_t kFLEXSPIA_DATA1     =  46;
+constexpr size_t kFLEXSPIA_DATA2     =  47;
+constexpr size_t kFLEXSPIA_DATA3     =  48;
+constexpr size_t kFLEXSPIB_DATA0     =  49;
+constexpr size_t kFLEXSPIB_DATA1     =  50;
+constexpr size_t kFLEXSPIB_DATA2     =  51;
+constexpr size_t kFLEXSPIB_DATA3     =  52;
+constexpr size_t kFLEXSPIA_SCK       =  53;
+constexpr size_t kLPI2C1_SCL         =  54;
+constexpr size_t kLPI2C1_SDA         =  55;
+constexpr size_t kLPI2C2_SCL         =  56;
+constexpr size_t kLPI2C2_SDA         =  57;
+constexpr size_t kLPI2C3_SCL         =  58;
+constexpr size_t kLPI2C3_SDA         =  59;
+constexpr size_t kLPI2C4_SCL         =  60;
+constexpr size_t kLPI2C4_SDA         =  61;
+constexpr size_t kLPSPI1_PCS0        =  62;
+constexpr size_t kLPSPI1_SCK         =  63;
+constexpr size_t kLPSPI1_SDI         =  64;
+constexpr size_t kLPSPI1_SDO         =  65;
+constexpr size_t kLPSPI2_PCS0        =  66;
+constexpr size_t kLPSPI2_SCK         =  67;
+constexpr size_t kLPSPI2_SDI         =  68;
+constexpr size_t kLPSPI2_SDO         =  69;
+constexpr size_t kLPSPI3_PCS0        =  70;
+constexpr size_t kLPSPI3_SCK         =  71;
+constexpr size_t kLPSPI3_SDI         =  72;
+constexpr size_t kLPSPI3_SDO         =  73;
+constexpr size_t kLPSPI4_PCS0        =  74;
+constexpr size_t kLPSPI4_SCK         =  75;
+constexpr size_t kLPSPI4_SDI         =  76;
+constexpr size_t kLPSPI4_SDO         =  77;
+constexpr size_t kLPUART2_RX         =  78;
+constexpr size_t kLPUART2_TX         =  79;
+constexpr size_t kLPUART3_CTS_B      =  80;
+constexpr size_t kLPUART3_RX         =  81;
+constexpr size_t kLPUART3_TX         =  82;
+constexpr size_t kLPUART4_RX         =  83;
+constexpr size_t kLPUART4_TX         =  84;
+constexpr size_t kLPUART5_RX         =  85;
+constexpr size_t kLPUART5_TX         =  86;
+constexpr size_t kLPUART6_RX         =  87;
+constexpr size_t kLPUART6_TX         =  88;
+constexpr size_t kLPUART7_RX         =  89;
+constexpr size_t kLPUART7_TX         =  90;
+constexpr size_t kLPUART8_RX         =  91;
+constexpr size_t kLPUART8_TX         =  92;
+constexpr size_t kNMI                =  93;
+constexpr size_t kQTIMER2_TIMER0     =  94;
+constexpr size_t kQTIMER2_TIMER1     =  95;
+constexpr size_t kQTIMER2_TIMER2     =  96;
+constexpr size_t kQTIMER2_TIMER3     =  97;
+constexpr size_t kQTIMER3_TIMER0     =  98;
+constexpr size_t kQTIMER3_TIMER1     =  99;
+constexpr size_t kQTIMER3_TIMER2     = 100;
+constexpr size_t kQTIMER3_TIMER3     = 101;
+constexpr size_t kSAI1_MCLK2         = 102;
+constexpr size_t kSAI1_RX_BCLK       = 103;
+constexpr size_t kSAI1_RX_DATA0      = 104;
+constexpr size_t kSAI1_RX_DATA1      = 105;
+constexpr size_t kSAI1_RX_DATA2      = 106;
+constexpr size_t kSAI1_RX_DATA3      = 107;
+constexpr size_t kSAI1_RX_SYNC       = 108;
+constexpr size_t kSAI1_TX_BCLK       = 109;
+constexpr size_t kSAI1_TX_SYNC       = 110;
+constexpr size_t kSAI2_MCLK2         = 111;
+constexpr size_t kSAI2_RX_BCLK       = 112;
+constexpr size_t kSAI2_RX_DATA0      = 113;
+constexpr size_t kSAI2_RX_SYNC       = 114;
+constexpr size_t kSAI2_TX_BCLK       = 115;
+constexpr size_t kSAI2_TX_SYNC       = 116;
+constexpr size_t kSPDIF_IN           = 117;
+constexpr size_t kUSB_OTG2_OC        = 118;
+constexpr size_t kUSB_OTG1_OC        = 119;
+constexpr size_t kUSDHC1_CD_B        = 120;
+constexpr size_t kUSDHC1_WP          = 121;
+constexpr size_t kUSDHC2_CLK         = 122;
+constexpr size_t kUSDHC2_CD_B        = 123;
+constexpr size_t kUSDHC2_CMD         = 124;
+constexpr size_t kUSDHC2_DATA0       = 125;
+constexpr size_t kUSDHC2_DATA1       = 126;
+constexpr size_t kUSDHC2_DATA2       = 127;
+constexpr size_t kUSDHC2_DATA3       = 128;
+constexpr size_t kUSDHC2_DATA4       = 129;
+constexpr size_t kUSDHC2_DATA5       = 130;
+constexpr size_t kUSDHC2_DATA6       = 131;
+constexpr size_t kUSDHC2_DATA7       = 132;
+constexpr size_t kUSDHC2_WP          = 133;
+constexpr size_t kXBAR1_IN02         = 134;
+constexpr size_t kXBAR1_IN03         = 135;
+constexpr size_t kXBAR1_IN04         = 136;
+constexpr size_t kXBAR1_IN05         = 137;
+constexpr size_t kXBAR1_IN06         = 138;
+constexpr size_t kXBAR1_IN07         = 139;
+constexpr size_t kXBAR1_IN08         = 140;
+constexpr size_t kXBAR1_IN09         = 141;
+constexpr size_t kXBAR1_IN17         = 142;
+constexpr size_t kXBAR1_IN18         = 143;
+constexpr size_t kXBAR1_IN20         = 144;
+constexpr size_t kXBAR1_IN22         = 145;
+constexpr size_t kXBAR1_IN23         = 146;
+constexpr size_t kXBAR1_IN24         = 147;
+constexpr size_t kXBAR1_IN14         = 148;
+constexpr size_t kXBAR1_IN15         = 149;
+constexpr size_t kXBAR1_IN16         = 150;
+constexpr size_t kXBAR1_IN25         = 151;
+constexpr size_t kXBAR1_IN19         = 152;
+constexpr size_t kXBAR1_IN21         = 153;
+}  // namespace SELECT_INPUT
+
+// SELECT_INPUT_1 indexes
+namespace SELECT_INPUT_1 {
+constexpr size_t kENET2_IPG_CLK_RMII          =  0;
+constexpr size_t kENET2_IPP_IND_MAC0_MDIO     =  1;
+constexpr size_t kENET2_IPP_IND_MAC0_RXDATA_0 =  2;
+constexpr size_t kENET2_IPP_IND_MAC0_RXDATA_1 =  3;
+constexpr size_t kENET2_IPP_IND_MAC0_RXEN     =  4;
+constexpr size_t kENET2_IPP_IND_MAC0_RXERR    =  5;
+constexpr size_t kENET2_IPP_IND_MAC0_TIMER_0  =  6;
+constexpr size_t kENET2_IPP_IND_MAC0_TXCLK    =  7;
+constexpr size_t kFLEXSPI2_IPP_IND_DQS_FA     =  8;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FA_BIT0 =  9;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FA_BIT1 = 10;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FA_BIT2 = 11;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FA_BIT3 = 12;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FB_BIT0 = 13;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FB_BIT1 = 14;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FB_BIT2 = 15;
+constexpr size_t kFLEXSPI2_IPP_IND_IO_FB_BIT3 = 16;
+constexpr size_t kFLEXSPI2_IPP_IND_SCK_FA     = 17;
+constexpr size_t kFLEXSPI2_IPP_IND_SCK_FB     = 18;
+constexpr size_t kGPT1_IPP_IND_CAPIN1         = 19;
+constexpr size_t kGPT1_IPP_IND_CAPIN2         = 20;
+constexpr size_t kGPT1_IPP_IND_CLKIN          = 21;
+constexpr size_t kGPT2_IPP_IND_CAPIN1         = 22;
+constexpr size_t kGPT2_IPP_IND_CAPIN2         = 23;
+constexpr size_t kGPT2_IPP_IND_CLKIN          = 24;
+constexpr size_t kSAI3_IPG_CLK_SAI_MCLK_2     = 25;
+constexpr size_t kSAI3_IPP_IND_SAI_RXBCLK     = 26;
+constexpr size_t kSAI3_IPP_IND_SAI_RXDATA_0   = 27;
+constexpr size_t kSAI3_IPP_IND_SAI_RXSYNC     = 28;
+constexpr size_t kSAI3_IPP_IND_SAI_TXBCLK     = 29;
+constexpr size_t kSAI3_IPP_IND_SAI_TXSYNC     = 30;
+constexpr size_t kSEMC_I_IPP_IND_DQS4         = 31;
+constexpr size_t kCANFD_IPP_IND_CANRX         = 32;
+}  // namespace SELECT_INPUT_1
 
 }  // namespace IOMUXC
 
