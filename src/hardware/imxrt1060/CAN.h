@@ -35,7 +35,7 @@ constexpr size_t kCAN_MB_SIZE_MB_GROUP_MB_count                = 64;
 constexpr size_t kCAN_RXIMR_count                              = 64;
 
 // Structure type to access the Flexible Data-rate Controller Area Network
-// (CANFD) registers.
+// (CANFD/FlexCAN3) and Flexible Controller Area Network (FLEXCAN) registers.
 //
 // Comments are from BSD-3-licensed NXP SDK.
 //
