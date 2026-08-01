@@ -832,14 +832,20 @@ constexpr DCP_Reg<&DCP_Layout::VERSION,  8, 16> MINOR;  // Fixed read-only value
 constexpr DCP_Reg<&DCP_Layout::VERSION, 16,  0> STEP;   // Fixed read-only value reflecting the stepping of the version of the design implementation.
 }  // namespace VERSION
 
-namespace CHxSEMA {
+// CHxSEMA values
+namespace CHANNEL_SEMA {
+namespace vals {
 // DCP channel X register values
 constexpr regs::RegValue32<8, 16> VALUE;
-}  // namespace CHxSEMA
+}  // namespace vals
+}  // namespace CHANNEL_SEMA
 
-namespace CHxSTAT {
+// CHxSTAT values
+namespace CHANNEL_STAT {
+namespace vals {
 constexpr regs::RegValue32<8, 16> ERROR_CODE;
-}  // namespace CHxSTAT
+}  // namespace vals
+}  // namespace CHANNEL_STAT
 
 }  // namespace DCP
 
