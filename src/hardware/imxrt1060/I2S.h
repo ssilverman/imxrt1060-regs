@@ -63,20 +63,20 @@ struct I2S_Layout {
 };
 
 constexpr size_t    kI2S_size  = 0xE4;
-constexpr uintptr_t kI2S1_base = 0x4038'4000;
-constexpr uintptr_t kI2S2_base = 0x4038'8000;
-constexpr uintptr_t kI2S3_base = 0x4038'C000;
+constexpr uintptr_t kSAI1_base = 0x4038'4000;
+constexpr uintptr_t kSAI2_base = 0x4038'8000;
+constexpr uintptr_t kSAI3_base = 0x4038'C000;
 
 namespace I2S1 {
-constexpr regs::RegGroup<I2S_Layout, kI2S_size, kI2S1_base> group;
+constexpr regs::RegGroup<I2S_Layout, kI2S_size, kSAI1_base> group;
 }  // namespace I2S1
 
 namespace I2S2 {
-constexpr regs::RegGroup<I2S_Layout, kI2S_size, kI2S2_base> group;
+constexpr regs::RegGroup<I2S_Layout, kI2S_size, kSAI2_base> group;
 }  // namespace I2S2
 
 namespace I2S3 {
-constexpr regs::RegGroup<I2S_Layout, kI2S_size, kI2S3_base> group;
+constexpr regs::RegGroup<I2S_Layout, kI2S_size, kSAI3_base> group;
 }  // namespace I2S3
 
 namespace I2S1 {
@@ -84,35 +84,35 @@ namespace I2S1 {
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
-using I2S1_Reg = regs::Reg32<kI2S1_base, I2S_Layout, Member, 0, Bits, Shift,
+using I2S1_Reg = regs::Reg32<kSAI1_base, I2S_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
-using TDR_Reg = regs::Reg32<kI2S1_base, I2S_Layout, &I2S_Layout::TDR, Index,
+using TDR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::TDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
-using TFR_Reg = regs::Reg32<kI2S1_base, I2S_Layout, &I2S_Layout::TFR, Index,
+using TFR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::TFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
-using RDR_Reg = regs::Reg32<kI2S1_base, I2S_Layout, &I2S_Layout::RDR, Index,
+using RDR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::RDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
-using RFR_Reg = regs::Reg32<kI2S1_base, I2S_Layout, &I2S_Layout::RFR, Index,
+using RFR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::RFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Version ID
@@ -477,35 +477,35 @@ namespace I2S2 {
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
-using I2S2_Reg = regs::Reg32<kI2S2_base, I2S_Layout, Member, 0, Bits, Shift,
+using I2S2_Reg = regs::Reg32<kSAI2_base, I2S_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
-using TDR_Reg = regs::Reg32<kI2S2_base, I2S_Layout, &I2S_Layout::TDR, Index,
+using TDR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::TDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
-using TFR_Reg = regs::Reg32<kI2S2_base, I2S_Layout, &I2S_Layout::TFR, Index,
+using TFR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::TFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
-using RDR_Reg = regs::Reg32<kI2S2_base, I2S_Layout, &I2S_Layout::RDR, Index,
+using RDR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::RDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
-using RFR_Reg = regs::Reg32<kI2S2_base, I2S_Layout, &I2S_Layout::RFR, Index,
+using RFR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::RFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Version ID
@@ -709,35 +709,35 @@ namespace I2S3 {
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false>
-using I2S3_Reg = regs::Reg32<kI2S3_base, I2S_Layout, Member, 0, Bits, Shift,
+using I2S3_Reg = regs::Reg32<kSAI3_base, I2S_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
-using TDR_Reg = regs::Reg32<kI2S3_base, I2S_Layout, &I2S_Layout::TDR, Index,
+using TDR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::TDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
-using TFR_Reg = regs::Reg32<kI2S3_base, I2S_Layout, &I2S_Layout::TFR, Index,
+using TFR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::TFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
-using RDR_Reg = regs::Reg32<kI2S3_base, I2S_Layout, &I2S_Layout::RDR, Index,
+using RDR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::RDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
-using RFR_Reg = regs::Reg32<kI2S3_base, I2S_Layout, &I2S_Layout::RFR, Index,
+using RFR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::RFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 // Version ID
