@@ -990,6 +990,7 @@ namespace CAN {
 
 // Message Buffer 0 CS Register..Message Buffer 6 CS Register values
 namespace CS {
+namespace vals {
 constexpr regs::RegValue32< 1, 31> EDL;         // Extended Data Length.
     // This bit distinguishes between CAN format and CAN FD format frames.
     //   The EDL bit must not be set for Message Buffers configured to RANSWER with code field 0b1010.
@@ -1011,10 +1012,12 @@ constexpr regs::RegValue32<16,  0> TIME_STAMP;  // Free-Running Counter Time sta
     // This 16-bit field is a copy of the Free-Running
     //   Timer, captured for Tx and Rx frames at the time when the beginning of the Identifier field
     //   appears on the CAN bus.
+}  // namespace vals
 }  // namespace CS
 
 // Message Buffer 0 ID Register..Message Buffer 6 ID Register values
 namespace ID {
+namespace vals {
 constexpr regs::RegValue32< 3, 29> PRIO;  // R/O, Local priority.
     // This 3-bit fieldis only used when LPRIO_EN bit is set in MCR and it only
     //   makes sense for Tx buffers. These bits are not transmitted. They are appended to the regular
@@ -1023,6 +1026,7 @@ constexpr regs::RegValue32<11, 18> STD;  // Contains standard/extended (HIGH wor
 constexpr regs::RegValue32<18,  0> EXT;  // Contains extended (LOW word) identifier of message buffer.
 constexpr regs::RegValue32<29,  0> EXT_complete;  // Contains the whole extended identifier
     // Note: EXT overlaps STD intentionally
+}  // namespace vals
 }  // namespace ID
 
 }  // namespace CAN

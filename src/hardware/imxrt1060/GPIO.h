@@ -94,6 +94,7 @@ namespace GPIO {
 
 // ICR1 values
 namespace ICR1 {
+namespace vals {
 constexpr regs::RegValue32<2, 30> ICR15;  // Interrupt configuration field for GPIO interrupt 15
 constexpr regs::RegValue32<2, 28> ICR14;  // Interrupt configuration field for GPIO interrupt 14
 constexpr regs::RegValue32<2, 26> ICR13;  // Interrupt configuration field for GPIO interrupt 13
@@ -110,10 +111,12 @@ constexpr regs::RegValue32<2,  6> ICR3;   // Interrupt configuration field for G
 constexpr regs::RegValue32<2,  4> ICR2;   // Interrupt configuration field for GPIO interrupt 2
 constexpr regs::RegValue32<2,  2> ICR1;   // Interrupt configuration field for GPIO interrupt 1
 constexpr regs::RegValue32<2,  0> ICR0;   // Interrupt configuration field for GPIO interrupt 0
+}  // namespace vals
 }  // namespace ICR1
 
 // ICR2 values
 namespace ICR2 {
+namespace vals {
 constexpr regs::RegValue32<2, 30> ICR31;  // Interrupt configuration field for GPIO interrupt 31
 constexpr regs::RegValue32<2, 28> ICR30;  // Interrupt configuration field for GPIO interrupt 30
 constexpr regs::RegValue32<2, 26> ICR29;  // Interrupt configuration field for GPIO interrupt 29
@@ -130,9 +133,11 @@ constexpr regs::RegValue32<2,  6> ICR19;  // Interrupt configuration field for G
 constexpr regs::RegValue32<2,  4> ICR18;  // Interrupt configuration field for GPIO interrupt 18
 constexpr regs::RegValue32<2,  2> ICR17;  // Interrupt configuration field for GPIO interrupt 17
 constexpr regs::RegValue32<2,  0> ICR16;  // Interrupt configuration field for GPIO interrupt 16
+}  // namespace vals
 }  // namespace ICR2
 
 // Individual bits
+namespace vals {
 constexpr regs::RegValue32<1, 31> BIT_31;
 constexpr regs::RegValue32<1, 30> BIT_30;
 constexpr regs::RegValue32<1, 29> BIT_29;
@@ -165,6 +170,7 @@ constexpr regs::RegValue32<1,  3> BIT_3;
 constexpr regs::RegValue32<1,  2> BIT_2;
 constexpr regs::RegValue32<1,  1> BIT_1;
 constexpr regs::RegValue32<1,  0> BIT_0;
+}  // namespace vals
 
 // Directions
 namespace GDIR {

@@ -64,7 +64,9 @@ constexpr NVIC_Reg<&NVIC_Layout::STIR, 9, 0, 0x0, true> INTID;  // Interrupt ID 
 
 // Interrupt Priority Register
 namespace IPR {
+namespace vals {
 constexpr regs::RegValue8<4, 4> PRI;  // Priority of the Nth interrupt
+}  // namespace vals
 }  // namespace IPR
 
 }  // namespace NVIC
