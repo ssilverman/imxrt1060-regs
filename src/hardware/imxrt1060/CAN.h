@@ -599,17 +599,17 @@ constexpr CAN2_Reg<&CAN_Layout::TIMER, 16,  0> TIMER;
 
 // CAN2 Rx Mailboxes Global Mask register
 namespace RXMGMASK {
-constexpr CAN2_Reg<&CAN_Layout::RXMGMASK, 32, 0> MG;  // Rx Mailboxes Global Mask Bits
+constexpr CAN2_Reg<&CAN_Layout::RXMGMASK, 32, 0> MG;
 }  // namespace RXMGMASK
 
 // CAN2 Rx 14 Mask register
 namespace RX14MASK {
-constexpr CAN2_Reg<&CAN_Layout::RX14MASK, 32, 0> RX14M;  // Rx Buffer 14 Mask Bits
+constexpr CAN2_Reg<&CAN_Layout::RX14MASK, 32, 0> RX14M;
 }  // namespace RX14MASK
 
 // CAN2 Rx 15 Mask register
 namespace RX15MASK {
-constexpr CAN2_Reg<&CAN_Layout::RX15MASK, 32, 0> RX15M;  // Rx Buffer 15 Mask Bits
+constexpr CAN2_Reg<&CAN_Layout::RX15MASK, 32, 0> RX15M;
 }  // namespace RX15MASK
 
 // CAN2 Error Counter
@@ -652,17 +652,17 @@ constexpr CAN2_Reg<&CAN_Layout::ESR1, 1,  0, 0x0> WAKINT;
 
 // CAN2 Interrupt Masks 2 register
 namespace IMASK2 {
-constexpr CAN2_Reg<&CAN_Layout::IMASK2, 32, 0> BUF63TO32M;  // Buffer MBi Mask
+constexpr CAN2_Reg<&CAN_Layout::IMASK2, 32, 0> BUF63TO32M;
 }  // namespace IMASK2
 
 // CAN2 Interrupt Masks 1 register
 namespace IMASK1 {
-constexpr CAN2_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
+constexpr CAN2_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;
 }  // namespace IMASK1
 
 // CAN2 Interrupt Flags 2 register
 namespace IFLAG2 {
-constexpr CAN2_Reg<&CAN_Layout::IFLAG2, 32, 0, 0x0> BUF63TO32I;  // Buffer MBi Interrupt
+constexpr CAN2_Reg<&CAN_Layout::IFLAG2, 32, 0, 0x0> BUF63TO32I;
 }  // namespace IFLAG2
 
 // CAN2 Interrupt Flags 1 Register
@@ -707,7 +707,7 @@ constexpr CAN2_Reg<&CAN_Layout::CRCR, 15,  0> TXCRC;
 
 // CAN2 Rx FIFO Global Mask register
 namespace RXFGMASK {
-constexpr CAN2_Reg<&CAN_Layout::RXFGMASK, 32, 0> FGM;  // Rx FIFO Global Mask Bits
+constexpr CAN2_Reg<&CAN_Layout::RXFGMASK, 32, 0> FGM;
 }  // namespace RXFGMASK
 
 // CAN2 Rx FIFO Information Register
@@ -808,17 +808,17 @@ constexpr CAN3_Reg<&CAN_Layout::TIMER, 16, 0> TIMER;
 
 // CAN3 Rx Mailboxes Global Mask register
 namespace RXMGMASK {
-constexpr CAN3_Reg<&CAN_Layout::RXMGMASK, 32, 0> MG;  // Rx Mailboxes Global Mask Bits
+constexpr CAN3_Reg<&CAN_Layout::RXMGMASK, 32, 0> MG;
 }  // namespace RXMGMASK
 
 // CAN3 Rx 14 Mask register
 namespace RX14MASK {
-constexpr CAN3_Reg<&CAN_Layout::RX14MASK, 32, 0> RX14M;  // Rx Buffer 14 Mask Bits
+constexpr CAN3_Reg<&CAN_Layout::RX14MASK, 32, 0> RX14M;
 }  // namespace RX14MASK
 
 // CAN3 Rx 15 Mask register
 namespace RX15MASK {
-constexpr CAN3_Reg<&CAN_Layout::RX15MASK, 32, 0> RX15M;  // Rx Buffer 15 Mask Bits
+constexpr CAN3_Reg<&CAN_Layout::RX15MASK, 32, 0> RX15M;
 }  // namespace RX15MASK
 
 // CAN3 Error Counter
@@ -861,17 +861,17 @@ constexpr CAN3_Reg<&CAN_Layout::ESR1, 1,  0, 0x0> WAKINT;
 
 // CAN3 Interrupt Masks 2 register
 namespace IMASK2 {
-constexpr CAN3_Reg<&CAN_Layout::IMASK2, 32, 0> BUF63TO32M;  // Buffer MBi Mask
+constexpr CAN3_Reg<&CAN_Layout::IMASK2, 32, 0> BUF63TO32M;
 }  // namespace IMASK2
 
 // CAN3 Interrupt Masks 1 register
 namespace IMASK1 {
-constexpr CAN3_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;  // Buffer MBi Mask
+constexpr CAN3_Reg<&CAN_Layout::IMASK1, 32, 0> BUF31TO0M;
 }  // namespace IMASK1
 
 // CAN3 Interrupt Flags 2 register
 namespace IFLAG2 {
-constexpr CAN3_Reg<&CAN_Layout::IFLAG2, 32, 0, 0x0> BUF63TO32I;  // Buffer MBi Interrupt
+constexpr CAN3_Reg<&CAN_Layout::IFLAG2, 32, 0, 0x0> BUF63TO32I;
 }  // namespace IFLAG2
 
 // CAN3 Interrupt Flags 1 Register
@@ -916,7 +916,7 @@ constexpr CAN3_Reg<&CAN_Layout::CRCR, 15,  0> TXCRC;
 
 // CAN3 Rx FIFO Global Mask register
 namespace RXFGMASK {
-constexpr CAN3_Reg<&CAN_Layout::RXFGMASK, 32, 0> FGM;  // Rx FIFO Global Mask Bits
+constexpr CAN3_Reg<&CAN_Layout::RXFGMASK, 32, 0> FGM;
 }  // namespace RXFGMASK
 
 // CAN3 Rx FIFO Information Register

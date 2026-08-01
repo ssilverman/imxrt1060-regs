@@ -315,10 +315,10 @@ constexpr DCP_Reg<&DCP_Layout::CONTEXT, 32, 0> ADDR;  // Context pointer address
 namespace KEY {
 constexpr DCP_Reg<&DCP_Layout::KEY, 24, 8> RSVD;
 constexpr DCP_Reg<&DCP_Layout::KEY,  2, 6> RSVD_INDEX;
-constexpr DCP_Reg<&DCP_Layout::KEY,  2, 4> INDEX;        // Key index pointer.
+constexpr DCP_Reg<&DCP_Layout::KEY,  2, 4> INDEX;         // Key index pointer.
     // The valid indices are 0-[number_keys].
 constexpr DCP_Reg<&DCP_Layout::KEY,  2, 2> RSVD_SUBWORD;
-constexpr DCP_Reg<&DCP_Layout::KEY,  2, 0> SUBWORD;      // Key subword pointer
+constexpr DCP_Reg<&DCP_Layout::KEY,  2, 0> SUBWORD;       // Key subword pointer
 }  // namespace KEY
 
 // DCP key data
