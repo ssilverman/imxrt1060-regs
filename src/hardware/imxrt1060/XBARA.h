@@ -95,7 +95,7 @@ struct XBARA_Layout {
 };
 
 constexpr size_t    kXBARA_size  = 0x88;
-constexpr uintptr_t kXBARA1_base = 0x403BC000;
+constexpr uintptr_t kXBARA1_base = 0x403B'C000;
 
 namespace XBARA1 {
 constexpr regs::RegGroup<XBARA_Layout, kXBARA_size, kXBARA1_base> group;

@@ -59,7 +59,7 @@ struct CCM_Layout {
 };
 
 constexpr size_t    kCCM_size = 0x8C;
-constexpr uintptr_t kCCM_base = 0x400FC000;
+constexpr uintptr_t kCCM_base = 0x400F'C000;
 
 namespace CCM {
 constexpr regs::RegGroup<CCM_Layout, kCCM_size, kCCM_base> group;

@@ -40,7 +40,7 @@ struct NVIC_Layout {
 
 constexpr size_t    kNVIC_size = 0xE04;
 namespace NVIC {
-constexpr uintptr_t kSCS_base = 0xE000E000;           /*!< System Control Space Base Address */
+constexpr uintptr_t kSCS_base = 0xE000'E000;           /*!< System Control Space Base Address */
 }  // namespace NVIC
 constexpr uintptr_t kNVIC_base = NVIC::kSCS_base + 0x0100;  /*!< NVIC Base Address */
 

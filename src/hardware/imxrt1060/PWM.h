@@ -90,10 +90,10 @@ struct PWM_Layout {
 };
 
 constexpr size_t    kPWM_size  = 0x196;
-constexpr uintptr_t kPWM1_base = 0x403DC000;
-constexpr uintptr_t kPWM2_base = 0x403E0000;
-constexpr uintptr_t kPWM3_base = 0x403E4000;
-constexpr uintptr_t kPWM4_base = 0x403E8000;
+constexpr uintptr_t kPWM1_base = 0x403D'C000;
+constexpr uintptr_t kPWM2_base = 0x403E'0000;
+constexpr uintptr_t kPWM3_base = 0x403E'4000;
+constexpr uintptr_t kPWM4_base = 0x403E'8000;
 
 namespace PWM1 {
 constexpr regs::RegGroup<PWM_Layout, kPWM_size, kPWM1_base> group;

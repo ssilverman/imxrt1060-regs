@@ -29,7 +29,7 @@ struct DCB_Layout {
 };
 
 constexpr size_t    kDCB_size = 0x10;
-constexpr uintptr_t kDCB_base = 0xE000EDF0;  /*!< Core Debug Base Address */
+constexpr uintptr_t kDCB_base = 0xE000'EDF0;  /*!< Core Debug Base Address */
 
 namespace DCB {
 constexpr regs::RegGroup<DCB_Layout, kDCB_size, kDCB_base> group;

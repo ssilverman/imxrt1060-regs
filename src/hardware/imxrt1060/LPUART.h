@@ -39,14 +39,14 @@ struct LPUART_Layout {
 };
 
 constexpr size_t    kLPUART_size  = 0x30;
-constexpr uintptr_t kLPUART1_base = 0x40184000;
-constexpr uintptr_t kLPUART2_base = 0x40188000;
-constexpr uintptr_t kLPUART3_base = 0x4018C000;
-constexpr uintptr_t kLPUART4_base = 0x40190000;
-constexpr uintptr_t kLPUART5_base = 0x40194000;
-constexpr uintptr_t kLPUART6_base = 0x40198000;
-constexpr uintptr_t kLPUART7_base = 0x4019C000;
-constexpr uintptr_t kLPUART8_base = 0x401A0000;
+constexpr uintptr_t kLPUART1_base = 0x4018'4000;
+constexpr uintptr_t kLPUART2_base = 0x4018'8000;
+constexpr uintptr_t kLPUART3_base = 0x4018'C000;
+constexpr uintptr_t kLPUART4_base = 0x4019'0000;
+constexpr uintptr_t kLPUART5_base = 0x4019'4000;
+constexpr uintptr_t kLPUART6_base = 0x4019'8000;
+constexpr uintptr_t kLPUART7_base = 0x4019'C000;
+constexpr uintptr_t kLPUART8_base = 0x401A'0000;
 
 namespace LPUART1 {
 constexpr regs::RegGroup<LPUART_Layout, kLPUART_size, kLPUART1_base> group;

@@ -32,10 +32,10 @@ struct CMP_Layout {
 };
 
 constexpr size_t    kCMP_size  = 0x06;
-constexpr uintptr_t kCMP1_base = 0x40094000;
-constexpr uintptr_t kCMP2_base = 0x40094008;
-constexpr uintptr_t kCMP3_base = 0x40094010;
-constexpr uintptr_t kCMP4_base = 0x40094018;
+constexpr uintptr_t kCMP1_base = 0x4009'4000;
+constexpr uintptr_t kCMP2_base = 0x4009'4008;
+constexpr uintptr_t kCMP3_base = 0x4009'4010;
+constexpr uintptr_t kCMP4_base = 0x4009'4018;
 
 namespace CMP1 {
 constexpr regs::RegGroup<CMP_Layout, kCMP_size, kCMP1_base> group;

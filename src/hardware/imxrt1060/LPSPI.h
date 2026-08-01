@@ -49,10 +49,10 @@ struct LPSPI_Layout {
 };
 
 constexpr size_t    kLPSPI_size  = 0x78;
-constexpr uintptr_t kLPSPI1_base = 0x40394000;
-constexpr uintptr_t kLPSPI2_base = 0x40398000;
-constexpr uintptr_t kLPSPI3_base = 0x4039C000;
-constexpr uintptr_t kLPSPI4_base = 0x403A0000;
+constexpr uintptr_t kLPSPI1_base = 0x4039'4000;
+constexpr uintptr_t kLPSPI2_base = 0x4039'8000;
+constexpr uintptr_t kLPSPI3_base = 0x4039'C000;
+constexpr uintptr_t kLPSPI4_base = 0x403A'0000;
 
 namespace LPSPI1 {
 constexpr regs::RegGroup<LPSPI_Layout, kLPSPI_size, kLPSPI1_base> group;

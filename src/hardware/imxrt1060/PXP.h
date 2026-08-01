@@ -98,7 +98,7 @@ struct PXP_Layout {
 };
 
 constexpr size_t    kPXP_size = 0x444;
-constexpr uintptr_t kPXP_base = 0x402B4000;
+constexpr uintptr_t kPXP_base = 0x402B'4000;
 
 namespace PXP {
 constexpr regs::RegGroup<PXP_Layout, kPXP_size, kPXP_base> group;

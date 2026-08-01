@@ -138,9 +138,9 @@ struct CAN_Layout {
 };
 
 constexpr size_t    kCAN_size  = 0xC0C;
-constexpr uintptr_t kCAN1_base = 0x401D0000;
-constexpr uintptr_t kCAN2_base = 0x401D4000;
-constexpr uintptr_t kCAN3_base = 0x401D8000;
+constexpr uintptr_t kCAN1_base = 0x401D'0000;
+constexpr uintptr_t kCAN2_base = 0x401D'4000;
+constexpr uintptr_t kCAN3_base = 0x401D'8000;
 
 namespace CAN1 {
 constexpr regs::RegGroup<CAN_Layout, kCAN_size, kCAN1_base> group;

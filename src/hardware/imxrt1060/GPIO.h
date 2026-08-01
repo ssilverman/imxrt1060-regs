@@ -39,16 +39,16 @@ struct GPIO_Layout {
 };
 
 constexpr size_t    kGPIO_size   = 0x90;
-constexpr uintptr_t kGPIO1_base  = 0x401B8000;
-constexpr uintptr_t kGPIO2_base  = 0x401BC000;
-constexpr uintptr_t kGPIO3_base  = 0x401C0000;
-constexpr uintptr_t kGPIO4_base  = 0x401C4000;
-constexpr uintptr_t kGPIO5_base  = 0x400C0000;
-constexpr uintptr_t kGPIO6_base  = 0x42000000;
-constexpr uintptr_t kGPIO7_base  = 0x42004000;
-constexpr uintptr_t kGPIO8_base  = 0x42008000;
-constexpr uintptr_t kGPIO9_base  = 0x4200C000;
-constexpr uintptr_t kGPIO10_base = 0x401C8000;
+constexpr uintptr_t kGPIO1_base  = 0x401B'8000;
+constexpr uintptr_t kGPIO2_base  = 0x401B'C000;
+constexpr uintptr_t kGPIO3_base  = 0x401C'0000;
+constexpr uintptr_t kGPIO4_base  = 0x401C'4000;
+constexpr uintptr_t kGPIO5_base  = 0x400C'0000;
+constexpr uintptr_t kGPIO6_base  = 0x4200'0000;
+constexpr uintptr_t kGPIO7_base  = 0x4200'4000;
+constexpr uintptr_t kGPIO8_base  = 0x4200'8000;
+constexpr uintptr_t kGPIO9_base  = 0x4200'C000;
+constexpr uintptr_t kGPIO10_base = 0x401C'8000;
 
 namespace GPIO1 {
 constexpr regs::RegGroup<GPIO_Layout, kGPIO_size, kGPIO1_base> group;

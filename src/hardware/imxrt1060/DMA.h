@@ -111,7 +111,7 @@ struct DMA_Layout {
 };
 
 constexpr size_t    kDMA_size = 0x1400;
-constexpr uintptr_t kDMA_base = 0x400E8000;
+constexpr uintptr_t kDMA_base = 0x400E'8000;
 
 namespace DMA {
 constexpr regs::RegGroup<DMA_Layout, kDMA_size, kDMA_base> group;

@@ -40,7 +40,7 @@ struct TEMPMON_Layout {
 };
 
 constexpr size_t    kTEMPMON_size = 0x2A0;
-constexpr uintptr_t kTEMPMON_base = 0x400D8000;
+constexpr uintptr_t kTEMPMON_base = 0x400D'8000;
 
 namespace TEMPMON {
 constexpr regs::RegGroup<TEMPMON_Layout, kTEMPMON_size, kTEMPMON_base> group;

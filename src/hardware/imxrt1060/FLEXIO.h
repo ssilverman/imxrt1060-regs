@@ -80,9 +80,9 @@ struct FLEXIO_Layout {
 };
 
 constexpr size_t    kFLEXIO_size  = 0x7A0;
-constexpr uintptr_t kFLEXIO1_base = 0x401AC000;
-constexpr uintptr_t kFLEXIO2_base = 0x401B0000;
-constexpr uintptr_t kFLEXIO3_base = 0x42020000;
+constexpr uintptr_t kFLEXIO1_base = 0x401A'C000;
+constexpr uintptr_t kFLEXIO2_base = 0x401B'0000;
+constexpr uintptr_t kFLEXIO3_base = 0x4202'0000;
 
 namespace FLEXIO1 {
 constexpr regs::RegGroup<FLEXIO_Layout, kFLEXIO_size, kFLEXIO1_base> group;

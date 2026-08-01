@@ -34,8 +34,8 @@ struct AOI_Layout {
 };
 
 constexpr size_t    kAOI_size  = 0x10;
-constexpr uintptr_t kAOI1_base = 0x403B4000;
-constexpr uintptr_t kAOI2_base = 0x403B8000;
+constexpr uintptr_t kAOI1_base = 0x403B'4000;
+constexpr uintptr_t kAOI2_base = 0x403B'8000;
 
 namespace AOI1 {
 constexpr regs::RegGroup<AOI_Layout, kAOI_size, kAOI1_base> group;

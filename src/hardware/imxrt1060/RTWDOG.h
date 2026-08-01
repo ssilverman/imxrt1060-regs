@@ -30,7 +30,7 @@ struct RTWDOG_Layout {
 };
 
 constexpr size_t    kRTWDOG_size = 0x10;
-constexpr uintptr_t kRTWDOG_base = 0x400BC000;
+constexpr uintptr_t kRTWDOG_base = 0x400B'C000;
 
 namespace RTWDOG {
 constexpr regs::RegGroup<RTWDOG_Layout, kRTWDOG_size, kRTWDOG_base> group;

@@ -63,9 +63,9 @@ struct I2S_Layout {
 };
 
 constexpr size_t    kI2S_size  = 0xE4;
-constexpr uintptr_t kI2S1_base = 0x40384000;
-constexpr uintptr_t kI2S2_base = 0x40388000;
-constexpr uintptr_t kI2S3_base = 0x4038C000;
+constexpr uintptr_t kI2S1_base = 0x4038'4000;
+constexpr uintptr_t kI2S2_base = 0x4038'8000;
+constexpr uintptr_t kI2S3_base = 0x4038'C000;
 
 namespace I2S1 {
 constexpr regs::RegGroup<I2S_Layout, kI2S_size, kI2S1_base> group;

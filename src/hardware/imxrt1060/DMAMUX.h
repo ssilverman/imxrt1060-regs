@@ -32,7 +32,7 @@ struct DMAMUX_Layout {
 };
 
 constexpr size_t    kDMAMUX_size = 0x80;
-constexpr uintptr_t kDMAMUX_base = 0x400EC000;
+constexpr uintptr_t kDMAMUX_base = 0x400E'C000;
 
 namespace DMAMUX {
 constexpr regs::RegGroup<DMAMUX_Layout, kDMAMUX_size, kDMAMUX_base> group;

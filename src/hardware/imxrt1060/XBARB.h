@@ -35,8 +35,8 @@ struct XBARB_Layout {
 };
 
 constexpr size_t    kXBARB_size  = 0x10;
-constexpr uintptr_t kXBARB2_base = 0x403C0000;
-constexpr uintptr_t kXBARB3_base = 0x403C4000;
+constexpr uintptr_t kXBARB2_base = 0x403C'0000;
+constexpr uintptr_t kXBARB3_base = 0x403C'4000;
 
 namespace XBARB2 {
 constexpr regs::RegGroup<XBARB_Layout, kXBARB_size, kXBARB2_base> group;

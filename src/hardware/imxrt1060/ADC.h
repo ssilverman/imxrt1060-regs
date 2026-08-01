@@ -40,8 +40,8 @@ struct ADC_Layout {
 };
 
 constexpr size_t    kADC_size  = 0x5C;
-constexpr uintptr_t kADC1_base = 0x400C4000;
-constexpr uintptr_t kADC2_base = 0x400C8000;
+constexpr uintptr_t kADC1_base = 0x400C'4000;
+constexpr uintptr_t kADC2_base = 0x400C'8000;
 
 namespace ADC1 {
 constexpr regs::RegGroup<ADC_Layout, kADC_size, kADC1_base> group;

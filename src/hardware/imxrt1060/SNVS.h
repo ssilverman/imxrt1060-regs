@@ -67,7 +67,7 @@ struct SNVS_Layout {
 };
 
 constexpr size_t    kSNVS_size = 0xC00;
-constexpr uintptr_t kSNVS_base = 0x400D4000;
+constexpr uintptr_t kSNVS_base = 0x400D'4000;
 
 namespace SNVS {
 constexpr regs::RegGroup<SNVS_Layout, kSNVS_size, kSNVS_base> group;

@@ -48,7 +48,7 @@ struct ADC_ETC_Layout {
 };
 
 constexpr size_t    kADC_ETC_size = 0x150;
-constexpr uintptr_t kADC_ETC_base = 0x403B0000;
+constexpr uintptr_t kADC_ETC_base = 0x403B'0000;
 
 namespace ADC_ETC {
 constexpr regs::RegGroup<ADC_ETC_Layout, kADC_ETC_size, kADC_ETC_base> group;

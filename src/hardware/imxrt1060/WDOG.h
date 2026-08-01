@@ -31,8 +31,8 @@ struct WDOG_Layout {
 };
 
 constexpr size_t    kWDOG_size  = 0xA;
-constexpr uintptr_t kWDOG1_base = 0x400B8000;
-constexpr uintptr_t kWDOG2_base = 0x400D0000;
+constexpr uintptr_t kWDOG1_base = 0x400B'8000;
+constexpr uintptr_t kWDOG2_base = 0x400D'0000;
 
 namespace WDOG1 {
 constexpr regs::RegGroup<WDOG_Layout, kWDOG_size, kWDOG1_base> group;

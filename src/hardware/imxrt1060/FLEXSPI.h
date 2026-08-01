@@ -72,8 +72,8 @@ struct FLEXSPI_Layout {
 };
 
 constexpr size_t    kFLEXSPI_size  = 0x300;
-constexpr uintptr_t kFLEXSPI_base  = 0x402A8000;
-constexpr uintptr_t kFLEXSPI2_base = 0x402A4000;
+constexpr uintptr_t kFLEXSPI_base  = 0x402A'8000;
+constexpr uintptr_t kFLEXSPI2_base = 0x402A'4000;
 
 namespace FLEXSPI {
 constexpr regs::RegGroup<FLEXSPI_Layout, kFLEXSPI_size, kFLEXSPI_base> group;

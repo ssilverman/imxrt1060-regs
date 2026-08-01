@@ -98,7 +98,7 @@ struct LCDIF_Layout {
 };
 
 constexpr size_t    kLCDIF_size = 0xB44;
-constexpr uintptr_t kLCDIF_base = 0x402B8000;
+constexpr uintptr_t kLCDIF_base = 0x402B'8000;
 
 namespace LCDIF {
 constexpr regs::RegGroup<LCDIF_Layout, kLCDIF_size, kLCDIF_base> group;

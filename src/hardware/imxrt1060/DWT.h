@@ -48,7 +48,7 @@ struct DWT_Layout {
 };
 
 constexpr size_t    kDWT_size = 0x5C;
-constexpr uintptr_t kDWT_base = 0xE0001000;  /*!< DWT Base Address */
+constexpr uintptr_t kDWT_base = 0xE000'1000;  /*!< DWT Base Address */
 
 namespace DWT {
 constexpr regs::RegGroup<DWT_Layout, kDWT_size, kDWT_base> group;

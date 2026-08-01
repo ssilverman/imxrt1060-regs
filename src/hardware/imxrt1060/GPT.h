@@ -38,8 +38,8 @@ struct GPT_Layout {
 };
 
 constexpr size_t    kGPT_size  = 0x28;
-constexpr uintptr_t kGPT1_base = 0x401EC000;
-constexpr uintptr_t kGPT2_base = 0x401F0000;
+constexpr uintptr_t kGPT1_base = 0x401E'C000;
+constexpr uintptr_t kGPT2_base = 0x401F'0000;
 
 namespace GPT1 {
 constexpr regs::RegGroup<GPT_Layout, kGPT_size, kGPT1_base> group;

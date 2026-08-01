@@ -91,7 +91,7 @@ struct TRNG_Layout {
 };
 
 constexpr size_t    kTRNG_size = 0xF8;
-constexpr uintptr_t kTRNG_base = 0x400CC000;
+constexpr uintptr_t kTRNG_base = 0x400C'C000;
 
 namespace TRNG {
 constexpr regs::RegGroup<TRNG_Layout, kTRNG_size, kTRNG_base> group;

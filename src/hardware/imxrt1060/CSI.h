@@ -43,7 +43,7 @@ struct CSI_Layout {
 };
 
 constexpr size_t    kCSI_size = 0x50;
-constexpr uintptr_t kCSI_base = 0x402BC000;
+constexpr uintptr_t kCSI_base = 0x402B'C000;
 
 namespace CSI {
 constexpr regs::RegGroup<CSI_Layout, kCSI_size, kCSI_base> group;

@@ -90,7 +90,7 @@ struct CCM_ANALOG_Layout {
 };
 
 constexpr size_t    kCCM_ANALOG_size = 0x180;
-constexpr uintptr_t kCCM_ANALOG_base = 0x400D8000;
+constexpr uintptr_t kCCM_ANALOG_base = 0x400D'8000;
 
 namespace CCM_ANALOG {
 constexpr regs::RegGroup<CCM_ANALOG_Layout, kCCM_ANALOG_size, kCCM_ANALOG_base>

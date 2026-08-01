@@ -41,7 +41,7 @@ struct PIT_Layout {
 };
 
 constexpr size_t    kPIT_size = 0x140;
-constexpr uintptr_t kPIT_base = 0x40084000;
+constexpr uintptr_t kPIT_base = 0x4008'4000;
 
 namespace PIT {
 constexpr regs::RegGroup<PIT_Layout, kPIT_size, kPIT_base> group;

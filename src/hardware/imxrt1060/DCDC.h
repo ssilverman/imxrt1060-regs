@@ -30,7 +30,7 @@ struct DCDC_Layout {
 };
 
 constexpr size_t    kDCDC_size = 0x10;
-constexpr uintptr_t kDCDC_base = 0x40080000;
+constexpr uintptr_t kDCDC_base = 0x4008'0000;
 
 namespace DCDC {
 constexpr regs::RegGroup<DCDC_Layout, kDCDC_size, kDCDC_base> group;

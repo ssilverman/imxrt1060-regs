@@ -31,7 +31,7 @@ struct FLEXRAM_Layout {
 };
 
 constexpr size_t    kFLEXRAM_size = 0x1C;
-constexpr uintptr_t kFLEXRAM_base = 0x400B0000;
+constexpr uintptr_t kFLEXRAM_base = 0x400B'0000;
 
 namespace FLEXRAM {
 constexpr regs::RegGroup<FLEXRAM_Layout, kFLEXRAM_size, kFLEXRAM_base> group;

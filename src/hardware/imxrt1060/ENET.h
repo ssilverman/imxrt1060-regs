@@ -153,8 +153,8 @@ struct ENET_Layout {
 };
 
 constexpr size_t    kENET_size  = 0x628;
-constexpr uintptr_t kENET_base  = 0x402D8000;
-constexpr uintptr_t kENET2_base = 0x402D4000;
+constexpr uintptr_t kENET_base  = 0x402D'8000;
+constexpr uintptr_t kENET2_base = 0x402D'4000;
 
 namespace ENET {
 constexpr regs::RegGroup<ENET_Layout, kENET_size, kENET_base> group;

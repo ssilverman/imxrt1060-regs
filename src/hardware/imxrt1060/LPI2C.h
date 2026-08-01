@@ -67,10 +67,10 @@ struct LPI2C_Layout {
 };
 
 constexpr size_t    kLPI2C_size  = 0x174;
-constexpr uintptr_t kLPI2C1_base = 0x403F0000;
-constexpr uintptr_t kLPI2C2_base = 0x403F4000;
-constexpr uintptr_t kLPI2C3_base = 0x403F8000;
-constexpr uintptr_t kLPI2C4_base = 0x403FC000;
+constexpr uintptr_t kLPI2C1_base = 0x403F'0000;
+constexpr uintptr_t kLPI2C2_base = 0x403F'4000;
+constexpr uintptr_t kLPI2C3_base = 0x403F'8000;
+constexpr uintptr_t kLPI2C4_base = 0x403F'C000;
 
 namespace LPI2C1 {
 constexpr regs::RegGroup<LPI2C_Layout, kLPI2C_size, kLPI2C1_base> group;

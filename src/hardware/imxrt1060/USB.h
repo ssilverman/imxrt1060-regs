@@ -85,8 +85,8 @@ struct USB_Layout {
 };
 
 constexpr size_t    kUSB_size  = 0x1E0;
-constexpr uintptr_t kUSB1_base = 0x402E0000;
-constexpr uintptr_t kUSB2_base = 0x402E0200;
+constexpr uintptr_t kUSB1_base = 0x402E'0000;
+constexpr uintptr_t kUSB2_base = 0x402E'0200;
 
 namespace USB1 {
 constexpr regs::RegGroup<USB_Layout, kUSB_size, kUSB1_base> group;

@@ -118,7 +118,7 @@ struct DCP_Layout {
 };
 
 constexpr size_t    kDCP_size = 0x434;
-constexpr uintptr_t kDCP_base = 0x402FC000;
+constexpr uintptr_t kDCP_base = 0x402F'C000;
 
 namespace DCP {
 constexpr regs::RegGroup<DCP_Layout, kDCP_size, kDCP_base> group;

@@ -143,7 +143,7 @@ struct OCOTP_Layout {
 };
 
 constexpr size_t    kOCOTP_size = 0x8F4;
-constexpr uintptr_t kOCOTP_base = 0x401F4000;
+constexpr uintptr_t kOCOTP_base = 0x401F'4000;
 
 namespace OCOTP {
 constexpr regs::RegGroup<OCOTP_Layout, kOCOTP_size, kOCOTP_base> group;

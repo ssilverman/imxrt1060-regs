@@ -43,7 +43,7 @@ struct IOMUXC_Layout {
 };
 
 constexpr size_t    kIOMUXC_size = 0x790;
-constexpr uintptr_t kIOMUXC_base = 0x401F8000;
+constexpr uintptr_t kIOMUXC_base = 0x401F'8000;
 
 namespace IOMUXC {
 constexpr regs::RegGroup<IOMUXC_Layout, kIOMUXC_size, kIOMUXC_base> group;

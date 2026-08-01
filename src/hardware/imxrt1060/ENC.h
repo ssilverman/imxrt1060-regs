@@ -46,10 +46,10 @@ struct ENC_Layout {
 };
 
 constexpr size_t    kENC_size  = 0x28;
-constexpr uintptr_t kENC1_base = 0x403C8000;
-constexpr uintptr_t kENC2_base = 0x403CC000;
-constexpr uintptr_t kENC3_base = 0x403D0000;
-constexpr uintptr_t kENC4_base = 0x403D4000;
+constexpr uintptr_t kENC1_base = 0x403C'8000;
+constexpr uintptr_t kENC2_base = 0x403C'C000;
+constexpr uintptr_t kENC3_base = 0x403D'0000;
+constexpr uintptr_t kENC4_base = 0x403D'4000;
 
 namespace ENC1 {
 constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC1_base> group;

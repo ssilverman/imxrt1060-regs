@@ -47,10 +47,10 @@ struct TMR_Layout {
 };
 
 constexpr size_t    kTMR_size  = 0x80;
-constexpr uintptr_t kTMR1_base = 0x401DC000;
-constexpr uintptr_t kTMR2_base = 0x401E0000;
-constexpr uintptr_t kTMR3_base = 0x401E4000;
-constexpr uintptr_t kTMR4_base = 0x401E8000;
+constexpr uintptr_t kTMR1_base = 0x401D'C000;
+constexpr uintptr_t kTMR2_base = 0x401E'0000;
+constexpr uintptr_t kTMR3_base = 0x401E'4000;
+constexpr uintptr_t kTMR4_base = 0x401E'8000;
 
 namespace TMR1 {
 constexpr regs::RegGroup<TMR_Layout, kTMR_size, kTMR1_base> group;
