@@ -198,9 +198,9 @@ class Reg {
     // Either directly assign or clear and then set the bits
     if constexpr ((AssignMask == 0) ||
                   ((Bits == kWholeRegBits) && (Shift == 0))) {
-      *r() = (*this)(val) | AssignSet;
+      *r() = static_cast<R>((*this)(val) | AssignSet);
     } else {
-      *r() = (*r() & ~AssignMask) | AssignSet | (*this)(val);
+      *r() = static_cast<R>((*r() & ~AssignMask) | AssignSet | (*this)(val));
     }
     return *this;
   }
