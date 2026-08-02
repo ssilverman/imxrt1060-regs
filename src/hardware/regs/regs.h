@@ -41,6 +41,18 @@ class RegGroup {
 // Gets the basic shifted mask for the given parameters.
 template <typename R, size_t Bits, unsigned int Shift>
 constexpr R shiftedMask() {
+  // Number of bits in whole register.
+  constexpr size_t kWholeRegBits = std::numeric_limits<R>::digits;
+
+  // Parameter shape checks
+  static_assert(std::is_integral_v<R> && std::is_unsigned_v<R>,
+                "Type must be unsigned integral");
+  static_assert(Bits != 0, "Bits shouldn't be zero");
+  static_assert(Bits <= kWholeRegBits, "Bit count exceeds type width");
+  static_assert(Shift < kWholeRegBits, "Shift exceeds type width");
+  static_assert((Bits <= kWholeRegBits) && (Shift <= kWholeRegBits - Bits),
+                "Value extends past type bounds");
+
   // Add -1 using R-bit modular arithmetic
   return static_cast<R>(
              (((Bits < std::numeric_limits<R>::digits) ? (R{1} << Bits)
