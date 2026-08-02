@@ -163,7 +163,8 @@ class Reg {
   // static_assert((AssignSet & AssignMask) == 0);  // They should be disjoint
   static_assert((AssignSet & kMask) == 0);  // They should be "mostly" disjoint
 
-  // Returns the masked and shifted version of the given value.
+  // Returns the masked and shifted version of the given value. This does not
+  // include any bits from AssignSet.
   [[gnu::always_inline]]
   constexpr R operator()(const R val) const {
     return (val << Shift) & kMask;
