@@ -127,7 +127,24 @@ constexpr SCB_Reg<regs::constify(&SCB_Layout::ICSR), 9,  0> VECTACTIVE;   // Act
 
 // Vector Table Offset Register
 namespace VTOR {
+
+static_assert(sizeof(void (*)()) == sizeof(uint32_t),
+              "Function pointer size must be 4 bytes");
+
+// Sets an interrupt vector. VTOR must point to a vector table in writable RAM.
+static inline void setVector(const uint8_t irq, void (* const f)()) {
+  const auto table = reinterpret_cast<uint32_t*>(group->VTOR);
+  table[irq + 16] = reinterpret_cast<uint32_t>(f);
+  asm volatile ("dsb sy" ::: "memory");
+}
+
+static inline void (*getVector(const uint8_t irq))() {
+  const auto table = reinterpret_cast<uint32_t*>(group->VTOR);
+  return reinterpret_cast<void (*)()>(table[irq + 16]);
+}
+
 constexpr SCB_Reg<&SCB_Layout::VTOR, 25, 7> TBLOFF;  // Vector table base offset
+
 }  // namespace VTOR
 
 // Application Interrupt and Reset Control Register
