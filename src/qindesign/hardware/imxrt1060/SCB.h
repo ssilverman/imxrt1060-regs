@@ -150,6 +150,7 @@ constexpr SCB_Reg<&SCB_Layout::VTOR, 25, 7> TBLOFF;  // Vector table base offset
 // Application Interrupt and Reset Control Register
 // Exercise caution when setting or assigning fields in this register.
 namespace AIRCR {
+
 // TODO: Is this the correct way?
 constexpr uint32_t kWO = 0xffff'0007;
 
@@ -171,6 +172,25 @@ constexpr SCB_Reg<&SCB_Layout::AIRCR, 1, 2, kWO, kVECTKEY, true> SYSRESETREQ;
 constexpr SCB_Reg<&SCB_Layout::AIRCR, 1, 1, kWO, kVECTKEY, true> VECTCLRACTIVE;
 constexpr SCB_Reg<&SCB_Layout::AIRCR, 1, 0, kWO, kVECTKEY, true> VECTRESET;
 }  // namespace keyed
+
+static inline void systemReset() {
+  // Ensure all outstanding memory accesses including buffered writes are
+  // completed before reset
+  asm volatile("dsb sy" ::: "memory");
+
+  // Keep priority group unchanged
+  group->AIRCR =
+      VECTKEY(0x05fa) | (group->AIRCR & PRIGROUP.kMask) | keyed::SYSRESETREQ(1);
+
+  // Ensure completion of memory access
+  asm volatile("dsb sy" ::: "memory");
+
+  // Wait until reset
+  while (true) {
+    asm volatile ("nop");
+  }
+}
+
 }  // namespace AIRCR
 
 // System Control Register
