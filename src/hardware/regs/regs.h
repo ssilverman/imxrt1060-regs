@@ -49,6 +49,24 @@ constexpr R shiftedMask() {
              << Shift);
 }
 
+// Gets the basic shifted 32-bit mask for the given parameters.
+template <size_t Bits, unsigned int Shift>
+constexpr uint32_t shiftedMask32() {
+  return shiftedMask<uint32_t, Bits, Shift>();
+}
+
+// Gets the basic shifted 16-bit mask for the given parameters.
+template <size_t Bits, unsigned int Shift>
+constexpr uint16_t shiftedMask16() {
+  return shiftedMask<uint16_t, Bits, Shift>();
+}
+
+// Gets the basic shifted 8-bit mask for the given parameters.
+template <size_t Bits, unsigned int Shift>
+constexpr uint8_t shiftedMask8() {
+  return shiftedMask<uint8_t, Bits, Shift>();
+}
+
 // Reg defines an easier way to access parts of a register.
 //
 // The 'R' parameter is the unsigned type of each whole register, for example,
@@ -333,7 +351,7 @@ template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          auto AssignMask = shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = shiftedMask32<Bits, Shift>(),
           uint32_t AssignSet = 0,
           bool WriteOnly = false>
 using Reg32 = Reg<uint32_t, Base, Layout, Member, MemberOffset, Bits, Shift,
@@ -346,7 +364,7 @@ template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          auto AssignMask = shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = shiftedMask16<Bits, Shift>(),
           uint16_t AssignSet = 0,
           bool WriteOnly = false>
 using Reg16 = Reg<uint16_t, Base, Layout, Member, MemberOffset, Bits, Shift,
@@ -359,7 +377,7 @@ template <uintptr_t Base, typename Layout,
           auto Member,          // Can be const or non-const
           size_t MemberOffset,  // If the member is an array, otherwise zero
           size_t Bits, unsigned int Shift,
-          auto AssignMask = shiftedMask<uint8_t, Bits, Shift>(),
+          auto AssignMask = shiftedMask8<Bits, Shift>(),
           uint8_t AssignSet = 0,
           bool WriteOnly = false>
 using Reg8 = Reg<uint8_t, Base, Layout, Member, MemberOffset, Bits, Shift,
