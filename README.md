@@ -32,13 +32,13 @@ the code is often hard to read.
 Wouldn't it be nice to set parts of a register like this:
 
 ```c++
-IOMUXC_GPR_GPR1_ENET1_CLK_SEL     = 0;
-IOMUXC_GPR_GPR1_ENET_IPG_CLK_S_EN = 1;
-IOMUXC_GPR_GPR1_ENET1_TX_CLK_DIR  = 1;
+IOMUXC_GPR::GPR1::ENET1_CLK_SEL     = 0;
+IOMUXC_GPR::GPR1::ENET_IPG_CLK_S_EN = 1;
+IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR  = 1;
 
 // ...do stuff...
 
-IOMUXC_GPR_GPR1_ENET1_TX_CLK_DIR = 0;
+IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR = 0;
 ```
 
 ...instead of this?
