@@ -113,18 +113,18 @@ constexpr uint32_t kWO  = 0x0000'0040;
 
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 16, regs::shiftedMask32<1, 16>() | kW1C | kWO> PRGM;       // Programming Mode Select
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 14, regs::shiftedMask32<1, 14>() | kW1C | kWO> LRUN_CONT;  // Long run count continues between entropy generations
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 13> TSTOP_OK;                       // TRNG_OK_TO_STOP
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 12, kW1C | kWO> ERR;                                // Read: Error status
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 11> TST_OUT;                        // Read only: Test point inside ring oscillator.
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 10> ENT_VAL;                        // Read only: Entropy Valid
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  9> FCT_VAL;                        // Read only: Frequency Count Valid.
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 13> TSTOP_OK;                              // TRNG_OK_TO_STOP
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 12, kW1C | kWO> ERR;                                       // Read: Error status
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 11> TST_OUT;                               // Read only: Test point inside ring oscillator.
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1, 10> ENT_VAL;                               // Read only: Entropy Valid
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  9> FCT_VAL;                               // Read only: Frequency Count Valid.
     // Indicates that a valid frequency count may be read from FRQCNT.
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  8> FCT_FAIL;                       // Read only: Frequency Count Fail
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  8> FCT_FAIL;                              // Read only: Frequency Count Fail
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  7, regs::shiftedMask32<1,  7>() | kW1C | kWO> FOR_SCLK;   // Force System Clock
-constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6, kW1C | kWO, true> RST_DEF;                      // Reset Defaults
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  5> UNUSED5;                        // This bit is unused.
+constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1,  6, kW1C | kWO, true> RST_DEF;                             // Reset Defaults
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  5> UNUSED5;                               // This bit is unused.
     // Always reads zero.
-constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  4> UNUSED4;                        // This bit is unused.
+constexpr TRNG_Reg<regs::constify(&TRNG_Layout::MCTL), 1,  4> UNUSED4;                               // This bit is unused.
     // Always reads zero.
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 2,  2, regs::shiftedMask32<2,  2>() | kW1C | kWO> OSC_DIV;    // Oscillator Divide
     // 1/2^value

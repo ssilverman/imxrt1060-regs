@@ -99,10 +99,10 @@ namespace CR {
 // TODO: Is this the correct way?
 constexpr uint32_t kWO = 0x0000'0300;
 
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;                     // Reset Receive FIFO
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;                            // Reset Receive FIFO
     // 0b0..No effect
     // 0b1..Reset the Receive FIFO. The register bit always reads zero.
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;                     // Reset Transmit FIFO
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;                            // Reset Transmit FIFO
     // 0b0..No effect
     // 0b1..Reset the Transmit FIFO. The register bit always reads zero.
 constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 3, regs::shiftedMask32<1, 3>() | kWO> DBGEN;  // Debug Enable

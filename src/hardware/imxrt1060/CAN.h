@@ -962,11 +962,11 @@ constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 16, regs::shiftedMask32<2, 16>() | kW
 constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 15, regs::shiftedMask32<1, 15>() | kW1C> TDCEN;   // Transceiver Delay Compensation Enable
     // 0b0..TDC is disabled
     // 0b1..TDC is enabled
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 14, kW1C> TDCFAIL;                          // Transceiver Delay Compensation Fail
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 14, kW1C> TDCFAIL;                                // Transceiver Delay Compensation Fail
     // 0b0..Measured loop delay is in range.
     // 0b1..Measured loop delay is out of range.
 constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 5,  8, regs::shiftedMask32<5,  8>() | kW1C> TDCOFF;  // Transceiver Delay Compensation Offset
-constexpr CAN3_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0> TDCVAL;                 // Transceiver Delay Compensation Value
+constexpr CAN3_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0> TDCVAL;                       // Transceiver Delay Compensation Value
 }  // namespace FDCTRL
 
 // CAN3 FD Bit Timing Register
@@ -1018,12 +1018,12 @@ constexpr regs::RegValue32<16,  0> TIME_STAMP;  // Free-Running Counter Time sta
 // Message Buffer 0 ID Register..Message Buffer 6 ID Register values
 namespace ID {
 namespace vals {
-constexpr regs::RegValue32< 3, 29> PRIO;  // R/O, Local priority.
+constexpr regs::RegValue32< 3, 29> PRIO;          // R/O, Local priority.
     // This 3-bit fieldis only used when LPRIO_EN bit is set in MCR and it only
     //   makes sense for Tx buffers. These bits are not transmitted. They are appended to the regular
     //   ID to define the transmission priority.
-constexpr regs::RegValue32<11, 18> STD;  // Contains standard/extended (HIGH word) identifier of message buffer.
-constexpr regs::RegValue32<18,  0> EXT;  // Contains extended (LOW word) identifier of message buffer.
+constexpr regs::RegValue32<11, 18> STD;           // Contains standard/extended (HIGH word) identifier of message buffer.
+constexpr regs::RegValue32<18,  0> EXT;           // Contains extended (LOW word) identifier of message buffer.
 constexpr regs::RegValue32<29,  0> EXT_complete;  // Contains the whole extended identifier
     // Note: EXT overlaps STD intentionally
 }  // namespace vals

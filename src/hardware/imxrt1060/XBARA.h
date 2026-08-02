@@ -508,7 +508,7 @@ constexpr XBARA1_Reg<&XBARA_Layout::SEL65, 7, 0> SEL130;  // Input (XBARA_INn) t
 namespace CTRL0 {
 constexpr uint16_t kW1C = 0x1010;
 
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1, 12, kW1C> STS1;                           // Edge detection status for XBAR_OUT1
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1, 12, kW1C> STS1;                                  // Edge detection status for XBAR_OUT1
     // 0b0..Active edge not yet detected on XBAR_OUT1
     // 0b1..Active edge detected on XBAR_OUT1
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2, 10, regs::shiftedMask16<2, 10>() | kW1C> EDGE1;  // Active edge for edge detection on XBAR_OUT1
@@ -522,7 +522,7 @@ constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  9, regs::shiftedMask16<1,  9>() |
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  8, regs::shiftedMask16<1,  8>() | kW1C> DEN1;   // DMA Enable for XBAR_OUT1
     // 0b0..DMA disabled
     // 0b1..DMA enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  4, kW1C> STS0;                           // Edge detection status for XBAR_OUT0
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  4, kW1C> STS0;                                  // Edge detection status for XBAR_OUT0
     // 0b0..Active edge not yet detected on XBAR_OUT0
     // 0b1..Active edge detected on XBAR_OUT0
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2,  2, regs::shiftedMask16<2,  2>() | kW1C> EDGE0;  // Active edge for edge detection on XBAR_OUT0
@@ -542,7 +542,7 @@ constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  0, regs::shiftedMask16<1,  0>() |
 namespace CTRL1 {
 constexpr uint16_t kW1C = 0x1010;
 
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1, 12, kW1C> STS3;                           // Edge detection status for XBAR_OUT3
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1, 12, kW1C> STS3;                                  // Edge detection status for XBAR_OUT3
     // 0b0..Active edge not yet detected on XBAR_OUT3
     // 0b1..Active edge detected on XBAR_OUT3
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2, 10, regs::shiftedMask16<2, 10>() | kW1C> EDGE3;  // Active edge for edge detection on XBAR_OUT3
@@ -556,7 +556,7 @@ constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  9, regs::shiftedMask16<1,  9>() |
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  8, regs::shiftedMask16<1,  8>() | kW1C> DEN3;   // DMA Enable for XBAR_OUT3
     // 0b0..DMA disabled
     // 0b1..DMA enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  4, kW1C> STS2;                           // Edge detection status for XBAR_OUT2
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  4, kW1C> STS2;                                  // Edge detection status for XBAR_OUT2
     // 0b0..Active edge not yet detected on XBAR_OUT2
     // 0b1..Active edge detected on XBAR_OUT2
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2,  2, regs::shiftedMask16<2,  2>() | kW1C> EDGE2;  // Active edge for edge detection on XBAR_OUT2

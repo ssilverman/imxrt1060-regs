@@ -464,7 +464,7 @@ constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 28, regs::shiftedMask32<1, 28>() | k
     // This bit has no effect if serial interface engine is used
     // 0b0..Select the 8-bit UTMI interface [60MHz]
     // 0b1..Select the 16-bit UTMI interface [30MHz]
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26> PSPD;                 // Port Speed - Read Only.
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26> PSPD;                        // Port Speed - Read Only.
     // This register field indicates the speed at which the port is operating.
     // 0b00..Full Speed
     // 0b01..Low Speed
@@ -497,23 +497,23 @@ constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 14, regs::shiftedMask32<2, 14>() | k
     // 0b11..Undefined
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 13, regs::shiftedMask32<1, 13>() | kW1C> PO;     // Port Owner-Read/Write
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> PP;     // Port Power (PP)-Read/Write or Read Only
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10> LS;                   // Line Status-Read Only
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10> LS;                          // Line Status-Read Only
     // 0b00..SE0
     // 0b01..K-state
     // 0b10..J-state
     // 0b11..Undefined
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9> HSP;                  // High-Speed Port - Read Only
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9> HSP;                         // High-Speed Port - Read Only
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> PR;     // Port Reset - Read/Write or Read Only
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> SUSP;   // Suspend - Read/Write or Read Only
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  6, regs::shiftedMask32<1,  6>() | kW1C> FPR;    // Force Port Resume -Read/Write
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  5, kW1C> OCC;                            // Over-current Change-R/WC
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;                  // Over-current Active-Read Only
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  5, kW1C> OCC;                                   // Over-current Change-R/WC
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;                         // Over-current Active-Read Only
     // 0b0..This port does not have an over-current condition.
     // 0b1..This port currently has an over-current condition
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  3, kW1C> PEC;                            // Port Enable/Disable Change-R/WC
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  3, kW1C> PEC;                                   // Port Enable/Disable Change-R/WC
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  2, regs::shiftedMask32<1,  2>() | kW1C> PE;     // Port Enabled/Disabled-Read/Write
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  1, kW1C> CSC;                            // Connect Status Change-R/WC
-constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;                  // Current Connect Status-Read Only
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  1, kW1C> CSC;                                   // Connect Status Change-R/WC
+constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;                         // Current Connect Status-Read Only
 }  // namespace PORTSC1
 
 // USB1 On-The-Go Status & control
@@ -532,25 +532,25 @@ constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 25, regs::shiftedMask32<1, 25>() | kW1
     // Setting this bit enables the A VBus valid interrupt.
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> IDIE;    // USB ID Interrupt Enable - Read/Write.
     // Setting this bit enables the USB ID interrupt.
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 22, kW1C> DPIS;                            // Data Pulse Interrupt Status - Read/Write to Clear
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 21, kW1C> STATUS_1MS;                      // 1 millisecond timer Interrupt Status - Read/Write to Clear
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 20, kW1C> BSEIS;                           // B Session End Interrupt Status - Read/Write to Clear
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 19, kW1C> BSVIS;                           // B Session Valid Interrupt Status - Read/Write to Clear
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 18, kW1C> ASVIS;                           // A Session Valid Interrupt Status - Read/Write to Clear
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 17, kW1C> AVVIS;                           // A VBus Valid Interrupt Status - Read/Write to Clear
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 16, kW1C> IDIS;                            // USB ID Interrupt Status - Read/Write
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14> DPS;                   // Data Bus Pulsing Status - Read Only
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13> TOG_1MS;               // 1 millisecond timer toggle - Read Only.
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 22, kW1C> DPIS;                                   // Data Pulse Interrupt Status - Read/Write to Clear
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 21, kW1C> STATUS_1MS;                             // 1 millisecond timer Interrupt Status - Read/Write to Clear
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 20, kW1C> BSEIS;                                  // B Session End Interrupt Status - Read/Write to Clear
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 19, kW1C> BSVIS;                                  // B Session Valid Interrupt Status - Read/Write to Clear
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 18, kW1C> ASVIS;                                  // A Session Valid Interrupt Status - Read/Write to Clear
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 17, kW1C> AVVIS;                                  // A VBus Valid Interrupt Status - Read/Write to Clear
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 16, kW1C> IDIS;                                   // USB ID Interrupt Status - Read/Write
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 14> DPS;                          // Data Bus Pulsing Status - Read Only
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 13> TOG_1MS;                      // 1 millisecond timer toggle - Read Only.
     // This bit toggles once per millisecond.
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12> BSE;                   // B Session End - Read Only.
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 12> BSE;                          // B Session End - Read Only.
     // Indicates VBus is below the B session end threshold.
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11> BSV;                   // B Session Valid - Read Only.
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11> BSV;                          // B Session Valid - Read Only.
     // Indicates VBus is above the B session valid threshold.
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;                   // A Session Valid - Read Only.
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;                          // A Session Valid - Read Only.
     // Indicates VBus is above the A session valid threshold.
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;                   // A VBus Valid - Read Only.
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;                          // A VBus Valid - Read Only.
     // Indicates VBus is above the A VBus valid threshold.
-constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;                    // USB ID - Read Only.
+constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;                           // USB ID - Read Only.
     // 0 = A device, 1 = B device
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  5, regs::shiftedMask32<1,  5>() | kW1C> IDPU;    // ID Pullup - Read/Write
     // This bit provide control over the ID pull-up resistor; 0 = off, 1 = on [default]

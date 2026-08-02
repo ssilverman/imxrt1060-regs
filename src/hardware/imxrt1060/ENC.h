@@ -78,7 +78,7 @@ using ENC1_Reg =
 namespace CTRL {
 constexpr uint16_t kW1C = 0x8112;
 
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;                           // HOME Signal Transition Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;                                  // HOME Signal Transition Interrupt Request
     // 0b0..No transition on the HOME signal has occurred
     // 0b1..A transition on the HOME signal has occurred
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 14, regs::shiftedMask16<1, 14>() | kW1C> HIE;    // HOME Interrupt Enable
@@ -102,7 +102,7 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9, regs::shiftedMask16<1,  9>() | kW1C
     //      PHASEB input and the REV bit control the counter direction: If CTRL[REV] = 0, PHASEB = 0, then count up If
     //      CTRL[REV] = 1, PHASEB = 1, then count up If CTRL[REV] = 0, PHASEB = 1, then count down If CTRL[REV] = 1,
     //      PHASEB = 0, then count down
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;                           // INDEX Pulse Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;                                  // INDEX Pulse Interrupt Request
     // 0b0..INDEX pulse has not occurred
     // 0b1..INDEX pulse has occurred
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  7, regs::shiftedMask16<1,  7>() | kW1C> XIE;    // INDEX Pulse Interrupt Enable
@@ -114,7 +114,7 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  6, regs::shiftedMask16<1,  6>() | kW1C
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  5, regs::shiftedMask16<1,  5>() | kW1C> XNE;    // Use Negative Edge of INDEX Pulse
     // 0b0..Use positive edge of INDEX pulse
     // 0b1..Use negative edge of INDEX pulse
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;                           // Watchdog Timeout Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;                                  // Watchdog Timeout Interrupt Request
     // 0b0..No Watchdog timeout interrupt has occurred
     // 0b1..Watchdog timeout interrupt has occurred
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3, regs::shiftedMask16<1,  3>() | kW1C> DIE;    // Watchdog Timeout Interrupt Enable
@@ -123,7 +123,7 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3, regs::shiftedMask16<1,  3>() | kW1C
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  2, regs::shiftedMask16<1,  2>() | kW1C> WDE;    // Watchdog Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;                         // Compare Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;                                // Compare Interrupt Request
     // 0b0..No match has occurred (the counter does not match the COMP value)
     // 0b1..COMP match has occurred (the counter matches the COMP value)
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  0, regs::shiftedMask16<1,  0>() | kW1C> CMPIE;  // Compare Interrupt Enable
@@ -230,19 +230,19 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C>
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;  // Revolution Counter Modulus Enable
     // 0b0..Use INDEX pulse to increment/decrement revolution counter (REV)
     // 0b1..Use modulus counting roll-over/under to increment/decrement revolution counter (REV)
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;                          // Roll-over Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;                                 // Roll-over Interrupt Request
     // 0b0..No roll-over has occurred
     // 0b1..Roll-over has occurred
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 6, regs::shiftedMask16<1, 6>() | kW1C> ROIE;    // Roll-over Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;                          // Roll-under Interrupt Request
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;                                 // Roll-under Interrupt Request
     // 0b0..No roll-under has occurred
     // 0b1..Roll-under has occurred
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 4, regs::shiftedMask16<1, 4>() | kW1C> RUIE;    // Roll-under Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;                  // Count Direction Flag
+constexpr ENC1_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;                         // Count Direction Flag
     // 0b0..Last count was in the down direction
     // 0b1..Last count was in the up direction
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 2, regs::shiftedMask16<1, 2>() | kW1C> MOD;     // Enable Modulo Counting

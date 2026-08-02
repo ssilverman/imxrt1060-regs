@@ -344,7 +344,7 @@ constexpr ENET_Reg<&ENET_Layout::MIBC, 1, 29> MIB_CLEAR;                 // MIB 
 namespace RCR {
 constexpr uint32_t kWOZ = 0x0000'0cc0;
 
-constexpr ENET_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;                          // Graceful Receive Stopped
+constexpr ENET_Reg<regs::constify(&ENET_Layout::RCR), 1, 31> GRS;                               // Graceful Receive Stopped
     // 0b0..Receive not stopped
     // 0b1..Receive stopped
 constexpr ENET_Reg<&ENET_Layout::RCR,  1, 30, regs::shiftedMask32< 1, 30>() | kWOZ> NLC;        // Payload Length Check Disable
@@ -404,7 +404,7 @@ constexpr ENET_Reg<&ENET_Layout::TCR, 3, 5, regs::shiftedMask32<3, 5>() | kWOZ> 
     // 0b100..Reserved.
     // 0b101..Reserved.
     // 0b110..Reserved.
-constexpr ENET_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;               // Receive Frame Control Pause
+constexpr ENET_Reg<regs::constify(&ENET_Layout::TCR), 1, 4> RFC_PAUSE;                      // Receive Frame Control Pause
 constexpr ENET_Reg<&ENET_Layout::TCR, 1, 3, regs::shiftedMask32<1, 3>() | kWOZ> TFC_PAUSE;  // Transmit Frame Control Pause
     // 0b0..No PAUSE frame transmitted.
     // 0b1..The MAC stops transmission of data frames after the current transmission is complete.
@@ -711,7 +711,7 @@ constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11, regs::sh
     // 0b00011..Pulse width is four 1588-clock cycles.
     // 0b11111..Pulse width is 32 1588-clock cycles.
 template <size_t Index>
-constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, kW1C> TF;                              // Timer Flag
+constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 1,  7, kW1C> TF;                                    // Timer Flag
     // 0b0..Input Capture or Output Compare has not occurred.
     // 0b1..Input Capture or Output Compare has occurred.
 template <size_t Index>

@@ -153,19 +153,19 @@ constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C
 constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;     // Software Reset
     // 0b0..No effect.
     // 0b1..Software reset.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;                            // Word Start Flag
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;                                   // Word Start Flag
     // 0b0..Start of word not detected.
     // 0b1..Start of word detected.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;                            // Sync Error Flag
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;                                   // Sync Error Flag
     // 0b0..Sync error not detected.
     // 0b1..Frame sync error detected.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;                            // FIFO Error Flag
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;                                   // FIFO Error Flag
     // 0b0..Transmit underrun not detected.
     // 0b1..Transmit underrun detected.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;                  // FIFO Warning Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;                         // FIFO Warning Flag
     // 0b0..No enabled transmit FIFO is empty.
     // 0b1..Enabled transmit FIFO is empty.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;                  // FIFO Request Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;                         // FIFO Request Flag
     // 0b0..Transmit FIFO watermark has not been reached.
     // 0b1..Transmit FIFO watermark has been reached.
 constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;   // Word Start Interrupt Enable
@@ -326,19 +326,19 @@ constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C
 constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;     // Software Reset
     // 0b0..No effect.
     // 0b1..Software reset.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 20, kW1C> WSF;                            // Word Start Flag
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 20, kW1C> WSF;                                   // Word Start Flag
     // 0b0..Start of word not detected.
     // 0b1..Start of word detected.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 19, kW1C> SEF;                            // Sync Error Flag
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 19, kW1C> SEF;                                   // Sync Error Flag
     // 0b0..Sync error not detected.
     // 0b1..Frame sync error detected.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 18, kW1C> FEF;                            // FIFO Error Flag
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 18, kW1C> FEF;                                   // FIFO Error Flag
     // 0b0..Receive overflow not detected.
     // 0b1..Receive overflow detected.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 17> FWF;                  // FIFO Warning Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 17> FWF;                         // FIFO Warning Flag
     // 0b0..No enabled receive FIFO is full.
     // 0b1..Enabled receive FIFO is full.
-constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 16> FRF;                  // FIFO Request Flag
+constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 16> FRF;                         // FIFO Request Flag
     // 0b0..Receive FIFO watermark not reached.
     // 0b1..Receive FIFO watermark has been reached.
 constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;   // Word Start Interrupt Enable

@@ -135,14 +135,14 @@ namespace AIRCR {
 // TODO: Is this the correct way?
 constexpr uint32_t kWO = 0xffff'0007;
 
-constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, kWO, true> VECTKEY;                    // Register key
+constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, kWO, true> VECTKEY;                           // Register key
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR), 16, 16> VECTKEYSTAT;
-constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR),  1, 15> ENDIANNESS;            // Data endianness
+constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR),  1, 15> ENDIANNESS;                   // Data endianness
 constexpr SCB_Reg<&SCB_Layout::AIRCR,  3,  8, regs::shiftedMask32<3, 8>() | kWO> PRIGROUP;  // Interrupt priority grouping field.
     // This field determines the split of group priority from subpriority.
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  2, kWO, true> SYSRESETREQ;                // System reset request
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  1, kWO, true> VECTCLRACTIVE;              // Writing 1 to this bit clears all active state information for fixed and configurable exceptions.
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  0, kWO, true> VECTRESET;                  // Writing 1 to this bit causes a local system reset
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  2, kWO, true> SYSRESETREQ;                       // System reset request
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  1, kWO, true> VECTCLRACTIVE;                     // Writing 1 to this bit clears all active state information for fixed and configurable exceptions.
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  0, kWO, true> VECTRESET;                         // Writing 1 to this bit causes a local system reset
 }  // namespace AIRCR
 
 // System Control Register

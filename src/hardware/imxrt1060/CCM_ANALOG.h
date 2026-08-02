@@ -782,11 +782,11 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC0_TOG, 1,  0, 0x0> REFTOP_PWD; 
 namespace MISC1 {
 constexpr uint32_t kW1C = 0xf800'0000;
 
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 31, kW1C> IRQ_DIG_BO;                                    // This status bit is set to one when when any of the digital regulator brownout interrupts assert
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 30, kW1C> IRQ_ANA_BO;                                    // This status bit is set to one when when any of the analog regulator brownout interrupts assert
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 29, kW1C> IRQ_TEMPHIGH;                                  // This status bit is set to one when the temperature sensor high interrupt asserts for high temperature
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 28, kW1C> IRQ_TEMPLOW;                                   // This status bit is set to one when the temperature sensor low interrupt asserts for low temperature
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 27, kW1C> IRQ_TEMPPANIC;                                 // This status bit is set to one when the temperature sensor panic interrupt asserts for a panic high temperature
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 31, kW1C> IRQ_DIG_BO;                                          // This status bit is set to one when when any of the digital regulator brownout interrupts assert
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 30, kW1C> IRQ_ANA_BO;                                          // This status bit is set to one when when any of the analog regulator brownout interrupts assert
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 29, kW1C> IRQ_TEMPHIGH;                                        // This status bit is set to one when the temperature sensor high interrupt asserts for high temperature
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 28, kW1C> IRQ_TEMPLOW;                                         // This status bit is set to one when the temperature sensor low interrupt asserts for low temperature
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 27, kW1C> IRQ_TEMPPANIC;                                       // This status bit is set to one when the temperature sensor panic interrupt asserts for a panic high temperature
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 17, regs::shiftedMask32<1, 17>() | kW1C> PFD_528_AUTOGATE_EN;  // This enables a feature that will clkgate (reset) all PFD_528 clocks anytime the PLL_528 is unlocked or powered off
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 16, regs::shiftedMask32<1, 16>() | kW1C> PFD_480_AUTOGATE_EN;  // This enables a feature that will clkgate (reset) all PFD_480 clocks anytime the USB1_PLL_480 is unlocked or powered off
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> LVDSCLK1_IBEN;        // This enables the LVDS input buffer for anaclk1/1b

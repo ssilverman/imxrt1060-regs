@@ -149,11 +149,11 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 31, regs::shiftedMask32<1, 31>() | k
     // When set, allows non-privileged software to access all SNVS registers, including those that are privileged software read/write access only
 constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 19, regs::shiftedMask32<1, 19>() | kWO> HAC_STOP;      // High Assurance Counter Stop
     // This bit can be set only when SSM is in soft fail state
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18, kWO, true> HAC_CLEAR;                       // High Assurance Counter Clear
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 18, kWO, true> HAC_CLEAR;                              // High Assurance Counter Clear
     // When set, it clears the High Assurance Counter Register
     // 0b0..No Action
     // 0b1..Clear the HAC
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17, kWO, true> HAC_LOAD;                        // High Assurance Counter Load
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 17, kWO, true> HAC_LOAD;                               // High Assurance Counter Load
     // When set, it loads the High Assurance Counter Register with the value of the High Assurance Counter Load Register
     // 0b0..No Action
     // 0b1..Load the HAC
@@ -165,7 +165,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 13, regs::shiftedMask32<1, 13>() | k
     // When not set, the one time programmable (OTP) master key is selected by default
     // 0b0..OTP master key is selected as an SNVS master key
     // 0b1..SNVS master key is selected according to the setting of the MASTER_KEY_SEL field of LPMKCR
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12, kWO, true> PROG_ZMK;                        // Program Zeroizable Master Key
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1, 12, kWO, true> PROG_ZMK;                               // Program Zeroizable Master Key
     // This bit activates ZMK hardware programming mechanism
     // 0b0..No Action
     // 0b1..Activate hardware key programming mechanism
@@ -179,7 +179,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  5, regs::shiftedMask32<1,  5>() | k
     // When set, disables the LP software reset
     // 0b0..LP software reset is enabled
     // 0b1..LP software reset is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4, kWO, true> LP_SWR;                          // LP Software Reset
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  4, kWO, true> LP_SWR;                                 // LP Software Reset
     // When set to 1, most registers in the SNVS_LP section are reset, but the following registers are not reset by an LP software reset: Monotonic Counter Secure Real Time Counter Time Alarm Register This bit cannot be set when the LP_SWR_DIS bit is set
     // 0b0..No Action
     // 0b1..Reset LP section
@@ -191,7 +191,7 @@ constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  1, regs::shiftedMask32<1,  1>() | k
     // When set, disables the SSM transition from secure to trusted state
     // 0b0..Secure to Trusted State transition is enabled
     // 0b1..Secure to Trusted State transition is disabled
-constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0, kWO, true> SSM_ST;                          // SSM State Transition
+constexpr SNVS_Reg<&SNVS_Layout::HPCOMR, 1,  0, kWO, true> SSM_ST;                                 // SSM State Transition
     // Transition state of the system security monitor
 }  // namespace HPCOMR
 

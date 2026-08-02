@@ -198,10 +198,10 @@ constexpr LPUART1_Reg<&LPUART_Layout::BAUD, 13,  0> SBR;        // Baud Rate Mod
 namespace STAT {
 constexpr uint32_t kW1C = 0xc01f'c000;
 
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;                         // LIN Break Detect Interrupt Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;                                // LIN Break Detect Interrupt Flag
     // 0b0..No LIN break character has been detected.
     // 0b1..LIN break character has been detected.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;                        // RXD Pin Active Edge Interrupt Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;                               // RXD Pin Active Edge Interrupt Flag
     // 0b0..No active edge on the receive pin has occurred.
     // 0b1..An active edge on the receive pin has occurred.
 constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;   // MSB First
@@ -224,37 +224,37 @@ constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() 
     // 0b0..LIN break detect is disabled, normal break character can be detected.
     // 0b1..LIN break detect is enabled. LIN break character is detected at length of 11 bit times (if M = 0) or 12
     //     (if M = 1) or 13 (M10 = 1).
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;                  // Receiver Active Flag
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;                         // Receiver Active Flag
     // 0b0..LPUART receiver idle waiting for a start bit.
     // 0b1..LPUART receiver active (RXD input not idle).
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;                 // Transmit Data Register Empty Flag
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;                        // Transmit Data Register Empty Flag
     // 0b0..Transmit FIFO level is greater than watermark.
     // 0b1..Transmit FIFO level is equal or less than watermark.
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;                   // Transmission Complete Flag
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;                          // Transmission Complete Flag
     // 0b0..Transmitter active (sending data, a preamble, or a break).
     // 0b1..Transmitter idle (transmission activity complete).
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 21> RDRF;                 // Receive Data Register Full Flag
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::STAT), 1, 21> RDRF;                        // Receive Data Register Full Flag
     // 0b0..Receive FIFO level is less than watermark.
     // 0b1..Receive FIFO level is equal or greater than watermark.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 20, kW1C> IDLE;                           // Idle Line Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 20, kW1C> IDLE;                                  // Idle Line Flag
     // 0b0..No idle line detected.
     // 0b1..Idle line is detected.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 19, kW1C> OR;                             // Receiver Overrun Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 19, kW1C> OR;                                    // Receiver Overrun Flag
     // 0b0..No overrun.
     // 0b1..Receive overrun (new LPUART data lost).
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 18, kW1C> NF;                             // Noise Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 18, kW1C> NF;                                    // Noise Flag
     // 0b0..No noise detected.
     // 0b1..Noise detected in the received character in the DATA register.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 17, kW1C> FE;                             // Framing Error Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 17, kW1C> FE;                                    // Framing Error Flag
     // 0b0..No framing error detected. This does not guarantee the framing is correct.
     // 0b1..Framing error.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 16, kW1C> PF;                             // Parity Error Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 16, kW1C> PF;                                    // Parity Error Flag
     // 0b0..No parity error.
     // 0b1..Parity error.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 15, kW1C> MA1F;                           // Match 1 Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 15, kW1C> MA1F;                                  // Match 1 Flag
     // 0b0..Received data is not equal to MA1
     // 0b1..Received data is equal to MA1
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 14, kW1C> MA2F;                           // Match 2 Flag
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 14, kW1C> MA2F;                                  // Match 2 Flag
     // 0b0..Received data is not equal to MA2
     // 0b1..Received data is equal to MA2
 }  // namespace STAT
@@ -431,23 +431,23 @@ namespace FIFO {
 constexpr uint32_t kW1C  = 0x0003'0000;
 constexpr uint32_t kWORZ = 0x0000'c000;
 
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 1, 23> TXEMPT;                // Transmit FIFO/Buffer Empty
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 1, 23> TXEMPT;                       // Transmit FIFO/Buffer Empty
     // 0b0..Transmit buffer is not empty.
     // 0b1..Transmit buffer is empty.
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 1, 22> RXEMPT;                // Receive FIFO/Buffer Empty
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 1, 22> RXEMPT;                       // Receive FIFO/Buffer Empty
     // 0b0..Receive buffer is not empty.
     // 0b1..Receive buffer is empty.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;                            // Transmitter FIFO Overflow Flag
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;                                   // Transmitter FIFO Overflow Flag
     // 0b0..No transmit FIFO overflow has occurred since the last time the flag was cleared.
     // 0b1..At least one transmit FIFO overflow has occurred since the last time the flag was cleared.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;                            // Receiver FIFO Underflow Flag
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;                                   // Receiver FIFO Underflow Flag
     // 0b0..No receive FIFO underflow has occurred since the last time the flag was cleared.
     // 0b1..At least one receive FIFO underflow has occurred since the last time the flag was cleared.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;                 // Transmit FIFO Flush
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;                        // Transmit FIFO Flush
     // WORZ
     // 0b0..No flush operation occurs.
     // 0b1..All data in the transmit FIFO is cleared out.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;                 // Receive FIFO Flush
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;                        // Receive FIFO Flush
     // WORZ
     // 0b0..No flush operation occurs.
     // 0b1..All data in the receive FIFO/buffer is cleared out.
@@ -469,7 +469,7 @@ constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() 
 constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;    // Transmit FIFO Enable
     // 0b0..Transmit FIFO is not enabled. Buffer depth is 1.
     // 0b1..Transmit FIFO is enabled. Buffer depth is indicated by TXFIFOSIZE.
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;            // Transmit FIFO Buffer Depth
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;                   // Transmit FIFO Buffer Depth
     // 0b000..Transmit FIFO/Buffer depth = 1 dataword.
     // 0b001..Transmit FIFO/Buffer depth = 4 datawords.
     // 0b010..Transmit FIFO/Buffer depth = 8 datawords.
@@ -481,7 +481,7 @@ constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;  
 constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;    // Receive FIFO Enable
     // 0b0..Receive FIFO is not enabled. Buffer depth is 1.
     // 0b1..Receive FIFO is enabled. Buffer depth is indicted by RXFIFOSIZE.
-constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;            // Receive FIFO Buffer Depth
+constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;                   // Receive FIFO Buffer Depth
     // 0b000..Receive FIFO/Buffer depth = 1 dataword.
     // 0b001..Receive FIFO/Buffer depth = 4 datawords.
     // 0b010..Receive FIFO/Buffer depth = 8 datawords.

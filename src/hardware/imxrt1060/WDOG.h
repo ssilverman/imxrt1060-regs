@@ -111,7 +111,7 @@ constexpr uint16_t kW1C = 0x4000;
 constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 15, regs::shiftedMask16<1, 15>() | kW1C> WIE;   // WIE
     // 0b0..Disable Interrupt (Default).
     // 0b1..Enable Interrupt.
-constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 14, kW1C> WTIS;                           // WTIS
+constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 14, kW1C> WTIS;                                 // WTIS
     // 0b0..No interrupt has occurred (Default).
     // 0b1..Interrupt has occurred
 constexpr WDOG1_Reg<&WDOG_Layout::WICR, 8,  0, regs::shiftedMask16<8,  0>() | kW1C> WICT;  // WICT

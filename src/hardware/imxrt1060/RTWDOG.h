@@ -50,7 +50,7 @@ constexpr uint32_t kW1C = 0x0000'4000;
 constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 15, regs::shiftedMask32<1, 15>() | kW1C> WIN;      // Watchdog Window
     // 0b0..Window mode disabled.
     // 0b1..Window mode enabled.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 14, kW1C> FLG;                              // Watchdog Interrupt Flag
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 14, kW1C> FLG;                                     // Watchdog Interrupt Flag
     // 0b0..No interrupt occurred.
     // 0b1..An interrupt occurred.
 constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 13, regs::shiftedMask32<1, 13>() | kW1C> CMD32EN;  // Enables or disables WDOG support for 32-bit (otherwise 16-bit or 8-bit) refresh/unlock command write words
@@ -59,10 +59,10 @@ constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 13, regs::shiftedMask32<1, 13>() | k
 constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> PRES;     // Watchdog prescaler
     // 0b0..256 prescaler disabled.
     // 0b1..256 prescaler enabled.
-constexpr RTWDOG_Reg<regs::constify(&RTWDOG_Layout::CS), 1, 11> ULK;                    // Unlock status
+constexpr RTWDOG_Reg<regs::constify(&RTWDOG_Layout::CS), 1, 11> ULK;                           // Unlock status
     // 0b0..WDOG is locked.
     // 0b1..WDOG is unlocked.
-constexpr RTWDOG_Reg<regs::constify(&RTWDOG_Layout::CS), 1, 10> RCS;                    // Reconfiguration Success
+constexpr RTWDOG_Reg<regs::constify(&RTWDOG_Layout::CS), 1, 10> RCS;                           // Reconfiguration Success
     // 0b0..Reconfiguring WDOG.
     // 0b1..Reconfiguration is successful.
 constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 2,  8, regs::shiftedMask32<2,  8>() | kW1C> CLK;      // Watchdog Clock

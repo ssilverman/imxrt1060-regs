@@ -182,28 +182,28 @@ constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 17, regs::shiftedMask
 constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1, 16, regs::shiftedMask32<1, 16>() | kW1C> TRIG0_ERR;  // TRIG0 error interrupt detection.
     // 0b0..No TRIG0_ERR interrupt detected
     // 0b1..TRIG0_ERR interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  7, kW1C> TRIG7_DONE2;                        // TRIG7 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  7, kW1C> TRIG7_DONE2;                               // TRIG7 done2 interrupt detection.
     // 0b0..No TRIG7_DONE2 interrupt detected
     // 0b1..TRIG7_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  6, kW1C> TRIG6_DONE2;                        // TRIG6 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  6, kW1C> TRIG6_DONE2;                               // TRIG6 done2 interrupt detection.
     // 0b0..No TRIG6_DONE2 interrupt detected
     // 0b1..TRIG6_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  5, kW1C> TRIG5_DONE2;                        // TRIG5 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  5, kW1C> TRIG5_DONE2;                               // TRIG5 done2 interrupt detection.
     // 0b0..No TRIG5_DONE2 interrupt detected
     // 0b1..TRIG5_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  4, kW1C> TRIG4_DONE2;                        // TRIG4 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  4, kW1C> TRIG4_DONE2;                               // TRIG4 done2 interrupt detection.
     // 0b0..No TRIG4_DONE2 interrupt detected
     // 0b1..TRIG4_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  3, kW1C> TRIG3_DONE2;                        // TRIG3 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  3, kW1C> TRIG3_DONE2;                               // TRIG3 done2 interrupt detection.
     // 0b0..No TRIG3_DONE2 interrupt detected
     // 0b1..TRIG3_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  2, kW1C> TRIG2_DONE2;                        // TRIG2 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  2, kW1C> TRIG2_DONE2;                               // TRIG2 done2 interrupt detection.
     // 0b0..No TRIG2_DONE2 interrupt detected
     // 0b1..TRIG2_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  1, kW1C> TRIG1_DONE2;                        // TRIG1 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  1, kW1C> TRIG1_DONE2;                               // TRIG1 done2 interrupt detection.
     // 0b0..No TRIG1_DONE2 interrupt detected
     // 0b1..TRIG1_DONE2 interrupt detected
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  0, kW1C> TRIG0_DONE2;                        // TRIG0 done2 interrupt detection.
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  0, kW1C> TRIG0_DONE2;                               // TRIG0 done2 interrupt detection.
     // 0b0..No TRIG0_DONE2 interrupt detected
     // 0b1..TRIG0_DONE2 interrupt detected
 }  // namespace DONE2_3_ERR_IRQ
@@ -212,28 +212,28 @@ constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DONE2_3_ERR_IRQ, 1,  0, kW1C> TRIG0_DONE2
 namespace DMA_CTRL {
 constexpr uint32_t kW1C = 0x00ff'0000;
 
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 23, kW1C> TRIG7_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 23, kW1C> TRIG7_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG7_REQ not detected.
     // 0b1..TRIG7_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 22, kW1C> TRIG6_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 22, kW1C> TRIG6_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG6_REQ not detected.
     // 0b1..TRIG6_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 21, kW1C> TRIG5_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 21, kW1C> TRIG5_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG5_REQ not detected.
     // 0b1..TRIG5_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 20, kW1C> TRIG4_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 20, kW1C> TRIG4_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG4_REQ not detected.
     // 0b1..TRIG4_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 19, kW1C> TRIG3_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 19, kW1C> TRIG3_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG3_REQ not detected.
     // 0b1..TRIG3_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 18, kW1C> TRIG2_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 18, kW1C> TRIG2_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG2_REQ not detected.
     // 0b1..TRIG2_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 17, kW1C> TRIG1_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 17, kW1C> TRIG1_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG1_REQ not detected.
     // 0b1..TRIG1_REQ detected.
-constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 16, kW1C> TRIG0_REQ;                            // Flag bit for DMA request
+constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1, 16, kW1C> TRIG0_REQ;                                   // Flag bit for DMA request
     // 0b0..TRIG0_REQ not detected.
     // 0b1..TRIG0_REQ detected.
 constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  7, regs::shiftedMask32<1, 7>() | kW1C> TRIG7_ENABLE;  // Enable DMA request when TRIG7 done.

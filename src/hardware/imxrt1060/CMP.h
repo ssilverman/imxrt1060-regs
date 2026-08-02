@@ -123,13 +123,13 @@ constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IE
 constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 3, regs::shiftedMask8<1, 3>() | kW1C> IEF;    // Comparator Interrupt Enable Falling
     // 0b0..Interrupt is disabled.
     // 0b1..Interrupt is enabled.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;                        // Analog Comparator Flag Rising
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;                                 // Analog Comparator Flag Rising
     // 0b0..Rising-edge on COUT has not been detected.
     // 0b1..Rising-edge on COUT has occurred.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;                        // Analog Comparator Flag Falling
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;                                 // Analog Comparator Flag Falling
     // 0b0..Falling-edge on COUT has not been detected.
     // 0b1..Falling-edge on COUT has occurred.
-constexpr CMP1_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;             // Analog Comparator Output
+constexpr CMP1_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;                      // Analog Comparator Output
 }  // namespace SCR
 
 // DAC Control Register
