@@ -47,7 +47,7 @@ struct OCOTP_Layout {
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[27];
   volatile uint32_t TIMING2;                           /**< OTP Controller Timing Register 2, offset: 0x100 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[191];
-  const volatile uint32_t LOCK;                        /**< SDK uses non-const, Value of OTP Bank0 Word0 (Lock controls), offset: 0x400 */
+  volatile uint32_t LOCK;                              /**< Value of OTP Bank0 Word0 (Lock controls), offset: 0x400 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[3];
   volatile uint32_t CFG0;                              /**< Value of OTP Bank0 Word1 (Configuration and Manufacturing Info.), offset: 0x410 */
   uint32_t HARDWARE_REGS_LAYOUT_MEMBER_RESERVED[3];
@@ -283,35 +283,35 @@ constexpr OCOTP_Reg<&OCOTP_Layout::TIMING2, 12,  0> RELAX_PROG;  // Relax Prog. 
 
 // Value of OTP Bank0 Word0 (Lock controls)
 namespace LOCK {
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1, 31> FIELD_RETURN;  // FIELD RETURN Status
+constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1, 31> FIELD_RETURN;                  // FIELD RETURN Status
     // 0b0..The device is a functional part.
     // 0b1..The device is a field returned part.
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2, 26> GP3;           // GP3 Write Lock Status
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2, 24> GP4;           // GP4 Write Lock Status
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1, 23> SW_GP2_RLOCK;  // SW_GP2 Read Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 2, 26> GP3;           // GP3 Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 2, 24> GP4;           // GP4 Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 1, 23> SW_GP2_RLOCK;  // SW_GP2 Read Lock Status
     // 0b0..The reading of this region's shadow register and OTP fuse word are not blocked.
     // 0b1..When set, the reading of this region's shadow register and OTP fuse word are blocked.
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1, 22> MISC_CONF;     // MISC_CONF Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 1, 22> MISC_CONF;     // MISC_CONF Write Lock Status
     // 0b0..Writing of this region's shadow register and OTP fuse word are not blocked.
     // 0b1..When set, the writing of this region's shadow register and OTP fuse word are blocked.
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1, 21> SW_GP2_LOCK;   // SW_GP2 Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 1, 21> SW_GP2_LOCK;   // SW_GP2 Write Lock Status
     // 0b0..Writing of this region's shadow register and OTP fuse word are not blocked.
     // 0b1..When set, the writing of this region's shadow register and OTP fuse word are blocked.
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2, 18> ANALOG;        // ANALOG Write Lock Status
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1, 16> SW_GP1;        // SW_GP1 Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 2, 18> ANALOG;        // ANALOG Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 1, 16> SW_GP1;        // SW_GP1 Write Lock Status
     // 0b0..Writing of this region's shadow register and OTP fuse word are not blocked.
     // 0b1..When set, the writing of this region's shadow register and OTP fuse word are blocked.
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2, 12> GP2;           // GP2 Write Lock Status
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2, 10> GP1;           // GP1 Write Lock Status
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2,  8> MAC_ADDR;      // MAC_ADDR Write Lock Status
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1,  7> GP4_RLOCK;     // GP4 Read Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 2, 12> GP2;           // GP2 Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 2, 10> GP1;           // GP1 Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 2,  8> MAC_ADDR;      // MAC_ADDR Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 1,  7> GP4_RLOCK;     // GP4 Read Lock Status
     // 0b0..Reading of this region's shadow register and OTP fuse word are not blocked.
     // 0b1..When set, the reading of this region's shadow register and OTP fuse word are blocked.
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 1,  6> SJC_RESP;      // SJC_RESP Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 1,  6> SJC_RESP;      // SJC_RESP Lock Status
     // 0b0..The writing or reading of this region's shadow register and OTP fuse word are not blocked.
     // 0b1..When set, the writing of this region's shadow register and OTP fuse word are blocked. The read of this
     //      region's shadow register and OTP fuse word are also blocked
-constexpr OCOTP_Reg<&OCOTP_Layout::LOCK, 2,  2> BOOT_CFG;      // BOOT_CFG Write Lock Status
+constexpr OCOTP_Reg<regs::constify(&OCOTP_Layout::LOCK), 2,  2> BOOT_CFG;      // BOOT_CFG Write Lock Status
 }  // namespace LOCK
 
 // Value of OTP Bank0 Word1 (Configuration and Manufacturing Info.)
