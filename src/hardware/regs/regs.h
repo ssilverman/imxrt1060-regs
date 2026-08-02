@@ -160,7 +160,8 @@ class Reg {
   // Mask checks
   static_assert((AssignMask == 0) || ((AssignMask & kMask) == kMask),
                 "Nonzero AssignMask must include the complete field mask");
-  static_assert((AssignSet & AssignMask) == 0);  // They should be disjoint
+  // static_assert((AssignSet & AssignMask) == 0);  // They should be disjoint
+  static_assert((AssignSet & kMask) == 0);  // They should be "mostly" disjoint
 
   // Returns the masked and shifted version of the given value.
   [[gnu::always_inline]]

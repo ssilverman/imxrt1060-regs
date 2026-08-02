@@ -127,7 +127,7 @@ static void reboot() {
   asm volatile ("dsb sy" ::: "memory");
   SCB::group->AIRCR = SCB::AIRCR::VECTKEY(0x05fa) |
                       (SCB::group->AIRCR & SCB::AIRCR::PRIGROUP.kMask) |
-                      SCB::AIRCR::SYSRESETREQ(1);
+                      SCB::AIRCR::keyed::SYSRESETREQ(1);
       // Keep priority group unchanged
 #else
   USB1_USBCMD = 0;  // Disconnect USB
