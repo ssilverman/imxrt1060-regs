@@ -47,7 +47,7 @@ constexpr regs::RegGroup<TEMPMON_Layout, kTEMPMON_size, kTEMPMON_base> group;
 }  // namespace TEMPMON
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using TEMPMON_Reg = regs::Reg32<kTEMPMON_base, TEMPMON_Layout, Member, 0, Bits,
                                 Shift, AssignMask>;
 

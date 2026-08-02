@@ -73,7 +73,7 @@ constexpr regs::RegGroup<LPSPI_Layout, kLPSPI_size, kLPSPI4_base> group;
 namespace LPSPI1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPSPI1_Reg =
     regs::Reg32<kLPSPI1_base, LPSPI_Layout, Member, 0, Bits, Shift,
@@ -105,17 +105,17 @@ constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;                   
 constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;                     // Reset Transmit FIFO
     // 0b0..No effect
     // 0b1..Reset the Transmit FIFO. The register bit always reads zero.
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 3, (uint32_t{0x1} << 3) | kWO> DBGEN;  // Debug Enable
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 3, regs::shiftedMask32<1, 3>() | kWO> DBGEN;  // Debug Enable
     // 0b0..LPSPI module is disabled when the CPU is halted. When LPSPI is disabled, the PCS will be negated once
     //     the transmit FIFO is empty regardless of the state of TCR register.
     // 0b1..LPSPI module is enabled in debug mode
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 2, (uint32_t{0x1} << 2) | kWO> DOZEN;  // Doze Mode Enable
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 2, regs::shiftedMask32<1, 2>() | kWO> DOZEN;  // Doze Mode Enable
     // 0b0..LPSPI module is enabled in Doze mode
     // 0b1..LPSPI module is disabled in Doze mode
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 1, (uint32_t{0x1} << 1) | kWO> RST;    // Software Reset
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 1, regs::shiftedMask32<1, 1>() | kWO> RST;    // Software Reset
     // 0b0..Module is not reset
     // 0b1..Module is reset
-constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 0, (uint32_t{0x1} << 0) | kWO> MEN;    // Module Enable
+constexpr LPSPI1_Reg<&LPSPI_Layout::CR, 1, 0, regs::shiftedMask32<1, 0>() | kWO> MEN;    // Module Enable
     // 0b0..Module is disabled
     // 0b1..Module is enabled
 }  // namespace CR
@@ -348,7 +348,7 @@ constexpr LPSPI1_Reg<&LPSPI_Layout::RDR, 32, 0> DATA;  // Receive Data
 namespace LPSPI2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPSPI2_Reg =
     regs::Reg32<kLPSPI2_base, LPSPI_Layout, Member, 0, Bits, Shift,
@@ -375,10 +375,10 @@ constexpr uint32_t kWO = 0x0000'0300;
 
 constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;
 constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;
-constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 3, (uint32_t{0x1} << 3) | kWO> DBGEN;
-constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 2, (uint32_t{0x1} << 2) | kWO> DOZEN;
-constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 1, (uint32_t{0x1} << 1) | kWO> RST;
-constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 0, (uint32_t{0x1} << 0) | kWO> MEN;
+constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 3, regs::shiftedMask32<1, 3>() | kWO> DBGEN;
+constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 2, regs::shiftedMask32<1, 2>() | kWO> DOZEN;
+constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 1, regs::shiftedMask32<1, 1>() | kWO> RST;
+constexpr LPSPI2_Reg<&LPSPI_Layout::CR, 1, 0, regs::shiftedMask32<1, 0>() | kWO> MEN;
 }  // namespace CR
 
 // Status
@@ -501,7 +501,7 @@ constexpr LPSPI2_Reg<&LPSPI_Layout::RDR, 32, 0> DATA;
 namespace LPSPI3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPSPI3_Reg =
     regs::Reg32<kLPSPI3_base, LPSPI_Layout, Member, 0, Bits, Shift,
@@ -528,10 +528,10 @@ constexpr uint32_t kWO = 0x0000'0300;
 
 constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;
 constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;
-constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 3, (uint32_t{0x1} << 3) | kWO> DBGEN;
-constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 2, (uint32_t{0x1} << 2) | kWO> DOZEN;
-constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 1, (uint32_t{0x1} << 1) | kWO> RST;
-constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 0, (uint32_t{0x1} << 0) | kWO> MEN;
+constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 3, regs::shiftedMask32<1, 3>() | kWO> DBGEN;
+constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 2, regs::shiftedMask32<1, 2>() | kWO> DOZEN;
+constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 1, regs::shiftedMask32<1, 1>() | kWO> RST;
+constexpr LPSPI3_Reg<&LPSPI_Layout::CR, 1, 0, regs::shiftedMask32<1, 0>() | kWO> MEN;
 }  // namespace CR
 
 // Status
@@ -654,7 +654,7 @@ constexpr LPSPI3_Reg<&LPSPI_Layout::RDR, 32, 0> DATA;
 namespace LPSPI4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPSPI4_Reg =
     regs::Reg32<kLPSPI4_base, LPSPI_Layout, Member, 0, Bits, Shift,
@@ -681,10 +681,10 @@ constexpr uint32_t kWO = 0x0000'0300;
 
 constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 9, kWO, true> RRF;
 constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 8, kWO, true> RTF;
-constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 3, (uint32_t{0x1} << 3) | kWO> DBGEN;
-constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 2, (uint32_t{0x1} << 2) | kWO> DOZEN;
-constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 1, (uint32_t{0x1} << 1) | kWO> RST;
-constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 0, (uint32_t{0x1} << 0) | kWO> MEN;
+constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 3, regs::shiftedMask32<1, 3>() | kWO> DBGEN;
+constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 2, regs::shiftedMask32<1, 2>() | kWO> DOZEN;
+constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 1, regs::shiftedMask32<1, 1>() | kWO> RST;
+constexpr LPSPI4_Reg<&LPSPI_Layout::CR, 1, 0, regs::shiftedMask32<1, 0>() | kWO> MEN;
 }  // namespace CR
 
 // Status

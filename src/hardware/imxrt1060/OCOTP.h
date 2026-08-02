@@ -150,7 +150,7 @@ constexpr regs::RegGroup<OCOTP_Layout, kOCOTP_size, kOCOTP_base> group;
 }  // namespace OCOTP
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using OCOTP_Reg = regs::Reg32<kOCOTP_base, OCOTP_Layout, Member, 0, Bits, Shift,
                               AssignMask>;
 

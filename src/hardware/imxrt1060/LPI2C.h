@@ -91,7 +91,7 @@ constexpr regs::RegGroup<LPI2C_Layout, kLPI2C_size, kLPI2C4_base> group;
 namespace LPI2C1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPI2C1_Reg =
     regs::Reg32<kLPI2C1_base, LPI2C_Layout, Member, 0, Bits, Shift,
@@ -560,7 +560,7 @@ constexpr LPI2C1_Reg<&LPI2C_Layout::SRDR, 8,  0> DATA;     // Receive Data
 namespace LPI2C2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPI2C2_Reg =
     regs::Reg32<kLPI2C2_base, LPI2C_Layout, Member, 0, Bits, Shift,
@@ -809,7 +809,7 @@ constexpr LPI2C2_Reg<&LPI2C_Layout::SRDR, 8,  0> DATA;
 namespace LPI2C3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPI2C3_Reg =
     regs::Reg32<kLPI2C3_base, LPI2C_Layout, Member, 0, Bits, Shift,
@@ -1058,7 +1058,7 @@ constexpr LPI2C3_Reg<&LPI2C_Layout::SRDR, 8,  0> DATA;
 namespace LPI2C4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPI2C4_Reg =
     regs::Reg32<kLPI2C4_base, LPI2C_Layout, Member, 0, Bits, Shift,

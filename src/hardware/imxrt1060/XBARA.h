@@ -104,7 +104,7 @@ constexpr regs::RegGroup<XBARA_Layout, kXBARA_size, kXBARA1_base> group;
 namespace XBARA1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using XBARA1_Reg =
     regs::Reg16<kXBARA1_base, XBARA_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -511,29 +511,29 @@ constexpr uint16_t kW1C = 0x1010;
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1, 12, kW1C> STS1;                           // Edge detection status for XBAR_OUT1
     // 0b0..Active edge not yet detected on XBAR_OUT1
     // 0b1..Active edge detected on XBAR_OUT1
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2, 10, (uint16_t{0x3} << 10) | kW1C> EDGE1;  // Active edge for edge detection on XBAR_OUT1
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2, 10, regs::shiftedMask16<2, 10>() | kW1C> EDGE1;  // Active edge for edge detection on XBAR_OUT1
     // 0b00..STS1 never asserts
     // 0b01..STS1 asserts on rising edges of XBAR_OUT1
     // 0b10..STS1 asserts on falling edges of XBAR_OUT1
     // 0b11..STS1 asserts on rising and falling edges of XBAR_OUT1
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  9, (uint16_t{0x1} <<  9) | kW1C> IEN1;   // Interrupt Enable for XBAR_OUT1
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  9, regs::shiftedMask16<1,  9>() | kW1C> IEN1;   // Interrupt Enable for XBAR_OUT1
     // 0b0..Interrupt disabled
     // 0b1..Interrupt enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  8, (uint16_t{0x1} <<  8) | kW1C> DEN1;   // DMA Enable for XBAR_OUT1
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  8, regs::shiftedMask16<1,  8>() | kW1C> DEN1;   // DMA Enable for XBAR_OUT1
     // 0b0..DMA disabled
     // 0b1..DMA enabled
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  4, kW1C> STS0;                           // Edge detection status for XBAR_OUT0
     // 0b0..Active edge not yet detected on XBAR_OUT0
     // 0b1..Active edge detected on XBAR_OUT0
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2,  2, (uint16_t{0x3} <<  2) | kW1C> EDGE0;  // Active edge for edge detection on XBAR_OUT0
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 2,  2, regs::shiftedMask16<2,  2>() | kW1C> EDGE0;  // Active edge for edge detection on XBAR_OUT0
     // 0b00..STS0 never asserts
     // 0b01..STS0 asserts on rising edges of XBAR_OUT0
     // 0b10..STS0 asserts on falling edges of XBAR_OUT0
     // 0b11..STS0 asserts on rising and falling edges of XBAR_OUT0
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  1, (uint16_t{0x1} <<  1) | kW1C> IEN0;   // Interrupt Enable for XBAR_OUT0
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  1, regs::shiftedMask16<1,  1>() | kW1C> IEN0;   // Interrupt Enable for XBAR_OUT0
     // 0b0..Interrupt disabled
     // 0b1..Interrupt enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  0, (uint16_t{0x1} <<  0) | kW1C> DEN0;   // DMA Enable for XBAR_OUT0
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  0, regs::shiftedMask16<1,  0>() | kW1C> DEN0;   // DMA Enable for XBAR_OUT0
     // 0b0..DMA disabled
     // 0b1..DMA enabled
 }  // namespace CTRL0
@@ -545,29 +545,29 @@ constexpr uint16_t kW1C = 0x1010;
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1, 12, kW1C> STS3;                           // Edge detection status for XBAR_OUT3
     // 0b0..Active edge not yet detected on XBAR_OUT3
     // 0b1..Active edge detected on XBAR_OUT3
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2, 10, (uint16_t{0x3} << 10) | kW1C> EDGE3;  // Active edge for edge detection on XBAR_OUT3
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2, 10, regs::shiftedMask16<2, 10>() | kW1C> EDGE3;  // Active edge for edge detection on XBAR_OUT3
     // 0b00..STS3 never asserts
     // 0b01..STS3 asserts on rising edges of XBAR_OUT3
     // 0b10..STS3 asserts on falling edges of XBAR_OUT3
     // 0b11..STS3 asserts on rising and falling edges of XBAR_OUT3
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  9, (uint16_t{0x1} <<  9) | kW1C> IEN3;   // Interrupt Enable for XBAR_OUT3
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  9, regs::shiftedMask16<1,  9>() | kW1C> IEN3;   // Interrupt Enable for XBAR_OUT3
     // 0b0..Interrupt disabled
     // 0b1..Interrupt enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  8, (uint16_t{0x1} <<  8) | kW1C> DEN3;   // DMA Enable for XBAR_OUT3
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  8, regs::shiftedMask16<1,  8>() | kW1C> DEN3;   // DMA Enable for XBAR_OUT3
     // 0b0..DMA disabled
     // 0b1..DMA enabled
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  4, kW1C> STS2;                           // Edge detection status for XBAR_OUT2
     // 0b0..Active edge not yet detected on XBAR_OUT2
     // 0b1..Active edge detected on XBAR_OUT2
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2,  2, (uint16_t{0x3} <<  2) | kW1C> EDGE2;  // Active edge for edge detection on XBAR_OUT2
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 2,  2, regs::shiftedMask16<2,  2>() | kW1C> EDGE2;  // Active edge for edge detection on XBAR_OUT2
     // 0b00..STS2 never asserts
     // 0b01..STS2 asserts on rising edges of XBAR_OUT2
     // 0b10..STS2 asserts on falling edges of XBAR_OUT2
     // 0b11..STS2 asserts on rising and falling edges of XBAR_OUT2
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  1, (uint16_t{0x1} <<  1) | kW1C> IEN2;   // Interrupt Enable for XBAR_OUT2
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  1, regs::shiftedMask16<1,  1>() | kW1C> IEN2;   // Interrupt Enable for XBAR_OUT2
     // 0b0..Interrupt disabled
     // 0b1..Interrupt enabled
-constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  0, (uint16_t{0x1} <<  0) | kW1C> DEN2;   // DMA Enable for XBAR_OUT2
+constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1,  0, regs::shiftedMask16<1,  0>() | kW1C> DEN2;   // DMA Enable for XBAR_OUT2
     // 0b0..DMA disabled
     // 0b1..DMA enabled
 }  // namespace CTRL1

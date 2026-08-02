@@ -114,7 +114,7 @@ constexpr regs::RegGroup<PWM_Layout, kPWM_size, kPWM4_base> group;
 namespace PWM1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using PWM1_Reg = regs::Reg16<kPWM1_base, PWM_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
@@ -127,7 +127,7 @@ constexpr uintptr_t SMBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using SM_Reg = regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
                            Bits, Shift, AssignMask, 0, WriteOnly>;
@@ -788,13 +788,13 @@ constexpr PWM1_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;            
     //     event occurs within the submodule.
     // 0b0001..Immediate operation. MASK* bits within the corresponding submodule are updated on the following clock
     //     edge after setting this bit.
-constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
+constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  8, regs::shiftedMask16<4, 8>() | kWO> MASKA;  // PWM_A Masks
     // 0b0000..PWM_A output normal.
     // 0b0001..PWM_A output masked.
-constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
+constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  4, regs::shiftedMask16<4, 4>() | kWO> MASKB;  // PWM_B Masks
     // 0b0000..PWM_B output normal.
     // 0b0001..PWM_B output masked.
-constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
+constexpr PWM1_Reg<&PWM_Layout::MASK, 4,  0, regs::shiftedMask16<4, 0>() | kWO> MASKX;  // PWM_X Masks
     // 0b0000..PWM_X output normal.
     // 0b0001..PWM_X output masked.
 }  // namespace MASK
@@ -931,11 +931,11 @@ constexpr PWM1_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;    // Fault Interrupt Enables
 namespace FSTS {
 constexpr uint16_t kW1C = 0x000f;
 
-constexpr PWM1_Reg<&PWM_Layout::FSTS, 4, 12, (uint16_t{0xf} << 12) | kW1C> FHALF;  // Half Cycle Fault Recovery
+constexpr PWM1_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;  // Half Cycle Fault Recovery
     // 0b0000..PWM outputs are not re-enabled at the start of a half cycle.
     // 0b0001..PWM outputs are re-enabled at the start of a half cycle (as defined by VAL0).
 constexpr PWM1_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;                // Filtered Fault Pins
-constexpr PWM1_Reg<&PWM_Layout::FSTS, 4,  4, (uint16_t{0xf} << 4) | kW1C> FFULL;   // Full Cycle
+constexpr PWM1_Reg<&PWM_Layout::FSTS, 4,  4, regs::shiftedMask16<4,  4>() | kW1C> FFULL;   // Full Cycle
     // 0b0000..PWM outputs are not re-enabled at the start of a full cycle
     // 0b0001..PWM outputs are re-enabled at the start of a full cycle
 constexpr PWM1_Reg<&PWM_Layout::FSTS, 4,  0, kW1C> FFLAG;                          // Fault Flags
@@ -973,7 +973,7 @@ constexpr PWM1_Reg<&PWM_Layout::FCTRL2, 4, 0> NOCOMB;  // No Combinational Path 
 namespace PWM2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using PWM2_Reg =
     regs::Reg16<kPWM2_base, PWM_Layout, Member, 0, Bits, Shift,
@@ -987,7 +987,7 @@ constexpr uintptr_t SMBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using SM_Reg =
     regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
@@ -1440,9 +1440,9 @@ namespace MASK {
 constexpr uint16_t kWO = 0xf000;
 
 constexpr PWM2_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;             // Update Mask Bits Immediately
-constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
-constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
-constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
+constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  8, regs::shiftedMask16<4, 8>() | kWO> MASKA;  // PWM_A Masks
+constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  4, regs::shiftedMask16<4, 4>() | kWO> MASKB;  // PWM_B Masks
+constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  0, regs::shiftedMask16<4, 0>() | kWO> MASKX;  // PWM_X Masks
 }  // namespace MASK
 
 // Software Controlled Output Register
@@ -1494,9 +1494,9 @@ constexpr PWM2_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;
 namespace FSTS {
 constexpr uint16_t kW1C = 0x000f;
 
-constexpr PWM2_Reg<&PWM_Layout::FSTS, 4, 12, (uint16_t{0xf} << 12) | kW1C> FHALF;
+constexpr PWM2_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;
 constexpr PWM2_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;
-constexpr PWM2_Reg<&PWM_Layout::FSTS, 4,  4, (uint16_t{0xf} << 4) | kW1C> FFULL;
+constexpr PWM2_Reg<&PWM_Layout::FSTS, 4,  4, regs::shiftedMask16<4,  4>() | kW1C> FFULL;
 constexpr PWM2_Reg<&PWM_Layout::FSTS, 4,  0, kW1C> FFLAG;
 }  // namespace FSTS
 
@@ -1522,7 +1522,7 @@ constexpr PWM2_Reg<&PWM_Layout::FCTRL2, 4, 0> NOCOMB;
 namespace PWM3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using PWM3_Reg =
     regs::Reg16<kPWM3_base, PWM_Layout, Member, 0, Bits, Shift,
@@ -1536,7 +1536,7 @@ constexpr uintptr_t SMBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using SM_Reg =
     regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
@@ -1989,9 +1989,9 @@ namespace MASK {
 constexpr uint16_t kWO = 0xf000;
 
 constexpr PWM3_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;             // Update Mask Bits Immediately
-constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
-constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
-constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
+constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  8, regs::shiftedMask16<4, 8>() | kWO> MASKA;  // PWM_A Masks
+constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  4, regs::shiftedMask16<4, 4>() | kWO> MASKB;  // PWM_B Masks
+constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  0, regs::shiftedMask16<4, 0>() | kWO> MASKX;  // PWM_X Masks
 }  // namespace MASK
 
 // Software Controlled Output Register
@@ -2043,9 +2043,9 @@ constexpr PWM3_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;
 namespace FSTS {
 constexpr uint16_t kW1C = 0x000f;
 
-constexpr PWM3_Reg<&PWM_Layout::FSTS, 4, 12, (uint16_t{0xf} << 12) | kW1C> FHALF;
+constexpr PWM3_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;
 constexpr PWM3_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;
-constexpr PWM3_Reg<&PWM_Layout::FSTS, 4,  4, (uint16_t{0xf} << 4) | kW1C> FFULL;
+constexpr PWM3_Reg<&PWM_Layout::FSTS, 4,  4, regs::shiftedMask16<4,  4>() | kW1C> FFULL;
 constexpr PWM3_Reg<&PWM_Layout::FSTS, 4,  0, kW1C> FFLAG;
 }  // namespace FSTS
 
@@ -2071,7 +2071,7 @@ constexpr PWM3_Reg<&PWM_Layout::FCTRL2, 4, 0> NOCOMB;
 namespace PWM4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using PWM4_Reg =
     regs::Reg16<kPWM4_base, PWM_Layout, Member, 0, Bits, Shift,
@@ -2085,7 +2085,7 @@ constexpr uintptr_t SMBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>(),
           bool WriteOnly = false>
 using SM_Reg =
     regs::Reg16<SMBase<Index>(), PWM_Layout::SM_Layout, Member, 0,
@@ -2538,9 +2538,9 @@ namespace MASK {
 constexpr uint16_t kWO = 0xf000;
 
 constexpr PWM4_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;             // Update Mask Bits Immediately
-constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  8, (uint16_t{0xf} << 8) | kWO> MASKA;  // PWM_A Masks
-constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  4, (uint16_t{0xf} << 4) | kWO> MASKB;  // PWM_B Masks
-constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  0, (uint16_t{0xf} << 0) | kWO> MASKX;  // PWM_X Masks
+constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  8, regs::shiftedMask16<4, 8>() | kWO> MASKA;  // PWM_A Masks
+constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  4, regs::shiftedMask16<4, 4>() | kWO> MASKB;  // PWM_B Masks
+constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  0, regs::shiftedMask16<4, 0>() | kWO> MASKX;  // PWM_X Masks
 }  // namespace MASK
 
 // Software Controlled Output Register
@@ -2592,9 +2592,9 @@ constexpr PWM4_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;
 namespace FSTS {
 constexpr uint16_t kW1C = 0x000f;
 
-constexpr PWM4_Reg<&PWM_Layout::FSTS, 4, 12, (uint16_t{0xf} << 12) | kW1C> FHALF;
+constexpr PWM4_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;
 constexpr PWM4_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;
-constexpr PWM4_Reg<&PWM_Layout::FSTS, 4,  4, (uint16_t{0xf} << 4) | kW1C> FFULL;
+constexpr PWM4_Reg<&PWM_Layout::FSTS, 4,  4, regs::shiftedMask16<4,  4>() | kW1C> FFULL;
 constexpr PWM4_Reg<&PWM_Layout::FSTS, 4,  0, kW1C> FFLAG;
 }  // namespace FSTS
 

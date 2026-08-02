@@ -36,7 +36,7 @@ constexpr regs::RegGroup<DCB_Layout, kDCB_size, kDCB_base> group;
 }  // namespace DCB
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using DCB_Reg = regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift,
                             AssignMask, 0, WriteOnly>;
@@ -56,11 +56,11 @@ constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 19> S_LOCKUP;         
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 18> S_SLEEP;                  // Sleeping status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 17> S_HALT;                   // Halted status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 16> S_REGRDY;                 // Register ready status
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  5, (uint32_t{0x1} << 5) | kWO> C_SNAPSTALL;  // Snap stall control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  3, (uint32_t{0x1} << 3) | kWO> C_MASKINTS;   // Mask interrupts control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  2, (uint32_t{0x1} << 2) | kWO> C_STEP;       // Step control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  1, (uint32_t{0x1} << 1) | kWO> C_HALT;       // Halt control
-constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  0, (uint32_t{0x1} << 0) | kWO> C_DEBUGEN;    // Debug enable control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  5, regs::shiftedMask32<1, 5>() | kWO> C_SNAPSTALL;  // Snap stall control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  3, regs::shiftedMask32<1, 3>() | kWO> C_MASKINTS;   // Mask interrupts control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  2, regs::shiftedMask32<1, 2>() | kWO> C_STEP;       // Step control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  1, regs::shiftedMask32<1, 1>() | kWO> C_HALT;       // Halt control
+constexpr DCB_Reg<&DCB_Layout::DHCSR,  1,  0, regs::shiftedMask32<1, 0>() | kWO> C_DEBUGEN;    // Debug enable control
 }  // namespace DHCSR
 
 // DCB Debug Core Register Selector Register Definitions

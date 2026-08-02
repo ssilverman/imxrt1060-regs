@@ -86,7 +86,7 @@ constexpr regs::RegGroup<SCB_Layout, kSCB_size, kSCB_base> group;
 }  // namespace SCB
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using SCB_Reg = regs::Reg32<kSCB_base, SCB_Layout, Member, 0, Bits, Shift,
                             AssignMask, 0, WriteOnly>;
@@ -138,7 +138,7 @@ constexpr uint32_t kWO = 0xffff'0007;
 constexpr SCB_Reg<&SCB_Layout::AIRCR, 16, 16, kWO, true> VECTKEY;                    // Register key
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR), 16, 16> VECTKEYSTAT;
 constexpr SCB_Reg<regs::constify(&SCB_Layout::AIRCR),  1, 15> ENDIANNESS;            // Data endianness
-constexpr SCB_Reg<&SCB_Layout::AIRCR,  3,  8, (uint32_t{0x7} << 8) | kWO> PRIGROUP;  // Interrupt priority grouping field.
+constexpr SCB_Reg<&SCB_Layout::AIRCR,  3,  8, regs::shiftedMask32<3, 8>() | kWO> PRIGROUP;  // Interrupt priority grouping field.
     // This field determines the split of group priority from subpriority.
 constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  2, kWO, true> SYSRESETREQ;                // System reset request
 constexpr SCB_Reg<&SCB_Layout::AIRCR,  1,  1, kWO, true> VECTCLRACTIVE;              // Writing 1 to this bit clears all active state information for fixed and configurable exceptions.

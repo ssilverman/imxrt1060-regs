@@ -70,7 +70,7 @@ constexpr regs::RegGroup<ENC_Layout, kENC_size, kENC4_base> group;
 namespace ENC1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using ENC1_Reg =
     regs::Reg16<kENC1_base, ENC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -81,22 +81,22 @@ constexpr uint16_t kW1C = 0x8112;
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;                           // HOME Signal Transition Interrupt Request
     // 0b0..No transition on the HOME signal has occurred
     // 0b1..A transition on the HOME signal has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 14, (uint16_t{0x1} << 14) | kW1C> HIE;    // HOME Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 14, regs::shiftedMask16<1, 14>() | kW1C> HIE;    // HOME Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 13, (uint16_t{0x1} << 13) | kW1C> HIP;    // Enable HOME to Initialize Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 13, regs::shiftedMask16<1, 13>() | kW1C> HIP;    // Enable HOME to Initialize Position Counters UPOS and LPOS
     // 0b0..No action
     // 0b1..HOME signal initializes the position counter
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 12, (uint16_t{0x1} << 12) | kW1C> HNE;    // Use Negative Edge of HOME Input
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 12, regs::shiftedMask16<1, 12>() | kW1C> HNE;    // Use Negative Edge of HOME Input
     // 0b0..Use positive-going edge-to-trigger initialization of position counters UPOS and LPOS
     // 0b1..Use negative-going edge-to-trigger initialization of position counters UPOS and LPOS
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 11, (uint16_t{0x1} << 11) | kW1C> SWIP;   // Software-Triggered Initialization of Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 11, regs::shiftedMask16<1, 11>() | kW1C> SWIP;   // Software-Triggered Initialization of Position Counters UPOS and LPOS
     // 0b0..No action
     // 0b1..Initialize position counter (using upper and lower initialization registers, UINIT and LINIT)
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 10, (uint16_t{0x1} << 10) | kW1C> REV;    // Enable Reverse Direction Counting
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1, 10, regs::shiftedMask16<1, 10>() | kW1C> REV;    // Enable Reverse Direction Counting
     // 0b0..Count normally
     // 0b1..Count in the reverse direction
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9, (uint16_t{0x1} <<  9) | kW1C> PH1;    // Enable Signal Phase Count Mode
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9, regs::shiftedMask16<1,  9>() | kW1C> PH1;    // Enable Signal Phase Count Mode
     // 0b0..Use the standard quadrature decoder, where PHASEA and PHASEB represent a two-phase quadrature signal.
     // 0b1..Bypass the quadrature decoder. A positive transition of the PHASEA input generates a count signal. The
     //      PHASEB input and the REV bit control the counter direction: If CTRL[REV] = 0, PHASEB = 0, then count up If
@@ -105,28 +105,28 @@ constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  9, (uint16_t{0x1} <<  9) | kW1C> PH1; 
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;                           // INDEX Pulse Interrupt Request
     // 0b0..INDEX pulse has not occurred
     // 0b1..INDEX pulse has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  7, (uint16_t{0x1} <<  7) | kW1C> XIE;    // INDEX Pulse Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  7, regs::shiftedMask16<1,  7>() | kW1C> XIE;    // INDEX Pulse Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  6, (uint16_t{0x1} <<  6) | kW1C> XIP;    // INDEX Triggered Initialization of Position Counters UPOS and LPOS
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  6, regs::shiftedMask16<1,  6>() | kW1C> XIP;    // INDEX Triggered Initialization of Position Counters UPOS and LPOS
     // 0b0..INDEX pulse does not initialize the position counter
     // 0b1..INDEX pulse initializes the position counter
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  5, (uint16_t{0x1} <<  5) | kW1C> XNE;    // Use Negative Edge of INDEX Pulse
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  5, regs::shiftedMask16<1,  5>() | kW1C> XNE;    // Use Negative Edge of INDEX Pulse
     // 0b0..Use positive edge of INDEX pulse
     // 0b1..Use negative edge of INDEX pulse
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;                           // Watchdog Timeout Interrupt Request
     // 0b0..No Watchdog timeout interrupt has occurred
     // 0b1..Watchdog timeout interrupt has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3, (uint16_t{0x1} <<  3) | kW1C> DIE;    // Watchdog Timeout Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  3, regs::shiftedMask16<1,  3>() | kW1C> DIE;    // Watchdog Timeout Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  2, (uint16_t{0x1} <<  2) | kW1C> WDE;    // Watchdog Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  2, regs::shiftedMask16<1,  2>() | kW1C> WDE;    // Watchdog Enable
     // 0b0..Disabled
     // 0b1..Enabled
 constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;                         // Compare Interrupt Request
     // 0b0..No match has occurred (the counter does not match the COMP value)
     // 0b1..COMP match has occurred (the counter matches the COMP value)
-constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  0, (uint16_t{0x1} <<  0) | kW1C> CMPIE;  // Compare Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL, 1,  0, regs::shiftedMask16<1,  0>() | kW1C> CMPIE;  // Compare Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
 }  // namespace CTRL
@@ -224,34 +224,34 @@ constexpr ENC1_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;   // TEST_COUNT
 namespace CTRL2 {
 constexpr uint16_t kW1C = 0x00a0;
 
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 9, (uint16_t{0x1} << 9) | kW1C> OUTCTL;  // Output Control
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;  // Output Control
     // 0b0..POSMATCH pulses when a match occurs between the position counters (POS) and the corresponding compare value (COMP )
     // 0b1..POSMATCH pulses when the UPOS, LPOS, REV, or POSD registers are read
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 8, (uint16_t{0x1} << 8) | kW1C> REVMOD;  // Revolution Counter Modulus Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;  // Revolution Counter Modulus Enable
     // 0b0..Use INDEX pulse to increment/decrement revolution counter (REV)
     // 0b1..Use modulus counting roll-over/under to increment/decrement revolution counter (REV)
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;                          // Roll-over Interrupt Request
     // 0b0..No roll-over has occurred
     // 0b1..Roll-over has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 6, (uint16_t{0x1} << 6) | kW1C> ROIE;    // Roll-over Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 6, regs::shiftedMask16<1, 6>() | kW1C> ROIE;    // Roll-over Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;                          // Roll-under Interrupt Request
     // 0b0..No roll-under has occurred
     // 0b1..Roll-under has occurred
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 4, (uint16_t{0x1} << 4) | kW1C> RUIE;    // Roll-under Interrupt Enable
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 4, regs::shiftedMask16<1, 4>() | kW1C> RUIE;    // Roll-under Interrupt Enable
     // 0b0..Disabled
     // 0b1..Enabled
 constexpr ENC1_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;                  // Count Direction Flag
     // 0b0..Last count was in the down direction
     // 0b1..Last count was in the up direction
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{0x1} << 2) | kW1C> MOD;     // Enable Modulo Counting
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 2, regs::shiftedMask16<1, 2>() | kW1C> MOD;     // Enable Modulo Counting
     // 0b0..Disable modulo counting
     // 0b1..Enable modulo counting
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 1, (uint16_t{0x1} << 1) | kW1C> UPDPOS;  // Update Position Registers
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 1, regs::shiftedMask16<1, 1>() | kW1C> UPDPOS;  // Update Position Registers
     // 0b0..No action for POSD, REV, UPOS and LPOS registers on rising edge of TRIGGER
     // 0b1..Clear POSD, REV, UPOS and LPOS registers on rising edge of TRIGGER
-constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{0x1} << 0) | kW1C> UPDHLD;  // Update Hold Registers
+constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 0, regs::shiftedMask16<1, 0>() | kW1C> UPDHLD;  // Update Hold Registers
     // 0b0..Disable updates of hold registers on the rising edge of TRIGGER input signal
     // 0b1..Enable updates of hold registers on the rising edge of TRIGGER input signal
 }  // namespace CTRL2
@@ -281,7 +281,7 @@ constexpr ENC1_Reg<&ENC_Layout::LCOMP, 16, 0> COMP;  // COMP
 namespace ENC2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using ENC2_Reg =
     regs::Reg16<kENC2_base, ENC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -290,21 +290,21 @@ namespace CTRL {
 constexpr uint16_t kW1C = 0x8112;
 
 constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 14, (uint16_t{0x1} << 14) | kW1C> HIE;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 13, (uint16_t{0x1} << 13) | kW1C> HIP;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 12, (uint16_t{0x1} << 12) | kW1C> HNE;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 11, (uint16_t{0x1} << 11) | kW1C> SWIP;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 10, (uint16_t{0x1} << 10) | kW1C> REV;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  9, (uint16_t{0x1} <<  9) | kW1C> PH1;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 14, regs::shiftedMask16<1, 14>() | kW1C> HIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 13, regs::shiftedMask16<1, 13>() | kW1C> HIP;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 12, regs::shiftedMask16<1, 12>() | kW1C> HNE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 11, regs::shiftedMask16<1, 11>() | kW1C> SWIP;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1, 10, regs::shiftedMask16<1, 10>() | kW1C> REV;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  9, regs::shiftedMask16<1,  9>() | kW1C> PH1;
 constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  7, (uint16_t{0x1} <<  7) | kW1C> XIE;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  6, (uint16_t{0x1} <<  6) | kW1C> XIP;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  5, (uint16_t{0x1} <<  5) | kW1C> XNE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  7, regs::shiftedMask16<1,  7>() | kW1C> XIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  6, regs::shiftedMask16<1,  6>() | kW1C> XIP;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  5, regs::shiftedMask16<1,  5>() | kW1C> XNE;
 constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  3, (uint16_t{0x1} <<  3) | kW1C> DIE;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  2, (uint16_t{0x1} <<  2) | kW1C> WDE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  3, regs::shiftedMask16<1,  3>() | kW1C> DIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  2, regs::shiftedMask16<1,  2>() | kW1C> WDE;
 constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;
-constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  0, (uint16_t{0x1} <<  0) | kW1C> CMPIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL, 1,  0, regs::shiftedMask16<1,  0>() | kW1C> CMPIE;
 }  // namespace CTRL
 
 // ENC2 Input Filter Register
@@ -394,16 +394,16 @@ constexpr ENC2_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
 namespace CTRL2 {
 constexpr uint16_t kW1C = 0x00a0;
 
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 9, (uint16_t{1} << 9) | kW1C> OUTCTL;
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 8, (uint16_t{1} << 8) | kW1C> REVMOD;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 6, (uint16_t{1} << 6) | kW1C> ROIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 6, regs::shiftedMask16<1, 6>() | kW1C> ROIE;
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 4, (uint16_t{1} << 4) | kW1C> RUIE;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 4, regs::shiftedMask16<1, 4>() | kW1C> RUIE;
 constexpr ENC2_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{1} << 2) | kW1C> MOD;
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 1, (uint16_t{1} << 1) | kW1C> UPDPOS;
-constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{1} << 0) | kW1C> UPDHLD;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 2, regs::shiftedMask16<1, 2>() | kW1C> MOD;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 1, regs::shiftedMask16<1, 1>() | kW1C> UPDPOS;
+constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 0, regs::shiftedMask16<1, 0>() | kW1C> UPDHLD;
 }  // namespace CTRL2
 
 // ENC2 Upper Modulus Register
@@ -431,7 +431,7 @@ constexpr ENC2_Reg<&ENC_Layout::LCOMP, 16, 0> COMP;
 namespace ENC3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using ENC3_Reg =
     regs::Reg16<kENC3_base, ENC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -440,21 +440,21 @@ namespace CTRL {
 constexpr uint16_t kW1C = 0x8112;
 
 constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 14, (uint16_t{0x1} << 14) | kW1C> HIE;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 13, (uint16_t{0x1} << 13) | kW1C> HIP;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 12, (uint16_t{0x1} << 12) | kW1C> HNE;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 11, (uint16_t{0x1} << 11) | kW1C> SWIP;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 10, (uint16_t{0x1} << 10) | kW1C> REV;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  9, (uint16_t{0x1} <<  9) | kW1C> PH1;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 14, regs::shiftedMask16<1, 14>() | kW1C> HIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 13, regs::shiftedMask16<1, 13>() | kW1C> HIP;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 12, regs::shiftedMask16<1, 12>() | kW1C> HNE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 11, regs::shiftedMask16<1, 11>() | kW1C> SWIP;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1, 10, regs::shiftedMask16<1, 10>() | kW1C> REV;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  9, regs::shiftedMask16<1,  9>() | kW1C> PH1;
 constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  7, (uint16_t{0x1} <<  7) | kW1C> XIE;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  6, (uint16_t{0x1} <<  6) | kW1C> XIP;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  5, (uint16_t{0x1} <<  5) | kW1C> XNE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  7, regs::shiftedMask16<1,  7>() | kW1C> XIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  6, regs::shiftedMask16<1,  6>() | kW1C> XIP;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  5, regs::shiftedMask16<1,  5>() | kW1C> XNE;
 constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  3, (uint16_t{0x1} <<  3) | kW1C> DIE;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  2, (uint16_t{0x1} <<  2) | kW1C> WDE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  3, regs::shiftedMask16<1,  3>() | kW1C> DIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  2, regs::shiftedMask16<1,  2>() | kW1C> WDE;
 constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;
-constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  0, (uint16_t{0x1} <<  0) | kW1C> CMPIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL, 1,  0, regs::shiftedMask16<1,  0>() | kW1C> CMPIE;
 }  // namespace CTRL
 
 // ENC3 Input Filter Register
@@ -544,16 +544,16 @@ constexpr ENC3_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
 namespace CTRL2 {
 constexpr uint16_t kW1C = 0x00a0;
 
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 9, (uint16_t{1} << 9) | kW1C> OUTCTL;
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 8, (uint16_t{1} << 8) | kW1C> REVMOD;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 6, (uint16_t{1} << 6) | kW1C> ROIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 6, regs::shiftedMask16<1, 6>() | kW1C> ROIE;
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 4, (uint16_t{1} << 4) | kW1C> RUIE;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 4, regs::shiftedMask16<1, 4>() | kW1C> RUIE;
 constexpr ENC3_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{1} << 2) | kW1C> MOD;
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 1, (uint16_t{1} << 1) | kW1C> UPDPOS;
-constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{1} << 0) | kW1C> UPDHLD;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 2, regs::shiftedMask16<1, 2>() | kW1C> MOD;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 1, regs::shiftedMask16<1, 1>() | kW1C> UPDPOS;
+constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 0, regs::shiftedMask16<1, 0>() | kW1C> UPDHLD;
 }  // namespace CTRL2
 
 // ENC3 Upper Modulus Register
@@ -581,7 +581,7 @@ constexpr ENC3_Reg<&ENC_Layout::LCOMP, 16, 0> COMP;
 namespace ENC4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using ENC4_Reg =
     regs::Reg16<kENC4_base, ENC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -590,21 +590,21 @@ namespace CTRL {
 constexpr uint16_t kW1C = 0x8112;
 
 constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 15, kW1C> HIRQ;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 14, (uint16_t{0x1} << 14) | kW1C> HIE;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 13, (uint16_t{0x1} << 13) | kW1C> HIP;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 12, (uint16_t{0x1} << 12) | kW1C> HNE;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 11, (uint16_t{0x1} << 11) | kW1C> SWIP;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 10, (uint16_t{0x1} << 10) | kW1C> REV;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  9, (uint16_t{0x1} <<  9) | kW1C> PH1;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 14, regs::shiftedMask16<1, 14>() | kW1C> HIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 13, regs::shiftedMask16<1, 13>() | kW1C> HIP;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 12, regs::shiftedMask16<1, 12>() | kW1C> HNE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 11, regs::shiftedMask16<1, 11>() | kW1C> SWIP;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1, 10, regs::shiftedMask16<1, 10>() | kW1C> REV;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  9, regs::shiftedMask16<1,  9>() | kW1C> PH1;
 constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  8, kW1C> XIRQ;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  7, (uint16_t{0x1} <<  7) | kW1C> XIE;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  6, (uint16_t{0x1} <<  6) | kW1C> XIP;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  5, (uint16_t{0x1} <<  5) | kW1C> XNE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  7, regs::shiftedMask16<1,  7>() | kW1C> XIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  6, regs::shiftedMask16<1,  6>() | kW1C> XIP;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  5, regs::shiftedMask16<1,  5>() | kW1C> XNE;
 constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  4, kW1C> DIRQ;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  3, (uint16_t{0x1} <<  3) | kW1C> DIE;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  2, (uint16_t{0x1} <<  2) | kW1C> WDE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  3, regs::shiftedMask16<1,  3>() | kW1C> DIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  2, regs::shiftedMask16<1,  2>() | kW1C> WDE;
 constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  1, kW1C> CMPIRQ;
-constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  0, (uint16_t{0x1} <<  0) | kW1C> CMPIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL, 1,  0, regs::shiftedMask16<1,  0>() | kW1C> CMPIE;
 }  // namespace CTRL
 
 // ENC4 Input Filter Register
@@ -694,16 +694,16 @@ constexpr ENC4_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
 namespace CTRL2 {
 constexpr uint16_t kW1C = 0x00a0;
 
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 9, (uint16_t{1} << 9) | kW1C> OUTCTL;
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 8, (uint16_t{1} << 8) | kW1C> REVMOD;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;
 constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 7, kW1C> ROIRQ;
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 6, (uint16_t{1} << 6) | kW1C> ROIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 6, regs::shiftedMask16<1, 6>() | kW1C> ROIE;
 constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 5, kW1C> RUIRQ;
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 4, (uint16_t{1} << 4) | kW1C> RUIE;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 4, regs::shiftedMask16<1, 4>() | kW1C> RUIE;
 constexpr ENC4_Reg<regs::constify(&ENC_Layout::CTRL2), 1, 3> DIR;
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 2, (uint16_t{1} << 2) | kW1C> MOD;
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 1, (uint16_t{1} << 1) | kW1C> UPDPOS;
-constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 0, (uint16_t{1} << 0) | kW1C> UPDHLD;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 2, regs::shiftedMask16<1, 2>() | kW1C> MOD;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 1, regs::shiftedMask16<1, 1>() | kW1C> UPDPOS;
+constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 0, regs::shiftedMask16<1, 0>() | kW1C> UPDHLD;
 }  // namespace CTRL2
 
 // ENC4 Upper Modulus Register

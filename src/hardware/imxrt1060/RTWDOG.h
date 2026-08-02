@@ -37,7 +37,7 @@ constexpr regs::RegGroup<RTWDOG_Layout, kRTWDOG_size, kRTWDOG_base> group;
 }  // namespace RTWDOG
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using RTWDOG_Reg = regs::Reg32<kRTWDOG_base, RTWDOG_Layout, Member, 0, Bits,
                                Shift, AssignMask>;
 
@@ -47,16 +47,16 @@ namespace RTWDOG {
 namespace CS {
 constexpr uint32_t kW1C = 0x0000'4000;
 
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 15, (uint32_t{0x1} << 15) | kW1C> WIN;      // Watchdog Window
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 15, regs::shiftedMask32<1, 15>() | kW1C> WIN;      // Watchdog Window
     // 0b0..Window mode disabled.
     // 0b1..Window mode enabled.
 constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 14, kW1C> FLG;                              // Watchdog Interrupt Flag
     // 0b0..No interrupt occurred.
     // 0b1..An interrupt occurred.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 13, (uint32_t{0x1} << 13) | kW1C> CMD32EN;  // Enables or disables WDOG support for 32-bit (otherwise 16-bit or 8-bit) refresh/unlock command write words
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 13, regs::shiftedMask32<1, 13>() | kW1C> CMD32EN;  // Enables or disables WDOG support for 32-bit (otherwise 16-bit or 8-bit) refresh/unlock command write words
     // 0b0..Disables support for 32-bit refresh/unlock command write words. Only 16-bit or 8-bit is supported.
     // 0b1..Enables support for 32-bit refresh/unlock command write words. 16-bit or 8-bit is NOT supported.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 12, (uint32_t{0x1} << 12) | kW1C> PRES;     // Watchdog prescaler
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> PRES;     // Watchdog prescaler
     // 0b0..256 prescaler disabled.
     // 0b1..256 prescaler enabled.
 constexpr RTWDOG_Reg<regs::constify(&RTWDOG_Layout::CS), 1, 11> ULK;                    // Unlock status
@@ -65,29 +65,29 @@ constexpr RTWDOG_Reg<regs::constify(&RTWDOG_Layout::CS), 1, 11> ULK;            
 constexpr RTWDOG_Reg<regs::constify(&RTWDOG_Layout::CS), 1, 10> RCS;                    // Reconfiguration Success
     // 0b0..Reconfiguring WDOG.
     // 0b1..Reconfiguration is successful.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 2,  8, (uint32_t{0x3} <<  8) | kW1C> CLK;      // Watchdog Clock
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  7, (uint32_t{0x1} <<  7) | kW1C> EN;       // Watchdog Enable
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 2,  8, regs::shiftedMask32<2,  8>() | kW1C> CLK;      // Watchdog Clock
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> EN;       // Watchdog Enable
     // 0b0..Watchdog disabled.
     // 0b1..Watchdog enabled.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  6, (uint32_t{0x1} <<  6) | kW1C> INT;      // Watchdog Interrupt
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  6, regs::shiftedMask32<1,  6>() | kW1C> INT;      // Watchdog Interrupt
     // 0b0..Watchdog interrupts are disabled. Watchdog resets are not delayed.
     // 0b1..Watchdog interrupts are enabled. Watchdog resets are delayed by 128 bus clocks from the interrupt vector fetch.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  5, (uint32_t{0x1} <<  5) | kW1C> UPDATE;   // Allow updates
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  5, regs::shiftedMask32<1,  5>() | kW1C> UPDATE;   // Allow updates
     // 0b0..Updates not allowed. After the initial configuration, the watchdog cannot be later modified without forcing a reset.
     // 0b1..Updates allowed. Software can modify the watchdog configuration registers within 128 bus clocks after performing the unlock write sequence.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 2,  3, (uint32_t{0x3} <<  3) | kW1C> TST;      // Watchdog Test
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 2,  3, regs::shiftedMask32<2,  3>() | kW1C> TST;      // Watchdog Test
     // 0b00..Watchdog test mode disabled.
     // 0b01..Watchdog user mode enabled. (Watchdog test mode disabled.) After testing the watchdog, software should
     //       use this setting to indicate that the watchdog is functioning normally in user mode.
     // 0b10..Watchdog test mode enabled, only the low byte is used. CNT[CNTLOW] is compared with TOVAL[TOVALLOW].
     // 0b11..Watchdog test mode enabled, only the high byte is used. CNT[CNTHIGH] is compared with TOVAL[TOVALHIGH].
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  2, (uint32_t{0x1} <<  2) | kW1C> DBG;      // Debug Enable
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  2, regs::shiftedMask32<1,  2>() | kW1C> DBG;      // Debug Enable
     // 0b0..Watchdog disabled in chip debug mode.
     // 0b1..Watchdog enabled in chip debug mode.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  1, (uint32_t{0x1} <<  1) | kW1C> WAIT;     // Wait Enable
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> WAIT;     // Wait Enable
     // 0b0..Watchdog disabled in chip wait mode.
     // 0b1..Watchdog enabled in chip wait mode.
-constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  0, (uint32_t{0x1} <<  0) | kW1C> STOP;     // Stop Enable
+constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> STOP;     // Stop Enable
     // 0b0..Watchdog disabled in chip stop mode.
     // 0b1..Watchdog enabled in chip stop mode.
 }  // namespace CS

@@ -54,18 +54,18 @@ constexpr regs::RegGroup<ADC_Layout, kADC_size, kADC2_base> group;
 namespace ADC1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using ADC1_Reg =
     regs::Reg32<kADC1_base, ADC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_HC_count)>>
 using HC_Reg = regs::Reg32<kADC1_base, ADC_Layout, &ADC_Layout::HC, Index, Bits,
                            Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_R_count)>>
 using R_Reg = regs::Reg32<kADC1_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
                           Shift, AssignMask>;
@@ -221,18 +221,18 @@ constexpr ADC1_Reg<&ADC_Layout::CAL, 4, 0> CAL_CODE;  // Calibration Result Valu
 namespace ADC2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using ADC2_Reg =
     regs::Reg32<kADC2_base, ADC_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_HC_count)>>
 using HC_Reg = regs::Reg32<kADC2_base, ADC_Layout, &ADC_Layout::HC, Index, Bits,
                            Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kADC_R_count)>>
 using R_Reg = regs::Reg32<kADC2_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
                           Shift, AssignMask>;

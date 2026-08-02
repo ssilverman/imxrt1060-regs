@@ -107,7 +107,7 @@ constexpr regs::RegGroup<PXP_Layout, kPXP_size, kPXP_base> group;
 namespace PXP {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using PXP_Reg = regs::Reg32<kPXP_base, PXP_Layout, Member, 0, Bits, Shift,
                             AssignMask, 0, WriteOnly>;

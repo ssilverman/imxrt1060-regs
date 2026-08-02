@@ -56,7 +56,7 @@ constexpr regs::RegGroup<CMP_Layout, kCMP_size, kCMP4_base> group;
 namespace CMP1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask8<Bits, Shift>()>
 using CMP1_Reg =
     regs::Reg8<kCMP1_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -114,13 +114,13 @@ constexpr CMP1_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;  // Filter Sample Period
 namespace SCR {
 constexpr uint8_t kW1C = 0x06;
 
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;  // DMA Enable Control
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;  // DMA Enable Control
     // 0b0..DMA is disabled.
     // 0b1..DMA is enabled.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;    // Comparator Interrupt Enable Rising
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IER;    // Comparator Interrupt Enable Rising
     // 0b0..Interrupt is disabled.
     // 0b1..Interrupt is enabled.
-constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;    // Comparator Interrupt Enable Falling
+constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 3, regs::shiftedMask8<1, 3>() | kW1C> IEF;    // Comparator Interrupt Enable Falling
     // 0b0..Interrupt is disabled.
     // 0b1..Interrupt is enabled.
 constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;                        // Analog Comparator Flag Rising
@@ -170,7 +170,7 @@ constexpr CMP1_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;  // Minus Input Mux Control
 namespace CMP2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask8<Bits, Shift>()>
 using CMP2_Reg =
     regs::Reg8<kCMP2_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -200,9 +200,9 @@ constexpr CMP2_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 namespace SCR {
 constexpr uint8_t kW1C = 0x06;
 
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;
-constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IER;
+constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 3, regs::shiftedMask8<1, 3>() | kW1C> IEF;
 constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;
 constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;
 constexpr CMP2_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;
@@ -226,7 +226,7 @@ constexpr CMP2_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;
 namespace CMP3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask8<Bits, Shift>()>
 using CMP3_Reg =
     regs::Reg8<kCMP3_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -256,9 +256,9 @@ constexpr CMP3_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 namespace SCR {
 constexpr uint8_t kW1C = 0x06;
 
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;
-constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IER;
+constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 3, regs::shiftedMask8<1, 3>() | kW1C> IEF;
 constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;
 constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;
 constexpr CMP3_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;
@@ -282,7 +282,7 @@ constexpr CMP3_Reg<&CMP_Layout::MUXCR, 3, 0> MSEL;
 namespace CMP4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask8<Bits, Shift>()>
 using CMP4_Reg =
     regs::Reg8<kCMP4_base, CMP_Layout, Member, 0, Bits, Shift, AssignMask>;
 
@@ -312,9 +312,9 @@ constexpr CMP4_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 namespace SCR {
 constexpr uint8_t kW1C = 0x06;
 
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 6, (uint8_t{1} << 6) | kW1C> DMAEN;
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 4, (uint8_t{1} << 4) | kW1C> IER;
-constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 3, (uint8_t{1} << 3) | kW1C> IEF;
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IER;
+constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 3, regs::shiftedMask8<1, 3>() | kW1C> IEF;
 constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 2, kW1C> CFR;
 constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 1, kW1C> CFF;
 constexpr CMP4_Reg<regs::constify(&CMP_Layout::SCR), 1, 0> COUT;

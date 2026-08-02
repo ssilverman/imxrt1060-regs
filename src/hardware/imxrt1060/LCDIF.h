@@ -107,7 +107,7 @@ constexpr regs::RegGroup<LCDIF_Layout, kLCDIF_size, kLCDIF_base> group;
 namespace LCDIF {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LCDIF_Reg =
     regs::Reg32<kLCDIF_base, LCDIF_Layout, Member, 0, Bits, Shift,
@@ -778,7 +778,7 @@ constexpr uintptr_t PigeonBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using PIGEON_Reg =
     regs::Reg32<PigeonBase<Index>(), LCDIF_Layout::PIGEON_Layout,

@@ -50,7 +50,7 @@ constexpr regs::RegGroup<CSI_Layout, kCSI_size, kCSI_base> group;
 }  // namespace CSI
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CSI_Reg =
     regs::Reg32<kCSI_base, CSI_Layout, Member, 0, Bits, Shift, AssignMask>;
 

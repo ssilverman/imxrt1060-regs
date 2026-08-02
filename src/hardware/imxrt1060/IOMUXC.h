@@ -52,42 +52,42 @@ constexpr regs::RegGroup<IOMUXC_Layout, kIOMUXC_size, kIOMUXC_base> group;
 namespace IOMUXC {
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kIOMUXC_SW_MUX_CTL_PAD_count)>>
 using SW_MUX_CTL_PAD_Reg =
     regs::Reg32<kIOMUXC_base, IOMUXC_Layout, &IOMUXC_Layout::SW_MUX_CTL_PAD,
                 Index, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kIOMUXC_SW_PAD_CTL_PAD_count)>>
 using SW_PAD_CTL_PAD_Reg =
     regs::Reg32<kIOMUXC_base, IOMUXC_Layout, &IOMUXC_Layout::SW_PAD_CTL_PAD,
                 Index, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kIOMUXC_SELECT_INPUT_count)>>
 using SELECT_INPUT_Reg =
     regs::Reg32<kIOMUXC_base, IOMUXC_Layout, &IOMUXC_Layout::SELECT_INPUT,
                 Index, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kIOMUXC_SW_MUX_CTL_PAD_1_count)>>
 using SW_MUX_CTL_PAD_1_Reg =
     regs::Reg32<kIOMUXC_base, IOMUXC_Layout, &IOMUXC_Layout::SW_MUX_CTL_PAD_1,
                 Index, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kIOMUXC_SW_PAD_CTL_PAD_1_count)>>
 using SW_PAD_CTL_PAD_1_Reg =
     regs::Reg32<kIOMUXC_base, IOMUXC_Layout, &IOMUXC_Layout::SW_PAD_CTL_PAD_1,
                 Index, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kIOMUXC_SELECT_INPUT_1_count)>>
 using SELECT_INPUT_1_Reg =
     regs::Reg32<kIOMUXC_base, IOMUXC_Layout, &IOMUXC_Layout::SELECT_INPUT_1,
@@ -286,7 +286,7 @@ constexpr SELECT_INPUT_1_Reg<Index, 2, 0> DAISY;  // Selecting Pads Involved in 
 }  // namespace IOMUXC
 
 template <auto Member, size_t MemberOffset, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using IOMUXC_Reg = regs::Reg32<kIOMUXC_base, IOMUXC_Layout, Member,
                                MemberOffset, Bits, Shift, AssignMask>;
 

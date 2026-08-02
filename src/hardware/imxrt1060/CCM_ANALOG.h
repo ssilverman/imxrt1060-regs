@@ -98,7 +98,7 @@ constexpr regs::RegGroup<CCM_ANALOG_Layout, kCCM_ANALOG_size, kCCM_ANALOG_base>
 }  // namespace CCM_ANALOG
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CCM_ANALOG_Reg = regs::Reg32<kCCM_ANALOG_base, CCM_ANALOG_Layout, Member,
                                    0, Bits, Shift, AssignMask>;
 
@@ -787,11 +787,11 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 30, kW1C> IRQ_ANA_BO;    
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 29, kW1C> IRQ_TEMPHIGH;                                  // This status bit is set to one when the temperature sensor high interrupt asserts for high temperature
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 28, kW1C> IRQ_TEMPLOW;                                   // This status bit is set to one when the temperature sensor low interrupt asserts for low temperature
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 27, kW1C> IRQ_TEMPPANIC;                                 // This status bit is set to one when the temperature sensor panic interrupt asserts for a panic high temperature
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 17, (uint32_t{0x01} << 17) | kW1C> PFD_528_AUTOGATE_EN;  // This enables a feature that will clkgate (reset) all PFD_528 clocks anytime the PLL_528 is unlocked or powered off
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 16, (uint32_t{0x01} << 16) | kW1C> PFD_480_AUTOGATE_EN;  // This enables a feature that will clkgate (reset) all PFD_480 clocks anytime the USB1_PLL_480 is unlocked or powered off
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 12, (uint32_t{0x01} << 12) | kW1C> LVDSCLK1_IBEN;        // This enables the LVDS input buffer for anaclk1/1b
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 10, (uint32_t{0x01} << 10) | kW1C> LVDSCLK1_OBEN;        // This enables the LVDS output buffer for anaclk1/1b
-constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 5,  0, (uint32_t{0x1f} <<  0) | kW1C> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b.
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 17, regs::shiftedMask32<1, 17>() | kW1C> PFD_528_AUTOGATE_EN;  // This enables a feature that will clkgate (reset) all PFD_528 clocks anytime the PLL_528 is unlocked or powered off
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 16, regs::shiftedMask32<1, 16>() | kW1C> PFD_480_AUTOGATE_EN;  // This enables a feature that will clkgate (reset) all PFD_480 clocks anytime the USB1_PLL_480 is unlocked or powered off
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> LVDSCLK1_IBEN;        // This enables the LVDS input buffer for anaclk1/1b
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> LVDSCLK1_OBEN;        // This enables the LVDS output buffer for anaclk1/1b
+constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::MISC1, 5,  0, regs::shiftedMask32<5,  0>() | kW1C> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b.
     // 0b00000..Arm PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk

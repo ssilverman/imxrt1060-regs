@@ -52,18 +52,18 @@ constexpr regs::RegGroup<GPT_Layout, kGPT_size, kGPT2_base> group;
 namespace GPT1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using GPT1_Reg =
     regs::Reg32<kGPT1_base, GPT_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kGPT_OCR_count)>>
 using OCR_Reg = regs::Reg32<kGPT1_base, GPT_Layout, &GPT_Layout::OCR, Index,
                             Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kGPT_ICR_count)>>
 using ICR_Reg = regs::Reg32<kGPT1_base, GPT_Layout, &GPT_Layout::ICR, Index,
                             Bits, Shift, AssignMask>;
@@ -231,18 +231,18 @@ constexpr GPT1_Reg<regs::constify(&GPT_Layout::CNT), 32, 0> COUNT;  // Counter V
 namespace GPT2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using GPT2_Reg =
     regs::Reg32<kGPT2_base, GPT_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kGPT_OCR_count)>>
 using OCR_Reg = regs::Reg32<kGPT2_base, GPT_Layout, &GPT_Layout::OCR, Index,
                             Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kGPT_ICR_count)>>
 using ICR_Reg = regs::Reg32<kGPT2_base, GPT_Layout, &GPT_Layout::ICR, Index,
                             Bits, Shift, AssignMask>;

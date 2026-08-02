@@ -41,7 +41,7 @@ constexpr regs::RegGroup<DMAMUX_Layout, kDMAMUX_size, kDMAMUX_base> group;
 namespace DMAMUX {
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kDMAMUX_CHCFG_count)>>
 using CHCFG_Reg =
     regs::Reg32<kDMAMUX_base, DMAMUX_Layout, &DMAMUX_Layout::CHCFG, Index, Bits,

@@ -82,34 +82,34 @@ constexpr regs::RegGroup<I2S_Layout, kI2S_size, kSAI3_base> group;
 namespace I2S1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using I2S1_Reg = regs::Reg32<kSAI1_base, I2S_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
 using TDR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::TDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
 using TFR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::TFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
 using RDR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::RDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S1_DATALINE_count)>>
 using RFR_Reg = regs::Reg32<kSAI1_base, I2S_Layout, &I2S_Layout::RFR, Index,
@@ -134,23 +134,23 @@ constexpr I2S1_Reg<regs::constify(&I2S_Layout::PARAM), 4,  0> DATALINE;  // Numb
 namespace TCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> TE;     // Transmitter Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> TE;     // Transmitter Enable
     // 0b0..Transmitter is disabled.
     // 0b1..Transmitter is enabled, or transmitter has been disabled and has not yet reached end of frame.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;  // Stop Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> STOPE;  // Stop Enable
     // 0b0..Transmitter disabled in Stop mode.
     // 0b1..Transmitter enabled in Stop mode.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;   // Debug Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> DBGE;   // Debug Enable
     // 0b0..Transmitter is disabled in Debug mode, after completing the current frame.
     // 0b1..Transmitter is enabled in Debug mode.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;    // Bit Clock Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BCE;    // Bit Clock Enable
     // 0b0..Transmit bit clock is disabled.
     // 0b1..Transmit bit clock is enabled.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;     // FIFO Reset
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> FR;     // FIFO Reset
     // WORZ
     // 0b0..No effect.
     // 0b1..FIFO reset.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;     // Software Reset
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;     // Software Reset
     // 0b0..No effect.
     // 0b1..Software reset.
 constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;                            // Word Start Flag
@@ -168,25 +168,25 @@ constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;               
 constexpr I2S1_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;                  // FIFO Request Flag
     // 0b0..Transmit FIFO watermark has not been reached.
     // 0b1..Transmit FIFO watermark has been reached.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;   // Word Start Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;   // Word Start Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;   // Sync Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 11, regs::shiftedMask32<1, 11>() | kW1C> SEIE;   // Sync Error Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;   // FIFO Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> FEIE;   // FIFO Error Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;   // FIFO Warning Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> FWIE;   // FIFO Warning Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;   // FIFO Request Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> FRIE;   // FIFO Request Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;   // FIFO Warning DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> FWDE;   // FIFO Warning DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
-constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;   // FIFO Request DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::TCSR, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> FRDE;   // FIFO Request DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
 }  // namespace TCSR
@@ -307,23 +307,23 @@ constexpr I2S1_Reg<&I2S_Layout::TMR, 32, 0> TWM;  // Transmit Word Mask
 namespace RCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> RE;     // Receiver Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> RE;     // Receiver Enable
     // 0b0..Receiver is disabled.
     // 0b1..Receiver is enabled, or receiver has been disabled and has not yet reached end of frame.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;  // Stop Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> STOPE;  // Stop Enable
     // 0b0..Receiver disabled in Stop mode.
     // 0b1..Receiver enabled in Stop mode.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;   // Debug Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> DBGE;   // Debug Enable
     // 0b0..Receiver is disabled in Debug mode, after completing the current frame.
     // 0b1..Receiver is enabled in Debug mode.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;    // Bit Clock Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BCE;    // Bit Clock Enable
     // 0b0..Receive bit clock is disabled.
     // 0b1..Receive bit clock is enabled.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;     // FIFO Reset
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> FR;     // FIFO Reset
     // WORZ
     // 0b0..No effect.
     // 0b1..FIFO reset.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;     // Software Reset
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;     // Software Reset
     // 0b0..No effect.
     // 0b1..Software reset.
 constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 20, kW1C> WSF;                            // Word Start Flag
@@ -341,25 +341,25 @@ constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 17> FWF;               
 constexpr I2S1_Reg<regs::constify(&I2S_Layout::RCSR), 1, 16> FRF;                  // FIFO Request Flag
     // 0b0..Receive FIFO watermark not reached.
     // 0b1..Receive FIFO watermark has been reached.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;   // Word Start Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;   // Word Start Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;   // Sync Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 11, regs::shiftedMask32<1, 11>() | kW1C> SEIE;   // Sync Error Interrupt Enable
     // 0b0..Disables interrupt.
     // 0b1..Enables interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;   // FIFO Error Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> FEIE;   // FIFO Error Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;   // FIFO Warning Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> FWIE;   // FIFO Warning Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;   // FIFO Request Interrupt Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> FRIE;   // FIFO Request Interrupt Enable
     // 0b0..Disables the interrupt.
     // 0b1..Enables the interrupt.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;   // FIFO Warning DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> FWDE;   // FIFO Warning DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
-constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;   // FIFO Request DMA Enable
+constexpr I2S1_Reg<&I2S_Layout::RCSR, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> FRDE;   // FIFO Request DMA Enable
     // 0b0..Disables the DMA request.
     // 0b1..Enables the DMA request.
 }  // namespace RCSR
@@ -475,34 +475,34 @@ constexpr I2S1_Reg<&I2S_Layout::RMR, 32,  0> RWM;  // Receive Word Mask
 namespace I2S2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using I2S2_Reg = regs::Reg32<kSAI2_base, I2S_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
 using TDR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::TDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
 using TFR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::TFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
 using RDR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::RDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S2_DATALINE_count)>>
 using RFR_Reg = regs::Reg32<kSAI2_base, I2S_Layout, &I2S_Layout::RFR, Index,
@@ -526,24 +526,24 @@ constexpr I2S2_Reg<regs::constify(&I2S_Layout::PARAM),  4,  0> DATALINE;
 namespace TCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> TE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> TE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> STOPE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> DBGE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BCE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> FR;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;
 constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;
 constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;
 constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;
 constexpr I2S2_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;
 constexpr I2S2_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;
-constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 11, regs::shiftedMask32<1, 11>() | kW1C> SEIE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> FEIE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> FWIE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> FRIE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> FWDE;
+constexpr I2S2_Reg<&I2S_Layout::TCSR, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> FRDE;
 }  // namespace TCSR
 
 // Transmit Configuration 1
@@ -617,24 +617,24 @@ constexpr I2S2_Reg<&I2S_Layout::TMR, 32, 0> TWM;
 namespace RCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> RE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> RE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> STOPE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> DBGE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BCE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> FR;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;
 constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 20, kW1C> WSF;
 constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 19, kW1C> SEF;
 constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 18, kW1C> FEF;
 constexpr I2S2_Reg<regs::constify(&I2S_Layout::RCSR), 1, 17> FWF;
 constexpr I2S2_Reg<regs::constify(&I2S_Layout::RCSR), 1, 16> FRF;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;
-constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 11, regs::shiftedMask32<1, 11>() | kW1C> SEIE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> FEIE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> FWIE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> FRIE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> FWDE;
+constexpr I2S2_Reg<&I2S_Layout::RCSR, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> FRDE;
 }  // namespace RCSR
 
 // Receive Configuration 1
@@ -707,34 +707,34 @@ constexpr I2S2_Reg<&I2S_Layout::RMR, 32, 0> RWM;
 namespace I2S3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using I2S3_Reg = regs::Reg32<kSAI3_base, I2S_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
 using TDR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::TDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
 using TFR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::TFR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
 using RDR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::RDR, Index,
                             Bits, Shift, AssignMask, 0, WriteOnly>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false,
           typename = std::enable_if_t<(Index < kI2S3_DATALINE_count)>>
 using RFR_Reg = regs::Reg32<kSAI3_base, I2S_Layout, &I2S_Layout::RFR, Index,
@@ -758,24 +758,24 @@ constexpr I2S3_Reg<regs::constify(&I2S_Layout::PARAM), 4,  0> DATALINE;
 namespace TCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> TE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> TE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> STOPE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> DBGE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BCE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> FR;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;
 constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 20, kW1C> WSF;
 constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 19, kW1C> SEF;
 constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 18, kW1C> FEF;
 constexpr I2S3_Reg<regs::constify(&I2S_Layout::TCSR), 1, 17> FWF;
 constexpr I2S3_Reg<regs::constify(&I2S_Layout::TCSR), 1, 16> FRF;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;
-constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 11, regs::shiftedMask32<1, 11>() | kW1C> SEIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> FEIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> FWIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> FRIE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> FWDE;
+constexpr I2S3_Reg<&I2S_Layout::TCSR, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> FRDE;
 }  // namespace TCSR
 
 // Transmit Configuration 1
@@ -848,24 +848,24 @@ constexpr I2S3_Reg<&I2S_Layout::TMR, 32, 0> TWM;
 namespace RCSR {
 constexpr uint32_t kW1C = 0x001c'0000;
 
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 31, (uint32_t{0x1} << 31) | kW1C> RE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 30, (uint32_t{0x1} << 30) | kW1C> STOPE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 29, (uint32_t{0x1} << 29) | kW1C> DBGE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 28, (uint32_t{0x1} << 28) | kW1C> BCE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 25, (uint32_t{0x1} << 25) | kW1C> FR;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 24, (uint32_t{0x1} << 24) | kW1C> SR;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> RE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> STOPE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> DBGE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BCE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> FR;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> SR;
 constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 20, kW1C> WSF;
 constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 19, kW1C> SEF;
 constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 18, kW1C> FEF;
 constexpr I2S3_Reg<regs::constify(&I2S_Layout::RCSR), 1, 17> FWF;
 constexpr I2S3_Reg<regs::constify(&I2S_Layout::RCSR), 1, 16> FRF;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 12, (uint32_t{0x1} << 12) | kW1C> WSIE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 11, (uint32_t{0x1} << 11) | kW1C> SEIE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 10, (uint32_t{0x1} << 10) | kW1C> FEIE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  9, (uint32_t{0x1} <<  9) | kW1C> FWIE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  8, (uint32_t{0x1} <<  8) | kW1C> FRIE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  1, (uint32_t{0x1} <<  1) | kW1C> FWDE;
-constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  0, (uint32_t{0x1} <<  0) | kW1C> FRDE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> WSIE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 11, regs::shiftedMask32<1, 11>() | kW1C> SEIE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> FEIE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> FWIE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> FRIE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> FWDE;
+constexpr I2S3_Reg<&I2S_Layout::RCSR, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> FRDE;
 }  // namespace RCSR
 
 // Receive Configuration 1

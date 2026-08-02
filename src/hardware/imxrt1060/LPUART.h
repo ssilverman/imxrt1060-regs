@@ -83,7 +83,7 @@ constexpr regs::RegGroup<LPUART_Layout, kLPUART_size, kLPUART8_base> group;
 namespace LPUART1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART1_Reg =
     regs::Reg32<kLPUART1_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -204,23 +204,23 @@ constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;                
 constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;                        // RXD Pin Active Edge Interrupt Flag
     // 0b0..No active edge on the receive pin has occurred.
     // 0b1..An active edge on the receive pin has occurred.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;   // MSB First
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;   // MSB First
     // 0b0..LSB (bit0) is the first bit that is transmitted following the start bit. Further, the first bit received
     //     after the start bit is identified as bit0.
     // 0b1..MSB (identified as bit9, bit8, bit7 or bit6) is the first bit that is transmitted following the start
     //     bit depending on the setting of CTRL[M], CTRL[PE] and BAUD[M10]. .
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;  // Receive Data Inversion
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;  // Receive Data Inversion
     // 0b0..Receive data not inverted.
     // 0b1..Receive data inverted.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;  // Receive Wake Up Idle Detect
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;  // Receive Wake Up Idle Detect
     // 0b0..During receive standby state (RWU = 1), the IDLE bit does not get set upon detection of an idle
     //     character. During address match wakeup, the IDLE bit does not set when an address does not match.
     // 0b1..During receive standby state (RWU = 1), the IDLE bit gets set upon detection of an idle character.
     //     During address match wakeup, the IDLE bit does set when an address does not match.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;  // Break Character Generation Length
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;  // Break Character Generation Length
     // 0b0..Break character is transmitted with length of 9 to 13 bit times.
     // 0b1..Break character is transmitted with length of 12 to 15 bit times.
-constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;  // LIN Break Detection Enable
+constexpr LPUART1_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;  // LIN Break Detection Enable
     // 0b0..LIN break detect is disabled, normal break character can be detected.
     // 0b1..LIN break detect is enabled. LIN break character is detected at length of 11 bit times (if M = 0) or 12
     //     (if M = 1) or 13 (M10 = 1).
@@ -451,7 +451,7 @@ constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;       
     // WORZ
     // 0b0..No flush operation occurs.
     // 0b1..All data in the receive FIFO/buffer is cleared out.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;  // Receiver Idle Empty Enable
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;  // Receiver Idle Empty Enable
     // 0b000..Disable RDRF assertion due to partially filled FIFO when receiver is idle.
     // 0b001..Enable RDRF assertion due to partially filled FIFO when receiver is idle for 1 character.
     // 0b010..Enable RDRF assertion due to partially filled FIFO when receiver is idle for 2 characters.
@@ -460,13 +460,13 @@ constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C>
     // 0b101..Enable RDRF assertion due to partially filled FIFO when receiver is idle for 16 characters.
     // 0b110..Enable RDRF assertion due to partially filled FIFO when receiver is idle for 32 characters.
     // 0b111..Enable RDRF assertion due to partially filled FIFO when receiver is idle for 64 characters.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;   // Transmit FIFO Overflow Interrupt Enable
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;   // Transmit FIFO Overflow Interrupt Enable
     // 0b0..TXOF flag does not generate an interrupt to the host.
     // 0b1..TXOF flag generates an interrupt to the host.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;   // Receive FIFO Underflow Interrupt Enable
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;   // Receive FIFO Underflow Interrupt Enable
     // 0b0..RXUF flag does not generate an interrupt to the host.
     // 0b1..RXUF flag generates an interrupt to the host.
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;    // Transmit FIFO Enable
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;    // Transmit FIFO Enable
     // 0b0..Transmit FIFO is not enabled. Buffer depth is 1.
     // 0b1..Transmit FIFO is enabled. Buffer depth is indicated by TXFIFOSIZE.
 constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;            // Transmit FIFO Buffer Depth
@@ -478,7 +478,7 @@ constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;  
     // 0b101..Transmit FIFO/Buffer depth = 64 datawords.
     // 0b110..Transmit FIFO/Buffer depth = 128 datawords.
     // 0b111..Transmit FIFO/Buffer depth = 256 datawords
-constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;    // Receive FIFO Enable
+constexpr LPUART1_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;    // Receive FIFO Enable
     // 0b0..Receive FIFO is not enabled. Buffer depth is 1.
     // 0b1..Receive FIFO is enabled. Buffer depth is indicted by RXFIFOSIZE.
 constexpr LPUART1_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;            // Receive FIFO Buffer Depth
@@ -505,7 +505,7 @@ constexpr LPUART1_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;                  //
 namespace LPUART2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART2_Reg =
     regs::Reg32<kLPUART2_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -557,11 +557,11 @@ constexpr uint32_t kW1C = 0xc01f'c000;
 
 constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;
 constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;
-constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;
-constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;
-constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;
-constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;
-constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;
+constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;
+constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;
+constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;
+constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;
+constexpr LPUART2_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;
 constexpr LPUART2_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;
 constexpr LPUART2_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;
 constexpr LPUART2_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;
@@ -656,12 +656,12 @@ constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;
 constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;
 constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;
 constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;
-constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;
-constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;
-constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;
-constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;
+constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;
+constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;
+constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;
+constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;
 constexpr LPUART2_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;
-constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;
+constexpr LPUART2_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;
 constexpr LPUART2_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;
 }  // namespace FIFO
 
@@ -678,7 +678,7 @@ constexpr LPUART2_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 namespace LPUART3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART3_Reg =
     regs::Reg32<kLPUART3_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -730,11 +730,11 @@ constexpr uint32_t kW1C = 0xc01f'c000;
 
 constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;
 constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;
-constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;
-constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;
-constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;
-constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;
-constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;
+constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;
+constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;
+constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;
+constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;
+constexpr LPUART3_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;
 constexpr LPUART3_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;
 constexpr LPUART3_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;
 constexpr LPUART3_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;
@@ -829,12 +829,12 @@ constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;
 constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;
 constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;
 constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;
-constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;
-constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;
-constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;
-constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;
+constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;
+constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;
+constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;
+constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;
 constexpr LPUART3_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;
-constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;
+constexpr LPUART3_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;
 constexpr LPUART3_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;
 }  // namespace FIFO
 
@@ -851,7 +851,7 @@ constexpr LPUART3_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 namespace LPUART4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART4_Reg =
     regs::Reg32<kLPUART4_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -903,11 +903,11 @@ constexpr uint32_t kW1C = 0xc01f'c000;
 
 constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;
 constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;
-constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;
-constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;
-constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;
-constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;
-constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;
+constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;
+constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;
+constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;
+constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;
+constexpr LPUART4_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;
 constexpr LPUART4_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;
 constexpr LPUART4_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;
 constexpr LPUART4_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;
@@ -1002,12 +1002,12 @@ constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;
 constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;
 constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;
 constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;
-constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;
-constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;
-constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;
-constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;
+constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;
+constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;
+constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;
+constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;
 constexpr LPUART4_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;
-constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;
+constexpr LPUART4_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;
 constexpr LPUART4_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;
 }  // namespace FIFO
 
@@ -1024,7 +1024,7 @@ constexpr LPUART4_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 namespace LPUART5 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART5_Reg =
     regs::Reg32<kLPUART5_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -1076,11 +1076,11 @@ constexpr uint32_t kW1C = 0xc01f'c000;
 
 constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;
 constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;
-constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;
-constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;
-constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;
-constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;
-constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;
+constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;
+constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;
+constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;
+constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;
+constexpr LPUART5_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;
 constexpr LPUART5_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;
 constexpr LPUART5_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;
 constexpr LPUART5_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;
@@ -1175,12 +1175,12 @@ constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;
 constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;
 constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;
 constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;
-constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;
-constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;
-constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;
-constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;
+constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;
+constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;
+constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;
+constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;
 constexpr LPUART5_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;
-constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;
+constexpr LPUART5_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;
 constexpr LPUART5_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;
 }  // namespace FIFO
 
@@ -1197,7 +1197,7 @@ constexpr LPUART5_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 namespace LPUART6 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART6_Reg =
     regs::Reg32<kLPUART6_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -1249,11 +1249,11 @@ constexpr uint32_t kW1C = 0xc01f'c000;
 
 constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;
 constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;
-constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;
-constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;
-constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;
-constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;
-constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;
+constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;
+constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;
+constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;
+constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;
+constexpr LPUART6_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;
 constexpr LPUART6_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;
 constexpr LPUART6_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;
 constexpr LPUART6_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;
@@ -1348,12 +1348,12 @@ constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;
 constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;
 constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;
 constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;
-constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;
-constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;
-constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;
-constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;
+constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;
+constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;
+constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;
+constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;
 constexpr LPUART6_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;
-constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;
+constexpr LPUART6_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;
 constexpr LPUART6_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;
 }  // namespace FIFO
 
@@ -1370,7 +1370,7 @@ constexpr LPUART6_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 namespace LPUART7 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART7_Reg =
     regs::Reg32<kLPUART7_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -1422,11 +1422,11 @@ constexpr uint32_t kW1C = 0xc01f'c000;
 
 constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;
 constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;
-constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;
-constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;
-constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;
-constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;
-constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;
+constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;
+constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;
+constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;
+constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;
+constexpr LPUART7_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;
 constexpr LPUART7_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;
 constexpr LPUART7_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;
 constexpr LPUART7_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;
@@ -1521,12 +1521,12 @@ constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;
 constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;
 constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;
 constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;
-constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;
-constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;
-constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;
-constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;
+constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;
+constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;
+constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;
+constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;
 constexpr LPUART7_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;
-constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;
+constexpr LPUART7_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;
 constexpr LPUART7_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;
 }  // namespace FIFO
 
@@ -1543,7 +1543,7 @@ constexpr LPUART7_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 namespace LPUART8 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using LPUART8_Reg =
     regs::Reg32<kLPUART8_base, LPUART_Layout, Member, 0, Bits, Shift,
@@ -1595,11 +1595,11 @@ constexpr uint32_t kW1C = 0xc01f'c000;
 
 constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 31, kW1C> LBKDIF;
 constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 30, kW1C> RXEDGIF;
-constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 29, (uint32_t{0x1} << 29) | kW1C> MSBF;
-constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 28, (uint32_t{0x1} << 28) | kW1C> RXINV;
-constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 27, (uint32_t{0x1} << 27) | kW1C> RWUID;
-constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 26, (uint32_t{0x1} << 26) | kW1C> BRK13;
-constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 25, (uint32_t{0x1} << 25) | kW1C> LBKDE;
+constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> MSBF;
+constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> RXINV;
+constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> RWUID;
+constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> BRK13;
+constexpr LPUART8_Reg<&LPUART_Layout::STAT, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> LBKDE;
 constexpr LPUART8_Reg<regs::constify(&LPUART_Layout::STAT), 1, 24> RAF;
 constexpr LPUART8_Reg<regs::constify(&LPUART_Layout::STAT), 1, 23> TDRE;
 constexpr LPUART8_Reg<regs::constify(&LPUART_Layout::STAT), 1, 22> TC;
@@ -1694,12 +1694,12 @@ constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1, 17, kW1C> TXOF;
 constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1, 16, kW1C> RXUF;
 constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1, 15, kWORZ | kW1C> TXFLUSH;
 constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1, 14, kWORZ | kW1C> RXFLUSH;
-constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 3, 10, (uint32_t{0x7} << 10) | kW1C> RXIDEN;
-constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  9, (uint32_t{0x1} <<  9) | kW1C> TXOFE;
-constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  8, (uint32_t{0x1} <<  8) | kW1C> RXUFE;
-constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  7, (uint32_t{0x1} <<  7) | kW1C> TXFE;
+constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 3, 10, regs::shiftedMask32<3, 10>() | kW1C> RXIDEN;
+constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  9, regs::shiftedMask32<1,  9>() | kW1C> TXOFE;
+constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> RXUFE;
+constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> TXFE;
 constexpr LPUART8_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  4> TXFIFOSIZE;
-constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  3, (uint32_t{0x1} <<  3) | kW1C> RXFE;
+constexpr LPUART8_Reg<&LPUART_Layout::FIFO, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> RXFE;
 constexpr LPUART8_Reg<regs::constify(&LPUART_Layout::FIFO), 3,  0> RXFIFOSIZE;
 }  // namespace FIFO
 

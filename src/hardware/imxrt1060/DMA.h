@@ -118,13 +118,13 @@ constexpr regs::RegGroup<DMA_Layout, kDMA_size, kDMA_base> group;
 }  // namespace DMA
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask8<Bits, Shift>(),
           bool WriteOnly = false>
 using DMA_Reg8 = regs::Reg8<kDMA_base, DMA_Layout, Member, 0, Bits, Shift,
                             AssignMask, 0, WriteOnly>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using DMA_Reg32 = regs::Reg32<kDMA_base, DMA_Layout, Member, 0, Bits, Shift,
                               AssignMask, 0, WriteOnly>;
@@ -139,12 +139,12 @@ constexpr uintptr_t TcdBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using TCD_Reg32 = regs::Reg32<TcdBase<Index>(), DMA_Layout::TCD_Layout, Member,
                               0, Bits, Shift, AssignMask>;
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using TCD_Reg16 = regs::Reg16<TcdBase<Index>(), DMA_Layout::TCD_Layout, Member,
                               0, Bits, Shift, AssignMask>;
 

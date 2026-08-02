@@ -55,7 +55,7 @@ constexpr uintptr_t BfcrtBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using BFCRT_Reg = regs::Reg16<BfcrtBase<Index>(), AOI_Layout::BFCRT_Layout,
                               Member, 0, Bits, Shift, AssignMask>;
 
@@ -179,7 +179,7 @@ constexpr uintptr_t BfcrtBase() {
 }
 
 template <size_t Index, auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using BFCRT_Reg = regs::Reg16<BfcrtBase<Index>(), AOI_Layout::BFCRT_Layout,
                               Member, 0, Bits, Shift, AssignMask>;
 

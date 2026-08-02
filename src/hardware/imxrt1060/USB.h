@@ -99,22 +99,22 @@ constexpr regs::RegGroup<USB_Layout, kUSB_size, kUSB2_base> group;
 namespace USB1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using USB1_Reg =
     regs::Reg32<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask8<Bits, Shift>()>
 using USB1_Reg8 =
     regs::Reg8<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using USB1_Reg16 =
     regs::Reg16<kUSB1_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
 using ENDPTCTRL_Reg =
     regs::Reg32<kUSB1_base, USB_Layout, &USB_Layout::ENDPTCTRL, Index, Bits,
@@ -455,12 +455,12 @@ constexpr USB1_Reg<&USB_Layout::CONFIGFLAG, 1, 0> CF;  // Configure Flag
 namespace PORTSC1 {
 constexpr uint32_t kW1C = 0x0000'002a;
 
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 30, (uint32_t{0x3} << 30) | kW1C> PTS_1;  // All USB port interface modes are listed in this field description, but not all are supported
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 29, (uint32_t{0x1} << 29) | kW1C> STS;    // Serial Transceiver Select
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 30, regs::shiftedMask32<2, 30>() | kW1C> PTS_1;  // All USB port interface modes are listed in this field description, but not all are supported
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> STS;    // Serial Transceiver Select
     // 1 Serial Interface Engine is selected
     // 0 Parallel Interface signals is selected
     // Serial Interface Engine can be used in combination with UTMI+/ULPI physical interface to provide FS/LS signaling instead of the parallel interface signals
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 28, (uint32_t{0x1} << 28) | kW1C> PTW;    // Parallel Transceiver Width
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> PTW;    // Parallel Transceiver Width
     // This bit has no effect if serial interface engine is used
     // 0b0..Select the 8-bit UTMI interface [60MHz]
     // 0b1..Select the 16-bit UTMI interface [30MHz]
@@ -470,17 +470,17 @@ constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26> PSPD;           
     // 0b01..Low Speed
     // 0b10..High Speed
     // 0b11..Undefined
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 25, (uint32_t{0x1} << 25) | kW1C> PTS_2;  // See description at bits 31-30
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 24, (uint32_t{0x1} << 24) | kW1C> PFSC;   // Port Force Full Speed Connect - Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> PTS_2;  // See description at bits 31-30
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> PFSC;   // Port Force Full Speed Connect - Read/Write
     // 0b0..Normal operation
     // 0b1..Forced to full speed
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 23, (uint32_t{0x1} << 23) | kW1C> PHCD;   // PHY Low Power Suspend - Clock Disable (PLPSCD) - Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 23, regs::shiftedMask32<1, 23>() | kW1C> PHCD;   // PHY Low Power Suspend - Clock Disable (PLPSCD) - Read/Write
     // 0b0..Enable PHY clock
     // 0b1..Disable PHY clock
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 22, (uint32_t{0x1} << 22) | kW1C> WKOC;   // Wake on Over-current Enable (WKOC_E) - Read/Write
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 21, (uint32_t{0x1} << 21) | kW1C> WKDC;   // Wake on Disconnect Enable (WKDSCNNT_E) - Read/Write
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 20, (uint32_t{0x1} << 20) | kW1C> WKCN;   // Wake on Connect Enable (WKCNNT_E) - Read/Write
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 4, 16, (uint32_t{0xf} << 16) | kW1C> PTC;    // Port Test Control - Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 22, regs::shiftedMask32<1, 22>() | kW1C> WKOC;   // Wake on Over-current Enable (WKOC_E) - Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 21, regs::shiftedMask32<1, 21>() | kW1C> WKDC;   // Wake on Disconnect Enable (WKDSCNNT_E) - Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 20, regs::shiftedMask32<1, 20>() | kW1C> WKCN;   // Wake on Connect Enable (WKCNNT_E) - Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 4, 16, regs::shiftedMask32<4, 16>() | kW1C> PTC;    // Port Test Control - Read/Write
     // 0b0000..TEST_MODE_DISABLE
     // 0b0001..J_STATE
     // 0b0010..K_STATE
@@ -490,28 +490,28 @@ constexpr USB1_Reg<&USB_Layout::PORTSC1, 4, 16, (uint32_t{0xf} << 16) | kW1C> PT
     // 0b0110..FORCE_ENABLE_FS
     // 0b0111..FORCE_ENABLE_LS
     // 0b1000-0b1111..Reserved
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 14, (uint32_t{0x3} << 14) | kW1C> PIC;    // Port Indicator Control - Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 2, 14, regs::shiftedMask32<2, 14>() | kW1C> PIC;    // Port Indicator Control - Read/Write
     // 0b00..Port indicators are off
     // 0b01..Amber
     // 0b10..Green
     // 0b11..Undefined
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 13, (uint32_t{0x1} << 13) | kW1C> PO;     // Port Owner-Read/Write
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 12, (uint32_t{0x1} << 12) | kW1C> PP;     // Port Power (PP)-Read/Write or Read Only
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 13, regs::shiftedMask32<1, 13>() | kW1C> PO;     // Port Owner-Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> PP;     // Port Power (PP)-Read/Write or Read Only
 constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10> LS;                   // Line Status-Read Only
     // 0b00..SE0
     // 0b01..K-state
     // 0b10..J-state
     // 0b11..Undefined
 constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9> HSP;                  // High-Speed Port - Read Only
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  8, (uint32_t{0x1} <<  8) | kW1C> PR;     // Port Reset - Read/Write or Read Only
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  7, (uint32_t{0x1} <<  7) | kW1C> SUSP;   // Suspend - Read/Write or Read Only
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  6, (uint32_t{0x1} <<  6) | kW1C> FPR;    // Force Port Resume -Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> PR;     // Port Reset - Read/Write or Read Only
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> SUSP;   // Suspend - Read/Write or Read Only
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  6, regs::shiftedMask32<1,  6>() | kW1C> FPR;    // Force Port Resume -Read/Write
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  5, kW1C> OCC;                            // Over-current Change-R/WC
 constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;                  // Over-current Active-Read Only
     // 0b0..This port does not have an over-current condition.
     // 0b1..This port currently has an over-current condition
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  3, kW1C> PEC;                            // Port Enable/Disable Change-R/WC
-constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  2, (uint32_t{0x1} <<  2) | kW1C> PE;     // Port Enabled/Disabled-Read/Write
+constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  2, regs::shiftedMask32<1,  2>() | kW1C> PE;     // Port Enabled/Disabled-Read/Write
 constexpr USB1_Reg<&USB_Layout::PORTSC1, 1,  1, kW1C> CSC;                            // Connect Status Change-R/WC
 constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;                  // Current Connect Status-Read Only
 }  // namespace PORTSC1
@@ -522,15 +522,15 @@ constexpr USB1_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;            
 namespace OTGSC {
 constexpr uint32_t kW1C = 0x007f'0000;
 
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 30, (uint32_t{0x1} << 30) | kW1C> DPIE;    // Data Pulse Interrupt Enable
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 29, (uint32_t{0x1} << 29) | kW1C> EN_1MS;  // 1 millisecond timer Interrupt Enable - Read/Write
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 28, (uint32_t{0x1} << 28) | kW1C> BSEIE;   // B Session End Interrupt Enable - Read/Write.
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> DPIE;    // Data Pulse Interrupt Enable
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> EN_1MS;  // 1 millisecond timer Interrupt Enable - Read/Write
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BSEIE;   // B Session End Interrupt Enable - Read/Write.
     // Setting this bit enables the B session end interrupt.
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 27, (uint32_t{0x1} << 27) | kW1C> BSVIE;   // B Session Valid Interrupt Enable - Read/Write
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 26, (uint32_t{0x1} << 26) | kW1C> ASVIE;   // A Session Valid Interrupt Enable - Read/Write
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 25, (uint32_t{0x1} << 25) | kW1C> AVVIE;   // A VBus Valid Interrupt Enable - Read/Write.
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> BSVIE;   // B Session Valid Interrupt Enable - Read/Write
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> ASVIE;   // A Session Valid Interrupt Enable - Read/Write
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> AVVIE;   // A VBus Valid Interrupt Enable - Read/Write.
     // Setting this bit enables the A VBus valid interrupt.
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 24, (uint32_t{0x1} << 24) | kW1C> IDIE;    // USB ID Interrupt Enable - Read/Write.
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> IDIE;    // USB ID Interrupt Enable - Read/Write.
     // Setting this bit enables the USB ID interrupt.
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 22, kW1C> DPIS;                            // Data Pulse Interrupt Status - Read/Write to Clear
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1, 21, kW1C> STATUS_1MS;                      // 1 millisecond timer Interrupt Status - Read/Write to Clear
@@ -552,12 +552,12 @@ constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;              
     // Indicates VBus is above the A VBus valid threshold.
 constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;                    // USB ID - Read Only.
     // 0 = A device, 1 = B device
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  5, (uint32_t{0x1} <<  5) | kW1C> IDPU;    // ID Pullup - Read/Write
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  5, regs::shiftedMask32<1,  5>() | kW1C> IDPU;    // ID Pullup - Read/Write
     // This bit provide control over the ID pull-up resistor; 0 = off, 1 = on [default]
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  4, (uint32_t{0x1} <<  4) | kW1C> DP;      // Data Pulsing - Read/Write
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  3, (uint32_t{0x1} <<  3) | kW1C> OT;      // OTG Termination - Read/Write
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  1, (uint32_t{0x1} <<  1) | kW1C> VC;      // VBUS Charge - Read/Write
-constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  0, (uint32_t{0x1} <<  0) | kW1C> VD;      // VBUS_Discharge - Read/Write.
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  4, regs::shiftedMask32<1,  4>() | kW1C> DP;      // Data Pulsing - Read/Write
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> OT;      // OTG Termination - Read/Write
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> VC;      // VBUS Charge - Read/Write
+constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> VD;      // VBUS_Discharge - Read/Write.
     // Setting this bit causes VBus to discharge through a resistor.
 }  // namespace OTGSC
 
@@ -677,22 +677,22 @@ constexpr ENDPTCTRL_Reg<Index, 1,  0> RXS;  // RX Endpoint Stall - Read/Write
 namespace USB2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using USB2_Reg =
     regs::Reg32<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint8_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask8<Bits, Shift>()>
 using USB2_Reg8 =
     regs::Reg8<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint16_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using USB2_Reg16 =
     regs::Reg16<kUSB2_base, USB_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kUSB_ENDPTCTRL_count)>>
 using ENDPTCTRL_Reg =
     regs::Reg32<kUSB2_base, USB_Layout, &USB_Layout::ENDPTCTRL, Index, Bits,
@@ -927,29 +927,29 @@ constexpr USB2_Reg<&USB_Layout::CONFIGFLAG, 1, 0> CF;
 namespace PORTSC1 {
 constexpr uint32_t kW1C = 0x0000'002a;
 
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 30, (uint32_t{0x3} << 30) | kW1C> PTS_1;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 29, (uint32_t{0x1} << 29) | kW1C> STS;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 28, (uint32_t{0x1} << 28) | kW1C> PTW;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 30, regs::shiftedMask32<2, 30>() | kW1C> PTS_1;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> STS;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> PTW;
 constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 26> PSPD;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 25, (uint32_t{0x1} << 25) | kW1C> PTS_2;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 24, (uint32_t{0x1} << 24) | kW1C> PFSC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 23, (uint32_t{0x1} << 23) | kW1C> PHCD;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 22, (uint32_t{0x1} << 22) | kW1C> WKOC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 21, (uint32_t{0x1} << 21) | kW1C> WKDC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 20, (uint32_t{0x1} << 20) | kW1C> WKCN;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 4, 16, (uint32_t{0xf} << 16) | kW1C> PTC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 14, (uint32_t{0x3} << 14) | kW1C> PIC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 13, (uint32_t{0x1} << 13) | kW1C> PO;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 12, (uint32_t{0x1} << 12) | kW1C> PP;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> PTS_2;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> PFSC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 23, regs::shiftedMask32<1, 23>() | kW1C> PHCD;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 22, regs::shiftedMask32<1, 22>() | kW1C> WKOC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 21, regs::shiftedMask32<1, 21>() | kW1C> WKDC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 20, regs::shiftedMask32<1, 20>() | kW1C> WKCN;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 4, 16, regs::shiftedMask32<4, 16>() | kW1C> PTC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 2, 14, regs::shiftedMask32<2, 14>() | kW1C> PIC;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 13, regs::shiftedMask32<1, 13>() | kW1C> PO;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> PP;
 constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 2, 10> LS;
 constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  9> HSP;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  8, (uint32_t{0x1} <<  8) | kW1C> PR;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  7, (uint32_t{0x1} <<  7) | kW1C> SUSP;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  6, (uint32_t{0x1} <<  6) | kW1C> FPR;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  8, regs::shiftedMask32<1,  8>() | kW1C> PR;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  7, regs::shiftedMask32<1,  7>() | kW1C> SUSP;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  6, regs::shiftedMask32<1,  6>() | kW1C> FPR;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  5, kW1C> OCC;
 constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  4> OCA;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  3, kW1C> PEC;
-constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  2, (uint32_t{0x1} <<  2) | kW1C> PE;
+constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  2, regs::shiftedMask32<1,  2>() | kW1C> PE;
 constexpr USB2_Reg<&USB_Layout::PORTSC1, 1,  1, kW1C> CSC;
 constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;
 }  // namespace PORTSC1
@@ -960,13 +960,13 @@ constexpr USB2_Reg<regs::constify(&USB_Layout::PORTSC1), 1,  0> CCS;
 namespace OTGSC {
 constexpr uint32_t kW1C = 0x007f'0000;
 
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 30, (uint32_t{0x1} << 30) | kW1C> DPIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 29, (uint32_t{0x1} << 29) | kW1C> EN_1MS;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 28, (uint32_t{0x1} << 28) | kW1C> BSEIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 27, (uint32_t{0x1} << 27) | kW1C> BSVIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 26, (uint32_t{0x1} << 26) | kW1C> ASVIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 25, (uint32_t{0x1} << 25) | kW1C> AVVIE;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 24, (uint32_t{0x1} << 24) | kW1C> IDIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 30, regs::shiftedMask32<1, 30>() | kW1C> DPIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 29, regs::shiftedMask32<1, 29>() | kW1C> EN_1MS;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 28, regs::shiftedMask32<1, 28>() | kW1C> BSEIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 27, regs::shiftedMask32<1, 27>() | kW1C> BSVIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 26, regs::shiftedMask32<1, 26>() | kW1C> ASVIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 25, regs::shiftedMask32<1, 25>() | kW1C> AVVIE;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> IDIE;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 22, kW1C> DPIS;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 21, kW1C> STATUS_1MS;
 constexpr USB2_Reg<&USB_Layout::OTGSC, 1, 20, kW1C> BSEIS;
@@ -981,11 +981,11 @@ constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 11> BSV;
 constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;
 constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;
 constexpr USB2_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  5, (uint32_t{0x1} <<  5) | kW1C> IDPU;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  4, (uint32_t{0x1} <<  4) | kW1C> DP;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  3, (uint32_t{0x1} <<  3) | kW1C> OT;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  1, (uint32_t{0x1} <<  1) | kW1C> VC;
-constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  0, (uint32_t{0x1} <<  0) | kW1C> VD;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  5, regs::shiftedMask32<1,  5>() | kW1C> IDPU;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  4, regs::shiftedMask32<1,  4>() | kW1C> DP;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> OT;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> VC;
+constexpr USB2_Reg<&USB_Layout::OTGSC, 1,  0, regs::shiftedMask32<1,  0>() | kW1C> VD;
 }  // namespace OTGSC
 
 // USB2 USB Device Mode

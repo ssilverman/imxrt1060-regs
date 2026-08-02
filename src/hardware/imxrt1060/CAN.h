@@ -157,12 +157,12 @@ constexpr regs::RegGroup<CAN_Layout, kCAN_size, kCAN3_base> group;
 namespace CAN1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CAN1_Reg =
     regs::Reg32<kCAN1_base, CAN_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kCAN_RXIMR_count)>>
 using RXIMR_Reg =
     regs::Reg32<kCAN1_base, CAN_Layout, &CAN_Layout::RXIMR, Index, Bits, Shift,
@@ -536,12 +536,12 @@ constexpr CAN1_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;  // It determines the Glitch F
 namespace CAN2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CAN2_Reg =
     regs::Reg32<kCAN2_base, CAN_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kCAN_RXIMR_count)>>
 using RXIMR_Reg =
     regs::Reg32<kCAN2_base, CAN_Layout, &CAN_Layout::RXIMR, Index, Bits, Shift,
@@ -745,12 +745,12 @@ constexpr CAN2_Reg<&CAN_Layout::GFWR, 8, 0> GFWR;
 namespace CAN3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>()>
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CAN3_Reg =
     regs::Reg32<kCAN3_base, CAN_Layout, Member, 0, Bits, Shift, AssignMask>;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask<uint32_t, Bits, Shift>(),
+          auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kCAN_RXIMR_count)>>
 using RXIMR_Reg =
     regs::Reg32<kCAN3_base, CAN_Layout, &CAN_Layout::RXIMR, Index, Bits, Shift,
@@ -944,28 +944,28 @@ constexpr RXIMR_Reg<Index, 32, 0> MI;
 
 // CAN3 FD Control Register
 namespace FDCTRL {
-constexpr uint32_t kW1C = uint32_t{1} << 14;
+constexpr uint32_t kW1C = regs::shiftedMask32<1, 14>();
 
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 31, (uint32_t{0x01} << 31) | kW1C> FDRATE;  // Bit Rate Switch Enable
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> FDRATE;  // Bit Rate Switch Enable
     // 0b0..Transmit a frame in nominal rate. The BRS bit in the Tx MB has no effect.
     // 0b1..Transmit a frame with bit rate switching if the BRS bit in the Tx MB is recessive.
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 19, (uint32_t{0x03} << 19) | kW1C> MBDSR1;  // Message Buffer Data Size for Region 1
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 19, regs::shiftedMask32<2, 19>() | kW1C> MBDSR1;  // Message Buffer Data Size for Region 1
     // 0b00..Selects 8 bytes per message buffer.
     // 0b01..Selects 16 bytes per message buffer.
     // 0b10..Selects 32 bytes per message buffer.
     // 0b11..Selects 64 bytes per message buffer.
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 16, (uint32_t{0x03} << 16) | kW1C> MBDSR0;  // Message Buffer Data Size for Region 0
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 2, 16, regs::shiftedMask32<2, 16>() | kW1C> MBDSR0;  // Message Buffer Data Size for Region 0
     // 0b00..Selects 8 bytes per message buffer.
     // 0b01..Selects 16 bytes per message buffer.
     // 0b10..Selects 32 bytes per message buffer.
     // 0b11..Selects 64 bytes per message buffer.
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 15, (uint32_t{0x01} << 15) | kW1C> TDCEN;   // Transceiver Delay Compensation Enable
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 15, regs::shiftedMask32<1, 15>() | kW1C> TDCEN;   // Transceiver Delay Compensation Enable
     // 0b0..TDC is disabled
     // 0b1..TDC is enabled
 constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 1, 14, kW1C> TDCFAIL;                          // Transceiver Delay Compensation Fail
     // 0b0..Measured loop delay is in range.
     // 0b1..Measured loop delay is out of range.
-constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 5,  8, (uint32_t{0x1f} <<  8) | kW1C> TDCOFF;  // Transceiver Delay Compensation Offset
+constexpr CAN3_Reg<&CAN_Layout::FDCTRL, 5,  8, regs::shiftedMask32<5,  8>() | kW1C> TDCOFF;  // Transceiver Delay Compensation Offset
 constexpr CAN3_Reg<regs::constify(&CAN_Layout::FDCTRL), 6,  0> TDCVAL;                 // Transceiver Delay Compensation Value
 }  // namespace FDCTRL
 
