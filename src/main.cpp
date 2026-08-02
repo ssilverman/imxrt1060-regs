@@ -125,10 +125,7 @@ static void reboot() {
   delay(50);                // Enough time for USB hubs/ports to detect disconnect
 
   asm volatile ("dsb sy" ::: "memory");
-  SCB::group->AIRCR = SCB::AIRCR::VECTKEY(0x05fa) |
-                      (SCB::group->AIRCR & SCB::AIRCR::PRIGROUP.kMask) |
-                      SCB::AIRCR::keyed::SYSRESETREQ(1);
-      // Keep priority group unchanged
+  SCB::AIRCR::keyed::SYSRESETREQ = 1;
 #else
   USB1_USBCMD = 0;  // Disconnect USB
   delay(50);        // Enough time for USB hubs/ports to detect disconnect
