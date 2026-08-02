@@ -382,6 +382,24 @@ constexpr OCOTP_Reg<&OCOTP_Layout::ANA0, 32, 0> BITS;  // BITS
 // Value of OTP Bank1 Word6 (Analog Info.)
 namespace ANA1 {
 constexpr OCOTP_Reg<&OCOTP_Layout::ANA1, 32, 0> BITS;  // BITS
+
+// For TEMPMON
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA1, 12, 20> ROOM_COUNT;  // Value of TEMPMON_TEMPSENSE0[TEMP_VALUE] after a measurement cycle at room temperature (25.0 °C).
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA1, 12,  8> HOT_COUNT;   // Value of TEMPMON_TEMPSENSE0[TEMP_VALUE] after a measurement cycle at the hot temperature, i.e. HOT_TEMP.
+constexpr OCOTP_Reg<&OCOTP_Layout::ANA1,  8,  0> HOT_TEMP;    // The hot temperature test point. Each LSB equals 1 °C.
+
+/*
+Tmeas = T2 - (Nmeas - N2)*((T2 – T1)/(N1 – N2))
+
+The points on the calibration curve are as follows.
+* (N1, T1) = (ROOM_COUNT, 25.0)
+* (N2, T2) = (HOT_COUNT, HOT_TEMP)
+* (Nmeas, Tmeas) = (TEMP_CNT, Tmeas)
+
+Substituting the fields from OCOTP_ANA1 into the earlier equation results in the
+following:
+Tmeas = HOT_TEMP - (Nmeas - HOT_COUNT)*((HOT_TEMP - 25.0)/(ROOM_COUNT – HOT_COUNT))
+*/
 }  // namespace ANA1
 
 // Value of OTP Bank1 Word7 (Analog Info.)
