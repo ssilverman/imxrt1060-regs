@@ -51,24 +51,24 @@ using EWM_Reg =
 // INEN, ASSIN, and EWMEN should be written as a group because of their
 // write-once behaviour.
 namespace CTRL {
-constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 3> INTEN;  // Interrupt Enable
+constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 3> INTEN;  // Interrupt Enable.
     // 0b0..Deasserts the interrupt request.
-    // 0b1..Generates an interrupt request when EWM_OUT_b is asserted.
-constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 2> INEN;   // Input Enable
+    // 0b1..Generates an interrupt request, when EWM_OUT_b is asserted.
+constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 2> INEN;   // Input Enable.
     // RWONCE
     // This field may be written only once after a CPU reset. Further modification causes a bus transfer error.
     // 0b0..EWM_in port is disabled.
     // 0b1..EWM_in port is enabled.
-constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 1> ASSIN;  // EWM_in Assertion State Select
+constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 1> ASSIN;  // EWM_in's Assertion State Select.
     // RWONCE
     // This field may be written only once after a CPU reset. Further modification causes a bus transfer error.
-    // 0b0..The default assertion state of EWM_in is logic zero.
-    // 0b1..The assertion state of EWM_in is inverted to logic one.
-constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 0> EWMEN;  // EWM Enable
+    // 0b0..Default assert state of the EWM_in signal.
+    // 0b1..Inverts the assert state of EWM_in signal.
+constexpr EWM_Reg<&EWM_Layout::CTRL, 1, 0> EWMEN;  // EWM enable.
     // RWONCE
     // This field may be written only once after a CPU reset. Further modification causes a bus transfer error.
     // 0b0..EWM module is disabled.
-    // 0b1..EWM module is enabled, the counter is reset to zero, and EWM_OUT_b is deasserted.
+    // 0b1..EWM module is enabled.
 }  // namespace CTRL
 
 // Service Register

@@ -540,8 +540,8 @@ constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 1, 2> ZMK_HWP;                        /
 constexpr SNVS_Reg<&SNVS_Layout::LPMKCR, 2, 0> MASTER_KEY_SEL;                 // Master Key Select
     // These bits select the SNVS Master Key output when Master Key Select bits are enabled by MKS_EN bit in the HPCOMR
     // 0b0x..Select one time programmable master key.
-    // 0b10..Select zeroizable master key when MKS_EN bit is set.
-    // 0b11..Select combined master key when MKS_EN bit is set.
+    // 0b10..Select zeroizable master key when MKS_EN bit is set .
+    // 0b11..Select combined master key when MKS_EN bit is set .
 
 // SNVS_LP Master Key Control Register values
 constexpr uint32_t kMASTER_KEY_SEL_OTPMK = 0;  /*!< One Time Programmable Master Key. */

@@ -1024,7 +1024,7 @@ constexpr DMA_Reg8<&DMA_Layout::DCHPRI5, 4, 0> CHPRI;                   // Chann
 
 // Channel Priority
 namespace DCHPRI4 {
-constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 1, 7> ECP;                     // Enable Channel Preemption
+constexpr DMA_Reg8<&DMA_Layout::DCHPRI4, 1, 7> ECP;                     // Enable Channel Preemption.
     //  This field resets to 0.
     // 0b0..Channel n cannot be suspended by a higher priority channel's service request
     // 0b1..Channel n can be temporarily suspended by the service request of a higher priority channel

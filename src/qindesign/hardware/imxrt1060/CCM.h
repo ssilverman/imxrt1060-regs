@@ -88,7 +88,7 @@ constexpr CCM_Reg<&CCM_Layout::CCR, 6, 21> REG_BYPASS_COUNT;  // Counter for ana
 constexpr CCM_Reg<&CCM_Layout::CCR, 1, 12> COSC_EN;           // On chip oscillator enable bit - this bit value is reflected on the output cosc_en
     // 0b0..disable on chip oscillator
     // 0b1..enable on chip oscillator
-constexpr CCM_Reg<&CCM_Layout::CCR, 8,  0> OSCNT;             // Oscillator ready counter value
+constexpr CCM_Reg<&CCM_Layout::CCR, 8,  0> OSCNT;             // Oscillator ready counter value.
     // These bits define value of 32KHz counter, that serve as
     // counter for oscillator lock time (count to n+1 ckil's). This is used for oscillator lock time.
     // Current estimation is ~5ms. This counter will be used in ignition sequence and in wake from
@@ -356,14 +356,14 @@ namespace CS1CDR {
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 3, 25> FLEXIO2_CLK_PODF;  //  Divider for flexio2/flexio3 clock.
     // Divider should be updated when output clock is gated.
     // Divide by 'value' + 1:
-    // 0b000..divide by 1
-    // 0b001..divide by 2
-    // 0b010..divide by 3
-    // 0b011..divide by 4
-    // 0b100..divide by 5
-    // 0b101..divide by 6
-    // 0b110..divide by 7
-    // 0b111..divide by 8
+    // 0b000..Divide by 1
+    // 0b001..Divide by 2
+    // 0b010..Divide by 3
+    // 0b011..Divide by 4
+    // 0b100..Divide by 5
+    // 0b101..Divide by 6
+    // 0b110..Divide by 7
+    // 0b111..Divide by 8
 constexpr CCM_Reg<&CCM_Layout::CS1CDR, 3, 22> SAI3_CLK_PRED;     // Divider for sai3/adc1/adc2 clock pred.
     // Divide by 'value' + 1:
     // 0b000..divide by 1
@@ -428,25 +428,25 @@ namespace CDCDR {
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3, 25> SPDIF0_CLK_PRED;   // Divider for spdif0 clock pred.
     // Divider should be updated when output clock is gated.
     // Divide by 'value' + 1:
-    // 0b000..divide by 1
-    // 0b001..divide by 2
-    // 0b010..divide by 3
-    // 0b011..divide by 4
-    // 0b100..divide by 5
-    // 0b101..divide by 6
-    // 0b110..divide by 7
-    // 0b111..divide by 8
+    // 0b000..Divide by 1
+    // 0b001..Divide by 2
+    // 0b010..Divide by 3
+    // 0b011..Divide by 4
+    // 0b100..Divide by 5
+    // 0b101..Divide by 6
+    // 0b110..Divide by 7
+    // 0b111..Divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3, 22> SPDIF0_CLK_PODF;   // Divider for spdif0 clock podf.
     // Divider should be updated when output clock is gated.
     // Divide by 'value' + 1:
-    // 0b000..divide by 1
-    // 0b001..divide by 2
-    // 0b010..divide by 3
-    // 0b011..divide by 4
-    // 0b100..divide by 5
-    // 0b101..divide by 6
-    // 0b110..divide by 7
-    // 0b111..divide by 8
+    // 0b000..Divide by 1
+    // 0b001..Divide by 2
+    // 0b010..Divide by 3
+    // 0b011..Divide by 4
+    // 0b100..Divide by 5
+    // 0b101..Divide by 6
+    // 0b110..Divide by 7
+    // 0b111..Divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 2, 20> SPDIF0_CLK_SEL;    // Selector for spdif0 clock multiplexer
     // 0b00..derive clock from PLL4
     // 0b01..derive clock from PLL3 PFD2
@@ -455,25 +455,25 @@ constexpr CCM_Reg<&CCM_Layout::CDCDR, 2, 20> SPDIF0_CLK_SEL;    // Selector for 
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3, 12> FLEXIO1_CLK_PRED;  // Divider for flexio1 clock pred.
     // Divider should be updated when output clock is gated.
     // Divide by 'value' + 1:
-    // 0b000..divide by 1
-    // 0b001..divide by 2
-    // 0b010..divide by 3
-    // 0b011..divide by 4
-    // 0b100..divide by 5
-    // 0b101..divide by 6
-    // 0b110..divide by 7
-    // 0b111..divide by 8
+    // 0b000..Divide by 1
+    // 0b001..Divide by 2
+    // 0b010..Divide by 3
+    // 0b011..Divide by 4
+    // 0b100..Divide by 5
+    // 0b101..Divide by 6
+    // 0b110..Divide by 7
+    // 0b111..Divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 3,  9> FLEXIO1_CLK_PODF;  // Divider for flexio1 clock podf.
     // Divider should be updated when output clock is gated.
     // Divide by 'value' + 1:
-    // 0b000..divide by 1
-    // 0b001..divide by 2
-    // 0b010..divide by 3
-    // 0b011..divide by 4
-    // 0b100..divide by 5
-    // 0b101..divide by 6
-    // 0b110..divide by 7
-    // 0b111..divide by 8
+    // 0b000..Divide by 1
+    // 0b001..Divide by 2
+    // 0b010..Divide by 3
+    // 0b011..Divide by 4
+    // 0b100..Divide by 5
+    // 0b101..Divide by 6
+    // 0b110..Divide by 7
+    // 0b111..Divide by 8
 constexpr CCM_Reg<&CCM_Layout::CDCDR, 2,  7> FLEXIO1_CLK_SEL;   // Selector for flexio1 clock multiplexer
     // 0b00..derive clock from PLL4
     // 0b01..derive clock from PLL3 PFD2
@@ -891,8 +891,8 @@ constexpr CCM_Reg<&CCM_Layout::CCGR7, 2,  0> ENET2;        // CG0 - enet2_clk_en
 // CCM Module Enable Overide Register
 namespace CMEOR {
 constexpr CCM_Reg<&CCM_Layout::CMEOR, 1, 30> MOD_EN_OV_CAN1_CPI;   // Overide clock enable signal from CAN1 - clock will not be gated based on CAN's signal 'enable_clk_cpi'
-    // 0b0..don't override module enable signal
-    // 0b1..override module enable signal
+    // 0b0..don't overide module enable signal
+    // 0b1..overide module enable signal
 constexpr CCM_Reg<&CCM_Layout::CMEOR, 1, 28> MOD_EN_OV_CAN2_CPI;   // Overide clock enable signal from CAN2 - clock will not be gated based on CAN's signal 'enable_clk_cpi'
     // 0b0..don't override module enable signal
     // 0b1..override module enable signal

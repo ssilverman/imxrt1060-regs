@@ -77,14 +77,14 @@ constexpr XTALOSC24M_Reg<regs::constify(&XTALOSC24M_Layout::MISC0), 1, 29> RTC_X
     // 0b1..RTC_XTAL
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::MISC0, 3, 26> CLKGATE_DELAY;                    // This field specifies the delay between powering up the XTAL 24MHz clock and releasing the clock to the digital logic inside the analog block
     // Do not change this field during a low-power event; normally, software does not need to modify it.
-    // 0b000..0.5 ms
-    // 0b001..1.0 ms
-    // 0b010..2.0 ms
-    // 0b011..3.0 ms
-    // 0b100..4.0 ms
-    // 0b101..5.0 ms
-    // 0b110..6.0 ms
-    // 0b111..7.0 ms
+    // 0b000..0.5ms
+    // 0b001..1.0ms
+    // 0b010..2.0ms
+    // 0b011..3.0ms
+    // 0b100..4.0ms
+    // 0b101..5.0ms
+    // 0b110..6.0ms
+    // 0b111..7.0ms
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::MISC0, 1, 25> CLKGATE_CTRL;                     // This bit allows disabling the clock gate (always ungated) for the xtal 24MHz clock that clocks the digital logic in the analog block
     // Do not change this field during a low-power event; normally, software does not need to modify it.
     // 0b0..Allow the logic to automatically gate the clock when the XTAL is powered down.
@@ -103,10 +103,10 @@ constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::MISC0, 1, 12> DISCON_HIGH_SNVS;    
     // 0b1..Turn off the switch
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::MISC0, 2, 10> STOP_MODE_CONFIG;                 // Configure the analog behavior in stop mode.
     // Not related to oscillator.
-    // 0b00..All analog except RTC powered down on stop mode assertion. Crystal oscillator on, RC oscillator off.
-    // 0b01..Certain analog functions such as certain regulators left up. Crystal oscillator on, RC oscillator off.
-    // 0b10..Crystal oscillator off, RC oscillator on, normal-power bandgap on, low-power bandgap off.
-    // 0b11..Crystal oscillator off, RC oscillator on, normal-power bandgap off, low-power bandgap on.
+    // 0b00..All analog except rtc powered down on stop mode assertion. XtalOsc=on, RCOsc=off;
+    // 0b01..Certain analog functions such as certain regulators left up. XtalOsc=on, RCOsc=off;
+    // 0b10..XtalOsc=off, RCOsc=on, Old BG=on, New BG=off.
+    // 0b11..XtalOsc=off, RCOsc=on, Old BG=off, New BG=on.
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::MISC0, 1,  7> REFTOP_VBGUP;                     // Status bit that signals the analog bandgap voltage is up and stable
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::MISC0, 3,  4> REFTOP_VBGADJ;                    // Not related to oscillator.
     // 0b000..Nominal VBG
@@ -190,10 +190,10 @@ constexpr XTALOSC24M_Reg<regs::constify(&XTALOSC24M_Layout::LOWPWR_CTRL), 1, 16>
     // 0b0..Not stable
     // 0b1..Stable and ready to use
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::LOWPWR_CTRL, 2, 14> XTALOSC_PWRUP_DELAY;                 // Specifies the time delay between when the 24MHz xtal is powered up until it is stable and ready to use
-    // 0b00..0.25 ms
-    // 0b01..0.5 ms
-    // 0b10..1 ms
-    // 0b11..2 ms
+    // 0b00..0.25ms
+    // 0b01..0.5ms
+    // 0b10..1ms
+    // 0b11..2ms
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::LOWPWR_CTRL, 1, 13> RCOSC_CG_OVERRIDE;                   // For debug purposes only
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::LOWPWR_CTRL, 1, 11> DISPLAY_PWRGATE;                     // Display logic power gate control.
     // Used as software override. Not related to oscillator.
@@ -212,11 +212,11 @@ constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::LOWPWR_CTRL, 1,  5> LPBG_SEL;      
     // 0b0..Normal power bandgap
     // 0b1..Low power bandgap
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::LOWPWR_CTRL, 1,  4> OSC_SEL;                             // Select the source for the 24MHz clock.
-    // 0b0..Crystal oscillator
-    // 0b1..RC oscillator
+    // 0b0..XTAL OSC
+    // 0b1..RC OSC
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::LOWPWR_CTRL, 1,  0> RC_OSC_EN;                           // RC Osc. enable control.
-    // 0b0..Use crystal oscillator to source the 24 MHz clock
-    // 0b1..Use RC oscillator
+    // 0b0..Use XTAL OSC to source the 24MHz clock
+    // 0b1..Use RC OSC
 }  // namespace LOWPWR_CTRL
 
 // XTAL OSC (LP) Control Register

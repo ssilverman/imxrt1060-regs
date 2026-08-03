@@ -136,68 +136,68 @@ constexpr CSL_Reg<Index, 1,  0> SUR_S2;   // Secure user read access control for
 // HP0 register
 namespace HP0 {
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 25> L_ENET2;    // Lock bit set by the TZ software for the ENET2
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 24> HP_ENET2;   // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the ENET2
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 23> L_USB;      // Lock bit set by the TZ software for the USB
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 22> HP_USB;     // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the USB
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 21> L_TPSMP;    // Lock bit set by the TZ software for the TPSMP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 20> HP_TPSMP;   // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the TPSMP
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 19> L_USDHC2;   // Lock bit set by the TZ software for the USDHC2
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 18> HP_USDHC2;  // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the USDHC2
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 17> L_USDHC1;   // Lock bit set by the TZ software for the USDHC1
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 16> HP_USDHC1;  // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the USDHC1
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 15> L_ENET;     // Lock bit set by the TZ software for the ENET
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 14> HP_ENET;    // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the ENET
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 11> L_DCP;      // Lock bit set by the TZ software for the DCP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit cannot be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1, 10> HP_DCP;     // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the DCP
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  9> L_PXP;      // Lock bit set by the TZ software for the PXP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  8> HP_PXP;     // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the PXP
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  7> L_CSI;      // Lock bit set by the TZ software for the CSI
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  6> HP_CSI;     // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the CSI
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  5> L_LCDIF;    // Lock bit set by the TZ software for the LCDIF
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  4> HP_LCDIF;   // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the LCDIF
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  3> L_DMA;      // Lock bit set by the TZ software for the eDMA
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HP0, 1,  2> HP_DMA;     // Determines whether the register value of the corresponding HP field is passed as the hprot[1] of the eDMA
     // 0b0..The hprot1 input signal value is routed to the csu_hprot1 output for the corresponding master.
     // 0b1..The HP register bit is routed to the csu_hprot1 output for the corresponding master.
@@ -206,68 +206,68 @@ constexpr CSU_Reg<&CSU_Layout::HP0, 1,  2> HP_DMA;     // Determines whether the
 // Secure access register
 namespace SA {
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 25> L_ENET2;     // Lock bit set by the TZ software for the ENET2
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 24> NSA_ENET2;   // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 23> L_USB;       // Lock bit set by the TZ software for the USB
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 22> NSA_USB;     // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 21> L_TPSMP;     // Lock bit set by the TZ software for the TPSMP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 20> NSA_TPSMP;   // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 19> L_USDHC2;    // Lock bit set by the TZ software for the USDHC2
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 18> NSA_USDHC2;  // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 17> L_USDHC1;    // Lock bit set by the TZ software for the USDHC1
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 16> NSA_USDHC1;  // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 15> L_ENET;      // Lock bit set by the TZ software for the ENET
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 14> NSA_ENET;    // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 11> L_DCP;       // Lock bit set by the TZ software for the DCP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1, 10> NSA_DCP;     // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  9> L_PXP;       // Lock bit set by the TZ software for the PXP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  8> NSA_PXP;     // Non-Secure Access Policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  7> L_CSI;       // Lock bit set by the TZ software for the CSI
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  6> NSA_CSI;     // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  5> L_LCDIF;     // Lock bit set by the TZ software for the LCDIF
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  4> NSA_LCDIF;   // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  3> L_DMA;       // Lock bit set by the TZ software for the eDMA
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::SA, 1,  2> NSA_DMA;     // Non-secure access policy indicator bit
     // 0b0..Secure access for the corresponding type-1 master
     // 0b1..Non-secure access for the corresponding type-1 master
@@ -276,68 +276,68 @@ constexpr CSU_Reg<&CSU_Layout::SA, 1,  2> NSA_DMA;     // Non-secure access poli
 // HPCONTROL0 register
 namespace HPCONTROL0 {
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 25> L_ENET2;     // Lock bit set by the TZ software for the ENET2
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 24> HPC_ENET2;   // Indicates the privilege/user mode for the ENET2
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 23> L_USB;       // Lock bit set by the TZ software for the USB.
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 22> HPC_USB;     // Indicates the privilege/user mode for the USB
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 21> L_TPSMP;     // Lock bit set by the TZ software for the TPSMP.
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 20> HPC_TPSMP;   // Indicates the privilege/user mode for the TPSMP
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 19> L_USDHC2;    // Lock bit set by the TZ software for the USDHC2.
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 18> HPC_USDHC2;  // Indicates the privilege/user mode for the USDHC2
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 17> L_USDHC1;    // Lock bit set by the TZ software for the USDHC1
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 16> HPC_USDHC1;  // Indicates the privilege/user mode for the USDHC1
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 15> L_ENET;      // Lock bit set by the TZ software for the ENET
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 14> HPC_ENET;    // Indicates the privilege/user mode for the ENET
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 11> L_DCP;       // Lock bit set by the TZ software for the DCP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1, 10> HPC_DCP;     // Indicates the privilege/user mode for the DCP
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  9> L_PXP;       // Lock bit set by the TZ software for the PXP
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  8> HPC_PXP;     // Indicates the privilege/user mode for the PXP
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  7> L_CSI;       // Lock bit set by the TZ software for the CSI
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  6> HPC_CSI;     // Indicates the privilege/user mode for the CSI
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  5> L_LCDIF;     // Lock bit set by the TZ software for the LCDIF
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  4> HPC_LCDIF;   // Indicates the privilege/user mode for the LCDIF
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  3> L_DMA;       // Lock bit set by the TZ software for the eDMA
-    // 0b0..Not locked: the adjacent (next lower) bit can be written by software.
-    // 0b1..Locked: the adjacent (next lower) bit cannot be written by software.
+    // 0b0..No lock-the adjacent (next lower) bit can be written by the software.
+    // 0b1..Lock-the adjacent (next lower) bit can't be written by the software.
 constexpr CSU_Reg<&CSU_Layout::HPCONTROL0, 1,  2> HPC_DMA;     // Indicates the privilege/user mode for the eDMA
     // 0b0..User mode for the corresponding master
     // 0b1..Supervisor mode for the corresponding master

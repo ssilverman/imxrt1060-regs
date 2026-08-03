@@ -200,7 +200,7 @@ constexpr ENET_Reg<&ENET_Layout::EIR, 1, 27, 0x0> TXF;       // Transmit Frame I
 constexpr ENET_Reg<&ENET_Layout::EIR, 1, 26, 0x0> TXB;       // Transmit Buffer Interrupt
 constexpr ENET_Reg<&ENET_Layout::EIR, 1, 25, 0x0> RXF;       // Receive Frame Interrupt
 constexpr ENET_Reg<&ENET_Layout::EIR, 1, 24, 0x0> RXB;       // Receive Buffer Interrupt
-constexpr ENET_Reg<&ENET_Layout::EIR, 1, 23, 0x0> MII;       // MII Interrupt
+constexpr ENET_Reg<&ENET_Layout::EIR, 1, 23, 0x0> MII;       // MII Interrupt.
 constexpr ENET_Reg<&ENET_Layout::EIR, 1, 22, 0x0> EBERR;     // Ethernet Bus Error
 constexpr ENET_Reg<&ENET_Layout::EIR, 1, 21, 0x0> LC;        // Late Collision
 constexpr ENET_Reg<&ENET_Layout::EIR, 1, 20, 0x0> RL;        // Collision Retry Limit

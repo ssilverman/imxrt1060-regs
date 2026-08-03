@@ -96,10 +96,10 @@ constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_TOG,  1,  0, 0x0> POWER_DOWN; 
 // Tempsensor Control Register 1
 namespace TEMPSENSE1 {
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1, 16, 0> MEASURE_FREQ;  // This bits determines how many RTC clocks to wait before automatically repeating a temperature measurement
-    // 0x0000..Single measurement mode. New measurements are not automatically taken.
-    // 0x0001..Measurements are taken at the RTC clock rate.
-    // 0x0002..Measurements are taken at one-half the RTC clock rate.
-    // 0xFFFF..Two-second sample rate with a 32.768 kHz RTC clock.
+    // 0b0000000000000000..Defines a single measurement with no repeat.
+    // 0b0000000000000001..Updates the temperature value at a RTC clock rate.
+    // 0b0000000000000010..Updates the temperature value at a RTC/2 clock rate.
+    // 0b1111111111111111..Determines a two second sample period with a 32.768KHz RTC clock. Exact timings depend on the accuracy of the RTC clock.
 }  // namespace TEMPSENSE1
 
 // Tempsensor Control Register 1

@@ -65,104 +65,104 @@ namespace BFCRT {
 namespace BFCRT01 {
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2, 14> PT0_AC;  // Product term 0, A input configuration
-    // 0b00..Force the A input in this product term to a logical zero.
-    // 0b01..Pass the A input in this product term.
-    // 0b10..Complement the A input in this product term.
-    // 0b11..Force the A input in this product term to a logical one.
+    // 0b00..Force the A input in this product term to a logical zero
+    // 0b01..Pass the A input in this product term
+    // 0b10..Complement the A input in this product term
+    // 0b11..Force the A input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2, 12> PT0_BC;  // Product term 0, B input configuration
-    // 0b00..Force the B input in this product term to a logical zero.
-    // 0b01..Pass the B input in this product term.
-    // 0b10..Complement the B input in this product term.
-    // 0b11..Force the B input in this product term to a logical one.
+    // 0b00..Force the B input in this product term to a logical zero
+    // 0b01..Pass the B input in this product term
+    // 0b10..Complement the B input in this product term
+    // 0b11..Force the B input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2, 10> PT0_CC;  // Product term 0, C input configuration
-    // 0b00..Force the C input in this product term to a logical zero.
-    // 0b01..Pass the C input in this product term.
-    // 0b10..Complement the C input in this product term.
-    // 0b11..Force the C input in this product term to a logical one.
+    // 0b00..Force the C input in this product term to a logical zero
+    // 0b01..Pass the C input in this product term
+    // 0b10..Complement the C input in this product term
+    // 0b11..Force the C input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  8> PT0_DC;  // Product term 0, D input configuration
-    // 0b00..Force the D input in this product term to a logical zero.
-    // 0b01..Pass the D input in this product term.
-    // 0b10..Complement the D input in this product term.
-    // 0b11..Force the D input in this product term to a logical one.
+    // 0b00..Force the D input in this product term to a logical zero
+    // 0b01..Pass the D input in this product term
+    // 0b10..Complement the D input in this product term
+    // 0b11..Force the D input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  6> PT1_AC;  // Product term 1, A input configuration
-    // 0b00..Force the A input in this product term to a logical zero.
-    // 0b01..Pass the A input in this product term.
-    // 0b10..Complement the A input in this product term.
-    // 0b11..Force the A input in this product term to a logical one.
+    // 0b00..Force the A input in this product term to a logical zero
+    // 0b01..Pass the A input in this product term
+    // 0b10..Complement the A input in this product term
+    // 0b11..Force the A input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  4> PT1_BC;  // Product term 1, B input configuration
-    // 0b00..Force the B input in this product term to a logical zero.
-    // 0b01..Pass the B input in this product term.
-    // 0b10..Complement the B input in this product term.
-    // 0b11..Force the B input in this product term to a logical one.
+    // 0b00..Force the B input in this product term to a logical zero
+    // 0b01..Pass the B input in this product term
+    // 0b10..Complement the B input in this product term
+    // 0b11..Force the B input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  2> PT1_CC;  // Product term 1, C input configuration
-    // 0b00..Force the C input in this product term to a logical zero.
-    // 0b01..Pass the C input in this product term.
-    // 0b10..Complement the C input in this product term.
-    // 0b11..Force the C input in this product term to a logical one.
+    // 0b00..Force the C input in this product term to a logical zero
+    // 0b01..Pass the C input in this product term
+    // 0b10..Complement the C input in this product term
+    // 0b11..Force the C input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  0> PT1_DC;  // Product term 1, D input configuration
-    // 0b00..Force the D input in this product term to a logical zero.
-    // 0b01..Pass the D input in this product term.
-    // 0b10..Complement the D input in this product term.
-    // 0b11..Force the D input in this product term to a logical one.
+    // 0b00..Force the D input in this product term to a logical zero
+    // 0b01..Pass the D input in this product term
+    // 0b10..Complement the D input in this product term
+    // 0b11..Force the D input in this product term to a logical one
 }  // namespace BFCRT01
 
 // Boolean Function Term 2 and 3 Configuration Register
 namespace BFCRT23 {
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2, 14> PT2_AC;  // Product term 2, A input configuration
-    // 0b00..Force the A input in this product term to a logical zero.
-    // 0b01..Pass the A input in this product term.
-    // 0b10..Complement the A input in this product term.
-    // 0b11..Force the A input in this product term to a logical one.
+    // 0b00..Force the A input in this product term to a logical zero
+    // 0b01..Pass the A input in this product term
+    // 0b10..Complement the A input in this product term
+    // 0b11..Force the A input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2, 12> PT2_BC;  // Product term 2, B input configuration
-    // 0b00..Force the B input in this product term to a logical zero.
-    // 0b01..Pass the B input in this product term.
-    // 0b10..Complement the B input in this product term.
-    // 0b11..Force the B input in this product term to a logical one.
+    // 0b00..Force the B input in this product term to a logical zero
+    // 0b01..Pass the B input in this product term
+    // 0b10..Complement the B input in this product term
+    // 0b11..Force the B input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2, 10> PT2_CC;  // Product term 2, C input configuration
-    // 0b00..Force the C input in this product term to a logical zero.
-    // 0b01..Pass the C input in this product term.
-    // 0b10..Complement the C input in this product term.
-    // 0b11..Force the C input in this product term to a logical one.
+    // 0b00..Force the C input in this product term to a logical zero
+    // 0b01..Pass the C input in this product term
+    // 0b10..Complement the C input in this product term
+    // 0b11..Force the C input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  8> PT2_DC;  // Product term 2, D input configuration
-    // 0b00..Force the D input in this product term to a logical zero.
-    // 0b01..Pass the D input in this product term.
-    // 0b10..Complement the D input in this product term.
-    // 0b11..Force the D input in this product term to a logical one.
+    // 0b00..Force the D input in this product term to a logical zero
+    // 0b01..Pass the D input in this product term
+    // 0b10..Complement the D input in this product term
+    // 0b11..Force the D input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  6> PT3_AC;  // Product term 3, A input configuration
-    // 0b00..Force the A input in this product term to a logical zero.
-    // 0b01..Pass the A input in this product term.
-    // 0b10..Complement the A input in this product term.
-    // 0b11..Force the A input in this product term to a logical one.
+    // 0b00..Force the A input in this product term to a logical zero
+    // 0b01..Pass the A input in this product term
+    // 0b10..Complement the A input in this product term
+    // 0b11..Force the A input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  4> PT3_BC;  // Product term 3, B input configuration
-    // 0b00..Force the B input in this product term to a logical zero.
-    // 0b01..Pass the B input in this product term.
-    // 0b10..Complement the B input in this product term.
-    // 0b11..Force the B input in this product term to a logical one.
+    // 0b00..Force the B input in this product term to a logical zero
+    // 0b01..Pass the B input in this product term
+    // 0b10..Complement the B input in this product term
+    // 0b11..Force the B input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  2> PT3_CC;  // Product term 3, C input configuration
-    // 0b00..Force the C input in this product term to a logical zero.
-    // 0b01..Pass the C input in this product term.
-    // 0b10..Complement the C input in this product term.
-    // 0b11..Force the C input in this product term to a logical one.
+    // 0b00..Force the C input in this product term to a logical zero
+    // 0b01..Pass the C input in this product term
+    // 0b10..Complement the C input in this product term
+    // 0b11..Force the C input in this product term to a logical one
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  0> PT3_DC;  // Product term 3, D input configuration
-    // 0b00..Force the D input in this product term to a logical zero.
-    // 0b01..Pass the D input in this product term.
-    // 0b10..Complement the D input in this product term.
-    // 0b11..Force the D input in this product term to a logical one.
+    // 0b00..Force the D input in this product term to a logical zero
+    // 0b01..Pass the D input in this product term
+    // 0b10..Complement the D input in this product term
+    // 0b11..Force the D input in this product term to a logical one
 }  // namespace BFCRT23
 
 }  // namespace BFCRT

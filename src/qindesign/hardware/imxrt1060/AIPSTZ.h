@@ -106,113 +106,113 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4, 28> OPAC0;  // Off-platform Peri
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4, 24> OPAC1;  // Off-platform Peripheral Access Control 1
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4, 20> OPAC2;  // Off-platform Peripheral Access Control 2
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4, 16> OPAC3;  // Off-platform Peripheral Access Control 3
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4, 12> OPAC4;  // Off-platform Peripheral Access Control 4
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4,  8> OPAC5;  // Off-platform Peripheral Access Control 5
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4,  4> OPAC6;  // Off-platform Peripheral Access Control 6
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR, 4,  0> OPAC7;  // Off-platform Peripheral Access Control 7
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 }  // namespace OPACR
 
 // Off-Platform Peripheral Access Control Registers
@@ -222,113 +222,113 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4, 28> OPAC8;   // Off-platform Pe
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4, 24> OPAC9;   // Off-platform Peripheral Access Control 9
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4, 20> OPAC10;  // Off-platform Peripheral Access Control 10
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4, 16> OPAC11;  // Off-platform Peripheral Access Control 11
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4, 12> OPAC12;  // Off-platform Peripheral Access Control 12
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4,  8> OPAC13;  // Off-platform Peripheral Access Control 13
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4,  4> OPAC14;  // Off-platform Peripheral Access Control 14
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR1, 4,  0> OPAC15;  // Off-platform Peripheral Access Control 15
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 }  // namespace OPACR1
 
 // Off-Platform Peripheral Access Control Registers
@@ -338,113 +338,113 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4, 28> OPAC16;  // Off-platform Pe
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4, 24> OPAC17;  // Off-platform Peripheral Access Control 17
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4, 20> OPAC18;  // Off-platform Peripheral Access Control 18
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4, 16> OPAC19;  // Off-platform Peripheral Access Control 19
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4, 12> OPAC20;  // Off-platform Peripheral Access Control 20
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4,  8> OPAC21;  // Off-platform Peripheral Access Control 21
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4,  4> OPAC22;  // Off-platform Peripheral Access Control 22
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR2, 4,  0> OPAC23;  // Off-platform Peripheral Access Control 23
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 }  // namespace OPACR2
 
 // Off-Platform Peripheral Access Control Registers
@@ -454,113 +454,113 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4, 28> OPAC24;  // Off-platform Pe
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4, 24> OPAC25;  // Off-platform Peripheral Access Control 25
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4, 20> OPAC26;  // Off-platform Peripheral Access Control 26
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4, 16> OPAC27;  // Off-platform Peripheral Access Control 27
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4, 12> OPAC28;  // Off-platform Peripheral Access Control 28
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4,  8> OPAC29;  // Off-platform Peripheral Access Control 29
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4,  4> OPAC30;  // Off-platform Peripheral Access Control 30
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR3, 4,  0> OPAC31;  // Off-platform Peripheral Access Control 31
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 }  // namespace OPACR3
 
 // Off-Platform Peripheral Access Control Registers
@@ -570,29 +570,29 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR4, 4, 28> OPAC32;  // Off-platform Pe
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::OPACR4, 4, 24> OPAC33;  // Off-platform Peripheral Access Control 33
     // The BW bit must remain 0 because AIPSTZ does not support buffered writes.
     // 0b1xxx..Write accesses to this peripheral are allowed to be buffered by the AIPSTZ.
     // 0bx0xx..This peripheral does not require supervisor privilege level for accesses.
     // 0bx1xx..This peripheral requires supervisor privilege level for accesses. The master privilege level must
-    // indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
-    // be set. If not, the access is terminated with an error response and no peripheral access is initiated
-    // on the IPS bus.
+    //         indicate supervisor via the hprot[1] access attribute, and the MPROTx[MPL] control bit for the master must
+    //         be set. If not, the access is terminated with an error response and no peripheral access is initiated
+    //         on the IPS bus.
     // 0bxx0x..This peripheral allows write accesses.
     // 0bxx1x..This peripheral is write protected. If a write access is attempted, the access is terminated with an
-    // error response and no peripheral access is initiated on the IPS bus.
+    //         error response and no peripheral access is initiated on the IPS bus.
     // 0bxxx0..Accesses from an untrusted master are allowed.
     // 0bxxx1..Accesses from an untrusted master are not allowed. If an access is attempted by an untrusted master,
-    // the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
+    //         the access is terminated with an error response and no peripheral access is initiated on the IPS bus.
 }  // namespace OPACR4
 
 }  // namespace AIPSTZ1
