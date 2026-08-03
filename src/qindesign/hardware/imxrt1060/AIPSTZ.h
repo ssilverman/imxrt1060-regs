@@ -60,9 +60,8 @@ namespace AIPSTZ1 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
-using AIPSTZ1_Reg =
-    regs::Reg32<kAIPSTZ1_base, AIPSTZ_Layout, Member, 0, Bits, Shift,
-                AssignMask>;
+using AIPSTZ1_Reg = regs::Reg32<kAIPSTZ1_base, AIPSTZ_Layout, Member, 0, Bits,
+                                Shift, AssignMask>;
 
 // Master Privilege Registers
 namespace MPR {
@@ -602,9 +601,8 @@ namespace AIPSTZ2 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
-using AIPSTZ2_Reg =
-    regs::Reg32<kAIPSTZ2_base, AIPSTZ_Layout, Member, 0, Bits, Shift,
-                AssignMask>;
+using AIPSTZ2_Reg = regs::Reg32<kAIPSTZ2_base, AIPSTZ_Layout, Member, 0, Bits,
+                                Shift, AssignMask>;
 
 // AIPSTZ2 Master Privilege Registers
 namespace MPR {
@@ -674,9 +672,8 @@ namespace AIPSTZ3 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
-using AIPSTZ3_Reg =
-    regs::Reg32<kAIPSTZ3_base, AIPSTZ_Layout, Member, 0, Bits, Shift,
-                AssignMask>;
+using AIPSTZ3_Reg = regs::Reg32<kAIPSTZ3_base, AIPSTZ_Layout, Member, 0, Bits,
+                                Shift, AssignMask>;
 
 // AIPSTZ3 Master Privilege Registers
 namespace MPR {
@@ -746,9 +743,8 @@ namespace AIPSTZ4 {
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
-using AIPSTZ4_Reg =
-    regs::Reg32<kAIPSTZ4_base, AIPSTZ_Layout, Member, 0, Bits, Shift,
-                AssignMask>;
+using AIPSTZ4_Reg = regs::Reg32<kAIPSTZ4_base, AIPSTZ_Layout, Member, 0, Bits,
+                                Shift, AssignMask>;
 
 // AIPSTZ4 Master Privilege Registers
 namespace MPR {

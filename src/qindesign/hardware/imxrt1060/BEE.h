@@ -53,9 +53,8 @@ constexpr regs::RegGroup<BEE_Layout, kBEE_size, kBEE_base> group;
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
-using BEE_Reg =
-    regs::Reg32<kBEE_base, BEE_Layout, Member, 0, Bits, Shift, AssignMask, 0,
-                WriteOnly>;
+using BEE_Reg = regs::Reg32<kBEE_base, BEE_Layout, Member, 0, Bits, Shift,
+                            AssignMask, 0, WriteOnly>;
 
 // Control Register
 namespace CTRL {

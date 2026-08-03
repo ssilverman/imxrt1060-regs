@@ -51,9 +51,8 @@ using CSU_Reg =
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           typename = std::enable_if_t<(Index < kCSU_CSL_count)>>
-using CSL_Reg =
-    regs::Reg32<kCSU_base, CSU_Layout, &CSU_Layout::CSL, Index, Bits, Shift,
-                AssignMask>;
+using CSL_Reg = regs::Reg32<kCSU_base, CSU_Layout, &CSU_Layout::CSL, Index,
+                            Bits, Shift, AssignMask>;
 
 // Config security level register
 namespace CSL {
