@@ -421,7 +421,7 @@ constexpr DCP_Reg<&DCP_Layout::PACKET5, 32, 0> COUNT;  // Byte count register.
 
 // DCP work packet 6 status register
 namespace PACKET6 {
-constexpr DCP_Reg<&DCP_Layout::PACKET6, 32, 0> ADDR;  // This register reflects the payload pointer for the current control packet.
+constexpr DCP_Reg<&DCP_Layout::PACKET6, 32, 0> ADDR;  // This regiser reflects the payload pointer for the current control packet.
 }  // namespace PACKET6
 
 // DCP channel 0 command pointer address register

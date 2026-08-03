@@ -209,9 +209,9 @@ constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR0, 1,  0> SWRESET;        // Software 
 
 // Module Control Register 1
 namespace MCR1 {
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR1, 16, 16> SEQWAIT;     // Command Sequence Execution will timeout and abort after SEQWAIT * 1024 Serial Root Clock cycles.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR1, 16, 16> SEQWAIT;     // Command Sequence Execution will timeout and abort after SEQWAIT * 1024 Serial Root Clock cycles
     // When sequence execution timeout occurs, there will be an interrupt generated (INTR[SEQTIMEOUT]) if this interrupt is enabled (INTEN[SEQTIMEOUTEN] is set 0x1) and AHB command is ignored by arbitrator.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR1, 16,  0> AHBBUSWAIT;  // AHB Bus wait
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR1, 16,  0> AHBBUSWAIT;  // AHB Read/Write access to Serial Flash Memory space will timeout if not data received from Flash or data not transmitted after AHBBUSWAIT * 1024 ahb clock cycles, AHB Bus will get an error response
 }  // namespace MCR1
 
 // Module Control Register 2
@@ -223,7 +223,7 @@ constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR2, 1, 19> SCKBDIFFOPT;   // B_SCLK pad
     // 0b0..B_SCLK pad is used as port B SCLK clock output. Port B flash access is available.
     // 0b1..B_SCLK pad is used as port A SCLK inverted clock output (Differential clock to A_SCLK). Port B flash
     //     access is not available.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR2, 1, 15> SAMEDEVICEEN;  // All external devices are same devices (both in type and size) for A1/A2/B1/B2.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR2, 1, 15> SAMEDEVICEEN;  // All external devices are same devices (both in types and size) for A1/A2/B1/B2.
     // All external devices are same devices (both in types and size) for A1/A2/B1/B2.
     // 0b0..In Individual mode, FLSHA1CRx/FLSHA2CRx/FLSHB1CRx/FLSHB2CRx register setting will be applied to Flash
     //     A1/A2/B1/B2 separately. In Parallel mode, FLSHA1CRx register setting will be applied to Flash A1 and B1,
@@ -231,11 +231,8 @@ constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR2, 1, 15> SAMEDEVICEEN;  // All extern
     //     be ignored.
     // 0b1..FLSHA1CR0/FLSHA1CR1/FLSHA1CR2 register settings will be applied to Flash A1/A2/B1/B2.
     //     FLSHA2CRx/FLSHB1CRx/FLSHB2CRx will be ignored.
-constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR2, 1, 11> CLRAHBBUFOPT;  // Clear AHB buffer
-    // This bit determines whether AHB RX Buffer and AHB TX Buffer will be cleaned automatically when FlexSPI
-    //     returns STOP mode ACK. Software should set this bit if AHB RX Buffer or AHB TX Buffer will be powered off
-    //     in STOP mode. Otherwise AHB read access after exiting STOP mode may hit AHB RX Buffer or AHB TX Buffer
-    //     but their data entries are invalid.
+constexpr FLEXSPI_Reg<&FLEXSPI_Layout::MCR2, 1, 11> CLRAHBBUFOPT;  // This bit determines whether AHB RX Buffer and AHB TX Buffer will be cleaned automatically when FlexSPI returns STOP mode ACK.
+    // Software should set this bit if AHB RX Buffer or AHB TX Buffer will be powered off in STOP mode. Otherwise AHB read access after exiting STOP mode may hit AHB RX Buffer or AHB TX Buffer but their data entries are invalid.
     // 0b0..AHB RX/TX Buffer will not be cleaned automatically when FlexSPI return Stop mode ACK.
     // 0b1..AHB RX/TX Buffer will be cleaned automatically when FlexSPI return Stop mode ACK.
 }  // namespace MCR2
@@ -389,7 +386,7 @@ constexpr FLSHCR2_Reg<Index,  3, 28> AWRWAITUNIT;  // AWRWAIT unit
     // 0b110..The AWRWAIT unit is 8192 ahb clock cycle
     // 0b111..The AWRWAIT unit is 32768 ahb clock cycle
 template <size_t Index>
-constexpr FLSHCR2_Reg<Index, 12, 16> AWRWAIT;      // For certain devices (such as FPGA), it need some time to write data into internal memory after the command sequences finished on FlexSPI interface.
+constexpr FLSHCR2_Reg<Index, 12, 16> AWRWAIT;      // For certain devices (such as FPGA), it need some time to write data into internal memory after the command sequences finished on FlexSPI interface
     // If another Read command sequence comes before previous programming finished internally, the read data may be wrong. This field is used to hold AHB Bus ready for AHB write access to wait the programming finished in external device. Then there will be no AHB read command triggered before the programming finished in external device. The Wait cycle between AHB triggered command sequences finished on FlexSPI interface and AHB return Bus ready: AWRWAIT * AWRWAITUNIT
 template <size_t Index>
 constexpr FLSHCR2_Reg<Index,  3, 13> AWRSEQNUM;    // Sequence Number for AHB Write triggered Command.

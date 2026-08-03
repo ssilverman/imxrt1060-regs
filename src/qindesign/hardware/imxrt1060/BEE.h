@@ -87,11 +87,13 @@ constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  7> LITTLE_ENDIAN_MODE;      // Endian s
     // B7,B6,B5,B4,B3,B2,B1,B0} swap to {B0,B1,B2,B3,B4,B5,B6,B7, B8,B9,B10,B11,B12,B13,B14,B15}, where B0~B15 refers to
     // Byte0 to Byte15.
     // 0b1..The input and output data of AES core is not swapped.
-constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  6> AC_PROT_EN;              // Access permission control enable; when enabled, encrypted regions are limited to Arm core access
+constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  6> AC_PROT_EN;              // Enable access permission control
+    // When AC_PROT_EN is asserted, all encrypted regions are limited to be ARM core access only
 constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  5> KEY_REGION_SEL;          // AES key region select
     // 0b0..Load AES key for region0
     // 0b1..Load AES key for region1
-constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  4> KEY_VALID;               // AES-128 key ready; load the key by changing this bit from 0 to 1
+constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  4> KEY_VALID;               // AES-128 key is ready
+    // Load AES key by changing this bit from 0 to 1.
 constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  2> CTRL_SFTRST_N;           // Soft reset input, low active
 constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  1> CTRL_CLK_EN;             // Clock enable input, low inactive
 constexpr BEE_Reg<&BEE_Layout::CTRL, 1,  0> BEE_ENABLE;              // BEE enable bit
@@ -133,10 +135,10 @@ constexpr BEE_Reg<&BEE_Layout::AES_KEY0_W3, 32, 0, 0x0, true> KEY3;  // AES 128 
 
 // Status Register
 namespace STATUS {
-constexpr BEE_Reg<regs::constify(&BEE_Layout::STATUS), 1, 8> BEE_IDLE;  // BEE idle status
+constexpr BEE_Reg<regs::constify(&BEE_Layout::STATUS), 1, 8> BEE_IDLE;  // 1'b1: BEE is idle; 1'b0: BEE is active
     // 0b0..BEE is active.
     // 0b1..BEE is idle.
-constexpr BEE_Reg<&BEE_Layout::STATUS, 8, 0, 0x0> IRQ_VEC;              // Access violation and abort interrupt vector
+constexpr BEE_Reg<&BEE_Layout::STATUS, 8, 0, 0x0> IRQ_VEC;              // bit 7: Protected region-3 access violation bit 6: Protected region-2 access violation bit 5: Protected region-1 access violation bit 4: Protected region-0 access violation bit 3: Region-1 read channel security violation bit 2: Read channel illegal access detected bit 1: Region-0 read channel security violation bit 0: Disable abort
     // Bit 7: Protected region 3 access violation.
     // Bit 6: Protected region 2 access violation.
     // Bit 5: Protected region 1 access violation.

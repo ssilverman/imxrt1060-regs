@@ -65,7 +65,7 @@ constexpr CM7_MCM_Reg<&CM7_MCM_Layout::ISCR, 1, 25, regs::shiftedMask32<1, 25>()
 constexpr CM7_MCM_Reg<&CM7_MCM_Layout::ISCR, 1, 24, regs::shiftedMask32<1, 24>() | kW1C> FIOCE;  // FPU Invalid Operation Interrupt Enable
     // 0b0..Disable interrupt.
     // 0b1..Enable interrupt.
-constexpr CM7_MCM_Reg<&CM7_MCM_Layout::ISCR, 1, 21, regs::shiftedMask32<1, 21>() | kW1C> WABE;   // TCM Write Abort Interrupt Enable
+constexpr CM7_MCM_Reg<&CM7_MCM_Layout::ISCR, 1, 21, regs::shiftedMask32<1, 21>() | kW1C> WABE;   // TCM Write Abort Interrupt enable
     // 0b0..Disable interrupt.
     // 0b1..Enable interrupt.
 constexpr CM7_MCM_Reg<regs::constify(&CM7_MCM_Layout::ISCR), 1, 15> FIDC;                        // FPU Input Denormal Interrupt Status
@@ -80,7 +80,7 @@ constexpr CM7_MCM_Reg<regs::constify(&CM7_MCM_Layout::ISCR), 1, 11> FUFC;       
     // This read-only field mirrors FPSCR[UFC] and remains set until software clears that FPSCR bit.
     // 0b0..No interrupt.
     // 0b1..Interrupt occurred.
-constexpr CM7_MCM_Reg<regs::constify(&CM7_MCM_Layout::ISCR), 1, 10> FOFC;                        // FPU Overflow Interrupt Status
+constexpr CM7_MCM_Reg<regs::constify(&CM7_MCM_Layout::ISCR), 1, 10> FOFC;                        // FPU Overflow interrupt status
     // This read-only field mirrors FPSCR[OFC] and remains set until software clears that FPSCR bit.
     // 0b0..No interrupt.
     // 0b1..Interrupt occurred.
@@ -88,7 +88,7 @@ constexpr CM7_MCM_Reg<regs::constify(&CM7_MCM_Layout::ISCR), 1,  9> FDZC;       
     // This read-only field mirrors FPSCR[DZC] and remains set until software clears that FPSCR bit.
     // 0b0..No interrupt.
     // 0b1..Interrupt occurred.
-constexpr CM7_MCM_Reg<regs::constify(&CM7_MCM_Layout::ISCR), 1,  8> FIOC;                        // FPU Invalid Operation Interrupt Status
+constexpr CM7_MCM_Reg<regs::constify(&CM7_MCM_Layout::ISCR), 1,  8> FIOC;                        // FPU Invalid Operation interrupt Status
     // This read-only field mirrors FPSCR[IOC] and remains set until software clears that FPSCR bit.
     // 0b0..No interrupt.
     // 0b1..Interrupt occurred.

@@ -55,7 +55,7 @@ using TEMPMON_Reg = regs::Reg32<kTEMPMON_base, TEMPMON_Layout, Member, 0, Bits,
 namespace TEMPSENSE0 {
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0, 12, 20> ALARM_VALUE;               // This bit field contains the temperature count (raw sensor output) that will generate a high alarm when TEMP_CNT is smaller than this field
 constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0), 12,  8> TEMP_CNT;  // This bit field contains the last measured temperature count.
-constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0),  1,  2> FINISHED;  // Indicates that the latest temperature is valid
+constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0),  1,  2> FINISHED;  // Indicates that the latest temp is valid
     // 0b0..Last measurement is not ready yet.
     // 0b1..Last measurement is valid.
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0,  1,  1> MEASURE_TEMP;              // Starts the measurement process
@@ -70,7 +70,7 @@ constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0,  1,  0> POWER_DOWN;          
 namespace TEMPSENSE0_SET {
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_SET, 12, 20, 0x0> ALARM_VALUE;          // This bit field contains the temperature count (raw sensor output) that will generate a high alarm when TEMP_CNT is smaller than this field
 constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_SET), 12,  8> TEMP_CNT;  // This bit field contains the last measured temperature count.
-constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_SET),  1,  2> FINISHED;  // Indicates that the latest temperature is valid
+constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_SET),  1,  2> FINISHED;  // Indicates that the latest temp is valid
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_SET,  1,  1, 0x0> MEASURE_TEMP;         // Starts the measurement process
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_SET,  1,  0, 0x0> POWER_DOWN;           // This bit powers down the temperature sensor.
 }  // namespace TEMPSENSE0_SET
@@ -79,7 +79,7 @@ constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_SET,  1,  0, 0x0> POWER_DOWN; 
 namespace TEMPSENSE0_CLR {
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_CLR, 12, 20, 0x0> ALARM_VALUE;          // This bit field contains the temperature count (raw sensor output) that will generate a high alarm when TEMP_CNT is smaller than this field
 constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_CLR), 12,  8> TEMP_CNT;  // This bit field contains the last measured temperature count.
-constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_CLR),  1,  2> FINISHED;  // Indicates that the latest temperature is valid
+constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_CLR),  1,  2> FINISHED;  // Indicates that the latest temp is valid
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_CLR,  1,  1, 0x0> MEASURE_TEMP;         // Starts the measurement process
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_CLR,  1,  0, 0x0> POWER_DOWN;           // This bit powers down the temperature sensor.
 }  // namespace TEMPSENSE0_CLR
@@ -88,14 +88,14 @@ constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_CLR,  1,  0, 0x0> POWER_DOWN; 
 namespace TEMPSENSE0_TOG {
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_TOG, 12, 20, 0x0> ALARM_VALUE;          // This bit field contains the temperature count (raw sensor output) that will generate a high alarm when TEMP_CNT is smaller than this field
 constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_TOG), 12,  8> TEMP_CNT;  // This bit field contains the last measured temperature count.
-constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_TOG),  1,  2> FINISHED;  // Indicates that the latest temperature is valid
+constexpr TEMPMON_Reg<regs::constify(&TEMPMON_Layout::TEMPSENSE0_TOG),  1,  2> FINISHED;  // Indicates that the latest temp is valid
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_TOG,  1,  1, 0x0> MEASURE_TEMP;         // Starts the measurement process
 constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE0_TOG,  1,  0, 0x0> POWER_DOWN;           // This bit powers down the temperature sensor.
 }  // namespace TEMPSENSE0_TOG
 
 // Tempsensor Control Register 1
 namespace TEMPSENSE1 {
-constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1, 16, 0> MEASURE_FREQ;  // These bits determine how many RTC clocks to wait before automatically repeating a temperature measurement
+constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1, 16, 0> MEASURE_FREQ;  // This bits determines how many RTC clocks to wait before automatically repeating a temperature measurement
     // 0x0000..Single measurement mode. New measurements are not automatically taken.
     // 0x0001..Measurements are taken at the RTC clock rate.
     // 0x0002..Measurements are taken at one-half the RTC clock rate.
@@ -104,17 +104,17 @@ constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1, 16, 0> MEASURE_FREQ;  // Thes
 
 // Tempsensor Control Register 1
 namespace TEMPSENSE1_SET {
-constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1_SET, 16, 0, 0x0> MEASURE_FREQ;  // These bits determine how many RTC clocks to wait before automatically repeating a temperature measurement
+constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1_SET, 16, 0, 0x0> MEASURE_FREQ;  // This bits determines how many RTC clocks to wait before automatically repeating a temperature measurement
 }  // namespace TEMPSENSE1_SET
 
 // Tempsensor Control Register 1
 namespace TEMPSENSE1_CLR {
-constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1_CLR, 16, 0, 0x0> MEASURE_FREQ;  // These bits determine how many RTC clocks to wait before automatically repeating a temperature measurement
+constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1_CLR, 16, 0, 0x0> MEASURE_FREQ;  // This bits determines how many RTC clocks to wait before automatically repeating a temperature measurement
 }  // namespace TEMPSENSE1_CLR
 
 // Tempsensor Control Register 1
 namespace TEMPSENSE1_TOG {
-constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1_TOG, 16, 0, 0x0> MEASURE_FREQ;  // These bits determine how many RTC clocks to wait before automatically repeating a temperature measurement
+constexpr TEMPMON_Reg<&TEMPMON_Layout::TEMPSENSE1_TOG, 16, 0, 0x0> MEASURE_FREQ;  // This bits determines how many RTC clocks to wait before automatically repeating a temperature measurement
 }  // namespace TEMPSENSE1_TOG
 
 // Tempsensor Control Register 2

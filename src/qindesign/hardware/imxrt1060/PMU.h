@@ -869,8 +869,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC0_TOG, 1,  0, 0x0> REFTOP_PWD;               
 namespace MISC1 {
 constexpr uint32_t kW1C = 0xF800'0000;
 
-constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 31, kW1C> IRQ_DIG_BO;                                          // This status bit is set to one when any of the digital regulator brownout interrupts assert
-constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 30, kW1C> IRQ_ANA_BO;                                          // This status bit is set to one when any of the analog regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 31, kW1C> IRQ_DIG_BO;                                          // This status bit is set to one when when any of the digital regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 30, kW1C> IRQ_ANA_BO;                                          // This status bit is set to one when when any of the analog regulator brownout interrupts assert
 constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 29, kW1C> IRQ_TEMPHIGH;                                        // This status bit is set to one when the temperature sensor high interrupt asserts for high temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 28, kW1C> IRQ_TEMPLOW;                                         // This status bit is set to one when the temperature sensor low interrupt asserts for low temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 27, kW1C> IRQ_TEMPPANIC;                                       // This status bit is set to one when the temperature sensor panic interrupt asserts for a panic high temperature
@@ -880,7 +880,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 13, regs::shiftedMask32<1, 13>() | kW1C
 constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 12, regs::shiftedMask32<1, 12>() | kW1C> LVDSCLK1_IBEN;        // This enables the LVDS input buffer for anaclk1/1b
 constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 11, regs::shiftedMask32<1, 11>() | kW1C> LVDSCLK2_OBEN;        // This enables the LVDS output buffer for anaclk2/2b
 constexpr PMU_Reg<&PMU_Layout::MISC1, 1, 10, regs::shiftedMask32<1, 10>() | kW1C> LVDSCLK1_OBEN;        // This enables the LVDS output buffer for anaclk1/1b
-constexpr PMU_Reg<&PMU_Layout::MISC1, 5,  5, regs::shiftedMask32<5,  5>() | kW1C> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1, 5,  5, regs::shiftedMask32<5,  5>() | kW1C> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -924,8 +925,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1, 5,  0, regs::shiftedMask32<5,  0>() | kW1C
 
 // Miscellaneous Register 1
 namespace MISC1_SET {
-constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 31, 0x0> IRQ_DIG_BO;           // This status bit is set to one when any of the digital regulator brownout interrupts assert
-constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 30, 0x0> IRQ_ANA_BO;           // This status bit is set to one when any of the analog regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 31, 0x0> IRQ_DIG_BO;           // This status bit is set to one when when any of the digital regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 30, 0x0> IRQ_ANA_BO;           // This status bit is set to one when when any of the analog regulator brownout interrupts assert
 constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 29, 0x0> IRQ_TEMPHIGH;         // This status bit is set to one when the temperature sensor high interrupt asserts for high temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 28, 0x0> IRQ_TEMPLOW;          // This status bit is set to one when the temperature sensor low interrupt asserts for low temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 27, 0x0> IRQ_TEMPPANIC;        // This status bit is set to one when the temperature sensor panic interrupt asserts for a panic high temperature
@@ -935,7 +936,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 13, 0x0> LVDSCLK2_IBEN;        // T
 constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 12, 0x0> LVDSCLK1_IBEN;        // This enables the LVDS input buffer for anaclk1/1b
 constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 11, 0x0> LVDSCLK2_OBEN;        // This enables the LVDS output buffer for anaclk2/2b
 constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 1, 10, 0x0> LVDSCLK1_OBEN;        // This enables the LVDS output buffer for anaclk1/1b
-constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 5,  5, 0x0> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 5,  5, 0x0> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -979,8 +981,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 5,  0, 0x0> LVDS1_CLK_SEL;        // T
 
 // Miscellaneous Register 1
 namespace MISC1_CLR {
-constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 31, 0x0> IRQ_DIG_BO;           // This status bit is set to one when any of the digital regulator brownout interrupts assert
-constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 30, 0x0> IRQ_ANA_BO;           // This status bit is set to one when any of the analog regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 31, 0x0> IRQ_DIG_BO;           // This status bit is set to one when when any of the digital regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 30, 0x0> IRQ_ANA_BO;           // This status bit is set to one when when any of the analog regulator brownout interrupts assert
 constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 29, 0x0> IRQ_TEMPHIGH;         // This status bit is set to one when the temperature sensor high interrupt asserts for high temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 28, 0x0> IRQ_TEMPLOW;          // This status bit is set to one when the temperature sensor low interrupt asserts for low temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 27, 0x0> IRQ_TEMPPANIC;        // This status bit is set to one when the temperature sensor panic interrupt asserts for a panic high temperature
@@ -1035,8 +1037,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 5,  0, 0x0> LVDS1_CLK_SEL;        // T
 
 // Miscellaneous Register 1
 namespace MISC1_TOG {
-constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 31, 0x0> IRQ_DIG_BO;           // This status bit is set to one when any of the digital regulator brownout interrupts assert
-constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 30, 0x0> IRQ_ANA_BO;           // This status bit is set to one when any of the analog regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 31, 0x0> IRQ_DIG_BO;           // This status bit is set to one when when any of the digital regulator brownout interrupts assert
+constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 30, 0x0> IRQ_ANA_BO;           // This status bit is set to one when when any of the analog regulator brownout interrupts assert
 constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 29, 0x0> IRQ_TEMPHIGH;         // This status bit is set to one when the temperature sensor high interrupt asserts for high temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 28, 0x0> IRQ_TEMPLOW;          // This status bit is set to one when the temperature sensor low interrupt asserts for low temperature
 constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 27, 0x0> IRQ_TEMPPANIC;        // This status bit is set to one when the temperature sensor panic interrupt asserts for a panic high temperature

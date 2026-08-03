@@ -65,7 +65,7 @@ using AIPSTZ1_Reg = regs::Reg32<kAIPSTZ1_base, AIPSTZ_Layout, Member, 0, Bits,
 
 // Master Privilege Registers
 namespace MPR {
-constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 28> MPROT0;  // Master 0 Privilege, Buffer, Read, Write Control
+constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 28> MPROT0;  // Master 0 Priviledge, Buffer, Read, Write Control
     // 0b1xxx..Write accesses from this master are allowed to be buffered
     // 0bx0xx..This master is not trusted for read accesses.
     // 0bx1xx..This master is trusted for read accesses.
@@ -73,7 +73,7 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 28> MPROT0;  // Master 0 Privilege
     // 0bxx1x..This master is trusted for write accesses.
     // 0bxxx0..Accesses from this master are forced to user-mode (ips_supervisor_access is forced to zero) regardless of the hprot[1] access attribute.
     // 0bxxx1..Accesses from this master are not forced to user-mode. The hprot[1] access attribute is used directly to determine ips_supervisor_access.
-constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 24> MPROT1;  // Master 1 Privilege, Buffer, Read, Write Control
+constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 24> MPROT1;  // Master 1 Priviledge, Buffer, Read, Write Control
     // 0b1xxx..Write accesses from this master are allowed to be buffered
     // 0bx0xx..This master is not trusted for read accesses.
     // 0bx1xx..This master is trusted for read accesses.
@@ -81,7 +81,7 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 24> MPROT1;  // Master 1 Privilege
     // 0bxx1x..This master is trusted for write accesses.
     // 0bxxx0..Accesses from this master are forced to user-mode (ips_supervisor_access is forced to zero) regardless of the hprot[1] access attribute.
     // 0bxxx1..Accesses from this master are not forced to user-mode. The hprot[1] access attribute is used directly to determine ips_supervisor_access.
-constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 20> MPROT2;  // Master 2 Privilege, Buffer, Read, Write Control
+constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 20> MPROT2;  // Master 2 Priviledge, Buffer, Read, Write Control
     // 0b1xxx..Write accesses from this master are allowed to be buffered
     // 0bx0xx..This master is not trusted for read accesses.
     // 0bx1xx..This master is trusted for read accesses.
@@ -89,7 +89,7 @@ constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 20> MPROT2;  // Master 2 Privilege
     // 0bxx1x..This master is trusted for write accesses.
     // 0bxxx0..Accesses from this master are forced to user-mode (ips_supervisor_access is forced to zero) regardless of the hprot[1] access attribute.
     // 0bxxx1..Accesses from this master are not forced to user-mode. The hprot[1] access attribute is used directly to determine ips_supervisor_access.
-constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 16> MPROT3;  // Master 3 Privilege, Buffer, Read, Write Control.
+constexpr AIPSTZ1_Reg<&AIPSTZ_Layout::MPR, 4, 16> MPROT3;  // Master 3 Priviledge, Buffer, Read, Write Control.
     // 0b1xxx..Write accesses from this master are allowed to be buffered
     // 0bx0xx..This master is not trusted for read accesses.
     // 0bx1xx..This master is trusted for read accesses.
