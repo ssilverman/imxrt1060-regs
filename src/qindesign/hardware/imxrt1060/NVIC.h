@@ -57,7 +57,7 @@ using NVIC_Reg = regs::Reg32<kNVIC_base, NVIC_Layout, Member, 0, Bits, Shift,
 // Software Trigger Interrupt Register
 namespace STIR {
 constexpr NVIC_Reg<&NVIC_Layout::STIR, 9, 0, 0x0, true> INTID;  // Interrupt ID of the interrupt to trigger, in the range 0-239.
-  // For example, a value of 0x03 specifies interrupt IRQ3.
+    // For example, a value of 0x03 specifies interrupt IRQ3.
 }  // namespace STIR
 
 // Interrupt Priority Register
