@@ -33,15 +33,13 @@ constexpr size_t    kRTWDOG_size = 0x10;
 constexpr uintptr_t kRTWDOG_base = 0x400B'C000;
 
 namespace RTWDOG {
+
 constexpr regs::RegGroup<RTWDOG_Layout, kRTWDOG_size, kRTWDOG_base> group;
-}  // namespace RTWDOG
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using RTWDOG_Reg = regs::Reg32<kRTWDOG_base, RTWDOG_Layout, Member, 0, Bits,
                                Shift, AssignMask>;
-
-namespace RTWDOG {
 
 // Watchdog Control and Status Register
 namespace CS {

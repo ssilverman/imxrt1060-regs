@@ -51,15 +51,13 @@ constexpr size_t    kDWT_size = 0x5C;
 constexpr uintptr_t kDWT_base = 0xE000'1000;  /*!< DWT Base Address */
 
 namespace DWT {
+
 constexpr regs::RegGroup<DWT_Layout, kDWT_size, kDWT_base> group;
-}  // namespace DWT
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using DWT_Reg =
     regs::Reg32<kDWT_base, DWT_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace DWT {
 
 // DWT Control Register Definitions
 namespace CTRL {

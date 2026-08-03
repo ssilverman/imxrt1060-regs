@@ -41,15 +41,13 @@ constexpr size_t    kPGC_size = 0x2B0;
 constexpr uintptr_t kPGC_base = 0x400F'4000;
 
 namespace PGC {
+
 constexpr regs::RegGroup<PGC_Layout, kPGC_size, kPGC_base> group;
-}  // namespace PGC
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using PGC_Reg =
     regs::Reg32<kPGC_base, PGC_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace PGC {
 
 // PGC Mega Control Register
 namespace MEGA_CTRL {

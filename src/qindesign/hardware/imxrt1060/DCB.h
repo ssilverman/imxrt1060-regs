@@ -32,8 +32,8 @@ constexpr size_t    kDCB_size = 0x10;
 constexpr uintptr_t kDCB_base = 0xE000'EDF0;  /*!< Core Debug Base Address */
 
 namespace DCB {
+
 constexpr regs::RegGroup<DCB_Layout, kDCB_size, kDCB_base> group;
-}  // namespace DCB
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
@@ -41,8 +41,6 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using DCB_Reg = regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift,
                             AssignMask, AssignSet, WriteOnly>;
-
-namespace DCB {
 
 // DCB Debug Halting Control and Status Register Definitions
 // Exercise caution when setting or assigning fields in this register.

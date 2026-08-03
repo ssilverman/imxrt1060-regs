@@ -33,15 +33,13 @@ constexpr size_t    kDCDC_size = 0x10;
 constexpr uintptr_t kDCDC_base = 0x4008'0000;
 
 namespace DCDC {
+
 constexpr regs::RegGroup<DCDC_Layout, kDCDC_size, kDCDC_base> group;
-}  // namespace DCDC
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using DCDC_Reg =
     regs::Reg32<kDCDC_base, DCDC_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace DCDC {
 
 // DCDC Register 0
 namespace REG0 {

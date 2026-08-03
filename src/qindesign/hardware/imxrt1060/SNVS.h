@@ -70,8 +70,8 @@ constexpr size_t    kSNVS_size = 0xC00;
 constexpr uintptr_t kSNVS_base = 0x400D'4000;
 
 namespace SNVS {
+
 constexpr regs::RegGroup<SNVS_Layout, kSNVS_size, kSNVS_base> group;
-}  // namespace SNVS
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
@@ -84,8 +84,6 @@ template <auto Member, size_t MemberOffset, size_t Bits, unsigned int Shift,
 using SNVS_ArrayReg =
     regs::Reg32<kSNVS_base, SNVS_Layout, Member, MemberOffset, Bits, Shift,
                 AssignMask>;
-
-namespace SNVS {
 
 // SNVS_HP Lock Register
 namespace HPLR {

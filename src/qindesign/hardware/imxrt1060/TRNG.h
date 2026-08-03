@@ -94,16 +94,14 @@ constexpr size_t    kTRNG_size = 0xF8;
 constexpr uintptr_t kTRNG_base = 0x400C'C000;
 
 namespace TRNG {
+
 constexpr regs::RegGroup<TRNG_Layout, kTRNG_size, kTRNG_base> group;
-}  // namespace TRNG
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using TRNG_Reg = regs::Reg32<kTRNG_base, TRNG_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
-
-namespace TRNG {
 
 // Miscellaneous Control Register
 namespace MCTL {

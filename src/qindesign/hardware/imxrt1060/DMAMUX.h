@@ -35,10 +35,8 @@ constexpr size_t    kDMAMUX_size = 0x80;
 constexpr uintptr_t kDMAMUX_base = 0x400E'C000;
 
 namespace DMAMUX {
-constexpr regs::RegGroup<DMAMUX_Layout, kDMAMUX_size, kDMAMUX_base> group;
-}  // namespace DMAMUX
 
-namespace DMAMUX {
+constexpr regs::RegGroup<DMAMUX_Layout, kDMAMUX_size, kDMAMUX_base> group;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),

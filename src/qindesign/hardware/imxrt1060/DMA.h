@@ -114,8 +114,8 @@ constexpr size_t    kDMA_size = 0x1400;
 constexpr uintptr_t kDMA_base = 0x400E'8000;
 
 namespace DMA {
+
 constexpr regs::RegGroup<DMA_Layout, kDMA_size, kDMA_base> group;
-}  // namespace DMA
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask8<Bits, Shift>(),
@@ -128,8 +128,6 @@ template <auto Member, size_t Bits, unsigned int Shift,
           bool WriteOnly = false>
 using DMA_Reg32 = regs::Reg32<kDMA_base, DMA_Layout, Member, 0, Bits, Shift,
                               AssignMask, 0, WriteOnly>;
-
-namespace DMA {
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kDMA_TCD_count)>>

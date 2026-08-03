@@ -45,16 +45,14 @@ constexpr uintptr_t kSCS_base = 0xE000'E000;           /*!< System Control Space
 constexpr uintptr_t kNVIC_base = NVIC::kSCS_base + 0x0100;  /*!< NVIC Base Address */
 
 namespace NVIC {
+
 constexpr regs::RegGroup<NVIC_Layout, kNVIC_size, kNVIC_base> group;
-}  // namespace NVIC
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
           bool WriteOnly = false>
 using NVIC_Reg = regs::Reg32<kNVIC_base, NVIC_Layout, Member, 0, Bits, Shift,
                              AssignMask, 0, WriteOnly>;
-
-namespace NVIC {
 
 // Software Trigger Interrupt Register
 namespace STIR {

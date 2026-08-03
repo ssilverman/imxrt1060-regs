@@ -39,17 +39,15 @@ constexpr size_t    kIOMUXC_SNVS_size = 0x24;
 constexpr uintptr_t kIOMUXC_SNVS_base = 0x400A'8000;
 
 namespace IOMUXC_SNVS {
+
 constexpr regs::RegGroup<IOMUXC_SNVS_Layout, kIOMUXC_SNVS_size,
                          kIOMUXC_SNVS_base>
     group;
-}  // namespace IOMUXC_SNVS
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using IOMUXC_SNVS_Reg = regs::Reg32<kIOMUXC_SNVS_base, IOMUXC_SNVS_Layout,
                                     Member, 0, Bits, Shift, AssignMask>;
-
-namespace IOMUXC_SNVS {
 
 // SW_MUX_CTL_PAD_WAKEUP SW MUX Control Register
 namespace SW_MUX_CTL_PAD_WAKEUP {

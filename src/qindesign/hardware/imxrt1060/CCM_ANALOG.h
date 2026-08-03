@@ -93,16 +93,14 @@ constexpr size_t    kCCM_ANALOG_size = 0x180;
 constexpr uintptr_t kCCM_ANALOG_base = 0x400D'8000;
 
 namespace CCM_ANALOG {
+
 constexpr regs::RegGroup<CCM_ANALOG_Layout, kCCM_ANALOG_size, kCCM_ANALOG_base>
     group;
-}  // namespace CCM_ANALOG
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CCM_ANALOG_Reg = regs::Reg32<kCCM_ANALOG_base, CCM_ANALOG_Layout, Member,
                                    0, Bits, Shift, AssignMask>;
-
-namespace CCM_ANALOG {
 
 // Analog ARM PLL control Register
 namespace PLL_ARM {

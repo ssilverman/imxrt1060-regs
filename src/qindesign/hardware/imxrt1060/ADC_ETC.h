@@ -51,15 +51,13 @@ constexpr size_t    kADC_ETC_size = 0x150;
 constexpr uintptr_t kADC_ETC_base = 0x403B'0000;
 
 namespace ADC_ETC {
+
 constexpr regs::RegGroup<ADC_ETC_Layout, kADC_ETC_size, kADC_ETC_base> group;
-}  // namespace ADC_ETC
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using ADC_ETC_Reg = regs::Reg32<kADC_ETC_base, ADC_ETC_Layout, Member, 0, Bits,
                                 Shift, AssignMask>;
-
-namespace ADC_ETC {
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kADC_ETC_TRIG_count)>>

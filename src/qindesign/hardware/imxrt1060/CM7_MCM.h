@@ -36,8 +36,7 @@ constexpr uintptr_t kCM7_MCM_base = 0xE008'0000;
 
 namespace CM7_MCM {
 
-constexpr regs::RegGroup<CM7_MCM_Layout, kCM7_MCM_size, kCM7_MCM_base>
-    group;
+constexpr regs::RegGroup<CM7_MCM_Layout, kCM7_MCM_size, kCM7_MCM_base> group;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>

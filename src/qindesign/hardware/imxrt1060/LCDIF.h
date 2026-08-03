@@ -101,10 +101,8 @@ constexpr size_t    kLCDIF_size = 0xB44;
 constexpr uintptr_t kLCDIF_base = 0x402B'8000;
 
 namespace LCDIF {
-constexpr regs::RegGroup<LCDIF_Layout, kLCDIF_size, kLCDIF_base> group;
-}  // namespace LCDIF
 
-namespace LCDIF {
+constexpr regs::RegGroup<LCDIF_Layout, kLCDIF_size, kLCDIF_base> group;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),

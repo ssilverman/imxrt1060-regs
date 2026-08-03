@@ -146,15 +146,13 @@ constexpr size_t    kOCOTP_size = 0x8F4;
 constexpr uintptr_t kOCOTP_base = 0x401F'4000;
 
 namespace OCOTP {
+
 constexpr regs::RegGroup<OCOTP_Layout, kOCOTP_size, kOCOTP_base> group;
-}  // namespace OCOTP
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using OCOTP_Reg = regs::Reg32<kOCOTP_base, OCOTP_Layout, Member, 0, Bits, Shift,
                               AssignMask>;
-
-namespace OCOTP {
 
 // OTP Controller Control and Status Register
 namespace CTRL {

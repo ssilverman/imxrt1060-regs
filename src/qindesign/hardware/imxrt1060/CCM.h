@@ -62,15 +62,13 @@ constexpr size_t    kCCM_size = 0x8C;
 constexpr uintptr_t kCCM_base = 0x400F'C000;
 
 namespace CCM {
+
 constexpr regs::RegGroup<CCM_Layout, kCCM_size, kCCM_base> group;
-}  // namespace CCM
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CCM_Reg =
     regs::Reg32<kCCM_base, CCM_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace CCM {
 
 template <auto Member, size_t Bits, unsigned int Shift, uint32_t AssignSet>
 using CGPR_Reg =

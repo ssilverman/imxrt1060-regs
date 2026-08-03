@@ -98,10 +98,8 @@ constexpr size_t    kXBARA_size  = 0x88;
 constexpr uintptr_t kXBARA1_base = 0x403B'C000;
 
 namespace XBARA1 {
-constexpr regs::RegGroup<XBARA_Layout, kXBARA_size, kXBARA1_base> group;
-}  // namespace XBARA1
 
-namespace XBARA1 {
+constexpr regs::RegGroup<XBARA_Layout, kXBARA_size, kXBARA1_base> group;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask16<Bits, Shift>()>

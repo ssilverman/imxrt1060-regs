@@ -42,15 +42,13 @@ constexpr size_t    kGPC_size = 0x3C;
 constexpr uintptr_t kGPC_base = 0x400F'4000;
 
 namespace GPC {
+
 constexpr regs::RegGroup<GPC_Layout, kGPC_size, kGPC_base> group;
-}  // namespace GPC
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using GPC_Reg =
     regs::Reg32<kGPC_base, GPC_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace GPC {
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),

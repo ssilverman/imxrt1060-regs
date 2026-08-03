@@ -34,10 +34,8 @@ constexpr size_t    kFLEXRAM_size = 0x1C;
 constexpr uintptr_t kFLEXRAM_base = 0x400B'0000;
 
 namespace FLEXRAM {
-constexpr regs::RegGroup<FLEXRAM_Layout, kFLEXRAM_size, kFLEXRAM_base> group;
-}  // namespace FLEXRAM
 
-namespace FLEXRAM {
+constexpr regs::RegGroup<FLEXRAM_Layout, kFLEXRAM_size, kFLEXRAM_base> group;
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>

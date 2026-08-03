@@ -35,15 +35,13 @@ constexpr size_t    kKPP_size = 0x8;
 constexpr uintptr_t kKPP_base = 0x401F'C000;
 
 namespace KPP {
+
 constexpr regs::RegGroup<KPP_Layout, kKPP_size, kKPP_base> group;
-}  // namespace KPP
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask16<Bits, Shift>()>
 using KPP_Reg =
     regs::Reg16<kKPP_base, KPP_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace KPP {
 
 // Keypad Control Register
 namespace KPCR {

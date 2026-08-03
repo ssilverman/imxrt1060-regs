@@ -44,15 +44,13 @@ constexpr size_t    kPIT_size = 0x140;
 constexpr uintptr_t kPIT_base = 0x4008'4000;
 
 namespace PIT {
+
 constexpr regs::RegGroup<PIT_Layout, kPIT_size, kPIT_base> group;
-}  // namespace PIT
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using PIT_Reg =
     regs::Reg32<kPIT_base, PIT_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace PIT {
 
 template <size_t Index,
           typename = std::enable_if_t<(Index < kPIT_CHANNEL_count)>>

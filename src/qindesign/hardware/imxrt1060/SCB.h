@@ -83,8 +83,8 @@ constexpr uintptr_t kSCS_base = 0xE000'E000;          /*!< System Control Space 
 constexpr uintptr_t kSCB_base = SCB::kSCS_base + 0x0D00;  /*!< System Control Block Base Address */
 
 namespace SCB {
+
 constexpr regs::RegGroup<SCB_Layout, kSCB_size, kSCB_base> group;
-}  // namespace SCB
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
@@ -100,8 +100,6 @@ using SCB_ArrayReg32 =
 template <auto Member, size_t MemberOffset, size_t Bits, unsigned int Shift>
 using SCB_ArrayReg8 =
     regs::Reg8<kSCB_base, SCB_Layout, Member, MemberOffset, Bits, Shift>;
-
-namespace SCB {
 
 // CPUID Base Register
 namespace CPUID {

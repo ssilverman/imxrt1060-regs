@@ -35,18 +35,16 @@ constexpr size_t    kIOMUXC_SNVS_GPR_size = 0x10;
 constexpr uintptr_t kIOMUXC_SNVS_GPR_base = 0x400A'4000;
 
 namespace IOMUXC_SNVS_GPR {
+
 constexpr regs::RegGroup<IOMUXC_SNVS_GPR_Layout, kIOMUXC_SNVS_GPR_size,
                          kIOMUXC_SNVS_GPR_base>
     group;
-}  // namespace IOMUXC_SNVS_GPR
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using IOMUXC_SNVS_GPR_Reg =
     regs::Reg32<kIOMUXC_SNVS_GPR_base, IOMUXC_SNVS_GPR_Layout, Member, 0, Bits,
                 Shift, AssignMask>;
-
-namespace IOMUXC_SNVS_GPR {
 
 // GPR3 General Purpose Register
 namespace GPR3 {

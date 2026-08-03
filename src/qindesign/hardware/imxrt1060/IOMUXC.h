@@ -46,10 +46,8 @@ constexpr size_t    kIOMUXC_size = 0x790;
 constexpr uintptr_t kIOMUXC_base = 0x401F'8000;
 
 namespace IOMUXC {
-constexpr regs::RegGroup<IOMUXC_Layout, kIOMUXC_size, kIOMUXC_base> group;
-}  // namespace IOMUXC
 
-namespace IOMUXC {
+constexpr regs::RegGroup<IOMUXC_Layout, kIOMUXC_size, kIOMUXC_base> group;
 
 template <size_t Index, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>(),
@@ -282,15 +280,6 @@ namespace SELECT_INPUT_1 {
 template <size_t Index>
 constexpr SELECT_INPUT_1_Reg<Index, 2, 0> DAISY;  // Selecting Pads Involved in Daisy Chain.
 }  // namespace SELECT_INPUT_1
-
-}  // namespace IOMUXC
-
-template <auto Member, size_t MemberOffset, size_t Bits, unsigned int Shift,
-          auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
-using IOMUXC_Reg = regs::Reg32<kIOMUXC_base, IOMUXC_Layout, Member,
-                               MemberOffset, Bits, Shift, AssignMask>;
-
-namespace IOMUXC {
 
 namespace SW_MUX_CTL_PAD {
 namespace GPIO {

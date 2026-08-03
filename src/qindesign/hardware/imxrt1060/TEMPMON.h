@@ -43,15 +43,13 @@ constexpr size_t    kTEMPMON_size = 0x2A0;
 constexpr uintptr_t kTEMPMON_base = 0x400D'8000;
 
 namespace TEMPMON {
+
 constexpr regs::RegGroup<TEMPMON_Layout, kTEMPMON_size, kTEMPMON_base> group;
-}  // namespace TEMPMON
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using TEMPMON_Reg = regs::Reg32<kTEMPMON_base, TEMPMON_Layout, Member, 0, Bits,
                                 Shift, AssignMask>;
-
-namespace TEMPMON {
 
 // Tempsensor Control Register 0
 namespace TEMPSENSE0 {

@@ -46,15 +46,13 @@ constexpr size_t    kCSI_size = 0x50;
 constexpr uintptr_t kCSI_base = 0x402B'C000;
 
 namespace CSI {
+
 constexpr regs::RegGroup<CSI_Layout, kCSI_size, kCSI_base> group;
-}  // namespace CSI
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
 using CSI_Reg =
     regs::Reg32<kCSI_base, CSI_Layout, Member, 0, Bits, Shift, AssignMask>;
-
-namespace CSI {
 
 // Control Register 1
 namespace CR1 {

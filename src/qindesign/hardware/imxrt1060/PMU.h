@@ -59,8 +59,8 @@ constexpr size_t    kPMU_size = 0x180;
 constexpr uintptr_t kPMU_base = 0x400D'8000;
 
 namespace PMU {
+
 constexpr regs::RegGroup<PMU_Layout, kPMU_size, kPMU_base> group;
-}  // namespace PMU
 
 template <auto Member, size_t Bits, unsigned int Shift,
           auto AssignMask = regs::shiftedMask32<Bits, Shift>()>
