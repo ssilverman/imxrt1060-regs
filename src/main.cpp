@@ -1,4 +1,4 @@
-// Define MAIN_TEST_PROGRAM to use this test program.
+// Define IMXRT1060REGS_MAIN_TEST_PROGRAM to use this test program.
 #if defined(IMXRT1060REGS_MAIN_TEST_PROGRAM) && !defined(PIO_UNIT_TESTING)
 
 // To use the old way, set this to 1.
