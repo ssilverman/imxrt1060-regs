@@ -39,6 +39,7 @@ constexpr size_t    kEWM_size = 0x6;
 constexpr uintptr_t kEWM_base = 0x400B'4000;
 
 namespace EWM {
+
 constexpr regs::RegGroup<EWM_Layout, kEWM_size, kEWM_base> group;
 
 template <auto Member, size_t Bits, unsigned int Shift,

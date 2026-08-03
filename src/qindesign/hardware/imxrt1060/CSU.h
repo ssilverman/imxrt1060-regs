@@ -41,6 +41,7 @@ constexpr size_t    kCSU_size = 0x35C;
 constexpr uintptr_t kCSU_base = 0x400D'C000;
 
 namespace CSU {
+
 constexpr regs::RegGroup<CSU_Layout, kCSU_size, kCSU_base> group;
 
 template <auto Member, size_t Bits, unsigned int Shift,

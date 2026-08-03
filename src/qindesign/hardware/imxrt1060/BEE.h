@@ -48,6 +48,7 @@ constexpr size_t    kBEE_size = 0x48;
 constexpr uintptr_t kBEE_base = 0x403E'C000;
 
 namespace BEE {
+
 constexpr regs::RegGroup<BEE_Layout, kBEE_size, kBEE_base> group;
 
 template <auto Member, size_t Bits, unsigned int Shift,
