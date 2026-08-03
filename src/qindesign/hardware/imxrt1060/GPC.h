@@ -95,7 +95,8 @@ constexpr ISR_Reg<3, 32, 0> ISR4;  // IRQ[127:96] status, read only
 
 // IRQ masking register 5
 namespace IMR5 {
-constexpr GPC_Reg<&GPC_Layout::IMR5, 32, 0> IMR5;  // IRQ[159:128] masking bits: 1-irq masked, 0-irq is not masked
+constexpr GPC_Reg<&GPC_Layout::IMR5, 32, 0> IMR5;  // IRQ[159:128] masking bits:
+    // 1-irq masked, 0-irq is not masked
 }  // namespace IMR5
 
 // IRQ status register 5

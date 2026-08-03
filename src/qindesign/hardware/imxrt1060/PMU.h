@@ -75,7 +75,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_1P1, 1, 19> SELREF_WEAK_LINREG;         // Se
     // 0b0..Weak-linreg output tracks low-power-bandgap voltage
     // 0b1..Weak-linreg output tracks VDD_SOC_IN voltage
 constexpr PMU_Reg<&PMU_Layout::REG_1P1, 1, 18> ENABLE_WEAK_LINREG;         // Enables the weak 1p1 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1), 1, 16> BO_VDD1P1;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_1P1, 5,  8> OUTPUT_TRG;                 // Control bits to adjust the regulator output voltage
     // 0b000x1..1.375V
@@ -94,7 +95,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_1P1_SET, 1, 19, 0x0> SELREF_WEAK_LINREG;    /
     // 0b0..Weak-linreg output tracks low-power-bandgap voltage
     // 0b1..Weak-linreg output tracks VDD_SOC_IN voltage
 constexpr PMU_Reg<&PMU_Layout::REG_1P1_SET, 1, 18, 0x0> ENABLE_WEAK_LINREG;    // Enables the weak 1p1 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_SET), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_SET), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_SET), 1, 16> BO_VDD1P1;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_1P1_SET, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b000x1..1.375V
@@ -113,7 +115,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_1P1_CLR, 1, 19, 0x0> SELREF_WEAK_LINREG;    /
     // 0b0..Weak-linreg output tracks low-power-bandgap voltage
     // 0b1..Weak-linreg output tracks VDD_SOC_IN voltage
 constexpr PMU_Reg<&PMU_Layout::REG_1P1_CLR, 1, 18, 0x0> ENABLE_WEAK_LINREG;    // Enables the weak 1p1 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_CLR), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_CLR), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_CLR), 1, 16> BO_VDD1P1;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_1P1_CLR, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b000x1..1.375V
@@ -132,7 +135,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_1P1_TOG, 1, 19, 0x0> SELREF_WEAK_LINREG;    /
     // 0b0..Weak-linreg output tracks low-power-bandgap voltage
     // 0b1..Weak-linreg output tracks VDD_SOC_IN voltage
 constexpr PMU_Reg<&PMU_Layout::REG_1P1_TOG, 1, 18, 0x0> ENABLE_WEAK_LINREG;    // Enables the weak 1p1 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_TOG), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_TOG), 1, 17> OK_VDD1P1;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_1P1_TOG), 1, 16> BO_VDD1P1;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_1P1_TOG, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b000x1..1.375V
@@ -147,7 +151,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_1P1_TOG, 1,  0, 0x0> ENABLE_LINREG;         /
 
 // Regulator 3P0 Register
 namespace REG_3P0 {
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0), 1, 16> BO_VDD3P0;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_3P0, 5,  8> OUTPUT_TRG;                 // Control bits to adjust the regulator output voltage
     // 0b00000..2.625V
@@ -164,7 +169,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_3P0, 1,  0> ENABLE_LINREG;              // Co
 
 // Regulator 3P0 Register
 namespace REG_3P0_SET {
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_SET), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_SET), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_SET), 1, 16> BO_VDD3P0;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_3P0_SET, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b00000..2.625V
@@ -181,7 +187,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_3P0_SET, 1,  0, 0x0> ENABLE_LINREG;         /
 
 // Regulator 3P0 Register
 namespace REG_3P0_CLR {
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_CLR), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_CLR), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_CLR), 1, 16> BO_VDD3P0;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_3P0_CLR, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b00000..2.625V
@@ -198,7 +205,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_3P0_CLR, 1,  0, 0x0> ENABLE_LINREG;         /
 
 // Regulator 3P0 Register
 namespace REG_3P0_TOG {
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_TOG), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_TOG), 1, 17> OK_VDD3P0;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_3P0_TOG), 1, 16> BO_VDD3P0;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_3P0_TOG, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b00000..2.625V
@@ -216,7 +224,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_3P0_TOG, 1,  0, 0x0> ENABLE_LINREG;         /
 // Regulator 2P5 Register
 namespace REG_2P5 {
 constexpr PMU_Reg<&PMU_Layout::REG_2P5, 1, 18> ENABLE_WEAK_LINREG;         // Enables the weak 2p5 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5), 1, 16> BO_VDD2P5;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_2P5, 5,  8> OUTPUT_TRG;                 // Control bits to adjust the regulator output voltage
     // 0b00000..2.10V
@@ -232,7 +241,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_2P5, 1,  0> ENABLE_LINREG;              // Co
 // Regulator 2P5 Register
 namespace REG_2P5_SET {
 constexpr PMU_Reg<&PMU_Layout::REG_2P5_SET, 1, 18, 0x0> ENABLE_WEAK_LINREG;    // Enables the weak 2p5 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_SET), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_SET), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_SET), 1, 16> BO_VDD2P5;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_2P5_SET, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b00000..2.10V
@@ -248,7 +258,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_2P5_SET, 1,  0, 0x0> ENABLE_LINREG;         /
 // Regulator 2P5 Register
 namespace REG_2P5_CLR {
 constexpr PMU_Reg<&PMU_Layout::REG_2P5_CLR, 1, 18, 0x0> ENABLE_WEAK_LINREG;    // Enables the weak 2p5 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_CLR), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_CLR), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_CLR), 1, 16> BO_VDD2P5;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_2P5_CLR, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b00000..2.10V
@@ -264,7 +275,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_2P5_CLR, 1,  0, 0x0> ENABLE_LINREG;         /
 // Regulator 2P5 Register
 namespace REG_2P5_TOG {
 constexpr PMU_Reg<&PMU_Layout::REG_2P5_TOG, 1, 18, 0x0> ENABLE_WEAK_LINREG;    // Enables the weak 2p5 regulator
-constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_TOG), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok. 1 = regulator output > brownout target
+constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_TOG), 1, 17> OK_VDD2P5;  // Status bit that signals when the regulator output is ok.
+    // 1 = regulator output > brownout target
 constexpr PMU_Reg<regs::constify(&PMU_Layout::REG_2P5_TOG), 1, 16> BO_VDD2P5;  // Status bit that signals when a brownout is detected on the regulator output.
 constexpr PMU_Reg<&PMU_Layout::REG_2P5_TOG, 5,  8, 0x0> OUTPUT_TRG;            // Control bits to adjust the regulator output voltage
     // 0b00000..2.10V
@@ -285,9 +297,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE, 2, 27> RAMP_RATE;   // Regulator voltag
     // 0b01..Medium Fast
     // 0b10..Medium Slow
     // 0b11..Slow
-constexpr PMU_Reg<&PMU_Layout::REG_CORE, 4, 23> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE, 4, 23> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -312,9 +323,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE, 5, 18> REG2_TARG;   // This field defin
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE, 4, 14> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE, 4, 14> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -331,9 +341,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE, 4, 14> REG1_ADJ;    // This bit field d
     // 0b1101..- 1.50%
     // 0b1110..- 1.75%
     // 0b1111..- 2.00%
-constexpr PMU_Reg<&PMU_Layout::REG_CORE, 5,  9> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain. Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
-    // increments reflect 25mV core voltage steps. Not all steps will make sense to use either because
-    // of input supply limitations or load operation.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE, 5,  9> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain.
+    // Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
     // 0b00000..Power gated off
     // 0b00001..Target core voltage = 0.725V
     // 0b00010..Target core voltage = 0.750V
@@ -341,9 +350,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE, 5,  9> REG1_TARG;   // This bit field d
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE, 4,  5> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE, 4,  5> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -378,9 +386,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 2, 27, 0x0> RAMP_RATE;   // Regulat
     // 0b01..Medium Fast
     // 0b10..Medium Slow
     // 0b11..Slow
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 4, 23, 0x0> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 4, 23, 0x0> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -405,9 +412,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 5, 18, 0x0> REG2_TARG;   // This fi
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 4, 14, 0x0> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 4, 14, 0x0> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -424,9 +430,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 4, 14, 0x0> REG1_ADJ;    // This bi
     // 0b1101..- 1.50%
     // 0b1110..- 1.75%
     // 0b1111..- 2.00%
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 5,  9, 0x0> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain. Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
-    // increments reflect 25mV core voltage steps. Not all steps will make sense to use either because
-    // of input supply limitations or load operation.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 5,  9, 0x0> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain.
+    // Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
     // 0b00000..Power gated off
     // 0b00001..Target core voltage = 0.725V
     // 0b00010..Target core voltage = 0.750V
@@ -434,9 +439,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 5,  9, 0x0> REG1_TARG;   // This bi
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 4,  5, 0x0> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_SET, 4,  5, 0x0> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -471,9 +475,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 2, 27, 0x0> RAMP_RATE;   // Regulat
     // 0b01..Medium Fast
     // 0b10..Medium Slow
     // 0b11..Slow
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 4, 23, 0x0> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 4, 23, 0x0> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -498,9 +501,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 5, 18, 0x0> REG2_TARG;   // This fi
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 4, 14, 0x0> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 4, 14, 0x0> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -517,9 +519,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 4, 14, 0x0> REG1_ADJ;    // This bi
     // 0b1101..- 1.50%
     // 0b1110..- 1.75%
     // 0b1111..- 2.00%
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 5,  9, 0x0> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain. Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
-    // increments reflect 25mV core voltage steps. Not all steps will make sense to use either because
-    // of input supply limitations or load operation.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 5,  9, 0x0> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain.
+    // Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
     // 0b00000..Power gated off
     // 0b00001..Target core voltage = 0.725V
     // 0b00010..Target core voltage = 0.750V
@@ -527,9 +528,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 5,  9, 0x0> REG1_TARG;   // This bi
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 4,  5, 0x0> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_CLR, 4,  5, 0x0> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -564,9 +564,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 2, 27, 0x0> RAMP_RATE;   // Regulat
     // 0b01..Medium Fast
     // 0b10..Medium Slow
     // 0b11..Slow
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 4, 23, 0x0> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 4, 23, 0x0> REG2_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg2.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -591,9 +590,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 5, 18, 0x0> REG2_TARG;   // This fi
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 4, 14, 0x0> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 4, 14, 0x0> REG1_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg1.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -610,9 +608,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 4, 14, 0x0> REG1_ADJ;    // This bi
     // 0b1101..- 1.50%
     // 0b1110..- 1.75%
     // 0b1111..- 2.00%
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 5,  9, 0x0> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain. Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
-    // increments reflect 25mV core voltage steps. Not all steps will make sense to use either because
-    // of input supply limitations or load operation.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 5,  9, 0x0> REG1_TARG;   // This bit field defines the target voltage for the vpu/gpu power domain.
+    // Single bit increments reflect 25mV core voltage steps. Not all steps will make sense to use either because of input supply limitations or load operation.
     // 0b00000..Power gated off
     // 0b00001..Target core voltage = 0.725V
     // 0b00010..Target core voltage = 0.750V
@@ -620,9 +617,8 @@ constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 5,  9, 0x0> REG1_TARG;   // This bi
     // 0b10000..Target core voltage = 1.100V
     // 0b11110..Target core voltage = 1.450V
     // 0b11111..Power FET switched full on. No regulation.
-constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 4,  5, 0x0> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0. The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
-    // adjustment is applied on top on any adjustment applied to the global reference in the misc0
-    // register.
+constexpr PMU_Reg<&PMU_Layout::REG_CORE_TOG, 4,  5, 0x0> REG0_ADJ;    // This bit field defines the adjustment bits to calibrate the target value of Reg0.
+    // The adjustment is applied on top on any adjustment applied to the global reference in the misc0 register.
     // 0b0000..No adjustment
     // 0b0001..+ 0.25%
     // 0b0010..+ 0.50%
@@ -685,7 +681,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC0, 2, 10> STOP_MODE_CONFIG;                 /
     // 0b01..Analog regulators are ON.
     // 0b10..STOP (lower power)
     // 0b11..STOP (very lower power)
-constexpr PMU_Reg<&PMU_Layout::MISC0, 1,  7> REFTOP_VBGUP;                     // Status bit that signals the analog bandgap voltage is up and stable. 1 - Stable.
+constexpr PMU_Reg<&PMU_Layout::MISC0, 1,  7> REFTOP_VBGUP;                     // Status bit that signals the analog bandgap voltage is up and stable.
+    // 1 - Stable.
 constexpr PMU_Reg<&PMU_Layout::MISC0, 3,  4> REFTOP_VBGADJ;
     // 0b000..Nominal VBG
     // 0b001..VBG+0.78%
@@ -739,7 +736,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC0_SET, 2, 10, 0x0> STOP_MODE_CONFIG;         
     // 0b01..Analog regulators are ON.
     // 0b10..STOP (lower power)
     // 0b11..STOP (very lower power)
-constexpr PMU_Reg<&PMU_Layout::MISC0_SET, 1,  7, 0x0> REFTOP_VBGUP;                // Status bit that signals the analog bandgap voltage is up and stable. 1 - Stable.
+constexpr PMU_Reg<&PMU_Layout::MISC0_SET, 1,  7, 0x0> REFTOP_VBGUP;                // Status bit that signals the analog bandgap voltage is up and stable.
+    // 1 - Stable.
 constexpr PMU_Reg<&PMU_Layout::MISC0_SET, 3,  4, 0x0> REFTOP_VBGADJ;
     // 0b000..Nominal VBG
     // 0b001..VBG+0.78%
@@ -793,7 +791,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC0_CLR, 2, 10, 0x0> STOP_MODE_CONFIG;         
     // 0b01..Analog regulators are ON.
     // 0b10..STOP (lower power)
     // 0b11..STOP (very lower power)
-constexpr PMU_Reg<&PMU_Layout::MISC0_CLR, 1,  7, 0x0> REFTOP_VBGUP;                // Status bit that signals the analog bandgap voltage is up and stable. 1 - Stable.
+constexpr PMU_Reg<&PMU_Layout::MISC0_CLR, 1,  7, 0x0> REFTOP_VBGUP;                // Status bit that signals the analog bandgap voltage is up and stable.
+    // 1 - Stable.
 constexpr PMU_Reg<&PMU_Layout::MISC0_CLR, 3,  4, 0x0> REFTOP_VBGADJ;
     // 0b000..Nominal VBG
     // 0b001..VBG+0.78%
@@ -847,7 +846,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC0_TOG, 2, 10, 0x0> STOP_MODE_CONFIG;         
     // 0b01..Analog regulators are ON.
     // 0b10..STOP (lower power)
     // 0b11..STOP (very lower power)
-constexpr PMU_Reg<&PMU_Layout::MISC0_TOG, 1,  7, 0x0> REFTOP_VBGUP;                // Status bit that signals the analog bandgap voltage is up and stable. 1 - Stable.
+constexpr PMU_Reg<&PMU_Layout::MISC0_TOG, 1,  7, 0x0> REFTOP_VBGUP;                // Status bit that signals the analog bandgap voltage is up and stable.
+    // 1 - Stable.
 constexpr PMU_Reg<&PMU_Layout::MISC0_TOG, 3,  4, 0x0> REFTOP_VBGADJ;
     // 0b000..Nominal VBG
     // 0b001..VBG+0.78%
@@ -902,7 +902,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1, 5,  5, regs::shiftedMask32<5,  5>() | kW1C
     // 0b10010..xtal (24M)
     // 0b10011..LVDS1 (loopback)
     // 0b10100..LVDS2 (not useful)
-constexpr PMU_Reg<&PMU_Layout::MISC1, 5,  0, regs::shiftedMask32<5,  0>() | kW1C> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1, 5,  0, regs::shiftedMask32<5,  0>() | kW1C> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -956,7 +957,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 5,  5, 0x0> LVDS2_CLK_SEL;        // T
     // 0b10010..xtal (24M)
     // 0b10011..LVDS1 (loopback)
     // 0b10100..LVDS2 (not useful)
-constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 5,  0, 0x0> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1_SET, 5,  0, 0x0> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -988,7 +990,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 13, 0x0> LVDSCLK2_IBEN;        // T
 constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 12, 0x0> LVDSCLK1_IBEN;        // This enables the LVDS input buffer for anaclk1/1b
 constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 11, 0x0> LVDSCLK2_OBEN;        // This enables the LVDS output buffer for anaclk2/2b
 constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 1, 10, 0x0> LVDSCLK1_OBEN;        // This enables the LVDS output buffer for anaclk1/1b
-constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 5,  5, 0x0> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 5,  5, 0x0> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -1010,7 +1013,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 5,  5, 0x0> LVDS2_CLK_SEL;        // T
     // 0b10010..xtal (24M)
     // 0b10011..LVDS1 (loopback)
     // 0b10100..LVDS2 (not useful)
-constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 5,  0, 0x0> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1_CLR, 5,  0, 0x0> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -1042,7 +1046,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 13, 0x0> LVDSCLK2_IBEN;        // T
 constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 12, 0x0> LVDSCLK1_IBEN;        // This enables the LVDS input buffer for anaclk1/1b
 constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 11, 0x0> LVDSCLK2_OBEN;        // This enables the LVDS output buffer for anaclk2/2b
 constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 1, 10, 0x0> LVDSCLK1_OBEN;        // This enables the LVDS output buffer for anaclk1/1b
-constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 5,  5, 0x0> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 5,  5, 0x0> LVDS2_CLK_SEL;        // This field selects the clk to be routed to anaclk2/2b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk
@@ -1064,7 +1069,8 @@ constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 5,  5, 0x0> LVDS2_CLK_SEL;        // T
     // 0b10010..xtal (24M)
     // 0b10011..LVDS1 (loopback)
     // 0b10100..LVDS2 (not useful)
-constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 5,  0, 0x0> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b. Not related to PMU.
+constexpr PMU_Reg<&PMU_Layout::MISC1_TOG, 5,  0, 0x0> LVDS1_CLK_SEL;        // This field selects the clk to be routed to anaclk1/1b.
+    // Not related to PMU.
     // 0b00000..ARM PLL
     // 0b00001..System PLL
     // 0b00010..ref_pfd4_clk == pll2_pfd0_clk

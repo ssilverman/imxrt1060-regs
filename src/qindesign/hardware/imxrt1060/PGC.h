@@ -53,7 +53,8 @@ namespace PGC {
 
 // PGC Mega Control Register
 namespace MEGA_CTRL {
-constexpr PGC_Reg<&PGC_Layout::MEGA_CTRL, 1, 0, 0x0> PCR;  // Power Control. PCR must not change from power-down request (pdn_req) assertion until the target subsystem is completely powered up
+constexpr PGC_Reg<&PGC_Layout::MEGA_CTRL, 1, 0, 0x0> PCR;  // Power Control.
+    // PCR must not change from power-down request (pdn_req) assertion until the target subsystem is completely powered up
     // Direct-assign because there's only one writable field
     // 0b0..Do not switch off power even if pdn_req is asserted.
     // 0b1..Switch off power when pdn_req is asserted.
@@ -86,7 +87,8 @@ constexpr PGC_Reg<&PGC_Layout::MEGA_SR, 1, 0, 0x0> PSR;  // Power status
 
 // PGC CPU Control Register
 namespace CPU_CTRL {
-constexpr PGC_Reg<&PGC_Layout::CPU_CTRL, 1, 0, 0x0> PCR;  // Power Control. PCR must not change from power-down request (pdn_req) assertion until the target subsystem is completely powered up
+constexpr PGC_Reg<&PGC_Layout::CPU_CTRL, 1, 0, 0x0> PCR;  // Power Control.
+    // PCR must not change from power-down request (pdn_req) assertion until the target subsystem is completely powered up
     // Direct-assign because there's only one writable field
     // 0b0..Do not switch off power even if pdn_req is asserted.
     // 0b1..Switch off power when pdn_req is asserted.
