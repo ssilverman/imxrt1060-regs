@@ -125,7 +125,7 @@ static void reboot() {
   delay(50);                // Enough time for USB hubs/ports to detect disconnect
 
   asm volatile ("dsb sy" ::: "memory");
-  SCB::AIRCR::keyed::SYSRESETREQ = 1;
+  SCB::AIRCR::systemReset();
 #else
   USB1_USBCMD = 0;  // Disconnect USB
   delay(50);        // Enough time for USB hubs/ports to detect disconnect
@@ -319,7 +319,7 @@ static bool arm_high_resolution_clock_init() {
 
 static uint32_t arm_high_resolution_clock_count() {
 #if !USE_OLD_WAY
-  return DWT::group->CYCCNT;
+  return *DWT::CYCCNT::CYCCNT;
 #else
   return ARM_DWT_CYCCNT;
 #endif  // !USE_OLD_WAY
