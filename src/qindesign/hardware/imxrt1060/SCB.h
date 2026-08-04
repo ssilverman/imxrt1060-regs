@@ -145,6 +145,7 @@ static inline Vector getVector(const uint8_t irq) {
 }
 
 constexpr SCB_Reg<&SCB_Layout::VTOR, 25, 7> TBLOFF;  // Vector table base offset
+    // The vector table address actually uses all the bits, not just these
 
 }  // namespace VTOR
 

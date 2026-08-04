@@ -501,6 +501,7 @@ namespace RDSR {
 constexpr uint32_t kWOZ = regs::shiftedMask32<1, 2>();
 
 constexpr ENET_Reg<&ENET_Layout::RDSR, 29, 3, regs::shiftedMask32<29, 3>() | kWOZ> R_DES_START;  // Pointer to the beginning of the receive buffer descriptor queue.
+    // The RX buffer address actually uses all the bits, not just the ones here
 }  // namespace RDSR
 
 // Transmit Buffer Descriptor Ring 0 Start Register
@@ -508,6 +509,7 @@ namespace TDSR {
 constexpr uint32_t kWOZ = regs::shiftedMask32<1, 2>();
 
 constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3, regs::shiftedMask32<29, 3>() | kWOZ> X_DES_START;  // Pointer to the beginning of the transmit buffer descriptor queue.
+    // The TX buffer address actually uses all the bits, not just the ones here
 }  // namespace TDSR
 
 // Maximum Receive Buffer Size Register - Ring 0
