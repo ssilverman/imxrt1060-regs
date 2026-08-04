@@ -16,14 +16,14 @@
 #undef PI
 
 #if !USE_OLD_WAY
-#include "hardware/imxrt1060/CCM.h"
-#include "hardware/imxrt1060/CCM_ANALOG.h"
-#include "hardware/imxrt1060/DCB.h"
-#include "hardware/imxrt1060/DWT.h"
-#include "hardware/imxrt1060/IOMUXC_GPR.h"
-#include "hardware/imxrt1060/SCB.h"
-#include "hardware/imxrt1060/USB.h"
-#include "hardware/imxrt1060/WDOG.h"
+#include "qindesign/hardware/imxrt1060/CCM.h"
+#include "qindesign/hardware/imxrt1060/CCM_ANALOG.h"
+#include "qindesign/hardware/imxrt1060/DCB.h"
+#include "qindesign/hardware/imxrt1060/DWT.h"
+#include "qindesign/hardware/imxrt1060/IOMUXC_GPR.h"
+#include "qindesign/hardware/imxrt1060/SCB.h"
+#include "qindesign/hardware/imxrt1060/USB.h"
+#include "qindesign/hardware/imxrt1060/WDOG.h"
 #endif  // !USE_OLD_WAY
 
 #if !USE_OLD_WAY
