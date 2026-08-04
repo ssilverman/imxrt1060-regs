@@ -130,16 +130,18 @@ namespace VTOR {
 static_assert(sizeof(void (*)()) == sizeof(uint32_t),
               "Function pointer size must be 4 bytes");
 
+using Vector = void (*)();
+
 // Sets an interrupt vector. VTOR must point to a vector table in writable RAM.
-static inline void setVector(const uint8_t irq, void (* const f)()) {
+static inline void setVector(const uint8_t irq, const Vector f) {
   const auto table = reinterpret_cast<uint32_t*>(group->VTOR);
   table[irq + 16] = reinterpret_cast<uint32_t>(f);
   asm volatile ("dsb sy" ::: "memory");
 }
 
-static inline void (*getVector(const uint8_t irq))() {
+static inline Vector getVector(const uint8_t irq) {
   const auto table = reinterpret_cast<uint32_t*>(group->VTOR);
-  return reinterpret_cast<void (*)()>(table[irq + 16]);
+  return reinterpret_cast<Vector>(table[irq + 16]);
 }
 
 constexpr SCB_Reg<&SCB_Layout::VTOR, 25, 7> TBLOFF;  // Vector table base offset
