@@ -516,6 +516,7 @@ constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3, regs::shiftedMask32<29, 3>() | kWO
 namespace MRBR {
 constexpr ENET_Reg<&ENET_Layout::MRBR, 10, 4, 0x0> R_BUF_SIZE;  // Receive buffer size in bytes
     // Direct-assign because there's only one writable field
+    // The size actually includes the lower four bits, not just the ones here
 }  // namespace MRBR
 
 // Receive FIFO Section Full Threshold
