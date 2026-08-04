@@ -174,7 +174,7 @@ static void enable_enet_clocks() {
   CCM_ANALOG::PLL_ENET_CLR::BYPASS = 1;
 
   // Configure REFCLK to be driven as output by PLL6 (page 325)
-  IOMUXC_GPR::GPR1::ENET1_CLK_SEL     = 0;
+  IOMUXC_GPR::GPR1::ENET1_CLK_SEL = 0;
   IOMUXC_GPR::group->GPR1 |= IOMUXC_GPR::GPR1::ENET_IPG_CLK_S_EN(1) |
                              IOMUXC_GPR::GPR1::ENET1_TX_CLK_DIR(1);
   // Alternative:
