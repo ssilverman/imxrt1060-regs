@@ -222,7 +222,8 @@ constexpr ENC1_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;   // TEST_COUNT
 
 // ENC1 Control 2 Register
 namespace CTRL2 {
-constexpr uint16_t kW1C = 0x00a0;
+constexpr uint16_t kW1C =
+    regs::shiftedMask16<1, 7>() | regs::shiftedMask16<1, 5>();
 
 constexpr ENC1_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;  // Output Control
     // 0b0..POSMATCH pulses when a match occurs between the position counters (POS) and the corresponding compare value (COMP )
@@ -392,7 +393,8 @@ constexpr ENC2_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
 
 // ENC2 Control 2 Register
 namespace CTRL2 {
-constexpr uint16_t kW1C = 0x00a0;
+constexpr uint16_t kW1C =
+    regs::shiftedMask16<1, 7>() | regs::shiftedMask16<1, 5>();
 
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;
 constexpr ENC2_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;
@@ -542,7 +544,8 @@ constexpr ENC3_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
 
 // ENC3 Control 2 Register
 namespace CTRL2 {
-constexpr uint16_t kW1C = 0x00a0;
+constexpr uint16_t kW1C =
+    regs::shiftedMask16<1, 7>() | regs::shiftedMask16<1, 5>();
 
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;
 constexpr ENC3_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;
@@ -692,7 +695,8 @@ constexpr ENC4_Reg<&ENC_Layout::TST, 8,  0> TEST_COUNT;
 
 // ENC4 Control 2 Register
 namespace CTRL2 {
-constexpr uint16_t kW1C = 0x00a0;
+constexpr uint16_t kW1C =
+    regs::shiftedMask16<1, 7>() | regs::shiftedMask16<1, 5>();
 
 constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> OUTCTL;
 constexpr ENC4_Reg<&ENC_Layout::CTRL2, 1, 8, regs::shiftedMask16<1, 8>() | kW1C> REVMOD;

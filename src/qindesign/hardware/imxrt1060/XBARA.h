@@ -504,7 +504,8 @@ constexpr XBARA1_Reg<&XBARA_Layout::SEL65, 7, 0> SEL130;  // Input (XBARA_INn) t
 
 // Crossbar A Control Register 0
 namespace CTRL0 {
-constexpr uint16_t kW1C = 0x1010;
+constexpr uint16_t kW1C =
+    regs::shiftedMask16<1, 12>() | regs::shiftedMask16<1, 4>();
 
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1, 12, kW1C> STS1;                                  // Edge detection status for XBAR_OUT1
     // 0b0..Active edge not yet detected on XBAR_OUT1
@@ -538,7 +539,8 @@ constexpr XBARA1_Reg<&XBARA_Layout::CTRL0, 1,  0, regs::shiftedMask16<1,  0>() |
 
 // Crossbar A Control Register 1
 namespace CTRL1 {
-constexpr uint16_t kW1C = 0x1010;
+constexpr uint16_t kW1C =
+    regs::shiftedMask16<1, 12>() | regs::shiftedMask16<1, 4>();
 
 constexpr XBARA1_Reg<&XBARA_Layout::CTRL1, 1, 12, kW1C> STS3;                                  // Edge detection status for XBAR_OUT3
     // 0b0..Active edge not yet detected on XBAR_OUT3

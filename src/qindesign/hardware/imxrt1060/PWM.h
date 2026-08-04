@@ -781,7 +781,7 @@ constexpr PWM1_Reg<&PWM_Layout::OUTEN, 4, 0> PWMX_EN;  // PWM_X Output Enables
 // Mask Register
 namespace MASK {
 // TODO: Is this the correct way?
-constexpr uint16_t kWO = 0xf000;
+constexpr uint16_t kWO = regs::shiftedMask16<4, 12>();
 
 constexpr PWM1_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;                    // Update Mask Bits Immediately
     // 0b0000..Normal operation. MASK* bits within the corresponding submodule are not updated until a FORCE_OUT
@@ -929,7 +929,7 @@ constexpr PWM1_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;    // Fault Interrupt Enables
 
 // Fault Status Register
 namespace FSTS {
-constexpr uint16_t kW1C = 0x000f;
+constexpr uint16_t kW1C = regs::shiftedMask16<4, 0>();
 
 constexpr PWM1_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;  // Half Cycle Fault Recovery
     // 0b0000..PWM outputs are not re-enabled at the start of a half cycle.
@@ -1437,7 +1437,7 @@ constexpr PWM2_Reg<&PWM_Layout::OUTEN, 4, 0> PWMX_EN;
 // Mask Register
 namespace MASK {
 // TODO: Is this the correct way?
-constexpr uint16_t kWO = 0xf000;
+constexpr uint16_t kWO = regs::shiftedMask16<4, 12>();
 
 constexpr PWM2_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;                    // Update Mask Bits Immediately
 constexpr PWM2_Reg<&PWM_Layout::MASK, 4,  8, regs::shiftedMask16<4, 8>() | kWO> MASKA;  // PWM_A Masks
@@ -1492,7 +1492,7 @@ constexpr PWM2_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;
 
 // Fault Status Register
 namespace FSTS {
-constexpr uint16_t kW1C = 0x000f;
+constexpr uint16_t kW1C = regs::shiftedMask16<4, 0>();
 
 constexpr PWM2_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;
 constexpr PWM2_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;
@@ -1986,7 +1986,7 @@ constexpr PWM3_Reg<&PWM_Layout::OUTEN, 4, 0> PWMX_EN;
 // Mask Register
 namespace MASK {
 // TODO: Is this the correct way?
-constexpr uint16_t kWO = 0xf000;
+constexpr uint16_t kWO = regs::shiftedMask16<4, 12>();
 
 constexpr PWM3_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;                    // Update Mask Bits Immediately
 constexpr PWM3_Reg<&PWM_Layout::MASK, 4,  8, regs::shiftedMask16<4, 8>() | kWO> MASKA;  // PWM_A Masks
@@ -2041,7 +2041,7 @@ constexpr PWM3_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;
 
 // Fault Status Register
 namespace FSTS {
-constexpr uint16_t kW1C = 0x000f;
+constexpr uint16_t kW1C = regs::shiftedMask16<4, 0>();
 
 constexpr PWM3_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;
 constexpr PWM3_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;
@@ -2535,7 +2535,7 @@ constexpr PWM4_Reg<&PWM_Layout::OUTEN, 4, 0> PWMX_EN;
 // Mask Register
 namespace MASK {
 // TODO: Is this the correct way?
-constexpr uint16_t kWO = 0xf000;
+constexpr uint16_t kWO = regs::shiftedMask16<4, 12>();
 
 constexpr PWM4_Reg<&PWM_Layout::MASK, 4, 12, kWO, true> UPDATE_MASK;                    // Update Mask Bits Immediately
 constexpr PWM4_Reg<&PWM_Layout::MASK, 4,  8, regs::shiftedMask16<4, 8>() | kWO> MASKA;  // PWM_A Masks
@@ -2590,7 +2590,7 @@ constexpr PWM4_Reg<&PWM_Layout::FCTRL, 4,  0> FIE;
 
 // Fault Status Register
 namespace FSTS {
-constexpr uint16_t kW1C = 0x000f;
+constexpr uint16_t kW1C = regs::shiftedMask16<4, 0>();
 
 constexpr PWM4_Reg<&PWM_Layout::FSTS, 4, 12, regs::shiftedMask16<4, 12>() | kW1C> FHALF;
 constexpr PWM4_Reg<regs::constify(&PWM_Layout::FSTS), 4,  8> FFPIN;

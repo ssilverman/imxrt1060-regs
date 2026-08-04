@@ -106,7 +106,7 @@ constexpr WDOG1_Reg<&WDOG_Layout::WRSR, 1, 0> SFTW;  // SFTW
 
 // Watchdog Interrupt Control Register
 namespace WICR {
-constexpr uint16_t kW1C = 0x4000;
+constexpr uint16_t kW1C = regs::shiftedMask16<1, 14>();
 
 constexpr WDOG1_Reg<&WDOG_Layout::WICR, 1, 15, regs::shiftedMask16<1, 15>() | kW1C> WIE;   // WIE
     // 0b0..Disable Interrupt (Default).
@@ -164,7 +164,7 @@ constexpr WDOG2_Reg<&WDOG_Layout::WRSR, 1, 0> SFTW;
 
 // WDOG2 Watchdog Interrupt Control Register
 namespace WICR {
-constexpr uint16_t kW1C = 0x4000;
+constexpr uint16_t kW1C = regs::shiftedMask16<1, 14>();
 
 constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 15, regs::shiftedMask16<1, 15>() | kW1C> WIE;
 constexpr WDOG2_Reg<&WDOG_Layout::WICR, 1, 14, kW1C> WTIS;

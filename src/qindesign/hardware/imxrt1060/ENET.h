@@ -498,14 +498,14 @@ constexpr ENET_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;    // Transmit FIFO Write
 
 // Receive Descriptor Ring 0 Start Register
 namespace RDSR {
-constexpr uint32_t kWOZ = 0x0000'0004;
+constexpr uint32_t kWOZ = regs::shiftedMask32<1, 2>();
 
 constexpr ENET_Reg<&ENET_Layout::RDSR, 29, 3, regs::shiftedMask32<29, 3>() | kWOZ> R_DES_START;  // Pointer to the beginning of the receive buffer descriptor queue.
 }  // namespace RDSR
 
 // Transmit Buffer Descriptor Ring 0 Start Register
 namespace TDSR {
-constexpr uint32_t kWOZ = 0x0000'0004;
+constexpr uint32_t kWOZ = regs::shiftedMask32<1, 2>();
 
 constexpr ENET_Reg<&ENET_Layout::TDSR, 29, 3, regs::shiftedMask32<29, 3>() | kWOZ> X_DES_START;  // Pointer to the beginning of the transmit buffer descriptor queue.
 }  // namespace TDSR
@@ -618,7 +618,7 @@ constexpr ENET_Reg<&ENET_Layout::RACC, 1, 0, regs::shiftedMask32<1, 0>() | kWOZ>
 // Adjustable Timer Control Register
 namespace ATCR {
 constexpr uint32_t kWOZ = 0x0000'1542;
-constexpr uint32_t kWOO = 0x0000'0020;
+constexpr uint32_t kWOO = regs::shiftedMask32<1, 5>();
 
 constexpr ENET_Reg<&ENET_Layout::ATCR, 1, 13, regs::shiftedMask32<1, 13>() | kWOZ, kWOO> SLAVE;    // Enable Timer Slave Mode
     // 0b0..The timer is active and all configuration fields in this register are relevant.
@@ -700,7 +700,7 @@ constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 0, 0x0> TF0;  // Copy Of Timer Flag Fo
 // Timer Control Status Register
 namespace CHANNEL {
 namespace TCSR {
-constexpr uint32_t kW1C = 0x0000'0080;
+constexpr uint32_t kW1C = regs::shiftedMask32<1, 7>();
 
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11, regs::shiftedMask32<5, 11>() | kW1C> TPWC;   // Timer PulseWidth Control
@@ -1191,13 +1191,13 @@ constexpr ENET2_Reg<&ENET_Layout::TFWR, 6, 0> TFWR;
 }  // namespace TFWR
 
 namespace RDSR {
-constexpr uint32_t kWOZ = 0x0000'0004;
+constexpr uint32_t kWOZ = regs::shiftedMask32<1, 2>();
 
 constexpr ENET2_Reg<&ENET_Layout::RDSR, 29, 3, regs::shiftedMask32<29, 3>() | kWOZ> R_DES_START;
 }  // namespace RDSR
 
 namespace TDSR {
-constexpr uint32_t kWOZ = 0x0000'0004;
+constexpr uint32_t kWOZ = regs::shiftedMask32<1, 2>();
 
 constexpr ENET2_Reg<&ENET_Layout::TDSR, 29, 3, regs::shiftedMask32<29, 3>() | kWOZ> X_DES_START;
 }  // namespace TDSR
@@ -1263,7 +1263,7 @@ constexpr ENET2_Reg<&ENET_Layout::RACC, 1, 0, regs::shiftedMask32<1, 0>() | kWOZ
 
 namespace ATCR {
 constexpr uint32_t kWOZ = 0x0000'1542;
-constexpr uint32_t kWOO = 0x0000'0020;
+constexpr uint32_t kWOO = regs::shiftedMask32<1, 5>();
 
 constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 13, regs::shiftedMask32<1, 13>() | kWOZ, kWOO> SLAVE;
 constexpr ENET2_Reg<&ENET_Layout::ATCR, 1, 11, regs::shiftedMask32<1, 11>() | kWOZ, kWOO> CAPTURE;
@@ -1310,7 +1310,7 @@ constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 0, 0x0> TF0;
 // Timer Control Status Register
 namespace CHANNEL {
 namespace TCSR {
-constexpr uint32_t kW1C = 0x0000'0080;
+constexpr uint32_t kW1C = regs::shiftedMask32<1, 7>();
 
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &ENET_Layout::CHANNEL_Layout::TCSR, 5, 11, regs::shiftedMask32<5, 11>() | kW1C> TPWC;

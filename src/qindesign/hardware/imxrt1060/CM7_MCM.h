@@ -45,7 +45,7 @@ using CM7_MCM_Reg = regs::Reg32<kCM7_MCM_base, CM7_MCM_Layout, Member, 0, Bits,
 
 // Interrupt Status and Control Register
 namespace ISCR {
-constexpr uint32_t kW1C = 0x0000'0020;
+constexpr uint32_t kW1C = regs::shiftedMask32<1, 5>();
 
 constexpr CM7_MCM_Reg<&CM7_MCM_Layout::ISCR, 1, 31, regs::shiftedMask32<1, 31>() | kW1C> FIDCE;  // FPU Input Denormal Interrupt Enable
     // 0b0..Disable interrupt

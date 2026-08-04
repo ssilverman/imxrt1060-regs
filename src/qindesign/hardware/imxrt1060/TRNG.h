@@ -106,8 +106,8 @@ using TRNG_Reg = regs::Reg32<kTRNG_base, TRNG_Layout, Member, 0, Bits, Shift,
 // Miscellaneous Control Register
 namespace MCTL {
 // TODO: Is this the correct way?
-constexpr uint32_t kW1C = 0x0000'1000;
-constexpr uint32_t kWO  = 0x0000'0040;
+constexpr uint32_t kW1C = regs::shiftedMask32<1, 12>();
+constexpr uint32_t kWO  = regs::shiftedMask32<1, 6>();
 
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 16, regs::shiftedMask32<1, 16>() | kW1C | kWO> PRGM;       // Programming Mode Select
 constexpr TRNG_Reg<&TRNG_Layout::MCTL, 1, 14, regs::shiftedMask32<1, 14>() | kW1C | kWO> LRUN_CONT;  // Long run count continues between entropy generations

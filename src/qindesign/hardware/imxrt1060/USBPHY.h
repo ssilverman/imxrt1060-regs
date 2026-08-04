@@ -133,7 +133,8 @@ constexpr USBPHY1_Reg<regs::constify(&USBPHY_Layout::PWD_TOG), 10,  0> RSVD0;  /
 
 // USB PHY Transmitter Control Register
 namespace TX {
-constexpr uint32_t kWOZ = 0x0000'f0f0;
+constexpr uint32_t kWOZ =
+    regs::shiftedMask32<4, 12>() | regs::shiftedMask32<4, 4>();
 
 constexpr USBPHY1_Reg<regs::constify(&USBPHY_Layout::TX), 3, 29> RSVD5;                                    // Reserved.
 constexpr USBPHY1_Reg<&USBPHY_Layout::TX, 3, 26, regs::shiftedMask32<3, 26>() | kWOZ> USBPHY_TX_EDGECTRL;  // Controls the edge-rate of the current sensing transistors used in HS transmit
@@ -583,7 +584,8 @@ constexpr USBPHY2_Reg<regs::constify(&USBPHY_Layout::PWD_TOG), 10,  0> RSVD0;
 
 // USB PHY Transmitter Control Register
 namespace TX {
-constexpr uint32_t kWOZ = 0x0000'f0f0;
+constexpr uint32_t kWOZ =
+    regs::shiftedMask32<4, 12>() | regs::shiftedMask32<4, 4>();
 
 constexpr USBPHY2_Reg<regs::constify(&USBPHY_Layout::TX), 3, 29> RSVD5;
 constexpr USBPHY2_Reg<&USBPHY_Layout::TX, 3, 26, regs::shiftedMask32<3, 26>() | kWOZ> USBPHY_TX_EDGECTRL;

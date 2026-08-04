@@ -43,7 +43,7 @@ using RTWDOG_Reg = regs::Reg32<kRTWDOG_base, RTWDOG_Layout, Member, 0, Bits,
 
 // Watchdog Control and Status Register
 namespace CS {
-constexpr uint32_t kW1C = 0x0000'4000;
+constexpr uint32_t kW1C = regs::shiftedMask32<1, 14>();
 
 constexpr RTWDOG_Reg<&RTWDOG_Layout::CS, 1, 15, regs::shiftedMask32<1, 15>() | kW1C> WIN;      // Watchdog Window
     // 0b0..Window mode disabled.

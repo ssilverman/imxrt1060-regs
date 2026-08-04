@@ -112,7 +112,8 @@ constexpr CMP1_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;  // Filter Sample Period
 
 // CMP Status and Control Register
 namespace SCR {
-constexpr uint8_t kW1C = 0x06;
+constexpr uint8_t kW1C =
+    regs::shiftedMask8<1, 2>() | regs::shiftedMask8<1, 1>();
 
 constexpr CMP1_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;  // DMA Enable Control
     // 0b0..DMA is disabled.
@@ -198,7 +199,8 @@ constexpr CMP2_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 
 // CMP2 CMP Status and Control Register
 namespace SCR {
-constexpr uint8_t kW1C = 0x06;
+constexpr uint8_t kW1C =
+    regs::shiftedMask8<1, 2>() | regs::shiftedMask8<1, 1>();
 
 constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;
 constexpr CMP2_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IER;
@@ -254,7 +256,8 @@ constexpr CMP3_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 
 // CMP3 CMP Status and Control Register
 namespace SCR {
-constexpr uint8_t kW1C = 0x06;
+constexpr uint8_t kW1C =
+    regs::shiftedMask8<1, 2>() | regs::shiftedMask8<1, 1>();
 
 constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;
 constexpr CMP3_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IER;
@@ -310,7 +313,8 @@ constexpr CMP4_Reg<&CMP_Layout::FPR, 8, 0> FILT_PER;
 
 // CMP4 CMP Status and Control Register
 namespace SCR {
-constexpr uint8_t kW1C = 0x06;
+constexpr uint8_t kW1C =
+    regs::shiftedMask8<1, 2>() | regs::shiftedMask8<1, 1>();
 
 constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 6, regs::shiftedMask8<1, 6>() | kW1C> DMAEN;
 constexpr CMP4_Reg<&CMP_Layout::SCR, 1, 4, regs::shiftedMask8<1, 4>() | kW1C> IER;

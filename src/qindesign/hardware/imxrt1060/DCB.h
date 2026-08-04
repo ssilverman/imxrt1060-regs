@@ -46,7 +46,7 @@ using DCB_Reg = regs::Reg32<kDCB_base, DCB_Layout, Member, 0, Bits, Shift,
 // Exercise caution when setting or assigning fields in this register.
 namespace DHCSR {
 // TODO: Is this the correct way?
-constexpr uint32_t kWO = 0xffff'0000;
+constexpr uint32_t kWO = regs::shiftedMask32<16, 16>();
 
 constexpr DCB_Reg<&DCB_Layout::DHCSR, 16, 16, kWO, 0x0, true> DBGKEY;                                          // Debug key
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 25> S_RESET_ST;                                      // Reset sticky status

@@ -55,7 +55,8 @@ constexpr KPP_Reg<&KPP_Layout::KPCR, 8, 0> KRE;  // Keypad Row Enable
 
 // Keypad Status Register
 namespace KPSR {
-constexpr uint16_t kW1C = 0x0003;
+constexpr uint16_t kW1C =
+    regs::shiftedMask16<1, 1>() | regs::shiftedMask16<1, 0>();
 
 constexpr KPP_Reg<&KPP_Layout::KPSR, 1, 9, regs::shiftedMask16<1, 9>() | kW1C> KRIE;  // Keypad Release Interrupt Enable
     // 0b0..No interrupt request is generated when KPKR is set.
