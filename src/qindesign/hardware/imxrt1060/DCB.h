@@ -55,11 +55,11 @@ constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 19> S_LOCKUP;         
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 18> S_SLEEP;                                         // Sleeping status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 17> S_HALT;                                          // Halted status
 constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1, 16> S_REGRDY;                                        // Register ready status
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  5, regs::shiftedMask32<1, 5>() | kWO> C_SNAPSTALL;  // Snap stall control
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  3, regs::shiftedMask32<1, 3>() | kWO> C_MASKINTS;   // Mask interrupts control
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  2, regs::shiftedMask32<1, 2>() | kWO> C_STEP;       // Step control
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  1, regs::shiftedMask32<1, 1>() | kWO> C_HALT;       // Halt control
-constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  0, regs::shiftedMask32<1, 0>() | kWO> C_DEBUGEN;    // Debug enable control
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  5> C_SNAPSTALL;  // Snap stall control
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  3> C_MASKINTS;   // Mask interrupts control
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  2> C_STEP;       // Step control
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  1> C_HALT;       // Halt control
+constexpr DCB_Reg<regs::constify(&DCB_Layout::DHCSR),  1,  0> C_DEBUGEN;    // Debug enable control
 
 // Versions where DBGKEY also gets set
 namespace keyed {
