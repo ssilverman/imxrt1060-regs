@@ -67,8 +67,6 @@ template <auto Member, size_t Bits, unsigned int Shift,
 using PMU_Reg =
     regs::Reg32<kPMU_base, PMU_Layout, Member, 0, Bits, Shift, AssignMask>;
 
-namespace PMU {
-
 // Regulator 1P1 Register
 namespace REG_1P1 {
 constexpr PMU_Reg<&PMU_Layout::REG_1P1, 1, 19> SELREF_WEAK_LINREG;         // Selects the source for the reference voltage of the weak 1p1 regulator.
