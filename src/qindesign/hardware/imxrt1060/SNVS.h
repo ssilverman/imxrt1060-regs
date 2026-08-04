@@ -11,6 +11,9 @@
 
 #include "qindesign/hardware/regs/regs.h"
 
+// Undefine some Arduino nonsense because of field name conflicts
+#undef PI
+
 namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {

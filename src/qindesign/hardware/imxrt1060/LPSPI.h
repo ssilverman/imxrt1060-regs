@@ -11,6 +11,10 @@
 
 #include "qindesign/hardware/regs/regs.h"
 
+// Undefine some Arduino nonsense because of field name conflicts
+#undef CPHA
+#undef CPOL
+
 namespace qindesign {
 namespace hardware {
 namespace imxrt1060 {
