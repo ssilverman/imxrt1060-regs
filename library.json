@@ -1,6 +1,6 @@
 {
   "name": "imxrt1060-regs",
-  "description": "A new and more modern way to access and modify registers. This library uses modern C++ features to avoid defines, macros, and other avoidable mistakes.",
+  "description": "A new and more modern way to access and modify registers. This library uses modern C++ features to avoid defines, macros, and other avoidable mistakes. It compiles to code as efficient as using addresses, shifts, and masks.",
   "keywords": "teensy, registers, regs",
   "authors": [
     {
