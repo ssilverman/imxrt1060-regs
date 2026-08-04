@@ -551,9 +551,12 @@ constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1, 10> ASV;              
 constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  9> AVV;                          // A VBus Valid - Read Only.
     // Indicates VBus is above the A VBus valid threshold.
 constexpr USB1_Reg<regs::constify(&USB_Layout::OTGSC), 1,  8> ID;                           // USB ID - Read Only.
-    // 0 = A device, 1 = B device
+    // 0 = A device,
+    // 1 = B device
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  5, regs::shiftedMask32<1,  5>() | kW1C> IDPU;    // ID Pullup - Read/Write
-    // This bit provide control over the ID pull-up resistor; 0 = off, 1 = on [default]
+    // This bit provide control over the ID pull-up resistor;
+    // 0 = off,
+    // 1 = on [default]
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  4, regs::shiftedMask32<1,  4>() | kW1C> DP;      // Data Pulsing - Read/Write
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  3, regs::shiftedMask32<1,  3>() | kW1C> OT;      // OTG Termination - Read/Write
 constexpr USB1_Reg<&USB_Layout::OTGSC, 1,  1, regs::shiftedMask32<1,  1>() | kW1C> VC;      // VBUS Charge - Read/Write

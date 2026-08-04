@@ -148,8 +148,8 @@ constexpr SRC_Reg<&SRC_Layout::GPR2, 32, 0> PERSISTENT_ARG0;  // Holds argument 
 // SRC General Purpose Register 10
 namespace GPR10 {
 constexpr SRC_Reg<&SRC_Layout::GPR10, 1, 30> PERSIST_SECONDARY_BOOT;  // This bit identifies which image must be used - primary and secondary
-    // 0b0..Use the primary image.
-    // 0b1..Use the secondary image.
+    // 0b0: Use the primary image.
+    // 0b1: Use the secondary image.
 constexpr SRC_Reg<&SRC_Layout::GPR10, 2, 26> PERSIST_REDUNDANT_BOOT;  // This field identifies which image must be used - 0/1/2/3
     // Used for both SPI NAND and SLC raw NAND devices.
 }  // namespace GPR10

@@ -136,8 +136,8 @@ constexpr BEE_Reg<&BEE_Layout::AES_KEY0_W3, 32, 0, 0x0, true> KEY3;  // AES 128 
 // Status Register
 namespace STATUS {
 constexpr BEE_Reg<regs::constify(&BEE_Layout::STATUS), 1, 8> BEE_IDLE;  // 1'b1: BEE is idle; 1'b0: BEE is active
-    // 0b0..BEE is active.
-    // 0b1..BEE is idle.
+    // 0b0: BEE is active.
+    // 0b1: BEE is idle.
 constexpr BEE_Reg<&BEE_Layout::STATUS, 8, 0, 0x0> IRQ_VEC;              // bit 7: Protected region-3 access violation bit 6: Protected region-2 access violation bit 5: Protected region-1 access violation bit 4: Protected region-0 access violation bit 3: Region-1 read channel security violation bit 2: Read channel illegal access detected bit 1: Region-0 read channel security violation bit 0: Disable abort
     // Bit 7: Protected region 3 access violation.
     // Bit 6: Protected region 2 access violation.

@@ -353,11 +353,11 @@ namespace OSC_CONFIG2 {
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::OSC_CONFIG2,  1, 31> CLK_1M_ERR_FL;  // Flag indicates that the count_1m count wasn't reached within 1 32kHz period
     // The target count was not reached within one 32 kHz clock period, indicating that the target is too high.
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::OSC_CONFIG2,  1, 17> MUX_1M;         // Mux the corrected or uncorrected 1MHz clock to the output
-    // 0b0..Output the free-running 1 MHz clock.
-    // 0b1..Output the locked 1 MHz clock.
+    // 0b0: Output the free-running 1 MHz clock.
+    // 0b1: Output the locked 1 MHz clock.
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::OSC_CONFIG2,  1, 16> ENABLE_1M;      // Enable the 1MHz clock output. 0 - disabled; 1 - enabled.
-    // 0b0..Disable the 1 MHz clock output.
-    // 0b1..Enable the 1 MHz clock output.
+    // 0b0: Disable the 1 MHz clock output.
+    // 0b1: Enable the 1 MHz clock output.
 constexpr XTALOSC24M_Reg<&XTALOSC24M_Layout::OSC_CONFIG2, 12,  0> COUNT_1M_TRG;   // The target count used to tune the 1MHz clock frequency
 }  // namespace OSC_CONFIG2
 

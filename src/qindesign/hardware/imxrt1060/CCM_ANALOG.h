@@ -104,7 +104,8 @@ using CCM_ANALOG_Reg = regs::Reg32<kCCM_ANALOG_base, CCM_ANALOG_Layout, Member,
 
 // Analog ARM PLL control Register
 namespace PLL_ARM {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM), 1, 31> LOCK;  // 1 - PLL is currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM), 1, 31> LOCK;
+    // 1 - PLL is currently locked.
     // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM, 1, 19> PLL_SEL;               // Reserved
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM, 1, 16> BYPASS;                // Bypass the PLL.
@@ -120,7 +121,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM, 7,  0> DIV_SELECT;        
 
 // Analog ARM PLL control Register
 namespace PLL_ARM_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_SET), 1, 31> LOCK;  // 1 - PLL is currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_SET), 1, 31> LOCK;
+    // 1 - PLL is currently locked.
     // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 19, 0x0> PLL_SEL;          // Reserved
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
@@ -132,7 +134,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_SET, 7,  0, 0x0> DIV_SELECT
 
 // Analog ARM PLL control Register
 namespace PLL_ARM_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_CLR), 1, 31> LOCK;  // 1 - PLL is currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_CLR), 1, 31> LOCK;
+    // 1 - PLL is currently locked.
     // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 19, 0x0> PLL_SEL;          // Reserved
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
@@ -144,7 +147,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_CLR, 7,  0, 0x0> DIV_SELECT
 
 // Analog ARM PLL control Register
 namespace PLL_ARM_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_TOG), 1, 31> LOCK;  // 1 - PLL is currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ARM_TOG), 1, 31> LOCK;
+    // 1 - PLL is currently locked.
     // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 19, 0x0> PLL_SEL;          // Reserved
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
@@ -157,7 +161,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ARM_TOG, 7,  0, 0x0> DIV_SELECT
 // Analog USB1 480MHz PLL Control Register
 namespace PLL_USB1 {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1, 1, 16> BYPASS;                // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1, 2, 14> BYPASS_CLK_SRC;        // Determines the bypass source.
     // 0b00..Select the 24MHz oscillator as source.
@@ -169,13 +174,15 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1, 1,  6> EN_USB_CLKS;      
     // 0b0..PLL outputs for USBPHYn off.
     // 0b1..PLL outputs for USBPHYn on.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1, 1,  1> DIV_SELECT;            // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB1
 
 // Analog USB1 480MHz PLL Control Register
 namespace PLL_USB1_SET {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_SET), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 13, 0x0> ENABLE;           // Enable the PLL clock output.
@@ -183,13 +190,15 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1, 12, 0x0> POWER;   
     // This bit will be set automatically when USBPHY0 remote wakeup event happens.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1,  6, 0x0> EN_USB_CLKS;      // Powers the 9-phase PLL outputs for USBPHYn
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_SET, 1,  1, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB1_SET
 
 // Analog USB1 480MHz PLL Control Register
 namespace PLL_USB1_CLR {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_CLR), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 13, 0x0> ENABLE;           // Enable the PLL clock output.
@@ -197,12 +206,14 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1, 12, 0x0> POWER;   
     // This bit will be set automatically when USBPHY0 remote wakeup event happens.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1,  6, 0x0> EN_USB_CLKS;      // Powers the 9-phase PLL outputs for USBPHYn
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_CLR, 1,  1, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB1_CLR
 
 // Analog USB1 480MHz PLL Control Register
 namespace PLL_USB1_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_TOG), 1, 31> LOCK;  // 1 - PLL is currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB1_TOG), 1, 31> LOCK;
+    // 1 - PLL is currently locked.
     // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
@@ -211,13 +222,15 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1, 12, 0x0> POWER;   
     // This bit will be set automatically when USBPHY0 remote wakeup event happens.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1,  6, 0x0> EN_USB_CLKS;      // Powers the 9-phase PLL outputs for USBPHYn
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB1_TOG, 1,  1, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB1_TOG
 
 // Analog USB2 480MHz PLL Control Register
 namespace PLL_USB2 {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2, 1, 16> BYPASS;                // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2, 2, 14> BYPASS_CLK_SRC;        // Determines the bypass source.
     // 0b00..Select the 24MHz oscillator as source.
@@ -229,13 +242,15 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2, 1, 12> POWER;            
     // This bit will be set automatically when USBPHY1 remote wakeup event happens.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2, 1,  6> EN_USB_CLKS;           // 0: 8-phase PLL outputs for USBPHY1 are powered down
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2, 1,  1> DIV_SELECT;            // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB2
 
 // Analog USB2 480MHz PLL Control Register
 namespace PLL_USB2_SET {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_SET), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 13, 0x0> ENABLE;           // Enable the PLL clock output.
@@ -243,13 +258,15 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1, 12, 0x0> POWER;   
     // This bit will be set automatically when USBPHY1 remote wakeup event happens.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1,  6, 0x0> EN_USB_CLKS;      // 0: 8-phase PLL outputs for USBPHY1 are powered down
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_SET, 1,  1, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB2_SET
 
 // Analog USB2 480MHz PLL Control Register
 namespace PLL_USB2_CLR {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_CLR), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 13, 0x0> ENABLE;           // Enable the PLL clock output.
@@ -257,13 +274,15 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1, 12, 0x0> POWER;   
     // This bit will be set automatically when USBPHY1 remote wakeup event happens.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1,  6, 0x0> EN_USB_CLKS;      // 0: 8-phase PLL outputs for USBPHY1 are powered down
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_CLR, 1,  1, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB2_CLR
 
 // Analog USB2 480MHz PLL Control Register
 namespace PLL_USB2_TOG {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_USB2_TOG), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 13, 0x0> ENABLE;           // Enable the PLL clock output.
@@ -271,12 +290,15 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1, 12, 0x0> POWER;   
     // This bit will be set automatically when USBPHY1 remote wakeup event happens.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1,  6, 0x0> EN_USB_CLKS;      // 0: 8-phase PLL outputs for USBPHY1 are powered down
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_USB2_TOG, 1,  1, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_USB2_TOG
 
 // Analog System PLL Control Register
 namespace PLL_SYS {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1, 16> BYPASS;                // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 2, 14> BYPASS_CLK_SRC;        // Determines the bypass source.
     // 0b00..Select the 24MHz oscillator as source.
@@ -284,40 +306,50 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 2, 14> BYPASS_CLK_SRC;    
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1, 13> ENABLE;                // Enable PLL output
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1, 12> POWERDOWN;             // Powers down the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS, 1,  0> DIV_SELECT;            // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_SYS
 
 // Analog System PLL Control Register
 namespace PLL_SYS_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_SET), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_SET), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 13, 0x0> ENABLE;           // Enable PLL output
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1, 12, 0x0> POWERDOWN;        // Powers down the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_SET, 1,  0, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_SYS_SET
 
 // Analog System PLL Control Register
 namespace PLL_SYS_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_CLR), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_CLR), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 13, 0x0> ENABLE;           // Enable PLL output
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1, 12, 0x0> POWERDOWN;        // Powers down the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_CLR, 1,  0, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_SYS_CLR
 
 // Analog System PLL Control Register
 namespace PLL_SYS_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_TOG), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_SYS_TOG), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 13, 0x0> ENABLE;           // Enable PLL output
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1, 12, 0x0> POWERDOWN;        // Powers down the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_TOG, 1,  0, 0x0> DIV_SELECT;       // This field controls the PLL loop divider.
-    // 0 - Fout=Fref*20; 1 - Fout=Fref*22.
+    // 0 - Fout=Fref*20;
+    // 1 - Fout=Fref*22.
 }  // namespace PLL_SYS_TOG
 
 // 528MHz System PLL Spread Spectrum Register
@@ -342,7 +374,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_SYS_DENOM, 30, 0> B;  // 30 bit
 // Analog Audio PLL control Register
 namespace PLL_AUDIO {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO, 2, 19> POST_DIV_SELECT;       // These bits implement a divider after the PLL, but before the enable and bypass mux.
     // 0b00..Divide by 4.
     // 0b01..Divide by 2.
@@ -363,7 +396,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO, 7,  0> DIV_SELECT;      
 // Analog Audio PLL control Register
 namespace PLL_AUDIO_SET {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_SET), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 2, 19, 0x0> POST_DIV_SELECT;  // These bits implement a divider after the PLL, but before the enable and bypass mux.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
@@ -376,7 +410,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_SET, 7,  0, 0x0> DIV_SELE
 // Analog Audio PLL control Register
 namespace PLL_AUDIO_CLR {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_CLR), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 2, 19, 0x0> POST_DIV_SELECT;  // These bits implement a divider after the PLL, but before the enable and bypass mux.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
@@ -389,7 +424,8 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_CLR, 7,  0, 0x0> DIV_SELE
 // Analog Audio PLL control Register
 namespace PLL_AUDIO_TOG {
 constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_AUDIO_TOG), 1, 31> LOCK;
-    // 1 - PLL is currently locked. 0 - PLL is not currently locked.
+    // 1 - PLL is currently locked.
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 2, 19, 0x0> POST_DIV_SELECT;  // These bits implement a divider after the PLL, but before the enable and bypass mux.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
@@ -411,7 +447,9 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_AUDIO_DENOM, 30, 0> B;  // 30 b
 
 // Analog Video PLL control Register
 namespace PLL_VIDEO {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO, 2, 19> POST_DIV_SELECT;       // These bits implement a divider after the PLL, but before the enable and bypass mux.
     // 0b00..Divide by 4.
     // 0b01..Divide by 2.
@@ -431,7 +469,9 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO, 7,  0> DIV_SELECT;      
 
 // Analog Video PLL control Register
 namespace PLL_VIDEO_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_SET), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_SET), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 2, 19, 0x0> POST_DIV_SELECT;  // These bits implement a divider after the PLL, but before the enable and bypass mux.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
@@ -443,7 +483,9 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_SET, 7,  0, 0x0> DIV_SELE
 
 // Analog Video PLL control Register
 namespace PLL_VIDEO_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_CLR), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_CLR), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 2, 19, 0x0> POST_DIV_SELECT;  // These bits implement a divider after the PLL, but before the enable and bypass mux.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
@@ -455,7 +497,9 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_CLR, 7,  0, 0x0> DIV_SELE
 
 // Analog Video PLL control Register
 namespace PLL_VIDEO_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_TOG), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_VIDEO_TOG), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 2, 19, 0x0> POST_DIV_SELECT;  // These bits implement a divider after the PLL, but before the enable and bypass mux.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 1, 16, 0x0> BYPASS;           // Bypass the PLL.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_TOG, 2, 14, 0x0> BYPASS_CLK_SRC;   // Determines the bypass source.
@@ -477,7 +521,9 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_VIDEO_DENOM, 30, 0> B;  // 30 b
 
 // Analog ENET PLL Control Register
 namespace PLL_ENET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET), 1, 31> LOCK;  // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET, 1, 21> ENET_25M_REF_EN;       // Enable the PLL providing ENET 25 MHz reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET, 1, 20> ENET2_REF_EN;          // Enable the PLL providing the ENET2 reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET, 1, 16> BYPASS;                // Bypass the PLL.
@@ -504,7 +550,9 @@ constexpr uint32_t kENET2_DIV_SELECT_125MHZ = 3;
 
 // Analog ENET PLL Control Register
 namespace PLL_ENET_SET {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_SET), 1, 31> LOCK;   // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_SET), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 21, 0x0> ENET_25M_REF_EN;   // Enable the PLL providing ENET 25 MHz reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 20, 0x0> ENET2_REF_EN;      // Enable the PLL providing the ENET2 reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 1, 16, 0x0> BYPASS;            // Bypass the PLL.
@@ -517,7 +565,9 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_SET, 2,  0, 0x0> DIV_SELEC
 
 // Analog ENET PLL Control Register
 namespace PLL_ENET_CLR {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_CLR), 1, 31> LOCK;   // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_CLR), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 21, 0x0> ENET_25M_REF_EN;   // Enable the PLL providing ENET 25 MHz reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 20, 0x0> ENET2_REF_EN;      // Enable the PLL providing the ENET2 reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 1, 16, 0x0> BYPASS;            // Bypass the PLL.
@@ -530,7 +580,9 @@ constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_CLR, 2,  0, 0x0> DIV_SELEC
 
 // Analog ENET PLL Control Register
 namespace PLL_ENET_TOG {
-constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_TOG), 1, 31> LOCK;   // 1 - PLL is currently locked; 0 - PLL is not currently locked.
+constexpr CCM_ANALOG_Reg<regs::constify(&CCM_ANALOG_Layout::PLL_ENET_TOG), 1, 31> LOCK;
+    // 1 - PLL is currently locked;
+    // 0 - PLL is not currently locked.
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 21, 0x0> ENET_25M_REF_EN;   // Enable the PLL providing ENET 25 MHz reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 20, 0x0> ENET2_REF_EN;      // Enable the PLL providing the ENET2 reference clock
 constexpr CCM_ANALOG_Reg<&CCM_ANALOG_Layout::PLL_ENET_TOG, 1, 16, 0x0> BYPASS;            // Bypass the PLL.

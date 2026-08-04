@@ -662,7 +662,8 @@ constexpr LCDIF_Reg<&LCDIF_Layout::CRC_STAT, 32, 0> CRC_VALUE;  // Calculated CR
 // LCD Interface Status Register
 namespace STAT {
 constexpr LCDIF_Reg<&LCDIF_Layout::STAT, 1, 31> PRESENT;
-    // 0: LCDIF not present on this product 1: LCDIF is present.
+    // 0: LCDIF not present on this product
+    // 1: LCDIF is present.
 constexpr LCDIF_Reg<&LCDIF_Layout::STAT, 1, 30> DMA_REQ;       // Reflects the current state of the DMA Request line for the LCDIF
 constexpr LCDIF_Reg<&LCDIF_Layout::STAT, 1, 29> LFIFO_FULL;    // Read only view of the signals that indicates LCD LFIFO is full.
 constexpr LCDIF_Reg<&LCDIF_Layout::STAT, 1, 28> LFIFO_EMPTY;   // Read only view of the signals that indicates LCD LFIFO is empty.

@@ -98,10 +98,10 @@ constexpr EWM_Reg<&EWM_Layout::CLKCTRL, 2, 0, 0x0> CLKSEL;  // Low-Power Clock S
     // Direct-assign because there's only one writable field
     // This field may be written only once after a CPU reset. A second write causes a bus transfer error.
     // Select the required clock before enabling EWM.
-    // 0b00..lpo_clk[0]
-    // 0b01..lpo_clk[1]
-    // 0b10..lpo_clk[2]
-    // 0b11..lpo_clk[3]
+    // 0b00: lpo_clk[0]
+    // 0b01: lpo_clk[1]
+    // 0b10: lpo_clk[2]
+    // 0b11: lpo_clk[3]
 }  // namespace CLKCTRL
 
 // Clock Prescaler Register
