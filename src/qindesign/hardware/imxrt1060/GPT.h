@@ -213,12 +213,20 @@ constexpr GPT1_Reg<&GPT_Layout::IR, 1, 0> OF1IE;  // Output Compare Flag for Cha
 namespace OCR {
 template <size_t Index>
 constexpr OCR_Reg<Index, 32, 0> COMP;  // Compare Value
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> COMP;
+}  // namespace vals
 }  // namespace OCR
 
 // GPT1 Input Capture Register
 namespace ICR {
 template <size_t Index>
 constexpr ICR_Reg<Index, 32, 0> CAPT;  // Capture Value
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> CAPT;
+}  // namespace vals
 }  // namespace ICR
 
 // GPT1 Counter Register
@@ -299,12 +307,20 @@ constexpr GPT2_Reg<&GPT_Layout::IR, 1, 0> OF1IE;
 namespace OCR {
 template <size_t Index>
 constexpr OCR_Reg<Index, 32, 0> COMP;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> COMP;
+}  // namespace vals
 }  // namespace OCR
 
 // GPT2 Input Capture Register
 namespace ICR {
 template <size_t Index>
 constexpr ICR_Reg<Index, 32, 0> CAPT;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> CAPT;
+}  // namespace vals
 }  // namespace ICR
 
 // GPT2 Counter Register

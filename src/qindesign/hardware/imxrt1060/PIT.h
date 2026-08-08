@@ -91,12 +91,20 @@ namespace CHANNEL {
 namespace LDVAL {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::LDVAL, 32, 0> TSV;  // Timer Start Value
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> TSV;
+}  // namespace vals
 }  // namespace LDVAL
 
 // Current Timer Value Register
 namespace CVAL {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::CVAL, 32, 0> TVL;  // Current Timer Value
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> TVL;
+}  // namespace vals
 }  // namespace CVAL
 
 // Timer Control Register
@@ -113,6 +121,12 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::TCTRL, 1, 0> TEN;  // Timer Enable
     // 0b0..Timer n is disabled.
     // 0b1..Timer n is enabled.
+
+namespace vals {
+constexpr regs::RegValue32<1, 2> CHN;
+constexpr regs::RegValue32<1, 1> TIE;
+constexpr regs::RegValue32<1, 0> TEN;
+}  // namespace vals
 }  // namespace TCTRL
 
 // Timer Flag Register
@@ -121,6 +135,10 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &PIT_Layout::CHANNEL_Layout::TFLG, 1, 0, 0x0> TIF;  // Timer Interrupt Flag
     // 0b0..Timeout has not yet occurred.
     // 0b1..Timeout has occurred.
+
+namespace vals {
+constexpr regs::RegValue32<1, 0> TIF;
+}  // namespace vals
 }  // namespace TFLG
 
 }  // namespace CHANNEL

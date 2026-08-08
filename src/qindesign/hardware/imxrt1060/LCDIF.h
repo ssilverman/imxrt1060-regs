@@ -823,6 +823,16 @@ constexpr PIGEON_Reg<Index, &LCDIF_Layout::PIGEON_Layout::PIGEON_0,  1,  1> POL;
     // 0b1..Inverted signal (Active low)
 template <size_t Index>
 constexpr PIGEON_Reg<Index, &LCDIF_Layout::PIGEON_Layout::PIGEON_0,  1,  0> EN;            // Enable pigeon Mode on this signal
+
+namespace vals {
+constexpr regs::RegValue32< 8, 24> STATE_MASK;
+constexpr regs::RegValue32<12, 12> MASK_CNT;
+constexpr regs::RegValue32< 4,  8> MASK_CNT_SEL;
+constexpr regs::RegValue32< 4,  4> OFFSET;
+constexpr regs::RegValue32< 2,  2> INC_SEL;
+constexpr regs::RegValue32< 1,  1> POL;
+constexpr regs::RegValue32< 1,  0> EN;
+}  // namespace vals
 }  // namespace PIGEON_0
 
 // Panel Interface Signal Generator Register
@@ -833,6 +843,11 @@ constexpr PIGEON_Reg<Index, &LCDIF_Layout::PIGEON_Layout::PIGEON_1, 16, 16> CLR_
 template <size_t Index>
 constexpr PIGEON_Reg<Index, &LCDIF_Layout::PIGEON_Layout::PIGEON_1, 16,  0> SET_CNT;  // Assert signal output when counter match this value
     // 0b0000000000000000..Start as active
+
+namespace vals {
+constexpr regs::RegValue32<16, 16> CLR_CNT;
+constexpr regs::RegValue32<16,  0> SET_CNT;
+}  // namespace vals
 }  // namespace PIGEON_1
 
 // Panel Interface Signal Generator Register
@@ -846,6 +861,11 @@ constexpr PIGEON_Reg<Index, &LCDIF_Layout::PIGEON_Layout::PIGEON_2, 4, 0> SIG_LO
     // 0b0001..sigout = sig_another AND this_sig
     // 0b0010..sigout = sig_another OR this_sig
     // 0b0011..mask = sig_another AND other_masks
+
+namespace vals {
+constexpr regs::RegValue32<5, 4> SIG_ANOTHER;
+constexpr regs::RegValue32<4, 0> SIG_LOGIC;
+}  // namespace vals
 }  // namespace PIGEON_2
 
 }  // namespace PIGEON

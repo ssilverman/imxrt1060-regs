@@ -669,13 +669,28 @@ constexpr ENDPTCTRL_Reg<Index, 2,  2> RXT;  // RX Endpoint Type - Read/Write
     // 10 Bulk
     // 11 Interrupt
 template <size_t Index, typename = std::enable_if_t<(Index != 0)>>
-constexpr ENDPTCTRL_Reg<Index, 1, 1> RXD;   // RX Endpoint Data Sink - Read/Write
+constexpr ENDPTCTRL_Reg<Index, 1,  1> RXD;   // RX Endpoint Data Sink - Read/Write
     // 0 Dual Port Memory Buffer/DMA Engine [Default]
     // Should always be written as zero
     // Doesn't exist in ENDPTCTRL<0>
 template <size_t Index>
 constexpr ENDPTCTRL_Reg<Index, 1,  0> RXS;  // RX Endpoint Stall - Read/Write
     // 0 End Point OK
+
+namespace vals {
+constexpr regs::RegValue32<1, 23> TXE;
+constexpr regs::RegValue32<1, 22> TXR;
+constexpr regs::RegValue32<1, 21> TXI;
+constexpr regs::RegValue32<2, 18> TXT;
+constexpr regs::RegValue32<1, 17> TXD;
+constexpr regs::RegValue32<1, 16> TXS;
+constexpr regs::RegValue32<1,  7> RXE;
+constexpr regs::RegValue32<1,  6> RXR;
+constexpr regs::RegValue32<1,  5> RXI;
+constexpr regs::RegValue32<2,  2> RXT;
+constexpr regs::RegValue32<1,  1> RXD;
+constexpr regs::RegValue32<1,  0> RXS;
+}  // namespace vals
 }  // namespace ENDPTCTRL
 
 }  // namespace USB1
@@ -1065,6 +1080,21 @@ constexpr ENDPTCTRL_Reg<Index, 1, 1> RXD;
     // Doesn't exist in ENDPTCTRL<0>
 template <size_t Index>
 constexpr ENDPTCTRL_Reg<Index, 1,  0> RXS;
+
+namespace vals {
+constexpr regs::RegValue32<1, 23> TXE;
+constexpr regs::RegValue32<1, 22> TXR;
+constexpr regs::RegValue32<1, 21> TXI;
+constexpr regs::RegValue32<2, 18> TXT;
+constexpr regs::RegValue32<1, 17> TXD;
+constexpr regs::RegValue32<1, 16> TXS;
+constexpr regs::RegValue32<1,  7> RXE;
+constexpr regs::RegValue32<1,  6> RXR;
+constexpr regs::RegValue32<1,  5> RXI;
+constexpr regs::RegValue32<2,  2> RXT;
+constexpr regs::RegValue32<1,  1> RXD;
+constexpr regs::RegValue32<1,  0> RXS;
+}  // namespace vals
 }  // namespace ENDPTCTRL
 
 }  // namespace USB2

@@ -93,36 +93,60 @@ namespace CHANNEL {
 namespace COMP1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_1;
+}  // namespace vals
 }  // namespace COMP1
 
 // Timer Channel Compare Register 2
 namespace COMP2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_2;
+}  // namespace vals
 }  // namespace COMP2
 
 // Timer Channel Capture Register
 namespace CAPT {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTURE;
+}  // namespace vals
 }  // namespace CAPT
 
 // Timer Channel Load Register
 namespace LOAD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> LOAD;
+}  // namespace vals
 }  // namespace LOAD
 
 // Timer Channel Hold Register
 namespace HOLD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> HOLD;
+}  // namespace vals
 }  // namespace HOLD
 
 // Timer Channel Counter Register
 namespace CNTR {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COUNTER;
+}  // namespace vals
 }  // namespace CNTR
 
 // Timer Channel Control Register
@@ -197,6 +221,17 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE; 
     // 0b101..Set on compare, cleared on secondary source input edge
     // 0b110..Set on compare, cleared on counter rollover
     // 0b111..Enable gated clock output while counter is active
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CM;
+constexpr regs::RegValue16<4,  9> PCS;
+constexpr regs::RegValue16<2,  7> SCS;
+constexpr regs::RegValue16<1,  6> ONCE;
+constexpr regs::RegValue16<1,  5> LENGTH;
+constexpr regs::RegValue16<1,  4> DIR;
+constexpr regs::RegValue16<1,  3> COINIT;
+constexpr regs::RegValue16<3,  0> OUTMODE;
+}  // namespace vals
 }  // namespace CTRL
 
 // Timer Channel Status and Control Register
@@ -240,18 +275,44 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;    
     // 0b0..The external pin is configured as an input.
     // 0b1..The OFLAG output signal is driven on the external pin. Other timer groups using this external pin as
     //      their input see the driven value. The polarity of the signal is determined by OPS.
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TCF;
+constexpr regs::RegValue16<1, 14> TCFIE;
+constexpr regs::RegValue16<1, 13> TOF;
+constexpr regs::RegValue16<1, 12> TOFIE;
+constexpr regs::RegValue16<1, 11> IEF;
+constexpr regs::RegValue16<1, 10> IEFIE;
+constexpr regs::RegValue16<1,  9> IPS;
+constexpr regs::RegValue16<1,  8> INPUT;
+constexpr regs::RegValue16<2,  6> CAPTURE_MODE;
+constexpr regs::RegValue16<1,  5> MSTR;
+constexpr regs::RegValue16<1,  4> EEOF;
+constexpr regs::RegValue16<1,  3> VAL;
+constexpr regs::RegValue16<1,  2> FORCE;
+constexpr regs::RegValue16<1,  1> OPS;
+constexpr regs::RegValue16<1,  0> OEN;
+}  // namespace vals
 }  // namespace SCTRL
 
 // Timer Channel Comparator Load Register 1
 namespace CMPLD1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_1;
+}  // namespace vals
 }  // namespace CMPLD1
 
 // Timer Channel Comparator Load Register 2
 namespace CMPLD2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_2;
+}  // namespace vals
 }  // namespace CMPLD2
 
 // Timer Channel Comparator Status and Control Register
@@ -304,6 +365,22 @@ constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;   
     // 0b01..Load upon successful compare with the value in COMP1
     // 0b10..Load upon successful compare with the value in COMP2
     // 0b11..Reserved
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> DBG_EN;
+constexpr regs::RegValue16<1, 13> FAULT;
+constexpr regs::RegValue16<1, 12> ALT_LOAD;
+constexpr regs::RegValue16<1, 11> ROC;
+constexpr regs::RegValue16<1, 10> TCI;
+constexpr regs::RegValue16<1,  9> UP;
+constexpr regs::RegValue16<1,  8> OFLAG;
+constexpr regs::RegValue16<1,  7> TCF2EN;
+constexpr regs::RegValue16<1,  6> TCF1EN;
+constexpr regs::RegValue16<1,  5> TCF2;
+constexpr regs::RegValue16<1,  4> TCF1;
+constexpr regs::RegValue16<2,  2> CL2;
+constexpr regs::RegValue16<2,  0> CL1;
+} // namespace vals
 }  // namespace CSCTRL
 
 // Timer Channel Input Filter Register
@@ -312,6 +389,11 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 3, 8> FILT_CNT;  // Input Filter Sample Count
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 8, 0> FILT_PER;  // Input Filter Sample Period
+
+namespace vals {
+constexpr regs::RegValue16<3, 8> FILT_CNT;
+constexpr regs::RegValue16<8, 0> FILT_PER;
+}  // namespace vals
 }  // namespace FILT
 
 // Timer Channel DMA Enable Register
@@ -322,6 +404,12 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 1> CMPLD1DE;  // Comparator Preload Register 1 DMA Enable
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 0> IEFDE;     // Input Edge Flag DMA Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 2> CMPLD2DE;
+constexpr regs::RegValue16<1, 1> CMPLD1DE;
+constexpr regs::RegValue16<1, 0> IEFDE;
+}  // namespace vals
 }  // namespace DMA
 
 // Timer Channel Enable Register
@@ -330,6 +418,10 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::ENBL, 4, 0> ENBL;  // Timer Channel Enable
     // 0b0000..Timer channel is disabled.
     // 0b0001..Timer channel is enabled. (default)
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> ENBL;
+}  // namespace vals
 }  // namespace ENBL
 
 }  // namespace CHANNEL
@@ -357,36 +449,60 @@ namespace CHANNEL {
 namespace COMP1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_1;
+}  // namespace vals
 }  // namespace COMP1
 
 // Timer Channel Compare Register 2
 namespace COMP2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_2;
+}  // namespace vals
 }  // namespace COMP2
 
 // Timer Channel Capture Register
 namespace CAPT {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTURE;
+}  // namespace vals
 }  // namespace CAPT
 
 // Timer Channel Load Register
 namespace LOAD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> LOAD;
+}  // namespace vals
 }  // namespace LOAD
 
 // Timer Channel Hold Register
 namespace HOLD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> HOLD;
+}  // namespace vals
 }  // namespace HOLD
 
 // Timer Channel Counter Register
 namespace CNTR {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COUNTER;
+}  // namespace vals
 }  // namespace CNTR
 
 // Timer Channel Control Register
@@ -407,6 +523,17 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 1,  3> COINIT;   // Co-Channel Initialization
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE;  // Output Mode
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CM;
+constexpr regs::RegValue16<4,  9> PCS;
+constexpr regs::RegValue16<2,  7> SCS;
+constexpr regs::RegValue16<1,  6> ONCE;
+constexpr regs::RegValue16<1,  5> LENGTH;
+constexpr regs::RegValue16<1,  4> DIR;
+constexpr regs::RegValue16<1,  3> COINIT;
+constexpr regs::RegValue16<3,  0> OUTMODE;
+}  // namespace vals
 }  // namespace CTRL
 
 // Timer Channel Status and Control Register
@@ -441,18 +568,44 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;                    // Output Polarity Select
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;                    // Output Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TCF;
+constexpr regs::RegValue16<1, 14> TCFIE;
+constexpr regs::RegValue16<1, 13> TOF;
+constexpr regs::RegValue16<1, 12> TOFIE;
+constexpr regs::RegValue16<1, 11> IEF;
+constexpr regs::RegValue16<1, 10> IEFIE;
+constexpr regs::RegValue16<1,  9> IPS;
+constexpr regs::RegValue16<1,  8> INPUT;
+constexpr regs::RegValue16<2,  6> CAPTURE_MODE;
+constexpr regs::RegValue16<1,  5> MSTR;
+constexpr regs::RegValue16<1,  4> EEOF;
+constexpr regs::RegValue16<1,  3> VAL;
+constexpr regs::RegValue16<1,  2> FORCE;
+constexpr regs::RegValue16<1,  1> OPS;
+constexpr regs::RegValue16<1,  0> OEN;
+}  // namespace vals
 }  // namespace SCTRL
 
 // Timer Channel Comparator Load Register 1
 namespace CMPLD1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_1;
+}  // namespace vals
 }  // namespace CMPLD1
 
 // Timer Channel Comparator Load Register 2
 namespace CMPLD2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_2;
+}  // namespace vals
 }  // namespace CMPLD2
 
 // Timer Channel Comparator Status and Control Register
@@ -483,6 +636,22 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;                    // Compare Load Control 2
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;                    // Compare Load Control 1
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> DBG_EN;
+constexpr regs::RegValue16<1, 13> FAULT;
+constexpr regs::RegValue16<1, 12> ALT_LOAD;
+constexpr regs::RegValue16<1, 11> ROC;
+constexpr regs::RegValue16<1, 10> TCI;
+constexpr regs::RegValue16<1,  9> UP;
+constexpr regs::RegValue16<1,  8> OFLAG;
+constexpr regs::RegValue16<1,  7> TCF2EN;
+constexpr regs::RegValue16<1,  6> TCF1EN;
+constexpr regs::RegValue16<1,  5> TCF2;
+constexpr regs::RegValue16<1,  4> TCF1;
+constexpr regs::RegValue16<2,  2> CL2;
+constexpr regs::RegValue16<2,  0> CL1;
+} // namespace vals
 }  // namespace CSCTRL
 
 // Timer Channel Input Filter Register
@@ -491,6 +660,11 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 3, 8> FILT_CNT;  // Input Filter Sample Count
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 8, 0> FILT_PER;  // Input Filter Sample Period
+
+namespace vals {
+constexpr regs::RegValue16<3, 8> FILT_CNT;
+constexpr regs::RegValue16<8, 0> FILT_PER;
+}  // namespace vals
 }  // namespace FILT
 
 // Timer Channel DMA Enable Register
@@ -501,12 +675,22 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 1> CMPLD1DE;  // Comparator Preload Register 1 DMA Enable
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 0> IEFDE;     // Input Edge Flag DMA Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 2> CMPLD2DE;
+constexpr regs::RegValue16<1, 1> CMPLD1DE;
+constexpr regs::RegValue16<1, 0> IEFDE;
+}  // namespace vals
 }  // namespace DMA
 
 // Timer Channel Enable Register
 namespace ENBL {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::ENBL, 4, 0> ENBL;  // Timer Channel Enable
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> ENBL;
+}  // namespace vals
 }  // namespace ENBL
 
 }  // namespace CHANNEL
@@ -534,36 +718,60 @@ namespace CHANNEL {
 namespace COMP1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_1;
+}  // namespace vals
 }  // namespace COMP1
 
 // Timer Channel Compare Register 2
 namespace COMP2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_2;
+}  // namespace vals
 }  // namespace COMP2
 
 // Timer Channel Capture Register
 namespace CAPT {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTURE;
+}  // namespace vals
 }  // namespace CAPT
 
 // Timer Channel Load Register
 namespace LOAD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> LOAD;
+}  // namespace vals
 }  // namespace LOAD
 
 // Timer Channel Hold Register
 namespace HOLD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> HOLD;
+}  // namespace vals
 }  // namespace HOLD
 
 // Timer Channel Counter Register
 namespace CNTR {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COUNTER;
+}  // namespace vals
 }  // namespace CNTR
 
 // Timer Channel Control Register
@@ -584,6 +792,17 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 1,  3> COINIT;   // Co-Channel Initialization
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE;  // Output Mode
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CM;
+constexpr regs::RegValue16<4,  9> PCS;
+constexpr regs::RegValue16<2,  7> SCS;
+constexpr regs::RegValue16<1,  6> ONCE;
+constexpr regs::RegValue16<1,  5> LENGTH;
+constexpr regs::RegValue16<1,  4> DIR;
+constexpr regs::RegValue16<1,  3> COINIT;
+constexpr regs::RegValue16<3,  0> OUTMODE;
+}  // namespace vals
 }  // namespace CTRL
 
 // Timer Channel Status and Control Register
@@ -618,18 +837,44 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;                    // Output Polarity Select
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;                    // Output Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TCF;
+constexpr regs::RegValue16<1, 14> TCFIE;
+constexpr regs::RegValue16<1, 13> TOF;
+constexpr regs::RegValue16<1, 12> TOFIE;
+constexpr regs::RegValue16<1, 11> IEF;
+constexpr regs::RegValue16<1, 10> IEFIE;
+constexpr regs::RegValue16<1,  9> IPS;
+constexpr regs::RegValue16<1,  8> INPUT;
+constexpr regs::RegValue16<2,  6> CAPTURE_MODE;
+constexpr regs::RegValue16<1,  5> MSTR;
+constexpr regs::RegValue16<1,  4> EEOF;
+constexpr regs::RegValue16<1,  3> VAL;
+constexpr regs::RegValue16<1,  2> FORCE;
+constexpr regs::RegValue16<1,  1> OPS;
+constexpr regs::RegValue16<1,  0> OEN;
+}  // namespace vals
 }  // namespace SCTRL
 
 // Timer Channel Comparator Load Register 1
 namespace CMPLD1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_1;
+}  // namespace vals
 }  // namespace CMPLD1
 
 // Timer Channel Comparator Load Register 2
 namespace CMPLD2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_2;
+}  // namespace vals
 }  // namespace CMPLD2
 
 // Timer Channel Comparator Status and Control Register
@@ -660,6 +905,22 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;                    // Compare Load Control 2
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;                    // Compare Load Control 1
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> DBG_EN;
+constexpr regs::RegValue16<1, 13> FAULT;
+constexpr regs::RegValue16<1, 12> ALT_LOAD;
+constexpr regs::RegValue16<1, 11> ROC;
+constexpr regs::RegValue16<1, 10> TCI;
+constexpr regs::RegValue16<1,  9> UP;
+constexpr regs::RegValue16<1,  8> OFLAG;
+constexpr regs::RegValue16<1,  7> TCF2EN;
+constexpr regs::RegValue16<1,  6> TCF1EN;
+constexpr regs::RegValue16<1,  5> TCF2;
+constexpr regs::RegValue16<1,  4> TCF1;
+constexpr regs::RegValue16<2,  2> CL2;
+constexpr regs::RegValue16<2,  0> CL1;
+} // namespace vals
 }  // namespace CSCTRL
 
 // Timer Channel Input Filter Register
@@ -668,6 +929,11 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 3, 8> FILT_CNT;  // Input Filter Sample Count
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 8, 0> FILT_PER;  // Input Filter Sample Period
+
+namespace vals {
+constexpr regs::RegValue16<3, 8> FILT_CNT;
+constexpr regs::RegValue16<8, 0> FILT_PER;
+}  // namespace vals
 }  // namespace FILT
 
 // Timer Channel DMA Enable Register
@@ -678,12 +944,22 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 1> CMPLD1DE;  // Comparator Preload Register 1 DMA Enable
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 0> IEFDE;     // Input Edge Flag DMA Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 2> CMPLD2DE;
+constexpr regs::RegValue16<1, 1> CMPLD1DE;
+constexpr regs::RegValue16<1, 0> IEFDE;
+}  // namespace vals
 }  // namespace DMA
 
 // Timer Channel Enable Register
 namespace ENBL {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::ENBL, 4, 0> ENBL;  // Timer Channel Enable
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> ENBL;
+}  // namespace vals
 }  // namespace ENBL
 
 }  // namespace CHANNEL
@@ -711,36 +987,60 @@ namespace CHANNEL {
 namespace COMP1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP1, 16, 0> COMPARISON_1;  // Comparison Value 1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_1;
+}  // namespace vals
 }  // namespace COMP1
 
 // Timer Channel Compare Register 2
 namespace COMP2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::COMP2, 16, 0> COMPARISON_2;  // Comparison Value 2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARISON_2;
+}  // namespace vals
 }  // namespace COMP2
 
 // Timer Channel Capture Register
 namespace CAPT {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CAPT, 16, 0> CAPTURE;  // Capture Value
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTURE;
+}  // namespace vals
 }  // namespace CAPT
 
 // Timer Channel Load Register
 namespace LOAD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::LOAD, 16, 0> LOAD;  // Timer Load Register
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> LOAD;
+}  // namespace vals
 }  // namespace LOAD
 
 // Timer Channel Hold Register
 namespace HOLD {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::HOLD, 16, 0> HOLD;  // HOLD
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> HOLD;
+}  // namespace vals
 }  // namespace HOLD
 
 // Timer Channel Counter Register
 namespace CNTR {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CNTR, 16, 0> COUNTER;  // COUNTER
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COUNTER;
+}  // namespace vals
 }  // namespace CNTR
 
 // Timer Channel Control Register
@@ -761,6 +1061,17 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 1,  3> COINIT;   // Co-Channel Initialization
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CTRL, 3,  0> OUTMODE;  // Output Mode
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CM;
+constexpr regs::RegValue16<4,  9> PCS;
+constexpr regs::RegValue16<2,  7> SCS;
+constexpr regs::RegValue16<1,  6> ONCE;
+constexpr regs::RegValue16<1,  5> LENGTH;
+constexpr regs::RegValue16<1,  4> DIR;
+constexpr regs::RegValue16<1,  3> COINIT;
+constexpr regs::RegValue16<3,  0> OUTMODE;
+}  // namespace vals
 }  // namespace CTRL
 
 // Timer Channel Status and Control Register
@@ -795,18 +1106,44 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  1> OPS;                    // Output Polarity Select
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::SCTRL, 1,  0> OEN;                    // Output Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TCF;
+constexpr regs::RegValue16<1, 14> TCFIE;
+constexpr regs::RegValue16<1, 13> TOF;
+constexpr regs::RegValue16<1, 12> TOFIE;
+constexpr regs::RegValue16<1, 11> IEF;
+constexpr regs::RegValue16<1, 10> IEFIE;
+constexpr regs::RegValue16<1,  9> IPS;
+constexpr regs::RegValue16<1,  8> INPUT;
+constexpr regs::RegValue16<2,  6> CAPTURE_MODE;
+constexpr regs::RegValue16<1,  5> MSTR;
+constexpr regs::RegValue16<1,  4> EEOF;
+constexpr regs::RegValue16<1,  3> VAL;
+constexpr regs::RegValue16<1,  2> FORCE;
+constexpr regs::RegValue16<1,  1> OPS;
+constexpr regs::RegValue16<1,  0> OEN;
+}  // namespace vals
 }  // namespace SCTRL
 
 // Timer Channel Comparator Load Register 1
 namespace CMPLD1 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD1, 16, 0> COMPARATOR_LOAD_1;  // COMPARATOR_LOAD_1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_1;
+}  // namespace vals
 }  // namespace CMPLD1
 
 // Timer Channel Comparator Load Register 2
 namespace CMPLD2 {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CMPLD2, 16, 0> COMPARATOR_LOAD_2;  // COMPARATOR_LOAD_2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> COMPARATOR_LOAD_2;
+}  // namespace vals
 }  // namespace CMPLD2
 
 // Timer Channel Comparator Status and Control Register
@@ -837,6 +1174,22 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  2> CL2;                    // Compare Load Control 2
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::CSCTRL, 2,  0> CL1;                    // Compare Load Control 1
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> DBG_EN;
+constexpr regs::RegValue16<1, 13> FAULT;
+constexpr regs::RegValue16<1, 12> ALT_LOAD;
+constexpr regs::RegValue16<1, 11> ROC;
+constexpr regs::RegValue16<1, 10> TCI;
+constexpr regs::RegValue16<1,  9> UP;
+constexpr regs::RegValue16<1,  8> OFLAG;
+constexpr regs::RegValue16<1,  7> TCF2EN;
+constexpr regs::RegValue16<1,  6> TCF1EN;
+constexpr regs::RegValue16<1,  5> TCF2;
+constexpr regs::RegValue16<1,  4> TCF1;
+constexpr regs::RegValue16<2,  2> CL2;
+constexpr regs::RegValue16<2,  0> CL1;
+} // namespace vals
 }  // namespace CSCTRL
 
 // Timer Channel Input Filter Register
@@ -845,6 +1198,11 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 3, 8> FILT_CNT;  // Input Filter Sample Count
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::FILT, 8, 0> FILT_PER;  // Input Filter Sample Period
+
+namespace vals {
+constexpr regs::RegValue16<3, 8> FILT_CNT;
+constexpr regs::RegValue16<8, 0> FILT_PER;
+}  // namespace vals
 }  // namespace FILT
 
 // Timer Channel DMA Enable Register
@@ -855,12 +1213,22 @@ template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 1> CMPLD1DE;  // Comparator Preload Register 1 DMA Enable
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::DMA, 1, 0> IEFDE;     // Input Edge Flag DMA Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 2> CMPLD2DE;
+constexpr regs::RegValue16<1, 1> CMPLD1DE;
+constexpr regs::RegValue16<1, 0> IEFDE;
+}  // namespace vals
 }  // namespace DMA
 
 // Timer Channel Enable Register
 namespace ENBL {
 template <size_t Index>
 constexpr CHANNEL_Reg<Index, &TMR_Layout::CHANNEL_Layout::ENBL, 4, 0> ENBL;  // Timer Channel Enable
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> ENBL;
+}  // namespace vals
 }  // namespace ENBL
 
 }  // namespace CHANNEL

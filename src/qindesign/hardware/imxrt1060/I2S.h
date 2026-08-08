@@ -281,6 +281,10 @@ namespace TDR {
 template <size_t Index>
 constexpr TDR_Reg<Index, 32, 0> TDR;  // Transmit Data Register
     // WORZ
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> TDR;
+}  // namespace vals
 }  // namespace TDR
 
 // Transmit FIFO
@@ -293,6 +297,12 @@ template <size_t Index>
 constexpr TFR_Reg<Index, 6, 16> WFP;  // Write FIFO Pointer
 template <size_t Index>
 constexpr TFR_Reg<Index, 6,  0> RFP;  // Read FIFO Pointer
+
+namespace vals {
+constexpr regs::RegValue32<1, 31> WCP;
+constexpr regs::RegValue32<6, 16> WFP;
+constexpr regs::RegValue32<6,  0> RFP;
+}  // namespace vals
 }  // namespace TFR
 
 // Transmit Mask
@@ -449,6 +459,10 @@ constexpr I2S1_Reg<&I2S_Layout::RCR5, 5,  8> FBT;  // First Bit Shifted
 namespace RDR {
 template <size_t Index>
 constexpr RDR_Reg<Index, 32, 0> RDR;  // Receive Data Register
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> RDR;
+}  // namespace vals
 }  // namespace RDR
 
 // Receive FIFO
@@ -461,6 +475,12 @@ constexpr RFR_Reg<Index, 1, 15> RCP;  // Receive Channel Pointer
     // 0b1..FIFO combine is enabled for FIFO reads and this FIFO will be read on the next FIFO read.
 template <size_t Index>
 constexpr RFR_Reg<Index, 6,  0> RFP;  // Read FIFO Pointer
+
+namespace vals {
+constexpr regs::RegValue32<6, 16> WFP;
+constexpr regs::RegValue32<1, 15> RCP;
+constexpr regs::RegValue32<6,  0> RFP;
+}  // namespace vals
 }  // namespace RFR
 
 // Receive Mask
@@ -597,6 +617,10 @@ namespace TDR {
 template <size_t Index>
 constexpr TDR_Reg<Index, 32, 0> TDR;
     // WORZ
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> TDR;
+}  // namespace vals
 }  // namespace TDR
 
 // Transmit FIFO
@@ -607,6 +631,12 @@ template <size_t Index>
 constexpr TFR_Reg<Index, 6, 16> WFP;
 template <size_t Index>
 constexpr TFR_Reg<Index, 6,  0> RFP;
+
+namespace vals {
+constexpr regs::RegValue32<1, 31> WCP;
+constexpr regs::RegValue32<6, 16> WFP;
+constexpr regs::RegValue32<6,  0> RFP;
+}  // namespace vals
 }  // namespace TFR
 
 // Transmit Mask
@@ -687,6 +717,10 @@ constexpr I2S2_Reg<&I2S_Layout::RCR5, 5,  8> FBT;
 namespace RDR {
 template <size_t Index>
 constexpr RDR_Reg<Index, 32, 0> RDR;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> RDR;
+}  // namespace vals
 }  // namespace RDR
 
 // Receive FIFO
@@ -697,6 +731,12 @@ template <size_t Index>
 constexpr RFR_Reg<Index, 1, 15> RCP;
 template <size_t Index>
 constexpr RFR_Reg<Index, 6,  0> RFP;
+
+namespace vals {
+constexpr regs::RegValue32<6, 16> WFP;
+constexpr regs::RegValue32<1, 15> RCP;
+constexpr regs::RegValue32<6,  0> RFP;
+}  // namespace vals
 }  // namespace RFR
 
 // Receive Mask
@@ -830,6 +870,10 @@ constexpr I2S3_Reg<&I2S_Layout::TCR5, 5,  8> FBT;
 namespace TDR {
 template <size_t Index>
 constexpr TDR_Reg<Index, 32, 0> TDR;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> TDR;
+}  // namespace vals
 }  // namespace TDR
 
 // Transmit FIFO
@@ -840,6 +884,12 @@ template <size_t Index>
 constexpr TFR_Reg<Index, 6, 16> WFP;
 template <size_t Index>
 constexpr TFR_Reg<Index, 6,  0> RFP;
+
+namespace vals {
+constexpr regs::RegValue32<1, 31> WCP;
+constexpr regs::RegValue32<6, 16> WFP;
+constexpr regs::RegValue32<6,  0> RFP;
+}  // namespace vals
 }  // namespace TFR
 
 // Transmit Mask
@@ -920,6 +970,10 @@ constexpr I2S3_Reg<&I2S_Layout::RCR5, 5,  8> FBT;
 namespace RDR {
 template <size_t Index>
 constexpr RDR_Reg<Index, 32, 0> RDR;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> RDR;
+}  // namespace vals
 }  // namespace RDR
 
 // Receive FIFO
@@ -930,6 +984,12 @@ template <size_t Index>
 constexpr RFR_Reg<Index, 1, 15> RCP;
 template <size_t Index>
 constexpr RFR_Reg<Index, 6,  0> RFP;
+
+namespace vals {
+constexpr regs::RegValue32<6, 16> WFP;
+constexpr regs::RegValue32<1, 15> RCP;
+constexpr regs::RegValue32<6,  0> RFP;
+}  // namespace vals
 }  // namespace RFR
 
 // Receive Mask

@@ -62,6 +62,13 @@ constexpr CHCFG_Reg<Index, 1, 29> A_ON;    // DMA Channel Always Enable
     // 0b1..DMA Channel Always ON function is enabled
 template <size_t Index>
 constexpr CHCFG_Reg<Index, 7,  0> SOURCE;  // DMA Channel Source (Slot Number)
+
+namespace vals {
+constexpr regs::RegValue32<1, 31> ENBL;
+constexpr regs::RegValue32<1, 30> TRIG;
+constexpr regs::RegValue32<1, 29> A_ON;
+constexpr regs::RegValue32<7,  0> SOURCE;
+}  // namespace vals
 }  // namespace CHCFG
 
 }  // namespace DMAMUX

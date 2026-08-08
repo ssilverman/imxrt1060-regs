@@ -111,6 +111,17 @@ constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  0> PT1_DC;  /
     // 0b01..Pass the D input in this product term
     // 0b10..Complement the D input in this product term
     // 0b11..Force the D input in this product term to a logical one
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> PT0_AC;
+constexpr regs::RegValue16<2, 12> PT0_BC;
+constexpr regs::RegValue16<2, 10> PT0_CC;
+constexpr regs::RegValue16<2,  8> PT0_DC;
+constexpr regs::RegValue16<2,  6> PT1_AC;
+constexpr regs::RegValue16<2,  4> PT1_BC;
+constexpr regs::RegValue16<2,  2> PT1_CC;
+constexpr regs::RegValue16<2,  0> PT1_DC;
+}  // namespace vals
 }  // namespace BFCRT01
 
 // Boolean Function Term 2 and 3 Configuration Register
@@ -163,6 +174,17 @@ constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  0> PT3_DC;  /
     // 0b01..Pass the D input in this product term
     // 0b10..Complement the D input in this product term
     // 0b11..Force the D input in this product term to a logical one
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> PT2_AC;
+constexpr regs::RegValue16<2, 12> PT2_BC;
+constexpr regs::RegValue16<2, 10> PT2_CC;
+constexpr regs::RegValue16<2,  8> PT2_DC;
+constexpr regs::RegValue16<2,  6> PT3_AC;
+constexpr regs::RegValue16<2,  4> PT3_BC;
+constexpr regs::RegValue16<2,  2> PT3_CC;
+constexpr regs::RegValue16<2,  0> PT3_DC;
+}  // namespace vals
 }  // namespace BFCRT23
 
 }  // namespace BFCRT
@@ -203,6 +225,17 @@ template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  2> PT1_CC;
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT01, 2,  0> PT1_DC;
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> PT0_AC;
+constexpr regs::RegValue16<2, 12> PT0_BC;
+constexpr regs::RegValue16<2, 10> PT0_CC;
+constexpr regs::RegValue16<2,  8> PT0_DC;
+constexpr regs::RegValue16<2,  6> PT1_AC;
+constexpr regs::RegValue16<2,  4> PT1_BC;
+constexpr regs::RegValue16<2,  2> PT1_CC;
+constexpr regs::RegValue16<2,  0> PT1_DC;
+}  // namespace vals
 }  // namespace BFCRT01
 
 // AOI2 Boolean Function Term 2 and 3 Configuration Register
@@ -223,6 +256,17 @@ template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  2> PT3_CC;
 template <size_t Index>
 constexpr BFCRT_Reg<Index, &AOI_Layout::BFCRT_Layout::BFCRT23, 2,  0> PT3_DC;
+
+namespace vals {
+constexpr regs::RegValue16<2, 14> PT2_AC;
+constexpr regs::RegValue16<2, 12> PT2_BC;
+constexpr regs::RegValue16<2, 10> PT2_CC;
+constexpr regs::RegValue16<2,  8> PT2_DC;
+constexpr regs::RegValue16<2,  6> PT3_AC;
+constexpr regs::RegValue16<2,  4> PT3_BC;
+constexpr regs::RegValue16<2,  2> PT3_CC;
+constexpr regs::RegValue16<2,  0> PT3_DC;
+}  // namespace vals
 }  // namespace BFCRT23
 
 }  // namespace BFCRT

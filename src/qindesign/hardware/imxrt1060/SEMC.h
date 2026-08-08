@@ -239,6 +239,12 @@ template <size_t Index>
 constexpr BR_Reg<Index,  1,  0> VLD;  // Valid
     // 0b0..The memory is invalid, can not be accessed.
     // 0b1..The memory is valid, can be accessed.
+
+namespace vals {
+constexpr regs::RegValue32<20, 12> BA;
+constexpr regs::RegValue32< 5,  1> MS;
+constexpr regs::RegValue32< 1,  0> VLD;
+}  // namespace vals
 }  // namespace BR
 
 // DLL Control Register

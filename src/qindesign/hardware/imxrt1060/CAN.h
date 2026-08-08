@@ -524,6 +524,10 @@ template <size_t Index>
 constexpr RXIMR_Reg<Index, 32, 0> MI;  // Individual Mask Bits
     // 0b00000000000000000000000000000000..the corresponding bit in the filter is "don't care"
     // 0b00000000000000000000000000000001..The corresponding bit in the filter is checked
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> MI;
+}  // namespace vals
 }  // namespace RXIMR
 
 // Glitch Filter Width Registers
@@ -733,6 +737,10 @@ constexpr CAN2_Reg<&CAN_Layout::DBG2, 7,  0> RMP;
 namespace RXIMR {
 template <size_t Index>
 constexpr RXIMR_Reg<Index, 32, 0> MI;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> MI;
+}  // namespace vals
 }  // namespace RXIMR
 
 // CAN2 Glitch Filter Width Registers
@@ -940,6 +948,10 @@ constexpr CAN3_Reg<&CAN_Layout::CBT,  5,  0> EPSEG2;    // Extended Phase Segmen
 namespace RXIMR {
 template <size_t Index>
 constexpr RXIMR_Reg<Index, 32, 0> MI;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> MI;
+}  // namespace vals
 }  // namespace RXIMR
 
 // CAN3 FD Control Register

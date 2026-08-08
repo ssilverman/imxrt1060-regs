@@ -72,6 +72,10 @@ using ROMPATCHA_Reg =
 namespace ROMPATCHD {
 template <size_t Index>
 constexpr ROMPATCHD_Reg<Index, 32, 0> DATAX;  // Data Fix Registers - Stores the data used for 1-word data fix operations
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> DATAX;
+}  // mamespace vals
 }  // namespace ROMPATCHD
 
 // ROMC Control Register
@@ -99,6 +103,11 @@ template <size_t Index>
 constexpr ROMPATCHA_Reg<Index,  1, 0> THUMBX;  // THUMB Comparator Select - Indicates that this address will trigger a THUMB opcode patch or an Arm opcode patch
     // 0b0..Arm patch
     // 0b1..THUMB patch (ignore if data fix)
+
+namespace vals {
+constexpr regs::RegValue32<22, 1> ADDRX;
+constexpr regs::RegValue32< 1, 0> THUMBX;
+}  // mamespace vals
 }  // namespace ROMPATCHA
 
 // ROMC Status Register

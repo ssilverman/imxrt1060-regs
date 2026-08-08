@@ -138,12 +138,20 @@ namespace SM {
 namespace CNT {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CNT), 16, 0> CNT;  // Counter Register Bits
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CNT;
+}  // namespace vals
 }  // namespace CNT
 
 // Initial Count Register
 namespace INIT {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INIT, 16, 0> INIT;  // Initial Count Register Bits
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> INIT;
+}  // namespace vals
 }  // namespace INIT
 
 // Control 2 Register
@@ -203,6 +211,21 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 2,  0> CLK_SEL;     // Cl
     // 0b10..Submodule 0's clock (AUX_CLK) is used as the source clock for the local prescaler and counter. This
     //     setting should not be used in submodule 0 as it will force the clock to logic 0.
     // 0b11..reserved
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> DBGEN;
+constexpr regs::RegValue16<1, 14> WAITEN;
+constexpr regs::RegValue16<1, 13> INDEP;
+constexpr regs::RegValue16<1, 12> PWM23_INIT;
+constexpr regs::RegValue16<1, 11> PWM45_INIT;
+constexpr regs::RegValue16<1, 10> PWMX_INIT;
+constexpr regs::RegValue16<2,  8> INIT_SEL;
+constexpr regs::RegValue16<1,  7> FRCEN;
+constexpr regs::RegValue16<1,  6> FORCE;
+constexpr regs::RegValue16<3,  3> FORCE_SEL;
+constexpr regs::RegValue16<1,  2> RELOAD_SEL;
+constexpr regs::RegValue16<2,  0> CLK_SEL;
+}  // namespace vals
 }  // namespace CTRL2
 
 // Control Register
@@ -274,72 +297,129 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  0> DBLEN;               // Double Switching Enable
     // 0b0..Double switching disabled.
     // 0b1..Double switching enabled.
+
+namespace vals {
+constexpr regs::RegValue16<4, 12> LDFQ;
+constexpr regs::RegValue16<1, 11> HALF;
+constexpr regs::RegValue16<1, 10> FULL;
+constexpr regs::RegValue16<2,  8> DT;
+constexpr regs::RegValue16<1,  7> COMPMODE;
+constexpr regs::RegValue16<3,  4> PRSC;
+constexpr regs::RegValue16<1,  3> SPLIT;
+constexpr regs::RegValue16<1,  2> LDMOD;
+constexpr regs::RegValue16<1,  1> DBLX;
+constexpr regs::RegValue16<1,  0> DBLEN;
+}  // namespace vals
 }  // namespace CTRL
 
 // Value Register 0
 namespace VAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL0, 16, 0> VAL0;  // Value Register 0
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL0;
+}  // namespace vals
 }  // namespace VAL0
 
 // Fractional Value Register 1
 namespace FRACVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL1, 5, 11> FRACVAL1;  // Fractional Value 1 Register
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL1;
+}  // namespace vals
 }  // namespace FRACVAL1
 
 // Value Register 1
 namespace VAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL1, 16, 0> VAL1;  // Value Register 1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL1;
+}  // namespace vals
 }  // namespace VAL1
 
 // Fractional Value Register 2
 namespace FRACVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL2, 5, 11> FRACVAL2;  // Fractional Value 2
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL2;
+}  // namespace vals
 }  // namespace FRACVAL2
 
 // Value Register 2
 namespace VAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL2, 16, 0> VAL2;  // Value Register 2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL2;
+}  // namespace vals
 }  // namespace VAL2
 
 // Fractional Value Register 3
 namespace FRACVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL3, 5, 11> FRACVAL3;  // Fractional Value 3
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL3;
+}  // namespace vals
 }  // namespace FRACVAL3
 
 // Value Register 3
 namespace VAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL3, 16, 0> VAL3;  // Value Register 3
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL3;
+}  // namespace vals
 }  // namespace VAL3
 
 // Fractional Value Register 4
 namespace FRACVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL4, 5, 11> FRACVAL4;  // Fractional Value 4
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL4;
+}  // namespace vals
 }  // namespace FRACVAL4
 
 // Value Register 4
 namespace VAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL4, 16, 0> VAL4;  // Value Register 4
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL4;
+}  // namespace vals
 }  // namespace VAL4
 
 // Fractional Value Register 5
 namespace FRACVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL5, 5, 11> FRACVAL5;  // Fractional Value 5
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL5;
+}  // namespace vals
 }  // namespace FRACVAL5
 
 // Value Register 5
 namespace VAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL5, 16, 0> VAL5;  // Value Register 5
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL5;
+}  // namespace vals
 }  // namespace VAL5
 
 // Fractional Control Register
@@ -362,6 +442,14 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  1> FRAC1_EN;              // Fractional Cycle PWM Period Enable
     // 0b0..Disable fractional cycle length for the PWM period.
     // 0b1..Enable fractional cycle length for the PWM period.
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TEST;
+constexpr regs::RegValue16<1,  8> FRAC_PU;
+constexpr regs::RegValue16<1,  4> FRAC45_EN;
+constexpr regs::RegValue16<1,  2> FRAC23_EN;
+constexpr regs::RegValue16<1,  1> FRAC1_EN;
+}  // namespace vals
 }  // namespace FRCTRL
 
 // Output Control Register
@@ -399,6 +487,18 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  0> PWMXFS;           
     // 0b00..Output is forced to logic 0 state prior to consideration of output polarity control.
     // 0b01..Output is forced to logic 1 state prior to consideration of output polarity control.
     // 0b10, 0b11..Output is tristated.
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWMA_IN;
+constexpr regs::RegValue16<1, 14> PWMB_IN;
+constexpr regs::RegValue16<1, 13> PWMX_IN;
+constexpr regs::RegValue16<1, 10> POLA;
+constexpr regs::RegValue16<1,  9> POLB;
+constexpr regs::RegValue16<1,  8> POLX;
+constexpr regs::RegValue16<2,  4> PWMAFS;
+constexpr regs::RegValue16<2,  2> PWMBFS;
+constexpr regs::RegValue16<2,  0> PWMXFS;
+}  // namespace vals
 }  // namespace OCTRL
 
 // Status Register
@@ -431,6 +531,19 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 6,  0, 0x0> CMPF;            // Compare Flags
     // 0b000000..No compare event has occurred for a particular VALx value.
     // 0b000001..A compare event has occurred for a particular VALx value.
+
+namespace vals {
+constexpr regs::RegValue16<1, 14> RUF;
+constexpr regs::RegValue16<1, 13> REF;
+constexpr regs::RegValue16<1, 12> RF;
+constexpr regs::RegValue16<1, 11> CFA1;
+constexpr regs::RegValue16<1, 10> CFA0;
+constexpr regs::RegValue16<1,  9> CFB1;
+constexpr regs::RegValue16<1,  8> CFB0;
+constexpr regs::RegValue16<1,  7> CFX1;
+constexpr regs::RegValue16<1,  6> CFX0;
+constexpr regs::RegValue16<6,  0> CMPF;
+}  // namespace vals
 }  // namespace STS
 
 // Interrupt Enable Register
@@ -471,6 +584,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INTEN, 6,  0> CMPIE;  // Compare Interrupt Enables
     // 0b000000..The corresponding STS[CMPF] bit will not cause an interrupt request.
     // 0b000001..The corresponding STS[CMPF] bit will cause an interrupt request.
+
+namespace vals {
+constexpr regs::RegValue16<1, 13> REIE;
+constexpr regs::RegValue16<1, 12> RIE;
+constexpr regs::RegValue16<1, 11> CA1IE;
+constexpr regs::RegValue16<1, 10> CA0IE;
+constexpr regs::RegValue16<1,  9> CB1IE;
+constexpr regs::RegValue16<1,  8> CB0IE;
+constexpr regs::RegValue16<1,  7> CX1IE;
+constexpr regs::RegValue16<1,  6> CX0IE;
+constexpr regs::RegValue16<6,  0> CMPIE;
+}  // namespace vals
 }  // namespace INTEN
 
 // DMA Enable Register
@@ -503,6 +628,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 1> CX1DE;   // Capture X1 FIFO DMA Enable
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 0> CX0DE;   // Capture X0 FIFO DMA Enable
+
+namespace vals {
+constexpr regs::RegValue16<1, 9> VALDE;
+constexpr regs::RegValue16<1, 8> FAND;
+constexpr regs::RegValue16<2, 6> CAPTDE;
+constexpr regs::RegValue16<1, 5> CA1DE;
+constexpr regs::RegValue16<1, 4> CA0DE;
+constexpr regs::RegValue16<1, 3> CB1DE;
+constexpr regs::RegValue16<1, 2> CB0DE;
+constexpr regs::RegValue16<1, 1> CX1DE;
+constexpr regs::RegValue16<1, 0> CX0DE;
+}  // namespace vals
 }  // namespace DMAEN
 
 // Output Trigger Control Register
@@ -529,6 +666,13 @@ constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::TCTRL, 6,  0> OUT_TRIG_EN;  // O
     // 0bxxx1xx..PWM_OUT_TRIG0 will set when the counter value matches the VAL2 value.
     // 0bxxxx1x..PWM_OUT_TRIG1 will set when the counter value matches the VAL1 value.
     // 0bxxxxx1..PWM_OUT_TRIG0 will set when the counter value matches the VAL0 value.
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWAOT0;
+constexpr regs::RegValue16<1, 14> PWBOT1;
+constexpr regs::RegValue16<1, 12> TRGFRQ;
+constexpr regs::RegValue16<6,  0> OUT_TRIG_EN;
+}  // namespace vals
 }  // namespace TCTRL
 
 // Fault Disable Mapping Register 0
@@ -539,18 +683,32 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 4> DIS0B;  // PWM_B Fault Disable Mask 0
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 0> DIS0A;  // PWM_A Fault Disable Mask 0
+
+namespace vals {
+constexpr regs::RegValue16<4, 8> DIS0X;
+constexpr regs::RegValue16<4, 4> DIS0B;
+constexpr regs::RegValue16<4, 0> DIS0A;
+}  // namespace vals
 }  // namespace DISMAP
 
 // Deadtime Count Register 0
 namespace DTCNT0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT0, 16, 0> DTCNT0;  // DTCNT0
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT0;
+}  // namespace vals
 }  // namespace DTCNT0
 
 // Deadtime Count Register 1
 namespace DTCNT1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT1, 16, 0> DTCNT1;  // DTCNT1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT1;
+}  // namespace vals
 }  // namespace DTCNT1
 
 // Capture Control A Register
@@ -589,6 +747,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  0> ARMA;                    // Arm A
     // 0b0..Input capture operation is disabled.
     // 0b1..Input capture operation as specified by CAPTCTRLA[EDGAx] is enabled.
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CA1CNT;
+constexpr regs::RegValue16<3, 10> CA0CNT;
+constexpr regs::RegValue16<2,  8> CFAWM;
+constexpr regs::RegValue16<1,  7> EDGCNTA_EN;
+constexpr regs::RegValue16<1,  6> INP_SELA;
+constexpr regs::RegValue16<2,  4> EDGA1;
+constexpr regs::RegValue16<2,  2> EDGA0;
+constexpr regs::RegValue16<1,  1> ONESHOTA;
+constexpr regs::RegValue16<1,  0> ARMA;
+}  // namespace vals
 }  // namespace CAPTCTRLA
 
 // Capture Compare A Register
@@ -597,6 +767,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPA), 8, 8> EDGCNTA;  // Edge Counter A
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPA, 8, 0> EDGCMPA;                  // Edge Compare A
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTA;
+constexpr regs::RegValue16<8, 0> EDGCMPA;
+}  // namespace vals
 }  // namespace CAPTCOMPA
 
 // Capture Control B Register
@@ -635,6 +810,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  0> ARMB;                    // Arm B
     // 0b0..Input capture operation is disabled.
     // 0b1..Input capture operation as specified by CAPTCTRLB[EDGBx] is enabled.
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CB1CNT;
+constexpr regs::RegValue16<3, 10> CB0CNT;
+constexpr regs::RegValue16<2,  8> CFBWM;
+constexpr regs::RegValue16<1,  7> EDGCNTB_EN;
+constexpr regs::RegValue16<1,  6> INP_SELB;
+constexpr regs::RegValue16<2,  4> EDGB1;
+constexpr regs::RegValue16<2,  2> EDGB0;
+constexpr regs::RegValue16<1,  1> ONESHOTB;
+constexpr regs::RegValue16<1,  0> ARMB;
+}  // namespace vals
 }  // namespace CAPTCTRLB
 
 // Capture Compare B Register
@@ -643,6 +830,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPB), 8, 8> EDGCNTB;  // Edge Counter B
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPB, 8, 0> EDGCMPB;                  // Edge Compare B
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTB;
+constexpr regs::RegValue16<8, 0> EDGCMPB;
+}  // namespace vals
 }  // namespace CAPTCOMPB
 
 // Capture Control X Register
@@ -681,6 +873,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  0> ARMX;                    // Arm X
     // 0b0..Input capture operation is disabled.
     // 0b1..Input capture operation as specified by CAPTCTRLX[EDGXx] is enabled.
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CX1CNT;
+constexpr regs::RegValue16<3, 10> CX0CNT;
+constexpr regs::RegValue16<2,  8> CFXWM;
+constexpr regs::RegValue16<1,  7> EDGCNTX_EN;
+constexpr regs::RegValue16<1,  6> INP_SELX;
+constexpr regs::RegValue16<2,  4> EDGX1;
+constexpr regs::RegValue16<2,  2> EDGX0;
+constexpr regs::RegValue16<1,  1> ONESHOTX;
+constexpr regs::RegValue16<1,  0> ARMX;
+}  // namespace vals
 }  // namespace CAPTCTRLX
 
 // Capture Compare X Register
@@ -689,78 +893,131 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPX), 8, 8> EDGCNTX;  // Edge Counter X
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPX, 8, 0> EDGCMPX;                  // Edge Compare X
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTX;
+constexpr regs::RegValue16<8, 0> EDGCMPX;
+}  // namespace vals
 }  // namespace CAPTCOMPX
 
 // Capture Value 0 Register
 namespace CVAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0), 16, 0> CAPTVAL0;  // CAPTVAL0
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL0;
+}  // namespace vals
 }  // namespace CVAL0
 
 // Capture Value 0 Cycle Register
 namespace CVAL0CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0CYC), 4, 0> CVAL0CYC;  // CVAL0CYC
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL0CYC;
+}  // namespace vals
 }  // namespace CVAL0CYC
 
 // Capture Value 1 Register
 namespace CVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1), 16, 0> CAPTVAL1;  // CAPTVAL1
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL1;
+}  // namespace vals
 }  // namespace CVAL1
 
 // Capture Value 1 Cycle Register
 namespace CVAL1CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1CYC), 4, 0> CVAL1CYC;  // CVAL1CYC
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL1CYC;
+}  // namespace vals
 }  // namespace CVAL1CYC
 
 // Capture Value 2 Register
 namespace CVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2), 16, 0> CAPTVAL2;  // CAPTVAL2
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL2;
+}  // namespace vals
 }  // namespace CVAL2
 
 // Capture Value 2 Cycle Register
 namespace CVAL2CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2CYC), 4, 0> CVAL2CYC;  // CVAL2CYC
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL2CYC;
+}  // namespace vals
 }  // namespace CVAL2CYC
 
 // Capture Value 3 Register
 namespace CVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3), 16, 0> CAPTVAL3;  // CAPTVAL3
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL3;
+}  // namespace vals
 }  // namespace CVAL3
 
 // Capture Value 3 Cycle Register
 namespace CVAL3CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3CYC), 4, 0> CVAL3CYC;  // CVAL3CYC
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL3CYC;
+}  // namespace vals
 }  // namespace CVAL3CYC
 
 // Capture Value 4 Register
 namespace CVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4), 16, 0> CAPTVAL4;  // CAPTVAL4
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL4;
+}  // namespace vals
 }  // namespace CVAL4
 
 // Capture Value 4 Cycle Register
 namespace CVAL4CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4CYC), 4, 0> CVAL4CYC;  // CVAL4CYC
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL4CYC;
+}  // namespace vals
 }  // namespace CVAL4CYC
 
 // Capture Value 5 Register
 namespace CVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5), 16, 0> CAPTVAL5;  // CAPTVAL5
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL5;
+}  // namespace vals
 }  // namespace CVAL5
 
 // Capture Value 5 Cycle Register
 namespace CVAL5CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5CYC), 4, 0> CVAL5CYC;  // CVAL5CYC
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL5CYC;
+}  // namespace vals
 }  // namespace CVAL5CYC
 
 }  // namespace SM
@@ -999,12 +1256,20 @@ namespace SM {
 namespace CNT {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CNT), 16, 0> CNT;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CNT;
+}  // namespace vals
 }  // namespace CNT
 
 // Initial Count Register
 namespace INIT {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INIT, 16, 0> INIT;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> INIT;
+}  // namespace vals
 }  // namespace INIT
 
 // Control 2 Register
@@ -1033,6 +1298,21 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 1,  2> RELOAD_SEL;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 2,  0> CLK_SEL;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> DBGEN;
+constexpr regs::RegValue16<1, 14> WAITEN;
+constexpr regs::RegValue16<1, 13> INDEP;
+constexpr regs::RegValue16<1, 12> PWM23_INIT;
+constexpr regs::RegValue16<1, 11> PWM45_INIT;
+constexpr regs::RegValue16<1, 10> PWMX_INIT;
+constexpr regs::RegValue16<2,  8> INIT_SEL;
+constexpr regs::RegValue16<1,  7> FRCEN;
+constexpr regs::RegValue16<1,  6> FORCE;
+constexpr regs::RegValue16<3,  3> FORCE_SEL;
+constexpr regs::RegValue16<1,  2> RELOAD_SEL;
+constexpr regs::RegValue16<2,  0> CLK_SEL;
+}  // namespace vals
 }  // namespace CTRL2
 
 // Control Register
@@ -1057,72 +1337,129 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  1> DBLX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  0> DBLEN;
+
+namespace vals {
+constexpr regs::RegValue16<4, 12> LDFQ;
+constexpr regs::RegValue16<1, 11> HALF;
+constexpr regs::RegValue16<1, 10> FULL;
+constexpr regs::RegValue16<2,  8> DT;
+constexpr regs::RegValue16<1,  7> COMPMODE;
+constexpr regs::RegValue16<3,  4> PRSC;
+constexpr regs::RegValue16<1,  3> SPLIT;
+constexpr regs::RegValue16<1,  2> LDMOD;
+constexpr regs::RegValue16<1,  1> DBLX;
+constexpr regs::RegValue16<1,  0> DBLEN;
+}  // namespace vals
 }  // namespace CTRL
 
 // Value Register 0
 namespace VAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL0, 16, 0> VAL0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL0;
+}  // namespace vals
 }  // namespace VAL0
 
 // Fractional Value Register 1
 namespace FRACVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL1, 5, 11> FRACVAL1;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL1;
+}  // namespace vals
 }  // namespace FRACVAL1
 
 // Value Register 1
 namespace VAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL1, 16, 0> VAL1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL1;
+}  // namespace vals
 }  // namespace VAL1
 
 // Fractional Value Register 2
 namespace FRACVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL2, 5, 11> FRACVAL2;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL2;
+}  // namespace vals
 }  // namespace FRACVAL2
 
 // Value Register 2
 namespace VAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL2, 16, 0> VAL2;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL2;
+}  // namespace vals
 }  // namespace VAL2
 
 // Fractional Value Register 3
 namespace FRACVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL3, 5, 11> FRACVAL3;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL3;
+}  // namespace vals
 }  // namespace FRACVAL3
 
 // Value Register 3
 namespace VAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL3, 16, 0> VAL3;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL3;
+}  // namespace vals
 }  // namespace VAL3
 
 // Fractional Value Register 4
 namespace FRACVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL4, 5, 11> FRACVAL4;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL4;
+}  // namespace vals
 }  // namespace FRACVAL4
 
 // Value Register 4
 namespace VAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL4, 16, 0> VAL4;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL4;
+}  // namespace vals
 }  // namespace VAL4
 
 // Fractional Value Register 5
 namespace FRACVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL5, 5, 11> FRACVAL5;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL5;
+}  // namespace vals
 }  // namespace FRACVAL5
 
 // Value Register 5
 namespace VAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL5, 16, 0> VAL5;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL5;
+}  // namespace vals
 }  // namespace VAL5
 
 // Fractional Control Register
@@ -1137,6 +1474,14 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  2> FRAC23_EN;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  1> FRAC1_EN;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TEST;
+constexpr regs::RegValue16<1,  8> FRAC_PU;
+constexpr regs::RegValue16<1,  4> FRAC45_EN;
+constexpr regs::RegValue16<1,  2> FRAC23_EN;
+constexpr regs::RegValue16<1,  1> FRAC1_EN;
+}  // namespace vals
 }  // namespace FRCTRL
 
 // Output Control Register
@@ -1159,6 +1504,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  2> PWMBFS;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  0> PWMXFS;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWMA_IN;
+constexpr regs::RegValue16<1, 14> PWMB_IN;
+constexpr regs::RegValue16<1, 13> PWMX_IN;
+constexpr regs::RegValue16<1, 10> POLA;
+constexpr regs::RegValue16<1,  9> POLB;
+constexpr regs::RegValue16<1,  8> POLX;
+constexpr regs::RegValue16<2,  4> PWMAFS;
+constexpr regs::RegValue16<2,  2> PWMBFS;
+constexpr regs::RegValue16<2,  0> PWMXFS;
+}  // namespace vals
 }  // namespace OCTRL
 
 // Status Register
@@ -1183,6 +1540,19 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  6, 0x0> CFX0;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 6,  0, 0x0> CMPF;
+
+namespace vals {
+constexpr regs::RegValue16<1, 14> RUF;
+constexpr regs::RegValue16<1, 13> REF;
+constexpr regs::RegValue16<1, 12> RF;
+constexpr regs::RegValue16<1, 11> CFA1;
+constexpr regs::RegValue16<1, 10> CFA0;
+constexpr regs::RegValue16<1,  9> CFB1;
+constexpr regs::RegValue16<1,  8> CFB0;
+constexpr regs::RegValue16<1,  7> CFX1;
+constexpr regs::RegValue16<1,  6> CFX0;
+constexpr regs::RegValue16<6,  0> CMPF;
+}  // namespace vals
 }  // namespace STS
 
 // Interrupt Enable Register
@@ -1205,6 +1575,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INTEN, 1,  6> CX0IE;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INTEN, 6,  0> CMPIE;
+
+namespace vals {
+constexpr regs::RegValue16<1, 13> REIE;
+constexpr regs::RegValue16<1, 12> RIE;
+constexpr regs::RegValue16<1, 11> CA1IE;
+constexpr regs::RegValue16<1, 10> CA0IE;
+constexpr regs::RegValue16<1,  9> CB1IE;
+constexpr regs::RegValue16<1,  8> CB0IE;
+constexpr regs::RegValue16<1,  7> CX1IE;
+constexpr regs::RegValue16<1,  6> CX0IE;
+constexpr regs::RegValue16<6,  0> CMPIE;
+}  // namespace vals
 }  // namespace INTEN
 
 // DMA Enable Register
@@ -1227,6 +1609,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 1> CX1DE;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 0> CX0DE;
+
+namespace vals {
+constexpr regs::RegValue16<1, 9> VALDE;
+constexpr regs::RegValue16<1, 8> FAND;
+constexpr regs::RegValue16<2, 6> CAPTDE;
+constexpr regs::RegValue16<1, 5> CA1DE;
+constexpr regs::RegValue16<1, 4> CA0DE;
+constexpr regs::RegValue16<1, 3> CB1DE;
+constexpr regs::RegValue16<1, 2> CB0DE;
+constexpr regs::RegValue16<1, 1> CX1DE;
+constexpr regs::RegValue16<1, 0> CX0DE;
+}  // namespace vals
 }  // namespace DMAEN
 
 // Output Trigger Control Register
@@ -1239,6 +1633,13 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::TCTRL, 1, 12> TRGFRQ;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::TCTRL, 6,  0> OUT_TRIG_EN;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWAOT0;
+constexpr regs::RegValue16<1, 14> PWBOT1;
+constexpr regs::RegValue16<1, 12> TRGFRQ;
+constexpr regs::RegValue16<6,  0> OUT_TRIG_EN;
+}  // namespace vals
 }  // namespace TCTRL
 
 // Fault Disable Mapping Register 0
@@ -1249,18 +1650,32 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 4> DIS0B;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 0> DIS0A;
+
+namespace vals {
+constexpr regs::RegValue16<4, 8> DIS0X;
+constexpr regs::RegValue16<4, 4> DIS0B;
+constexpr regs::RegValue16<4, 0> DIS0A;
+}  // namespace vals
 }  // namespace DISMAP
 
 // Deadtime Count Register 0
 namespace DTCNT0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT0, 16, 0> DTCNT0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT0;
+}  // namespace vals
 }  // namespace DTCNT0
 
 // Deadtime Count Register 1
 namespace DTCNT1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT1, 16, 0> DTCNT1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT1;
+}  // namespace vals
 }  // namespace DTCNT1
 
 // Capture Control A Register
@@ -1283,6 +1698,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  1> ONESHOTA;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  0> ARMA;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CA1CNT;
+constexpr regs::RegValue16<3, 10> CA0CNT;
+constexpr regs::RegValue16<2,  8> CFAWM;
+constexpr regs::RegValue16<1,  7> EDGCNTA_EN;
+constexpr regs::RegValue16<1,  6> INP_SELA;
+constexpr regs::RegValue16<2,  4> EDGA1;
+constexpr regs::RegValue16<2,  2> EDGA0;
+constexpr regs::RegValue16<1,  1> ONESHOTA;
+constexpr regs::RegValue16<1,  0> ARMA;
+}  // namespace vals
 }  // namespace CAPTCTRLA
 
 // Capture Compare A Register
@@ -1291,6 +1718,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPA), 8, 8> EDGCNTA;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPA, 8, 0> EDGCMPA;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTA;
+constexpr regs::RegValue16<8, 0> EDGCMPA;
+}  // namespace vals
 }  // namespace CAPTCOMPA
 
 // Capture Control B Register
@@ -1313,6 +1745,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  1> ONESHOTB;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  0> ARMB;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CB1CNT;
+constexpr regs::RegValue16<3, 10> CB0CNT;
+constexpr regs::RegValue16<2,  8> CFBWM;
+constexpr regs::RegValue16<1,  7> EDGCNTB_EN;
+constexpr regs::RegValue16<1,  6> INP_SELB;
+constexpr regs::RegValue16<2,  4> EDGB1;
+constexpr regs::RegValue16<2,  2> EDGB0;
+constexpr regs::RegValue16<1,  1> ONESHOTB;
+constexpr regs::RegValue16<1,  0> ARMB;
+}  // namespace vals
 }  // namespace CAPTCTRLB
 
 // Capture Compare B Register
@@ -1321,6 +1765,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPB), 8, 8> EDGCNTB;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPB, 8, 0> EDGCMPB;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTB;
+constexpr regs::RegValue16<8, 0> EDGCMPB;
+}  // namespace vals
 }  // namespace CAPTCOMPB
 
 // Capture Control X Register
@@ -1343,6 +1792,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  1> ONESHOTX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  0> ARMX;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CX1CNT;
+constexpr regs::RegValue16<3, 10> CX0CNT;
+constexpr regs::RegValue16<2,  8> CFXWM;
+constexpr regs::RegValue16<1,  7> EDGCNTX_EN;
+constexpr regs::RegValue16<1,  6> INP_SELX;
+constexpr regs::RegValue16<2,  4> EDGX1;
+constexpr regs::RegValue16<2,  2> EDGX0;
+constexpr regs::RegValue16<1,  1> ONESHOTX;
+constexpr regs::RegValue16<1,  0> ARMX;
+}  // namespace vals
 }  // namespace CAPTCTRLX
 
 // Capture Compare X Register
@@ -1351,78 +1812,131 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPX), 8, 8> EDGCNTX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPX, 8, 0> EDGCMPX;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTX;
+constexpr regs::RegValue16<8, 0> EDGCMPX;
+}  // namespace vals
 }  // namespace CAPTCOMPX
 
 // Capture Value 0 Register
 namespace CVAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0), 16, 0> CAPTVAL0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL0;
+}  // namespace vals
 }  // namespace CVAL0
 
 // Capture Value 0 Cycle Register
 namespace CVAL0CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0CYC), 4, 0> CVAL0CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL0CYC;
+}  // namespace vals
 }  // namespace CVAL0CYC
 
 // Capture Value 1 Register
 namespace CVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1), 16, 0> CAPTVAL1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL1;
+}  // namespace vals
 }  // namespace CVAL1
 
 // Capture Value 1 Cycle Register
 namespace CVAL1CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1CYC), 4, 0> CVAL1CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL1CYC;
+}  // namespace vals
 }  // namespace CVAL1CYC
 
 // Capture Value 2 Register
 namespace CVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2), 16, 0> CAPTVAL2;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL2;
+}  // namespace vals
 }  // namespace CVAL2
 
 // Capture Value 2 Cycle Register
 namespace CVAL2CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2CYC), 4, 0> CVAL2CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL2CYC;
+}  // namespace vals
 }  // namespace CVAL2CYC
 
 // Capture Value 3 Register
 namespace CVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3), 16, 0> CAPTVAL3;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL3;
+}  // namespace vals
 }  // namespace CVAL3
 
 // Capture Value 3 Cycle Register
 namespace CVAL3CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3CYC), 4, 0> CVAL3CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL3CYC;
+}  // namespace vals
 }  // namespace CVAL3CYC
 
 // Capture Value 4 Register
 namespace CVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4), 16, 0> CAPTVAL4;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL4;
+}  // namespace vals
 }  // namespace CVAL4
 
 // Capture Value 4 Cycle Register
 namespace CVAL4CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4CYC), 4, 0> CVAL4CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL4CYC;
+}  // namespace vals
 }  // namespace CVAL4CYC
 
 // Capture Value 5 Register
 namespace CVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5), 16, 0> CAPTVAL5;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL5;
+}  // namespace vals
 }  // namespace CVAL5
 
 // Capture Value 5 Cycle Register
 namespace CVAL5CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5CYC), 4, 0> CVAL5CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL5CYC;
+}  // namespace vals
 }  // namespace CVAL5CYC
 
 }  // namespace SM
@@ -1548,12 +2062,20 @@ namespace SM {
 namespace CNT {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CNT), 16, 0> CNT;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CNT;
+}  // namespace vals
 }  // namespace CNT
 
 // Initial Count Register
 namespace INIT {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INIT, 16, 0> INIT;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> INIT;
+}  // namespace vals
 }  // namespace INIT
 
 // Control 2 Register
@@ -1582,6 +2104,21 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 1,  2> RELOAD_SEL;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 2,  0> CLK_SEL;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> DBGEN;
+constexpr regs::RegValue16<1, 14> WAITEN;
+constexpr regs::RegValue16<1, 13> INDEP;
+constexpr regs::RegValue16<1, 12> PWM23_INIT;
+constexpr regs::RegValue16<1, 11> PWM45_INIT;
+constexpr regs::RegValue16<1, 10> PWMX_INIT;
+constexpr regs::RegValue16<2,  8> INIT_SEL;
+constexpr regs::RegValue16<1,  7> FRCEN;
+constexpr regs::RegValue16<1,  6> FORCE;
+constexpr regs::RegValue16<3,  3> FORCE_SEL;
+constexpr regs::RegValue16<1,  2> RELOAD_SEL;
+constexpr regs::RegValue16<2,  0> CLK_SEL;
+}  // namespace vals
 }  // namespace CTRL2
 
 // Control Register
@@ -1606,72 +2143,129 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  1> DBLX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  0> DBLEN;
+
+namespace vals {
+constexpr regs::RegValue16<4, 12> LDFQ;
+constexpr regs::RegValue16<1, 11> HALF;
+constexpr regs::RegValue16<1, 10> FULL;
+constexpr regs::RegValue16<2,  8> DT;
+constexpr regs::RegValue16<1,  7> COMPMODE;
+constexpr regs::RegValue16<3,  4> PRSC;
+constexpr regs::RegValue16<1,  3> SPLIT;
+constexpr regs::RegValue16<1,  2> LDMOD;
+constexpr regs::RegValue16<1,  1> DBLX;
+constexpr regs::RegValue16<1,  0> DBLEN;
+}  // namespace vals
 }  // namespace CTRL
 
 // Value Register 0
 namespace VAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL0, 16, 0> VAL0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL0;
+}  // namespace vals
 }  // namespace VAL0
 
 // Fractional Value Register 1
 namespace FRACVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL1, 5, 11> FRACVAL1;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL1;
+}  // namespace vals
 }  // namespace FRACVAL1
 
 // Value Register 1
 namespace VAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL1, 16, 0> VAL1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL1;
+}  // namespace vals
 }  // namespace VAL1
 
 // Fractional Value Register 2
 namespace FRACVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL2, 5, 11> FRACVAL2;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL2;
+}  // namespace vals
 }  // namespace FRACVAL2
 
 // Value Register 2
 namespace VAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL2, 16, 0> VAL2;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL2;
+}  // namespace vals
 }  // namespace VAL2
 
 // Fractional Value Register 3
 namespace FRACVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL3, 5, 11> FRACVAL3;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL3;
+}  // namespace vals
 }  // namespace FRACVAL3
 
 // Value Register 3
 namespace VAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL3, 16, 0> VAL3;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL3;
+}  // namespace vals
 }  // namespace VAL3
 
 // Fractional Value Register 4
 namespace FRACVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL4, 5, 11> FRACVAL4;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL4;
+}  // namespace vals
 }  // namespace FRACVAL4
 
 // Value Register 4
 namespace VAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL4, 16, 0> VAL4;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL4;
+}  // namespace vals
 }  // namespace VAL4
 
 // Fractional Value Register 5
 namespace FRACVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL5, 5, 11> FRACVAL5;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL5;
+}  // namespace vals
 }  // namespace FRACVAL5
 
 // Value Register 5
 namespace VAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL5, 16, 0> VAL5;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL5;
+}  // namespace vals
 }  // namespace VAL5
 
 // Fractional Control Register
@@ -1686,6 +2280,14 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  2> FRAC23_EN;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  1> FRAC1_EN;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TEST;
+constexpr regs::RegValue16<1,  8> FRAC_PU;
+constexpr regs::RegValue16<1,  4> FRAC45_EN;
+constexpr regs::RegValue16<1,  2> FRAC23_EN;
+constexpr regs::RegValue16<1,  1> FRAC1_EN;
+}  // namespace vals
 }  // namespace FRCTRL
 
 // Output Control Register
@@ -1708,6 +2310,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  2> PWMBFS;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  0> PWMXFS;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWMA_IN;
+constexpr regs::RegValue16<1, 14> PWMB_IN;
+constexpr regs::RegValue16<1, 13> PWMX_IN;
+constexpr regs::RegValue16<1, 10> POLA;
+constexpr regs::RegValue16<1,  9> POLB;
+constexpr regs::RegValue16<1,  8> POLX;
+constexpr regs::RegValue16<2,  4> PWMAFS;
+constexpr regs::RegValue16<2,  2> PWMBFS;
+constexpr regs::RegValue16<2,  0> PWMXFS;
+}  // namespace vals
 }  // namespace OCTRL
 
 // Status Register
@@ -1732,6 +2346,19 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  6, 0x0> CFX0;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 6,  0, 0x0> CMPF;
+
+namespace vals {
+constexpr regs::RegValue16<1, 14> RUF;
+constexpr regs::RegValue16<1, 13> REF;
+constexpr regs::RegValue16<1, 12> RF;
+constexpr regs::RegValue16<1, 11> CFA1;
+constexpr regs::RegValue16<1, 10> CFA0;
+constexpr regs::RegValue16<1,  9> CFB1;
+constexpr regs::RegValue16<1,  8> CFB0;
+constexpr regs::RegValue16<1,  7> CFX1;
+constexpr regs::RegValue16<1,  6> CFX0;
+constexpr regs::RegValue16<6,  0> CMPF;
+}  // namespace vals
 }  // namespace STS
 
 // Interrupt Enable Register
@@ -1754,6 +2381,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INTEN, 1,  6> CX0IE;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INTEN, 6,  0> CMPIE;
+
+namespace vals {
+constexpr regs::RegValue16<1, 13> REIE;
+constexpr regs::RegValue16<1, 12> RIE;
+constexpr regs::RegValue16<1, 11> CA1IE;
+constexpr regs::RegValue16<1, 10> CA0IE;
+constexpr regs::RegValue16<1,  9> CB1IE;
+constexpr regs::RegValue16<1,  8> CB0IE;
+constexpr regs::RegValue16<1,  7> CX1IE;
+constexpr regs::RegValue16<1,  6> CX0IE;
+constexpr regs::RegValue16<6,  0> CMPIE;
+}  // namespace vals
 }  // namespace INTEN
 
 // DMA Enable Register
@@ -1776,6 +2415,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 1> CX1DE;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 0> CX0DE;
+
+namespace vals {
+constexpr regs::RegValue16<1, 9> VALDE;
+constexpr regs::RegValue16<1, 8> FAND;
+constexpr regs::RegValue16<2, 6> CAPTDE;
+constexpr regs::RegValue16<1, 5> CA1DE;
+constexpr regs::RegValue16<1, 4> CA0DE;
+constexpr regs::RegValue16<1, 3> CB1DE;
+constexpr regs::RegValue16<1, 2> CB0DE;
+constexpr regs::RegValue16<1, 1> CX1DE;
+constexpr regs::RegValue16<1, 0> CX0DE;
+}  // namespace vals
 }  // namespace DMAEN
 
 // Output Trigger Control Register
@@ -1788,6 +2439,13 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::TCTRL, 1, 12> TRGFRQ;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::TCTRL, 6,  0> OUT_TRIG_EN;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWAOT0;
+constexpr regs::RegValue16<1, 14> PWBOT1;
+constexpr regs::RegValue16<1, 12> TRGFRQ;
+constexpr regs::RegValue16<6,  0> OUT_TRIG_EN;
+}  // namespace vals
 }  // namespace TCTRL
 
 // Fault Disable Mapping Register 0
@@ -1798,18 +2456,32 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 4> DIS0B;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 0> DIS0A;
+
+namespace vals {
+constexpr regs::RegValue16<4, 8> DIS0X;
+constexpr regs::RegValue16<4, 4> DIS0B;
+constexpr regs::RegValue16<4, 0> DIS0A;
+}  // namespace vals
 }  // namespace DISMAP
 
 // Deadtime Count Register 0
 namespace DTCNT0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT0, 16, 0> DTCNT0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT0;
+}  // namespace vals
 }  // namespace DTCNT0
 
 // Deadtime Count Register 1
 namespace DTCNT1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT1, 16, 0> DTCNT1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT1;
+}  // namespace vals
 }  // namespace DTCNT1
 
 // Capture Control A Register
@@ -1832,6 +2504,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  1> ONESHOTA;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  0> ARMA;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CA1CNT;
+constexpr regs::RegValue16<3, 10> CA0CNT;
+constexpr regs::RegValue16<2,  8> CFAWM;
+constexpr regs::RegValue16<1,  7> EDGCNTA_EN;
+constexpr regs::RegValue16<1,  6> INP_SELA;
+constexpr regs::RegValue16<2,  4> EDGA1;
+constexpr regs::RegValue16<2,  2> EDGA0;
+constexpr regs::RegValue16<1,  1> ONESHOTA;
+constexpr regs::RegValue16<1,  0> ARMA;
+}  // namespace vals
 }  // namespace CAPTCTRLA
 
 // Capture Compare A Register
@@ -1840,6 +2524,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPA), 8, 8> EDGCNTA;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPA, 8, 0> EDGCMPA;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTA;
+constexpr regs::RegValue16<8, 0> EDGCMPA;
+}  // namespace vals
 }  // namespace CAPTCOMPA
 
 // Capture Control B Register
@@ -1862,6 +2551,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  1> ONESHOTB;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  0> ARMB;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CB1CNT;
+constexpr regs::RegValue16<3, 10> CB0CNT;
+constexpr regs::RegValue16<2,  8> CFBWM;
+constexpr regs::RegValue16<1,  7> EDGCNTB_EN;
+constexpr regs::RegValue16<1,  6> INP_SELB;
+constexpr regs::RegValue16<2,  4> EDGB1;
+constexpr regs::RegValue16<2,  2> EDGB0;
+constexpr regs::RegValue16<1,  1> ONESHOTB;
+constexpr regs::RegValue16<1,  0> ARMB;
+}  // namespace vals
 }  // namespace CAPTCTRLB
 
 // Capture Compare B Register
@@ -1870,6 +2571,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPB), 8, 8> EDGCNTB;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPB, 8, 0> EDGCMPB;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTB;
+constexpr regs::RegValue16<8, 0> EDGCMPB;
+}  // namespace vals
 }  // namespace CAPTCOMPB
 
 // Capture Control X Register
@@ -1892,6 +2598,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  1> ONESHOTX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  0> ARMX;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CX1CNT;
+constexpr regs::RegValue16<3, 10> CX0CNT;
+constexpr regs::RegValue16<2,  8> CFXWM;
+constexpr regs::RegValue16<1,  7> EDGCNTX_EN;
+constexpr regs::RegValue16<1,  6> INP_SELX;
+constexpr regs::RegValue16<2,  4> EDGX1;
+constexpr regs::RegValue16<2,  2> EDGX0;
+constexpr regs::RegValue16<1,  1> ONESHOTX;
+constexpr regs::RegValue16<1,  0> ARMX;
+}  // namespace vals
 }  // namespace CAPTCTRLX
 
 // Capture Compare X Register
@@ -1900,78 +2618,131 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPX), 8, 8> EDGCNTX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPX, 8, 0> EDGCMPX;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTX;
+constexpr regs::RegValue16<8, 0> EDGCMPX;
+}  // namespace vals
 }  // namespace CAPTCOMPX
 
 // Capture Value 0 Register
 namespace CVAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0), 16, 0> CAPTVAL0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL0;
+}  // namespace vals
 }  // namespace CVAL0
 
 // Capture Value 0 Cycle Register
 namespace CVAL0CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0CYC), 4, 0> CVAL0CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL0CYC;
+}  // namespace vals
 }  // namespace CVAL0CYC
 
 // Capture Value 1 Register
 namespace CVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1), 16, 0> CAPTVAL1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL1;
+}  // namespace vals
 }  // namespace CVAL1
 
 // Capture Value 1 Cycle Register
 namespace CVAL1CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1CYC), 4, 0> CVAL1CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL1CYC;
+}  // namespace vals
 }  // namespace CVAL1CYC
 
 // Capture Value 2 Register
 namespace CVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2), 16, 0> CAPTVAL2;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL2;
+}  // namespace vals
 }  // namespace CVAL2
 
 // Capture Value 2 Cycle Register
 namespace CVAL2CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2CYC), 4, 0> CVAL2CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL2CYC;
+}  // namespace vals
 }  // namespace CVAL2CYC
 
 // Capture Value 3 Register
 namespace CVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3), 16, 0> CAPTVAL3;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL3;
+}  // namespace vals
 }  // namespace CVAL3
 
 // Capture Value 3 Cycle Register
 namespace CVAL3CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3CYC), 4, 0> CVAL3CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL3CYC;
+}  // namespace vals
 }  // namespace CVAL3CYC
 
 // Capture Value 4 Register
 namespace CVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4), 16, 0> CAPTVAL4;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL4;
+}  // namespace vals
 }  // namespace CVAL4
 
 // Capture Value 4 Cycle Register
 namespace CVAL4CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4CYC), 4, 0> CVAL4CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL4CYC;
+}  // namespace vals
 }  // namespace CVAL4CYC
 
 // Capture Value 5 Register
 namespace CVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5), 16, 0> CAPTVAL5;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL5;
+}  // namespace vals
 }  // namespace CVAL5
 
 // Capture Value 5 Cycle Register
 namespace CVAL5CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5CYC), 4, 0> CVAL5CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL5CYC;
+}  // namespace vals
 }  // namespace CVAL5CYC
 
 }  // namespace SM
@@ -2097,12 +2868,20 @@ namespace SM {
 namespace CNT {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CNT), 16, 0> CNT;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CNT;
+}  // namespace vals
 }  // namespace CNT
 
 // Initial Count Register
 namespace INIT {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INIT, 16, 0> INIT;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> INIT;
+}  // namespace vals
 }  // namespace INIT
 
 // Control 2 Register
@@ -2131,6 +2910,21 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 1,  2> RELOAD_SEL;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL2, 2,  0> CLK_SEL;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> DBGEN;
+constexpr regs::RegValue16<1, 14> WAITEN;
+constexpr regs::RegValue16<1, 13> INDEP;
+constexpr regs::RegValue16<1, 12> PWM23_INIT;
+constexpr regs::RegValue16<1, 11> PWM45_INIT;
+constexpr regs::RegValue16<1, 10> PWMX_INIT;
+constexpr regs::RegValue16<2,  8> INIT_SEL;
+constexpr regs::RegValue16<1,  7> FRCEN;
+constexpr regs::RegValue16<1,  6> FORCE;
+constexpr regs::RegValue16<3,  3> FORCE_SEL;
+constexpr regs::RegValue16<1,  2> RELOAD_SEL;
+constexpr regs::RegValue16<2,  0> CLK_SEL;
+}  // namespace vals
 }  // namespace CTRL2
 
 // Control Register
@@ -2155,72 +2949,129 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  1> DBLX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CTRL, 1,  0> DBLEN;
+
+namespace vals {
+constexpr regs::RegValue16<4, 12> LDFQ;
+constexpr regs::RegValue16<1, 11> HALF;
+constexpr regs::RegValue16<1, 10> FULL;
+constexpr regs::RegValue16<2,  8> DT;
+constexpr regs::RegValue16<1,  7> COMPMODE;
+constexpr regs::RegValue16<3,  4> PRSC;
+constexpr regs::RegValue16<1,  3> SPLIT;
+constexpr regs::RegValue16<1,  2> LDMOD;
+constexpr regs::RegValue16<1,  1> DBLX;
+constexpr regs::RegValue16<1,  0> DBLEN;
+}  // namespace vals
 }  // namespace CTRL
 
 // Value Register 0
 namespace VAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL0, 16, 0> VAL0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL0;
+}  // namespace vals
 }  // namespace VAL0
 
 // Fractional Value Register 1
 namespace FRACVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL1, 5, 11> FRACVAL1;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL1;
+}  // namespace vals
 }  // namespace FRACVAL1
 
 // Value Register 1
 namespace VAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL1, 16, 0> VAL1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL1;
+}  // namespace vals
 }  // namespace VAL1
 
 // Fractional Value Register 2
 namespace FRACVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL2, 5, 11> FRACVAL2;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL2;
+}  // namespace vals
 }  // namespace FRACVAL2
 
 // Value Register 2
 namespace VAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL2, 16, 0> VAL2;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL2;
+}  // namespace vals
 }  // namespace VAL2
 
 // Fractional Value Register 3
 namespace FRACVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL3, 5, 11> FRACVAL3;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL3;
+}  // namespace vals
 }  // namespace FRACVAL3
 
 // Value Register 3
 namespace VAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL3, 16, 0> VAL3;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL3;
+}  // namespace vals
 }  // namespace VAL3
 
 // Fractional Value Register 4
 namespace FRACVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL4, 5, 11> FRACVAL4;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL4;
+}  // namespace vals
 }  // namespace FRACVAL4
 
 // Value Register 4
 namespace VAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL4, 16, 0> VAL4;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL4;
+}  // namespace vals
 }  // namespace VAL4
 
 // Fractional Value Register 5
 namespace FRACVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRACVAL5, 5, 11> FRACVAL5;
+
+namespace vals {
+constexpr regs::RegValue16<5, 11> FRACVAL5;
+}  // namespace vals
 }  // namespace FRACVAL5
 
 // Value Register 5
 namespace VAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::VAL5, 16, 0> VAL5;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> VAL5;
+}  // namespace vals
 }  // namespace VAL5
 
 // Fractional Control Register
@@ -2235,6 +3086,14 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  2> FRAC23_EN;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::FRCTRL, 1,  1> FRAC1_EN;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> TEST;
+constexpr regs::RegValue16<1,  8> FRAC_PU;
+constexpr regs::RegValue16<1,  4> FRAC45_EN;
+constexpr regs::RegValue16<1,  2> FRAC23_EN;
+constexpr regs::RegValue16<1,  1> FRAC1_EN;
+}  // namespace vals
 }  // namespace FRCTRL
 
 // Output Control Register
@@ -2257,6 +3116,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  2> PWMBFS;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::OCTRL, 2,  0> PWMXFS;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWMA_IN;
+constexpr regs::RegValue16<1, 14> PWMB_IN;
+constexpr regs::RegValue16<1, 13> PWMX_IN;
+constexpr regs::RegValue16<1, 10> POLA;
+constexpr regs::RegValue16<1,  9> POLB;
+constexpr regs::RegValue16<1,  8> POLX;
+constexpr regs::RegValue16<2,  4> PWMAFS;
+constexpr regs::RegValue16<2,  2> PWMBFS;
+constexpr regs::RegValue16<2,  0> PWMXFS;
+}  // namespace vals
 }  // namespace OCTRL
 
 // Status Register
@@ -2281,6 +3152,19 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 1,  6, 0x0> CFX0;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::STS, 6,  0, 0x0> CMPF;
+
+namespace vals {
+constexpr regs::RegValue16<1, 14> RUF;
+constexpr regs::RegValue16<1, 13> REF;
+constexpr regs::RegValue16<1, 12> RF;
+constexpr regs::RegValue16<1, 11> CFA1;
+constexpr regs::RegValue16<1, 10> CFA0;
+constexpr regs::RegValue16<1,  9> CFB1;
+constexpr regs::RegValue16<1,  8> CFB0;
+constexpr regs::RegValue16<1,  7> CFX1;
+constexpr regs::RegValue16<1,  6> CFX0;
+constexpr regs::RegValue16<6,  0> CMPF;
+}  // namespace vals
 }  // namespace STS
 
 // Interrupt Enable Register
@@ -2303,6 +3187,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INTEN, 1,  6> CX0IE;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::INTEN, 6,  0> CMPIE;
+
+namespace vals {
+constexpr regs::RegValue16<1, 13> REIE;
+constexpr regs::RegValue16<1, 12> RIE;
+constexpr regs::RegValue16<1, 11> CA1IE;
+constexpr regs::RegValue16<1, 10> CA0IE;
+constexpr regs::RegValue16<1,  9> CB1IE;
+constexpr regs::RegValue16<1,  8> CB0IE;
+constexpr regs::RegValue16<1,  7> CX1IE;
+constexpr regs::RegValue16<1,  6> CX0IE;
+constexpr regs::RegValue16<6,  0> CMPIE;
+}  // namespace vals
 }  // namespace INTEN
 
 // DMA Enable Register
@@ -2325,6 +3221,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 1> CX1DE;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DMAEN, 1, 0> CX0DE;
+
+namespace vals {
+constexpr regs::RegValue16<1, 9> VALDE;
+constexpr regs::RegValue16<1, 8> FAND;
+constexpr regs::RegValue16<2, 6> CAPTDE;
+constexpr regs::RegValue16<1, 5> CA1DE;
+constexpr regs::RegValue16<1, 4> CA0DE;
+constexpr regs::RegValue16<1, 3> CB1DE;
+constexpr regs::RegValue16<1, 2> CB0DE;
+constexpr regs::RegValue16<1, 1> CX1DE;
+constexpr regs::RegValue16<1, 0> CX0DE;
+}  // namespace vals
 }  // namespace DMAEN
 
 // Output Trigger Control Register
@@ -2337,6 +3245,13 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::TCTRL, 1, 12> TRGFRQ;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::TCTRL, 6,  0> OUT_TRIG_EN;
+
+namespace vals {
+constexpr regs::RegValue16<1, 15> PWAOT0;
+constexpr regs::RegValue16<1, 14> PWBOT1;
+constexpr regs::RegValue16<1, 12> TRGFRQ;
+constexpr regs::RegValue16<6,  0> OUT_TRIG_EN;
+}  // namespace vals
 }  // namespace TCTRL
 
 // Fault Disable Mapping Register 0
@@ -2347,18 +3262,32 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 4> DIS0B;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DISMAP, 4, 0> DIS0A;
+
+namespace vals {
+constexpr regs::RegValue16<4, 8> DIS0X;
+constexpr regs::RegValue16<4, 4> DIS0B;
+constexpr regs::RegValue16<4, 0> DIS0A;
+}  // namespace vals
 }  // namespace DISMAP
 
 // Deadtime Count Register 0
 namespace DTCNT0 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT0, 16, 0> DTCNT0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT0;
+}  // namespace vals
 }  // namespace DTCNT0
 
 // Deadtime Count Register 1
 namespace DTCNT1 {
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::DTCNT1, 16, 0> DTCNT1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> DTCNT1;
+}  // namespace vals
 }  // namespace DTCNT1
 
 // Capture Control A Register
@@ -2381,6 +3310,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  1> ONESHOTA;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLA, 1,  0> ARMA;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CA1CNT;
+constexpr regs::RegValue16<3, 10> CA0CNT;
+constexpr regs::RegValue16<2,  8> CFAWM;
+constexpr regs::RegValue16<1,  7> EDGCNTA_EN;
+constexpr regs::RegValue16<1,  6> INP_SELA;
+constexpr regs::RegValue16<2,  4> EDGA1;
+constexpr regs::RegValue16<2,  2> EDGA0;
+constexpr regs::RegValue16<1,  1> ONESHOTA;
+constexpr regs::RegValue16<1,  0> ARMA;
+}  // namespace vals
 }  // namespace CAPTCTRLA
 
 // Capture Compare A Register
@@ -2389,6 +3330,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPA), 8, 8> EDGCNTA;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPA, 8, 0> EDGCMPA;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTA;
+constexpr regs::RegValue16<8, 0> EDGCMPA;
+}  // namespace vals
 }  // namespace CAPTCOMPA
 
 // Capture Control B Register
@@ -2411,6 +3357,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  1> ONESHOTB;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLB, 1,  0> ARMB;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CB1CNT;
+constexpr regs::RegValue16<3, 10> CB0CNT;
+constexpr regs::RegValue16<2,  8> CFBWM;
+constexpr regs::RegValue16<1,  7> EDGCNTB_EN;
+constexpr regs::RegValue16<1,  6> INP_SELB;
+constexpr regs::RegValue16<2,  4> EDGB1;
+constexpr regs::RegValue16<2,  2> EDGB0;
+constexpr regs::RegValue16<1,  1> ONESHOTB;
+constexpr regs::RegValue16<1,  0> ARMB;
+}  // namespace vals
 }  // namespace CAPTCTRLB
 
 // Capture Compare B Register
@@ -2419,6 +3377,11 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPB), 8, 8> EDGCNTB;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPB, 8, 0> EDGCMPB;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTB;
+constexpr regs::RegValue16<8, 0> EDGCMPB;
+}  // namespace vals
 }  // namespace CAPTCOMPB
 
 // Capture Control X Register
@@ -2441,6 +3404,18 @@ template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  1> ONESHOTX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCTRLX, 1,  0> ARMX;
+
+namespace vals {
+constexpr regs::RegValue16<3, 13> CX1CNT;
+constexpr regs::RegValue16<3, 10> CX0CNT;
+constexpr regs::RegValue16<2,  8> CFXWM;
+constexpr regs::RegValue16<1,  7> EDGCNTX_EN;
+constexpr regs::RegValue16<1,  6> INP_SELX;
+constexpr regs::RegValue16<2,  4> EDGX1;
+constexpr regs::RegValue16<2,  2> EDGX0;
+constexpr regs::RegValue16<1,  1> ONESHOTX;
+constexpr regs::RegValue16<1,  0> ARMX;
+}  // namespace vals
 }  // namespace CAPTCTRLX
 
 // Capture Compare X Register
@@ -2449,78 +3424,131 @@ template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CAPTCOMPX), 8, 8> EDGCNTX;
 template <size_t Index>
 constexpr SM_Reg<Index, &PWM_Layout::SM_Layout::CAPTCOMPX, 8, 0> EDGCMPX;
+
+namespace vals {
+constexpr regs::RegValue16<8, 8> EDGCNTX;
+constexpr regs::RegValue16<8, 0> EDGCMPX;
+}  // namespace vals
 }  // namespace CAPTCOMPX
 
 // Capture Value 0 Register
 namespace CVAL0 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0), 16, 0> CAPTVAL0;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL0;
+}  // namespace vals
 }  // namespace CVAL0
 
 // Capture Value 0 Cycle Register
 namespace CVAL0CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL0CYC), 4, 0> CVAL0CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL0CYC;
+}  // namespace vals
 }  // namespace CVAL0CYC
 
 // Capture Value 1 Register
 namespace CVAL1 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1), 16, 0> CAPTVAL1;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL1;
+}  // namespace vals
 }  // namespace CVAL1
 
 // Capture Value 1 Cycle Register
 namespace CVAL1CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL1CYC), 4, 0> CVAL1CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL1CYC;
+}  // namespace vals
 }  // namespace CVAL1CYC
 
 // Capture Value 2 Register
 namespace CVAL2 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2), 16, 0> CAPTVAL2;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL2;
+}  // namespace vals
 }  // namespace CVAL2
 
 // Capture Value 2 Cycle Register
 namespace CVAL2CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL2CYC), 4, 0> CVAL2CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL2CYC;
+}  // namespace vals
 }  // namespace CVAL2CYC
 
 // Capture Value 3 Register
 namespace CVAL3 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3), 16, 0> CAPTVAL3;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL3;
+}  // namespace vals
 }  // namespace CVAL3
 
 // Capture Value 3 Cycle Register
 namespace CVAL3CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL3CYC), 4, 0> CVAL3CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL3CYC;
+}  // namespace vals
 }  // namespace CVAL3CYC
 
 // Capture Value 4 Register
 namespace CVAL4 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4), 16, 0> CAPTVAL4;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL4;
+}  // namespace vals
 }  // namespace CVAL4
 
 // Capture Value 4 Cycle Register
 namespace CVAL4CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL4CYC), 4, 0> CVAL4CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL4CYC;
+}  // namespace vals
 }  // namespace CVAL4CYC
 
 // Capture Value 5 Register
 namespace CVAL5 {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5), 16, 0> CAPTVAL5;
+
+namespace vals {
+constexpr regs::RegValue16<16, 0> CAPTVAL5;
+}  // namespace vals
 }  // namespace CVAL5
 
 // Capture Value 5 Cycle Register
 namespace CVAL5CYC {
 template <size_t Index>
 constexpr SM_Reg<Index, regs::constify(&PWM_Layout::SM_Layout::CVAL5CYC), 4, 0> CVAL5CYC;
+
+namespace vals {
+constexpr regs::RegValue16<4, 0> CVAL5CYC;
+}  // namespace vals
 }  // namespace CVAL5CYC
 
 }  // namespace SM

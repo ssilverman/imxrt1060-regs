@@ -293,6 +293,14 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CTRL, 1,  0> SW_TRIG;   
     // This field is self-clearing.
     // 0b0..No software trigger event generated.
     // 0b1..Software trigger event generated.
+
+namespace vals {
+constexpr regs::RegValue32<1, 16> SYNC_MODE;
+constexpr regs::RegValue32<3, 12> TRIG_PRIORITY;
+constexpr regs::RegValue32<3,  8> TRIG_CHAIN;
+constexpr regs::RegValue32<1,  4> TRIG_MODE;
+constexpr regs::RegValue32<1,  0> SW_TRIG;
+}  // namespace vals
 }  // namespace CTRL
 
 // ETC_TRIG Counter Register
@@ -302,6 +310,11 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::COUNTER, 16, 16> SAMPLE_
 template <size_t Index>
 constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::COUNTER, 16,  0> INIT_DELAY;       // TRIGGER initial delay counter.
     // Initial_delay = (INIT_DELAY+1)*(PRE_DIVIDER+1)*ipg_clk
+
+namespace vals {
+constexpr regs::RegValue32<16, 16> SAMPLE_INTERVAL;
+constexpr regs::RegValue32<16,  0> INIT_DELAY;
+}  // namespace vals
 }  // namespace COUNTER
 
 // ETC_TRIG Chain 0/1 Register
@@ -384,6 +397,17 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_1_0, 4,  0> CSEL0;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
+
+namespace vals {
+constexpr regs::RegValue32<2, 29> IE1;
+constexpr regs::RegValue32<1, 28> B2B1;
+constexpr regs::RegValue32<8, 20> HWTS1;
+constexpr regs::RegValue32<4, 16> CSEL1;
+constexpr regs::RegValue32<2, 13> IE0;
+constexpr regs::RegValue32<1, 12> B2B0;
+constexpr regs::RegValue32<8,  4> HWTS0;
+constexpr regs::RegValue32<4,  0> CSEL0;
+}  // namespace vals
 }  // namespace CHAIN_1_0
 
 // ETC_TRIG Chain 2/3 Register
@@ -466,6 +490,17 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_3_2, 4,  0> CSEL2;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
+
+namespace vals {
+constexpr regs::RegValue32<2, 29> IE3;
+constexpr regs::RegValue32<1, 28> B2B3;
+constexpr regs::RegValue32<8, 20> HWTS3;
+constexpr regs::RegValue32<4, 16> CSEL3;
+constexpr regs::RegValue32<2, 13> IE2;
+constexpr regs::RegValue32<1, 12> B2B2;
+constexpr regs::RegValue32<8,  4> HWTS2;
+constexpr regs::RegValue32<4,  0> CSEL2;
+}  // namespace vals
 }  // namespace CHAIN_3_2
 
 // ETC_TRIG Chain 4/5 Register
@@ -548,6 +583,17 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_5_4, 4,  0> CSEL4;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
+
+namespace vals {
+constexpr regs::RegValue32<2, 29> IE5;
+constexpr regs::RegValue32<1, 28> B2B5;
+constexpr regs::RegValue32<8, 20> HWTS5;
+constexpr regs::RegValue32<4, 16> CSEL5;
+constexpr regs::RegValue32<2, 13> IE4;
+constexpr regs::RegValue32<1, 12> B2B4;
+constexpr regs::RegValue32<8,  4> HWTS4;
+constexpr regs::RegValue32<4,  0> CSEL4;
+}  // namespace vals
 }  // namespace CHAIN_5_4
 
 // ETC_TRIG Chain 6/7 Register
@@ -630,6 +676,17 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::CHAIN_7_6, 4,  0> CSEL6;
     // 0b1101..ADC Channel 13 selected.
     // 0b1110..ADC Channel 14 selected.
     // 0b1111..ADC Channel 15 selected.
+
+namespace vals {
+constexpr regs::RegValue32<2, 29> IE7;
+constexpr regs::RegValue32<1, 28> B2B7;
+constexpr regs::RegValue32<8, 20> HWTS7;
+constexpr regs::RegValue32<4, 16> CSEL7;
+constexpr regs::RegValue32<2, 13> IE6;
+constexpr regs::RegValue32<1, 12> B2B6;
+constexpr regs::RegValue32<8,  4> HWTS6;
+constexpr regs::RegValue32<4,  0> CSEL6;
+}  // namespace vals
 }  // namespace CHAIN_7_6
 
 // ETC_TRIG Result Data 1/0 Register
@@ -640,6 +697,11 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_1_0, 12, 16> DATA
 template <size_t Index>
 constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_1_0, 12,  0> DATA0;  // Result DATA0
     // The sign bit from ADC result FIFO is ignored by ETC_TRIG result, so only 12-bit unsigned results is supported by ADC_ETC module
+
+namespace vals {
+constexpr regs::RegValue32<12, 16> DATA1;
+constexpr regs::RegValue32<12,  0> DATA0;
+}  // namespace vals
 }  // namespace RESULT_1_0
 
 // ETC_TRIG Result Data 3/2 Register
@@ -650,6 +712,11 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_3_2, 12, 16> DATA
 template <size_t Index>
 constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_3_2, 12,  0> DATA2;  // Result DATA2
     // The sign bit from ADC result FIFO is ignored by ETC_TRIG result, so only 12-bit unsigned results is supported by ADC_ETC module
+
+namespace vals {
+constexpr regs::RegValue32<12, 16> DATA3;
+constexpr regs::RegValue32<12,  0> DATA2;
+}  // namespace vals
 }  // namespace RESULT_3_2
 
 // ETC_TRIG Result Data 5/4 Register
@@ -660,6 +727,11 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_5_4, 12, 16> DATA
 template <size_t Index>
 constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_5_4, 12,  0> DATA4;  // Result DATA4
     // The sign bit from ADC result FIFO is ignored by ETC_TRIG result, so only 12-bit unsigned results is supported by ADC_ETC module
+
+namespace vals {
+constexpr regs::RegValue32<12, 16> DATA5;
+constexpr regs::RegValue32<12,  0> DATA4;
+}  // namespace vals
 }  // namespace RESULT_5_4
 
 // ETC_TRIG Result Data 7/6 Register
@@ -670,6 +742,11 @@ constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_7_6, 12, 16> DATA
 template <size_t Index>
 constexpr TRIG_Reg<Index, &ADC_ETC_Layout::TRIG_Layout::RESULT_7_6, 12,  0> DATA6;  // Result DATA6
     // The sign bit from ADC result FIFO is ignored by ETC_TRIG result, so only 12-bit unsigned results is supported by ADC_ETC module
+
+namespace vals {
+constexpr regs::RegValue32<12, 16> DATA7;
+constexpr regs::RegValue32<12,  0> DATA6;
+}  // namespace vals
 }  // namespace RESULT_7_6
 
 }  // namespace TRIG

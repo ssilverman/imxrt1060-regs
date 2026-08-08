@@ -87,6 +87,11 @@ constexpr HC_Reg<Index, 5, 0> ADCH;  // Input Channel Select
     // 0b11011..Reserved.
     // 0b11100-0b11110..Reserved.
     // 0b11111..Conversion Disabled. Hardware Triggers will not initiate any conversion.
+
+namespace vals {
+constexpr regs::RegValue32<1, 7> AIEN;
+constexpr regs::RegValue32<5, 0> ADCH;
+}  // namespace vals
 }  // namespace HC
 
 // Status register for HW triggers
@@ -105,6 +110,10 @@ constexpr ADC1_Reg<&ADC_Layout::HS, 1, 0> COCO0;  // Conversion Complete Flag
 namespace R {
 template <size_t Index>
 constexpr R_Reg<Index, 12, 0> CDATA;  // Data (result of an ADC conversion)
+
+namespace vals {
+constexpr regs::RegValue32<12, 0> CDATA;
+}  // namespace vals
 }  // namespace R
 
 // Configuration register
@@ -243,6 +252,11 @@ template <size_t Index>
 constexpr HC_Reg<Index, 1, 7> AIEN;
 template <size_t Index>
 constexpr HC_Reg<Index, 5, 0> ADCH;
+
+namespace vals {
+constexpr regs::RegValue32<1, 7> AIEN;
+constexpr regs::RegValue32<5, 0> ADCH;
+}  // namespace vals
 }  // namespace HC
 
 // ADC2 Status register for HW triggers
@@ -261,6 +275,10 @@ constexpr ADC2_Reg<&ADC_Layout::HS, 1, 0> COCO0;
 namespace R {
 template <size_t Index>
 constexpr R_Reg<Index, 12, 0> CDATA;
+
+namespace vals {
+constexpr regs::RegValue32<12, 0> CDATA;
+}  // namespace vals
 }  // namespace R
 
 // ADC2 Configuration register

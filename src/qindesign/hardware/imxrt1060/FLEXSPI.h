@@ -340,12 +340,24 @@ template <size_t Index>
 constexpr AHBRXBUFCR0_Reg<Index, 4, 16> MSTRID;      // This AHB RX Buffer is assigned according to AHB Master with ID (MSTR_ID).
 template <size_t Index>
 constexpr AHBRXBUFCR0_Reg<Index, 8,  0> BUFSZ;       // AHB RX Buffer Size in 64 bits.
+
+namespace vals {
+constexpr regs::RegValue32<1, 31> PREFETCHEN;
+constexpr regs::RegValue32<1, 30> REGIONEN;
+constexpr regs::RegValue32<2, 24> PRIORITY;
+constexpr regs::RegValue32<4, 16> MSTRID;
+constexpr regs::RegValue32<8,  0> BUFSZ;
+}  // namespace vals
 }  // namespace AHBRXBUFCR0
 
 // Flash Control Register 0
 namespace FLSHCR0 {
 template <size_t Index>
 constexpr FLSHCR0_Reg<Index, 23, 0> FLSHSZ;  // Flash Size in KByte.
+
+namespace vals {
+constexpr regs::RegValue32<23, 0> FLSHSZ;
+}  // namespace vals
 }  // namespace FLSHCR0
 
 // Flash Control Register 1
@@ -367,6 +379,15 @@ template <size_t Index>
 constexpr FLSHCR1_Reg<Index,  5,  5> TCSH;            // Serial Flash CS Hold time.
 template <size_t Index>
 constexpr FLSHCR1_Reg<Index,  5,  0> TCSS;            // Serial Flash CS setup time.
+
+namespace vals {
+constexpr regs::RegValue32<16, 16> CSINTERVAL;
+constexpr regs::RegValue32< 1, 15> CSINTERVALUNIT;
+constexpr regs::RegValue32< 4, 11> CAS;
+constexpr regs::RegValue32< 1, 10> WA;
+constexpr regs::RegValue32< 5,  5> TCSH;
+constexpr regs::RegValue32< 5,  0> TCSS;
+}  // namespace vals
 }  // namespace FLSHCR1
 
 // Flash Control Register 2
@@ -396,6 +417,16 @@ template <size_t Index>
 constexpr FLSHCR2_Reg<Index,  3,  5> ARDSEQNUM;    // Sequence Number for AHB Read triggered Command in LUT.
 template <size_t Index>
 constexpr FLSHCR2_Reg<Index,  4,  0> ARDSEQID;     // Sequence Index for AHB Read triggered Command in LUT.
+
+namespace vals {
+constexpr regs::RegValue32< 1, 31> CLRINSTRPTR;
+constexpr regs::RegValue32< 3, 28> AWRWAITUNIT;
+constexpr regs::RegValue32<12, 16> AWRWAIT;
+constexpr regs::RegValue32< 3, 13> AWRSEQNUM;
+constexpr regs::RegValue32< 4,  8> AWRSEQID;
+constexpr regs::RegValue32< 3,  5> ARDSEQNUM;
+constexpr regs::RegValue32< 4,  0> ARDSEQID;
+}  // namespace vals
 }  // namespace FLSHCR2
 
 // Flash Control Register 4
@@ -480,6 +511,15 @@ constexpr DLLCR_Reg<Index, 1,  1> DLLRESET;      // Software could force a reset
     //     software need to clear this bit after set this bit (no delay limitation).
 template <size_t Index>
 constexpr DLLCR_Reg<Index, 1,  0> DLLEN;         // DLL calibration enable.
+
+namespace vals {
+constexpr regs::RegValue32<2, 15> REFPHASEGAP;
+constexpr regs::RegValue32<6,  9> OVRDVAL;
+constexpr regs::RegValue32<1,  8> OVRDEN;
+constexpr regs::RegValue32<4,  3> SLVDLYTARGET;
+constexpr regs::RegValue32<1,  1> DLLRESET;
+constexpr regs::RegValue32<1,  0> DLLEN;
+}  // namespace vals
 }  // namespace DLLCR
 
 // Status Register 0
@@ -563,12 +603,20 @@ constexpr FLEXSPI_Reg<&FLEXSPI_Layout::IPTXFSTS,  8,  0> FILL;    // Fill level 
 namespace RFDR {
 template <size_t Index>
 constexpr RFDR_Reg<Index, 32, 0> RXDATA;  // RX Data
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> RXDATA;
+}  // namespace vals
 }  // namespace RFDR
 
 // IP TX FIFO Data Register 0..IP TX FIFO Data Register 31
 namespace TFDR {
 template <size_t Index>
 constexpr TFDR_Reg<Index, 32, 0, 0x0, true> TXDATA;  // TX Data
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> TXDATA;
+}  // namespace vals
 }  // namespace TFDR
 
 // LUT 0..LUT 63
@@ -585,6 +633,15 @@ template <size_t Index>
 constexpr LUT_Reg<Index, 2,  8> NUM_PADS0;  // NUM_PADS0
 template <size_t Index>
 constexpr LUT_Reg<Index, 8,  0> OPERAND0;   // OPERAND0
+
+namespace vals {
+constexpr regs::RegValue32<6, 26> OPCODE1;
+constexpr regs::RegValue32<2, 24> NUM_PADS1;
+constexpr regs::RegValue32<8, 16> OPERAND1;
+constexpr regs::RegValue32<6, 10> OPCODE0;
+constexpr regs::RegValue32<2,  8> NUM_PADS0;
+constexpr regs::RegValue32<8,  0> OPERAND0;
+}  // namespace vals
 }  // namespace LUT
 
 }  // namespace FLEXSPI
@@ -758,12 +815,25 @@ template <size_t Index>
 constexpr AHBRXBUFCR0_Reg<Index, 4, 16> MSTRID;
 template <size_t Index>
 constexpr AHBRXBUFCR0_Reg<Index, 8,  0> BUFSZ;
+
+namespace vals {
+constexpr regs::RegValue32<1, 31> PREFETCHEN;
+constexpr regs::RegValue32<1, 30> REGIONEN;
+constexpr regs::RegValue32<2, 24> PRIORITY;
+    // 7 is the highest priority, 0 the lowest.
+constexpr regs::RegValue32<4, 16> MSTRID;
+constexpr regs::RegValue32<8,  0> BUFSZ;
+}  // namespace vals
 }  // namespace AHBRXBUFCR0
 
 // Flash Control Register 0
 namespace FLSHCR0 {
 template <size_t Index>
 constexpr FLSHCR0_Reg<Index, 23,  0> FLSHSZ;
+
+namespace vals {
+constexpr regs::RegValue32<23, 0> FLSHSZ;
+}  // namespace vals
 }  // namespace FLSHCR0
 
 // Flash Control Register 1
@@ -780,6 +850,15 @@ template <size_t Index>
 constexpr FLSHCR1_Reg<Index, 5,  5> TCSH;
 template <size_t Index>
 constexpr FLSHCR1_Reg<Index, 5,  0> TCSS;
+
+namespace vals {
+constexpr regs::RegValue32<16, 16> CSINTERVAL;
+constexpr regs::RegValue32< 1, 15> CSINTERVALUNIT;
+constexpr regs::RegValue32< 4, 11> CAS;
+constexpr regs::RegValue32< 1, 10> WA;
+constexpr regs::RegValue32< 5,  5> TCSH;
+constexpr regs::RegValue32< 5,  0> TCSS;
+}  // namespace vals
 }  // namespace FLSHCR1
 
 // Flash Control Register 2
@@ -798,6 +877,16 @@ template <size_t Index>
 constexpr FLSHCR2_Reg<Index, 3,  5> ARDSEQNUM;
 template <size_t Index>
 constexpr FLSHCR2_Reg<Index, 4,  0> ARDSEQID;
+
+namespace vals {
+constexpr regs::RegValue32< 1, 31> CLRINSTRPTR;
+constexpr regs::RegValue32< 3, 28> AWRWAITUNIT;
+constexpr regs::RegValue32<12, 16> AWRWAIT;
+constexpr regs::RegValue32< 3, 13> AWRSEQNUM;
+constexpr regs::RegValue32< 4,  8> AWRSEQID;
+constexpr regs::RegValue32< 3,  5> ARDSEQNUM;
+constexpr regs::RegValue32< 4,  0> ARDSEQID;
+}  // namespace vals
 }  // namespace FLSHCR2
 
 // Flash Control Register 4
@@ -856,6 +945,15 @@ template <size_t Index>
 constexpr DLLCR_Reg<Index, 1,  1> DLLRESET;
 template <size_t Index>
 constexpr DLLCR_Reg<Index, 1,  0> DLLEN;
+
+namespace vals {
+constexpr regs::RegValue32<2, 15> REFPHASEGAP;
+constexpr regs::RegValue32<6,  9> OVRDVAL;
+constexpr regs::RegValue32<1,  8> OVRDEN;
+constexpr regs::RegValue32<4,  3> SLVDLYTARGET;
+constexpr regs::RegValue32<1,  1> DLLRESET;
+constexpr regs::RegValue32<1,  0> DLLEN;
+}  // namespace vals
 }  // namespace DLLCR
 
 // Status Register 0
@@ -908,12 +1006,20 @@ constexpr FLEXSPI2_Reg<&FLEXSPI_Layout::IPTXFSTS, 8,  0> FILL;
 namespace RFDR {
 template <size_t Index>
 constexpr RFDR_Reg<Index, 32, 0> RXDATA;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> RXDATA;
+}  // namespace vals
 }  // namespace RFDR
 
 // IP TX FIFO Data Register 0..IP TX FIFO Data Register 31
 namespace TFDR {
 template <size_t Index>
 constexpr TFDR_Reg<Index, 32, 0, 0x0, true> TXDATA;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> TXDATA;
+}  // namespace vals
 }  // namespace TFDR
 
 // LUT 0..LUT 63
@@ -930,6 +1036,15 @@ template <size_t Index>
 constexpr LUT_Reg<Index, 2,  8> NUM_PADS0;
 template <size_t Index>
 constexpr LUT_Reg<Index, 8,  0> OPERAND0;
+
+namespace vals {
+constexpr regs::RegValue32<6, 26> OPCODE1;
+constexpr regs::RegValue32<2, 24> NUM_PADS1;
+constexpr regs::RegValue32<8, 16> OPERAND1;
+constexpr regs::RegValue32<6, 10> OPCODE0;
+constexpr regs::RegValue32<2,  8> NUM_PADS0;
+constexpr regs::RegValue32<8,  0> OPERAND0;
+}  // namespace vals
 }  // namespace LUT
 
 }  // namespace FLEXSPI2

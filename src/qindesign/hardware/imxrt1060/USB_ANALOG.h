@@ -100,6 +100,13 @@ constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::VBUS_DETECT, 
     // 0b101..4.5V
     // 0b110..4.6V
     // 0b111..4.7V
+
+namespace vals {
+constexpr regs::RegValue32<1, 27> CHARGE_VBUS;
+constexpr regs::RegValue32<1, 26> DISCHARGE_VBUS;
+constexpr regs::RegValue32<1, 20> VBUSVALID_PWRUP_CMPS;
+constexpr regs::RegValue32<3,  0> VBUSVALID_THRESH;
+}  // namespace vals
 }  // namespace VBUS_DETECT
 
 // USB VBUS Detect Register
@@ -176,6 +183,12 @@ template <size_t Index>
 constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::CHRG_DETECT, 1, 18> CHK_CONTACT;  // Check the contact of USB plug
     // 0b0..Do not check the contact of USB plug.
     // 0b1..Check whether the USB plug has been in contact with each other
+
+namespace vals {
+constexpr regs::RegValue32<1, 20> EN_B;
+constexpr regs::RegValue32<1, 19> CHK_CHRG_B;
+constexpr regs::RegValue32<1, 18> CHK_CONTACT;
+}  // namespace vals
 }  // namespace CHRG_DETECT
 
 // USB Charger Detect Register
@@ -236,6 +249,13 @@ template <size_t Index>
 constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::VBUS_DETECT_STAT, 1, 1> BVALID;      // Indicates VBus is valid for a B-peripheral
 template <size_t Index>
 constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::VBUS_DETECT_STAT, 1, 0> SESSEND;     // Session End for USB OTG
+
+namespace vals {
+constexpr regs::RegValue32<1, 3> VBUS_VALID;
+constexpr regs::RegValue32<1, 2> AVALID;
+constexpr regs::RegValue32<1, 1> BVALID;
+constexpr regs::RegValue32<1, 0> SESSEND;
+}  // namespace vals
 }  // namespace VBUS_DETECT_STAT
 
 // USB Charger Detect Status Register
@@ -252,12 +272,23 @@ template <size_t Index>
 constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::CHRG_DETECT_STAT, 1, 0> PLUG_CONTACT;   // State of the USB plug contact detector.
     // 0b0..The USB plug has not made contact.
     // 0b1..The USB plug has made good contact.
+
+namespace vals {
+constexpr regs::RegValue32<1, 3> DP_STATE;
+constexpr regs::RegValue32<1, 2> DM_STATE;
+constexpr regs::RegValue32<1, 1> CHRG_DETECTED;
+constexpr regs::RegValue32<1, 0> PLUG_CONTACT;
+}  // namespace vals
 }  // namespace CHRG_DETECT_STAT
 
 // USB Loopback Test Register
 namespace LOOPBACK {
 template <size_t Index>
 constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::LOOPBACK, 1, 0> UTMI_TESTSTART;  // Setting this bit can enable 1
+
+namespace vals {
+constexpr regs::RegValue32<1, 0> UTMI_TESTSTART;
+}  // namespace vals
 }  // namespace LOOPBACK
 
 // USB Loopback Test Register
@@ -287,6 +318,12 @@ constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::MISC, 1,  1> 
 template <size_t Index>
 constexpr INSTANCE_Reg<Index, &USB_ANALOG_Layout::INSTANCE_Layout::MISC, 1,  0> HS_USE_EXTERNAL_R;  // Use external resistor to generate the current bias for the high speed transmitter
     // This bit should not be changed unless recommended by NXP.
+
+namespace vals {
+constexpr regs::RegValue32<1, 30> EN_CLK_UTMI;
+constexpr regs::RegValue32<1,  1> EN_DEGLITCH;
+constexpr regs::RegValue32<1,  0> HS_USE_EXTERNAL_R;
+}  // namespace vals
 }  // namespace MISC
 
 // USB Misc Register

@@ -311,6 +311,15 @@ constexpr SHIFTCTL_Reg<Index, 3,  0> SMOD;    // Shifter Mode
     // 0b101..Match Continuous mode. Shifter data is continuously compared to SHIFTBUF contents.
     // 0b110..State mode. SHIFTBUF contents are used for storing programmable state attributes.
     // 0b111..Logic mode. SHIFTBUF contents are used for implementing programmable logic look up table.
+
+namespace vals {
+constexpr regs::RegValue32<3, 24> TIMSEL;
+constexpr regs::RegValue32<1, 23> TIMPOL;
+constexpr regs::RegValue32<2, 16> PINCFG;
+constexpr regs::RegValue32<5,  8> PINSEL;
+constexpr regs::RegValue32<1,  7> PINPOL;
+constexpr regs::RegValue32<3,  0> SMOD;
+}  // namespace vals
 }  // namespace SHIFTCTL
 
 // Shifter Configuration N Register
@@ -340,30 +349,53 @@ constexpr SHIFTCFG_Reg<Index, 2,  0> SSTART;  // Shifter Start bit
     //     error flag if start bit is not 0
     // 0b11..Transmitter outputs start bit value 1 before loading data on first shift, receiver/match store sets
     //     error flag if start bit is not 1
+
+namespace vals {
+constexpr regs::RegValue32<5, 16> PWIDTH;
+constexpr regs::RegValue32<1,  8> INSRC;
+constexpr regs::RegValue32<2,  4> SSTOP;
+constexpr regs::RegValue32<2,  0> SSTART;
+}  // namespace vals
 }  // namespace SHIFTCFG
 
 // Shifter Buffer N Register
 namespace SHIFTBUF {
 template <size_t Index>
 constexpr SHIFTBUF_Reg<Index, 32, 0> SHIFTBUF;  // Shift Buffer
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUF;
+}  // namespace vals
 }  // namespace SHIFTBUF
 
 // Shifter Buffer N Bit Swapped Register
 namespace SHIFTBUFBIS {
 template <size_t Index>
 constexpr SHIFTBUFBIS_Reg<Index, 32, 0> SHIFTBUFBIS;  // Shift Buffer
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBIS;
+}  // namespace vals
 }  // namespace SHIFTBUFBIS
 
 // Shifter Buffer N Byte Swapped Register
 namespace SHIFTBUFBYS {
 template <size_t Index>
 constexpr SHIFTBUFBYS_Reg<Index, 32, 0> SHIFTBUFBYS;  // Shift Buffer
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBYS;
+}  // namespace vals
 }  // namespace SHIFTBUFBYS
 
 // Shifter Buffer N Bit Byte Swapped Register
 namespace SHIFTBUFBBS {
 template <size_t Index>
 constexpr SHIFTBUFBBS_Reg<Index, 32, 0> SHIFTBUFBBS;  // Shift Buffer
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBBS;
+}  // namespace vals
 }  // namespace SHIFTBUFBBS
 
 // Timer Control N Register
@@ -396,6 +428,16 @@ constexpr TIMCTL_Reg<Index, 2,  0> TIMOD;   // Timer Mode
     // 0b01..Dual 8-bit counters baud mode.
     // 0b10..Dual 8-bit counters PWM high mode.
     // 0b11..Single 16-bit counter mode.
+
+namespace vals {
+constexpr regs::RegValue32<6, 24> TRGSEL;
+constexpr regs::RegValue32<1, 23> TRGPOL;
+constexpr regs::RegValue32<1, 22> TRGSRC;
+constexpr regs::RegValue32<2, 16> PINCFG;
+constexpr regs::RegValue32<5,  8> PINSEL;
+constexpr regs::RegValue32<1,  7> PINPOL;
+constexpr regs::RegValue32<2,  0> TIMOD;
+}
 }  // namespace TIMCTL
 
 // Timer Configuration N Register
@@ -452,30 +494,56 @@ template <size_t Index>
 constexpr TIMCFG_Reg<Index, 1,  1> TSTART;  // Timer Start Bit
     // 0b0..Start bit disabled
     // 0b1..Start bit enabled
+
+namespace vals {
+constexpr regs::RegValue32<2, 24> TIMOUT;
+constexpr regs::RegValue32<2, 20> TIMDEC;
+constexpr regs::RegValue32<3, 16> TIMRST;
+constexpr regs::RegValue32<3, 12> TIMDIS;
+constexpr regs::RegValue32<3,  8> TIMENA;
+constexpr regs::RegValue32<2,  4> TSTOP;
+constexpr regs::RegValue32<1,  1> TSTART;
+}  // namespace vals
 }  // namespace TIMCFG
 
 // Timer Compare N Register
 namespace TIMCMP {
 template <size_t Index>
 constexpr TIMCMP_Reg<Index, 16, 0> CMP;  // Timer Compare Value
+
+namespace vals {
+constexpr regs::RegValue32<16, 0> CMP;
+}  // namespace vals
 }  // namespace TIMCMP
 
 // Shifter Buffer N Nibble Byte Swapped Register
 namespace SHIFTBUFNBS {
 template <size_t Index>
 constexpr SHIFTBUFNBS_Reg<Index, 32, 0> SHIFTBUFNBS;  // Shift Buffer
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFNBS;
+}  // namespace vals
 }  // namespace SHIFTBUFNBS
 
 // Shifter Buffer N Half Word Swapped Register
 namespace SHIFTBUFHWS {
 template <size_t Index>
 constexpr SHIFTBUFHWS_Reg<Index, 32, 0> SHIFTBUFHWS;  // Shift Buffer
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFHWS;
+}  // namespace vals
 }  // namespace SHIFTBUFHWS
 
 // Shifter Buffer N Nibble Swapped Register
 namespace SHIFTBUFNIS {
 template <size_t Index>
 constexpr SHIFTBUFNIS_Reg<Index, 32, 0> SHIFTBUFNIS;  // Shift Buffer
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFNIS;
+}  // namespace vals
 }  // namespace SHIFTBUFNIS
 
 }  // namespace FLEXIO1
@@ -667,6 +735,15 @@ template <size_t Index>
 constexpr SHIFTCTL_Reg<Index, 1,  7> PINPOL;
 template <size_t Index>
 constexpr SHIFTCTL_Reg<Index, 3,  0> SMOD;
+
+namespace vals {
+constexpr regs::RegValue32<3, 24> TIMSEL;
+constexpr regs::RegValue32<1, 23> TIMPOL;
+constexpr regs::RegValue32<2, 16> PINCFG;
+constexpr regs::RegValue32<5,  8> PINSEL;
+constexpr regs::RegValue32<1,  7> PINPOL;
+constexpr regs::RegValue32<3,  0> SMOD;
+}  // namespace vals
 }  // namespace SHIFTCTL
 
 // Shifter Configuration N Register
@@ -679,30 +756,53 @@ template <size_t Index>
 constexpr SHIFTCFG_Reg<Index, 2,  4> SSTOP;
 template <size_t Index>
 constexpr SHIFTCFG_Reg<Index, 2,  0> SSTART;
+
+namespace vals {
+constexpr regs::RegValue32<5, 16> PWIDTH;
+constexpr regs::RegValue32<1,  8> INSRC;
+constexpr regs::RegValue32<2,  4> SSTOP;
+constexpr regs::RegValue32<2,  0> SSTART;
+}  // namespace vals
 }  // namespace SHIFTCFG
 
 // Shifter Buffer N Register
 namespace SHIFTBUF {
 template <size_t Index>
 constexpr SHIFTBUF_Reg<Index, 32, 0> SHIFTBUF;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUF;
+}  // namespace vals
 }  // namespace SHIFTBUF
 
 // Shifter Buffer N Bit Swapped Register
 namespace SHIFTBUFBIS {
 template <size_t Index>
 constexpr SHIFTBUFBIS_Reg<Index, 32, 0> SHIFTBUFBIS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBIS;
+}  // namespace vals
 }  // namespace SHIFTBUFBIS
 
 // Shifter Buffer N Byte Swapped Register
 namespace SHIFTBUFBYS {
 template <size_t Index>
 constexpr SHIFTBUFBYS_Reg<Index, 32, 0> SHIFTBUFBYS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBYS;
+}  // namespace vals
 }  // namespace SHIFTBUFBYS
 
 // Shifter Buffer N Bit Byte Swapped Register
 namespace SHIFTBUFBBS {
 template <size_t Index>
 constexpr SHIFTBUFBBS_Reg<Index, 32, 0> SHIFTBUFBBS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBBS;
+}  // namespace vals
 }  // namespace SHIFTBUFBBS
 
 // Timer Control N Register
@@ -721,6 +821,16 @@ template <size_t Index>
 constexpr TIMCTL_Reg<Index, 1,  7> PINPOL;
 template <size_t Index>
 constexpr TIMCTL_Reg<Index, 2,  0> TIMOD;
+
+namespace vals {
+constexpr regs::RegValue32<6, 24> TRGSEL;
+constexpr regs::RegValue32<1, 23> TRGPOL;
+constexpr regs::RegValue32<1, 22> TRGSRC;
+constexpr regs::RegValue32<2, 16> PINCFG;
+constexpr regs::RegValue32<5,  8> PINSEL;
+constexpr regs::RegValue32<1,  7> PINPOL;
+constexpr regs::RegValue32<2,  0> TIMOD;
+}
 }  // namespace TIMCTL
 
 // Timer Configuration N Register
@@ -739,30 +849,56 @@ template <size_t Index>
 constexpr TIMCFG_Reg<Index, 2,  4> TSTOP;
 template <size_t Index>
 constexpr TIMCFG_Reg<Index, 1,  1> TSTART;
+
+namespace vals {
+constexpr regs::RegValue32<2, 24> TIMOUT;
+constexpr regs::RegValue32<2, 20> TIMDEC;
+constexpr regs::RegValue32<3, 16> TIMRST;
+constexpr regs::RegValue32<3, 12> TIMDIS;
+constexpr regs::RegValue32<3,  8> TIMENA;
+constexpr regs::RegValue32<2,  4> TSTOP;
+constexpr regs::RegValue32<1,  1> TSTART;
+}  // namespace vals
 }  // namespace TIMCFG
 
 // Timer Compare N Register
 namespace TIMCMP {
 template <size_t Index>
 constexpr TIMCMP_Reg<Index, 16, 0> CMP;
+
+namespace vals {
+constexpr regs::RegValue32<16, 0> CMP;
+}  // namespace vals
 }  // namespace TIMCMP
 
 // Shifter Buffer N Nibble Byte Swapped Register
 namespace SHIFTBUFNBS {
 template <size_t Index>
 constexpr SHIFTBUFNBS_Reg<Index, 32, 0> SHIFTBUFNBS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFNBS;
+}  // namespace vals
 }  // namespace SHIFTBUFNBS
 
 // Shifter Buffer N Half Word Swapped Register
 namespace SHIFTBUFHWS {
 template <size_t Index>
 constexpr SHIFTBUFHWS_Reg<Index, 32, 0> SHIFTBUFHWS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFHWS;
+}  // namespace vals
 }  // namespace SHIFTBUFHWS
 
 // Shifter Buffer N Nibble Swapped Register
 namespace SHIFTBUFNIS {
 template <size_t Index>
 constexpr SHIFTBUFNIS_Reg<Index, 32, 0> SHIFTBUFNIS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFNIS;
+}  // namespace vals
 }  // namespace SHIFTBUFNIS
 
 }  // namespace FLEXIO2
@@ -954,6 +1090,15 @@ template <size_t Index>
 constexpr SHIFTCTL_Reg<Index, 1,  7> PINPOL;
 template <size_t Index>
 constexpr SHIFTCTL_Reg<Index, 3,  0> SMOD;
+
+namespace vals {
+constexpr regs::RegValue32<3, 24> TIMSEL;
+constexpr regs::RegValue32<1, 23> TIMPOL;
+constexpr regs::RegValue32<2, 16> PINCFG;
+constexpr regs::RegValue32<5,  8> PINSEL;
+constexpr regs::RegValue32<1,  7> PINPOL;
+constexpr regs::RegValue32<3,  0> SMOD;
+}  // namespace vals
 }  // namespace SHIFTCTL
 
 // Shifter Configuration N Register
@@ -966,30 +1111,53 @@ template <size_t Index>
 constexpr SHIFTCFG_Reg<Index, 2,  4> SSTOP;
 template <size_t Index>
 constexpr SHIFTCFG_Reg<Index, 2,  0> SSTART;
+
+namespace vals {
+constexpr regs::RegValue32<5, 16> PWIDTH;
+constexpr regs::RegValue32<1,  8> INSRC;
+constexpr regs::RegValue32<2,  4> SSTOP;
+constexpr regs::RegValue32<2,  0> SSTART;
+}  // namespace vals
 }  // namespace SHIFTCFG
 
 // Shifter Buffer N Register
 namespace SHIFTBUF {
 template <size_t Index>
 constexpr SHIFTBUF_Reg<Index, 32, 0> SHIFTBUF;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUF;
+}  // namespace vals
 }  // namespace SHIFTBUF
 
 // Shifter Buffer N Bit Swapped Register
 namespace SHIFTBUFBIS {
 template <size_t Index>
 constexpr SHIFTBUFBIS_Reg<Index, 32, 0> SHIFTBUFBIS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBIS;
+}  // namespace vals
 }  // namespace SHIFTBUFBIS
 
 // Shifter Buffer N Byte Swapped Register
 namespace SHIFTBUFBYS {
 template <size_t Index>
 constexpr SHIFTBUFBYS_Reg<Index, 32, 0> SHIFTBUFBYS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBYS;
+}  // namespace vals
 }  // namespace SHIFTBUFBYS
 
 // Shifter Buffer N Bit Byte Swapped Register
 namespace SHIFTBUFBBS {
 template <size_t Index>
 constexpr SHIFTBUFBBS_Reg<Index, 32, 0> SHIFTBUFBBS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFBBS;
+}  // namespace vals
 }  // namespace SHIFTBUFBBS
 
 // Timer Control N Register
@@ -1008,6 +1176,16 @@ template <size_t Index>
 constexpr TIMCTL_Reg<Index, 1,  7> PINPOL;
 template <size_t Index>
 constexpr TIMCTL_Reg<Index, 2,  0> TIMOD;
+
+namespace vals {
+constexpr regs::RegValue32<6, 24> TRGSEL;
+constexpr regs::RegValue32<1, 23> TRGPOL;
+constexpr regs::RegValue32<1, 22> TRGSRC;
+constexpr regs::RegValue32<2, 16> PINCFG;
+constexpr regs::RegValue32<5,  8> PINSEL;
+constexpr regs::RegValue32<1,  7> PINPOL;
+constexpr regs::RegValue32<2,  0> TIMOD;
+}
 }  // namespace TIMCTL
 
 // Timer Configuration N Register
@@ -1026,30 +1204,56 @@ template <size_t Index>
 constexpr TIMCFG_Reg<Index, 2,  4> TSTOP;
 template <size_t Index>
 constexpr TIMCFG_Reg<Index, 1,  1> TSTART;
+
+namespace vals {
+constexpr regs::RegValue32<2, 24> TIMOUT;
+constexpr regs::RegValue32<2, 20> TIMDEC;
+constexpr regs::RegValue32<3, 16> TIMRST;
+constexpr regs::RegValue32<3, 12> TIMDIS;
+constexpr regs::RegValue32<3,  8> TIMENA;
+constexpr regs::RegValue32<2,  4> TSTOP;
+constexpr regs::RegValue32<1,  1> TSTART;
+}  // namespace vals
 }  // namespace TIMCFG
 
 // Timer Compare N Register
 namespace TIMCMP {
 template <size_t Index>
 constexpr TIMCMP_Reg<Index, 16, 0> CMP;
+
+namespace vals {
+constexpr regs::RegValue32<16, 0> CMP;
+}  // namespace vals
 }  // namespace TIMCMP
 
 // Shifter Buffer N Nibble Byte Swapped Register
 namespace SHIFTBUFNBS {
 template <size_t Index>
 constexpr SHIFTBUFNBS_Reg<Index, 32, 0> SHIFTBUFNBS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFNBS;
+}  // namespace vals
 }  // namespace SHIFTBUFNBS
 
 // Shifter Buffer N Half Word Swapped Register
 namespace SHIFTBUFHWS {
 template <size_t Index>
 constexpr SHIFTBUFHWS_Reg<Index, 32, 0> SHIFTBUFHWS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFHWS;
+}  // namespace vals
 }  // namespace SHIFTBUFHWS
 
 // Shifter Buffer N Nibble Swapped Register
 namespace SHIFTBUFNIS {
 template <size_t Index>
 constexpr SHIFTBUFNIS_Reg<Index, 32, 0> SHIFTBUFNIS;
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SHIFTBUFNIS;
+}  // namespace vals
 }  // namespace SHIFTBUFNIS
 
 }  // namespace FLEXIO3

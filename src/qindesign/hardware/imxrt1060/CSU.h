@@ -131,6 +131,27 @@ template <size_t Index>
 constexpr CSL_Reg<Index, 1,  0> SUR_S2;   // Secure user read access control for the second slave
     // 0b0..The secure user read access is disabled for the second slave.
     // 0b1..The secure user read access is enabled for the second slave.
+
+namespace vals {
+constexpr regs::RegValue32<1, 24> LOCK_S1;
+constexpr regs::RegValue32<1, 23> NSW_S1;
+constexpr regs::RegValue32<1, 22> NUW_S1;
+constexpr regs::RegValue32<1, 21> SSW_S1;
+constexpr regs::RegValue32<1, 20> SUW_S1;
+constexpr regs::RegValue32<1, 19> NSR_S1;
+constexpr regs::RegValue32<1, 18> NUR_S1;
+constexpr regs::RegValue32<1, 17> SSR_S1;
+constexpr regs::RegValue32<1, 16> SUR_S1;
+constexpr regs::RegValue32<1,  8> LOCK_S2;
+constexpr regs::RegValue32<1,  7> NSW_S2;
+constexpr regs::RegValue32<1,  6> NUW_S2;
+constexpr regs::RegValue32<1,  5> SSW_S2;
+constexpr regs::RegValue32<1,  4> SUW_S2;
+constexpr regs::RegValue32<1,  3> NSR_S2;
+constexpr regs::RegValue32<1,  2> NUR_S2;
+constexpr regs::RegValue32<1,  1> SSR_S2;
+constexpr regs::RegValue32<1,  0> SUR_S2;
+}  // namespace vals
 }  // namespace CSL
 
 // HP0 register
