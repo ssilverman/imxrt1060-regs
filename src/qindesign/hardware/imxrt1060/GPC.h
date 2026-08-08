@@ -77,10 +77,18 @@ constexpr GPC_Reg<&GPC_Layout::CNTR, 1,  2> MEGA_PDN_REQ;  // MEGA domain (FlexR
 
 // IRQ masking register 1..IRQ masking register 4
 namespace IMR {
-constexpr IMR_Reg<0, 32, 0> IMR1;  // IRQ[31:0] masking bits: 1-irq masked, 0-irq is not masked
-constexpr IMR_Reg<1, 32, 0> IMR2;  // IRQ[63:32] masking bits: 1-irq masked, 0-irq is not masked
-constexpr IMR_Reg<2, 32, 0> IMR3;  // IRQ[95:64] masking bits: 1-irq masked, 0-irq is not masked
-constexpr IMR_Reg<3, 32, 0> IMR4;  // IRQ[127:96] masking bits: 1-irq masked, 0-irq is not masked
+constexpr IMR_Reg<0, 32, 0> IMR1;  // IRQ[31:0] masking bits:
+    // 1-irq masked,
+    // 0-irq is not masked
+constexpr IMR_Reg<1, 32, 0> IMR2;  // IRQ[63:32] masking bits:
+    // 1-irq masked,
+    // 0-irq is not masked
+constexpr IMR_Reg<2, 32, 0> IMR3;  // IRQ[95:64] masking bits:
+    // 1-irq masked,
+    // 0-irq is not masked
+constexpr IMR_Reg<3, 32, 0> IMR4;  // IRQ[127:96] masking bits:
+    // 1-irq masked,
+    // 0-irq is not masked
 
 namespace vals {
 constexpr regs::RegValue32<32, 0> IMR;
