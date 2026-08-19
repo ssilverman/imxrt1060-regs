@@ -700,9 +700,9 @@ constexpr ENET_Reg<&ENET_Layout::TGSR, 1, 0, 0x0> TF0;  // Copy Of Timer Flag Fo
     // 0b1..Timer Flag for Channel 0 is set
 }  // namespace TGSR
 
-// Timer Control Status Register
 namespace CHANNEL {
 
+// Timer Control Status Register
 namespace TCSR {
 constexpr uint32_t kW1C = regs::shiftedMask32<1, 7>();
 
@@ -1338,8 +1338,8 @@ constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 1, 0x0> TF1;
 constexpr ENET2_Reg<&ENET_Layout::TGSR, 1, 0, 0x0> TF0;
 }  // namespace TGSR
 
-// Timer Control Status Register
 namespace CHANNEL {
+
 namespace TCSR {
 constexpr uint32_t kW1C = regs::shiftedMask32<1, 7>();
 
