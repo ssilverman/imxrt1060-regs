@@ -761,7 +761,7 @@ constexpr uint32_t kTMODE_ClearOnCompare              = 6;
 constexpr uint32_t kTMODE_SetOnCompare                = 7;
 constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 9;
 constexpr uint32_t kTMODE_ClearOnCompareSetOnOverflow = 10;
-constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 11;
+// constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 11;  // Duplicate
 constexpr uint32_t kTMODE_PulseLowOnCompare           = 14;
 constexpr uint32_t kTMODE_PulseHighOnCompare          = 15;
 }  // namespace TCSR
@@ -1372,7 +1372,7 @@ constexpr uint32_t kTMODE_ClearOnCompare              = 6;
 constexpr uint32_t kTMODE_SetOnCompare                = 7;
 constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 9;
 constexpr uint32_t kTMODE_ClearOnCompareSetOnOverflow = 10;
-constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 11;
+// constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 11;  // Duplicate
 constexpr uint32_t kTMODE_PulseLowOnCompare           = 14;
 constexpr uint32_t kTMODE_PulseHighOnCompare          = 15;
 }  // namespace TCSR
