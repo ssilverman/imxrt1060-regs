@@ -1003,7 +1003,7 @@ namespace I2S {
 
 namespace TCR2 {
 // MCLK Select values
-constexpr uint32_t kMSEL_BUS    = 0;
+constexpr uint32_t kMSEL_Bus    = 0;
 constexpr uint32_t kMSEL_MCLK_1 = 1;
 constexpr uint32_t kMSEL_MCLK_2 = 2;
 constexpr uint32_t kMSEL_MCLK_3 = 3;
@@ -1011,28 +1011,28 @@ constexpr uint32_t kMSEL_MCLK_3 = 3;
 
 namespace TCR4 {
 // FIFO Combine Mode values
-constexpr uint32_t kFCOMB_DISABLED         = 0;
-constexpr uint32_t kFCOMB_READS            = 1;
-constexpr uint32_t kFCOMB_WRITES           = 2;
-constexpr uint32_t kFCOMB_READS_AND_WRITES = 3;
+constexpr uint32_t kFCOMB_Disabled       = 0;
+constexpr uint32_t kFCOMB_Reads          = 1;
+constexpr uint32_t kFCOMB_Writes         = 2;
+constexpr uint32_t kFCOMB_ReadsAndWrites = 3;
 
 // FIFO Packing Mode values
-constexpr uint32_t kFPACK_DISABLED = 0;
-constexpr uint32_t kFPACK_8_BIT    = 2;
-constexpr uint32_t kFPACK_16_BIT   = 3;
+constexpr uint32_t kFPACK_Disabled = 0;
+constexpr uint32_t kFPACK_8_Bit    = 2;
+constexpr uint32_t kFPACK_16_Bit   = 3;
 }  // namespace TCR4
 
 namespace RCR4 {
 // FIFO Combine Mode values
-constexpr uint32_t kFCOMB_DISABLED         = 0;
-constexpr uint32_t kFCOMB_WRITES           = 1;
-constexpr uint32_t kFCOMB_READS            = 2;
-constexpr uint32_t kFCOMB_WRITES_AND_READS = 3;
+constexpr uint32_t kFCOMB_Disabled       = 0;
+constexpr uint32_t kFCOMB_Writes         = 1;
+constexpr uint32_t kFCOMB_Reads          = 2;
+constexpr uint32_t kFCOMB_WritesAndReads = 3;
 
 // FIFO Packing Mode values
-constexpr uint32_t kFPACK_DISABLED = 0;
-constexpr uint32_t kFPACK_8_BIT    = 2;
-constexpr uint32_t kFPACK_16_BIT   = 3;
+constexpr uint32_t kFPACK_Disabled = 0;
+constexpr uint32_t kFPACK_8_Bit    = 2;
+constexpr uint32_t kFPACK_16_Bit   = 3;
 }  // namespace RCR4
 
 }  // namespace I2S

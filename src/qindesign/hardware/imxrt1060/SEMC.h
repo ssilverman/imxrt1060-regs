@@ -684,7 +684,7 @@ namespace IPCMD {
 // TODO: Is this the correct way?
 constexpr uint32_t kWO = regs::shiftedMask32<16, 16>();
 
-constexpr uint32_t kKEY_all  = 0xA55A'0000;  // Key for all device types, including NAND
+constexpr uint32_t kKEY_All  = 0xA55A'0000;  // Key for all device types, including NAND
 constexpr uint32_t kKEY_NAND = 0x5AA5'0000;  // Key for NAND only
     // The address is extended to 40-bit with the use of NAND_EXT_ADDR
 

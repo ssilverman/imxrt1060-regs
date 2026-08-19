@@ -1716,17 +1716,17 @@ constexpr LPUART8_Reg<&LPUART_Layout::WATER, 2,  0> TXWATER;
 namespace LPUART {
 
 namespace PINCFG {
-constexpr uint32_t kTRGSEL_DISABLED     = 0;
-constexpr uint32_t kTRGSEL_NOT_RXD      = 1;
-constexpr uint32_t kTRGSEL_NOT_CTS_B    = 2;
-constexpr uint32_t kTRGSEL_MODULATE_TXD = 3;
+constexpr uint32_t kTRGSEL_Disabled     = 0;
+constexpr uint32_t kTRGSEL_Not_RXD      = 1;
+constexpr uint32_t kTRGSEL_Not_CTS_B    = 2;
+constexpr uint32_t kTRGSEL_Modulate_TXD = 3;
 }  // namespace PINCFG
 
 namespace BAUD {
-constexpr uint32_t kMATCFG_ADDRESS_MATCH_WAKEUP                   = 0;
-constexpr uint32_t kMATCFG_IDLE_MATCH_WAKEUP                      = 1;
-constexpr uint32_t kMATCFG_MATCH_ON_OFF                           = 2;
-constexpr uint32_t kMATCFG_DATA_MATCH_RWU_AND_MATCH_ON_OFF_TX_CTS = 3;
+constexpr uint32_t kMATCFG_AddressMatchWakeup                = 0;
+constexpr uint32_t kMATCFG_IdleMatchWakeup                   = 1;
+constexpr uint32_t kMATCFG_MatchOnAndOff                     = 2;
+constexpr uint32_t kMATCFG_DataMatch_RWU_MatchOnOffTx_CTS_In = 3;
 }  // namespace BAUD
 
 }  // namespace LPUART
