@@ -750,6 +750,20 @@ constexpr regs::RegValue32<1,  6> TIE;
 constexpr regs::RegValue32<4,  2> TMODE;
 constexpr regs::RegValue32<1,  0> TDRE;
 }  // namespace vals
+
+constexpr uint32_t kTMODE_Disabled                    = 0;
+constexpr uint32_t kTMODE_CaptureOnRising             = 1;
+constexpr uint32_t kTMODE_CaptureOnFalling            = 2;
+constexpr uint32_t kTMODE_CaptureOnBoth               = 3;
+constexpr uint32_t kTMODE_OutCompareSoftwareOnly      = 4;
+constexpr uint32_t kTMODE_ToggleOnCompare             = 5;
+constexpr uint32_t kTMODE_ClearOnCompare              = 6;
+constexpr uint32_t kTMODE_SetOnCompare                = 7;
+constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 9;
+constexpr uint32_t kTMODE_ClearOnCompareSetOnOverflow = 10;
+constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 11;
+constexpr uint32_t kTMODE_PulseLowOnCompare           = 14;
+constexpr uint32_t kTMODE_PulseHighOnCompare          = 15;
 }  // namespace TCSR
 
 // Timer Compare Capture Register
@@ -1347,6 +1361,20 @@ constexpr regs::RegValue32<1,  6> TIE;
 constexpr regs::RegValue32<4,  2> TMODE;
 constexpr regs::RegValue32<1,  0> TDRE;
 }  // namespace vals
+
+constexpr uint32_t kTMODE_Disabled                    = 0;
+constexpr uint32_t kTMODE_CaptureOnRising             = 1;
+constexpr uint32_t kTMODE_CaptureOnFalling            = 2;
+constexpr uint32_t kTMODE_CaptureOnBoth               = 3;
+constexpr uint32_t kTMODE_OutCompareSoftwareOnly      = 4;
+constexpr uint32_t kTMODE_ToggleOnCompare             = 5;
+constexpr uint32_t kTMODE_ClearOnCompare              = 6;
+constexpr uint32_t kTMODE_SetOnCompare                = 7;
+constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 9;
+constexpr uint32_t kTMODE_ClearOnCompareSetOnOverflow = 10;
+constexpr uint32_t kTMODE_SetOnCompareClearOnOverflow = 11;
+constexpr uint32_t kTMODE_PulseLowOnCompare           = 14;
+constexpr uint32_t kTMODE_PulseHighOnCompare          = 15;
 }  // namespace TCSR
 
 namespace TCCR {
