@@ -108,7 +108,7 @@ static void init_watchdog() {
   const auto wt = static_cast<uint16_t>((kWatchdogTimeout/0.5f + 0.5f) - 1);
 
   // First enable the clock
-  CCM::CCGR3::WDOG1 = CCM::CCGR::kON;
+  CCM::CCGR3::WDOG1 = CCM::CCGR::kOn;
 
   // Set the timeout
   WDOG1::WCR::WT = wt;
@@ -153,7 +153,7 @@ static void reboot() {
 static void enable_enet_clocks() {
 #if !USE_OLD_WAY
   // Enable the Ethernet clock
-  CCM::CCGR1::ENET = CCM::CCGR::kON;
+  CCM::CCGR1::ENET = CCM::CCGR::kOn;
 
   // Configure PLL6 for 50 MHz (page 1112)
   CCM_ANALOG::PLL_ENET_SET::BYPASS = 1;
@@ -227,7 +227,7 @@ static void disable_enet_clocks() {
                                 | CCM_ANALOG::PLL_ENET::DIV_SELECT(1);
 
   // Disable the clock for ENET
-  CCM::CCGR1::ENET = CCM::CCGR::kOFF;
+  CCM::CCGR1::ENET = CCM::CCGR::kOff;
 #else
   // Configure REFCLK
   clearAndSet32(&IOMUXC_GPR_GPR1, IOMUXC_GPR_GPR1_ENET1_TX_CLK_DIR, 0);
