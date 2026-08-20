@@ -713,7 +713,7 @@ constexpr SEMC_Reg<regs::constify(&SEMC_Layout::IPCMD), 16,  0> CMD;  // SDRAM C
 
 // Versions where KEY also gets set
 namespace keyed {
-constexpr SEMC_Reg<&SEMC_Layout::IPCMD, 16, 0, 0x0, kKEY_all> CMD_all;    // SDRAM Commands:
+constexpr SEMC_Reg<&SEMC_Layout::IPCMD, 16, 0, 0x0, kKEY_All> CMD_all;    // SDRAM Commands:
     // 0x8: Read
     // 0x9: Write
     // 0xA: Mode Register Set
