@@ -1372,6 +1372,8 @@ constexpr DMA_Reg8<regs::constify(&DMA_Layout::DCHPRI28), 2, 4> GRPPRI;  // Chan
 constexpr DMA_Reg8<&DMA_Layout::DCHPRI28, 4, 0> CHPRI;                   // Channel n Arbitration Priority
 }  // namespace DCHPRI28
 
+namespace TCD {
+
 // TCD Source Address values
 namespace SADDR {
 template <size_t Index>
@@ -1612,6 +1614,8 @@ constexpr regs::RegValue16<5,  9> LINKCH;
 constexpr regs::RegValue16<9,  0> BITER;
 }  // namespace vals
 }  // namespace BITER_ELINKYES
+
+}  // namespace TCD
 
 }  // namespace DMA
 
