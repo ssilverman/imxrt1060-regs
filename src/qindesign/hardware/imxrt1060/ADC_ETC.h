@@ -260,10 +260,6 @@ constexpr ADC_ETC_Reg<&ADC_ETC_Layout::DMA_CTRL, 1,  0, regs::shiftedMask32<1, 0
     // 0b1..TRIG0 DMA request enabled.
 }  // namespace DMA_CTRL
 
-}  // namespace ADC_ETC
-
-namespace ADC_ETC {
-
 namespace TRIG {
 
 // ETC_TRIG Control Register
