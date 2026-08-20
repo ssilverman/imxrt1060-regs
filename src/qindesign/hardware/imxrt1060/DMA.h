@@ -101,7 +101,7 @@ struct DMA_Layout {
       volatile uint16_t CITER_ELINKNO;                     /**< TCD Current Minor Loop Link, Major Loop Count (Channel Linking Disabled), array offset: 0x1016, array step: 0x20 */
       volatile uint16_t CITER_ELINKYES;                    /**< TCD Current Minor Loop Link, Major Loop Count (Channel Linking Enabled), array offset: 0x1016, array step: 0x20 */
     };
-    volatile int32_t DLAST_SGA;                          /**< TCD Last Destination Address Adjustment/Scatter Gather Address, array offset: 0x1018, array step: 0x20 */
+    volatile int32_t DLASTSGA;                           /**< TCD Last Destination Address Adjustment/Scatter Gather Address, array offset: 0x1018, array step: 0x20 */
     volatile uint16_t CSR;                               /**< TCD Control and Status, array offset: 0x101C, array step: 0x20 */
     union {                                              /* offset: 0x101E, array step: 0x20 */
       volatile uint16_t BITER_ELINKNO;                     /**< TCD Beginning Minor Loop Link, Major Loop Count (Channel Linking Disabled), array offset: 0x101E, array step: 0x20 */
@@ -1476,6 +1476,17 @@ constexpr regs::RegValue32<10,  0> NBYTES;
 }  // namespace vals
 }  // namespace NBYTES_MLOFFYES
 
+// TCD Last Source Address Adjustment
+// This is signed.
+namespace SLAST {
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::SLAST, 32, 0> SLAST;  // Last Source Address Adjustment
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> SLAST;
+}  // namespace vals
+}  // namespace SLAST
+
 // TCD Destination Address
 namespace DADDR {
 template <size_t Index>
@@ -1528,6 +1539,17 @@ constexpr regs::RegValue16<5,  9> LINKCH;
 constexpr regs::RegValue16<9,  0> CITER;
 }  // namespace vals
 }  // namespace CITER_ELINKYES
+
+// TCD Last Destination Address Adjustment/Scatter Gather Address
+// This is signed.
+namespace DLASTSGA {
+template <size_t Index>
+constexpr TCD_Reg32<Index, &DMA_Layout::TCD_Layout::DLASTSGA, 32, 0> DLASTSGA;  // Destination last address adjustment, or next memory address TCD for channel (scatter/gather)
+
+namespace vals {
+constexpr regs::RegValue32<32, 0> DLASTSGA;
+}  // namespace vals
+}  // namespace DLASTSGA
 
 // TCD Control and Status
 namespace CSR {
