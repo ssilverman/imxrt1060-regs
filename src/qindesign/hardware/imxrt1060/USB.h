@@ -612,7 +612,7 @@ constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16, 0x0> ETCE;  // Endpoint Tr
 constexpr USB1_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0, 0x0> ERCE;  // Endpoint Receive Complete Event - RW/C
 }  // namespace ENDPTCOMPLETE
 
-// Endpoint Control values
+// Endpoint Control
 // Caution when writing to this register: Read-modify-write can replay the
 // TXR/RXR write-one commands.
 namespace ENDPTCTRL {
@@ -1046,7 +1046,7 @@ constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8, 16, 0x0> ETCE;
 constexpr USB2_Reg<&USB_Layout::ENDPTCOMPLETE, 8,  0, 0x0> ERCE;
 }  // namespace ENDPTCOMPLETE
 
-// Endpoint Control values
+// Endpoint Control
 // Caution when writing to this register: Read-modify-write can replay the
 // TXR/RXR write-one commands.
 namespace ENDPTCTRL {

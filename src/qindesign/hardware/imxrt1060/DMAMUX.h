@@ -45,7 +45,7 @@ using CHCFG_Reg =
     regs::Reg32<kDMAMUX_base, DMAMUX_Layout, &DMAMUX_Layout::CHCFG, Index, Bits,
                 Shift, AssignMask>;
 
-// Channel 0 Configuration Register..Channel 31 Configuration Register values
+// Channel 0 Configuration Register..Channel 31 Configuration Register
 namespace CHCFG {
 template <size_t Index>
 constexpr CHCFG_Reg<Index, 1, 31> ENBL;    // DMA Mux Channel Enable

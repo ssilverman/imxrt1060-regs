@@ -70,7 +70,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
 using R_Reg = regs::Reg32<kADC1_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
                           Shift, AssignMask>;
 
-// Control register for hardware triggers values
+// Control register for hardware triggers
 namespace HC {
 template <size_t Index>
 constexpr HC_Reg<Index, 1, 7> AIEN;  // Conversion Complete Interrupt Enable/Disable Control
@@ -106,7 +106,7 @@ constexpr ADC1_Reg<&ADC_Layout::HS, 1, 1> COCO1;  // Conversion Complete Flag
 constexpr ADC1_Reg<&ADC_Layout::HS, 1, 0> COCO0;  // Conversion Complete Flag
 }  // namespace HS
 
-// Data result register for HW triggers values
+// Data result register for HW triggers
 namespace R {
 template <size_t Index>
 constexpr R_Reg<Index, 12, 0> CDATA;  // Data (result of an ADC conversion)
@@ -246,7 +246,7 @@ template <size_t Index, size_t Bits, unsigned int Shift,
 using R_Reg = regs::Reg32<kADC2_base, ADC_Layout, &ADC_Layout::R, Index, Bits,
                           Shift, AssignMask>;
 
-// Control register for hardware triggers values
+// Control register for hardware triggers
 namespace HC {
 template <size_t Index>
 constexpr HC_Reg<Index, 1, 7> AIEN;
@@ -271,7 +271,7 @@ constexpr ADC2_Reg<&ADC_Layout::HS, 1, 1> COCO1;
 constexpr ADC2_Reg<&ADC_Layout::HS, 1, 0> COCO0;
 }  // namespace HS
 
-// Data result register for HW triggers values
+// Data result register for HW triggers
 namespace R {
 template <size_t Index>
 constexpr R_Reg<Index, 12, 0> CDATA;
