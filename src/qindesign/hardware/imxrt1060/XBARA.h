@@ -827,7 +827,20 @@ constexpr uint16_t kFLEXIO1_TRIGGER_IN0    = 127;
 constexpr uint16_t kFLEXIO1_TRIGGER_IN1    = 128;
 constexpr uint16_t kFLEXIO2_TRIGGER_IN0    = 129;
 constexpr uint16_t kFLEXIO2_TRIGGER_IN1    = 130;
+// 131 is Reserved
 }  // namespace OUT
+
+inline void connect(unsigned int input, unsigned int output) {
+  if ((input > 87) || (output > 131)) {
+    return;
+  }
+  const auto sel = &group->SEL0 + output/2;
+  if ((output & 0x01) == 0) {
+    *sel = static_cast<uint16_t>((*sel & 0xff00) | input);
+  } else {
+    *sel = static_cast<uint16_t>((*sel & 0x00ff) | (input << 8));
+  }
+}
 
 }  // namespace XBARA1
 

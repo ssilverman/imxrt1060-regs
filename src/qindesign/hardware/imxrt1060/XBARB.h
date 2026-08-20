@@ -194,7 +194,20 @@ constexpr uint16_t kAOI1_IN11 = 11;
 constexpr uint16_t kAOI1_IN12 = 12;
 constexpr uint16_t kAOI1_IN13 = 13;
 constexpr uint16_t kAOI1_IN14 = 14;
+constexpr uint16_t kAOI1_IN15 = 15;  // Not in Teensyduino 1.62, but in the RM
 }  // namespace OUT
+
+inline void connect(unsigned int input, unsigned int output) {
+  if ((input > 57) || (output > 15)) {
+    return;
+  }
+  const auto sel = &group->SEL0 + output/2;
+  if ((output & 0x01) == 0) {
+    *sel = static_cast<uint16_t>((*sel & 0xff00) | input);
+  } else {
+    *sel = static_cast<uint16_t>((*sel & 0x00ff) | (input << 8));
+  }
+}
 
 }  // namespace XBARB2
 
@@ -332,6 +345,18 @@ constexpr uint16_t kAOI2_IN13 = 13;
 constexpr uint16_t kAOI2_IN14 = 14;
 constexpr uint16_t kAOI2_IN15 = 15;
 }  // namespace OUT
+
+inline void connect(unsigned int input, unsigned int output) {
+  if ((input > 57) || (output > 15)) {
+    return;
+  }
+  const auto sel = &group->SEL0 + output/2;
+  if ((output & 0x01) == 0) {
+    *sel = static_cast<uint16_t>((*sel & 0xff00) | input);
+  } else {
+    *sel = static_cast<uint16_t>((*sel & 0x00ff) | (input << 8));
+  }
+}
 
 }  // namespace XBARB3
 
