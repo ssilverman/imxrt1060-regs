@@ -834,7 +834,8 @@ inline void connect(unsigned int input, unsigned int output) {
   if ((input > 87) || (output > 131)) {
     return;
   }
-  const auto sel = &group->SEL0 + output/2;
+  const auto sel =
+      reinterpret_cast<volatile uint16_t*>(kXBARA1_base + (output & ~0x01u));
   if ((output & 0x01) == 0) {
     *sel = static_cast<uint16_t>((*sel & 0xff00) | input);
   } else {
