@@ -180,7 +180,7 @@ class Reg {
   // Given a whole register value, returns the extracted field. This is similar
   // to 'operator R()'.
   [[gnu::always_inline]]
-  constexpr R extract(const R val) const {
+  static constexpr R extract(const R val) {
     return (val & kMask) >> Shift;
   }
 
@@ -377,7 +377,7 @@ class RegValue {
   // Given a whole register value, returns the extracted field. This is similar
   // to 'operator R()'.
   [[gnu::always_inline]]
-  constexpr R extract(const R val) const {
+  static constexpr R extract(const R val) {
     return (val & kMask) >> Shift;
   }
 };
